@@ -1,0 +1,211 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://GameObjects/ExplorePlayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Art/Basic Tileset.png" type="Texture" id=2]
+[ext_resource path="res://Art/Cato Dash.png" type="Texture" id=3]
+[ext_resource path="res://Collision Tile.png" type="Texture" id=4]
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 8, 0, 16, 0, 16, 16, 8, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 16, 8, 0, 8, 0, 0, 16, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 16, 16, 0, 16, 0, 8, 16, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+points = PoolVector2Array( 0, 0, 8, 0, 8, 16, 0, 16 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "Collision Tile.png 0"
+0/texture = ExtResource( 4 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 48, 32 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 3 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 9 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="TileSet" id=1]
+0/name = "Basic Tileset.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 144, 128, 32 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "Basic Tileset.png 1"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 96, 128, 48 )
+1/tile_mode = 2
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 16, 16 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [  ]
+1/autotile/navpoly_map = [  ]
+1/autotile/priority_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "Basic Tileset.png 2"
+2/texture = ExtResource( 2 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 48, 128, 48 )
+2/tile_mode = 2
+2/autotile/icon_coordinate = Vector2( 0, 0 )
+2/autotile/tile_size = Vector2( 16, 16 )
+2/autotile/spacing = 0
+2/autotile/occluder_map = [  ]
+2/autotile/navpoly_map = [  ]
+2/autotile/priority_map = [  ]
+2/autotile/z_index_map = [  ]
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "Basic Tileset.png 3"
+3/texture = ExtResource( 2 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 16, 128, 32 )
+3/tile_mode = 2
+3/autotile/icon_coordinate = Vector2( 0, 0 )
+3/autotile/tile_size = Vector2( 16, 16 )
+3/autotile/spacing = 0
+3/autotile/occluder_map = [  ]
+3/autotile/navpoly_map = [  ]
+3/autotile/priority_map = [  ]
+3/autotile/z_index_map = [  ]
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 160, 90 )
+current = true
+zoom = Vector2( 0.25, 0.25 )
+
+[node name="CollisionTiles" type="TileMap" parent="."]
+visible = false
+tile_set = SubResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 327679, 0, 1, 262144, 0, 1, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 1, 262149, 0, 1, 262150, 0, 1, 262151, 0, 1, 262152, 0, 1, 262153, 0, 1, 262154, 0, 1, 262155, 0, 1, 262156, 0, 1, 262157, 0, 1, 262158, 0, 1, 262159, 0, 1, 262160, 0, 1, 262161, 0, 1, 262162, 0, 1, 262163, 0, 1, 262164, 0, 1, 393215, 0, 1, 327680, 0, 1, 327681, 0, 65538, 327682, 0, 65538, 327683, 0, 65538, 327684, 0, 65538, 327685, 0, 65538, 327686, 0, 65538, 327687, 0, 65538, 327688, 0, 65538, 327689, 0, 65538, 327690, 0, 65538, 327691, 0, 65538, 327692, 0, 65538, 327693, 0, 65538, 327694, 0, 65538, 327695, 0, 65538, 327696, 0, 65538, 327697, 0, 65538, 327698, 0, 65538, 327699, 0, 1, 327700, 0, 1, 458751, 0, 1, 393236, 0, 1, 524287, 0, 1, 458772, 0, 1, 589823, 0, 1, 524308, 0, 1, 655359, 0, 1, 589844, 0, 1, 720895, 0, 1, 655380, 0, 1, 786431, 0, 1, 720916, 0, 1, 851967, 0, 1, 786432, 0, 1, 786433, 0, 1, 786434, 0, 1, 786435, 0, 1, 786436, 0, 1, 786437, 0, 1, 786438, 0, 1, 786439, 0, 1, 786440, 0, 1, 786441, 0, 1, 786442, 0, 1, 786443, 0, 1, 786444, 0, 1, 786445, 0, 1, 786446, 0, 1, 786447, 0, 1, 786448, 0, 1, 786449, 0, 1, 786450, 0, 1, 786451, 0, 1, 786452, 0, 1 )
+
+[node name="Forest Tiles" type="TileMap" parent="."]
+rotation = 0.000152668
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 327680, 3, 5, 327681, 3, 6, 327682, 3, 6, 327683, 3, 6, 327684, 3, 6, 327685, 3, 6, 327686, 3, 6, 327687, 3, 6, 327688, 3, 6, 327689, 3, 6, 327690, 3, 6, 327691, 3, 6, 327692, 3, 6, 327693, 3, 6, 327694, 3, 6, 327695, 3, 6, 327696, 3, 6, 327697, 3, 6, 327698, 3, 6, 327699, 3, 7, 393216, 2, 131076, 393217, 2, 131076, 393218, 2, 131076, 393219, 2, 131076, 393220, 2, 131076, 393221, 2, 131076, 393222, 2, 131076, 393223, 2, 131076, 393224, 2, 131076, 393225, 2, 131076, 393226, 2, 131076, 393227, 2, 131076, 393228, 2, 131076, 393229, 2, 131076, 393230, 2, 131076, 393231, 2, 131076, 393232, 2, 131076, 393233, 2, 131076, 393234, 2, 131076, 393235, 2, 131076, 458752, 2, 131076, 458753, 2, 131076, 458754, 2, 131076, 458755, 2, 131076, 458756, 2, 131076, 458757, 2, 131076, 458758, 2, 131076, 458759, 2, 131076, 458760, 2, 131076, 458761, 2, 131076, 458762, 2, 131076, 458763, 2, 131076, 458764, 2, 131076, 458765, 2, 131076, 458766, 2, 131076, 458767, 2, 131076, 458768, 2, 131076, 458769, 2, 131076, 458770, 2, 131076, 458771, 2, 131076, 524288, 2, 131076, 524289, 2, 131076, 524290, 2, 131076, 524291, 2, 131076, 524292, 2, 131076, 524293, 2, 131076, 524294, 2, 131076, 524295, 2, 131076, 524296, 2, 131076, 524297, 2, 131076, 524298, 2, 131076, 524299, 2, 131076, 524300, 2, 131076, 524301, 2, 131076, 524302, 2, 131076, 524303, 2, 131076, 524304, 2, 131076, 524305, 2, 131076, 524306, 2, 131076, 524307, 2, 131076, 655359, 1, 65540, 589824, 2, 131076, 589825, 2, 131076, 589826, 2, 131076, 589827, 2, 131076, 589828, 2, 131076, 589829, 2, 131076, 589830, 2, 131076, 589831, 2, 131076, 589832, 2, 131076, 589833, 2, 131076, 589834, 2, 131076, 589835, 2, 131076, 589836, 2, 131076, 589837, 2, 131076, 589838, 2, 131076, 589839, 2, 131076, 589840, 2, 131076, 589841, 2, 131076, 589842, 2, 131076, 589843, 2, 131076, 655360, 2, 131076, 655361, 2, 131076, 655362, 2, 131076, 655363, 2, 131076, 655364, 2, 131076, 655365, 2, 131076, 655366, 2, 131076, 655367, 2, 131076, 655368, 2, 131076, 655369, 2, 131076, 655370, 2, 131076, 655371, 2, 131076, 655372, 2, 131076, 655373, 2, 131076, 655374, 2, 131076, 655375, 2, 131076, 655376, 2, 131076, 655377, 2, 131076, 655378, 2, 131076, 655379, 2, 131076, 720896, 2, 131076, 720897, 2, 131076, 720898, 2, 131076, 720899, 2, 131076, 720900, 2, 131076, 720901, 2, 131076, 720902, 2, 131076, 720903, 2, 131076, 720904, 2, 131076, 720905, 2, 131076, 720906, 2, 131076, 720907, 2, 131076, 720908, 2, 131076, 720909, 2, 131076, 720910, 2, 131076, 720911, 2, 131076, 720912, 2, 131076, 720913, 2, 131076, 720914, 2, 131076, 720915, 2, 131076, 851992, 3, 5, 851993, 3, 6, 851994, 3, 6, 851995, 3, 6, 851996, 3, 6, 851997, 3, 6, 851998, 3, 6, 851999, 3, 6, 852000, 3, 6, 852001, 3, 6, 852002, 3, 6, 852003, 3, 7 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="ExplorePlayer" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 253.661, 110.33 )
+
+[node name="Sprite" type="Sprite" parent="YSort"]
+position = Vector2( 225.675, 99.9988 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -25 )

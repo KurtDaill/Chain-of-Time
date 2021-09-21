@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://BattleManager.cs" type="Script" id=1]
+
+[node name="BattleManager" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Hero1Spot" type="RemoteTransform2D" parent="."]
+position = Vector2( 480, 400 )
+
+[node name="Hero2Spot" type="RemoteTransform2D" parent="."]
+position = Vector2( 275, 500 )
+
+[node name="Hero3Spot" type="RemoteTransform2D" parent="."]
+position = Vector2( 275, 300 )
