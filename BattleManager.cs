@@ -4,9 +4,12 @@ using System;
 public class BattleManager : Node
 {
     [Export]
-    private Combatant[] Heroes = new Combatant[3];
+    private BattlePlayer[] Heroes = new BattlePlayer[3];
     [Export]
     private Combatant[] Enemies = new Combatant[3];
+
+    [Export]
+    private string NodePath;
 
     private RemoteTransform2D[] HeroSpots = new RemoteTransform2D[3];
 
@@ -19,7 +22,8 @@ public class BattleManager : Node
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        BattleState temp = new BattleStateStandby();
+        Heroes[0] = (BattlePlayer) GetNode(NodePath);
+        BattleState temp = new BattlePlayerStateFree(Heroes[0]);
         HandleInput = temp.HandleInput;
         Process = temp.Process;
 

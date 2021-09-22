@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Art/Dialogue Box.png" type="Texture" id=1]
+
+[node name="Basic Text Box" type="NinePatchRect"]
+anchor_top = 0.667
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.120026
+texture = ExtResource( 1 )
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -6.0
+text = "Hello Chicago!"
+__meta__ = {
+"_edit_use_anchors_": false
+}

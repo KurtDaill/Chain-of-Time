@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class TestResolutionSwap : Node2D
+public class TestResolutionSwap : Node
 {
     // Declare member variables here. Examples:
     // private int a = 2;

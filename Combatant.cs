@@ -3,9 +3,16 @@ using System;
 
 public class Combatant : KinematicBody2D
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
+    public Vector2 velocity = Vector2.Zero;
+    
+    [Export]
+    public float moveSpeed = 20;
+
+    public int direction = 0;
+    
+    public AnimatedSprite anim;
+
+    protected BattlePlayerState StandbyState;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()

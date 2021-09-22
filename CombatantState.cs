@@ -11,4 +11,8 @@ public abstract class CombatantState : BattleState
    public CombatantState(Combatant myself){
        self = myself;
    }
+
+   public CombatantState(){
+       
+   }
 }
