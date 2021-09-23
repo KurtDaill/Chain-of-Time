@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Game.cs" type="Script" id=1]
 [ext_resource path="res://Art/Basic Tileset.png" type="Texture" id=2]
@@ -201,6 +201,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 15.9382, 1.29358 )
 
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 13.6022, 9.3207 )
+
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
 
@@ -226,19 +229,22 @@ tile_data = PoolIntArray( 327680, 3, 5, 327681, 3, 6, 327682, 3, 6, 327683, 3, 6
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Area2D" type="KinematicBody2D" parent="YSort"]
+[node name="Chest" type="StaticBody2D" parent="YSort"]
 position = Vector2( 182.44, 102.775 )
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Area2D"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Chest"]
 position = Vector2( 0, -14.8501 )
 frames = SubResource( 12 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Chest"]
 position = Vector2( 1.52588e-05, -0.184937 )
 shape = SubResource( 13 )
+
+[node name="InteractArea2D" type="Area2D" parent="YSort/Chest"]
+
+[node name="InteractShape" type="CollisionShape2D" parent="YSort/Chest/InteractArea2D"]
+position = Vector2( 0.16687, -9.01016 )
+shape = SubResource( 14 )
 
 [node name="Sprite" type="Sprite" parent="YSort"]
 position = Vector2( 225.675, 99.9988 )
