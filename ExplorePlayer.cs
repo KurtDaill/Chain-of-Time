@@ -19,12 +19,21 @@ public class ExplorePlayer : KinematicBody2D
                 anim = (AnimatedSprite) children[i];
             }
         }
+        GetNode("/root/Game").Connect("PlayerWake", this, nameof(_on_Game_PlayerWake));
     }
 
     public override void _Process(float delta)
     {
         state.HandleInput(this);
         state.Process(this);
+        //Temp Code!
+        if(Input.IsActionJustPressed("ui_end")){
+            state = new ExplorePlayerStateLocked();
+        }
+    }
+
+    public void _on_Game_PlayerWake(){
+        state = new ExplorePlayerStateFree();
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
