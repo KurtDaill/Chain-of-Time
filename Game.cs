@@ -16,9 +16,6 @@ public class Game : Node
     }
 
     public override void _Process(float delta){
-        if(Input.IsActionJustPressed("ui_focus_next")){
-            wakeUpPlayer();
-        }
     }
     public void wakeUpPlayer(){
         EmitSignal(nameof(PlayerWake));

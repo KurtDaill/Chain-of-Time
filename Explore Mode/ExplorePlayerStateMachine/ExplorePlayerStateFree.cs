@@ -20,7 +20,13 @@ public class ExplorePlayerStateFree : ExplorePlayerState
         self.velocity = new Vector2(deltaX, deltaY);
         self.velocity = self.velocity.Normalized();
         
-
+        if(Input.IsActionJustPressed("ui_accept")){
+            var scene = GD.Load<PackedScene>("res://Explore Mode/InteractBox.tscn");
+            var interactBox = scene.Instance();
+            self.AddChild(interactBox);
+            CollisionShape2D col = (CollisionShape2D) interactBox.GetChild(0);
+            //Set the colliders transform
+        }
 
         /*
         Position = new Vector2(

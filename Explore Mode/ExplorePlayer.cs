@@ -26,10 +26,6 @@ public class ExplorePlayer : KinematicBody2D
     {
         state.HandleInput(this);
         state.Process(this);
-        //Temp Code!
-        if(Input.IsActionJustPressed("ui_end")){
-            state = new ExplorePlayerStateLocked();
-        }
     }
 
     public void _on_Game_PlayerWake(){
