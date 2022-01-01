@@ -1,0 +1,56 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "",
+"class": "GitAPI",
+"language": "NativeScript",
+"path": "res://git_api.gdns"
+} ]
+_global_script_class_icons={
+"GitAPI": ""
+}
+
+[application]
+
+config/name="Chain Of Time"
+run/main_scene="res://Test2DScene.tscn"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/MonoDebuggerQM-1.0.2/MonoDebuggerQM-1.0.2/plugin.cfg" )
+
+[gdnative]
+
+singletons=[ "res://git_api.gdnlib" ]
+
+[logging]
+
+file_logging/enable_file_logging=true
+
+[mono]
+
+project/auto_update_project=false
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

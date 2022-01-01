@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "chcGB8/4dlL5ijyK588/2b0IlwMXLc9U6s4YRaETUPqI7mWhxZDhpc8be78IbG8nhSXLwtK9Q/z4HYL0TuFxAw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\kdail\\Desktop\\Godot Projects\\PRO 2\\PRO 2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kdail\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.2\\microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
+    "C:\\Users\\kdail\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.2\\microsoft.netframework.referenceassemblies.net472.1.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
