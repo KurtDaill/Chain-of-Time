@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Battle Mode/BattlePlayer.tscn" type="PackedScene" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="DodgePlayer" parent="." instance=ExtResource( 1 )]
+runSpeed = 85.0
+slideDrag = 1.0
+footDrag = 10.0
+dashDrag = 3.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -2.24493, -6.7348 )
+current = true
+zoom = Vector2( 0.5, 0.5 )

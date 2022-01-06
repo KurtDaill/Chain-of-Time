@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain of Time\\Chain Of Time.csproj",
+      "projectUniqueName": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain of Time\\Main Build\\Chain Of Time.csproj",
       "projectName": "Chain Of Time",
-      "projectPath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain of Time\\Chain Of Time.csproj",
+      "projectPath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain of Time\\Main Build\\Chain Of Time.csproj",
       "packagesPath": "C:\\Users\\kdail\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain of Time\\.mono\\temp\\obj\\",
+      "outputPath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain of Time\\Main Build\\.mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kdail\\AppData\\Roaming\\NuGet\\NuGet.Config",

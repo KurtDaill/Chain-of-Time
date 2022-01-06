@@ -16,16 +16,15 @@
         },
         {
             "label": "build",
-            "type": "shell",
-            "command": "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe",
+            "command": "C:/Users/kdail/Desktop/Godot_v3.3.3-stable_mono_win64/Godot_v3.3.3-stable_mono_win64/Godot_v3.3.3-stable_mono_win64.exe\r",
+            "type": "process",
             "args": [
-                "/p:Configuration=Debug;Platform=Any CPU;GenerateFullPaths=true",
-                "/t:Build;"
+                "--build-solutions",
+                "--path",
+                "${workspaceRoot}",
+                "--no-window",
+                "-q"
             ],
-            "group": "build",
-            "presentation": {
-                "reveal": "silent"
-            },
             "problemMatcher": "$msCompile"
         }
     ]

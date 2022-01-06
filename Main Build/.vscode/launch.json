@@ -1,34 +1,46 @@
 {
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Run",
-            "type": "coreclr",
+            "name": "Play in Editor",
+            "type": "godot-mono",
+            "mode": "playInEditor",
+            "request": "launch"
+        },
+        {
+            "name": "Launch",
+            "type": "godot-mono",
             "request": "launch",
+            "mode": "executable",
             "preLaunchTask": "build",
-            "program": "C:/Users/kdail/Desktop/Godot_v3.3.3-stable_mono_win64/Godot_v3.3.3-stable_mono_win64/Godot_v3.3.3-stable_mono_win64.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "console": "internalConsole",
-            "internalConsoleOptions": "openOnSessionStart"
+            "executable": "C:/Users/kdail/Desktop/Godot_v3.3.3-stable_mono_win64/Godot_v3.3.3-stable_mono_win64/Godot_v3.3.3-stable_mono_win64.exe\r",
+            "executableArguments": [
+                "--path",
+                "${workspaceRoot}"
+            ]
+        },
+        {
+            "name": "Launch (Select Scene)",
+            "type": "godot-mono",
+            "request": "launch",
+            "mode": "executable",
+            "preLaunchTask": "build",
+            "executable": "C:/Users/kdail/Desktop/Godot_v3.3.3-stable_mono_win64/Godot_v3.3.3-stable_mono_win64/Godot_v3.3.3-stable_mono_win64.exe\r",
+            "executableArguments": [
+                "--path",
+                "${workspaceRoot}",
+                "${command:SelectLaunchScene}"
+            ]
         },
         {
             "name": "Attach",
-            "type": "mono",
+            "type": "godot-mono",
             "request": "attach",
             "address": "localhost",
-            "port": 23685,
-            "internalConsoleOptions": "neverOpen",
-        }
-    ],
-    "compounds": [
-        {
-            "name": "Run and attach",
-            "configurations": [
-                "Attach",
-                "Run",
-            ]
+            "port": 23685
         }
     ]
 }
