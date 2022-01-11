@@ -1,16 +1,31 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Battle Mode/BattlePlayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PRO 2 Assets/GroundMeta.cs" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 331.966, 10 )
 
 [node name="Node2D" type="Node2D"]
 
 [node name="DodgePlayer" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3.17838, -46.6164 )
+jumpForce = 300.0
 runSpeed = 85.0
+dashBoost = 275.0
+gravity = 9.0
 slideDrag = 1.0
 footDrag = 10.0
-dashDrag = 3.0
+dashDrag = 6.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( -2.24493, -6.7348 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0.396851, 10.715 )
+shape = SubResource( 1 )

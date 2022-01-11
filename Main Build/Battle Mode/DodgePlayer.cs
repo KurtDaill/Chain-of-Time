@@ -17,7 +17,7 @@ public class DodgePlayer : KinematicBody2D
 	[Export]
 	public float diveSpeed = 3F;
 	[Export]
-	public float Gravity = -0.5F;
+	public float gravity = 3F;
 	[Export]
 	public float slideDrag = 0.1F;
 	[Export]
@@ -37,6 +37,7 @@ public class DodgePlayer : KinematicBody2D
                 sprite = (AnimatedSprite) children[i];
             }
         }
+        sprite.Connect("animation_finished", this, nameof(HandleAnimationTransition));
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -54,5 +55,26 @@ public class DodgePlayer : KinematicBody2D
     public void setSprite(String newSprite, int scaling = 1){
         sprite.Animation = newSprite;
         sprite.Scale = new Vector2(scaling, 1);
+    }
+
+    public AnimatedSprite GetAnimatedSprite(){
+        return sprite;
+    }
+
+    //Called whenever an animation ends, and calls a function in the state that handles any new animations that have to play
+    //For Example: The Airborne state will transition from the "Up" to "Down" animation once the player begins falling
+    private void HandleAnimationTransition(){
+        state.HandleAnimationTransition(this);
+    }
+
+    //Should return whether or not the player is on the ground
+    public bool amIFlying(){ //TODO implement this function
+        KinematicCollision2D kc = GetSlideCollision(0);
+        if(kc != null){
+			if(kc.Collider.GetMeta("type").Equals("ground")){
+				return false;
+			}
+		}
+        return true;
     }
 }
