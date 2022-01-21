@@ -7,7 +7,8 @@ public class DodgePlayer : KinematicBody2D
     DodgePlayerState newState = null;
     AnimatedSprite sprite;
 
-
+    [Export]
+    public string character = "Cato";
     [Export]
 	public float jumpForce = 10F;
 	[Export]
@@ -46,8 +47,9 @@ public class DodgePlayer : KinematicBody2D
         //ProcessPlayerState()    Runs the current state script 
         newState = state.Process(this);
         if(newState != null){
+            DodgePlayerState temp = state;
             state = newState;
-            state.Enter(this);
+            state.Enter(this, temp);
         }
         newState = null;
     }

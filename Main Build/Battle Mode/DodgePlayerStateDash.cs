@@ -17,7 +17,7 @@ public class DodgePlayerStateDash : DodgePlayerState
         return null;
     }
 
-    public override void Enter(DodgePlayer player){
+    public override void Enter(DodgePlayer player, DodgePlayerState lastState){
         if(Input.IsActionPressed("ui_left") || player.hSpeed < 0){ //Turn this into an "on enter" in dashing
                 player.hSpeed -= player.dashBoost;
                 player.setSprite("Dash", -1);  

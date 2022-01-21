@@ -13,8 +13,7 @@ public class DodgePlayerStateGround : DodgePlayerState {
         }
 
         if(Input.IsActionJustPressed("ui_up")){
-            player.vSpeed -= player.jumpForce;
-            return new DodgePlayerStateAirborne();
+            return new DodgePlayerStateJump();
         }
 
         if(Input.IsActionPressed("ui_right")){
@@ -30,7 +29,7 @@ public class DodgePlayerStateGround : DodgePlayerState {
         //Animations (Running while moving, Idle while standing) TODO make this conditional less stupid
         if(player.hSpeed == 0 && player.GetAnimatedSprite().Animation != "Landing"){
             player.setSprite("Idle");
-        }else if(player.hSpeed != 0){
+        }else if(player.hSpeed != 0 && player.GetAnimatedSprite().Animation != "Slide Recovery"){
             player.setSprite("Run", Math.Sign(player.hSpeed));
         }
         player.MoveAndSlide(new Vector2(player.hSpeed, player.vSpeed));
@@ -42,5 +41,20 @@ public class DodgePlayerStateGround : DodgePlayerState {
         if(animation == "Landing"){
             player.setSprite("Idle");
         }
-    }    
+        if(animation == "Slide Recovery"){
+            player.setSprite("Run");
+            player.GetAnimatedSprite().Frame = 1;
+        }
+    }
+
+    public override void Enter(DodgePlayer player, DodgePlayerState lastState)
+    {
+        string lastStateName = lastState.GetType().Name;
+        GD.Print(lastStateName);
+        if(lastStateName == "DodgePlayerStateSlide"){
+            player.setSprite("Slide Recovery");
+        }else if(lastStateName == "DodgePlayerStateAirborne"){
+            player.setSprite("Landing");
+        }   
+    }
 }
