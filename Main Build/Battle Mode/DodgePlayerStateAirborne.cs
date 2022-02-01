@@ -16,6 +16,7 @@ public class DodgePlayerStateAirborne : DodgePlayerState
 
     public override void HandleAnimationTransition(DodgePlayer player){
         string animation = player.GetAnimatedSprite().Animation;
+        player.rightFace = (player.hSpeed >= 0);
         if(animation == "Jump"){
             player.setSprite("Air Up");
         }else if(animation == "Air Up" && player.vSpeed > 0){ //This conditional is useful redundancy
@@ -23,5 +24,6 @@ public class DodgePlayerStateAirborne : DodgePlayerState
         }else if(animation == "Air Transition"){
             player.setSprite("Air Down");
         }
+        player.setNewHitbox("Standing Box");   
     }
 }

@@ -7,6 +7,8 @@ public class DodgePlayer : KinematicBody2D
     DodgePlayerState newState = null;
     AnimatedSprite sprite;
 
+    Area2D hitbox;
+    public bool rightFace = true;
     [Export]
     public string character = "Cato";
     [Export]
@@ -37,6 +39,9 @@ public class DodgePlayer : KinematicBody2D
             if(children[i] is AnimatedSprite){
                 sprite = (AnimatedSprite) children[i];
             }
+            if(children[i] is Area2D){
+                hitbox = (Area2D) children[i];
+            }
         }
         sprite.Connect("animation_finished", this, nameof(HandleAnimationTransition));
     }
@@ -56,7 +61,12 @@ public class DodgePlayer : KinematicBody2D
 
     public void setSprite(String newSprite, int scaling = 1){
         sprite.Animation = newSprite;
-        sprite.Scale = new Vector2(scaling, 1);
+        if(rightFace){
+            sprite.Scale = new Vector2(1, 1);
+        }else{
+            sprite.Scale = new Vector2(-1, 1);
+        }
+        //sprite.Scale = new Vector2(scaling, 1);
     }
 
     public AnimatedSprite GetAnimatedSprite(){
@@ -78,5 +88,18 @@ public class DodgePlayer : KinematicBody2D
 			}
 		}
         return true;
+    }
+
+    public void setNewHitbox(string newBox){
+        CollisionShape2D curBox;
+        Godot.Collections.Array boxes = hitbox.GetChildren();
+        for(int i = 0; i < boxes.Count; i++){
+            curBox = (CollisionShape2D) boxes[i];
+            curBox.Disabled = true;
+            if(curBox.Name == newBox){
+                curBox.Disabled = false;
+                return;
+            } 
+        }
     }
 }

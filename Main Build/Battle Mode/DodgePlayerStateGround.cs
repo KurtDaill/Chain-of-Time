@@ -5,7 +5,8 @@ public class DodgePlayerStateGround : DodgePlayerState {
     public override DodgePlayerState Process(DodgePlayer player){
 
         if(Input.IsActionPressed("ui_down")){
-            return new DodgePlayerStateSlide();
+            if(Math.Abs(player.hSpeed) > 0) return new DodgePlayerStateSlide();
+            return new DodgePlayerStateCrouch();
         }
 
         if(Input.IsActionPressed("ui_caps")){ //Start Dashing
@@ -29,10 +30,11 @@ public class DodgePlayerStateGround : DodgePlayerState {
         //Animations (Running while moving, Idle while standing) TODO make this conditional less stupid
         if(player.hSpeed == 0 && player.GetAnimatedSprite().Animation != "Landing"){
             player.setSprite("Idle");
-        }else if(player.hSpeed != 0 && player.GetAnimatedSprite().Animation != "Slide Recovery"){
-            player.setSprite("Run", Math.Sign(player.hSpeed));
+        }else if(player.hSpeed != 0 && player.GetAnimatedSprite().Animation != "Slide Recovery" && player.GetAnimatedSprite().Animation != "Landing"){
+            player.setSprite("Run");
         }
         player.MoveAndSlide(new Vector2(player.hSpeed, player.vSpeed));
+        player.rightFace = (player.hSpeed >= 0);
         return null;
     }
 
@@ -55,6 +57,7 @@ public class DodgePlayerStateGround : DodgePlayerState {
             player.setSprite("Slide Recovery");
         }else if(lastStateName == "DodgePlayerStateAirborne"){
             player.setSprite("Landing");
-        }   
+        }
+        player.setNewHitbox("Standing Box");   
     }
 }

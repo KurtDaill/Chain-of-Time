@@ -8,10 +8,12 @@ public class DodgePlayerStateSlide : DodgePlayerState
 	    if(player.hSpeed == 0){
 			return new DodgePlayerStateCrouch();
 		}
+        /*
         if(Input.IsActionPressed("ui_up")){
             player.vSpeed -= player.jumpForce;
             return new DodgePlayerStateJump();
         }
+        */
         if(!Input.IsActionPressed("ui_down")){
             return new DodgePlayerStateGround();
         }
@@ -22,13 +24,15 @@ public class DodgePlayerStateSlide : DodgePlayerState
     public override void HandleAnimationTransition(DodgePlayer player)
     {
         string animation = player.GetAnimatedSprite().Animation;
-        if(animation == "Slide Start"){
+        if(animation == "Slide Start"){          
+            player.rightFace = (player.hSpeed >= 0);
             player.setSprite("Slide");
         }
     }
 
     public override void Enter(DodgePlayer player, DodgePlayerState lastState)
     {
+        player.rightFace = (player.hSpeed >= 0);
         player.setSprite("Slide Start");
     }
 }

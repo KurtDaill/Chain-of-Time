@@ -16,6 +16,8 @@ public class DodgePlayerStateJump : DodgePlayerState
     public override void Enter(DodgePlayer player, DodgePlayerState lastState)
     {
         player.setSprite("Jump");
+        player.rightFace = (player.hSpeed >= 0);
         player.vSpeed -= player.jumpForce;
+        player.setNewHitbox("Standing Box");   
     }
 }

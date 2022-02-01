@@ -4,7 +4,7 @@
 [ext_resource path="res://PRO 2 Assets/GroundMeta.cs" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 331.966, 10 )
+extents = Vector2( 974.86, 10 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -14,7 +14,7 @@ jumpForce = 300.0
 runSpeed = 85.0
 dashBoost = 275.0
 gravity = 9.0
-slideDrag = 1.0
+slideDrag = 2.0
 footDrag = 10.0
 dashDrag = 6.0
 
