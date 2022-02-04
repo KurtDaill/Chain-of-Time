@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cato Run-Sheet.png-0b302da4f77531061542fc14369abb88.stex"
+path="res://.import/Cato Master Sprite Sheet.png-6728830c28ec547e0a7baf91b1b0db60.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Cato Run-Sheet.png"
-dest_files=[ "res://.import/Cato Run-Sheet.png-0b302da4f77531061542fc14369abb88.stex" ]
+source_file="res://Art/Cato Master Sprite Sheet.png"
+dest_files=[ "res://.import/Cato Master Sprite Sheet.png-6728830c28ec547e0a7baf91b1b0db60.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_animation_importer"
+type="SpriteFrames"
+path="res://.import/Cato Master Sprite Sheet.aseprite-8cf1ff583400fe04a94b4a517b5af17d.res"
+
+[deps]
+
+source_file="res://Art/Cato Master Sprite Sheet.aseprite"
+dest_files=[ "res://.import/Cato Master Sprite Sheet.aseprite-8cf1ff583400fe04a94b4a517b5af17d.res" ]
+
+[params]
+
+extrude=false
+default_direction="Forward"
+default_loop=true

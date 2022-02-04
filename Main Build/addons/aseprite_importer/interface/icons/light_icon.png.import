@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cato Run-Sheet.png-0b302da4f77531061542fc14369abb88.stex"
+path="res://.import/light_icon.png-7736224c34e6f06ad3ecf9b37cd89cab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Cato Run-Sheet.png"
-dest_files=[ "res://.import/Cato Run-Sheet.png-0b302da4f77531061542fc14369abb88.stex" ]
+source_file="res://addons/aseprite_importer/interface/icons/light_icon.png"
+dest_files=[ "res://.import/light_icon.png-7736224c34e6f06ad3ecf9b37cd89cab.stex" ]
 
 [params]
 
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

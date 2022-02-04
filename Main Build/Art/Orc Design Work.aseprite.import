@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_animation_importer"
+type="SpriteFrames"
+path="res://.import/Orc Design Work.aseprite-7080695fe1fbab79b746e73bf2e87687.res"
+
+[deps]
+
+source_file="res://Art/Orc Design Work.aseprite"
+dest_files=[ "res://.import/Orc Design Work.aseprite-7080695fe1fbab79b746e73bf2e87687.res" ]
+
+[params]
+
+extrude=false
+default_direction="Forward"
+default_loop=false

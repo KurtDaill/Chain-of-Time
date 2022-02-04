@@ -1,0 +1,516 @@
+{ "frames": {
+   "Cato Master Sprite Sheet 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 1.aseprite": {
+    "frame": { "x": 112, "y": 0, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 2.aseprite": {
+    "frame": { "x": 224, "y": 0, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 3.aseprite": {
+    "frame": { "x": 336, "y": 0, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 4.aseprite": {
+    "frame": { "x": 448, "y": 0, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 5.aseprite": {
+    "frame": { "x": 560, "y": 0, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 6.aseprite": {
+    "frame": { "x": 672, "y": 0, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 142
+   },
+   "Cato Master Sprite Sheet 7.aseprite": {
+    "frame": { "x": 784, "y": 0, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 142
+   },
+   "Cato Master Sprite Sheet 8.aseprite": {
+    "frame": { "x": 0, "y": 80, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 9.aseprite": {
+    "frame": { "x": 112, "y": 80, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 10.aseprite": {
+    "frame": { "x": 224, "y": 80, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 11.aseprite": {
+    "frame": { "x": 336, "y": 80, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 142
+   },
+   "Cato Master Sprite Sheet 12.aseprite": {
+    "frame": { "x": 448, "y": 80, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 142
+   },
+   "Cato Master Sprite Sheet 13.aseprite": {
+    "frame": { "x": 560, "y": 80, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 14.aseprite": {
+    "frame": { "x": 672, "y": 80, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 15.aseprite": {
+    "frame": { "x": 784, "y": 80, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 16.aseprite": {
+    "frame": { "x": 0, "y": 160, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 17.aseprite": {
+    "frame": { "x": 112, "y": 160, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 18.aseprite": {
+    "frame": { "x": 224, "y": 160, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 19.aseprite": {
+    "frame": { "x": 336, "y": 160, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 20.aseprite": {
+    "frame": { "x": 448, "y": 160, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 21.aseprite": {
+    "frame": { "x": 560, "y": 160, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 142
+   },
+   "Cato Master Sprite Sheet 22.aseprite": {
+    "frame": { "x": 672, "y": 160, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 142
+   },
+   "Cato Master Sprite Sheet 23.aseprite": {
+    "frame": { "x": 784, "y": 160, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 142
+   },
+   "Cato Master Sprite Sheet 24.aseprite": {
+    "frame": { "x": 0, "y": 240, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 142
+   },
+   "Cato Master Sprite Sheet 25.aseprite": {
+    "frame": { "x": 112, "y": 240, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 142
+   },
+   "Cato Master Sprite Sheet 26.aseprite": {
+    "frame": { "x": 224, "y": 240, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 27.aseprite": {
+    "frame": { "x": 336, "y": 240, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 28.aseprite": {
+    "frame": { "x": 448, "y": 240, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 29.aseprite": {
+    "frame": { "x": 560, "y": 240, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 30.aseprite": {
+    "frame": { "x": 672, "y": 240, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 31.aseprite": {
+    "frame": { "x": 784, "y": 240, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 32.aseprite": {
+    "frame": { "x": 0, "y": 320, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 33.aseprite": {
+    "frame": { "x": 112, "y": 320, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 34.aseprite": {
+    "frame": { "x": 224, "y": 320, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 35.aseprite": {
+    "frame": { "x": 336, "y": 320, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 36.aseprite": {
+    "frame": { "x": 448, "y": 320, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 37.aseprite": {
+    "frame": { "x": 560, "y": 320, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 38.aseprite": {
+    "frame": { "x": 672, "y": 320, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 39.aseprite": {
+    "frame": { "x": 784, "y": 320, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 40.aseprite": {
+    "frame": { "x": 0, "y": 400, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 41.aseprite": {
+    "frame": { "x": 112, "y": 400, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 42.aseprite": {
+    "frame": { "x": 224, "y": 400, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 43.aseprite": {
+    "frame": { "x": 336, "y": 400, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 44.aseprite": {
+    "frame": { "x": 448, "y": 400, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 45.aseprite": {
+    "frame": { "x": 560, "y": 400, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 46.aseprite": {
+    "frame": { "x": 672, "y": 400, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 47.aseprite": {
+    "frame": { "x": 784, "y": 400, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 48.aseprite": {
+    "frame": { "x": 0, "y": 480, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 49.aseprite": {
+    "frame": { "x": 112, "y": 480, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 50.aseprite": {
+    "frame": { "x": 224, "y": 480, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 51.aseprite": {
+    "frame": { "x": 336, "y": 480, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 52.aseprite": {
+    "frame": { "x": 448, "y": 480, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 53.aseprite": {
+    "frame": { "x": 560, "y": 480, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 54.aseprite": {
+    "frame": { "x": 672, "y": 480, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 55.aseprite": {
+    "frame": { "x": 784, "y": 480, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 56.aseprite": {
+    "frame": { "x": 0, "y": 560, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 57.aseprite": {
+    "frame": { "x": 112, "y": 560, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 58.aseprite": {
+    "frame": { "x": 224, "y": 560, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 59.aseprite": {
+    "frame": { "x": 336, "y": 560, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   },
+   "Cato Master Sprite Sheet 60.aseprite": {
+    "frame": { "x": 448, "y": 560, "w": 112, "h": 80 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 16, "y": 48, "w": 112, "h": 80 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 71
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.32-x64",
+  "image": "Cato Master Sprite Sheet.png",
+  "format": "RGBA8888",
+  "size": { "w": 896, "h": 640 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "_Idle", "from": 0, "to": 5, "direction": "forward" },
+   { "name": "_Dash", "from": 6, "to": 7, "direction": "forward" },
+   { "name": "Start Slide", "from": 8, "to": 10, "direction": "forward" },
+   { "name": "_Slide", "from": 11, "to": 12, "direction": "forward" },
+   { "name": "Slide Recover", "from": 13, "to": 16, "direction": "forward" },
+   { "name": "_Crouch", "from": 17, "to": 17, "direction": "forward" },
+   { "name": "Jump", "from": 18, "to": 20, "direction": "forward" },
+   { "name": "_Air Up", "from": 21, "to": 22, "direction": "forward" },
+   { "name": "Air Trans", "from": 23, "to": 23, "direction": "forward" },
+   { "name": "_Air Down", "from": 24, "to": 25, "direction": "forward" },
+   { "name": "Landing", "from": 26, "to": 28, "direction": "forward" },
+   { "name": "Attack Step", "from": 29, "to": 34, "direction": "forward" },
+   { "name": "Attack Windup", "from": 35, "to": 37, "direction": "forward" },
+   { "name": "Attack Swing", "from": 38, "to": 48, "direction": "forward" },
+   { "name": "_Run", "from": 49, "to": 60, "direction": "forward" }
+  ]
+ }
+}

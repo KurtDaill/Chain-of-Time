@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_animation_importer"
+type="SpriteFrames"
+path="res://.import/Cato Run.aseprite-9ccb4aa57b69153aee35d8a102d6c0d4.res"
+
+[deps]
+
+source_file="res://Art/Cato Run.aseprite"
+dest_files=[ "res://.import/Cato Run.aseprite-9ccb4aa57b69153aee35d8a102d6c0d4.res" ]
+
+[params]
+
+extrude=false
+default_direction="Forward"
+default_loop=false

@@ -1,0 +1,16 @@
+[remap]
+
+importer="aseprite_animation_importer"
+type="SpriteFrames"
+path="res://.import/Bullet.aseprite-2c39257ffe1a35964d3841d45889c88c.res"
+
+[deps]
+
+source_file="res://PRO 2 Assets/Bullet.aseprite"
+dest_files=[ "res://.import/Bullet.aseprite-2c39257ffe1a35964d3841d45889c88c.res" ]
+
+[params]
+
+extrude=false
+default_direction="Forward"
+default_loop=false
