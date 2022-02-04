@@ -28,10 +28,10 @@ public class DodgePlayerStateGround : DodgePlayerState {
         if(player.amIFlying()) player.vSpeed += player.gravity;
         else player.vSpeed = 0;
         //Animations (Running while moving, Idle while standing) TODO make this conditional less stupid
-        if(player.hSpeed == 0 && player.GetAnimatedSprite().Animation != "Landing"){
-            player.setSprite("Idle");
-        }else if(player.hSpeed != 0 && player.GetAnimatedSprite().Animation != "Slide Recovery" && player.GetAnimatedSprite().Animation != "Landing"){
-            player.setSprite("Run");
+        if(player.hSpeed == 0 && player.GetAnimPlayer().CurrentAnimation != "Landing"){
+            player.setAnim("Idle");
+        }else if(player.hSpeed != 0 && player.GetAnimPlayer().CurrentAnimation != "Slide Recovery" && player.GetAnimPlayer().CurrentAnimation != "Landing"){
+            player.setAnim("Run");
         }
         player.MoveAndSlide(new Vector2(player.hSpeed, player.vSpeed));
         player.rightFace = (player.hSpeed >= 0);
@@ -39,13 +39,13 @@ public class DodgePlayerStateGround : DodgePlayerState {
     }
 
     public override void HandleAnimationTransition(DodgePlayer player){
-        string animation = player.GetAnimatedSprite().Animation;
+        string animation = player.GetAnimPlayer().CurrentAnimation;
         if(animation == "Landing"){
-            player.setSprite("Idle");
+            player.setAnim("Idle");
         }
         if(animation == "Slide Recovery"){
-            player.setSprite("Run");
-            player.GetAnimatedSprite().Frame = 1;
+            player.setAnim("Run");
+            player.GetAnimPlayer().Seek(0.72F);
         }
     }
 
@@ -54,9 +54,9 @@ public class DodgePlayerStateGround : DodgePlayerState {
         string lastStateName = lastState.GetType().Name;
         GD.Print(lastStateName);
         if(lastStateName == "DodgePlayerStateSlide"){
-            player.setSprite("Slide Recovery");
+            player.setAnim("Slide Recovery");
         }else if(lastStateName == "DodgePlayerStateAirborne"){
-            player.setSprite("Landing");
+            player.setAnim("Landing");
         }
         player.setNewHitbox("Standing Box");   
     }

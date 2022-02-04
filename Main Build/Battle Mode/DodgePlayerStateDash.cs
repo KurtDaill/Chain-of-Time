@@ -24,10 +24,10 @@ public class DodgePlayerStateDash : DodgePlayerState
     public override void Enter(DodgePlayer player, DodgePlayerState lastState){
         if(Input.IsActionPressed("ui_left") || player.hSpeed < 0){ //Turn this into an "on enter" in dashing
                 player.hSpeed -= player.dashBoost;
-                player.setSprite("Dash");  
+                player.setAnim("Dash");  
             }else{
                 player.hSpeed += player.dashBoost;
-                player.setSprite("Dash");  
+                player.setAnim("Dash");  
         }
         player.setNewHitbox("Standing Box");   
     }

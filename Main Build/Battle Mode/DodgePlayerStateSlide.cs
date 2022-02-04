@@ -23,16 +23,16 @@ public class DodgePlayerStateSlide : DodgePlayerState
 
     public override void HandleAnimationTransition(DodgePlayer player)
     {
-        string animation = player.GetAnimatedSprite().Animation;
+        string animation = player.GetAnimPlayer().CurrentAnimation;
         if(animation == "Slide Start"){          
             player.rightFace = (player.hSpeed >= 0);
-            player.setSprite("Slide");
+            player.setAnim("Slide");
         }
     }
 
     public override void Enter(DodgePlayer player, DodgePlayerState lastState)
     {
         player.rightFace = (player.hSpeed >= 0);
-        player.setSprite("Slide Start");
+        player.setAnim("Slide Start");
     }
 }

@@ -5,7 +5,9 @@ public class DodgePlayer : KinematicBody2D
 {
     DodgePlayerState state = new DodgePlayerStateGround();
     DodgePlayerState newState = null;
-    AnimatedSprite sprite;
+
+    Sprite sprite;
+    AnimationPlayer animPlay;
 
     Area2D hitbox;
     public bool rightFace = true;
@@ -36,8 +38,11 @@ public class DodgePlayer : KinematicBody2D
     {
         Godot.Collections.Array children = GetChildren();
         for(int i = 0; i < children.Count; i++){
-            if(children[i] is AnimatedSprite){
-                sprite = (AnimatedSprite) children[i];
+            if(children[i] is AnimationPlayer){
+                animPlay = (AnimationPlayer) children[i];
+            }
+            if(children[i] is Sprite){
+                sprite = (Sprite) children[i];
             }
             if(children[i] is Area2D){
                 hitbox = (Area2D) children[i];
@@ -59,8 +64,8 @@ public class DodgePlayer : KinematicBody2D
         newState = null;
     }
 
-    public void setSprite(String newSprite, int scaling = 1){
-        sprite.Animation = newSprite;
+    public void setAnim(String newSprite, int scaling = 1){
+        animPlay.Play(newSprite);
         if(rightFace){
             sprite.Scale = new Vector2(1, 1);
         }else{
@@ -69,13 +74,13 @@ public class DodgePlayer : KinematicBody2D
         //sprite.Scale = new Vector2(scaling, 1);
     }
 
-    public AnimatedSprite GetAnimatedSprite(){
-        return sprite;
+    public AnimationPlayer GetAnimPlayer(){
+        return animPlay;
     }
 
     //Called whenever an animation ends, and calls a function in the state that handles any new animations that have to play
     //For Example: The Airborne state will transition from the "Up" to "Down" animation once the player begins falling
-    private void HandleAnimationTransition(){
+    private void HandleAnimationTransition(String AnimName){
         state.HandleAnimationTransition(this);
     }
 

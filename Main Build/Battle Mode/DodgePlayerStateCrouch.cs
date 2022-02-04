@@ -14,6 +14,6 @@ public class DodgePlayerStateCrouch : DodgePlayerState
     public override void Enter(DodgePlayer player, DodgePlayerState lastState)
     {
         player.setNewHitbox("Crouch Box");
-        player.setSprite("Crouch");
+        player.setAnim("Crouch");
     }
 }

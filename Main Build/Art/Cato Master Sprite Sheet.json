@@ -496,21 +496,21 @@
   "size": { "w": 896, "h": 640 },
   "scale": "1",
   "frameTags": [
-   { "name": "_Idle", "from": 0, "to": 5, "direction": "forward" },
-   { "name": "_Dash", "from": 6, "to": 7, "direction": "forward" },
-   { "name": "Start Slide", "from": 8, "to": 10, "direction": "forward" },
-   { "name": "_Slide", "from": 11, "to": 12, "direction": "forward" },
+   { "name": "Idle", "from": 0, "to": 5, "direction": "forward" },
+   { "name": "Dash", "from": 6, "to": 7, "direction": "forward" },
+   { "name": "Slide Start", "from": 8, "to": 10, "direction": "forward" },
+   { "name": "Slide", "from": 11, "to": 12, "direction": "forward" },
    { "name": "Slide Recover", "from": 13, "to": 16, "direction": "forward" },
-   { "name": "_Crouch", "from": 17, "to": 17, "direction": "forward" },
+   { "name": "Crouch", "from": 17, "to": 17, "direction": "forward" },
    { "name": "Jump", "from": 18, "to": 20, "direction": "forward" },
-   { "name": "_Air Up", "from": 21, "to": 22, "direction": "forward" },
+   { "name": "Air Up", "from": 21, "to": 22, "direction": "forward" },
    { "name": "Air Trans", "from": 23, "to": 23, "direction": "forward" },
-   { "name": "_Air Down", "from": 24, "to": 25, "direction": "forward" },
+   { "name": "Air Down", "from": 24, "to": 25, "direction": "forward" },
    { "name": "Landing", "from": 26, "to": 28, "direction": "forward" },
    { "name": "Attack Step", "from": 29, "to": 34, "direction": "forward" },
    { "name": "Attack Windup", "from": 35, "to": 37, "direction": "forward" },
    { "name": "Attack Swing", "from": 38, "to": 48, "direction": "forward" },
-   { "name": "_Run", "from": 49, "to": 60, "direction": "forward" }
+   { "name": "Run", "from": 49, "to": 60, "direction": "forward" }
   ]
  }
 }
