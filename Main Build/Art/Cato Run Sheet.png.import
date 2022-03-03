@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cato Air Down-Sheet.png-37857a7986ca26c7659bb3d65c06057e.stex"
+path="res://.import/Cato Run Sheet.png-d77876e579cb5f30be7befae497ecad2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Cato Air Down-Sheet.png"
-dest_files=[ "res://.import/Cato Air Down-Sheet.png-37857a7986ca26c7659bb3d65c06057e.stex" ]
+source_file="res://Art/Cato Run Sheet.png"
+dest_files=[ "res://.import/Cato Run Sheet.png-d77876e579cb5f30be7befae497ecad2.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

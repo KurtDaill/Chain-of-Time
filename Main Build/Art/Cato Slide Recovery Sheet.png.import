@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cato Land-Sheet.png-9ff51f0e5dcf3f644b9743c8629dba25.stex"
+path="res://.import/Cato Slide Recovery Sheet.png-93fee8dbe3b2eff490644c4ba1775f19.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Cato Land-Sheet.png"
-dest_files=[ "res://.import/Cato Land-Sheet.png-9ff51f0e5dcf3f644b9743c8629dba25.stex" ]
+source_file="res://Art/Cato Slide Recovery Sheet.png"
+dest_files=[ "res://.import/Cato Slide Recovery Sheet.png-93fee8dbe3b2eff490644c4ba1775f19.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

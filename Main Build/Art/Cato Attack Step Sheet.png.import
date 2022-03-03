@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cato Dash-Sheet.png-0cb719d29c926c1106d615a8251f6e9b.stex"
+path="res://.import/Cato Attack Step Sheet.png-b43d6c968a35d9bbfb62ae14b48a3113.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Cato Dash-Sheet.png"
-dest_files=[ "res://.import/Cato Dash-Sheet.png-0cb719d29c926c1106d615a8251f6e9b.stex" ]
+source_file="res://Art/Cato Attack Step Sheet.png"
+dest_files=[ "res://.import/Cato Attack Step Sheet.png-b43d6c968a35d9bbfb62ae14b48a3113.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

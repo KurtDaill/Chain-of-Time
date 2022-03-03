@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cato Slide-Sheet.png-3b7b2a24df46771f9c9911ba9477825c.stex"
+path="res://.import/Cato Air Trans Sheet.png-428994ac4cfbe604325bf23330788321.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Cato Slide-Sheet.png"
-dest_files=[ "res://.import/Cato Slide-Sheet.png-3b7b2a24df46771f9c9911ba9477825c.stex" ]
+source_file="res://Art/Cato Air Trans Sheet.png"
+dest_files=[ "res://.import/Cato Air Trans Sheet.png-428994ac4cfbe604325bf23330788321.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

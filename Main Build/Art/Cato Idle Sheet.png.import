@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cato Air Transition-Sheet.png-a3e63752f4502baa9d8c8133a1759c8f.stex"
+path="res://.import/Cato Idle Sheet.png-97250f6cd8d6eaa721cb8685407b03c9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Cato Air Transition-Sheet.png"
-dest_files=[ "res://.import/Cato Air Transition-Sheet.png-a3e63752f4502baa9d8c8133a1759c8f.stex" ]
+source_file="res://Art/Cato Idle Sheet.png"
+dest_files=[ "res://.import/Cato Idle Sheet.png-97250f6cd8d6eaa721cb8685407b03c9.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cato Crouch-Sheet.png-ccf97ca2d546e593222d5316605ba8ba.stex"
+path="res://.import/Cato Landing Sheet.png-a87a479d0f1637ff8e15bf547fdca574.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Cato Crouch-Sheet.png"
-dest_files=[ "res://.import/Cato Crouch-Sheet.png-ccf97ca2d546e593222d5316605ba8ba.stex" ]
+source_file="res://Art/Cato Landing Sheet.png"
+dest_files=[ "res://.import/Cato Landing Sheet.png-a87a479d0f1637ff8e15bf547fdca574.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

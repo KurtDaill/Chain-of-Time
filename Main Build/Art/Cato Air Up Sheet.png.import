@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cato Run-Sheet.png-0b302da4f77531061542fc14369abb88.stex"
+path="res://.import/Cato Air Up Sheet.png-d20353a93bb43261c3ee6b407141c385.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Cato Run-Sheet.png"
-dest_files=[ "res://.import/Cato Run-Sheet.png-0b302da4f77531061542fc14369abb88.stex" ]
+source_file="res://Art/Cato Air Up Sheet.png"
+dest_files=[ "res://.import/Cato Air Up Sheet.png-d20353a93bb43261c3ee6b407141c385.stex" ]
 
 [params]
 

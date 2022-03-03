@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cato Slide Recovery-Sheet.png-3192991e13eaf1146f39dd626347dedb.stex"
+path="res://.import/Cato Air Down Sheet.png-d7aca12efa8fd4dfd95c7cfc99b0057a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Cato Slide Recovery-Sheet.png"
-dest_files=[ "res://.import/Cato Slide Recovery-Sheet.png-3192991e13eaf1146f39dd626347dedb.stex" ]
+source_file="res://Art/Cato Air Down Sheet.png"
+dest_files=[ "res://.import/Cato Air Down Sheet.png-d7aca12efa8fd4dfd95c7cfc99b0057a.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
