@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class DodgePlayer : KinematicBody2D
+public class DodgePlayer : PlayerCombatant
 {
     DodgePlayerState state = new DodgePlayerStateGround();
     DodgePlayerState newState = null;
@@ -49,7 +49,21 @@ public class DodgePlayer : KinematicBody2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
+        //Disabled while testing Command-Pattern solution for battles
+        /*
         //ProcessPlayerState()    Runs the current state script 
+        newState = state.Process(this);
+        if(newState != null){
+            DodgePlayerState temp = state;
+            state = newState;
+            state.Enter(this, temp);
+        }
+        newState = null;
+        */
+    }
+
+    public override void DefensiveMovement()
+    {
         newState = state.Process(this);
         if(newState != null){
             DodgePlayerState temp = state;

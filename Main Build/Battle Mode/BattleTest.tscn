@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Battle Mode/BattlePlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PRO 2 Assets/GroundMeta.cs" type="Script" id=2]
+[ext_resource path="res://Battle Mode/Battle.cs" type="Script" id=3]
+[ext_resource path="res://GUI/Battle Menu Assets/Menu Backboard Nine Slice.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 974.86, 10 )
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="DodgePlayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 3.17838, -46.6164 )
@@ -29,3 +32,23 @@ script = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 0.396851, 10.715 )
 shape = SubResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+margin_left = -321.0
+margin_top = 45.0
+margin_right = 317.0
+margin_bottom = 172.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+margin_right = 638.0
+margin_bottom = 127.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 0.107777, -0.00877762, 35.8549, 36.2893 )
+patch_margin_left = 24
+patch_margin_top = 12
+patch_margin_right = 24
+patch_margin_bottom = 12
