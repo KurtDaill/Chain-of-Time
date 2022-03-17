@@ -10,6 +10,8 @@ public class Battle : Node
     public Combatant[] activeCombatants = new Combatant[6];
     //Tracks Enemies that may enter in waves as active enemies are defeated;
     public List<Combatant> enemyBench = new List<Combatant>();
+    [Export]
+    public BattleGUI gui;
     private List<BattleCommand> commandList;
     private int currentCommandIndex;
     public override void _Ready()

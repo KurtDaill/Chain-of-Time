@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Button Hub.png-9486fde4014c45f5d164d3c203c3923d.stex"
+path="res://.import/Party Button Highlight.png-743a05b4f0d8801a1fde5bb5b8d375d5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GUI/Battle Menu Assets/Button Hub.png"
-dest_files=[ "res://.import/Button Hub.png-9486fde4014c45f5d164d3c203c3923d.stex" ]
+source_file="res://GUI/Battle Menu Assets/Party Button Highlight.png"
+dest_files=[ "res://.import/Party Button Highlight.png-743a05b4f0d8801a1fde5bb5b8d375d5.stex" ]
 
 [params]
 

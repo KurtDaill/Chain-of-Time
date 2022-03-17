@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kdail\\Desktop\\Chain-of-Time\\Main Build\\Chain Of Time.csproj": {}
+    "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain of Time\\Main Build\\Chain Of Time.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kdail\\Desktop\\Chain-of-Time\\Main Build\\Chain Of Time.csproj": {
+    "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain of Time\\Main Build\\Chain Of Time.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kdail\\Desktop\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
+        "projectUniqueName": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain of Time\\Main Build\\Chain Of Time.csproj",
         "projectName": "Chain Of Time",
-        "projectPath": "C:\\Users\\kdail\\Desktop\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
+        "projectPath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain of Time\\Main Build\\Chain Of Time.csproj",
         "packagesPath": "C:\\Users\\kdail\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kdail\\Desktop\\Chain-of-Time\\Main Build\\.mono\\temp\\obj\\",
+        "outputPath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain of Time\\Main Build\\.mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\kdail\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\kdail\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net472"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -37,15 +39,7 @@
       "frameworks": {
         "net472": {
           "targetAlias": "net472",
-          "dependencies": {
-            "Microsoft.NETFramework.ReferenceAssemblies": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[1.0.2, )",
-              "autoReferenced": true
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

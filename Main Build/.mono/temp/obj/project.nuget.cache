@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jH+Z1YDOFMjS3PyJB/P4bs471TgrudWz4ljLMb3NCjZzWwltqQdjQzd44f5CLMxUUZDkoNS6i/Z4+Ifr/yQS2Q==",
+  "dgSpecHash": "s2m4GDUr9JB6VND1ifv3a5ulk5aMTm2ETT1iRKlLdD3qP58Qh3RKZ/0P0P9O1Or/F9nIoZGts4Bz5aQtzB/RQg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kdail\\Desktop\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\kdail\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.2\\microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
-    "C:\\Users\\kdail\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.2\\microsoft.netframework.referenceassemblies.net472.1.0.2.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain of Time\\Main Build\\Chain Of Time.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
