@@ -1,10 +1,10 @@
 using Godot;
 using System;
 
-public class DodgePlayer : PlayerCombatant
+public class BattlePlayer : PlayerCombatant
 {
-    DodgePlayerState state = new DodgePlayerStateGround();
-    DodgePlayerState newState = null;
+    BattlePlayerState state = new BattlePlayerStateGround();
+    BattlePlayerState newState = null;
     AnimatedSprite sprite;
 
     Area2D hitbox;
@@ -54,7 +54,7 @@ public class DodgePlayer : PlayerCombatant
         //ProcessPlayerState()    Runs the current state script 
         newState = state.Process(this);
         if(newState != null){
-            DodgePlayerState temp = state;
+            BattlePlayerState temp = state;
             state = newState;
             state.Enter(this, temp);
         }
@@ -66,7 +66,7 @@ public class DodgePlayer : PlayerCombatant
     {
         newState = state.Process(this);
         if(newState != null){
-            DodgePlayerState temp = state;
+            BattlePlayerState temp = state;
             state = newState;
             state.Enter(this, temp);
         }
@@ -94,7 +94,9 @@ public class DodgePlayer : PlayerCombatant
     }
 
     //Should return whether or not the player is on the ground
-    public bool amIFlying(){ //TODO implement this function
+    public bool amIFlying(){
+        if(GetSlideCount() == 0) return true;
+
         KinematicCollision2D kc = GetSlideCollision(0);
         if(kc != null){
 			if(kc.Collider.GetMeta("type").Equals("ground")){

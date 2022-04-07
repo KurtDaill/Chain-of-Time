@@ -1,20 +1,20 @@
 using Godot;
 using System;
 
-public class DodgePlayerStateGround : DodgePlayerState {
-    public override DodgePlayerState Process(DodgePlayer player){
+public class BattlePlayerStateGround : BattlePlayerState {
+    public override BattlePlayerState Process(BattlePlayer player){
 
         if(Input.IsActionPressed("ui_down")){
-            if(Math.Abs(player.hSpeed) > 0) return new DodgePlayerStateSlide();
-            return new DodgePlayerStateCrouch();
+            if(Math.Abs(player.hSpeed) > 0) return new BattlePlayerStateSlide();
+            return new BattlePlayerStateCrouch();
         }
 
         if(Input.IsActionPressed("ui_caps")){ //Start Dashing
-            return new DodgePlayerStateDash();
+            return new BattlePlayerStateDash();
         }
 
         if(Input.IsActionJustPressed("ui_up")){
-            return new DodgePlayerStateJump();
+            return new BattlePlayerStateJump();
         }
 
         if(Input.IsActionPressed("ui_right")){
@@ -38,7 +38,7 @@ public class DodgePlayerStateGround : DodgePlayerState {
         return null;
     }
 
-    public override void HandleAnimationTransition(DodgePlayer player){
+    public override void HandleAnimationTransition(BattlePlayer player){
         string animation = player.GetAnimatedSprite().Animation;
         if(animation == "Landing"){
             player.setSprite("Idle");
@@ -49,13 +49,13 @@ public class DodgePlayerStateGround : DodgePlayerState {
         }
     }
 
-    public override void Enter(DodgePlayer player, DodgePlayerState lastState)
+    public override void Enter(BattlePlayer player, BattlePlayerState lastState)
     {
         string lastStateName = lastState.GetType().Name;
         GD.Print(lastStateName);
-        if(lastStateName == "DodgePlayerStateSlide"){
+        if(lastStateName == "BattlePlayerStateSlide"){
             player.setSprite("Slide Recovery");
-        }else if(lastStateName == "DodgePlayerStateAirborne"){
+        }else if(lastStateName == "BattlePlayerStateAirborne"){
             player.setSprite("Landing");
         }
         player.setNewHitbox("Standing Box");   

@@ -1,42 +1,64 @@
 using Godot;
 using System;
 
-public class TopMenu : Control
+public class TopMenu : BattleMenu
 {
     //TODO Highlight Animations
     //TODO Highlight Selector
 
-    //[Export]
-    TextureRect[] menuTabs = new TextureRect[4];
-    TextureRect[] menuTabHighlights = new TextureRect[4];
+    [Export]
+    TextureRect[] menuTabs = new TextureRect[5];
+
+    int highlightedTab = -1;
 
     public override void _Ready()
     {
-        Godot.Collections.Array children = GetChildren();
-        foreach(Node node in children){
-            switch(node.Name){
-                case "PartyButton" :
-                    menuTabs[0] = (TextureRect) node;
-                    break;
-                case "ItemButton" :
-                    menuTabs[1] = (TextureRect) node;
-                    break; 
-                case "AtkButton" :
-                    menuTabs[2] = (TextureRect) node;
-                    break;
-                case "SkillButton" :
-                    menuTabs[3] = (TextureRect) node;
-                    break;   
-            }
-        }
+        base._Ready();   
+        menuTabs[0] = (TextureRect) GetNode("PartyButton");
+        menuTabs[1] = (TextureRect) GetNode("ItemButton");
+        menuTabs[2] = (TextureRect) GetNode("AtkButton");
+        menuTabs[3] = (TextureRect) GetNode("SkillButton");
+    }
+
+    public override void OnOpen(){
+        base.OnOpen();
+        menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = false;
+        highlightedTab = -1;
     }
         
     public override void _Process(float delta)
     {
-        //Highlight Animations
+       //Tab Animation
+       if(highlightedTab != -1) menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = true;
     }
 
-    public void ChangeSeleciton(int select){
-
+    public override BattleMenu HandleInput(MenuInput input)
+    {
+        switch(input){
+            case MenuInput.Up: 
+                if(highlightedTab != -1) menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = false;
+                highlightedTab = 0;
+                break;
+            case MenuInput.Right: 
+                if(highlightedTab != -1) menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = false;
+                highlightedTab = 1; 
+                break;
+            case MenuInput.Down: 
+                if(highlightedTab != -1) menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = false;
+                highlightedTab = 2; 
+                break;
+            case MenuInput.Left: 
+                if(highlightedTab != -1) menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = false;
+                highlightedTab = 3; 
+                break;
+            case MenuInput.Select:
+                switch(highlightedTab){
+                    case 2:
+                        //Returns the Attack Menu
+                        return parentGUI.menus[3];
+                }
+                break;
+        }
+        return null;
     }
 }

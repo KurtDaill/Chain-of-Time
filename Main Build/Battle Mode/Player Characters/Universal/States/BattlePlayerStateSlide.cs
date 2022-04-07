@@ -1,27 +1,27 @@
 using Godot;
 using System;
 
-public class DodgePlayerStateSlide : DodgePlayerState
+public class BattlePlayerStateSlide : BattlePlayerState
 {
-   public override DodgePlayerState Process(DodgePlayer player){ //TODO: Make Hitbox match sprite during slides
+   public override BattlePlayerState Process(BattlePlayer player){ //TODO: Make Hitbox match sprite during slides
         player.hSpeed = Math.Sign(player.hSpeed) * Math.Max((Math.Abs(player.hSpeed) - player.slideDrag), 0);
 	    if(player.hSpeed == 0){
-			return new DodgePlayerStateCrouch();
+			return new BattlePlayerStateCrouch();
 		}
         /*
         if(Input.IsActionPressed("ui_up")){
             player.vSpeed -= player.jumpForce;
-            return new DodgePlayerStateJump();
+            return new BattlePlayerStateJump();
         }
         */
         if(!Input.IsActionPressed("ui_down")){
-            return new DodgePlayerStateGround();
+            return new BattlePlayerStateGround();
         }
         player.MoveAndSlide(new Vector2(player.hSpeed, player.vSpeed));
         return null;
    }
 
-    public override void HandleAnimationTransition(DodgePlayer player)
+    public override void HandleAnimationTransition(BattlePlayer player)
     {
         string animation = player.GetAnimatedSprite().Animation;
         if(animation == "Slide Start"){          
@@ -30,7 +30,7 @@ public class DodgePlayerStateSlide : DodgePlayerState
         }
     }
 
-    public override void Enter(DodgePlayer player, DodgePlayerState lastState)
+    public override void Enter(BattlePlayer player, BattlePlayerState lastState)
     {
         player.rightFace = (player.hSpeed >= 0);
         player.setSprite("Slide Start");

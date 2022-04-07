@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Battle Mode/BattlePlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PRO 2 Assets/GroundMeta.cs" type="Script" id=2]
@@ -17,25 +17,38 @@
 [ext_resource path="res://GUI/Battle Menu Assets/Attack Button Highlight.png" type="Texture" id=15]
 [ext_resource path="res://GUI/Battle Menu Assets/Item Button Highlight.png" type="Texture" id=16]
 [ext_resource path="res://GUI/Battle Menu Assets/Skill Button Highlight.png" type="Texture" id=17]
+[ext_resource path="res://Battle Mode/Battle GUI/AttackMenu.cs" type="Script" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 974.86, 10 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Battle" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="DodgePlayer" parent="." instance=ExtResource( 1 )]
-position = Vector2( 3.17838, -46.6164 )
-jumpForce = 300.0
-runSpeed = 85.0
-dashBoost = 275.0
-gravity = 9.0
-slideDrag = 2.0
-footDrag = 10.0
-dashDrag = 6.0
+[node name="BattlePlayer" parent="." instance=ExtResource( 1 )]
+position = Vector2( -160, 0 )
+
+[node name="PositionsMap" type="Node2D" parent="."]
+
+[node name="Hero2" type="Node2D" parent="PositionsMap"]
+position = Vector2( -220, 15 )
+
+[node name="Hero1" type="Node2D" parent="PositionsMap"]
+position = Vector2( -160, 0 )
+
+[node name="Hero3" type="Node2D" parent="PositionsMap"]
+position = Vector2( -200, -10 )
+
+[node name="Enemy3" type="Node2D" parent="PositionsMap"]
+position = Vector2( 220, 15 )
+
+[node name="Enemy1" type="Node2D" parent="PositionsMap"]
+position = Vector2( 160, 0 )
+
+[node name="Enemy2" type="Node2D" parent="PositionsMap"]
+position = Vector2( 200, -10 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -2.24493, -6.7348 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
@@ -58,62 +71,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Top Menu" type="Control" parent="Camera2D/BattleGUI/Menu Backboard"]
-anchor_right = 1.0
+[node name="Top Menu" type="Control" parent="Camera2D/BattleGUI"]
+anchor_top = 0.008
+anchor_right = 0.396
 anchor_bottom = 0.933
 margin_left = 267.0
-margin_top = 1.0
-margin_right = -2.0
-margin_bottom = 9.509
+margin_top = 162.268
+margin_right = 307.248
+margin_bottom = 171.793
 script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button Hub" type="TextureRect" parent="Camera2D/BattleGUI/Menu Backboard/Top Menu"]
+[node name="Button Hub" type="TextureRect" parent="Camera2D/BattleGUI/Top Menu"]
 anchor_left = -0.723
 anchor_top = 0.368
 anchor_right = -0.596
 anchor_bottom = 0.612
-margin_left = -6.0
-margin_right = -8.92706
-margin_bottom = 10.0108
+margin_left = -6.70709
+margin_top = -56.5685
+margin_right = -6.56808
+margin_bottom = -46.5577
 texture = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SkillButton" type="TextureRect" parent="Camera2D/BattleGUI/Menu Backboard/Top Menu/Button Hub"]
-margin_left = -80.118
-margin_top = 1.0
-margin_right = 1.88203
-margin_bottom = 41.0
-texture = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Highlight" type="TextureRect" parent="Camera2D/BattleGUI/Menu Backboard/Top Menu/Button Hub/SkillButton"]
-visible = false
-margin_top = -1.64605
-margin_right = 82.0
-margin_bottom = 29.354
-texture = ExtResource( 17 )
-
-[node name="PartyButton" type="TextureRect" parent="Camera2D/BattleGUI/Menu Backboard/Top Menu/Button Hub"]
+[node name="PartyButton" type="TextureRect" parent="Camera2D/BattleGUI/Top Menu"]
 anchor_top = 0.161
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -21.0
-margin_top = -41.6008
-margin_right = 20.0
-margin_bottom = -27.6098
+margin_left = -203.0
+margin_top = -34.4239
+margin_right = -374.0
+margin_bottom = -229.925
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Highlight" type="TextureRect" parent="Camera2D/BattleGUI/Menu Backboard/Top Menu/Button Hub/PartyButton"]
+[node name="Highlight" type="TextureRect" parent="Camera2D/BattleGUI/Top Menu/PartyButton"]
 visible = false
 anchor_right = 1.028
 anchor_bottom = 0.5
@@ -126,17 +124,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemButton" type="TextureRect" parent="Camera2D/BattleGUI/Menu Backboard/Top Menu/Button Hub"]
+[node name="ItemButton" type="TextureRect" parent="Camera2D/BattleGUI/Top Menu"]
 anchor_top = 0.032
 anchor_right = 0.968
 anchor_bottom = 1.0
-margin_left = 30.0
-margin_top = -0.699901
-margin_right = 79.992
-margin_bottom = 9.2921
+margin_left = -152.281
+margin_top = 36.9969
+margin_right = -307.505
+margin_bottom = -201.099
 texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Highlight" type="TextureRect" parent="Camera2D/BattleGUI/Menu Backboard/Top Menu/Button Hub/ItemButton"]
+[node name="Highlight" type="TextureRect" parent="Camera2D/BattleGUI/Top Menu/ItemButton"]
 visible = false
 margin_left = 0.24881
 margin_top = -2.00581
@@ -144,16 +145,21 @@ margin_right = 82.2488
 margin_bottom = 37.9942
 texture = ExtResource( 16 )
 
-[node name="AtkButton" type="TextureRect" parent="Camera2D/BattleGUI/Menu Backboard/Top Menu/Button Hub"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -20.7079
-margin_top = 27.7022
-margin_right = 20.2921
-margin_bottom = 36.7022
+[node name="AtkButton" type="TextureRect" parent="Camera2D/BattleGUI/Top Menu"]
+anchor_left = -0.835
+anchor_top = 0.272
+anchor_right = -0.539
+anchor_bottom = 0.413
+margin_left = -0.094986
+margin_top = -0.0516129
+margin_right = -0.022995
+margin_bottom = 0.0429611
 texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Highlight" type="TextureRect" parent="Camera2D/BattleGUI/Menu Backboard/Top Menu/Button Hub/AtkButton"]
+[node name="Highlight" type="TextureRect" parent="Camera2D/BattleGUI/Top Menu/AtkButton"]
 visible = false
 margin_left = -0.266647
 margin_top = 1.0099
@@ -161,19 +167,37 @@ margin_right = 73.7334
 margin_bottom = 41.0099
 texture = ExtResource( 15 )
 
-[node name="Attack Menu" type="Control" parent="Camera2D/BattleGUI/Menu Backboard"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 0.933
-margin_left = 267.0
-margin_top = 1.0
-margin_right = -2.0
-margin_bottom = 9.509
+[node name="SkillButton" type="TextureRect" parent="Camera2D/BattleGUI/Top Menu"]
+margin_left = -262.332
+margin_top = 46.0
+margin_right = -180.332
+margin_bottom = 75.0
+texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Attack Menu" type="TextureRect" parent="Camera2D/BattleGUI/Menu Backboard/Attack Menu"]
+[node name="Highlight" type="TextureRect" parent="Camera2D/BattleGUI/Top Menu/SkillButton"]
+visible = false
+margin_top = -1.64605
+margin_right = 82.0
+margin_bottom = 29.354
+texture = ExtResource( 17 )
+
+[node name="Attack Menu" type="Control" parent="Camera2D/BattleGUI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 0.933
+margin_left = 266.0
+margin_top = 164.0
+margin_right = -2.0
+margin_bottom = 169.296
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Attack Menu" type="TextureRect" parent="Camera2D/BattleGUI/Attack Menu"]
 margin_left = -234.755
 margin_top = 4.7348
 margin_right = -96.7551
@@ -183,7 +207,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AtkButton" type="TextureRect" parent="Camera2D/BattleGUI/Menu Backboard/Attack Menu"]
+[node name="AtkButton" type="TextureRect" parent="Camera2D/BattleGUI/Attack Menu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -201.689
@@ -195,14 +219,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Readouts" type="Control" parent="Camera2D/BattleGUI/Menu Backboard"]
+[node name="Readouts" type="Control" parent="Camera2D/BattleGUI"]
+margin_top = 160.008
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 200.008
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="Camera2D/BattleGUI/Menu Backboard/Readouts"]
+[node name="TextureRect" type="TextureRect" parent="Camera2D/BattleGUI/Readouts"]
 margin_left = 250.0
 margin_top = 51.0
 margin_right = 480.0
@@ -215,3 +240,5 @@ script = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 2, 16 )
 shape = SubResource( 1 )
+
+[node name="Node2D" type="Node2D" parent="."]

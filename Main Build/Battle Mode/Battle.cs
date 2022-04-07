@@ -17,29 +17,33 @@ public class Battle : Node
     public override void _Ready()
     {
         commandList = new List<BattleCommand>();
-        activeCombatants[0] = (DodgePlayer)GetChild(0);
-        commandList.Add(new EnemyAttacks());
+        activeCombatants[0] = (BattlePlayer)GetChild(0);
+        commandList.Add(new PlayerMenuSelection());
         commandList[currentCommandIndex].Enter(this);   
     }
     public override void _Process(float delta)
     {
         commandList[currentCommandIndex].Execute();
     }
-    private void NextCommand(){//Called by commands when they're completed
+
+    public void NextCommand(){//Called by commands when they're completed
         commandList[currentCommandIndex].Exit();
         if((currentCommandIndex - 1) == commandList.Count){ //Checks if current Index is the last entry, if so...
-            //goto the 'default' command: PlayerActMenu
-            throw new NotImplementedException();
+            //add something so the next line goto the 'default' command: PlayerMenuSelection
+            AddCommand(new PlayerMenuSelection());
         }
         currentCommandIndex += 1;
         commandList[currentCommandIndex].Enter(this);
     }
+
     public void AddCommand(BattleCommand newCom){
         commandList.Add(newCom);
     }
+
     public BattleCommand PeakCommand(){
         return commandList[currentCommandIndex + 1];
     }
+
     public BattleCommand CurrentCommand(){
         return commandList[currentCommandIndex + 1];
     }
