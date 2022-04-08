@@ -25,7 +25,7 @@ public class BattleGUI : Control
     public void EnterCommand(BattleCommand[] nextArr){
         foreach(BattleCommand com in nextArr){
             parentBattle.AddCommand(com);
-            parentBattle.NextCommand();
         }
+        parentBattle.NextCommand();
     }
 }

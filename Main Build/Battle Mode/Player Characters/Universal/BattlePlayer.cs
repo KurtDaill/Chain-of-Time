@@ -3,9 +3,11 @@ using System;
 
 public class BattlePlayer : PlayerCombatant
 {
-    BattlePlayerState state = new BattlePlayerStateGround();
+    BattlePlayerState state = null;
     BattlePlayerState newState = null;
     AnimatedSprite sprite;
+
+    private String queuedSprite = null;
 
     Area2D hitbox;
     public bool rightFace = true;
@@ -64,6 +66,10 @@ public class BattlePlayer : PlayerCombatant
 
     public override void DefensiveMovement()
     {
+        if(state == null){
+            throw new ArgumentNullException();
+        }
+        
         newState = state.Process(this);
         if(newState != null){
             BattlePlayerState temp = state;
@@ -83,6 +89,10 @@ public class BattlePlayer : PlayerCombatant
         //sprite.Scale = new Vector2(scaling, 1);
     }
 
+    public void queueSprite(string queueMe){
+        queuedSprite = queueMe;
+    }
+
     public AnimatedSprite GetAnimatedSprite(){
         return sprite;
     }
@@ -90,7 +100,14 @@ public class BattlePlayer : PlayerCombatant
     //Called whenever an animation ends, and calls a function in the state that handles any new animations that have to play
     //For Example: The Airborne state will transition from the "Up" to "Down" animation once the player begins falling
     private void HandleAnimationTransition(){
+        if(state != null) 
         state.HandleAnimationTransition(this);
+        else if(queuedSprite != null){
+            setSprite(queuedSprite);
+            queuedSprite = null;
+        }
+        else 
+            return;
     }
 
     //Should return whether or not the player is on the ground
@@ -117,5 +134,9 @@ public class BattlePlayer : PlayerCombatant
                 return;
             } 
         }
+    }
+
+    public void SetState(BattlePlayerState state){
+        this.state = state;
     }
 }

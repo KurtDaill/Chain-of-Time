@@ -28,7 +28,7 @@ public class Battle : Node
 
     public void NextCommand(){//Called by commands when they're completed
         commandList[currentCommandIndex].Exit();
-        if((currentCommandIndex - 1) == commandList.Count){ //Checks if current Index is the last entry, if so...
+        if((currentCommandIndex + 1) == commandList.Count){ //Checks if current Index is the last entry, if so...
             //add something so the next line goto the 'default' command: PlayerMenuSelection
             AddCommand(new PlayerMenuSelection());
         }

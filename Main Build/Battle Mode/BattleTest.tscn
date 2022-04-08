@@ -23,6 +23,7 @@
 extents = Vector2( 974.86, 10 )
 
 [node name="Battle" type="Node2D"]
+position = Vector2( 0, 25 )
 script = ExtResource( 3 )
 
 [node name="BattlePlayer" parent="." instance=ExtResource( 1 )]
