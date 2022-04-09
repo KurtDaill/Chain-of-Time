@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class AnimationPlayerWithLoopSignal : AnimationPlayer
+public class EnemyCombatant : Node
 {
     // Declare member variables here. Examples:
     // private int a = 2;
@@ -13,7 +13,9 @@ public class AnimationPlayerWithLoopSignal : AnimationPlayer
         
     }
 
-    public override void _Process(float delta)
-    {
-    }
+//  // Called every frame. 'delta' is the elapsed time since the previous frame.
+//  public override void _Process(float delta)
+//  {
+//      
+//  }
 }

@@ -64,7 +64,7 @@ public class BattlePlayer : PlayerCombatant
         */
     }
 
-    public override void DefensiveMovement()
+    public override void ExecuteDefensiveMovement()
     {
         if(state == null){
             throw new ArgumentNullException();
