@@ -26,7 +26,7 @@ extents = Vector2( 974.86, 10 )
 position = Vector2( 0, 25 )
 script = ExtResource( 3 )
 
-[node name="BattlePlayer" parent="." instance=ExtResource( 1 )]
+[node name="PlayerCombatant" parent="." instance=ExtResource( 1 )]
 position = Vector2( -160, 0 )
 
 [node name="PositionsMap" type="Node2D" parent="."]

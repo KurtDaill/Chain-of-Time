@@ -1,20 +1,20 @@
 using Godot;
 using System;
 
-public class BattlePlayerStateAirborne : BattlePlayerState
+public class PlayerCombatantStateAirborne : PlayerCombatantState
 {
-    public override BattlePlayerState Process(BattlePlayer player){
+    public override PlayerCombatantState Process(PlayerCombatant player){
         player.vSpeed += player.gravity;
         player.hSpeed = Math.Sign(player.hSpeed) * (Math.Abs(player.hSpeed) - player.airDrag);
         if(player.vSpeed >= 0 && player.GetAnimatedSprite().Animation == "Air Up") player.setSprite("Air Transition"); //TODO Fix this conditional
         player.MoveAndSlide(new Vector2(player.hSpeed, player.vSpeed));
         if(!player.amIFlying()){
-            return new BattlePlayerStateGround();  
+            return new PlayerCombatantStateGround();  
         }
         return null;
     }
 
-    public override void HandleAnimationTransition(BattlePlayer player){
+    public override void HandleAnimationTransition(PlayerCombatant player){
         string animation = player.GetAnimatedSprite().Animation;
         player.rightFace = (player.hSpeed >= 0);
         if(animation == "Jump"){

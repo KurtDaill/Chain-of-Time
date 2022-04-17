@@ -1,17 +1,17 @@
 using Godot;
 using System;
 
-public class BattlePlayerStateCrouch : BattlePlayerState
+public class PlayerCombatantStateCrouch : PlayerCombatantState
 {
-    public override BattlePlayerState Process(BattlePlayer player)
+    public override PlayerCombatantState Process(PlayerCombatant player)
     {
         if(!Input.IsActionJustPressed("ui_down")){
-            return new BattlePlayerStateGround();
+            return new PlayerCombatantStateGround();
         }
         return null;
     }
 
-    public override void Enter(BattlePlayer player, BattlePlayerState lastState)
+    public override void Enter(PlayerCombatant player, PlayerCombatantState lastState)
     {
         player.setNewHitbox("Crouch Box");
         player.setSprite("Crouch");

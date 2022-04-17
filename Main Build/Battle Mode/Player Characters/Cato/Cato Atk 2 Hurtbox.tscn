@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 14.4412, 13.4503 )
+
+[node name="Cato Atk 2 Hurtbox" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 55.4376, -26.3326 )
+shape = SubResource( 1 )

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class EnemyCombatant : Node
+public class EnemyCombatant : Combatant
 {
     // Declare member variables here. Examples:
     // private int a = 2;

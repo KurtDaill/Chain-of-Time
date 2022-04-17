@@ -1,20 +1,21 @@
 using Godot;
 using System;
 
-public class BattlePlayerStateGround : BattlePlayerState {
-    public override BattlePlayerState Process(BattlePlayer player){
+public class PlayerCombatantStateGround : PlayerCombatantState {
+
+    public override PlayerCombatantState Process(PlayerCombatant player){
 
         if(Input.IsActionPressed("ui_down")){
-            if(Math.Abs(player.hSpeed) > 0) return new BattlePlayerStateSlide();
-            return new BattlePlayerStateCrouch();
+            if(Math.Abs(player.hSpeed) > 0) return new PlayerCombatantStateSlide();
+            return new PlayerCombatantStateCrouch();
         }
 
         if(Input.IsActionPressed("ui_caps")){ //Start Dashing
-            return new BattlePlayerStateDash();
+            return new PlayerCombatantStateDash();
         }
 
         if(Input.IsActionJustPressed("ui_up")){
-            return new BattlePlayerStateJump();
+            return new PlayerCombatantStateJump();
         }
 
         if(Input.IsActionPressed("ui_right")){
@@ -38,7 +39,7 @@ public class BattlePlayerStateGround : BattlePlayerState {
         return null;
     }
 
-    public override void HandleAnimationTransition(BattlePlayer player){
+    public override void HandleAnimationTransition(PlayerCombatant player){
         string animation = player.GetAnimatedSprite().Animation;
         if(animation == "Landing"){
             player.setSprite("Idle");
@@ -49,13 +50,13 @@ public class BattlePlayerStateGround : BattlePlayerState {
         }
     }
 
-    public override void Enter(BattlePlayer player, BattlePlayerState lastState)
+    public override void Enter(PlayerCombatant player, PlayerCombatantState lastState)
     {
         string lastStateName = lastState.GetType().Name;
         GD.Print(lastStateName);
-        if(lastStateName == "BattlePlayerStateSlide"){
+        if(lastStateName == "PlayerCombatantStateSlide"){
             player.setSprite("Slide Recovery");
-        }else if(lastStateName == "BattlePlayerStateAirborne"){
+        }else if(lastStateName == "PlayerCombatantStateAirborne"){
             player.setSprite("Landing");
         }
         player.setNewHitbox("Standing Box");   

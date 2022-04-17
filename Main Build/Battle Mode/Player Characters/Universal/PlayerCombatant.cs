@@ -1,13 +1,15 @@
 using Godot;
 using System;
 
-public class BattlePlayer : PlayerCombatant
+public abstract class PlayerCombatant : Combatant
 {
-    BattlePlayerState state = null;
-    BattlePlayerState newState = null;
-    AnimatedSprite sprite;
+    protected PlayerCombatantState state = null;
+    protected PlayerCombatantState newState = null;
+    protected AnimatedSprite sprite;
 
-    private String queuedSprite = null;
+    protected String queuedSprite = null;
+
+    public int strength = 10;
 
     Area2D hitbox;
     public bool rightFace = true;
@@ -31,6 +33,9 @@ public class BattlePlayer : PlayerCombatant
 	public float footDrag = 0.3F;
 	[Export]
 	public float dashDrag = 0.3F;
+
+
+    
 
     public float hSpeed = 0;
     public float vSpeed = 0;
@@ -56,7 +61,7 @@ public class BattlePlayer : PlayerCombatant
         //ProcessPlayerState()    Runs the current state script 
         newState = state.Process(this);
         if(newState != null){
-            BattlePlayerState temp = state;
+            PlayerCombatantState temp = state;
             state = newState;
             state.Enter(this, temp);
         }
@@ -64,7 +69,7 @@ public class BattlePlayer : PlayerCombatant
         */
     }
 
-    public override void ExecuteDefensiveMovement()
+    public virtual void Move()
     {
         if(state == null){
             throw new ArgumentNullException();
@@ -72,12 +77,17 @@ public class BattlePlayer : PlayerCombatant
         
         newState = state.Process(this);
         if(newState != null){
-            BattlePlayerState temp = state;
+            PlayerCombatantState temp = state;
             state = newState;
             state.Enter(this, temp);
         }
         newState = null;
     }
+
+    //Ran when the character in question is able to move and attack. Returns true once they're finished.
+    //Targets & damageRecord are used to track who is damaged this attack and how much
+    //They're given from the command running move and attack, and their ultimate values are stores in that command
+    public abstract bool MoveAndAttack(EnemyCombatant[] targets, int[] damageRecord);
 
     public void setSprite(String newSprite, int scaling = 1){
         sprite.Animation = newSprite;
@@ -136,7 +146,8 @@ public class BattlePlayer : PlayerCombatant
         }
     }
 
-    public void SetState(BattlePlayerState state){
+    public void SetState(PlayerCombatantState state){
         this.state = state;
     }
 }
+

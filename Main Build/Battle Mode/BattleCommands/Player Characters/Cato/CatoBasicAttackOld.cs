@@ -1,11 +1,11 @@
 using Godot;
 using System;
 
-public class CatoBasicAttack : BattleCommand
+public class CatoBasicAttackOld : BattleCommand
 {
     int damageDealt = 0;
     public Combatant target;
-    private BattlePlayer cato;
+    private PlayerCombatant cato;
 
     private int phase = 0;
 
@@ -13,7 +13,7 @@ public class CatoBasicAttack : BattleCommand
 
     //How many frames can pass between the player being able to release their attack and when they do so to get bonus damage.
     private int sweetSpotFrames = 30;
-    public CatoBasicAttack(BattlePlayer cato, Combatant tgt){
+    public CatoBasicAttackOld(PlayerCombatant cato, Combatant tgt){
         this.cato = cato;
         this.target = tgt;
     }

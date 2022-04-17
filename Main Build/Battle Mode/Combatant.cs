@@ -5,6 +5,8 @@ public abstract class Combatant : KinematicBody2D {
     private int hitPoints;
     private int maxHP;
 
+    private int armor = 0;
+
     public int getHP(){
         return hitPoints;
     }
@@ -23,6 +25,14 @@ public abstract class Combatant : KinematicBody2D {
                 hitPoints = maxHP;
             }
         }
+    }
+
+    //Returns the ammount of damage the combatant takes
+    public virtual int TakeDamage(int incomingDamage){
+        int damage = Math.Max(0, incomingDamage - armor);
+        hitPoints -= damage;
+        //TODO Damage Numbers and other effects
+        return damage;
     }
 
     public void recoverHP(int heal){
