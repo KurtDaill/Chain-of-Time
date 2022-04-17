@@ -7,7 +7,7 @@ public class PlayerAttacks : BattleCommand
     EnemyCombatant[] targets = new EnemyCombatant[3];
     int[] damagePerTarget = new int[3]{0,0,0};
 
-    PlayerAttacks(PlayerCombatant pc){
+    public PlayerAttacks(PlayerCombatant pc){
         this.playerCharacter = pc;
     }
 
@@ -15,6 +15,8 @@ public class PlayerAttacks : BattleCommand
     {
         base.Enter(parent);
         parent.AddCommand(new EnemyAttacks());
+        //TODO Make a more flexible solution for setting the initial state
+        playerCharacter.SetState(new PlayerCombatantStateGround());
     }
     public override void Execute()
     {

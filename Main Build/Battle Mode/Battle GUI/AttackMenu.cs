@@ -13,7 +13,7 @@ public class AttackMenu : BattleMenu
             return parentGUI.lastMenu;
         }else if(input == MenuInput.Select){
             //TODO Reimplement this!
-            //parentGUI.EnterCommand(new BattleCommand [] {new CatoBasicAttack( (PlayerCombatant) GetNode("/root/Battle/PlayerCombatant"), null), new EnemyAttacks()});
+            parentGUI.EnterCommand(new BattleCommand [] {new PlayerAttacks((PlayerCombatant)parentGUI.parentBattle.activeCombatants[0])});
         }
         return null;
     }

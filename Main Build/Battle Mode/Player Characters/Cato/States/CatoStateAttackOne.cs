@@ -7,6 +7,7 @@ public class CatoStateAttackOne : PlayerCombatantState {
     EnemyCombatant[] targets;
 
     Area2D hurtbox = null;
+    Godot.PackedScene hurtboxResource = (PackedScene) GD.Load("res://Battle Mode/Player Characters/Cato/Cato Atk 1 Hurtbox.tscn");
 
     public override void Enter(PlayerCombatant player, PlayerCombatantState lastState)
     {
@@ -19,9 +20,9 @@ public class CatoStateAttackOne : PlayerCombatantState {
     }
 
     public override PlayerCombatantState Process(PlayerCombatant player){
-            if(player.GetAnimatedSprite().Frame == 3){
+            if(player.GetAnimatedSprite().Frame == 2){
                 if(hurtbox == null){
-                    //Instance Create Atk 1 Hurtbox
+                    hurtbox = (Area2D) hurtboxResource.Instance();
                 }
                 Godot.Collections.Array hitAreas = hurtbox.GetOverlappingAreas();
                 for(int i = 0; i < hitAreas.Count; i++){
@@ -34,13 +35,13 @@ public class CatoStateAttackOne : PlayerCombatantState {
                     }
                 }
             }
+            return null;
             /*
             TODO
             1. Collision Object
             2. Check for Attack Two: Critical Hit checks
             3. Log Damage/Target
             */
-        throw new NotImplementedException();
     }
 
     public override void HandleAnimationTransition(PlayerCombatant player)

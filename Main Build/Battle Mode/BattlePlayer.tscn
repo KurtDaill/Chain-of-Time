@@ -16,6 +16,46 @@
 [ext_resource path="res://Art/Cato Air Trans Sheet.png" type="Texture" id=15]
 [ext_resource path="res://Art/Cato Attack Two Sheet.png" type="Texture" id=16]
 
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 112, 80 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 8 )
+region = Rect2( 112, 0, 112, 80 )
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 80, 112, 80 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 8 )
+region = Rect2( 112, 80, 112, 80 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 112, 80 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 14 )
+region = Rect2( 112, 0, 112, 80 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 112, 80 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 11 )
+region = Rect2( 112, 0, 112, 80 )
+
+[sub_resource type="AtlasTexture" id=108]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 112, 80 )
+
+[sub_resource type="AtlasTexture" id=109]
+atlas = ExtResource( 9 )
+region = Rect2( 112, 0, 112, 80 )
+
 [sub_resource type="AtlasTexture" id=124]
 atlas = ExtResource( 16 )
 region = Rect2( 0, 0, 128, 80 )
@@ -79,26 +119,6 @@ region = Rect2( 256, 240, 128, 80 )
 [sub_resource type="AtlasTexture" id=139]
 atlas = ExtResource( 16 )
 region = Rect2( 384, 240, 128, 80 )
-
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 112, 80 )
-
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 5 )
-region = Rect2( 112, 0, 112, 80 )
-
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 80, 112, 80 )
-
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 14 )
-region = Rect2( 0, 0, 112, 80 )
-
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 14 )
-region = Rect2( 112, 0, 112, 80 )
 
 [sub_resource type="AtlasTexture" id=69]
 atlas = ExtResource( 7 )
@@ -164,18 +184,6 @@ region = Rect2( 0, 80, 128, 80 )
 atlas = ExtResource( 3 )
 region = Rect2( 128, 0, 128, 80 )
 
-[sub_resource type="AtlasTexture" id=35]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 112, 80 )
-
-[sub_resource type="AtlasTexture" id=36]
-atlas = ExtResource( 6 )
-region = Rect2( 112, 0, 112, 80 )
-
-[sub_resource type="AtlasTexture" id=37]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 80, 112, 80 )
-
 [sub_resource type="AtlasTexture" id=39]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 112, 80 )
@@ -192,17 +200,21 @@ region = Rect2( 112, 0, 112, 80 )
 atlas = ExtResource( 10 )
 region = Rect2( 0, 80, 112, 80 )
 
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 112, 80 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 5 )
+region = Rect2( 112, 0, 112, 80 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 80, 112, 80 )
+
 [sub_resource type="AtlasTexture" id=43]
 atlas = ExtResource( 15 )
 region = Rect2( 0, 0, 112, 80 )
-
-[sub_resource type="AtlasTexture" id=44]
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 112, 80 )
-
-[sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 11 )
-region = Rect2( 112, 0, 112, 80 )
 
 [sub_resource type="AtlasTexture" id=84]
 atlas = ExtResource( 13 )
@@ -300,30 +312,6 @@ region = Rect2( 0, 1760, 128, 80 )
 atlas = ExtResource( 13 )
 region = Rect2( 0, 1840, 128, 80 )
 
-[sub_resource type="AtlasTexture" id=108]
-atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 112, 80 )
-
-[sub_resource type="AtlasTexture" id=109]
-atlas = ExtResource( 9 )
-region = Rect2( 112, 0, 112, 80 )
-
-[sub_resource type="AtlasTexture" id=54]
-atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 112, 80 )
-
-[sub_resource type="AtlasTexture" id=55]
-atlas = ExtResource( 8 )
-region = Rect2( 112, 0, 112, 80 )
-
-[sub_resource type="AtlasTexture" id=56]
-atlas = ExtResource( 8 )
-region = Rect2( 0, 80, 112, 80 )
-
-[sub_resource type="AtlasTexture" id=57]
-atlas = ExtResource( 8 )
-region = Rect2( 112, 80, 112, 80 )
-
 [sub_resource type="AtlasTexture" id=111]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 128, 80 )
@@ -376,21 +364,43 @@ region = Rect2( 384, 160, 128, 80 )
 atlas = ExtResource( 1 )
 region = Rect2( 0, 240, 128, 80 )
 
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 112, 80 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 6 )
+region = Rect2( 112, 0, 112, 80 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 80, 112, 80 )
+
 [sub_resource type="SpriteFrames" id=64]
 animations = [ {
-"frames": [ SubResource( 124 ), SubResource( 125 ), SubResource( 126 ), SubResource( 127 ), SubResource( 128 ), SubResource( 129 ), SubResource( 130 ), SubResource( 131 ), SubResource( 132 ), SubResource( 133 ), SubResource( 134 ), SubResource( 135 ), SubResource( 136 ), SubResource( 137 ), SubResource( 138 ), SubResource( 139 ) ],
+"frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
 "loop": true,
-"name": "Attack Two",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
-"loop": true,
-"name": "Jump",
+"name": "Slide Recovery",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 19 ), SubResource( 20 ) ],
 "loop": true,
 "name": "Air Down",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 44 ), SubResource( 45 ) ],
+"loop": true,
+"name": "Air Up",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 108 ), SubResource( 109 ) ],
+"loop": true,
+"name": "Slide",
+"speed": 6.0
+}, {
+"frames": [ SubResource( 124 ), SubResource( 125 ), SubResource( 126 ), SubResource( 127 ), SubResource( 128 ), SubResource( 129 ), SubResource( 130 ), SubResource( 131 ), SubResource( 132 ), SubResource( 133 ), SubResource( 134 ), SubResource( 135 ), SubResource( 136 ), SubResource( 137 ), SubResource( 138 ), SubResource( 139 ) ],
+"loop": true,
+"name": "Attack Two",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ) ],
@@ -403,11 +413,6 @@ animations = [ {
 "name": "Dash",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ) ],
-"loop": true,
-"name": "Landing",
-"speed": 12.0
-}, {
 "frames": [ SubResource( 39 ) ],
 "loop": true,
 "name": "Crouch",
@@ -418,14 +423,14 @@ animations = [ {
 "name": "Slide Start",
 "speed": 12.0
 }, {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 12.0
+}, {
 "frames": [ SubResource( 43 ) ],
 "loop": true,
 "name": "Air Transition",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 44 ), SubResource( 45 ) ],
-"loop": true,
-"name": "Air Up",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 104 ), SubResource( 105 ), SubResource( 106 ), SubResource( 107 ) ],
@@ -433,19 +438,14 @@ animations = [ {
 "name": "Idle",
 "speed": 8.0
 }, {
-"frames": [ SubResource( 108 ), SubResource( 109 ) ],
-"loop": true,
-"name": "Slide",
-"speed": 6.0
-}, {
-"frames": [ SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ) ],
-"loop": true,
-"name": "Slide Recovery",
-"speed": 12.0
-}, {
 "frames": [ SubResource( 111 ), SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ), SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ), SubResource( 121 ), SubResource( 122 ), SubResource( 123 ) ],
 "loop": true,
 "name": "Attack One",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ) ],
+"loop": true,
+"name": "Landing",
 "speed": 12.0
 } ]
 
@@ -463,12 +463,20 @@ extents = Vector2( 11.4615, 7.49235 )
 
 [node name="PlayerCombatant" type="KinematicBody2D"]
 script = ExtResource( 2 )
+jumpForce = 300.0
+runSpeed = 125.0
+dashBoost = 200.0
+gravity = 9.0
+slideDrag = 1.0
+airDrag = 0.1
+footDrag = 10.0
+dashDrag = 2.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 19, -40 )
 frames = SubResource( 64 )
-animation = "Dash"
-playing = true
+animation = "Attack One"
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.666061, -25.2356 )
@@ -478,11 +486,11 @@ shape = SubResource( 65 )
 position = Vector2( -1.26134, -22.0608 )
 
 [node name="Standing Box" type="CollisionShape2D" parent="Hitbox"]
-visible = false
 position = Vector2( 2.08347, 1.38897 )
 shape = SubResource( 66 )
 
 [node name="Crouch Box" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 position = Vector2( -0.0750885, 12.9379 )
 shape = SubResource( 67 )
 disabled = true
