@@ -17,7 +17,7 @@ public class Battle : Node
     public override void _Ready()
     {
         commandList = new List<BattleCommand>();
-        activeCombatants[0] = (PlayerCombatant)GetChild(0);
+        activeCombatants[0] = (PlayerCombatant)GetNode("BattlePlayer");
         commandList.Add(new PlayerMenuSelection());
         commandList[currentCommandIndex].Enter(this);   
     }

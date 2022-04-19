@@ -18,8 +18,8 @@ public class CatoCombatant : PlayerCombatant
             if(state is PlayerCombatantStateExit) return true;
             Move();
             if(state is PlayerCombatantStateGround && Input.IsActionJustPressed("com_atk")){
-                CatoStateAttackOne attackState = new CatoStateAttackOne();
-                attackState.acceptAttackData(damageRecord, targets);
+                state.Exit();
+                CatoStateAttackOne attackState = new CatoStateAttackOne(damageRecord, targets);
                 PlayerCombatantState temp = state;
                 state = attackState;
                 state.Enter(this, temp);

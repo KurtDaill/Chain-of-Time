@@ -34,7 +34,7 @@ public class PlayerCombatantStateGround : PlayerCombatantState {
         }else if(player.hSpeed != 0 && player.GetAnimatedSprite().Animation != "Slide Recovery" && player.GetAnimatedSprite().Animation != "Landing"){
             player.setSprite("Run");
         }
-        player.MoveAndSlide(new Vector2(player.hSpeed, player.vSpeed));
+        if(player.GetAnimatedSprite().Animation != "Landing") player.MoveAndSlide(new Vector2(player.hSpeed, player.vSpeed));
         player.rightFace = (player.hSpeed >= 0);
         return null;
     }
@@ -53,7 +53,6 @@ public class PlayerCombatantStateGround : PlayerCombatantState {
     public override void Enter(PlayerCombatant player, PlayerCombatantState lastState)
     {
         string lastStateName = lastState.GetType().Name;
-        GD.Print(lastStateName);
         if(lastStateName == "PlayerCombatantStateSlide"){
             player.setSprite("Slide Recovery");
         }else if(lastStateName == "PlayerCombatantStateAirborne"){

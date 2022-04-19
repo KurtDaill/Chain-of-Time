@@ -5,7 +5,9 @@ public abstract class Combatant : KinematicBody2D {
     private int hitPoints;
     private int maxHP;
 
-    private int armor = 0;
+    protected int armor = 0;
+
+    protected Area2D hitbox;
 
     public int getHP(){
         return hitPoints;

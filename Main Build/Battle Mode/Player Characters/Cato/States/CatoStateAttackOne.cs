@@ -6,42 +6,62 @@ public class CatoStateAttackOne : PlayerCombatantState {
     int[] damageRecord;
     EnemyCombatant[] targets;
 
-    Area2D hurtbox = null;
-    Godot.PackedScene hurtboxResource = (PackedScene) GD.Load("res://Battle Mode/Player Characters/Cato/Cato Atk 1 Hurtbox.tscn");
+    Hitbox hitbox = null;
+    Godot.PackedScene hitboxResource = (PackedScene) GD.Load("res://Battle Mode/Player Characters/Cato/Cato Atk 1 Hitbox.tscn");
+
+    bool attackLocked = false;
+    int frameDelayToAttackTwo = 25;
+    int frameCounter = 0;
+    PlayerCombatant player;
 
     public override void Enter(PlayerCombatant player, PlayerCombatantState lastState)
     {
         base.Enter(player, lastState);
         player.setSprite("Attack One");
+        this.player = player;
     }
-    public void acceptAttackData(int[] dr, EnemyCombatant[] tar){
+    public CatoStateAttackOne(int[] dr, EnemyCombatant[] tar){
         this.damageRecord = dr;
         this.targets = tar;
     }
 
     public override PlayerCombatantState Process(PlayerCombatant player){
             if(player.GetAnimatedSprite().Frame == 2){
-                if(hurtbox == null){
-                    hurtbox = (Area2D) hurtboxResource.Instance();
+                if(hitbox == null){
+                    hitbox = (Hitbox) hitboxResource.Instance();
+                    player.AddChild(hitbox);
+                    hitbox.SetDamage(player.strength);
+                    return null;
                 }
-                Godot.Collections.Array hitAreas = hurtbox.GetOverlappingAreas();
+            }
+            if(Input.IsActionJustPressed("com_atk") && !attackLocked){
+                if(frameCounter < frameDelayToAttackTwo){
+                    attackLocked = true;
+                }
+                else{
+                    return new CatoStateAttackTwo(damageRecord, targets);
+                }
+            }
+            frameCounter++;
+                /*
+                var hitAreas = hurtbox.GetOverlappingAreas();
                 for(int i = 0; i < hitAreas.Count; i++){
                     if(hitAreas[i] is EnemyCombatant){
                         if(Array.Exists<EnemyCombatant>(targets, l => l == hitAreas[i])){
-                            int index = Array.FindIndex<EnemyCombatant>(targets, j => j == null);
+                            var index = Array.FindIndex<EnemyCombatant>(targets, j => j == null);
                             targets[index] = (EnemyCombatant) hitAreas[i];
                             damageRecord[index] = targets[i].TakeDamage(player.strength);
                         }
                     }
                 }
-            }
+                */
+            
             return null;
-            /*
-            TODO
-            1. Collision Object
-            2. Check for Attack Two: Critical Hit checks
-            3. Log Damage/Target
-            */
+    }
+
+    public override void Exit()
+    {
+        hitbox.QueueFree();
     }
 
     public override void HandleAnimationTransition(PlayerCombatant player)

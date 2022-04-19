@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cato Run Sheet.png-d77876e579cb5f30be7befae497ecad2.stex"
+path="res://.import/Polymorphor Test Sheet.png-f99c591770bc6d2582e902cf07a14e22.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Cato Run Sheet.png"
-dest_files=[ "res://.import/Cato Run Sheet.png-d77876e579cb5f30be7befae497ecad2.stex" ]
+source_file="res://Art/Polymorphor Test Sheet.png"
+dest_files=[ "res://.import/Polymorphor Test Sheet.png-f99c591770bc6d2582e902cf07a14e22.stex" ]
 
 [params]
 

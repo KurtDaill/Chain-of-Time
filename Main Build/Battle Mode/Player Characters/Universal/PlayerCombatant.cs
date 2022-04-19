@@ -3,36 +3,34 @@ using System;
 
 public abstract class PlayerCombatant : Combatant
 {
-    protected PlayerCombatantState state = null;
+    protected PlayerCombatantState state = new PlayerCombatantStateExit();
     protected PlayerCombatantState newState = null;
     protected AnimatedSprite sprite;
 
     protected String queuedSprite = null;
 
     public int strength = 10;
-
-    Area2D hitbox;
     public bool rightFace = true;
     [Export]
     public string character = "Cato";
     [Export]
-	public float jumpForce = 10F;
+	public float jumpForce = 200F;
 	[Export]
-	public float runSpeed = 2F;
+	public float runSpeed = 150F;
 	[Export]
-	public float dashBoost = 10F;
+	public float dashBoost = 200F;
 	[Export]
 	public float diveSpeed = 3F;
 	[Export]
-	public float gravity = 3F;
+	public float gravity = 9F;
 	[Export]
-	public float slideDrag = 0.1F;
+	public float slideDrag = 2F;
 	[Export]
-	public float airDrag = 0.05F;
+	public float airDrag = 0.21F;
 	[Export]
-	public float footDrag = 0.3F;
+	public float footDrag = 9F;
 	[Export]
-	public float dashDrag = 0.3F;
+	public float dashDrag = 5F;
 
 
     
@@ -76,11 +74,7 @@ public abstract class PlayerCombatant : Combatant
         }
         
         newState = state.Process(this);
-        if(newState != null){
-            PlayerCombatantState temp = state;
-            state = newState;
-            state.Enter(this, temp);
-        }
+        if(newState != null) SetState(newState);
         newState = null;
     }
 
@@ -125,11 +119,7 @@ public abstract class PlayerCombatant : Combatant
         if(GetSlideCount() == 0) return true;
 
         KinematicCollision2D kc = GetSlideCollision(0);
-        if(kc != null){
-			if(kc.Collider.GetMeta("type").Equals("ground")){
-				return false;
-			}
-		}
+        if(kc.Collider != null) return false;
         return true;
     }
 
@@ -146,8 +136,11 @@ public abstract class PlayerCombatant : Combatant
         }
     }
 
-    public void SetState(PlayerCombatantState state){
-        this.state = state;
+    public void SetState(PlayerCombatantState newState){
+        state.Exit();
+        PlayerCombatantState temp = state;
+        state = newState;
+        state.Enter(this, temp);
     }
 }
 

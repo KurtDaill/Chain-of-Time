@@ -11,5 +11,9 @@ public abstract class PlayerCombatantState {
     public virtual void HandleAnimationTransition(PlayerCombatant player){
         return;
     }
+
+    public virtual void Exit(){
+        return;
+    }
 }
 

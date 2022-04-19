@@ -30,7 +30,7 @@ public class CatoBasicAttackOld : BattleCommand
                 }
                 break;
             case 1 : //Phase Two: Player is prompted to hold Up, once they do: cato raises his sword
-                //TODO "Hold Up" GUI Element.
+                // "Hold Up" GUI Element.
                 if(Input.IsActionJustPressed("ui_up")){
                     cato.setSprite("Attack Windup");
                     cato.queueSprite("Attack Windup Hold");
@@ -41,7 +41,7 @@ public class CatoBasicAttackOld : BattleCommand
                 if(cato.GetAnimatedSprite().Animation == "Attack Windup Hold") phase = 2;
                 break;
             case 2 : //Phase Three: Player is prompted to release up, once they do Cato attacks. if they do it on time the attack goes off for more damage.
-                //TODO "Press Down" GUI Element.
+                // "Press Down" GUI Element.
                 if(Input.IsActionJustReleased("ui_up")){
                     phase = 3;    
                     cato.setSprite("Attack Swing and Recover");
@@ -51,7 +51,7 @@ public class CatoBasicAttackOld : BattleCommand
                 framesPassed ++;
                 break;
             case 3 :
-                //TODO Damaging the target.
+                // Damaging the target.
                 if(cato.GetAnimatedSprite().Animation == "Idle"){
                     parent.NextCommand();
                 }
