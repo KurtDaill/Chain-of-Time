@@ -23,16 +23,16 @@ public class PlayerCombatantStateSlide : PlayerCombatantState
 
     public override void HandleAnimationTransition(PlayerCombatant player)
     {
-        string animation = player.GetAnimPlayer().CurrentAnimation;
+        string animation = player.GetAnimatedSprite().Animation;
         if(animation == "Slide Start"){          
             player.rightFace = (player.hSpeed >= 0);
-            player.setAnim("Slide");
+            player.SetAnim("Slide");
         }
     }
 
     public override void Enter(PlayerCombatant player, PlayerCombatantState lastState)
     {
         player.rightFace = (player.hSpeed >= 0);
-        player.setAnim("Slide Start");
+        player.SetAnim("Slide Start");
     }
 }

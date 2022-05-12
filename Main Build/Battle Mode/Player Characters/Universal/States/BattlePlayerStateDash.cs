@@ -24,10 +24,10 @@ public class PlayerCombatantStateDash : PlayerCombatantState
     public override void Enter(PlayerCombatant player, PlayerCombatantState lastState){
         if(Input.IsActionPressed("ui_left") || player.hSpeed < 0){ //Turn this into an "on enter" in dashing
                 player.hSpeed -= player.dashBoost;
-                player.setAnim("Dash");  
+                player.SetAnim("Dash");  
             }else{
                 player.hSpeed += player.dashBoost;
-                player.setAnim("Dash");  
+                player.SetAnim("Dash");  
         }
         player.setNewHitbox("Standing Box");   
     }

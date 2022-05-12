@@ -97,6 +97,8 @@ public abstract class PlayerCombatant : Combatant
             return;
     }
 
+
+
     public void setNewHitbox(string newBox){
         CollisionShape2D curBox;
         Godot.Collections.Array boxes = hitbox.GetChildren();
@@ -108,6 +110,10 @@ public abstract class PlayerCombatant : Combatant
                 return;
             } 
         }
+    }
+
+    public void SetAnim(string anim){
+        sprite.Animation = anim;
     }
 
     public void SetState(PlayerCombatantState newState){

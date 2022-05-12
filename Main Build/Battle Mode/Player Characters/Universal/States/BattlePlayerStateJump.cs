@@ -15,7 +15,7 @@ public class PlayerCombatantStateJump : PlayerCombatantState
 
     public override void Enter(PlayerCombatant player, PlayerCombatantState lastState)
     {
-        player.setAnim("Jump");
+        player.SetAnim("Jump");
         player.rightFace = (player.hSpeed >= 0);
         player.vSpeed -= player.jumpForce;
         player.setNewHitbox("Standing Box");   
