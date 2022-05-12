@@ -85,7 +85,11 @@ com_atk={
 2d_physics/layer_1="Environment"
 2d_physics/layer_2="Players"
 2d_physics/layer_3="Enemies"
-2d_physics/layer_4="Projectiles"
+2d_physics/layer_4="HurtBox"
+2d_physics/layer_5="Hitbox"
+2d_physics/layer_10="Battle Ground Front"
+2d_physics/layer_11="Battle Ground Middle"
+2d_physics/layer_12="Battle Ground Back"
 
 [logging]
 

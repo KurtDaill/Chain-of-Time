@@ -7,7 +7,13 @@ public abstract class Combatant : KinematicBody2D {
 
     protected int armor = 0;
 
+    [Export]
+	public float gravity = 9F;
+
     protected Area2D hitbox;
+
+    public float hSpeed = 0;
+    public float vSpeed = 0;
 
     public int getHP(){
         return hitPoints;
@@ -46,6 +52,16 @@ public abstract class Combatant : KinematicBody2D {
             hitPoints = maxHP;
         }
     }
+
+    //Returns true when the player is in the air
+    public bool amIFlying(){
+        if(GetSlideCount() == 0) return true;
+
+        KinematicCollision2D kc = GetSlideCollision(0);
+        if(kc.Collider != null) return false;
+        return true;
+    }
+
 }
 
 [Serializable]

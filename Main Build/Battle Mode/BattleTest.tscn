@@ -28,27 +28,27 @@ position = Vector2( 0, 25 )
 script = ExtResource( 3 )
 
 [node name="BattlePlayer" parent="." instance=ExtResource( 1 )]
-position = Vector2( -160, 0 )
+position = Vector2( -160.223, 5.79084 )
 
 [node name="PositionsMap" type="Node2D" parent="."]
+
+[node name="Hero1" type="Node2D" parent="PositionsMap"]
+position = Vector2( -160, 6 )
 
 [node name="Hero2" type="Node2D" parent="PositionsMap"]
 position = Vector2( -220, 15 )
 
-[node name="Hero1" type="Node2D" parent="PositionsMap"]
-position = Vector2( -160, 0 )
-
 [node name="Hero3" type="Node2D" parent="PositionsMap"]
 position = Vector2( -200, -10 )
 
-[node name="Enemy3" type="Node2D" parent="PositionsMap"]
-position = Vector2( 220, 15 )
-
 [node name="Enemy1" type="Node2D" parent="PositionsMap"]
-position = Vector2( 160, 0 )
+position = Vector2( 160, 6 )
 
 [node name="Enemy2" type="Node2D" parent="PositionsMap"]
 position = Vector2( 200, -10 )
+
+[node name="Enemy3" type="Node2D" parent="PositionsMap"]
+position = Vector2( 220, 15 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -236,14 +236,15 @@ margin_right = 480.0
 margin_bottom = 74.0
 texture = ExtResource( 10 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="."]
+collision_layer = 1025
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2( 2, 16 )
 shape = SubResource( 1 )
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Polymorphor" parent="." instance=ExtResource( 19 )]
-position = Vector2( 137.805, 6.1913 )
+position = Vector2( 160.172, 5.70255 )

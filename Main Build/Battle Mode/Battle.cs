@@ -10,6 +10,9 @@ public class Battle : Node
     public Combatant[] activeCombatants = new Combatant[6];
     //Tracks Enemies that may enter in waves as active enemies are defeated;
     public List<Combatant> enemyBench = new List<Combatant>();
+
+    public Node2D[] battleSpots = new Node2D[6];
+
     [Export]
     public BattleGUI gui;
     private List<BattleCommand> commandList;
@@ -18,6 +21,13 @@ public class Battle : Node
     {
         commandList = new List<BattleCommand>();
         activeCombatants[0] = (PlayerCombatant)GetNode("BattlePlayer");
+        battleSpots[0] = (Node2D) GetNode("PositionsMap/Hero1");
+        battleSpots[1] = (Node2D) GetNode("PositionsMap/Hero2");
+        battleSpots[2] = (Node2D) GetNode("PositionsMap/Hero3");
+        battleSpots[3] = (Node2D) GetNode("PositionsMap/Enemy1");
+        battleSpots[4] = (Node2D) GetNode("PositionsMap/Enemy2");
+        battleSpots[5] = (Node2D) GetNode("PositionsMap/Enemy3");
+
         commandList.Add(new PlayerMenuSelection());
         commandList[currentCommandIndex].Enter(this);   
     }

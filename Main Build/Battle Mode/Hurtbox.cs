@@ -11,6 +11,6 @@ public class Hurtbox : Area2D
     }
     public void OnHurtboxAreaEntered(Hitbox box){
         parent.TakeDamage(box.GetDamage());
-        GD.Print(parent.Name + " was dealt " + box.GetDamage() + " damage.");
+        GD.Print("Hurtbox hit registered");
     }
 }

@@ -22,8 +22,6 @@ public abstract class PlayerCombatant : Combatant
 	[Export]
 	public float diveSpeed = 3F;
 	[Export]
-	public float gravity = 9F;
-	[Export]
 	public float slideDrag = 2F;
 	[Export]
 	public float airDrag = 0.21F;
@@ -32,11 +30,6 @@ public abstract class PlayerCombatant : Combatant
 	[Export]
 	public float dashDrag = 5F;
 
-
-    
-
-    public float hSpeed = 0;
-    public float vSpeed = 0;
     public override void _Ready()
     {
         Godot.Collections.Array children = GetChildren();
@@ -54,17 +47,7 @@ public abstract class PlayerCombatant : Combatant
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
-        //Disabled while testing Command-Pattern solution for battles
-        /*
-        //ProcessPlayerState()    Runs the current state script 
-        newState = state.Process(this);
-        if(newState != null){
-            PlayerCombatantState temp = state;
-            state = newState;
-            state.Enter(this, temp);
-        }
-        newState = null;
-        */
+
     }
 
     public virtual void Move()
@@ -112,15 +95,6 @@ public abstract class PlayerCombatant : Combatant
         }
         else 
             return;
-    }
-
-    //Should return whether or not the player is on the ground
-    public bool amIFlying(){
-        if(GetSlideCount() == 0) return true;
-
-        KinematicCollision2D kc = GetSlideCollision(0);
-        if(kc.Collider != null) return false;
-        return true;
     }
 
     public void setNewHitbox(string newBox){
