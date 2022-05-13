@@ -10,7 +10,8 @@ public class Hurtbox : Area2D
         parent = (Combatant) GetParent();
     }
     public void OnHurtboxAreaEntered(Hitbox box){
-        parent.TakeDamage(box.GetDamage());
+        //TODO Add calculation for knockback?
+        parent.TakeDamage(box.GetDamage(), box.GetKnockback());
         GD.Print("Hurtbox hit registered");
     }
 }

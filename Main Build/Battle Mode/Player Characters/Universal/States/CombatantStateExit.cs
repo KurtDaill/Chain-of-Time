@@ -2,8 +2,8 @@
 using Godot;
 using System;
 
-public class PlayerCombatantStateExit : PlayerCombatantState {
-    public override PlayerCombatantState Process(PlayerCombatant player)
+public class CombatantStateExit : CombatantState {
+    public override CombatantState Process(Combatant player)
     {
         throw new UnhandledExitStateExcpetion();
     }

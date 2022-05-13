@@ -22,7 +22,7 @@ public class BattlefieldCleanUp : BattleCommand
         if(readyForSlide == false){        
             readyForSlide = true;
             foreach(Combatant comb in parent.activeCombatants){ //Moves all Combatants towards the ground
-                if(comb.amIFlying()){
+                if(comb.AmIFlying()){
                     readyForSlide = false;
                     comb.vSpeed += comb.gravity;
                     comb.MoveAndSlide(new Vector2(0, comb.vSpeed));

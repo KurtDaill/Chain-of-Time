@@ -1,10 +1,10 @@
 using Godot;
 using System;
 
-public class PlayerCombatantStateGround : PlayerCombatantState {
+public class PlayerCombatantStateGround : CombatantState {
 
-    public override PlayerCombatantState Process(PlayerCombatant player){
-
+    public override CombatantState Process(Combatant combatant){
+        PlayerCombatant player = (PlayerCombatant) combatant; //TODO tidy this up
         if(Input.IsActionPressed("ui_down")){
             if(Math.Abs(player.hSpeed) > 0) return new PlayerCombatantStateSlide();
             return new PlayerCombatantStateCrouch();
@@ -26,7 +26,7 @@ public class PlayerCombatantStateGround : PlayerCombatantState {
             player.hSpeed = Math.Sign(player.hSpeed) * Math.Max((Math.Abs(player.hSpeed) - player.footDrag), 0);
         }
 
-        if(player.amIFlying()) player.vSpeed += player.gravity;
+        if(player.AmIFlying()) player.vSpeed += player.gravity;
         else player.vSpeed = 0;
         //Animations (Running while moving, Idle while standing) TODO make this conditional less stupid
         if(player.hSpeed == 0 && player.GetAnimatedSprite().Animation != "Landing"){
@@ -39,7 +39,7 @@ public class PlayerCombatantStateGround : PlayerCombatantState {
         return null;
     }
 
-    public override void HandleAnimationTransition(PlayerCombatant player){
+    public override void HandleAnimationTransition(Combatant player){
         string animation = player.GetAnimatedSprite().Animation;
         if(animation == "Landing"){
             player.setSprite("Idle");
@@ -50,7 +50,7 @@ public class PlayerCombatantStateGround : PlayerCombatantState {
         }
     }
 
-    public override void Enter(PlayerCombatant player, PlayerCombatantState lastState)
+    public override void Enter(Combatant player, CombatantState lastState)
     {
         string lastStateName = lastState.GetType().Name;
         if(lastStateName == "PlayerCombatantStateSlide"){

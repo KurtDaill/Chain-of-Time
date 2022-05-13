@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 
 public class PlayerAttacks : BattleCommand
 {
@@ -22,6 +23,11 @@ public class PlayerAttacks : BattleCommand
     {
         if(playerCharacter.MoveAndAttack(targets, damagePerTarget)){
             parent.NextCommand();
+            //Pause to Wait for signoff from all entities!
+        }
+
+        foreach(EnemyCombatant enemy in parent.activeCombatants.OfType<EnemyCombatant>()){
+            enemy.DodgeBehaviour();
         }
     }
 

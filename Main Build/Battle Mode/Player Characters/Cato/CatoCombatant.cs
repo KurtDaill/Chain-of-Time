@@ -15,12 +15,12 @@ public class CatoCombatant : PlayerCombatant
     public int secondAttackCriticalCutoff;
     public override bool MoveAndAttack(EnemyCombatant[] targets, int[] damageRecord)
     {
-            if(state is PlayerCombatantStateExit) return true;
+            if(state is CombatantStateExit) return true;
             Move();
             if(state is PlayerCombatantStateGround && Input.IsActionJustPressed("com_atk")){
                 state.Exit();
                 CatoStateAttackOne attackState = new CatoStateAttackOne(damageRecord, targets);
-                PlayerCombatantState temp = state;
+                CombatantState temp = state;
                 state = attackState;
                 state.Enter(this, temp);
             }

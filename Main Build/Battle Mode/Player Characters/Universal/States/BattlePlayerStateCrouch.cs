@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public class PlayerCombatantStateCrouch : PlayerCombatantState
+public class PlayerCombatantStateCrouch : CombatantState
 {
-    public override PlayerCombatantState Process(PlayerCombatant player)
+    public override CombatantState Process(Combatant player)
     {
         if(!Input.IsActionJustPressed("ui_down")){
             return new PlayerCombatantStateGround();
@@ -11,7 +11,7 @@ public class PlayerCombatantStateCrouch : PlayerCombatantState
         return null;
     }
 
-    public override void Enter(PlayerCombatant player, PlayerCombatantState lastState)
+    public override void Enter(Combatant player, CombatantState lastState)
     {
         player.setNewHitbox("Crouch Box");
         player.setSprite("Crouch");

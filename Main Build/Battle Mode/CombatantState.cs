@@ -1,9 +1,8 @@
-using Godot;
 using System;
+using Godot;
 
-//TODO State Machine Renaming Refactoring to be technically usable between enemies and players?
-public abstract class PlayerCombatantState{
-    public abstract PlayerCombatantState Process(Combatant player);
+public abstract class CombatantState{
+    public abstract CombatantState Process(Combatant player);
 
     public virtual void Enter(Combatant player, CombatantState lastState){ //Called by the dodge player when a new state is set
         return;
@@ -17,4 +16,3 @@ public abstract class PlayerCombatantState{
         return;
     }
 }
-

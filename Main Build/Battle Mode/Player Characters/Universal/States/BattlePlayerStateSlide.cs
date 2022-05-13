@@ -1,9 +1,10 @@
 using Godot;
 using System;
 
-public class PlayerCombatantStateSlide : PlayerCombatantState
+public class PlayerCombatantStateSlide : CombatantState
 {
-   public override PlayerCombatantState Process(PlayerCombatant player){ //TODO: Make Hitbox match sprite during slides
+   public override CombatantState Process(Combatant combatant){ //TODO: Make Hitbox match sprite during slides
+        PlayerCombatant player = (PlayerCombatant) combatant;
         player.hSpeed = Math.Sign(player.hSpeed) * Math.Max((Math.Abs(player.hSpeed) - player.slideDrag), 0);
 	    if(player.hSpeed == 0){
 			return new PlayerCombatantStateCrouch();
@@ -21,18 +22,18 @@ public class PlayerCombatantStateSlide : PlayerCombatantState
         return null;
    }
 
-    public override void HandleAnimationTransition(PlayerCombatant player)
+    public override void HandleAnimationTransition(Combatant player)
     {
         string animation = player.GetAnimatedSprite().Animation;
         if(animation == "Slide Start"){          
-            player.rightFace = (player.hSpeed >= 0);
+            player.facing = Math.Sign(player.hSpeed);
             player.SetAnim("Slide");
         }
     }
 
-    public override void Enter(PlayerCombatant player, PlayerCombatantState lastState)
+    public override void Enter(Combatant player, CombatantState lastState)
     {
-        player.rightFace = (player.hSpeed >= 0);
+        player.facing = Math.Sign(player.hSpeed);
         player.SetAnim("Slide Start");
     }
 }

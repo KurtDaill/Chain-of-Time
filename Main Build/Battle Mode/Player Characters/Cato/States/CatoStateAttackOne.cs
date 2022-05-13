@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class CatoStateAttackOne : PlayerCombatantState {
+public class CatoStateAttackOne : CombatantState {
 
     int[] damageRecord;
     EnemyCombatant[] targets;
@@ -12,25 +12,29 @@ public class CatoStateAttackOne : PlayerCombatantState {
     bool attackLocked = false;
     int frameDelayToAttackTwo = 25;
     int frameCounter = 0;
+
+    int knockbackStrength = 100;
     PlayerCombatant player;
 
-    public override void Enter(PlayerCombatant player, PlayerCombatantState lastState)
+    public override void Enter(Combatant player, CombatantState lastState)
     {
         base.Enter(player, lastState);
         player.setSprite("Attack One");
-        this.player = player;
+        this.player = (PlayerCombatant) player;
     }
     public CatoStateAttackOne(int[] dr, EnemyCombatant[] tar){
         this.damageRecord = dr;
         this.targets = tar;
     }
 
-    public override PlayerCombatantState Process(PlayerCombatant player){
+    public override CombatantState Process(Combatant combatant){
+            PlayerCombatant player = (PlayerCombatant) combatant;
             if(player.GetAnimatedSprite().Frame == 2){
                 if(hitbox == null){
                     hitbox = (Hitbox) hitboxResource.Instance();
                     player.AddChild(hitbox);
                     hitbox.SetDamage(player.strength);
+                    hitbox.SetKnockback(new Vector2(player.facing, -1) * knockbackStrength);
                     return null;
                 }
             }
@@ -64,9 +68,9 @@ public class CatoStateAttackOne : PlayerCombatantState {
         hitbox.QueueFree();
     }
 
-    public override void HandleAnimationTransition(PlayerCombatant player)
+    public override void HandleAnimationTransition(Combatant player)
     {
         //Attack One animation has finished, and the player hasn't given any valid input, we exit the attack sequence.
-        player.SetState(new PlayerCombatantStateExit());
+        player.SetState(new CombatantStateExit());
     }
 }

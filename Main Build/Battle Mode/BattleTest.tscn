@@ -28,7 +28,7 @@ position = Vector2( 0, 25 )
 script = ExtResource( 3 )
 
 [node name="BattlePlayer" parent="." instance=ExtResource( 1 )]
-position = Vector2( -160.223, 5.79084 )
+position = Vector2( -159.223, 5.79084 )
 
 [node name="PositionsMap" type="Node2D" parent="."]
 
@@ -247,4 +247,4 @@ shape = SubResource( 1 )
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Polymorphor" parent="." instance=ExtResource( 19 )]
-position = Vector2( 160.172, 5.70255 )
+position = Vector2( 161.172, 5.70255 )

@@ -3,12 +3,6 @@ using System;
 
 public abstract class PlayerCombatant : Combatant
 {
-    protected PlayerCombatantState state = new PlayerCombatantStateExit();
-    protected PlayerCombatantState newState = null;
-    protected AnimatedSprite sprite;
-
-    protected String queuedSprite = null;
-
     public int strength = 10;
     public bool rightFace = true;
     [Export]
@@ -23,8 +17,6 @@ public abstract class PlayerCombatant : Combatant
 	public float diveSpeed = 3F;
 	[Export]
 	public float slideDrag = 2F;
-	[Export]
-	public float airDrag = 0.21F;
 	[Export]
 	public float footDrag = 9F;
 	[Export]
@@ -65,62 +57,5 @@ public abstract class PlayerCombatant : Combatant
     //Targets & damageRecord are used to track who is damaged this attack and how much
     //They're given from the command running move and attack, and their ultimate values are stores in that command
     public abstract bool MoveAndAttack(EnemyCombatant[] targets, int[] damageRecord);
-
-    public void setSprite(String newSprite, int scaling = 1){
-        sprite.Animation = newSprite;
-        if(rightFace){
-            sprite.Scale = new Vector2(1, 1);
-        }else{
-            sprite.Scale = new Vector2(-1, 1);
-        }
-        //sprite.Scale = new Vector2(scaling, 1);
-    }
-
-    public void queueSprite(string queueMe){
-        queuedSprite = queueMe;
-    }
-
-    public AnimatedSprite GetAnimatedSprite(){
-        return sprite;
-    }
-
-    //Called whenever an animation ends, and calls a function in the state that handles any new animations that have to play
-    //For Example: The Airborne state will transition from the "Up" to "Down" animation once the player begins falling
-    private void HandleAnimationTransition(){
-        if(state != null) 
-        state.HandleAnimationTransition(this);
-        else if(queuedSprite != null){
-            setSprite(queuedSprite);
-            queuedSprite = null;
-        }
-        else 
-            return;
-    }
-
-
-
-    public void setNewHitbox(string newBox){
-        CollisionShape2D curBox;
-        Godot.Collections.Array boxes = hitbox.GetChildren();
-        for(int i = 0; i < boxes.Count; i++){
-            curBox = (CollisionShape2D) boxes[i];
-            curBox.Disabled = true;
-            if(curBox.Name == newBox){
-                curBox.Disabled = false;
-                return;
-            } 
-        }
-    }
-
-    public void SetAnim(string anim){
-        sprite.Animation = anim;
-    }
-
-    public void SetState(PlayerCombatantState newState){
-        state.Exit();
-        PlayerCombatantState temp = state;
-        state = newState;
-        state.Enter(this, temp);
-    }
 }
 
