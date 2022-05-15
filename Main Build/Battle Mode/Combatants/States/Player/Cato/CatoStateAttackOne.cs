@@ -7,10 +7,10 @@ public class CatoStateAttackOne : CombatantState {
     EnemyCombatant[] targets;
 
     Hitbox hitbox = null;
-    Godot.PackedScene hitboxResource = (PackedScene) GD.Load("res://Battle Mode/Player Characters/Cato/Cato Atk 1 Hitbox.tscn");
+    Godot.PackedScene hitboxResource = (PackedScene) GD.Load("res://Battle Mode/Combatants/Player Characters/Cato/Cato Atk 1 Hitbox.tscn");
 
     bool attackLocked = false;
-    int frameDelayToAttackTwo = 25;
+    int frameDelayToAttackTwo = 10;
     int frameCounter = 0;
 
     int knockbackStrength = 100;

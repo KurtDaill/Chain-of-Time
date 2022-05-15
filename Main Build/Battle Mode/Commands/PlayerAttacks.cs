@@ -21,13 +21,16 @@ public class PlayerAttacks : BattleCommand
     }
     public override void Execute()
     {
-        if(playerCharacter.MoveAndAttack(targets, damagePerTarget)){
-            parent.NextCommand();
-            //Pause to Wait for signoff from all entities!
+        var areEnemiesInPain = false; //Is used to detect whether any enemy is in a pain state. 
+                                     //We can't advance to the next command unitl all enemies are out of their pain state
+        foreach(EnemyCombatant enemy in parent.activeCombatants.OfType<EnemyCombatant>()){
+            if(enemy.DodgeBehaviour()){
+                areEnemiesInPain = true;
+            }
         }
 
-        foreach(EnemyCombatant enemy in parent.activeCombatants.OfType<EnemyCombatant>()){
-            enemy.DodgeBehaviour();
+        if(playerCharacter.MoveAndAttack(targets, damagePerTarget)){
+            if(!areEnemiesInPain) parent.NextCommand();//Pause to Wait for all enemies to finish pain state!
         }
     }
 

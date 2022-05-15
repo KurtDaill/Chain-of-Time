@@ -7,7 +7,7 @@ public class CatoStateAttackTwo : CombatantState {
     EnemyCombatant[] targets;
 
     Hitbox hitbox = null;
-    Godot.PackedScene hitboxResource = (PackedScene) GD.Load("res://Battle Mode/Player Characters/Cato/Cato Atk 2 Hitbox.tscn");
+    Godot.PackedScene hitboxResource = (PackedScene) GD.Load("res://Battle Mode/Combatants/Player Characters/Cato/Cato Atk 2 Hitbox.tscn");
     PlayerCombatant player;
 
     private float knockbackStrength = 150;

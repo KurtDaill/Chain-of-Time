@@ -3,12 +3,7 @@ using System;
 
 public class EnemyCombatant : Combatant
 {
-    protected AnimatedSprite sprite;
-
-    protected EnemyCombatantState state = new EnemyCombatantStateExit();
-
-    //TODO add painState function to all Combatants?
-    //Is true while the enemy is stunned and in a knockback state
+    
     public bool inPainState = false;
     protected EnemyAttack[] attacksKnown;
 
@@ -28,14 +23,16 @@ public class EnemyCombatant : Combatant
     {
         //TODO implement a minimum painState timer?
         //TODO Standardize Enemy Animation Control
-        if(inPainState){
-            
-        }
     }
 
     //Ran every frame while a player is attacking!
-    public virtual void DodgeBehaviour(){
-
+    //Returns true if this enemy is in a pain state
+    public virtual bool DodgeBehaviour(){
+        var newState = state.Process(this);
+        if(newState != null){
+            SetState(newState);
+        }
+        return state is CombatantStatePain;
     }
 
     public override int TakeDamage(int incomingDamage, Vector2 knockback){
@@ -45,6 +42,4 @@ public class EnemyCombatant : Combatant
         inPainState = true;
         return dmg;
     }
-
-    
 }

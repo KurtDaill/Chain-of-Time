@@ -21,6 +21,7 @@ public class Battle : Node
     {
         commandList = new List<BattleCommand>();
         activeCombatants[0] = (PlayerCombatant)GetNode("BattlePlayer");
+        activeCombatants[3] = (EnemyCombatant)GetNode("Polymorphor");
         battleSpots[0] = (Node2D) GetNode("PositionsMap/Hero1");
         battleSpots[1] = (Node2D) GetNode("PositionsMap/Hero2");
         battleSpots[2] = (Node2D) GetNode("PositionsMap/Hero3");

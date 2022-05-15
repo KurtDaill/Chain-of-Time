@@ -8,6 +8,7 @@ public abstract class Combatant : KinematicBody2D {
     protected CombatantState newState = null;
     protected AnimatedSprite sprite;
     protected String queuedAnimation = null;
+
     protected int armor = 0;
 
     //Equals 1 while facing right, -1 while facing left, used in calculations dependent on character's facing
@@ -58,10 +59,7 @@ public abstract class Combatant : KinematicBody2D {
     public virtual int TakeDamage(int incomingDamage, Vector2 knockback){
         int damage = Math.Max(0, incomingDamage - armor);
         hitPoints -= damage;
-        //TODO Damage Numbers and other effects
-        knockback *= (1-knockbackResist);
-        hSpeed += knockback.x;
-        vSpeed += knockback.y;
+        SetState(new CombatantStatePain(this, (knockback *(1-knockbackResist)), incomingDamage));
         return damage;
     }
 
