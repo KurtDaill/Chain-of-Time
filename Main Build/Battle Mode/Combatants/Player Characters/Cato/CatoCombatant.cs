@@ -3,16 +3,12 @@ using System;
 
 public class CatoCombatant : PlayerCombatant
 {
-    private int comboTimer = 0;
-    private bool attackLocked;
-
     //How many frames does the player have to wait between their first and second attack
     [Export]
-    public int secondAttackTimer;
-
+    public int secondAttackTimer = 10;
     //At what frame does the player have to throw their second attack at in order to get extra damage (a "Critical")
     [Export]
-    public int secondAttackCriticalCutoff;
+    public int secondAttackCriticalCutoff = 15;
     public override bool MoveAndAttack(EnemyCombatant[] targets, int[] damageRecord)
     {
             if(state is CombatantStateExit) return true;

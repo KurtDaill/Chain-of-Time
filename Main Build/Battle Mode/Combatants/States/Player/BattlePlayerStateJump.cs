@@ -16,7 +16,7 @@ public class PlayerCombatantStateJump : CombatantState
     public override void Enter(Combatant combatant, CombatantState lastState)
     {
         PlayerCombatant player = (PlayerCombatant) combatant;
-        player.SetAnim("Jump");
+        player.SetSprite("Jump");
         player.rightFace = (player.hSpeed >= 0);
         player.vSpeed -= player.jumpForce;
         player.setNewHitbox("Standing Box");   

@@ -27,13 +27,13 @@ public class PlayerCombatantStateSlide : CombatantState
         string animation = player.GetAnimatedSprite().Animation;
         if(animation == "Slide Start"){          
             player.facing = Math.Sign(player.hSpeed);
-            player.SetAnim("Slide");
+            player.SetSprite("Slide");
         }
     }
 
     public override void Enter(Combatant player, CombatantState lastState)
     {
         player.facing = Math.Sign(player.hSpeed);
-        player.SetAnim("Slide Start");
+        player.SetSprite("Slide Start");
     }
 }

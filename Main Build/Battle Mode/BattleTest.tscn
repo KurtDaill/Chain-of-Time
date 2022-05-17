@@ -247,4 +247,4 @@ shape = SubResource( 1 )
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Polymorphor" parent="." instance=ExtResource( 19 )]
-position = Vector2( 161.172, 5.70255 )
+position = Vector2( 98, 6 )

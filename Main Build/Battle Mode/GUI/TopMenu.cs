@@ -4,7 +4,6 @@ using System;
 public class TopMenu : BattleMenu
 {
     //TODO Highlight Animations
-    //TODO Highlight Selector
 
     [Export]
     TextureRect[] menuTabs = new TextureRect[5];

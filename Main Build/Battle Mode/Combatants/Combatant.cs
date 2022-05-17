@@ -82,12 +82,9 @@ public abstract class Combatant : KinematicBody2D {
         return true;
     }
     
-    //TODO retrofit states to use set sprite
-    //TODO refactor code to properly handle
-    public void setSprite(String newSprite, int scaling = 1){
+    public void SetSprite(String newSprite, int scaling = 1){
         sprite.Animation = newSprite;
         sprite.Scale = new Vector2(scaling, 1);
-        //sprite.Scale = new Vector2(scaling, 1);
         facing = scaling;
     }
 
@@ -105,7 +102,7 @@ public abstract class Combatant : KinematicBody2D {
         if(state != null) 
         state.HandleAnimationTransition(this);
         else if(queuedAnimation != null){
-            setSprite(queuedAnimation);
+            SetSprite(queuedAnimation);
             queuedAnimation = null;
         }
         else 
@@ -125,10 +122,6 @@ public abstract class Combatant : KinematicBody2D {
                 return;
             } 
         }
-    }
-
-    public void SetAnim(string anim){
-        sprite.Animation = anim;
     }
 
     public void SetState(CombatantState newState){

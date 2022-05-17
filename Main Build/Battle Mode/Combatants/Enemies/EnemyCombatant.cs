@@ -21,8 +21,7 @@ public class EnemyCombatant : Combatant
 
     public override void _Process(float delta)
     {
-        //TODO implement a minimum painState timer?
-        //TODO Standardize Enemy Animation Control
+
     }
 
     //Ran every frame while a player is attacking!
@@ -36,7 +35,6 @@ public class EnemyCombatant : Combatant
     }
 
     public override int TakeDamage(int incomingDamage, Vector2 knockback){
-        //TODO Damage Numbers, Hit Animation, knockback
         int dmg = base.TakeDamage(incomingDamage, knockback);
         GD.Print(Name + " hit! : " + dmg + " Damage Dealt!");
         inPainState = true;

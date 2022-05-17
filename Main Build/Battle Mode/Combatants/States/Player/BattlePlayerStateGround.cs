@@ -4,7 +4,7 @@ using System;
 public class PlayerCombatantStateGround : CombatantState {
 
     public override CombatantState Process(Combatant combatant){
-        PlayerCombatant player = (PlayerCombatant) combatant; //TODO tidy this up
+        PlayerCombatant player = (PlayerCombatant) combatant; //TODO tidy this up?
         if(Input.IsActionPressed("ui_down")){
             if(Math.Abs(player.hSpeed) > 0) return new PlayerCombatantStateSlide();
             return new PlayerCombatantStateCrouch();
@@ -28,11 +28,11 @@ public class PlayerCombatantStateGround : CombatantState {
 
         if(player.AmIFlying()) player.vSpeed += player.gravity;
         else player.vSpeed = 0;
-        //Animations (Running while moving, Idle while standing) TODO make this conditional less stupid
+        //Animations (Running while moving, Idle while standing) TODO add a "Landing Run" Animation 
         if(player.hSpeed == 0 && player.GetAnimatedSprite().Animation != "Landing"){
-            player.setSprite("Idle");
+            player.SetSprite("Idle");
         }else if(player.hSpeed != 0 && player.GetAnimatedSprite().Animation != "Slide Recovery" && player.GetAnimatedSprite().Animation != "Landing"){
-            player.setSprite("Run");
+            player.SetSprite("Run");
         }
         if(player.GetAnimatedSprite().Animation != "Landing") player.MoveAndSlide(new Vector2(player.hSpeed, player.vSpeed));
         player.rightFace = (player.hSpeed >= 0);
@@ -42,10 +42,10 @@ public class PlayerCombatantStateGround : CombatantState {
     public override void HandleAnimationTransition(Combatant player){
         string animation = player.GetAnimatedSprite().Animation;
         if(animation == "Landing"){
-            player.setSprite("Idle");
+            player.SetSprite("Idle");
         }
         if(animation == "Slide Recovery"){
-            player.setSprite("Run");
+            player.SetSprite("Run");
             player.GetAnimatedSprite().Frame = 1;
         }
     }
@@ -54,9 +54,9 @@ public class PlayerCombatantStateGround : CombatantState {
     {
         string lastStateName = lastState.GetType().Name;
         if(lastStateName == "PlayerCombatantStateSlide"){
-            player.setSprite("Slide Recovery");
+            player.SetSprite("Slide Recovery");
         }else if(lastStateName == "PlayerCombatantStateAirborne"){
-            player.setSprite("Landing");
+            player.SetSprite("Landing");
         }
         player.setNewHitbox("Standing Box");   
     }

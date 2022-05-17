@@ -12,10 +12,11 @@ public class CatoStateAttackTwo : CombatantState {
 
     private float knockbackStrength = 150;
 
+    //TODO Implement Critical Hits
     public override void Enter(Combatant player, CombatantState lastState)
     {
         base.Enter(player, lastState);
-        player.setSprite("Attack Two");
+        player.SetSprite("Attack Two");
         this.player = (PlayerCombatant) player;
     }
     public CatoStateAttackTwo(int[] dr, EnemyCombatant[] tar){

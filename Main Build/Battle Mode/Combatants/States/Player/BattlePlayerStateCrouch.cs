@@ -14,6 +14,6 @@ public class PlayerCombatantStateCrouch : CombatantState
     public override void Enter(Combatant player, CombatantState lastState)
     {
         player.setNewHitbox("Crouch Box");
-        player.setSprite("Crouch");
+        player.SetSprite("Crouch");
     }
 }

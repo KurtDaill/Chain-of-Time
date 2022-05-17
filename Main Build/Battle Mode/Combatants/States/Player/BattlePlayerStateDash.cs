@@ -26,10 +26,10 @@ public class PlayerCombatantStateDash : CombatantState
         PlayerCombatant player = (PlayerCombatant) combatant;
         if(Input.IsActionPressed("ui_left") || player.hSpeed < 0){ //Turn this into an "on enter" in dashing
                 player.hSpeed -= player.dashBoost;
-                player.SetAnim("Dash");  
+                player.SetSprite("Dash");  
             }else{
                 player.hSpeed += player.dashBoost;
-                player.SetAnim("Dash");  
+                player.SetSprite("Dash");  
         }
         player.setNewHitbox("Standing Box");   
     }

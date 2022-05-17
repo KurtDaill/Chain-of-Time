@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 public class CatoStateAttackOne : CombatantState {
-
+    //TODO: Should transition to something else rather than looping when complete
     int[] damageRecord;
     EnemyCombatant[] targets;
 
@@ -10,7 +10,6 @@ public class CatoStateAttackOne : CombatantState {
     Godot.PackedScene hitboxResource = (PackedScene) GD.Load("res://Battle Mode/Combatants/Player Characters/Cato/Cato Atk 1 Hitbox.tscn");
 
     bool attackLocked = false;
-    int frameDelayToAttackTwo = 10;
     int frameCounter = 0;
 
     int knockbackStrength = 100;
@@ -19,7 +18,7 @@ public class CatoStateAttackOne : CombatantState {
     public override void Enter(Combatant player, CombatantState lastState)
     {
         base.Enter(player, lastState);
-        player.setSprite("Attack One");
+        player.SetSprite("Attack One");
         this.player = (PlayerCombatant) player;
     }
     public CatoStateAttackOne(int[] dr, EnemyCombatant[] tar){
@@ -28,18 +27,18 @@ public class CatoStateAttackOne : CombatantState {
     }
 
     public override CombatantState Process(Combatant combatant){
-            PlayerCombatant player = (PlayerCombatant) combatant;
+            CatoCombatant player = (CatoCombatant) combatant;
             if(player.GetAnimatedSprite().Frame == 2){
                 if(hitbox == null){
                     hitbox = (Hitbox) hitboxResource.Instance();
                     player.AddChild(hitbox);
                     hitbox.SetDamage(player.strength);
-                    hitbox.SetKnockback(new Vector2(player.facing, -1) * knockbackStrength);
+                    hitbox.SetKnockback(new Vector2(player.facing, -.5F) * knockbackStrength);
                     return null;
                 }
             }
             if(Input.IsActionJustPressed("com_atk") && !attackLocked){
-                if(frameCounter < frameDelayToAttackTwo){
+                if(frameCounter < player.secondAttackTimer){
                     attackLocked = true;
                 }
                 else{

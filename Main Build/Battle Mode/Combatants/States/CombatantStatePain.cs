@@ -10,7 +10,6 @@ public class CombatantStatePain : CombatantState {
     private int damageTaken;
 
     
-    //TODO Damage Numbers and other effects
     public CombatantStatePain(Combatant parent, Vector2 netKnockback, int damage,  int minimumFrames = 20){
         this.minimumFrames = minimumFrames;
         parent.hSpeed = netKnockback.x;
@@ -20,6 +19,13 @@ public class CombatantStatePain : CombatantState {
     }
 
     public CombatantStatePain(){}
+
+    public override void Enter(Combatant combatant, CombatantState lastState)
+    {
+        //TODO Move character out of Hit React when appropriate (base off of damage taken?)
+        combatant.SetSprite("HitReactEnter");
+    }
+    
 
     public override CombatantState Process(Combatant parent){
         /*
@@ -39,5 +45,10 @@ public class CombatantStatePain : CombatantState {
         }
         
         return null;
+    }
+
+    public override void HandleAnimationTransition(Combatant combatant)
+    {
+        combatant.SetSprite("HitReact", combatant.facing);
     }
 }

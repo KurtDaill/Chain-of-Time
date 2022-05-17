@@ -12,7 +12,6 @@ public class AttackMenu : BattleMenu
         if(input == MenuInput.Back){
             return parentGUI.lastMenu;
         }else if(input == MenuInput.Select){
-            //TODO Reimplement this!
             parentGUI.EnterCommand(new BattleCommand [] {new PlayerAttacks((PlayerCombatant)parentGUI.parentBattle.activeCombatants[0])});
         }
         return null;
