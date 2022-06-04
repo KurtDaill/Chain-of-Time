@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-c1b821071cdc68db1d2fabf722077eeb.stex"
+path="res://.import/Cato Landing to Run.png-d8ce4c591bfeb620f18e91c66c306a78.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PRO 2 Assets/icon.png"
-dest_files=[ "res://.import/icon.png-c1b821071cdc68db1d2fabf722077eeb.stex" ]
+source_file="res://Art/Cato Landing to Run.png"
+dest_files=[ "res://.import/Cato Landing to Run.png-d8ce4c591bfeb620f18e91c66c306a78.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
