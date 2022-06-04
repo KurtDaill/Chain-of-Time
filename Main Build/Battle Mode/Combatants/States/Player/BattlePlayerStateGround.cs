@@ -29,18 +29,37 @@ public class PlayerCombatantStateGround : CombatantState {
         if(player.AmIFlying()) player.vSpeed += player.gravity;
         else player.vSpeed = 0;
         //Animations (Running while moving, Idle while standing) TODO add a "Landing Run" Animation 
+        /*
         if(player.hSpeed == 0 && player.GetAnimatedSprite().Animation != "Landing"){
             player.SetSprite("Idle");
-        }else if(player.hSpeed != 0 && player.GetAnimatedSprite().Animation != "Slide Recovery" && player.GetAnimatedSprite().Animation != "Landing"){
+        }else if(player.hSpeed != 0 && player.GetAnimatedSprite().Animation != "Slide Recovery"){
             player.SetSprite("Run");
         }
         if(player.GetAnimatedSprite().Animation != "Landing") player.MoveAndSlide(new Vector2(player.hSpeed, player.vSpeed));
-        player.rightFace = (player.hSpeed >= 0);
+        */
+        if(player.GetAnimatedSprite().Animation == "Run" || player.GetAnimatedSprite().Animation == "Idle"){
+            if(player.hSpeed == 0){
+                player.SetSprite("Idle");
+            }else if(player.hSpeed != 0){
+                player.SetSprite("Run");
+            }   
+        }else if(player.GetAnimatedSprite().Animation == "Landing" || player.GetAnimatedSprite().Animation == "Landing to Run"){
+            if(player.hSpeed == 0){
+                player.SetSprite("Landing");
+            }else if(player.hSpeed != 0){
+                player.SetSprite("Landing to Run");
+            }   
+        }
+        //player.rightFace = (player.hSpeed >= 0);
+        player.MoveAndSlide(new Vector2(player.hSpeed, player.vSpeed));
         return null;
     }
 
     public override void HandleAnimationTransition(Combatant player){
         string animation = player.GetAnimatedSprite().Animation;
+        if(animation == "Landing to Run"){
+            player.SetSprite("Idle");
+        }
         if(animation == "Landing"){
             player.SetSprite("Idle");
         }
