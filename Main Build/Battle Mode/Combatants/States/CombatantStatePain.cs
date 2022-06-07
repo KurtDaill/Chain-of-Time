@@ -49,6 +49,6 @@ public class CombatantStatePain : CombatantState {
 
     public override void HandleAnimationTransition(Combatant combatant)
     {
-        combatant.SetSprite("HitReact", combatant.facing);
+        combatant.SetSprite("HitReact");
     }
 }

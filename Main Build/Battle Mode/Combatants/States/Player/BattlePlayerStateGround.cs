@@ -37,12 +37,14 @@ public class PlayerCombatantStateGround : CombatantState {
         }
         if(player.GetAnimatedSprite().Animation != "Landing") player.MoveAndSlide(new Vector2(player.hSpeed, player.vSpeed));
         */
-        if(player.GetAnimatedSprite().Animation == "Run" || player.GetAnimatedSprite().Animation == "Idle"){
+        if(player.GetAnimatedSprite().Animation == "Run" || player.GetAnimatedSprite().Animation == "Run L" || player.GetAnimatedSprite().Animation == "Idle"){
             if(player.hSpeed == 0){
                 player.SetSprite("Idle");
-            }else if(player.hSpeed != 0){
+            }else if(player.hSpeed > 0){
                 player.SetSprite("Run");
-            }   
+            }else if(player.hSpeed < 0){
+                player.SetSprite("Run L");
+            }
         }else if(player.GetAnimatedSprite().Animation == "Landing" || player.GetAnimatedSprite().Animation == "Landing to Run"){
             if(player.hSpeed == 0){
                 player.SetSprite("Landing");

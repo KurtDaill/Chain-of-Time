@@ -1,0 +1,21 @@
+{
+	"color": "#ffffffff",
+	"description": "",
+	"display_name": "Cato",
+	"display_name_bool": true,
+	"id": "character-1654566662.json",
+	"mirror_portraits": false,
+	"name": "Cato",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://Art/Cato Portrait.png"
+		}
+	],
+	"scale": 100,
+	"theme": ""
+}

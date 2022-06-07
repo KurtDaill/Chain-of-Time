@@ -82,10 +82,18 @@ public abstract class Combatant : KinematicBody2D {
         return true;
     }
     
-    public void SetSprite(String newSprite, int scaling = 1){
-        sprite.Animation = newSprite;
-        sprite.Scale = new Vector2(scaling, 1);
-        facing = scaling;
+    public void SetSprite(String newSprite, bool overrideFacing = false){
+        if(facing == -1 && !overrideFacing){
+            foreach(String anim in sprite.Frames.GetAnimationNames()){
+                if(anim == newSprite + " L"){
+                    sprite.Animation = newSprite + " L";
+                    return;
+                }
+            sprite.Animation = newSprite; //Defaults to right facing sprite if no left facing sprite exists.
+            }
+        }else{
+            sprite.Animation = newSprite;
+        }
     }
 
     public void queueSprite(string queueMe){

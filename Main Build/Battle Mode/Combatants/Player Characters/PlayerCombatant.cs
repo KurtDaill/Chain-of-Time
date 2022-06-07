@@ -39,7 +39,11 @@ public abstract class PlayerCombatant : Combatant
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
-
+        if(hSpeed > 0){
+            facing = 1;
+        }else if (hSpeed < 0){
+            facing = -1;
+        }
     }
 
     public virtual void Move()
