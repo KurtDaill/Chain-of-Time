@@ -1,0 +1,475 @@
+[gd_scene load_steps=56 format=2]
+
+[ext_resource path="res://Art/Cato Master Sprite Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Art/Test Sprite.png" type="Texture" id=2]
+[ext_resource path="res://Art/3D Scene Test 2D-Sheet.png" type="Texture" id=3]
+[ext_resource path="res://Art/Test Floor Texture.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=5]
+resource_name = "Airborne Down"
+length = 0.25
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 43, 45 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Airborne Transition"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 41, 44 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Airborne Up"
+length = 0.25
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 40, 41 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Attack 1"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 48, 60 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Attack 2"
+length = 1.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 61, 76 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 23 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Jump"
+length = 0.32
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.31 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 38, 41 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "Landing"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 45, 47 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "Landing to Run"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 101, 104 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "Run"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 77, 89 ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "Run L"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 89, 101 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Slide "
+length = 0.25
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30, 32 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Slide End"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 32, 36 ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "Slide Start"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 27, 30 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "Airborne Down"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "Airborne Transition"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "Airborne Up"
+
+[sub_resource type="AnimationNodeAnimation" id=28]
+animation = "Attack 1"
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "Attack 2"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "Jump"
+
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "Landing to Run"
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "Landing"
+
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "Run L"
+
+[sub_resource type="AnimationNodeAnimation" id=33]
+animation = "Run"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=34]
+blend_point_0/node = SubResource( 32 )
+blend_point_0/pos = -0.01
+blend_point_1/node = SubResource( 33 )
+blend_point_1/pos = 0.01
+snap = 0.01
+value_label = "runDir"
+
+[sub_resource type="AnimationNodeBlendTree" id=35]
+nodes/Direction/node = SubResource( 34 )
+nodes/Direction/position = Vector2( 360, 100 )
+nodes/output/position = Vector2( 640, 100 )
+node_connections = [ "output", 0, "Direction" ]
+
+[sub_resource type="AnimationNodeAnimation" id=36]
+animation = "Slide "
+
+[sub_resource type="AnimationNodeAnimation" id=37]
+animation = "Slide End"
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "Slide Start"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+advance_condition = "isFalling"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+advance_condition = "onGround"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=45]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=46]
+advance_condition = "isMoving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=47]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=48]
+advance_condition = "isNotMoving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=49]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=50]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=51]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=52]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=53]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=3]
+"states/Airborne Down/node" = SubResource( 18 )
+"states/Airborne Down/position" = Vector2( 157, 81 )
+"states/Airborne Transition/node" = SubResource( 19 )
+"states/Airborne Transition/position" = Vector2( 290, -8 )
+"states/Airborne Up/node" = SubResource( 20 )
+"states/Airborne Up/position" = Vector2( 521, -15 )
+"states/Attack 1/node" = SubResource( 28 )
+"states/Attack 1/position" = Vector2( 565, 176 )
+"states/Attack 2/node" = SubResource( 29 )
+"states/Attack 2/position" = Vector2( 565, 270 )
+states/Idle/node = SubResource( 2 )
+states/Idle/position = Vector2( 351, 184 )
+states/Jump/node = SubResource( 21 )
+states/Jump/position = Vector2( 521, 81 )
+states/Landing/node = SubResource( 31 )
+states/Landing/position = Vector2( 351, 81 )
+"states/Landing to Run/node" = SubResource( 30 )
+"states/Landing to Run/position" = Vector2( 157, 270 )
+states/Run/node = SubResource( 35 )
+states/Run/position = Vector2( 351, 348 )
+"states/Slide /node" = SubResource( 36 )
+"states/Slide /position" = Vector2( -34, 184 )
+"states/Slide End/node" = SubResource( 37 )
+"states/Slide End/position" = Vector2( -34, 270 )
+"states/Start Slide/node" = SubResource( 38 )
+"states/Start Slide/position" = Vector2( -34, 81 )
+transitions = [ "Idle", "Jump", SubResource( 24 ), "Jump", "Airborne Up", SubResource( 25 ), "Airborne Up", "Airborne Transition", SubResource( 26 ), "Airborne Transition", "Airborne Down", SubResource( 27 ), "Airborne Down", "Landing", SubResource( 39 ), "Landing", "Idle", SubResource( 40 ), "Idle", "Attack 1", SubResource( 41 ), "Attack 1", "Attack 2", SubResource( 42 ), "Attack 2", "Idle", SubResource( 43 ), "Attack 1", "Idle", SubResource( 44 ), "Airborne Down", "Landing to Run", SubResource( 45 ), "Idle", "Run", SubResource( 46 ), "Landing to Run", "Run", SubResource( 47 ), "Run", "Idle", SubResource( 48 ), "Idle", "Start Slide", SubResource( 49 ), "Start Slide", "Slide ", SubResource( 50 ), "Slide ", "Slide End", SubResource( 51 ), "Slide End", "Idle", SubResource( 52 ), "Slide End", "Run", SubResource( 53 ) ]
+start_node = "Idle"
+graph_offset = Vector2( -283, -79 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=4]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.30394, 4.53265, -7.42894 )
+pixel_size = 0.1
+shaded = true
+alpha_cut = 2
+texture = ExtResource( 1 )
+hframes = 12
+vframes = 9
+frame = 43
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite3D"]
+"anims/Airborne Down" = SubResource( 5 )
+"anims/Airborne Transition" = SubResource( 6 )
+"anims/Airborne Up" = SubResource( 7 )
+"anims/Attack 1" = SubResource( 8 )
+"anims/Attack 2" = SubResource( 9 )
+anims/Idle = SubResource( 1 )
+anims/Jump = SubResource( 11 )
+anims/Landing = SubResource( 12 )
+"anims/Landing to Run" = SubResource( 13 )
+anims/Run = SubResource( 14 )
+"anims/Run L" = SubResource( 15 )
+"anims/Slide " = SubResource( 16 )
+"anims/Slide End" = SubResource( 10 )
+"anims/Slide Start" = SubResource( 17 )
+
+[node name="AnimationTree" type="AnimationTree" parent="Sprite3D"]
+tree_root = SubResource( 3 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 4 )
+parameters/conditions/isFalling = false
+parameters/conditions/isMoving = false
+parameters/conditions/isNotMoving = false
+parameters/conditions/onGround = false
+parameters/Run/Direction/blend_position = 0.0277778
+
+[node name="Object" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.86853, 3.7443, -12.3228 )
+pixel_size = 0.1
+shaded = true
+alpha_cut = 2
+texture = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83128, 5.0052, 13.4728 )
+current = true
+fov = 60.0
+size = 1.78016
+far = 100000.0
+
+[node name="CSGCylinder" type="CSGCylinder" parent="."]
+transform = Transform( 4, 0, 0, 0, 10, 0, 0, 0, 4, -11.7264, 5.35481, -7.10791 )
+visible = false
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 0.788011, 0, 0.615662, 0, 1, 0, -0.615662, 0, 0.788011, 1.4167, 1.38768, 2.35277 )
+visible = false
+shadow_enabled = true
+shadow_bias = 0.04
+spot_range = 11.5
+spot_angle = 44.1
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.570427, 0.756201, 0.320583, -0.821348, 0.525182, 0.222645, 0, -0.390313, 0.920682, 0, 0, 0 )
+light_energy = 0.5
+light_indirect_energy = 5.0
+shadow_enabled = true
+shadow_bias = 0.07
+shadow_contact = 0.81
+
+[node name="Railing" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39746, 0 )
+pixel_size = 0.1
+alpha_cut = 2
+texture = ExtResource( 3 )
+
+[node name="Railing2" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39746, -14.2183 )
+pixel_size = 0.1
+alpha_cut = 2
+texture = ExtResource( 3 )
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0 )
+pixel_size = 0.1
+axis = 1
+texture = ExtResource( 4 )
