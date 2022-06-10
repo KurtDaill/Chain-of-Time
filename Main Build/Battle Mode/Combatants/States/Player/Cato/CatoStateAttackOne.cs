@@ -18,7 +18,6 @@ public class CatoStateAttackOne : CombatantState {
     public override void Enter(Combatant player, CombatantState lastState)
     {
         base.Enter(player, lastState);
-        player.SetSprite("Attack One");
         this.player = (PlayerCombatant) player;
     }
     public CatoStateAttackOne(int[] dr, EnemyCombatant[] tar){
@@ -28,15 +27,15 @@ public class CatoStateAttackOne : CombatantState {
 
     public override CombatantState Process(Combatant combatant){
             CatoCombatant player = (CatoCombatant) combatant;
-            if(player.GetAnimatedSprite().Frame == 2){
+            /*if(player.GetAnimatedSprite().Frame == 2){
                 if(hitbox == null){
                     hitbox = (Hitbox) hitboxResource.Instance();
                     player.AddChild(hitbox);
                     hitbox.SetDamage(player.strength);
-                    hitbox.SetKnockback(new Vector2(player.facing, -.5F) * knockbackStrength);
+                    hitbox.SetKnockback(new Vector3(player.facing, -.5F, 0) * knockbackStrength);
                     return null;
                 }
-            }
+            } TODO: Replace This*/
             if(Input.IsActionJustPressed("com_atk") && !attackLocked){
                 if(frameCounter < player.secondAttackTimer){
                     attackLocked = true;

@@ -10,7 +10,7 @@ public class CombatantStatePain : CombatantState {
     private int damageTaken;
 
     
-    public CombatantStatePain(Combatant parent, Vector2 netKnockback, int damage,  int minimumFrames = 20){
+    public CombatantStatePain(Combatant parent, Vector3 netKnockback, int damage,  int minimumFrames = 20){
         this.minimumFrames = minimumFrames;
         parent.hSpeed = netKnockback.x;
         parent.vSpeed = netKnockback.y;
@@ -22,8 +22,7 @@ public class CombatantStatePain : CombatantState {
 
     public override void Enter(Combatant combatant, CombatantState lastState)
     {
-        //TODO Move character out of Hit React when appropriate (base off of damage taken?)
-        combatant.SetSprite("HitReactEnter");
+        //TODO Add hit react animations
     }
     
 
@@ -34,7 +33,7 @@ public class CombatantStatePain : CombatantState {
         */
         framesPassed ++;
         parent.hSpeed = Math.Sign(parent.hSpeed) * Math.Max(0, (Math.Abs(parent.hSpeed) - parent.knockbackDrag));
-        parent.MoveAndSlide(new Vector2(parent.hSpeed, parent.vSpeed));
+        parent.MoveAndSlide(new Vector3(parent.hSpeed, parent.vSpeed,0));
         if(parent.AmIFlying()){
             parent.vSpeed += parent.knockbackGravity;
             return null;
@@ -45,10 +44,5 @@ public class CombatantStatePain : CombatantState {
         }
         
         return null;
-    }
-
-    public override void HandleAnimationTransition(Combatant combatant)
-    {
-        combatant.SetSprite("HitReact");
     }
 }

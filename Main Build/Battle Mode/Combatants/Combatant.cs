@@ -1,14 +1,13 @@
 using Godot;
 using System;
 
-public abstract class Combatant : KinematicBody2D {
+public abstract class Combatant : KinematicBody {
     private int hitPoints;
     private int maxHP;
     protected CombatantState state = new CombatantStateStandby();
-    protected CombatantState newState = null;
-    protected AnimatedSprite sprite;
-    protected String queuedAnimation = null;
-
+    protected CombatantState newState;
+    public AnimationTree animTree;
+    public AnimationNodeStateMachinePlayback animSM;
     protected int armor = 0;
 
     //Equals 1 while facing right, -1 while facing left, used in calculations dependent on character's facing
@@ -56,7 +55,7 @@ public abstract class Combatant : KinematicBody2D {
     }
 
     //Returns the ammount of damage the combatant takes
-    public virtual int TakeDamage(int incomingDamage, Vector2 knockback){
+    public virtual int TakeDamage(int incomingDamage, Vector3 knockback){
         int damage = Math.Max(0, incomingDamage - armor);
         hitPoints -= damage;
         SetState(new CombatantStatePain(this, (knockback *(1-knockbackResist)), incomingDamage));
@@ -72,53 +71,18 @@ public abstract class Combatant : KinematicBody2D {
             hitPoints = maxHP;
         }
     }
-
+    public virtual void updateAnimationTree(){
+        animTree.Set("parameters/conditions/isFalling", vSpeed < 10);
+        animTree.Set("parameters/conditions/isMoving", hSpeed != 0);
+        animTree.Set("parameters/conditions/isNotMoving", hSpeed == 0);
+        animTree.Set("parameters/conditions/isOnGround", IsOnFloor());
+        animTree.Set("parameters/Run/direction/blend_position", Math.Sign(hSpeed)); 
+    }
     //Returns true when the player is in the air
     public bool AmIFlying(){
-        if(GetSlideCount() == 0) return true;
-
-        KinematicCollision2D kc = GetSlideCollision(0);
-        if(kc.Collider != null) return false;
-        return true;
+        return !IsOnFloor();
     }
-    
-    public void SetSprite(String newSprite, bool overrideFacing = false){
-        if(facing == -1 && !overrideFacing){
-            foreach(String anim in sprite.Frames.GetAnimationNames()){
-                if(anim == newSprite + " L"){
-                    sprite.Animation = newSprite + " L";
-                    return;
-                }
-            sprite.Animation = newSprite; //Defaults to right facing sprite if no left facing sprite exists.
-            }
-        }else{
-            sprite.Animation = newSprite;
-        }
-    }
-
-    public void queueSprite(string queueMe){
-        queuedAnimation = queueMe;
-    }
-
-    public AnimatedSprite GetAnimatedSprite(){
-        return sprite;
-    }
-
-    //Called whenever an animation ends, and calls a function in the state that handles any new animations that have to play
-    //For Example: The Airborne state will transition from the "Up" to "Down" animation once the player begins falling
-    protected void HandleAnimationTransition(){
-        if(state != null) 
-        state.HandleAnimationTransition(this);
-        else if(queuedAnimation != null){
-            SetSprite(queuedAnimation);
-            queuedAnimation = null;
-        }
-        else 
-            return;
-    }
-
-
-
+    /*
     public void setNewHitbox(string newBox){
         CollisionShape2D curBox;
         Godot.Collections.Array boxes = hitbox.GetChildren();
@@ -131,7 +95,7 @@ public abstract class Combatant : KinematicBody2D {
             } 
         }
     }
-
+    */
     public void SetState(CombatantState newState){
         state.Exit();
         CombatantState temp = state;

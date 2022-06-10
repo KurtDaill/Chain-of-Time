@@ -9,16 +9,11 @@ public class EnemyCombatant : Combatant
 
     public override void _Ready()
     {
-        hitbox = (Area2D) GetNode("Hitbox");
-        if(hitbox == null){
-            throw new NotImplementedException();
-        }
-        sprite = (AnimatedSprite) GetNode("AnimatedSprite");
-        if(sprite == null){
-            throw new NotImplementedException();
-        }
+        //hitbox = (Area2D) GetNode("Hitbox");
+        //if(hitbox == null){
+            //throw new NotImplementedException();
+        //}
     }
-
     public override void _Process(float delta)
     {
 
@@ -34,7 +29,7 @@ public class EnemyCombatant : Combatant
         return state is CombatantStatePain;
     }
 
-    public override int TakeDamage(int incomingDamage, Vector2 knockback){
+    public override int TakeDamage(int incomingDamage, Vector3 knockback){
         int dmg = base.TakeDamage(incomingDamage, knockback);
         GD.Print(Name + " hit! : " + dmg + " Damage Dealt!");
         inPainState = true;

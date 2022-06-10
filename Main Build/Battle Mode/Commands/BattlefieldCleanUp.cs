@@ -6,8 +6,8 @@ public class BattlefieldCleanUp : BattleCommand
 {
     private bool readyForSlide = false;
     private float deltaT = 0;
-    private Vector2[] originalPos = new Vector2[6];
-    private Vector2[] targetPos = new Vector2[6];
+    private Vector3[] originalPos = new Vector3[6];
+    private Vector3[] targetPos = new Vector3[6];
     public override void Execute()
     {
         /*
@@ -25,12 +25,13 @@ public class BattlefieldCleanUp : BattleCommand
                 if(comb.AmIFlying()){
                     readyForSlide = false;
                     comb.vSpeed += comb.gravity;
-                    comb.MoveAndSlide(new Vector2(0, comb.vSpeed));
+                    comb.MoveAndSlide(new Vector3(0, comb.vSpeed,0));
                 }else{
                     comb.vSpeed = 0;
                 }
             }
-        } else{   //All Combatants should be on the ground
+            
+        } /*else{   //All Combatants should be on the ground
             if(!Array.Exists(originalPos, (x => x != null))){ //If every entry in original position is null...
                 for(int i = 0; i < parent.activeCombatants.Length; i++){ //Populate both original and target position arrays
                     if(parent.activeCombatants[i] != null){ 
@@ -42,10 +43,11 @@ public class BattlefieldCleanUp : BattleCommand
             deltaT += parent.GetProcessDeltaTime();
             for(int i = 0; i < parent.activeCombatants.Length; i++){
                 if(originalPos[i] != null){
-                    parent.activeCombatants[i].Position = new Vector2(Mathf.Lerp(originalPos[i].x, targetPos[i].x, Mathf.Log(deltaT)),  parent.activeCombatants[i].Position.y);
+                    parent.activeCombatants[i].Position = new Vector3(Mathf.Lerp(originalPos[i].x, targetPos[i].x, Mathf.Log(deltaT)),  parent.activeCombatants[i].Position.y,0);
                 }
             }
         }
+        */
     }
     public override void Undo()
     {

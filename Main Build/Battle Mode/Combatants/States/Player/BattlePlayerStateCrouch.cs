@@ -13,7 +13,6 @@ public class PlayerCombatantStateCrouch : CombatantState
 
     public override void Enter(Combatant player, CombatantState lastState)
     {
-        player.setNewHitbox("Crouch Box");
-        player.SetSprite("Crouch");
+        //Change Hitbox to crouch version
     }
 }

@@ -5,7 +5,7 @@ public class CombatantStateStandby : CombatantState {
 
     public override void Enter(Combatant combatant, CombatantState lastState)
     {
-        combatant.SetSprite("Idle");
+        //TODO Add Travel to 
     }
 
     public override CombatantState Process(Combatant combatant){

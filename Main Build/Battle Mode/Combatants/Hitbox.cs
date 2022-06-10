@@ -5,7 +5,7 @@ public class Hitbox : Area2D
 {
     int damage;
 
-    Vector2 knockback = Vector2.Zero;
+    Vector3 knockback = Vector3.Zero;
     public override void _Ready()
     {
 
@@ -19,11 +19,11 @@ public class Hitbox : Area2D
         return damage;
     }
 
-    public void SetKnockback(Vector2 knockback){
+    public void SetKnockback(Vector3 knockback){
         this.knockback = knockback;
     }
 
-    public Vector2 GetKnockback(){
+    public Vector3 GetKnockback(){
         return knockback;
     }
 }

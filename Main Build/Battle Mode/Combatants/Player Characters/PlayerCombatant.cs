@@ -24,16 +24,9 @@ public abstract class PlayerCombatant : Combatant
 
     public override void _Ready()
     {
-        Godot.Collections.Array children = GetChildren();
-        for(int i = 0; i < children.Count; i++){
-            if(children[i] is AnimatedSprite){
-                sprite = (AnimatedSprite) children[i];
-            }
-            if(children[i] is Area2D){
-                hitbox = (Area2D) children[i];
-            }
-        }
-        sprite.Connect("animation_finished", this, nameof(HandleAnimationTransition));
+        state = new PlayerCombatantStateGround();
+        animTree = (AnimationTree) GetNode("./AnimationTree");
+        animSM = (AnimationNodeStateMachinePlayback) animTree.Get("parameters/playback");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,6 +37,8 @@ public abstract class PlayerCombatant : Combatant
         }else if (hSpeed < 0){
             facing = -1;
         }
+        Move();
+        updateAnimationTree();
     }
 
     public virtual void Move()

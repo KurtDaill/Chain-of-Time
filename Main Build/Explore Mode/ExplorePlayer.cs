@@ -4,7 +4,7 @@ using System;
 public class ExplorePlayer : KinematicBody2D
 {
     ExplorePlayerState state = new ExplorePlayerStateFree();
-    public Vector2 velocity = new Vector2(0,0);
+    public Vector3 velocity = new Vector3(0,0,0);
     public int direction;
     public AnimatedSprite anim;
     [Export]
@@ -14,11 +14,6 @@ public class ExplorePlayer : KinematicBody2D
     {
         //Finds Relevant Children
         Godot.Collections.Array children = GetChildren();
-        for(int i = 0; i < children.Count; i++){
-            if(children[i] is AnimatedSprite){
-                anim = (AnimatedSprite) children[i];
-            }
-        }
         GetNode("/root/Game").Connect("PlayerWake", this, nameof(_on_Game_PlayerWake));
     }
 

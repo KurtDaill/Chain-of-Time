@@ -18,22 +18,12 @@ public class PlayerCombatantStateSlide : CombatantState
         if(!Input.IsActionPressed("ui_down")){
             return new PlayerCombatantStateGround();
         }
-        player.MoveAndSlide(new Vector2(player.hSpeed, player.vSpeed));
+        player.MoveAndSlide(new Vector3(player.hSpeed, player.vSpeed,0));
         return null;
    }
-
-    public override void HandleAnimationTransition(Combatant player)
-    {
-        string animation = player.GetAnimatedSprite().Animation;
-        if(animation == "Slide Start"){          
-            player.facing = Math.Sign(player.hSpeed);
-            player.SetSprite("Slide");
-        }
-    }
 
     public override void Enter(Combatant player, CombatantState lastState)
     {
         player.facing = Math.Sign(player.hSpeed);
-        player.SetSprite("Slide Start");
     }
 }

@@ -17,7 +17,7 @@ public class PlayerCombatantStateDash : CombatantState
                 return new PlayerCombatantStateGround();
             }
         }
-        player.MoveAndSlide(new Vector2(player.hSpeed, player.vSpeed));
+        player.MoveAndSlide(new Vector3(player.hSpeed, player.vSpeed,0));
         player.rightFace = (player.hSpeed >= 0);
         return null;
     }
@@ -26,11 +26,9 @@ public class PlayerCombatantStateDash : CombatantState
         PlayerCombatant player = (PlayerCombatant) combatant;
         if(Input.IsActionPressed("ui_left") || player.hSpeed < 0){ //Turn this into an "on enter" in dashing
                 player.hSpeed -= player.dashBoost;
-                player.SetSprite("Dash");  
             }else{
                 player.hSpeed += player.dashBoost;
-                player.SetSprite("Dash");  
         }
-        player.setNewHitbox("Standing Box");   
+        //player.setNewHitbox("Standing Box");   
     }
 }

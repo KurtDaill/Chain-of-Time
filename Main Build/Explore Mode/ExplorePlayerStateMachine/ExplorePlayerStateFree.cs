@@ -17,7 +17,7 @@ public class ExplorePlayerStateFree : ExplorePlayerState
         }else if(Input.IsActionPressed("ui_right")){
             deltaX = 1;
         }
-        self.velocity = new Vector2(deltaX, deltaY);
+        self.velocity = new Vector3(deltaX, deltaY,0);
         self.velocity = self.velocity.Normalized();
         
         if(Input.IsActionJustPressed("ui_accept")){
@@ -40,14 +40,14 @@ public class ExplorePlayerStateFree : ExplorePlayerState
         self.velocity *= self.moveSpeed;
 
         if(self.velocity.Length() != 0){ //If we're moving: animate the character facing that movement's direction      
-            float degrees = Mathf.Rad2Deg(Vector2.Right.AngleTo(self.velocity)); //Gets the angle of our current movement in radians, then converts to degrees
+            float degrees = Mathf.Rad2Deg(Vector3.Right.AngleTo(self.velocity)); //Gets the angle of our current movement in radians, then converts to degrees
             self.direction = (int)Mathf.Round(degrees/90);
             self.direction = WrapInteger4D(self.direction);
             self.anim.Animation = "Walk" + self.direction;
         }else{
             self.anim.Animation = "Idle" + self.direction;
         }
-        self.MoveAndSlide(self.velocity, Vector2.Zero, false, 4, 0, false);
+        //self.MoveAndSlide(self.velocity, Vector2.Zero, false, 4, 0, false);
     }
     private int WrapInteger4D(int original){
         if(original == -2) return 3;
