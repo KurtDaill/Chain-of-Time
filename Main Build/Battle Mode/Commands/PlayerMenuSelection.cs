@@ -9,7 +9,7 @@ public class PlayerMenuSelection : BattleCommand
 
     public override void Enter(Battle parent){
         this.parent = parent;
-        gui = (BattleGUI) parent.GetNode("Camera2D/BattleGUI");
+        gui = (BattleGUI) parent.GetNode(parent.GUI);
     }
     public override void Execute(){
         if(Input.IsActionJustPressed("ui_up")){

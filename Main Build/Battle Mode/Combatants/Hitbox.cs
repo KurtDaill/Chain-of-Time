@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Hitbox : Area2D
+public class Hitbox : Area
 {
     int damage;
 

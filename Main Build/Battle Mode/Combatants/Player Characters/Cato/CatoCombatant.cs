@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public class CatoCombatant : PlayerCombatant
 {
@@ -9,6 +10,37 @@ public class CatoCombatant : PlayerCombatant
     //At what frame does the player have to throw their second attack at in order to get extra damage (a "Critical")
     [Export]
     public int secondAttackCriticalCutoff = 15;
+
+    //TODO Clean up Animation Solution!
+    public override void updateAnimationTree(){
+        base.updateAnimationTree();
+        animTree.Set("parameters/conditions/isCrouching", crouching);
+        animTree.Set("parameter/conditions/isDashing", dashing);
+        animTree.Set("parameters/conditions/isNotCrouching", !crouching);
+        animTree.Set("parameter/conditions/isNotDashing", !dashing);
+    }
+    
+    public override void spawnHitbox(String requestedHitbox){//TODO Refactor Attack Data
+        switch(requestedHitbox){
+            case "AttackOne":
+                Godot.PackedScene hitboxResource = (PackedScene) GD.Load("res://Battle Mode/Combatants/Player Characters/Cato/Cato Atk 1 Hitbox.tscn");
+                var hitbox = (Hitbox) hitboxResource.Instance();
+                AddChild(hitbox);
+                hitbox.SetDamage(strength);
+                hitbox.SetKnockback(new Vector3(facing, .5F, 0) * 60);
+                hitBoxes.Add(hitbox);
+                break;
+            case "AttackTwo":
+                break;
+        }
+    }
+
+    public override void clearHitboxes(){ //Figure out how to make this visible to function tracks on animations without reimplementing it in the child object
+        foreach(Hitbox box in hitBoxes){
+            box.QueueFree();
+        }
+    }
+
     public override bool MoveAndAttack(EnemyCombatant[] targets, int[] damageRecord)
     {
             if(state is CombatantStateExit) return true;
@@ -21,7 +53,7 @@ public class CatoCombatant : PlayerCombatant
                 state.Enter(this, temp);
             }
             return false;
-        
+
         /*
             case attackStatus.PreAttack :
                 Move();

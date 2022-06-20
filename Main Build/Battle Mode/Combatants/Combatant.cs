@@ -1,14 +1,20 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public abstract class Combatant : KinematicBody {
     private int hitPoints;
     private int maxHP;
     protected CombatantState state = new CombatantStateStandby();
     protected CombatantState newState;
+    [Export]
+    public NodePath animationPlayer;
+    protected AnimationPlayer animPlayer;
     public AnimationTree animTree;
     public AnimationNodeStateMachinePlayback animSM;
+    public List<Area> hitBoxes = new List<Area>();
     protected int armor = 0;
+    public bool inPainState = false;
 
     //Equals 1 while facing right, -1 while facing left, used in calculations dependent on character's facing
     public int facing = 1;  
@@ -62,6 +68,10 @@ public abstract class Combatant : KinematicBody {
         return damage;
     }
 
+    public AnimationPlayer getAnimationPlayer(){
+        return animPlayer;
+    }
+
     public void recoverHP(int heal){
         if(heal <= 0){
             throw new NegativeHealingException();
@@ -70,13 +80,6 @@ public abstract class Combatant : KinematicBody {
         if(hitPoints >= maxHP){
             hitPoints = maxHP;
         }
-    }
-    public virtual void updateAnimationTree(){
-        animTree.Set("parameters/conditions/isFalling", vSpeed < 10);
-        animTree.Set("parameters/conditions/isMoving", hSpeed != 0);
-        animTree.Set("parameters/conditions/isNotMoving", hSpeed == 0);
-        animTree.Set("parameters/conditions/isOnGround", IsOnFloor());
-        animTree.Set("parameters/Run/direction/blend_position", Math.Sign(hSpeed)); 
     }
     //Returns true when the player is in the air
     public bool AmIFlying(){
@@ -96,6 +99,18 @@ public abstract class Combatant : KinematicBody {
         }
     }
     */
+
+    public virtual void updateAnimationTree(){
+        animTree.Set("parameters/conditions/isFalling", vSpeed < 10);
+        animTree.Set("parameters/conditions/isMoving", hSpeed != 0);
+        animTree.Set("parameters/conditions/isNotMoving", hSpeed == 0);
+        animTree.Set("parameters/conditions/isOnGround", IsOnFloor());
+        animTree.Set("parameters/" + animSM.GetCurrentNode() +"/blend_position", facing);
+        //var curNode = (AnimationNodeBlendSpace1D)animSM.GetCurrentNode();
+        //curNode.SetBlendPointPosition(facing);
+        //animTree.Set("parameters/Run/direction/blend_position", Math.Sign(hSpeed)); 
+    }
+
     public void SetState(CombatantState newState){
         state.Exit();
         CombatantState temp = state;

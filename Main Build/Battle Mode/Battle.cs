@@ -11,23 +11,26 @@ public class Battle : Node
     //Tracks Enemies that may enter in waves as active enemies are defeated;
     public List<Combatant> enemyBench = new List<Combatant>();
 
-    public Node2D[] battleSpots = new Node2D[6];
+    public Spatial[] battleSpots = new Spatial[6];
 
     [Export]
+    public NodePath GUI;
+
     public BattleGUI gui;
     private List<BattleCommand> commandList;
     private int currentCommandIndex;
     public override void _Ready()
     {
+        gui = (BattleGUI) GetNode(GUI);
         commandList = new List<BattleCommand>();
         activeCombatants[0] = (PlayerCombatant)GetNode("BattlePlayer");
         activeCombatants[3] = (EnemyCombatant)GetNode("Polymorphor");
-        battleSpots[0] = (Node2D) GetNode("PositionsMap/Hero1");
-        battleSpots[1] = (Node2D) GetNode("PositionsMap/Hero2");
-        battleSpots[2] = (Node2D) GetNode("PositionsMap/Hero3");
-        battleSpots[3] = (Node2D) GetNode("PositionsMap/Enemy1");
-        battleSpots[4] = (Node2D) GetNode("PositionsMap/Enemy2");
-        battleSpots[5] = (Node2D) GetNode("PositionsMap/Enemy3");
+        //battleSpots[0] = (Node3D) GetNode("PositionsMap/Hero1");
+        //battleSpots[1] = (Node3D) GetNode("PositionsMap/Hero2");
+        //battleSpots[2] = (Node3D) GetNode("PositionsMap/Hero3");
+        //battleSpots[3] = (Node3D) GetNode("PositionsMap/Enemy1");
+        //battleSpots[4] = (Node3D) GetNode("PositionsMap/Enemy2");
+        //battleSpots[5] = (Node3D) GetNode("PositionsMap/Enemy3");
 
         commandList.Add(new PlayerMenuSelection());
         commandList[currentCommandIndex].Enter(this);   

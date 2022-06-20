@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Hurtbox : Area2D
+public class Hurtbox : Area
 {
     Combatant parent;
     public override void _Ready()

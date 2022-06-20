@@ -3,16 +3,26 @@ using System;
 
 public class PlayerCombatantStateCrouch : CombatantState
 {
+    PlayerCombatant player;
     public override CombatantState Process(Combatant player)
     {
-        if(!Input.IsActionJustPressed("ui_down")){
+        if(!Input.IsActionPressed("ui_down")){
             return new PlayerCombatantStateGround();
+        }
+        if(Input.IsActionJustPressed("ui_up")){
+            return new PlayerCombatantStateJump();
         }
         return null;
     }
 
-    public override void Enter(Combatant player, CombatantState lastState)
+    public override void Enter(Combatant combatant, CombatantState lastState)
     {
-        //Change Hitbox to crouch version
+        player = (PlayerCombatant) combatant;
+        player.crouching = true;
+        player.animSM.Travel("Crouch");
+    }
+
+    public override void Exit(){
+        player.crouching = false;
     }
 }

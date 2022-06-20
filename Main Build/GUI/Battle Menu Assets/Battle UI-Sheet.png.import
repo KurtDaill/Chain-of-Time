@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/Battle UI-Sheet.png-f072a2f76399e9e2048e0cfbde8f3ec7.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://GUI/Battle Menu Assets/Battle UI-Sheet.png"
+dest_files=[ "res://.import/Battle UI-Sheet.png-f072a2f76399e9e2048e0cfbde8f3ec7.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

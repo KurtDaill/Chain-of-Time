@@ -3,8 +3,8 @@ using System;
 
 public class EnemyCombatant : Combatant
 {
-    
-    public bool inPainState = false;
+    [Export]
+    public NodePath AnimationTree;
     protected EnemyAttack[] attacksKnown;
 
     public override void _Ready()
@@ -13,10 +13,13 @@ public class EnemyCombatant : Combatant
         //if(hitbox == null){
             //throw new NotImplementedException();
         //}
+        animTree = (AnimationTree) GetNode(AnimationTree);
+        animSM = (AnimationNodeStateMachinePlayback) animTree.Get("parameters/playback");
+        animPlayer = (AnimationPlayer) GetNode(animationPlayer);
     }
     public override void _Process(float delta)
     {
-
+        updateAnimationTree();
     }
 
     //Ran every frame while a player is attacking!

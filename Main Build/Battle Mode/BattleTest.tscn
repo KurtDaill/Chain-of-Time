@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Battle Mode/Combatants/Player Characters/Cato/CatoCombatant.tscn" type="PackedScene" id=1]
-[ext_resource path="res://PRO 2 Assets/GroundMeta.cs" type="Script" id=2]
 [ext_resource path="res://Battle Mode/Battle.cs" type="Script" id=3]
 [ext_resource path="res://GUI/Battle Menu Assets/Menu Backboard.png" type="Texture" id=4]
 [ext_resource path="res://GUI/Battle Menu Assets/Skill Button Controller.png" type="Texture" id=5]
@@ -65,22 +64,16 @@ __meta__ = {
 }
 
 [node name="Menu Backboard" type="TextureRect" parent="Camera2D/BattleGUI"]
-margin_top = 160.008
 margin_right = 512.0
-margin_bottom = 287.008
+margin_bottom = 288.0
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Top Menu" type="Control" parent="Camera2D/BattleGUI"]
-anchor_top = 0.008
-anchor_right = 0.396
-anchor_bottom = 0.933
-margin_left = 267.0
-margin_top = 162.268
-margin_right = 307.248
-margin_bottom = 171.793
+margin_right = 512.0
+margin_bottom = 288.0
 script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -188,12 +181,8 @@ texture = ExtResource( 17 )
 
 [node name="Attack Menu" type="Control" parent="Camera2D/BattleGUI"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 0.933
-margin_left = 266.0
-margin_top = 164.0
-margin_right = -2.0
-margin_bottom = 169.296
+margin_right = 512.0
+margin_bottom = 288.0
 script = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -222,9 +211,8 @@ __meta__ = {
 }
 
 [node name="Readouts" type="Control" parent="Camera2D/BattleGUI"]
-margin_top = 160.008
-margin_right = 40.0
-margin_bottom = 200.008
+margin_right = 512.0
+margin_bottom = 288.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -238,7 +226,6 @@ texture = ExtResource( 10 )
 
 [node name="Ground" type="StaticBody2D" parent="."]
 collision_layer = 1025
-script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2( 2, 16 )

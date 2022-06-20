@@ -12,14 +12,15 @@ public class CatoStateAttackOne : CombatantState {
     bool attackLocked = false;
     int frameCounter = 0;
 
-    int knockbackStrength = 100;
     PlayerCombatant player;
 
     public override void Enter(Combatant player, CombatantState lastState)
     {
         base.Enter(player, lastState);
         this.player = (PlayerCombatant) player;
+        player.animSM.Travel("Attack 1");
     }
+
     public CatoStateAttackOne(int[] dr, EnemyCombatant[] tar){
         this.damageRecord = dr;
         this.targets = tar;
@@ -27,15 +28,6 @@ public class CatoStateAttackOne : CombatantState {
 
     public override CombatantState Process(Combatant combatant){
             CatoCombatant player = (CatoCombatant) combatant;
-            /*if(player.GetAnimatedSprite().Frame == 2){
-                if(hitbox == null){
-                    hitbox = (Hitbox) hitboxResource.Instance();
-                    player.AddChild(hitbox);
-                    hitbox.SetDamage(player.strength);
-                    hitbox.SetKnockback(new Vector3(player.facing, -.5F, 0) * knockbackStrength);
-                    return null;
-                }
-            } TODO: Replace This*/
             if(Input.IsActionJustPressed("com_atk") && !attackLocked){
                 if(frameCounter < player.secondAttackTimer){
                     attackLocked = true;
@@ -45,25 +37,13 @@ public class CatoStateAttackOne : CombatantState {
                 }
             }
             frameCounter++;
-                /*
-                var hitAreas = hurtbox.GetOverlappingAreas();
-                for(int i = 0; i < hitAreas.Count; i++){
-                    if(hitAreas[i] is EnemyCombatant){
-                        if(Array.Exists<EnemyCombatant>(targets, l => l == hitAreas[i])){
-                            var index = Array.FindIndex<EnemyCombatant>(targets, j => j == null);
-                            targets[index] = (EnemyCombatant) hitAreas[i];
-                            damageRecord[index] = targets[i].TakeDamage(player.strength);
-                        }
-                    }
-                }
-                */
             
             return null;
     }
 
     public override void Exit()
     {
-        hitbox.QueueFree();
+        
     }
 
     public override void HandleAnimationTransition(Combatant player)

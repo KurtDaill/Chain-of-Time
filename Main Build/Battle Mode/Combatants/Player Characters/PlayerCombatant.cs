@@ -1,10 +1,12 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public abstract class PlayerCombatant : Combatant
 {
     public int strength = 10;
     public bool rightFace = true;
+    protected List<Hitbox> hitboxes = new List<Hitbox>();
     [Export]
     public string character = "Cato";
     [Export]
@@ -22,11 +24,16 @@ public abstract class PlayerCombatant : Combatant
 	[Export]
 	public float dashDrag = 5F;
 
+    
+    public bool crouching = false;
+    public bool dashing = false;
+
     public override void _Ready()
     {
-        state = new PlayerCombatantStateGround();
+        state = new CombatantStateStandby();
         animTree = (AnimationTree) GetNode("./AnimationTree");
         animSM = (AnimationNodeStateMachinePlayback) animTree.Get("parameters/playback");
+        animPlayer = (AnimationPlayer) GetNode(animationPlayer);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,8 +44,19 @@ public abstract class PlayerCombatant : Combatant
         }else if (hSpeed < 0){
             facing = -1;
         }
-        Move();
         updateAnimationTree();
+    }
+
+    
+    
+
+    
+    public abstract void spawnHitbox(String requestedHitbox);
+
+    public virtual void clearHitboxes(){
+        foreach(Area box in hitBoxes){
+            box.QueueFree();
+        }
     }
 
     public virtual void Move()

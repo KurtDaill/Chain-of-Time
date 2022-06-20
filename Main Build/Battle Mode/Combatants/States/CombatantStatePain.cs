@@ -9,6 +9,8 @@ public class CombatantStatePain : CombatantState {
 
     private int damageTaken;
 
+    private Combatant subject; //TODO Refactor
+
     
     public CombatantStatePain(Combatant parent, Vector3 netKnockback, int damage,  int minimumFrames = 20){
         this.minimumFrames = minimumFrames;
@@ -16,13 +18,14 @@ public class CombatantStatePain : CombatantState {
         parent.vSpeed = netKnockback.y;
         //TODO Damage Numbers
         damageTaken = damage;
+        subject = parent;
     }
 
     public CombatantStatePain(){}
 
     public override void Enter(Combatant combatant, CombatantState lastState)
     {
-        //TODO Add hit react animations
+        combatant.inPainState = true;
     }
     
 
@@ -35,7 +38,7 @@ public class CombatantStatePain : CombatantState {
         parent.hSpeed = Math.Sign(parent.hSpeed) * Math.Max(0, (Math.Abs(parent.hSpeed) - parent.knockbackDrag));
         parent.MoveAndSlide(new Vector3(parent.hSpeed, parent.vSpeed,0));
         if(parent.AmIFlying()){
-            parent.vSpeed += parent.knockbackGravity;
+            parent.vSpeed -= parent.knockbackGravity;
             return null;
         }
         else if (framesPassed >= minimumFrames){
@@ -44,5 +47,9 @@ public class CombatantStatePain : CombatantState {
         }
         
         return null;
+    }
+
+    public override void Exit(){
+        subject.inPainState = false;
     }
 }

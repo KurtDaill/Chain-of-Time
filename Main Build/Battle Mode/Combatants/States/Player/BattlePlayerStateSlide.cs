@@ -3,6 +3,7 @@ using System;
 
 public class PlayerCombatantStateSlide : CombatantState
 {
+    PlayerCombatant player;
    public override CombatantState Process(Combatant combatant){ //TODO: Make Hitbox match sprite during slides
         PlayerCombatant player = (PlayerCombatant) combatant;
         player.hSpeed = Math.Sign(player.hSpeed) * Math.Max((Math.Abs(player.hSpeed) - player.slideDrag), 0);
@@ -22,8 +23,14 @@ public class PlayerCombatantStateSlide : CombatantState
         return null;
    }
 
-    public override void Enter(Combatant player, CombatantState lastState)
+    public override void Enter(Combatant combatant, CombatantState lastState)
     {
-        player.facing = Math.Sign(player.hSpeed);
+        player = (PlayerCombatant) combatant;
+        //player.facing = Math.Sign(player.hSpeed);
+        player.animSM.Travel("Slide Start");
+    }
+
+    public override void Exit(){
+        player.animSM.Travel("Slide End");
     }
 }

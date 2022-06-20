@@ -13,10 +13,10 @@ public class TopMenu : BattleMenu
     public override void _Ready()
     {
         base._Ready();   
-        menuTabs[0] = (TextureRect) GetNode("PartyButton");
-        menuTabs[1] = (TextureRect) GetNode("ItemButton");
-        menuTabs[2] = (TextureRect) GetNode("AtkButton");
-        menuTabs[3] = (TextureRect) GetNode("SkillButton");
+        menuTabs[0] = (TextureRect) GetNode("./Button Hub/PartyButton");
+        menuTabs[1] = (TextureRect) GetNode("./Button Hub/ItemButton");
+        menuTabs[2] = (TextureRect) GetNode("./Button Hub/AtkButton");
+        menuTabs[3] = (TextureRect) GetNode("./Button Hub/SkillButton");
     }
 
     public override void OnOpen(){
