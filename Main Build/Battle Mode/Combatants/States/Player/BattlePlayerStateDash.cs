@@ -3,40 +3,36 @@ using System;
 
 public class PlayerCombatantStateDash : CombatantState
 {
-    PlayerCombatant player;
     public override CombatantState Process(Combatant combatant)
     {
-        player = (PlayerCombatant) combatant;
-        player.hSpeed = Math.Sign(player.hSpeed) * (Math.Abs(player.hSpeed) - player.dashDrag);
+        combatant.hSpeed = Math.Sign(combatant.hSpeed) * (Math.Abs(combatant.hSpeed) - combatant.data.GetFloat("dashDrag"));
         if(Input.IsActionJustPressed("ui_down")){
             return new PlayerCombatantStateSlide();
         }
-        if(Math.Abs(player.hSpeed) <= player.runSpeed){
-            if(player.AmIFlying()){ //if the player is airborne
+        if(Math.Abs(combatant.hSpeed) <= combatant.data.GetFloat("runSpeed")){
+            if(combatant.AmIFlying()){ //if the combatant is airborne
                 return new PlayerCombatantStateAirborne();
             }else{
                 return new PlayerCombatantStateGround();
             }
         }
-        player.MoveAndSlide(new Vector3(player.hSpeed, player.vSpeed,0));
-        player.rightFace = (player.hSpeed >= 0);
+        combatant.MoveAndSlide(new Vector3(combatant.hSpeed, combatant.vSpeed,0));
         return null;
     }
 
     public override void Enter(Combatant combatant, CombatantState lastState){
-        player = (PlayerCombatant) combatant;
-        if(Input.IsActionPressed("ui_left") || player.hSpeed < 0){ //Turn this into an "on enter" in dashing
-                player.hSpeed -= player.dashBoost;
+        if(Input.IsActionPressed("ui_left") || combatant.hSpeed < 0){ //Turn this into an "on enter" in dashing
+                combatant.hSpeed -= combatant.data.GetFloat("dashBoost");
             }else{
-                player.hSpeed += player.dashBoost;
+                combatant.hSpeed += combatant.data.GetFloat("dashBoost");
         }
-        player.animSM.Travel("Dash");
-        player.dashing = true;
-        //player.setNewHitbox("Standing Box");   
+        combatant.animSM.Travel("Dash");
+        combatant.data.SetBool("dashing", true);
+        //combatant.setNewHitbox("Standing Box");   
     }
 
-    public override void Exit(){
-        player.animSM.Travel("Run");
-        player.dashing = false;
+    public override void Exit(Combatant combatant){
+        combatant.animSM.Travel("Run");
+        combatant.data.SetBool("dashing", false);
     }
 }

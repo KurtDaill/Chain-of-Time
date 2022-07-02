@@ -19,7 +19,7 @@ public class EnemyAttacks : BattleCommand {
             repeat for 4 & 5
         */
     }
-    public override void Execute()
+    public override void Execute(float delta, Battle parent)
     {
         //Process the Player's Movement
         target.Move();

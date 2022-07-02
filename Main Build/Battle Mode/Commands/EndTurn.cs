@@ -5,7 +5,7 @@ using System;
 //TODO: Add an exception? for this ^
 public class EndTurn : BattleCommand
 {
-    public override void Execute()
+    public override void Execute(float delta, Battle parent)
     {
         throw new NotImplementedException();
     }

@@ -3,7 +3,6 @@ using System;
 
 public class PlayerCombatantStateCrouch : CombatantState
 {
-    PlayerCombatant player;
     public override CombatantState Process(Combatant player)
     {
         if(!Input.IsActionPressed("ui_down")){
@@ -17,12 +16,11 @@ public class PlayerCombatantStateCrouch : CombatantState
 
     public override void Enter(Combatant combatant, CombatantState lastState)
     {
-        player = (PlayerCombatant) combatant;
-        player.crouching = true;
-        player.animSM.Travel("Crouch");
+        combatant.data.SetBool("crouching", true);
+        combatant.animSM.Travel("Crouch");
     }
 
-    public override void Exit(){
-        player.crouching = false;
+    public override void Exit(Combatant combatant){
+        combatant.data.SetBool("crouching", false);    
     }
 }

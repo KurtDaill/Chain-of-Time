@@ -3,43 +3,45 @@ using System;
 using System.Collections.Generic;
 
 public abstract class Combatant : KinematicBody {
-    private int hitPoints;
+    protected int hitPoints;
     private int maxHP;
+    protected int armor = 0;
+
     protected CombatantState state = new CombatantStateStandby();
     protected CombatantState newState;
+
     [Export]
-    public NodePath animationPlayer;
-    protected AnimationPlayer animPlayer;
+    public string character = "DEFAULT";
+
     public AnimationTree animTree;
     public AnimationNodeStateMachinePlayback animSM;
-    public List<Area> hitBoxes = new List<Area>();
-    protected int armor = 0;
-    public bool inPainState = false;
 
-    //Equals 1 while facing right, -1 while facing left, used in calculations dependent on character's facing
-    public int facing = 1;  
+    public List<Hitbox> hitBoxes = new List<Hitbox>();
+    public CombatantData data = new CombatantData();
 
+    public int facing = 1; //Equals 1 while facing right, -1 while facing left, used in calculations dependent on character's facing
     [Export]
 	public float gravity = 9F;
-
     [Export]
     public float knockbackDrag = 3F;
-
     [Export]
     public float knockbackGravity = 3F;
-
 	[Export]
 	public float airDrag = 0.21F;
-
-    //On a scale of 0-1 how much do we reduce knockback inflicted on this character. 
     [Export]
-    public float knockbackResist = 0F;
-
-    protected Area2D hitbox;
+    public float knockbackResist = 0F; //On a scale of 0-1 how much do we reduce knockback inflicted on this character. 
 
     public float hSpeed = 0;
     public float vSpeed = 0;
 
+    protected virtual void SetCombatantData(){
+        data.SetFloat("gravity", gravity);
+        data.SetFloat("knockbackDrag", knockbackDrag);
+        data.SetFloat("knockbackGravity", knockbackGravity);
+        data.SetFloat("airDrag", airDrag);
+        data.SetFloat("knockbackResist", knockbackResist);
+        data.SetBool("painState", false);
+    }
     public int getHP(){
         return hitPoints;
     }
@@ -66,10 +68,6 @@ public abstract class Combatant : KinematicBody {
         hitPoints -= damage;
         SetState(new CombatantStatePain(this, (knockback *(1-knockbackResist)), incomingDamage));
         return damage;
-    }
-
-    public AnimationPlayer getAnimationPlayer(){
-        return animPlayer;
     }
 
     public void recoverHP(int heal){
@@ -112,10 +110,18 @@ public abstract class Combatant : KinematicBody {
     }
 
     public void SetState(CombatantState newState){
-        state.Exit();
+        state.Exit(this);
         CombatantState temp = state;
         state = newState;
         state.Enter(this, temp);
+    }
+
+    public virtual void spawnHitbox(String requestedHitbox){}
+
+    public virtual void clearHitboxes(){
+        foreach(Area box in hitBoxes){
+            box.QueueFree();
+        }
     }
 }
 

@@ -6,12 +6,24 @@ using System.Collections.Generic;
 public class Battle : Node
 {
     //Tracks all active combatants in the scene
-    [Export]
     public Combatant[] activeCombatants = new Combatant[6];
     //Tracks Enemies that may enter in waves as active enemies are defeated;
     public List<Combatant> enemyBench = new List<Combatant>();
 
+    [Export]
+    public NodePath debugPlayer;
+
+    [Export]
+    public NodePath cameraPath;
+
+    public Camera camera;
+
+    [Export]
+    public NodePath debugEnemy;
     public Spatial[] battleSpots = new Spatial[6];
+
+    public List<BattleEffect> startOfRoundEffects = new List<BattleEffect>();
+    public List<BattleEffect> endOfRoundEffects = new List<BattleEffect>();
 
     [Export]
     public NodePath GUI;
@@ -21,23 +33,26 @@ public class Battle : Node
     private int currentCommandIndex;
     public override void _Ready()
     {
+        if(debugPlayer != null){
+            activeCombatants[0] = (Combatant) GetNode(debugPlayer);
+        }
+        if(debugEnemy != null){
+            activeCombatants[3] = (Combatant) GetNode(debugEnemy);
+        }
         gui = (BattleGUI) GetNode(GUI);
         commandList = new List<BattleCommand>();
-        activeCombatants[0] = (PlayerCombatant)GetNode("BattlePlayer");
-        activeCombatants[3] = (EnemyCombatant)GetNode("Polymorphor");
-        //battleSpots[0] = (Node3D) GetNode("PositionsMap/Hero1");
-        //battleSpots[1] = (Node3D) GetNode("PositionsMap/Hero2");
-        //battleSpots[2] = (Node3D) GetNode("PositionsMap/Hero3");
-        //battleSpots[3] = (Node3D) GetNode("PositionsMap/Enemy1");
-        //battleSpots[4] = (Node3D) GetNode("PositionsMap/Enemy2");
-        //battleSpots[5] = (Node3D) GetNode("PositionsMap/Enemy3");
-
         commandList.Add(new PlayerMenuSelection());
-        commandList[currentCommandIndex].Enter(this);   
+        commandList[currentCommandIndex].Enter(this);
+        battleSpots[0] = (Spatial) GetNode("./Battle Positions/Hero 1");
+        battleSpots[1] = (Spatial) GetNode("./Battle Positions/Hero 2"); 
+        battleSpots[2] = (Spatial) GetNode("./Battle Positions/Hero 3"); 
+        battleSpots[3] = (Spatial) GetNode("./Battle Positions/Enemy 1"); 
+        battleSpots[4] = (Spatial) GetNode("./Battle Positions/Enemy 2"); 
+        battleSpots[5] = (Spatial) GetNode("./Battle Positions/Enemy 3");    
     }
     public override void _Process(float delta)
     {
-        commandList[currentCommandIndex].Execute();
+        commandList[currentCommandIndex].Execute(delta, this);
     }
 
     public void NextCommand(){//Called by commands when they're completed

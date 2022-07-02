@@ -4,9 +4,8 @@ using System;
 public class PlayerCombatantStateGround : CombatantState {
 
     public override CombatantState Process(Combatant combatant){
-        PlayerCombatant player = (PlayerCombatant) combatant; //TODO tidy this up?
         if(Input.IsActionPressed("ui_down")){
-            if(Math.Abs(player.hSpeed) > 0) return new PlayerCombatantStateSlide();
+            if(Math.Abs(combatant.hSpeed) > 0) return new PlayerCombatantStateSlide();
             return new PlayerCombatantStateCrouch();
         }
 
@@ -19,16 +18,16 @@ public class PlayerCombatantStateGround : CombatantState {
         }
 
         if(Input.IsActionPressed("ui_right")){
-            player.hSpeed = player.runSpeed;
+            combatant.hSpeed = combatant.data.GetFloat("runSpeed");
         }else if(Input.IsActionPressed("ui_left")){
-            player.hSpeed = -player.runSpeed;
+            combatant.hSpeed = -combatant.data.GetFloat("runSpeed");
         }else{
-            player.hSpeed = Math.Sign(player.hSpeed) * Math.Max((Math.Abs(player.hSpeed) - player.footDrag), 0);
+            combatant.hSpeed = Math.Sign(combatant.hSpeed) * Math.Max((Math.Abs(combatant.hSpeed) - combatant.data.GetFloat("footDrag")), 0);
         }
 
-        if(player.AmIFlying()) player.vSpeed -= player.gravity;
-        else player.vSpeed = 0;
-        player.MoveAndSlide(new Vector3(player.hSpeed, player.vSpeed,0), Vector3.Up);
+        if(combatant.AmIFlying()) combatant.vSpeed -= combatant.gravity;
+        else combatant.vSpeed = 0;
+        combatant.MoveAndSlide(new Vector3(combatant.hSpeed, combatant.vSpeed,0), Vector3.Up);
         return null;
     }
 

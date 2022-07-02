@@ -10,7 +10,7 @@ public abstract class BattleCommand
         this.parent = parent;
         //Called when this command is picked at the current command.
     }
-    public abstract void Execute();
+    public abstract void Execute(float delta, Battle parent);
 
     public abstract void Undo();
 

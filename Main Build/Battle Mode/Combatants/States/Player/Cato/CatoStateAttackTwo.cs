@@ -35,7 +35,7 @@ public class CatoStateAttackTwo : CombatantState {
             return null;
     }
 
-    public override void Exit()
+    public override void Exit(Combatant combatant)
     {
         hitbox.QueueFree();
     }

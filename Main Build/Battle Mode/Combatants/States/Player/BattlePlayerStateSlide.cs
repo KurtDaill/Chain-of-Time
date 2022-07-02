@@ -3,11 +3,9 @@ using System;
 
 public class PlayerCombatantStateSlide : CombatantState
 {
-    PlayerCombatant player;
    public override CombatantState Process(Combatant combatant){ //TODO: Make Hitbox match sprite during slides
-        PlayerCombatant player = (PlayerCombatant) combatant;
-        player.hSpeed = Math.Sign(player.hSpeed) * Math.Max((Math.Abs(player.hSpeed) - player.slideDrag), 0);
-	    if(player.hSpeed == 0){
+        combatant.hSpeed = Math.Sign(combatant.hSpeed) * Math.Max((Math.Abs(combatant.hSpeed) - combatant.data.GetFloat("slideDrag")), 0);
+	    if(combatant.hSpeed == 0){
 			return new PlayerCombatantStateCrouch();
 		}
         /*
@@ -19,18 +17,17 @@ public class PlayerCombatantStateSlide : CombatantState
         if(!Input.IsActionPressed("ui_down")){
             return new PlayerCombatantStateGround();
         }
-        player.MoveAndSlide(new Vector3(player.hSpeed, player.vSpeed,0));
+        combatant.MoveAndSlide(new Vector3(combatant.hSpeed, combatant.vSpeed,0));
         return null;
    }
 
     public override void Enter(Combatant combatant, CombatantState lastState)
     {
-        player = (PlayerCombatant) combatant;
         //player.facing = Math.Sign(player.hSpeed);
-        player.animSM.Travel("Slide Start");
+        combatant.animSM.Travel("Slide Start");
     }
 
-    public override void Exit(){
-        player.animSM.Travel("Slide End");
+    public override void Exit(Combatant combatant){
+        combatant.animSM.Travel("Slide End");
     }
 }

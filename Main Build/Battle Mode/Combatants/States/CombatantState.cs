@@ -12,7 +12,7 @@ public abstract class CombatantState{
         return;
     }
 
-    public virtual void Exit(){
+    public virtual void Exit(Combatant combatant){
         return;
     }
 }

@@ -27,9 +27,8 @@ public class CatoStateAttackOne : CombatantState {
     }
 
     public override CombatantState Process(Combatant combatant){
-            CatoCombatant player = (CatoCombatant) combatant;
             if(Input.IsActionJustPressed("com_atk") && !attackLocked){
-                if(frameCounter < player.secondAttackTimer){
+                if(frameCounter < player.data.GetFloat("secondAttackTimer")){
                     attackLocked = true;
                 }
                 else{
@@ -37,18 +36,10 @@ public class CatoStateAttackOne : CombatantState {
                 }
             }
             frameCounter++;
-            
+            if(combatant.animSM.GetCurrentNode() != "Attack 1"){
+                combatant.animSM.Travel("Idle");
+                return new CombatantStateStandby();
+            }
             return null;
-    }
-
-    public override void Exit()
-    {
-        
-    }
-
-    public override void HandleAnimationTransition(Combatant player)
-    {
-        //Attack One animation has finished, and the player hasn't given any valid input, we exit the attack sequence.
-        player.SetState(new CombatantStateExit());
     }
 }

@@ -4,8 +4,8 @@ using System.Linq;
 
 public class PlayerAttacks : BattleCommand
 {
-    PlayerCombatant playerCharacter;
     EnemyCombatant[] targets = new EnemyCombatant[3];
+    PlayerCombatant playerCharacter;
     int[] damagePerTarget = new int[3]{0,0,0};
 
     public PlayerAttacks(PlayerCombatant pc){
@@ -18,18 +18,17 @@ public class PlayerAttacks : BattleCommand
         parent.AddCommand(new EnemyAttacks());
         playerCharacter.SetState(new PlayerCombatantStateGround());
     }
-    public override void Execute()
+    public override void Execute(float delta, Battle parent)
     {
-        var areEnemiesInPain = false; //Is used to detect whether any enemy is in a pain state. 
-                                     //We can't advance to the next command unitl all enemies are out of their pain state
+        var areEnemiesReady = true; //Is used to detect whether all enemies are ready to exit the attack sequence 
         foreach(EnemyCombatant enemy in parent.activeCombatants.OfType<EnemyCombatant>()){
             if(enemy.DodgeBehaviour()){
-                areEnemiesInPain = true;
+                areEnemiesReady = false;
             }
         }
 
         if(playerCharacter.MoveAndAttack(targets, damagePerTarget)){
-            if(!areEnemiesInPain) parent.NextCommand();//Pause to Wait for all enemies to finish pain state!
+            if(areEnemiesReady) parent.NextCommand();//Pause to Wait for all enemies to finish pain state!
         }
     }
 

@@ -2,8 +2,23 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class CatoCombatant : PlayerCombatant
-{
+public class CatoCombatant : PlayerCombatant {
+    
+    public int strength = 10;
+    [Export]
+	public float jumpForce = 200F;
+	[Export]
+	public float runSpeed = 150F;
+	[Export]
+	public float dashBoost = 200F;
+	[Export]
+	public float diveSpeed = 3F;
+	[Export]
+	public float slideDrag = 2F;
+	[Export]
+	public float footDrag = 9F;
+	[Export]
+	public float dashDrag = 5F;
     //How many frames does the player have to wait between their first and second attack
     [Export]
     public int secondAttackTimer = 10;
@@ -11,14 +26,23 @@ public class CatoCombatant : PlayerCombatant
     [Export]
     public int secondAttackCriticalCutoff = 15;
 
+    public override void _Ready()
+    {
+        SetCombatantData();
+        animTree = (AnimationTree) GetNode("./AnimationTree");
+        animSM = (AnimationNodeStateMachinePlayback) animTree.Get("parameters/playback");
+    }
+   
+
     //TODO Clean up Animation Solution!
     public override void updateAnimationTree(){
         base.updateAnimationTree();
-        animTree.Set("parameters/conditions/isCrouching", crouching);
-        animTree.Set("parameter/conditions/isDashing", dashing);
-        animTree.Set("parameters/conditions/isNotCrouching", !crouching);
-        animTree.Set("parameter/conditions/isNotDashing", !dashing);
+        animTree.Set("parameters/conditions/isCrouching", data.GetBool("crouching"));
+        animTree.Set("parameter/conditions/isDashing", data.GetBool("dashing"));
+        animTree.Set("parameters/conditions/isNotCrouching", !data.GetBool("crouching"));
+        animTree.Set("parameter/conditions/isNotDashing", !data.GetBool("dashing"));
     }
+
     
     public override void spawnHitbox(String requestedHitbox){//TODO Refactor Attack Data
         switch(requestedHitbox){
@@ -43,17 +67,37 @@ public class CatoCombatant : PlayerCombatant
 
     public override bool MoveAndAttack(EnemyCombatant[] targets, int[] damageRecord)
     {
-            if(state is CombatantStateExit) return true;
+            if(state is CombatantStateStandby) return true;
             Move();
             if(state is PlayerCombatantStateGround && Input.IsActionJustPressed("com_atk")){
-                state.Exit();
+                state.Exit(this);
                 CatoStateAttackOne attackState = new CatoStateAttackOne(damageRecord, targets);
                 CombatantState temp = state;
                 state = attackState;
                 state.Enter(this, temp);
             }
             return false;
+    }
 
+    
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(float delta)
+    {
+        if(hSpeed > 0){
+            facing = 1;
+        }else if (hSpeed < 0){
+            facing = -1;
+        }
+        updateAnimationTree();
+    }
+
+
+    
+
+    //Ran when the character in question is able to move and attack. Returns true once they're finished.
+    //Targets & damageRecord are used to track who is damaged this attack and how much
+    //They're given from the command running move and attack, and their ultimate values are stores in that command
         /*
             case attackStatus.PreAttack :
                 Move();
@@ -92,5 +136,21 @@ public class CatoCombatant : PlayerCombatant
                 break;
         }
         */
+    
+    protected override void SetCombatantData(){
+        base.SetCombatantData();
+        data.SetFloat("strength", strength);
+        data.SetFloat("jumpForce", jumpForce);
+        data.SetFloat("runSpeed", runSpeed);
+        data.SetFloat("dashBoost", dashBoost);
+        data.SetFloat("diveSpeed", diveSpeed);
+        data.SetFloat("slideDrag", slideDrag);
+        data.SetFloat("footDrag", footDrag);
+        data.SetFloat("dashDrag", dashDrag);
+        data.SetFloat("secondAttackTimer", secondAttackTimer);
+        data.SetFloat("secondAttackerCriticalCutoff", secondAttackCriticalCutoff);
+        data.SetBool("crouching", false);
+        data.SetBool("dashing", false);
     }
 }
+

@@ -15,10 +15,8 @@ public class PlayerCombatantStateJump : CombatantState
 
     public override void Enter(Combatant combatant, CombatantState lastState)
     {
-        PlayerCombatant player = (PlayerCombatant) combatant;
-        player.rightFace = (player.hSpeed >= 0);
-        player.vSpeed += player.jumpForce;
-        player.animSM.Travel("Jump");
+        combatant.vSpeed += combatant.data.GetFloat("jumpForce");
+        combatant.animSM.Travel("Jump");
         //player.setNewHitbox("Standing Box");   
     }
 }

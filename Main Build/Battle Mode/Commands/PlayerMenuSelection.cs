@@ -11,7 +11,7 @@ public class PlayerMenuSelection : BattleCommand
         this.parent = parent;
         gui = (BattleGUI) parent.GetNode(parent.GUI);
     }
-    public override void Execute(){
+    public override void Execute(float delta, Battle parent){
         if(Input.IsActionJustPressed("ui_up")){
             input = BattleMenu.MenuInput.Up;
         }else if(Input.IsActionJustPressed("ui_right")){
