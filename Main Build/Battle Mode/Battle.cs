@@ -16,7 +16,7 @@ public class Battle : Node
     [Export]
     public NodePath cameraPath;
 
-    public Camera camera;
+    public MovingCamera camera;
 
     [Export]
     public NodePath debugEnemy;
@@ -39,6 +39,7 @@ public class Battle : Node
         if(debugEnemy != null){
             activeCombatants[3] = (Combatant) GetNode(debugEnemy);
         }
+        camera = (MovingCamera) GetNode(cameraPath);
         gui = (BattleGUI) GetNode(GUI);
         commandList = new List<BattleCommand>();
         commandList.Add(new PlayerMenuSelection());

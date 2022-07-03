@@ -26,6 +26,7 @@ public class BattlefieldCleanUp : BattleCommand
                 //startingDistance[i] = (parent.battleSpots[i].GlobalTransform.origin - originalPos[i]).Length();
             }
         }
+        parent.camera.InterpolateToTransform(parent.camera.Transform.Rotated(Vector3.Up, -0.0872665F), 2.5F);
     }
     public override void Execute(float delta, Battle parent)
     {
@@ -39,10 +40,9 @@ public class BattlefieldCleanUp : BattleCommand
                 N += D
                 interpolate(original, battleSpot, N)
         */
-
         for(int i = 0; i < parent.activeCombatants.GetLength(0); i++){
             if(parent.activeCombatants[i] != null){
-                parent.activeCombatants[i].Transform = parent.activeCombatants[i].Transform.InterpolateWith(parent.battleSpots[i].Transform, delta * 2.5F);
+                parent.activeCombatants[i].Transform = parent.activeCombatants[i].Transform.InterpolateWith(parent.battleSpots[i].Transform, delta * 3F);
             }
         }
         //TODO Replace this Test Script

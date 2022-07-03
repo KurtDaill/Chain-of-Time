@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Battle Mode/Combatants/Player Characters/Cato/BattlePlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle Mode/Combatants/Enemies/Polymorphor.tscn" type="PackedScene" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://Art/3D/Baths.dae" type="PackedScene" id=24]
 [ext_resource path="res://Art/Waterfall Top Front-Sheet.png" type="Texture" id=25]
 [ext_resource path="res://Art/Waterfall Bottom-Sheet.png" type="Texture" id=26]
+[ext_resource path="res://MovingCamera.cs" type="Script" id=27]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 19
@@ -210,11 +211,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -2.5 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, -2.29001, 10.2111, 31.3588 )
+transform = Transform( 0.996195, -0.00759612, 0.0868241, 0, 0.996195, 0.0871557, -0.0871557, -0.0868241, 0.992404, 0, 10.211, 33.4726 )
 current = true
 fov = 60.0
 size = 1.78016
 far = 100000.0
+script = ExtResource( 27 )
 
 [node name="BattleGUI" type="Control" parent="Camera"]
 anchor_right = 1.0
@@ -495,21 +497,21 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 2.5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.381065, 3.39965, -5.80908 )
 pixel_size = 0.1
 frames = SubResource( 15 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Sprite3D4" type="AnimatedSprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.381065, 0.202205, -5.80908 )
 pixel_size = 0.1
 frames = SubResource( 15 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Sprite3D3" type="AnimatedSprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.381065, 6.60172, -5.80908 )
 pixel_size = 0.1
 frames = SubResource( 22 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="."]
@@ -523,5 +525,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444457, -0.762186, -5.69706 
 visible = false
 pixel_size = 0.1
 frames = SubResource( 29 )
-frame = 2
+frame = 1
 playing = true
