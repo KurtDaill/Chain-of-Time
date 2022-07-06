@@ -245,7 +245,7 @@ states/Slide/position = Vector2( -95, 160.586 )
 "states/Slide Start/position" = Vector2( 81, 238.586 )
 transitions = [ "Idle", "Run", SubResource( 35 ), "Run", "Idle", SubResource( 36 ), "Idle", "Attack 1", SubResource( 37 ), "Attack 1", "Attack 2", SubResource( 38 ), "Attack 2", "Idle", SubResource( 39 ), "Attack 1", "Idle", SubResource( 40 ), "Idle", "Jump", SubResource( 41 ), "Jump", "Airborne Up", SubResource( 42 ), "Airborne Up", "Airborne Trans", SubResource( 43 ), "Airborne Trans", "Airborne Down", SubResource( 44 ), "Airborne Down", "Landing", SubResource( 45 ), "Airborne Down", "Landing to Run", SubResource( 46 ), "Landing", "Idle", SubResource( 47 ), "Landing to Run", "Run", SubResource( 48 ), "Landing to Run", "Landing", SubResource( 49 ), "Landing", "Landing to Run", SubResource( 50 ), "Idle", "Crouch", SubResource( 51 ), "Crouch", "Idle", SubResource( 52 ), "Run", "Slide Start", SubResource( 53 ), "Slide Start", "Slide", SubResource( 54 ), "Slide", "Slide End", SubResource( 55 ), "Slide End", "Run", SubResource( 56 ), "Slide", "Crouch", SubResource( 57 ), "Airborne Trans", "Landing", SubResource( 58 ), "Run", "Attack 1", SubResource( 85 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -225, -33.414 )
+graph_offset = Vector2( -424, 10.586 )
 
 [sub_resource type="Animation" id=60]
 length = 0.25
@@ -633,6 +633,8 @@ extents = Vector3( 1, 2.25992, 5 )
 extents = Vector3( 0.851, 1.25, 5 )
 
 [node name="BattlePlayer" type="KinematicBody"]
+collision_layer = 32
+collision_mask = 97
 script = ExtResource( 3 )
 gravity = 3.0
 jumpForce = 60.0
@@ -674,6 +676,7 @@ alpha_cut = 2
 texture = ExtResource( 2 )
 hframes = 12
 vframes = 13
+frame = 22
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite3D"]
 "anims/Airborne Down" = SubResource( 60 )
@@ -700,14 +703,14 @@ anims/Run = SubResource( 78 )
 "anims/Slide End" = SubResource( 81 )
 "anims/Slide Start" = SubResource( 82 )
 
-[node name="Phys Box" type="CollisionShape" parent="."]
+[node name="MainColShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.166656, 2.40487, 0 )
 shape = SubResource( 83 )
 
 [node name="Hurtbox" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53334, 3.13899, 0 )
-collision_layer = 8
-collision_mask = 16
+collision_layer = 2
+collision_mask = 0
 script = ExtResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Hurtbox"]

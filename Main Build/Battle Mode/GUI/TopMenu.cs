@@ -21,7 +21,7 @@ public class TopMenu : BattleMenu
 
     public override void OnOpen(){
         base.OnOpen();
-        menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = false;
+        if(highlightedTab != -1)menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = false;
         highlightedTab = -1;
     }
         

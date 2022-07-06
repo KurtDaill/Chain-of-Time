@@ -7,9 +7,12 @@ public class PlayerMenuSelection : BattleCommand
     BattleMenu temp;
     BattleMenu.MenuInput input;
 
-    public override void Enter(Battle parent){
+    public override void Enter(Battle parent, bool dual = false){
         this.parent = parent;
         gui = (BattleGUI) parent.GetNode(parent.GUI);
+        gui.ResetGUIState();
+        gui.currentMenu.OnOpen();
+        base.Enter(parent, dual);
     }
     public override void Execute(float delta, Battle parent){
         if(Input.IsActionJustPressed("ui_up")){
@@ -38,11 +41,6 @@ public class PlayerMenuSelection : BattleCommand
         }
     }
 
-    //Called by menu's once they've gotten input from the player that indicates the next command needed.
-    public void EnterCommand(BattleCommand next){
-        parent.AddCommand(next);
-    }
-
     public override void Undo()
     {
         throw new NotImplementedException();
@@ -50,5 +48,6 @@ public class PlayerMenuSelection : BattleCommand
 
     public override void Exit(){
         gui.currentMenu.Visible = false;
+        base.Exit();
     }
 }

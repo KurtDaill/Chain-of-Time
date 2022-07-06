@@ -8,7 +8,7 @@ public class PlayerCombatantStateJump : CombatantState
         The Airborne state can be transitioned to in cases where the player isn't jumping, so cannot include the "-= jumpforce" line
         This state preserves the design principle that changes between states should only include returning a new state object.
     */
-    public override CombatantState Process(Combatant player)
+    public override CombatantState Process(Combatant player, float delta)
     {
         return new PlayerCombatantStateAirborne();
     }

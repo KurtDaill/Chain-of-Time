@@ -3,7 +3,7 @@ using System;
 
 public class PlayerCombatantStateSlide : CombatantState
 {
-   public override CombatantState Process(Combatant combatant){ //TODO: Make Hitbox match sprite during slides
+   public override CombatantState Process(Combatant combatant, float delta){ //TODO: Make Hitbox match sprite during slides
         combatant.hSpeed = Math.Sign(combatant.hSpeed) * Math.Max((Math.Abs(combatant.hSpeed) - combatant.data.GetFloat("slideDrag")), 0);
 	    if(combatant.hSpeed == 0){
 			return new PlayerCombatantStateCrouch();

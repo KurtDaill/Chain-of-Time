@@ -3,7 +3,7 @@ using System;
 
 public class PlayerCombatantStateDash : CombatantState
 {
-    public override CombatantState Process(Combatant combatant)
+    public override CombatantState Process(Combatant combatant, float delta)
     {
         combatant.hSpeed = Math.Sign(combatant.hSpeed) * (Math.Abs(combatant.hSpeed) - combatant.data.GetFloat("dashDrag"));
         if(Input.IsActionJustPressed("ui_down")){

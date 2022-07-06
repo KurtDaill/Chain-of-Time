@@ -3,7 +3,7 @@ using System;
 
 public class PlayerCombatantStateGround : CombatantState {
 
-    public override CombatantState Process(Combatant combatant){
+    public override CombatantState Process(Combatant combatant, float delta){
         if(Input.IsActionPressed("ui_down")){
             if(Math.Abs(combatant.hSpeed) > 0) return new PlayerCombatantStateSlide();
             return new PlayerCombatantStateCrouch();

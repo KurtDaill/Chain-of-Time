@@ -3,7 +3,7 @@ using Godot;
 using System;
 
 public class CombatantStateExit : CombatantState {
-    public override CombatantState Process(Combatant combatant)
+    public override CombatantState Process(Combatant combatant, float delta)
     {
         throw new UnhandledExitStateExcpetion();
     }

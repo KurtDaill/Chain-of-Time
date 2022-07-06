@@ -4,6 +4,8 @@ using System;
 public class MovingCamera : Camera
 {
     Transform target;
+
+    public Transform baseTransform;
     float speed =  1;
     float timer = 2;
 
@@ -13,6 +15,10 @@ public class MovingCamera : Camera
     }
 
     CameraState state = CameraState.Standby;
+
+    public override void _Ready(){
+        baseTransform = this.Transform;
+    }
     public override void _Process(float delta)
     {
         switch(state){

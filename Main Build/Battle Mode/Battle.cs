@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-//Class used to represent and run turn based battles\
+//Class used to represent and run turn based battles
 public class Battle : Node
 {
     //Tracks all active combatants in the scene
@@ -56,14 +56,21 @@ public class Battle : Node
         commandList[currentCommandIndex].Execute(delta, this);
     }
 
-    public void NextCommand(){//Called by commands when they're completed
+    public void NextCommand(bool runEnter = true){//Called by commands when they're completed
         commandList[currentCommandIndex].Exit();
-        if((currentCommandIndex + 1) == commandList.Count){ //Checks if current Index is the last entry, if so...
-            //add something so the next line goto the 'default' command: PlayerMenuSelection
-            AddCommand(new PlayerMenuSelection());
-        }
         currentCommandIndex += 1;
-        commandList[currentCommandIndex].Enter(this);
+        if(runEnter) commandList[currentCommandIndex].Enter(this);
+    }
+
+    public void InsertCommandNext(BattleCommand insertCom){
+        commandList.Insert(currentCommandIndex + 1, insertCom);
+    }
+    /*
+        Used to handle dual running commands when the later of the two commands exits before the command that appears earlier in the list
+    */
+    public void HandleDualExit(){       
+        currentCommandIndex += 1;
+        commandList[currentCommandIndex].Exit();
     }
 
     public void AddCommand(BattleCommand newCom){
@@ -75,6 +82,7 @@ public class Battle : Node
     }
 
     public BattleCommand CurrentCommand(){
-        return commandList[currentCommandIndex + 1];
+        return commandList[currentCommandIndex];
     }
 }
+

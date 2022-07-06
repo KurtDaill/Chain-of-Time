@@ -67,7 +67,7 @@ animations = [ {
 } ]
 
 [sub_resource type="BoxShape" id=8]
-extents = Vector3( 9.95997, 0.001, 2.99404 )
+extents = Vector3( 17.925, 0.001, 3.3563 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 19
@@ -211,10 +211,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -2.5 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.996195, -0.00759612, 0.0868241, 0, 0.996195, 0.0871557, -0.0871557, -0.0868241, 0.992404, 0, 10.211, 33.4726 )
+transform = Transform( 1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 10, 55 )
 current = true
-fov = 60.0
-size = 1.78016
+fov = 40.0
+size = 30.0
 far = 100000.0
 script = ExtResource( 27 )
 
@@ -417,7 +417,7 @@ __meta__ = {
 }
 
 [node name="BattlePlayer" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 2.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0118, -0.0592747, 2.50737 )
 character = "Cato"
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
@@ -435,28 +435,28 @@ directional_shadow_split_3 = 1.0
 directional_shadow_depth_range = 1
 
 [node name="Railing2" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55871, 1.0092, -8.04674 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55871, 0.868868, -9.22926 )
 pixel_size = 0.1
 shaded = true
 alpha_cut = 2
 texture = ExtResource( 3 )
 
 [node name="Railing5" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.44129, 0.994241, -8.04674 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.44129, 0.853909, -9.22926 )
 pixel_size = 0.1
 shaded = true
 alpha_cut = 2
 texture = ExtResource( 3 )
 
 [node name="Railing3" type="Sprite3D" parent="."]
-transform = Transform( 0.999991, 0.00425859, 0, -0.00425859, 0.999991, 0, 0, 0, 1, -5.81244, 1.1713, 8.07608 )
+transform = Transform( 0.999991, 0.00425859, 0, -0.00425859, 0.999991, 0, 0, 0, 1, -5.81244, 0.950991, 8.68095 )
 pixel_size = 0.1
 shaded = true
 alpha_cut = 2
 texture = ExtResource( 3 )
 
 [node name="Railing4" type="Sprite3D" parent="."]
-transform = Transform( 0.999991, 0.00425859, 0, -0.00425859, 0.999991, 0, 0, 0, 1, 6.18756, 1.1713, 8.07608 )
+transform = Transform( 0.999991, 0.00425859, 0, -0.00425859, 0.999991, 0, 0, 0, 1, 6.18756, 0.950991, 8.68095 )
 pixel_size = 0.1
 shaded = true
 alpha_cut = 2
@@ -474,14 +474,14 @@ pixel_size = 0.1
 texture = ExtResource( 6 )
 
 [node name="Sprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.356773, 6.59406, -5.82083 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.205744, 6.59406, -5.82083 )
 pixel_size = 0.1
 axis = 1
 frames = SubResource( 7 )
 frame = 2
 
 [node name="Baths" parent="." instance=ExtResource( 24 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.558201, -0.165978, -0.181641 )
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.166, -0.182 )
 
 [node name="Area" type="StaticBody" parent="."]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.538, 0, -0.131 )
@@ -494,24 +494,24 @@ shape = SubResource( 8 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 2.5 )
 
 [node name="Sprite3D2" type="AnimatedSprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.381065, 3.39965, -5.80908 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.208776, 3.39965, -5.80908 )
 pixel_size = 0.1
 frames = SubResource( 15 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="Sprite3D4" type="AnimatedSprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.381065, 0.202205, -5.80908 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.208776, 0.202205, -5.80908 )
 pixel_size = 0.1
 frames = SubResource( 15 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="Sprite3D3" type="AnimatedSprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.381065, 6.60172, -5.80908 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.208776, 6.60172, -5.80908 )
 pixel_size = 0.1
 frames = SubResource( 22 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="."]
@@ -525,5 +525,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444457, -0.762186, -5.69706 
 visible = false
 pixel_size = 0.1
 frames = SubResource( 29 )
-frame = 1
+frame = 4
 playing = true

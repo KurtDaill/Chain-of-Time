@@ -60,18 +60,19 @@ public class CatoCombatant : PlayerCombatant {
     }
 
     public override void clearHitboxes(){ //Figure out how to make this visible to function tracks on animations without reimplementing it in the child object
-        foreach(Hitbox box in hitBoxes){
-            box.QueueFree();
+        for(int i = 0; i < hitBoxes.Count; i++){          
+            hitBoxes[i].QueueFree();
+            hitBoxes.Remove(hitBoxes[i]);
         }
     }
 
-    public override bool MoveAndAttack(EnemyCombatant[] targets, int[] damageRecord)
+    public override bool MoveAndAttack(EnemyCombatant[] targets, int[] damageRecord, float delta)
     {
             if(state is CombatantStateStandby) return true;
-            Move();
+            Move(delta);
             if(state is PlayerCombatantStateGround && Input.IsActionJustPressed("com_atk")){
                 state.Exit(this);
-                CatoStateAttackOne attackState = new CatoStateAttackOne(damageRecord, targets);
+                 CatoStateAttackOne attackState = new CatoStateAttackOne(damageRecord, targets);
                 CombatantState temp = state;
                 state = attackState;
                 state.Enter(this, temp);

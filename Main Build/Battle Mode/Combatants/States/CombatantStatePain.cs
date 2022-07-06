@@ -26,7 +26,7 @@ public class CombatantStatePain : CombatantState {
     }
     
 
-    public override CombatantState Process(Combatant parent){
+    public override CombatantState Process(Combatant parent, float delta){
         /*
         Play Pain Animation
         If you hit the ground : If the minimum time has been met : Goto State Standby

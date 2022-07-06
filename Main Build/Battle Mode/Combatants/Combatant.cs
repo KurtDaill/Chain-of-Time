@@ -116,12 +116,32 @@ public abstract class Combatant : KinematicBody {
         state.Enter(this, temp);
     }
 
+    public virtual bool ProcessAbility(float delta){ //Called by Battle Commands when a combatant should be executing an ability state (NPC attack, Spell Cast, etc.) Returns whether it's still executing that ability state
+        var newState = state.Process(this, delta);
+        if(newState != null){
+            SetState(newState);
+        }
+        if(state is CombatantStateStandby){
+            return false;
+        }
+        return true;
+    }
+
     public virtual void spawnHitbox(String requestedHitbox){}
 
-    public virtual void clearHitboxes(){
-        foreach(Area box in hitBoxes){
+    public virtual void clearHitboxes(){ //TODO surface THIS function to animation players without rewritting it in each combatant
+        foreach(Hitbox box in hitBoxes){
             box.QueueFree();
+            hitBoxes.Remove(box);
         }
+    }
+
+    public virtual void DisableCombatantCollisions(){
+        this.CollisionMask = 0x1;
+
+    }
+    public virtual void EnableCombatantCollisions(){
+        this.CollisionMask = 0x31;
     }
 }
 

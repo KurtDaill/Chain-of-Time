@@ -23,7 +23,7 @@ public class CatoStateAttackTwo : CombatantState {
         this.targets = tar;
     }
 
-    public override CombatantState Process(Combatant player){
+    public override CombatantState Process(Combatant player, float delta){
             /*if(player.GetAnimatedSprite().Frame == 2){
                 if(hitbox == null){
                     hitbox = (Hitbox) hitboxResource.Instance();
@@ -38,11 +38,5 @@ public class CatoStateAttackTwo : CombatantState {
     public override void Exit(Combatant combatant)
     {
         hitbox.QueueFree();
-    }
-
-    public override void HandleAnimationTransition(Combatant player)
-    {
-        //Attack Two animation has finished, and the player hasn't given any valid input, we exit the attack sequence.
-        player.SetState(new CombatantStateExit());
     }
 }
