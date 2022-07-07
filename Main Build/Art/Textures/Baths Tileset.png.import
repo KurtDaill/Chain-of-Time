@@ -2,33 +2,35 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Baths Tileset.png-b97fb0bd1f7770f6d08fa082736dd32f.stex"
+path.s3tc="res://.import/Baths Tileset.png-b97fb0bd1f7770f6d08fa082736dd32f.s3tc.stex"
+path.etc2="res://.import/Baths Tileset.png-b97fb0bd1f7770f6d08fa082736dd32f.etc2.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://Art/Textures/Baths Tileset.png"
-dest_files=[ "res://.import/Baths Tileset.png-b97fb0bd1f7770f6d08fa082736dd32f.stex" ]
+dest_files=[ "res://.import/Baths Tileset.png-b97fb0bd1f7770f6d08fa082736dd32f.s3tc.stex", "res://.import/Baths Tileset.png-b97fb0bd1f7770f6d08fa082736dd32f.etc2.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
+flags/repeat=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=2
-process/fix_alpha_border=true
+flags/srgb=1
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
