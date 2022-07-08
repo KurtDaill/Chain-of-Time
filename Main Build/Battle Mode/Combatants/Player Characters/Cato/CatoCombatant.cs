@@ -51,7 +51,7 @@ public class CatoCombatant : PlayerCombatant {
                 var hitbox = (Hitbox) hitboxResource.Instance();
                 AddChild(hitbox);
                 hitbox.SetDamage(strength);
-                hitbox.SetKnockback(new Vector3(facing, .5F, 0) * 60);
+                hitbox.SetKnockback(new Vector3(facing, .5F, 0) * 35);
                 hitBoxes.Add(hitbox);
                 break;
             case "AttackTwo":

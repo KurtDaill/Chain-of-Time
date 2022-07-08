@@ -28,7 +28,7 @@ public class Polymorphor : EnemyCombatant
                 var hitbox = (Hitbox) hitboxResource.Instance();
                 AddChild(hitbox);
                 hitbox.SetDamage(5);
-                hitbox.SetKnockback(new Vector3(-1, .1F, 0) * 80);
+                hitbox.SetKnockback(new Vector3(-1, .1F, 0) * 30);
                 hitBoxes.Add(hitbox);
                 break;
         }

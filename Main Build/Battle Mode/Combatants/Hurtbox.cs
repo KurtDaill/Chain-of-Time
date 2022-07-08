@@ -10,7 +10,9 @@ public class Hurtbox : Area
         parent = (Combatant) GetParent();
     }
     public void OnHurtboxAreaEntered(Hitbox box){
+        if(box.CheckForImmune(parent)) return;
         parent.TakeDamage(box.GetDamage(), box.GetKnockback());
-        GD.Print("Hurtbox hit registered");
+        box.LogHitCombatant(parent);
+        GD.Print("Hurtbox hit registered on " + parent.Name + " : " + box.GetDamage() + " Damage.");
     }
 }

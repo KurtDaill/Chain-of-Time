@@ -65,8 +65,9 @@ public class Battle : Node
     public void InsertCommandNext(BattleCommand insertCom){
         commandList.Insert(currentCommandIndex + 1, insertCom);
     }
+
     /*
-        Used to handle dual running commands when the later of the two commands exits before the command that appears earlier in the list
+        Used to handle dual running commands when the later of the two commands exits before the command that appears earlier one
     */
     public void HandleDualExit(){       
         currentCommandIndex += 1;
