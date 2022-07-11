@@ -1,9 +1,9 @@
 [gd_scene load_steps=90 format=2]
 
-[ext_resource path="res://3D Test SM.tres" type="AnimationNodeStateMachinePlayback" id=1]
-[ext_resource path="res://Art/Cato Master Sprite Sheet.png" type="Texture" id=2]
+[ext_resource path="res://Art/Cato Master Sprite Sheet.png" type="Texture" id=1]
+[ext_resource path="res://3D Test SM.tres" type="AnimationNodeStateMachinePlayback" id=2]
 [ext_resource path="res://Battle Mode/Combatants/Player Characters/Cato/CatoCombatant.cs" type="Script" id=3]
-[ext_resource path="res://Battle Mode/Combatants/Hurtbox.cs" type="Script" id=5]
+[ext_resource path="res://Battle Mode/Combatants/Hurtbox.cs" type="Script" id=4]
 
 [sub_resource type="AnimationNodeAnimation" id=1]
 animation = "Airborne Down L"
@@ -636,19 +636,23 @@ extents = Vector3( 0.75, 1, 1 )
 collision_layer = 32
 collision_mask = 97
 script = ExtResource( 3 )
-gravity = 3.0
-jumpForce = 60.0
-runSpeed = 20.0
-dashBoost = 95.0
-slideDrag = 0.2
-footDrag = 1.25
-dashDrag = 4.5
+character = "Cato"
+gravity = 2.0
+knockbackDrag = 2.0
+knockbackGravity = 2.0
+airDrag = 0.1
+jumpForce = 40.0
+runSpeed = 10.0
+dashBoost = 60.0
+slideDrag = 0.15
+footDrag = 1.0
+dashDrag = 4.0
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 60 )
 anim_player = NodePath("../Sprite3D/AnimationPlayer")
 active = true
-parameters/playback = ExtResource( 1 )
+parameters/playback = ExtResource( 2 )
 parameters/conditions/isCrouching = false
 parameters/conditions/isFalling = false
 parameters/conditions/isMoving = false
@@ -673,10 +677,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, 0 )
 pixel_size = 0.0625
 shaded = true
 alpha_cut = 2
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 hframes = 12
 vframes = 13
-frame = 14
+frame = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite3D"]
 "anims/Airborne Down" = SubResource( 61 )
@@ -711,7 +715,7 @@ shape = SubResource( 84 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53334, 1.63899, 0 )
 collision_layer = 2
 collision_mask = 0
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Hurtbox"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5843, -0.124072, 0 )

@@ -1,6 +1,6 @@
-[gd_scene load_steps=144 format=2]
+[gd_scene load_steps=85 format=2]
 
-[ext_resource path="res://Art/Cato Master Sprite Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Battle Mode/Combatants/Player Characters/Cato/BattlePlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle Mode/Combatants/Enemies/Polymorphor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Art/3D/Baths.glb" type="PackedScene" id=3]
 [ext_resource path="res://Art/Waterfall Top Top-Sheet.png" type="Texture" id=4]
@@ -23,639 +23,11 @@
 [ext_resource path="res://GUI/Battle Menu Assets/Item Button Controller.png" type="Texture" id=21]
 [ext_resource path="res://Battle Mode/Battle.cs" type="Script" id=22]
 [ext_resource path="res://Art/Water Texture.png" type="Texture" id=23]
-[ext_resource path="res://Battle Mode/Combatants/Hurtbox.cs" type="Script" id=24]
+[ext_resource path="res://Art/Silver's Gun Sheet.png" type="Texture" id=24]
 [ext_resource path="res://Art/Waterfall Top Front-Sheet.png" type="Texture" id=25]
 [ext_resource path="res://Art/Waterfall Bottom-Sheet.png" type="Texture" id=26]
 [ext_resource path="res://MovingCamera.cs" type="Script" id=27]
-[ext_resource path="res://Battle Mode/Combatants/Player Characters/Cato/CatoCombatant.cs" type="Script" id=28]
-[ext_resource path="res://3D Test SM.tres" type="AnimationNodeStateMachinePlayback" id=29]
-
-[sub_resource type="AnimationNodeAnimation" id=1]
-animation = "Airborne Down L"
-
-[sub_resource type="AnimationNodeAnimation" id=2]
-animation = "Airborne Down"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=3]
-blend_point_0/node = SubResource( 1 )
-blend_point_0/pos = -0.1
-blend_point_1/node = SubResource( 2 )
-blend_point_1/pos = 0.1
-
-[sub_resource type="AnimationNodeAnimation" id=4]
-animation = "Airborne Transition L"
-
-[sub_resource type="AnimationNodeAnimation" id=5]
-animation = "Airborne Transition"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=6]
-blend_point_0/node = SubResource( 4 )
-blend_point_0/pos = -0.1
-blend_point_1/node = SubResource( 5 )
-blend_point_1/pos = 0.1
-
-[sub_resource type="AnimationNodeAnimation" id=7]
-animation = "Airborne Up L"
-
-[sub_resource type="AnimationNodeAnimation" id=8]
-animation = "Airborne Up"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=9]
-blend_point_0/node = SubResource( 7 )
-blend_point_0/pos = -0.1
-blend_point_1/node = SubResource( 8 )
-blend_point_1/pos = 0.1
-
-[sub_resource type="AnimationNodeAnimation" id=10]
-animation = "Attack 1"
-
-[sub_resource type="AnimationNodeAnimation" id=11]
-animation = "Attack 2"
-
-[sub_resource type="AnimationNodeAnimation" id=12]
-animation = "Crouch"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=13]
-blend_point_0/node = SubResource( 12 )
-blend_point_0/pos = 0.1
-
-[sub_resource type="AnimationNodeAnimation" id=14]
-animation = "Idle L"
-
-[sub_resource type="AnimationNodeAnimation" id=15]
-animation = "Idle"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=16]
-blend_point_0/node = SubResource( 14 )
-blend_point_0/pos = -0.1
-blend_point_1/node = SubResource( 15 )
-blend_point_1/pos = 0.1
-
-[sub_resource type="AnimationNodeAnimation" id=17]
-animation = "Jump L"
-
-[sub_resource type="AnimationNodeAnimation" id=18]
-animation = "Jump"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=19]
-blend_point_0/node = SubResource( 17 )
-blend_point_0/pos = -0.1
-blend_point_1/node = SubResource( 18 )
-blend_point_1/pos = 0.1
-
-[sub_resource type="AnimationNodeAnimation" id=20]
-animation = "Landing to Run"
-
-[sub_resource type="AnimationNodeAnimation" id=21]
-animation = "Landing to Run L"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=22]
-blend_point_0/node = SubResource( 20 )
-blend_point_0/pos = 0.1
-blend_point_1/node = SubResource( 21 )
-blend_point_1/pos = -0.1
-
-[sub_resource type="AnimationNodeAnimation" id=23]
-animation = "Landing"
-
-[sub_resource type="AnimationNodeAnimation" id=24]
-animation = "Landing L"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=25]
-blend_point_0/node = SubResource( 23 )
-blend_point_0/pos = 0.1
-blend_point_1/node = SubResource( 24 )
-blend_point_1/pos = -0.1
-
-[sub_resource type="AnimationNodeAnimation" id=26]
-animation = "Run L"
-
-[sub_resource type="AnimationNodeAnimation" id=27]
-animation = "Run"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=28]
-blend_point_0/node = SubResource( 26 )
-blend_point_0/pos = -0.1
-blend_point_1/node = SubResource( 27 )
-blend_point_1/pos = 0.1
-
-[sub_resource type="AnimationNodeAnimation" id=29]
-animation = "Slide End"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=30]
-blend_point_0/node = SubResource( 29 )
-blend_point_0/pos = 0.1
-
-[sub_resource type="AnimationNodeAnimation" id=31]
-animation = "Slide Start"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=32]
-blend_point_0/node = SubResource( 31 )
-blend_point_0/pos = 0.1
-
-[sub_resource type="AnimationNodeAnimation" id=33]
-animation = "Slide "
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=34]
-blend_point_0/node = SubResource( 33 )
-blend_point_0/pos = 0.1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=35]
-advance_condition = "isMoving"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=36]
-advance_condition = "isNotMoving"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=37]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=38]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=39]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=40]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=41]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=42]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=43]
-advance_condition = "isFalling"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=44]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=45]
-advance_condition = "isOnGround"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=46]
-advance_condition = "isOnGround"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=47]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=48]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=49]
-switch_mode = 1
-advance_condition = "isNotMoving"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=50]
-switch_mode = 1
-advance_condition = "isMoving"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=51]
-advance_condition = "isCrouching"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=52]
-advance_condition = "isNotCrouching"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=53]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=54]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=55]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=56]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=57]
-advance_condition = "isCrouching"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=58]
-advance_condition = "isOnGround"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=59]
-
-[sub_resource type="AnimationNodeStateMachine" id=60]
-"states/Airborne Down/node" = SubResource( 3 )
-"states/Airborne Down/position" = Vector2( 241, -150.414 )
-"states/Airborne Trans/node" = SubResource( 6 )
-"states/Airborne Trans/position" = Vector2( 467, -150.414 )
-"states/Airborne Up/node" = SubResource( 9 )
-"states/Airborne Up/position" = Vector2( 467, -83.414 )
-"states/Attack 1/node" = SubResource( 10 )
-"states/Attack 1/position" = Vector2( 436, 66.586 )
-"states/Attack 2/node" = SubResource( 11 )
-"states/Attack 2/position" = Vector2( 436, 160.586 )
-states/Crouch/node = SubResource( 13 )
-states/Crouch/position = Vector2( 71, 66.586 )
-states/Idle/node = SubResource( 16 )
-states/Idle/position = Vector2( 241, 66.586 )
-states/Jump/node = SubResource( 19 )
-states/Jump/position = Vector2( 467, -19.414 )
-states/Landing/node = SubResource( 25 )
-states/Landing/position = Vector2( 241, -25.414 )
-"states/Landing to Run/node" = SubResource( 22 )
-"states/Landing to Run/position" = Vector2( 71, -25.414 )
-states/Run/node = SubResource( 28 )
-states/Run/position = Vector2( 241, 160.586 )
-states/Slide/node = SubResource( 34 )
-states/Slide/position = Vector2( -95, 160.586 )
-"states/Slide End/node" = SubResource( 30 )
-"states/Slide End/position" = Vector2( 71, 160.586 )
-"states/Slide Start/node" = SubResource( 32 )
-"states/Slide Start/position" = Vector2( 81, 238.586 )
-transitions = [ "Idle", "Run", SubResource( 35 ), "Run", "Idle", SubResource( 36 ), "Idle", "Attack 1", SubResource( 37 ), "Attack 1", "Attack 2", SubResource( 38 ), "Attack 2", "Idle", SubResource( 39 ), "Attack 1", "Idle", SubResource( 40 ), "Idle", "Jump", SubResource( 41 ), "Jump", "Airborne Up", SubResource( 42 ), "Airborne Up", "Airborne Trans", SubResource( 43 ), "Airborne Trans", "Airborne Down", SubResource( 44 ), "Airborne Down", "Landing", SubResource( 45 ), "Airborne Down", "Landing to Run", SubResource( 46 ), "Landing", "Idle", SubResource( 47 ), "Landing to Run", "Run", SubResource( 48 ), "Landing to Run", "Landing", SubResource( 49 ), "Landing", "Landing to Run", SubResource( 50 ), "Idle", "Crouch", SubResource( 51 ), "Crouch", "Idle", SubResource( 52 ), "Run", "Slide Start", SubResource( 53 ), "Slide Start", "Slide", SubResource( 54 ), "Slide", "Slide End", SubResource( 55 ), "Slide End", "Run", SubResource( 56 ), "Slide", "Crouch", SubResource( 57 ), "Airborne Trans", "Landing", SubResource( 58 ), "Run", "Attack 1", SubResource( 59 ) ]
-start_node = "Idle"
-graph_offset = Vector2( -424, 10.586 )
-
-[sub_resource type="Animation" id=61]
-length = 0.25
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 43, 45 ]
-}
-
-[sub_resource type="Animation" id=62]
-length = 0.25
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 135, 137 ]
-}
-
-[sub_resource type="Animation" id=63]
-length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 41, 44 ]
-}
-
-[sub_resource type="Animation" id=64]
-length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 134, 137 ]
-}
-
-[sub_resource type="Animation" id=65]
-length = 0.25
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 0
-tracks/0/loop_wrap = false
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 40, 41 ]
-}
-
-[sub_resource type="Animation" id=66]
-length = 0.25
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 0
-tracks/0/loop_wrap = false
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.12 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 132, 133 ]
-}
-
-[sub_resource type="Animation" id=67]
-length = 0.75
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 48, 60 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath("..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [ "AttackOne" ],
-"method": "spawnHitbox"
-}, {
-"args": [  ],
-"method": "clearHitboxes"
-} ]
-}
-
-[sub_resource type="Animation" id=68]
-length = 1.25
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 61, 76 ]
-}
-
-[sub_resource type="Animation" id=69]
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 36 ]
-}
-
-[sub_resource type="Animation" id=70]
-length = 0.25
-loop = true
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 24, 26 ]
-}
-
-[sub_resource type="Animation" id=71]
-length = 2.5
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0, 23 ]
-}
-
-[sub_resource type="Animation" id=72]
-length = 2.5
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 106, 129 ]
-}
-
-[sub_resource type="Animation" id=73]
-length = 0.4
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.25 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 38, 39, 40 ]
-}
-
-[sub_resource type="Animation" id=74]
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 130, 133 ]
-}
-
-[sub_resource type="Animation" id=75]
-length = 0.3
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 45, 47 ]
-}
-
-[sub_resource type="Animation" id=76]
-length = 0.3
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 137, 139 ]
-}
-
-[sub_resource type="Animation" id=77]
-length = 0.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 101, 105 ]
-}
-
-[sub_resource type="Animation" id=78]
-length = 0.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 141, 146 ]
-}
-
-[sub_resource type="Animation" id=79]
-length = 0.9
-loop = true
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.9 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 77, 88 ]
-}
-
-[sub_resource type="Animation" id=80]
-length = 0.9
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.9 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 89, 100 ]
-}
-
-[sub_resource type="Animation" id=81]
-length = 0.25
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 30, 32 ]
-}
-
-[sub_resource type="Animation" id=82]
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 32, 36 ]
-}
-
-[sub_resource type="Animation" id=83]
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 27, 30 ]
-}
-
-[sub_resource type="BoxShape" id=84]
-extents = Vector3( 0.8125, 1.4375, 1 )
-
-[sub_resource type="BoxShape" id=85]
-extents = Vector3( 0.75, 1, 1 )
+[ext_resource path="res://Silver_Promo.cs" type="Script" id=28]
 
 [sub_resource type="AtlasTexture" id=86]
 flags = 19
@@ -812,6 +184,151 @@ animations = [ {
 [sub_resource type="BoxShape" id=114]
 extents = Vector3( 17.925, 0.001, 3.3563 )
 
+[sub_resource type="ProceduralSky" id=115]
+ground_bottom_color = Color( 0.0431373, 0.0705882, 0.501961, 1 )
+ground_horizon_color = Color( 0.411765, 0.607843, 0.764706, 1 )
+ground_curve = 0.226274
+sun_color = Color( 0.980469, 0.97987, 0.942169, 1 )
+sun_latitude = 12.0
+
+[sub_resource type="Environment" id=116]
+background_mode = 2
+background_sky = SubResource( 115 )
+fog_depth_begin = 0.0
+fog_depth_end = 2425.6
+fog_height_min = 0.0
+dof_blur_far_distance = 1000.0
+dof_blur_near_distance = 0.59
+dof_blur_near_amount = 1.0
+
+[sub_resource type="AtlasTexture" id=117]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 0, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=118]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 73, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=119]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 146, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=120]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 219, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=121]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 292, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=122]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 365, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=123]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 438, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=124]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 511, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=125]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 584, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=126]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 657, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=127]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 730, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=128]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 803, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=129]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 876, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=130]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 949, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=131]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 1022, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=132]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 1095, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=133]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 1168, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=134]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 1241, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=135]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 1314, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=136]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 1387, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=137]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 1460, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=138]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 1533, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=139]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 1606, 0, 73, 66 )
+
+[sub_resource type="AtlasTexture" id=140]
+flags = 16
+atlas = ExtResource( 24 )
+region = Rect2( 1679, 0, 73, 66 )
+
+[sub_resource type="SpriteFrames" id=141]
+animations = [ {
+"frames": [ SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ), SubResource( 121 ), SubResource( 122 ), SubResource( 123 ), SubResource( 124 ), SubResource( 125 ), SubResource( 126 ), SubResource( 127 ), SubResource( 128 ), SubResource( 129 ), SubResource( 130 ), SubResource( 131 ), SubResource( 132 ), SubResource( 133 ), SubResource( 134 ), SubResource( 135 ), SubResource( 136 ), SubResource( 137 ), SubResource( 138 ), SubResource( 139 ), SubResource( 140 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
 [node name="Battle" type="Spatial"]
 script = ExtResource( 22 )
 debugPlayer = NodePath("Battle Positions/BattlePlayer")
@@ -843,98 +360,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.1875, -2.5 )
 [node name="Polymorphor" parent="Battle Positions" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.1875, 2.5 )
 
-[node name="BattlePlayer" type="KinematicBody" parent="Battle Positions"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.1875, 2.5 )
-collision_layer = 32
-collision_mask = 97
-script = ExtResource( 28 )
-character = "Cato"
-gravity = 2.0
-knockbackDrag = 2.0
-knockbackGravity = 2.0
-airDrag = 0.1
-jumpForce = 40.0
-runSpeed = 12.0
-dashBoost = 60.0
-slideDrag = 0.15
-footDrag = 1.0
-dashDrag = 4.0
+[node name="BattlePlayer" parent="Battle Positions" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.875, 0.1875, 2.5 )
+visible = false
 
-[node name="AnimationTree" type="AnimationTree" parent="Battle Positions/BattlePlayer"]
-tree_root = SubResource( 60 )
-anim_player = NodePath("../Sprite3D/AnimationPlayer")
-active = true
-parameters/playback = ExtResource( 29 )
-parameters/conditions/isCrouching = false
-parameters/conditions/isFalling = false
-parameters/conditions/isMoving = false
-parameters/conditions/isNotCrouching = false
-parameters/conditions/isNotMoving = false
-parameters/conditions/isOnGround = false
-"parameters/Airborne Down/blend_position" = 0.223156
-"parameters/Airborne Trans/blend_position" = 0.195145
-"parameters/Airborne Up/blend_position" = 0.258637
-parameters/Crouch/blend_position = 0
-parameters/Idle/blend_position = 0.226891
-parameters/Jump/blend_position = 0.23436
-parameters/Landing/blend_position = 0.277311
-"parameters/Landing to Run/blend_position" = 0.264239
-parameters/Run/blend_position = 0.284781
-parameters/Slide/blend_position = 0
-"parameters/Slide End/blend_position" = 0
-"parameters/Slide Start/blend_position" = 0
-
-[node name="Sprite3D" type="Sprite3D" parent="Battle Positions/BattlePlayer"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, 0 )
-pixel_size = 0.0625
-shaded = true
-alpha_cut = 2
-texture = ExtResource( 1 )
-hframes = 12
-vframes = 13
-frame = 9
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/BattlePlayer/Sprite3D"]
-"anims/Airborne Down" = SubResource( 61 )
-"anims/Airborne Down L" = SubResource( 62 )
-"anims/Airborne Transition" = SubResource( 63 )
-"anims/Airborne Transition L" = SubResource( 64 )
-"anims/Airborne Up" = SubResource( 65 )
-"anims/Airborne Up L" = SubResource( 66 )
-"anims/Attack 1" = SubResource( 67 )
-"anims/Attack 2" = SubResource( 68 )
-anims/Crouch = SubResource( 69 )
-anims/Dash = SubResource( 70 )
-anims/Idle = SubResource( 71 )
-"anims/Idle L" = SubResource( 72 )
-anims/Jump = SubResource( 73 )
-"anims/Jump L" = SubResource( 74 )
-anims/Landing = SubResource( 75 )
-"anims/Landing L" = SubResource( 76 )
-"anims/Landing to Run" = SubResource( 77 )
-"anims/Landing to Run L" = SubResource( 78 )
-anims/Run = SubResource( 79 )
-"anims/Run L" = SubResource( 80 )
-"anims/Slide " = SubResource( 81 )
-"anims/Slide End" = SubResource( 82 )
-"anims/Slide Start" = SubResource( 83 )
-
-[node name="MainColShape" type="CollisionShape" parent="Battle Positions/BattlePlayer"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 1.4375, 0 )
-shape = SubResource( 84 )
-
-[node name="Hurtbox" type="Area" parent="Battle Positions/BattlePlayer"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53334, 1.63899, 0 )
-collision_layer = 2
-collision_mask = 0
-script = ExtResource( 24 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Battle Positions/BattlePlayer/Hurtbox"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5843, -0.124072, 0 )
-shape = SubResource( 85 )
+[node name="Sprite3D" parent="Battle Positions/BattlePlayer" index="1"]
+frame = 6
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 6.75, 28.875 )
+transform = Transform( 1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 6.75, 22.4375 )
 current = true
 fov = 45.0
 size = 30.0
@@ -985,6 +419,7 @@ __meta__ = {
 }
 
 [node name="Top Menu" type="Control" parent="Camera/BattleGUI"]
+visible = false
 anchor_top = 0.647
 anchor_bottom = 1.0
 margin_top = 0.23999
@@ -1140,37 +575,37 @@ __meta__ = {
 }
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.668595, -0.521614, 0.53, 0.175615, 0.803318, 0.569069, -0.722593, -0.287401, 0.628697, -1.98592, 9.69981, 27.4945 )
-light_color = Color( 0.968627, 0.94902, 0.788235, 1 )
+transform = Transform( 0.668595, -0.521614, 0.53, 0.175615, 0.803318, 0.569069, -0.722593, -0.287401, 0.628697, -1.61092, 9.69981, 27.1195 )
+light_color = Color( 0.74902, 0.74902, 0.713726, 1 )
+light_energy = 2.0
 light_indirect_energy = 0.0
 light_specular = 1.0
 shadow_enabled = true
 shadow_bias = 0.07
-shadow_contact = 0.81
+shadow_contact = 0.35
 directional_shadow_mode = 0
 directional_shadow_split_1 = 1.0
 directional_shadow_split_2 = 1.0
 directional_shadow_split_3 = 1.0
-directional_shadow_depth_range = 1
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444457, -1.26219, -5.69706 )
 visible = false
 pixel_size = 0.1
 frames = SubResource( 92 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="Baths" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -2.6875 )
 
 [node name="Tree!" type="Sprite3D" parent="Baths"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5625, 4.25, -5.0625 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5625, 2.9375, -5.0625 )
 pixel_size = 0.0625
 texture = ExtResource( 6 )
 
 [node name="Tree!2" type="Sprite3D" parent="Baths"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.875, 4.5, -5.8125 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.875, 2.5625, -5.8125 )
 flip_h = true
 pixel_size = 0.0625
 texture = ExtResource( 6 )
@@ -1180,27 +615,27 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 axis = 1
 frames = SubResource( 99 )
-frame = 3
 playing = true
 
 [node name="Waterfall Piece" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 2.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 106 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="Waterfall Piece2" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 0.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 106 )
+frame = 3
 playing = true
 
 [node name="Waterfall Top" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 113 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="Baths"]
@@ -1216,6 +651,16 @@ transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.538, 0.5, 1.0565 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0661667, 0.0445835, 0 )
 shape = SubResource( 114 )
 
-[connection signal="area_entered" from="Battle Positions/BattlePlayer/Hurtbox" to="Battle Positions/BattlePlayer/Hurtbox" method="OnHurtboxAreaEntered"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 116 )
 
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.125, 2.25, 1.375 )
+pixel_size = 0.0625
+alpha_cut = 2
+frames = SubResource( 141 )
+script = ExtResource( 28 )
+poly = NodePath("../Battle Positions/Polymorphor")
+
+[editable path="Battle Positions/BattlePlayer"]
 [editable path="Baths"]
