@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using static AbilityUtilities;
 
 public class CatoCombatant : PlayerCombatant {
     
@@ -31,6 +32,8 @@ public class CatoCombatant : PlayerCombatant {
         SetCombatantData();
         animTree = (AnimationTree) GetNode("./AnimationTree");
         animSM = (AnimationNodeStateMachinePlayback) animTree.Get("parameters/playback");
+        preparedSkills[0] = new SkillStateDebug("[center]Heavy Strike", "[center][Combo 3] Deals 17 Damage", 2, (PlayerAbilityType.Attack | PlayerAbilityType.Normal));
+        preparedSkills[1] = new SkillStateDebug("[center]Shield", "[center][color=blue]Sheilds[/color] the active character for 24 Damage", 4, PlayerAbilityType.Spell);
     }
    
 

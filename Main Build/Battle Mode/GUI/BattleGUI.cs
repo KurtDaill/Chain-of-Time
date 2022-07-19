@@ -14,7 +14,9 @@ public class BattleGUI : Control
         currentMenu = (BattleMenu) GetNode("Top Menu");
         parentBattle = (Battle) GetNode("../..");    
         menus[0] = (BattleMenu) GetNode("Top Menu");
+        menus[2] = (BattleMenu) GetNode("Item Menu");
         menus[3] = (BattleMenu) GetNode("Attack Menu");
+        menus[4] = (BattleMenu) GetNode("Skill Menu");
     }
 
     public void ResetGUIState(){

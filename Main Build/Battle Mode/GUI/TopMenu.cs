@@ -52,9 +52,15 @@ public class TopMenu : BattleMenu
                 break;
             case MenuInput.Select:
                 switch(highlightedTab){
+                    case 1:
+                        //Returns the Item Menu
+                        return parentGUI.menus[2];
                     case 2:
                         //Returns the Attack Menu
                         return parentGUI.menus[3];
+                    case 3:
+                        //Returns the Skill Menu
+                        return parentGUI.menus[4];
                 }
                 break;
         }

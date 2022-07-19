@@ -28,6 +28,7 @@ public class PlayerMenuSelection : BattleCommand
         }else if(Input.IsActionJustPressed("ui_accept")){
             input = BattleMenu.MenuInput.Select;
         }else{
+            input = BattleMenu.MenuInput.None;
             return;
         }
 

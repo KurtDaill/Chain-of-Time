@@ -11,7 +11,8 @@ public abstract class BattleMenu : Control
         Down,
         Left,
         Select,
-        Back
+        Back,
+        None,
     }
 
     public override void _Ready(){

@@ -25,6 +25,14 @@ public static class AbilityUtilities
         Dodgable = 0b_0100_0000_0000,
     }
 
+    public enum PlayerAbilityType{
+        Normal = 0b_0000_0001,
+        Spell = 0b_0000_0010,
+        Tech = 0b_0000_0100,
+        Skill = 0b_0001_0000,
+        Attack = 0b_0010_0000
+    }
+
     public static void CheckForRequiredAnimations(Combatant parent, string[] reqArr){ //TODO: Revisit this
         return;
         /*
