@@ -15,7 +15,7 @@ public class ItemMenu : BattleMenu
     private Label[] namePlates = new Label[numberOfTabs];
     private Label[] counts = new Label[numberOfTabs];
 
-    private int currentFocusItem = 1;
+    private int currentFocusItem = 0;
     public override void _Ready()
     {
         animPlayer = (AnimationPlayer) GetNode("AnimationPlayer");
@@ -33,14 +33,14 @@ public class ItemMenu : BattleMenu
 //  }
     public override void OnOpen(){
         var list = PartyData.Instance().GetBattleItems();
-        list.Insert(0, (null, 0));
+        list.Add((null, 0));
         list.Add((null, 0));
         list.Add((null, 0));
         playerInventory = list.ToArray();
         
         animPlayer.Play("Ready to Scroll Down"); //Sets the item tabs in the correct positions
         animPlayer.Advance(0.1F);
-        SetLabels(1);
+        SetLabels(0);
         base.OnOpen(); 
     }
 
@@ -63,10 +63,10 @@ public class ItemMenu : BattleMenu
             Set Labels correctly
             Play Scroll Up
         */
-        if(currentFocusItem == (playerInventory.Length - 3)) return;
+        if(currentFocusItem == (playerInventory.Length - 4)) return;
         animPlayer.Play("Ready to Scroll Down");
         animPlayer.Advance(0.1F); 
-        SetLabels(1);
+        SetLabels(0);
         animPlayer.Play("Scroll Down");
         currentFocusItem ++;
     }
@@ -77,10 +77,10 @@ public class ItemMenu : BattleMenu
             Set Labels correctly
             Play Scroll Up
         */
-        if(currentFocusItem == 1) return;
+        if(currentFocusItem == 0) return;
         animPlayer.Play("Ready to Scroll Up");
         animPlayer.Advance(0.1F); 
-        SetLabels(2);
+        SetLabels(1);
         animPlayer.Play("Scroll Up");
         currentFocusItem --;
     }
@@ -92,7 +92,7 @@ public class ItemMenu : BattleMenu
             focusTab is meant to indicates which itemTab should contain the item the player focusing on is, and therefore where the rest of the list falls.
             the for loop populates that list correctly.
         */
-        if(focusTab != 1 && focusTab != 2) throw new IndexOutOfRangeException();
+        if(focusTab != 0 && focusTab != 1) throw new IndexOutOfRangeException();
         for(int i = 0; i < numberOfTabs; i++){
             if(playerInventory[currentFocusItem + (i - focusTab)].Item1 == null){
                 namePlates[i].Text = "";

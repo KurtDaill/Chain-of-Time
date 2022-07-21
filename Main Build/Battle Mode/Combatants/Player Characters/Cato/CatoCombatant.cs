@@ -57,8 +57,6 @@ public class CatoCombatant : PlayerCombatant {
                 hitbox.SetKnockback(new Vector3(facing, .5F, 0) * 35);
                 hitBoxes.Add(hitbox);
                 break;
-            case "AttackTwo":
-                break;
         }
     }
 

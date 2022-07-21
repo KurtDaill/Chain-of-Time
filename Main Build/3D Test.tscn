@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://Battle Mode/Combatants/Player Characters/Cato/BattlePlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle Mode/Combatants/Enemies/Polymorphor.tscn" type="PackedScene" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://GUI/Battle Menu Assets/Item Description Box.png" type="Texture" id=35]
 [ext_resource path="res://GUI/Battle Menu Assets/Item Tab.png" type="Texture" id=36]
 [ext_resource path="res://Battle Mode/GUI/ItemMenu.cs" type="Script" id=37]
+[ext_resource path="res://Battle Mode/Combatants/Player Characters/PlayerCombatant.cs" type="Script" id=38]
 
 [sub_resource type="Animation" id=1]
 length = 0.4
@@ -826,9 +827,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.1875, 2.5 )
 
 [node name="BattlePlayer" parent="Battle Positions" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.875, 0.1875, 2.5 )
+script = ExtResource( 38 )
+character = "DEFAULT"
+gravity = 4.0
+knockbackDrag = 1.0
+knockbackGravity = 1.0
+jumpForce = 100.0
+runSpeed = 20.0
+dashBoost = 40.0
+slideDrag = 1.0
+footDrag = 2.0
+dashDrag = 3.0
 
 [node name="Sprite3D" parent="Battle Positions/BattlePlayer" index="1"]
-frame = 2
+frame = 18
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 4.75, 22.4375 )
@@ -1515,7 +1527,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444457, -1.26219, -5.69706 )
 visible = false
 pixel_size = 0.1
 frames = SubResource( 21 )
-frame = 4
 playing = true
 
 [node name="Baths" parent="." instance=ExtResource( 3 )]
@@ -1537,27 +1548,28 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 axis = 1
 frames = SubResource( 28 )
+frame = 4
 playing = true
 
 [node name="Waterfall Piece" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 2.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 35 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="Waterfall Piece2" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 0.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 35 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="Waterfall Top" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 42 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="Baths"]

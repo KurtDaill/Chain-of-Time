@@ -17,7 +17,7 @@ public class CombatantData
         if(dataFloat.TryGetValue(key, out value)){
             return value;
         }else{
-            throw new InvalidCombatantDataAccessed("Default CombatantData Float Accessed: " + key);
+            throw new InvalidCombatantDataAccessed("Uninitialized CombatantData Float Accessed: " + key);
             //return 0;
         }
     }
@@ -32,9 +32,18 @@ public class CombatantData
         if(dataBool.TryGetValue(key, out value)){
             return value;
         }else{
-            throw new InvalidCombatantDataAccessed("Default CombatantData Bool Accessed: " + key);
+            throw new InvalidCombatantDataAccessed("Uninitialized CombatantData Bool Accessed: " + key);
             //return false;
         }
+    }
+
+    //Used when the combatant checks for a bool that may not be set
+    //Generally used to check for options that are rarely relevant, so 'false' is default and easily handled.
+    public bool CheckBool(String key){
+        var value = false;
+        if(dataBool.TryGetValue(key, out value)){}
+        else GD.Print("Unset Bool Checked: " + key);
+        return value;
     }
 }
 
