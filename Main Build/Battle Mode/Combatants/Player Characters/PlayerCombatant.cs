@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using static AbilityUtilities;
 public class PlayerCombatant : Combatant
 {
@@ -21,7 +22,13 @@ public class PlayerCombatant : Combatant
 	public float dashDrag = 5F;
     [Export]
     public String AttackHitBoxResource = "res://Battle Mode/Combatants/Player Characters/Cato/Cato Atk 1 Hitbox.tscn";
+    [Export]
+    public String fileName = "";
+
+    public float dashDelay = 1F;
     protected PlayerCombatantSkillState[] preparedSkills = new PlayerCombatantSkillState[4];
+
+    protected Equipment[] equipedItems = new Equipment[3];
 
     public override void _Ready()
     {
@@ -29,8 +36,8 @@ public class PlayerCombatant : Combatant
         SetCombatantData();
         animTree = (AnimationTree) GetNode("./AnimationTree");
         animSM = (AnimationNodeStateMachinePlayback) animTree.Get("parameters/playback");
-        preparedSkills[0] = new SkillStateDebug("[center]Heavy Strike", "[center][Combo 3] Deals 17 Damage", 2, (PlayerAbilityType.Attack | PlayerAbilityType.Normal));
-        preparedSkills[1] = new SkillStateDebug("[center]Shield", "[center][color=blue]Sheilds[/color] the active character for 24 Damage", 4, PlayerAbilityType.Spell);
+        preparedSkills[0] = new SkillStateDebug("[center]Heavy Strike", "[center][Combo 3] Deals 17 Damage", 2, (PlayerAbilityQualities.Attack | PlayerAbilityQualities.Normal));
+        preparedSkills[1] = new SkillStateDebug("[center]Shield", "[center][color=blue]Sheilds[/color] the active character for 24 Damage", 4, PlayerAbilityQualities.Spell);
     }
 
     public override void _Process(float delta)
@@ -41,7 +48,10 @@ public class PlayerCombatant : Combatant
         }else if (hSpeed < 0){
             facing = -1;
         }
-        updateAnimationTree();
+        this.updateAnimationTree();
+        if(data.GetFloat("dashTimer") > 0){
+            data.SetFloat("dashTimer", data.GetFloat("dashTimer") - delta);
+        }
     }
     public virtual void Move(float delta)
     {
@@ -106,14 +116,36 @@ public class PlayerCombatant : Combatant
     protected override void SetCombatantData(){
         base.SetCombatantData();
         data.SetFloat("strength", strength);
+        data.SetFloat("baseStrength", strength);
         data.SetFloat("jumpForce", jumpForce);
+        data.SetFloat("baseJumpForce", jumpForce);
         data.SetFloat("runSpeed", runSpeed);
+        data.SetFloat("baseRunSpeed", runSpeed);
         data.SetFloat("dashBoost", dashBoost);
+        data.SetFloat("baseDashBoost", dashBoost);
         data.SetFloat("diveSpeed", diveSpeed);
+        data.SetFloat("baseDiveSpeed", diveSpeed);
         data.SetFloat("slideDrag", slideDrag);
+        data.SetFloat("baseSlideDrag", slideDrag);
         data.SetFloat("footDrag", footDrag);
+        data.SetFloat("baseFootDrag", footDrag);
         data.SetFloat("dashDrag", dashDrag);
+        data.SetFloat("baseDashDrag", dashDrag);
+        data.SetFloat("dashDelay", dashDelay);
+        data.SetFloat("dashTimer" , 0);
         data.SetBool("crouching", false);
         data.SetBool("dashing", false);
+    }
+
+    public Dictionary<string, object> Save(){
+        var dict = new  Dictionary<string, object>{
+            {"fileName", fileName},
+            {"playerData", data.Save()},
+            {"character" , character}
+            //TODO : Save Prepared Skills
+            //TODO : Save Known Skills
+            //TODO : Save Equipment
+        };
+        return dict;
     }
 }

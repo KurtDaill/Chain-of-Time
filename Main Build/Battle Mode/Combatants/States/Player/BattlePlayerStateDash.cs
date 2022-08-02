@@ -3,8 +3,12 @@ using System;
 
 public class PlayerCombatantStateDash : CombatantState
 {
+    private bool cancel = false;
     public override CombatantState Process(Combatant combatant, float delta)
     {
+        if(cancel){
+            return new PlayerCombatantStateGround(); //Should probably be the player's last state instead? Implement functionality for that? TODO?
+        }
         combatant.hSpeed = Math.Sign(combatant.hSpeed) * (Math.Abs(combatant.hSpeed) - combatant.data.GetFloat("dashDrag"));
         if(Input.IsActionJustPressed("ui_down")){
             return new PlayerCombatantStateSlide();
@@ -21,6 +25,10 @@ public class PlayerCombatantStateDash : CombatantState
     }
 
     public override void Enter(Combatant combatant, CombatantState lastState){
+        if(combatant.data.GetFloat("dashTimer") > 0){ 
+            cancel = true;
+            return;
+        }
         if(Input.IsActionPressed("ui_left") || combatant.hSpeed < 0){ //Turn this into an "on enter" in dashing
                 combatant.hSpeed -= combatant.data.GetFloat("dashBoost");
             }else{
@@ -32,7 +40,9 @@ public class PlayerCombatantStateDash : CombatantState
     }
 
     public override void Exit(Combatant combatant){
+        if(cancel) return;
         combatant.animSM.Travel("Run");
         combatant.data.SetBool("dashing", false);
+        combatant.data.SetFloat("dashTimer", combatant.data.GetFloat("dashDelay"));
     }
 }

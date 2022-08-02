@@ -9,7 +9,12 @@ public class PartyData //Implements the Singelton Pattern
     private List<(Item, int)> inventory = new List<(Item, int)>();
     private PlayerCombatant[] activeCharacters = new PlayerCombatant[3];
 
-    private int alignment  = 0;
+    private Dictionary<string, int> alignments = new Dictionary<string, int>(){
+        {"LawMinusChaos", 0},
+        {"SilverRelation", 5},
+        {"LucieneRelation", -15},
+        {"Legend", 0}
+    };    
     public static PartyData Instance(){
         if(instance == null) instance = new PartyData();
         return instance;
@@ -21,7 +26,7 @@ public class PartyData //Implements the Singelton Pattern
 
     private void LoadData(){
         //THIS IS TEMPORARY
-        activeCharacters[0] = new CatoCombatant();
+        activeCharacters[0] = new PlayerCombatant();
         for(int i = 0; i < 10; i++){
             inventory.Add((new DebugItem(), i));
         }

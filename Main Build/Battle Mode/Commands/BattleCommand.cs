@@ -13,24 +13,12 @@ public abstract class BattleCommand
         runningDual = dual;
         //Called when this command is picked at the current command.
     }
-
-    public void DisableDualRunning(){
-        runningDual = false; 
-    }
     public abstract void Execute(float delta, Battle parent);
 
     public abstract void Undo();
 
     public virtual void Exit(){
-        if(runningDual){
-            parent.HandleDualExit();
-        }
         //Called when the battle is moving to the next command.
         //Used to log any needed values or execute final behaviours.
     }
 }
-
-/*
-Remarks:
-
-*/

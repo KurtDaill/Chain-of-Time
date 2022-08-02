@@ -12,6 +12,8 @@ public class Battle : Node
 
     [Export]
     public NodePath debugPlayer;
+    [Export]
+    public NodePath debugPlayer2;
 
     [Export]
     public NodePath cameraPath;
@@ -20,7 +22,6 @@ public class Battle : Node
 
     [Export]
     public NodePath debugEnemy;
-    public Spatial[] battleSpots = new Spatial[6];
 
     public List<BattleEffect> startOfRoundEffects = new List<BattleEffect>();
     public List<BattleEffect> endOfRoundEffects = new List<BattleEffect>();
@@ -31,6 +32,8 @@ public class Battle : Node
     public BattleGUI gui;
     private List<BattleCommand> commandList;
     private int currentCommandIndex;
+    
+    public BattlePositionManager positionManager;
     public override void _Ready()
     {
         if(debugPlayer != null){
@@ -39,17 +42,15 @@ public class Battle : Node
         if(debugEnemy != null){
             activeCombatants[3] = (Combatant) GetNode(debugEnemy);
         }
+        if(debugPlayer2 != null){
+            activeCombatants[1] = (Combatant) GetNode(debugPlayer2);
+        }
         camera = (MovingCamera) GetNode(cameraPath);
         gui = (BattleGUI) GetNode(GUI);
+        positionManager = (BattlePositionManager) GetNode("Battle Positions");
         commandList = new List<BattleCommand>();
         commandList.Add(new PlayerMenuSelection());
-        commandList[currentCommandIndex].Enter(this);
-        battleSpots[0] = (Spatial) GetNode("./Battle Positions/Hero 1");
-        battleSpots[1] = (Spatial) GetNode("./Battle Positions/Hero 2"); 
-        battleSpots[2] = (Spatial) GetNode("./Battle Positions/Hero 3"); 
-        battleSpots[3] = (Spatial) GetNode("./Battle Positions/Enemy 1"); 
-        battleSpots[4] = (Spatial) GetNode("./Battle Positions/Enemy 2"); 
-        battleSpots[5] = (Spatial) GetNode("./Battle Positions/Enemy 3");    
+        commandList[currentCommandIndex].Enter(this);   
     }
     public override void _Process(float delta)
     {
@@ -64,14 +65,6 @@ public class Battle : Node
 
     public void InsertCommandNext(BattleCommand insertCom){
         commandList.Insert(currentCommandIndex + 1, insertCom);
-    }
-
-    /*
-        Used to handle dual running commands when the later of the two commands exits before the command that appears earlier one
-    */
-    public void HandleDualExit(){       
-        currentCommandIndex += 1;
-        commandList[currentCommandIndex].Exit();
     }
 
     public void AddCommand(BattleCommand newCom){

@@ -45,6 +45,13 @@ public class CombatantData
         else GD.Print("Unset Bool Checked: " + key);
         return value;
     }
+
+    public Dictionary<string, object> Save(){
+        var dict = new Dictionary<string, object>{};
+        dict.Add("float", dataFloat);
+        dict.Add("bool", dataFloat);
+        return dict;
+    }
 }
 
 public class InvalidCombatantDataAccessed : Exception

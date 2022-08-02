@@ -1,6 +1,6 @@
-[gd_scene load_steps=88 format=2]
+[gd_scene load_steps=89 format=2]
 
-[ext_resource path="res://Battle Mode/Combatants/Player Characters/Cato/BattlePlayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Battle Mode/Combatants/Player Characters/Silver/SilverCombatant.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Battle Mode/Combatants/Enemies/Polymorphor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Art/3D/Baths.glb" type="PackedScene" id=3]
 [ext_resource path="res://Art/Waterfall Top Top-Sheet.png" type="Texture" id=4]
@@ -37,7 +37,8 @@
 [ext_resource path="res://GUI/Battle Menu Assets/Item Description Box.png" type="Texture" id=35]
 [ext_resource path="res://GUI/Battle Menu Assets/Item Tab.png" type="Texture" id=36]
 [ext_resource path="res://Battle Mode/GUI/ItemMenu.cs" type="Script" id=37]
-[ext_resource path="res://Battle Mode/Combatants/Player Characters/PlayerCombatant.cs" type="Script" id=38]
+[ext_resource path="res://Battle Mode/Combatants/Player Characters/Cato/CatoCombatant.tscn" type="PackedScene" id=38]
+[ext_resource path="res://Battle Mode/BattlePositionManager.cs" type="Script" id=39]
 
 [sub_resource type="Animation" id=1]
 length = 0.4
@@ -324,7 +325,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.4 )
 }
 
-[sub_resource type="Animation" id=46]
+[sub_resource type="Animation" id=15]
 resource_name = "Ready to Scroll Down"
 length = 0.1
 tracks/0/type = "bezier"
@@ -398,7 +399,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=48]
+[sub_resource type="Animation" id=16]
 resource_name = "Ready to Scroll Up"
 length = 0.1
 tracks/0/type = "bezier"
@@ -472,7 +473,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=50]
+[sub_resource type="Animation" id=17]
 resource_name = "Scroll Down"
 length = 0.35
 step = 0.05
@@ -547,7 +548,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.35 )
 }
 
-[sub_resource type="Animation" id=51]
+[sub_resource type="Animation" id=18]
 resource_name = "Scroll Up"
 length = 0.35
 step = 0.05
@@ -622,171 +623,171 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.35 )
 }
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=19]
 flags = 19
 atlas = ExtResource( 26 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=20]
 flags = 19
 atlas = ExtResource( 26 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=21]
 flags = 19
 atlas = ExtResource( 26 )
 region = Rect2( 32, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=22]
 flags = 19
 atlas = ExtResource( 26 )
 region = Rect2( 48, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=23]
 flags = 19
 atlas = ExtResource( 26 )
 region = Rect2( 64, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=24]
 flags = 19
 atlas = ExtResource( 26 )
 region = Rect2( 80, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=21]
+[sub_resource type="SpriteFrames" id=25]
 animations = [ {
-"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
 "loop": true,
 "name": "default",
 "speed": 10.0
 } ]
 
-[sub_resource type="AtlasTexture" id=22]
-flags = 19
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=23]
-flags = 19
-atlas = ExtResource( 4 )
-region = Rect2( 16, 0, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=24]
-flags = 19
-atlas = ExtResource( 4 )
-region = Rect2( 32, 0, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=25]
-flags = 19
-atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 16, 32 )
-
 [sub_resource type="AtlasTexture" id=26]
 flags = 19
 atlas = ExtResource( 4 )
-region = Rect2( 64, 0, 16, 32 )
+region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=27]
 flags = 19
 atlas = ExtResource( 4 )
+region = Rect2( 16, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 19
+atlas = ExtResource( 4 )
+region = Rect2( 32, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 19
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 19
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 19
+atlas = ExtResource( 4 )
 region = Rect2( 80, 0, 16, 32 )
 
-[sub_resource type="SpriteFrames" id=28]
+[sub_resource type="SpriteFrames" id=32]
 animations = [ {
-"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
+"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
 "loop": true,
 "name": "default",
 "speed": 12.0
 } ]
-
-[sub_resource type="AtlasTexture" id=29]
-flags = 19
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=30]
-flags = 19
-atlas = ExtResource( 5 )
-region = Rect2( 16, 0, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=31]
-flags = 19
-atlas = ExtResource( 5 )
-region = Rect2( 32, 0, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=32]
-flags = 19
-atlas = ExtResource( 5 )
-region = Rect2( 48, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=33]
 flags = 19
 atlas = ExtResource( 5 )
-region = Rect2( 64, 0, 16, 32 )
+region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=34]
 flags = 19
 atlas = ExtResource( 5 )
+region = Rect2( 16, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 19
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 19
+atlas = ExtResource( 5 )
+region = Rect2( 48, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 19
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 19
+atlas = ExtResource( 5 )
 region = Rect2( 80, 0, 16, 32 )
 
-[sub_resource type="SpriteFrames" id=35]
+[sub_resource type="SpriteFrames" id=39]
 animations = [ {
-"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
+"frames": [ SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ) ],
 "loop": true,
 "name": "default",
 "speed": 12.0
 } ]
-
-[sub_resource type="AtlasTexture" id=36]
-flags = 19
-atlas = ExtResource( 25 )
-region = Rect2( 0, 0, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=37]
-flags = 19
-atlas = ExtResource( 25 )
-region = Rect2( 16, 0, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=38]
-flags = 19
-atlas = ExtResource( 25 )
-region = Rect2( 32, 0, 16, 32 )
-
-[sub_resource type="AtlasTexture" id=39]
-flags = 19
-atlas = ExtResource( 25 )
-region = Rect2( 48, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=40]
 flags = 19
 atlas = ExtResource( 25 )
-region = Rect2( 64, 0, 16, 32 )
+region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=41]
 flags = 19
 atlas = ExtResource( 25 )
+region = Rect2( 16, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 19
+atlas = ExtResource( 25 )
+region = Rect2( 32, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=43]
+flags = 19
+atlas = ExtResource( 25 )
+region = Rect2( 48, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=44]
+flags = 19
+atlas = ExtResource( 25 )
+region = Rect2( 64, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=45]
+flags = 19
+atlas = ExtResource( 25 )
 region = Rect2( 80, 0, 16, 32 )
 
-[sub_resource type="SpriteFrames" id=42]
+[sub_resource type="SpriteFrames" id=46]
 animations = [ {
-"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ) ],
+"frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ) ],
 "loop": true,
 "name": "default",
 "speed": 12.0
 } ]
 
-[sub_resource type="BoxShape" id=43]
+[sub_resource type="BoxShape" id=47]
 extents = Vector3( 17.925, 0.001, 3.3563 )
 
-[sub_resource type="ProceduralSky" id=44]
+[sub_resource type="ProceduralSky" id=48]
 ground_bottom_color = Color( 0.0431373, 0.0705882, 0.501961, 1 )
 ground_horizon_color = Color( 0.411765, 0.607843, 0.764706, 1 )
 ground_curve = 0.226274
 sun_color = Color( 0.980469, 0.97987, 0.942169, 1 )
 sun_latitude = 12.0
 
-[sub_resource type="Environment" id=45]
+[sub_resource type="Environment" id=49]
 background_mode = 2
-background_sky = SubResource( 44 )
+background_sky = SubResource( 48 )
 fog_depth_begin = 0.0
 fog_depth_end = 2425.6
 fog_height_min = 0.0
@@ -796,57 +797,70 @@ dof_blur_near_amount = 1.0
 
 [node name="Battle" type="Spatial"]
 script = ExtResource( 22 )
-debugPlayer = NodePath("Battle Positions/BattlePlayer")
+debugPlayer = NodePath("Battle Positions/Cato")
+debugPlayer2 = NodePath("Battle Positions/Silver")
 cameraPath = NodePath("Camera")
 debugEnemy = NodePath("Battle Positions/Polymorphor")
 GUI = NodePath("Camera/BattleGUI")
 
 [node name="Battle Positions" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1875 )
+script = ExtResource( 39 )
 
 [node name="Hero 1" type="Spatial" parent="Battle Positions"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.1875, 2.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0.1875, 4 )
+
+[node name="Hero 1 Back" type="Spatial" parent="Battle Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0.1875, 4 )
 
 [node name="Hero 2" type="Spatial" parent="Battle Positions"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1875, 0 )
 
+[node name="Hero 2 Back" type="Spatial" parent="Battle Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.1875, 0 )
+
 [node name="Hero 3" type="Spatial" parent="Battle Positions"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0.1875, -2.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5, 0.1875, -4 )
+
+[node name="Hero 3 Back" type="Spatial" parent="Battle Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 0.1875, -4 )
 
 [node name="Enemy 1" type="Spatial" parent="Battle Positions"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.1875, 2.5 )
 
+[node name="Enemy 1 Back" type="Spatial" parent="Battle Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.1875, 2.5 )
+
 [node name="Enemy 2" type="Spatial" parent="Battle Positions"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.1875, 0 )
+
+[node name="Enemy 2 Back" type="Spatial" parent="Battle Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0.1875, 0 )
 
 [node name="Enemy 3" type="Spatial" parent="Battle Positions"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.1875, -2.5 )
 
+[node name="Enemy 3 Back" type="Spatial" parent="Battle Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.1875, -2.5 )
+
 [node name="Polymorphor" parent="Battle Positions" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.1875, 2.5 )
 
-[node name="BattlePlayer" parent="Battle Positions" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.875, 0.1875, 2.5 )
-script = ExtResource( 38 )
-character = "DEFAULT"
-gravity = 4.0
-knockbackDrag = 1.0
-knockbackGravity = 1.0
-jumpForce = 100.0
-runSpeed = 20.0
-dashBoost = 40.0
-slideDrag = 1.0
-footDrag = 2.0
-dashDrag = 3.0
+[node name="Cato" parent="Battle Positions" instance=ExtResource( 38 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.1875, 4 )
+character = "Cato"
+runSpeed = 18.5
+dashBoost = 45.0
+dashDrag = 2.0
 
-[node name="Sprite3D" parent="Battle Positions/BattlePlayer" index="1"]
-frame = 18
+[node name="Silver" parent="Battle Positions" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0.1875, 0 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 4.75, 22.4375 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 25 )
 current = true
 fov = 45.0
-size = 30.0
+size = 0.1
 far = 100000.0
 script = ExtResource( 27 )
 
@@ -1480,10 +1494,10 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/BattleGUI/Item Menu"]
-"anims/Ready to Scroll Down" = SubResource( 46 )
-"anims/Ready to Scroll Up" = SubResource( 48 )
-"anims/Scroll Down" = SubResource( 50 )
-"anims/Scroll Up" = SubResource( 51 )
+"anims/Ready to Scroll Down" = SubResource( 15 )
+"anims/Ready to Scroll Up" = SubResource( 16 )
+"anims/Scroll Down" = SubResource( 17 )
+"anims/Scroll Up" = SubResource( 18 )
 
 [node name="Readouts" type="VBoxContainer" parent="Camera/BattleGUI"]
 anchor_left = 1.0
@@ -1509,9 +1523,9 @@ __meta__ = {
 }
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.668595, -0.521614, 0.53, 0.175615, 0.803318, 0.569069, -0.722593, -0.287401, 0.628697, -1.61092, 9.69981, 27.1195 )
+transform = Transform( -0.966492, -0.236493, 0.0998248, 0.255786, -0.854506, 0.452099, -0.0216172, 0.462484, 0.886364, -1.61092, 9.69981, 27.1195 )
 light_color = Color( 0.74902, 0.74902, 0.713726, 1 )
-light_energy = 2.0
+light_energy = 1.4
 light_indirect_energy = 0.0
 light_specular = 1.0
 shadow_enabled = true
@@ -1526,7 +1540,7 @@ directional_shadow_split_3 = 1.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444457, -1.26219, -5.69706 )
 visible = false
 pixel_size = 0.1
-frames = SubResource( 21 )
+frames = SubResource( 25 )
 playing = true
 
 [node name="Baths" parent="." instance=ExtResource( 3 )]
@@ -1547,29 +1561,27 @@ texture = ExtResource( 6 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 axis = 1
-frames = SubResource( 28 )
-frame = 4
+frames = SubResource( 32 )
+frame = 2
 playing = true
 
 [node name="Waterfall Piece" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 2.9375, -1.875 )
 pixel_size = 0.0625
-frames = SubResource( 35 )
-frame = 2
+frames = SubResource( 39 )
 playing = true
 
 [node name="Waterfall Piece2" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 0.9375, -1.875 )
 pixel_size = 0.0625
-frames = SubResource( 35 )
-frame = 1
+frames = SubResource( 39 )
+frame = 5
 playing = true
 
 [node name="Waterfall Top" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
-frames = SubResource( 42 )
-frame = 2
+frames = SubResource( 46 )
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="Baths"]
@@ -1583,10 +1595,9 @@ transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.538, 0.5, 1.0565 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Baths/Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0661667, 0.0445835, 0 )
-shape = SubResource( 43 )
+shape = SubResource( 47 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 45 )
+environment = SubResource( 49 )
 
-[editable path="Battle Positions/BattlePlayer"]
 [editable path="Baths"]

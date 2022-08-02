@@ -32,6 +32,11 @@ public class PlayerAttacks : BattleCommand
         }
     }
 
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
     public override void Undo()
     {
         throw new NotImplementedException();

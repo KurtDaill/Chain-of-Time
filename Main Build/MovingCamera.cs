@@ -34,15 +34,11 @@ public class MovingCamera : Camera
                 break;
         }
     }
-
-    private void InterpToTrans(){
-
-    }
-
     public void InterpolateToTransform(Transform targetTransform, float speedFactor = 1, float timer = 1){
         target = targetTransform;
         speed = speedFactor;
         state = CameraState.InterpToTrans;
+        this.timer = timer;
     }
 
 

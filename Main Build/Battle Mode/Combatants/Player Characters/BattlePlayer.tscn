@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Art/Cato Master Sprite Sheet.png" type="Texture" id=1]
 [ext_resource path="res://3D Test SM.tres" type="AnimationNodeStateMachinePlayback" id=2]
-[ext_resource path="res://Battle Mode/Combatants/Player Characters/Cato/CatoCombatant.cs" type="Script" id=3]
+[ext_resource path="res://Battle Mode/Combatants/Player Characters/PlayerCombatant.cs" type="Script" id=3]
 [ext_resource path="res://Battle Mode/Combatants/Hurtbox.cs" type="Script" id=4]
 
 [sub_resource type="AnimationNodeAnimation" id=1]
@@ -548,33 +548,32 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=79]
-length = 0.9
 loop = true
-step = 0.05
+step = 0.083
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.9 ),
+"times": PoolRealArray( 0, 0.913 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 77, 88 ]
 }
 
 [sub_resource type="Animation" id=80]
-length = 0.9
 loop = true
+step = 0.083
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.9 ),
+"times": PoolRealArray( 0, 0.913 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 89, 100 ]
@@ -636,17 +635,17 @@ extents = Vector3( 0.75, 1, 1 )
 collision_layer = 32
 collision_mask = 97
 script = ExtResource( 3 )
-character = "Cato"
-gravity = 2.0
-knockbackDrag = 2.0
-knockbackGravity = 2.0
+gravity = 4.0
+knockbackDrag = 1.0
+knockbackGravity = 1.0
 airDrag = 0.1
-jumpForce = 40.0
-runSpeed = 10.0
-dashBoost = 60.0
-slideDrag = 0.15
-footDrag = 1.0
-dashDrag = 4.0
+jumpForce = 100.0
+runSpeed = 64.0
+dashBoost = 40.0
+slideDrag = 1.0
+footDrag = 2.0
+dashDrag = 3.0
+fileName = "res://Battle Mode/Combatants/Player Characters/Cato/BattlePlayer.tscn"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 60 )
@@ -680,7 +679,7 @@ alpha_cut = 2
 texture = ExtResource( 1 )
 hframes = 12
 vframes = 13
-frame = 12
+frame = 83
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite3D"]
 "anims/Airborne Down" = SubResource( 61 )

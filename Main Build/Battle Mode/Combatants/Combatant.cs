@@ -10,6 +10,8 @@ public abstract class Combatant : KinematicBody {
     protected CombatantState state = new CombatantStateStandby();
     protected CombatantState newState;
 
+    protected Sprite3D pointerFinger;
+
     [Export]
     public string character = "DEFAULT";
 
@@ -33,6 +35,13 @@ public abstract class Combatant : KinematicBody {
 
     public float hSpeed = 0;
     public float vSpeed = 0;
+
+    public override void _Ready()
+    {
+        pointerFinger = (Sprite3D) GetNode("Pointer");
+        var animPlayer = (AnimationPlayer) pointerFinger.GetChild(0);
+        animPlayer.Play("Point");
+    }
 
     protected virtual void SetCombatantData(){
         data.SetFloat("gravity", gravity);
@@ -142,6 +151,14 @@ public abstract class Combatant : KinematicBody {
     }
     public virtual void EnableCombatantCollisions(){
         this.CollisionMask = 0x31;
+    }
+
+    public void SelectMe(){
+        pointerFinger.Visible = true;
+    }
+
+    public void DeselectMe(){
+        pointerFinger.Visible = false;
     }
 }
 

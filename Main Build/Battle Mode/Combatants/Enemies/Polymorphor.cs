@@ -15,6 +15,7 @@ public class Polymorphor : EnemyCombatant
         animSM = (AnimationNodeStateMachinePlayback) animTree.Get("parameters/playback");
         SetCombatantData();
         abilitiesKnown = new CombatantAbilityState[]{};
+        base._Ready();
     }
     public override void _Process(float delta)
     {

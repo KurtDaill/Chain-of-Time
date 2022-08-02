@@ -25,7 +25,7 @@ public static class AbilityUtilities
         Dodgable = 0b_0100_0000_0000,
     }
 
-    public enum PlayerAbilityType{
+    public enum PlayerAbilityQualities{
         Normal = 0b_0000_0001,
         Spell = 0b_0000_0010,
         Tech = 0b_0000_0100,

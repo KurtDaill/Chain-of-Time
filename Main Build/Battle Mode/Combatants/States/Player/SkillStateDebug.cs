@@ -8,10 +8,10 @@ public class SkillStateDebug : PlayerCombatantSkillState{
         return null;
     }
 
-    public SkillStateDebug(string newName, string newRulesText, int newCost, PlayerAbilityType newType){
+    public SkillStateDebug(string newName, string newRulesText, int newCost, PlayerAbilityQualities quals){
         name = newName;
         rulesText = newRulesText;
         cost = newCost;
-        type = newType;
+        playerQualities = quals;
     }
 }

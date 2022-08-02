@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Silver Master Sprite-Sheet.png-005f002a9b5f483638cd277bab276dec.stex"
+path="res://.import/Character Pointer.png-7837e2db598b063502debec3e2fedecc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Silver Master Sprite-Sheet.png"
-dest_files=[ "res://.import/Silver Master Sprite-Sheet.png-005f002a9b5f483638cd277bab276dec.stex" ]
+source_file="res://Art/Character Pointer.png"
+dest_files=[ "res://.import/Character Pointer.png-7837e2db598b063502debec3e2fedecc.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=false
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=1
 process/fix_alpha_border=true

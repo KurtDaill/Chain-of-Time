@@ -29,7 +29,7 @@ public class SkillMenu : BattleMenu
     }
     public override void OnOpen()
     {
-        activeCharacter = (PlayerCombatant) parentGUI.parentBattle.activeCombatants[0]; //TODO Reconfigure when player selection is implemented
+        activeCharacter = (PlayerCombatant) parentGUI.parentBattle.activeCombatants[parentGUI.playerCharacterSelected]; //TODO Reconfigure when player selection is implemented
         for(int i = 0; i < 4; i++){
             var skill = activeCharacter.GetSkill(i);
             if(skill != null){
