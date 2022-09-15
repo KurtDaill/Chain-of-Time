@@ -70,6 +70,7 @@ public class BattlePositionManager : Spatial
         }
 
         public void SetToDefaultPositions(){
+            SetFacings();
             for(int i = 0; i < 6; i++){
                 if(parent.activeCombatants[i] != null){
                     parent.activeCombatants[i].Transform = battleSpots[i].Transform;
@@ -80,12 +81,14 @@ public class BattlePositionManager : Spatial
         }
 
         public void InterpolateToDefaultPositions(float speed = 2F, float timer = 2F){
+            SetFacings();
             currentState = State.ResetBattlefield;
             moveSpeed = speed;
             moveTimer = timer;
         }
 
         public void SetForegroundBackground(int[] foregroundCharacters){
+            SetFacings();
             foregroundCharacters = Array.FindAll(foregroundCharacters, element => parent.activeCombatants[element] != null);
             for(int i = 0; i < 6; i++){
                 if(parent.activeCombatants[i] != null){
@@ -98,6 +101,7 @@ public class BattlePositionManager : Spatial
         }
 
         public void InterpolateToForegroundBackground(int[] foregroundCharacters, float speed = 2F, float timer = 2F){
+            SetFacings();
             backgroundedCombatants = new int[6];
             foregroundedCombatants  = new int[6];
 
@@ -112,5 +116,15 @@ public class BattlePositionManager : Spatial
             currentState = State.Backgrounding;
             moveSpeed = speed;
             moveTimer = timer;
+        }
+
+        public void SetFacings(){
+            for(int i = 0; i < 3; i++){
+                if(parent.activeCombatants[i] != null) parent.activeCombatants[i].facing = 1;
+            }
+
+            for(int i = 3; i < 6; i++){
+                if(parent.activeCombatants[i] != null) parent.activeCombatants[i].facing = -1;
+            }
         }
 }

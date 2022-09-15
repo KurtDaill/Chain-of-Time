@@ -1,0 +1,123 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Art/Kell Cato Idle Testing-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://ExplorePlayer3D.cs" type="Script" id=2]
+[ext_resource path="res://FTB Teleporter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Art/Cato Icon.png" type="Texture" id=4]
+[ext_resource path="res://ExploreCamera.cs" type="Script" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 12
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 12
+atlas = ExtResource( 1 )
+region = Rect2( 256, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 12
+atlas = ExtResource( 1 )
+region = Rect2( 512, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 12
+atlas = ExtResource( 1 )
+region = Rect2( 768, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 12
+atlas = ExtResource( 1 )
+region = Rect2( 1024, 0, 256, 256 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 12
+atlas = ExtResource( 1 )
+region = Rect2( 1280, 0, 256, 256 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="BoxShape" id=8]
+margin = 0.001
+extents = Vector3( 0.5, 0.8125, 0.648 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "Fade Up"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("THE DARKNESS:opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.16, 0.49452, 0, -0.12987, -0.12987, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Fade to Black"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("THE DARKNESS:opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.16, 0.494521, 1, -0.18, -0.129869, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[node name="Spatial" type="Spatial"]
+
+[node name="KinematicBody" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.168, -0.048, 1.296 )
+script = ExtResource( 2 )
+moveSpeed = 0.1
+drag = 0.3
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="KinematicBody"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.096, 1.0625, -1.716 )
+cast_shadow = 0
+generate_lightmap = false
+pixel_size = 0.008
+transparent = false
+shaded = true
+double_sided = false
+alpha_cut = 1
+frames = SubResource( 7 )
+frame = 4
+playing = true
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.855197, -1.0625 )
+shape = SubResource( 8 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.056, 1.32, 0 )
+script = ExtResource( 5 )
+
+[node name="THE DARKNESS" type="Sprite3D" parent="Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7699e-08, 0, -1.32 )
+modulate = Color( 0, 0, 0, 1 )
+opacity = 0.0
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
+"anims/Fade Up" = SubResource( 9 )
+"anims/Fade to Black" = SubResource( 10 )
+
+[node name="FTB Teleporter" parent="." instance=ExtResource( 3 )]
+
+[node name="Target" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.576, 4.752 )
+
+[connection signal="animation_finished" from="Camera/AnimationPlayer" to="Camera" method="_on_AnimationPlayer_animation_finished"]

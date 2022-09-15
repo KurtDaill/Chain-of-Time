@@ -32,6 +32,7 @@ public class BattleCommandEnemyAttacks : BattleCommand {
             if(en.ProcessAbility(delta)) readyToExit = false;
         if(readyToExit){
             //parent.AddCommand(new BattlefieldCleanUp(false));
+            parent.positionManager.InterpolateToDefaultPositions(3, 2);
             parent.AddCommand(new PlayerMenuSelection());
             parent.NextCommand();
         }
