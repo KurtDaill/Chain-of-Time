@@ -3,6 +3,7 @@ using System;
 
 public class SkillMenu : BattleMenu
 {
+    /*
     public AnimationPlayer menuAnim;
     public SkillCard[] cards = new SkillCard[4];
     private int selectedOption = -1;
@@ -79,4 +80,5 @@ public class SkillMenu : BattleMenu
         }
         return null;
     }
+    */
 }

@@ -94,7 +94,7 @@ shaded = true
 double_sided = false
 alpha_cut = 1
 frames = SubResource( 7 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]

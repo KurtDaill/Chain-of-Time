@@ -31,8 +31,9 @@ public class TopMenu : BattleMenu
        if(highlightedTab != -1) menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = true;
     }
 
-    public override BattleMenu HandleInput(MenuInput input)
+    public override void HandleInput(MenuInput input, out PMPlayerAbility ability)
     {
+        ability = null;
         switch(input){
             case MenuInput.Up: 
                 if(highlightedTab != -1) menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = false;
@@ -54,16 +55,18 @@ public class TopMenu : BattleMenu
                 switch(highlightedTab){
                     case 1:
                         //Returns the Item Menu
-                        return parentGUI.menus[2];
+                        parentGUI.ChangeMenu(2);
+                        break;
                     case 2:
                         //Returns the Attack Menu
-                        return parentGUI.menus[3];
+                        parentGUI.ChangeMenu(3);
+                        break;
                     case 3:
                         //Returns the Skill Menu
-                        return parentGUI.menus[4];
+                        parentGUI.ChangeMenu(4);
+                        break;
                 }
                 break;
         }
-        return null;
     }
 }

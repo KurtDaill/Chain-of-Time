@@ -25,12 +25,15 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
         currentMenu.OnOpen();
     }
 
-    public void HandleInput(MenuInput input){
-        BattleMenu response = currentMenu.HandleInput(input);
-    }
-
     public void SetForNewPlayerMenuSelection(){
         playerCharacterSelected = 0;
         ResetGUIState();
+    }
+
+    public void ChangeMenu(int newMenuIndex){
+        currentMenu.Visible = false;
+        lastMenu = currentMenu;
+        currentMenu = menus[newMenuIndex];
+        currentMenu.OnOpen();
     }
 }

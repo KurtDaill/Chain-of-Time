@@ -8,12 +8,13 @@ public class AttackMenu : BattleMenu
         base.OnOpen();
     }
 
-    public override BattleMenu HandleInput(MenuInput input){
+    public override void HandleInput(MenuInput input, out PMPlayerAbility ability){  
+        ability = null;
         if(input == MenuInput.Back){
-            return parentGUI.lastMenu;
+            //parentGUI.
         }else if(input == MenuInput.Select){
-            parentGUI.EnterCommand(new BattleCommand [] {new PlayerAttacks((PlayerCombatant)parentGUI.parentBattle.activeCombatants[parentGUI.playerCharacterSelected])});
+            ability = parentGUI.parentBattle.GetPlayerCharacter(parentGUI.playerCharacterSelected).GetBasicAttack();
         }
-        return null;
+        return;
     }
 }

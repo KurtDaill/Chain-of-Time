@@ -2,20 +2,20 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class PMCharacater : Node{
+public class PMCharacter : Node{
 
-    public List<PMEffect> statusEffects;
+    public List<PMStatus> statusEffects;
     public override void _Ready(){
-        statusEffects = new List<PMEffect>();
+        statusEffects = new List<PMStatus>();
     } 
 
     public override void _Process(float delta){
         
     }
 
-    public void AddStatus(PMEffect newEffect){
+    public void AddStatus(PMStatus newEffect){
         //Checks if the newEffect is another instance of a current effect, if so we keep the instance with more duration
-        foreach(PMEffect oldEffect in statusEffects){
+        foreach(PMStatus oldEffect in statusEffects){
             if(newEffect.GetEffectType() == oldEffect.GetEffectType()){
                 if(newEffect.GetDuration() > oldEffect.GetDuration()){
                     statusEffects.Remove(oldEffect);
@@ -28,5 +28,9 @@ public class PMCharacater : Node{
         }
 
         statusEffects.Add(newEffect);
+    }
+
+    public void GetAbility(string name){
+
     }
 }

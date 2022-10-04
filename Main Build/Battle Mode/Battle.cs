@@ -29,7 +29,7 @@ public class Battle : Node
     [Export]
     public NodePath GUI;
 
-    public BattleGUI gui;
+    //public BattleGUI gui;
     private List<BattleCommand> commandList;
     private int currentCommandIndex;
     
@@ -46,10 +46,10 @@ public class Battle : Node
             activeCombatants[1] = (Combatant) GetNode(debugPlayer2);
         }
         camera = (MovingCamera) GetNode(cameraPath);
-        gui = (BattleGUI) GetNode(GUI);
+        //gui = (BattleGUI) GetNode(GUI);
         positionManager = (BattlePositionManager) GetNode("Battle Positions");
         commandList = new List<BattleCommand>();
-        commandList.Add(new PlayerMenuSelection());
+        //commandList.Add(new PlayerMenuSelection());
         commandList[currentCommandIndex].Enter(this);   
     }
     public override void _Process(float delta)

@@ -2,18 +2,18 @@ using Godot;
 using System;
 using static PMBattleUtilities;
 
-public class PMEffect{
+public class PMStatus{
     //Number of turn this effect will last, set to -1 for effects that have to end at end of turn
     private int duration;
     private StatusEffect effectType;
 
     //Character that this effect is applied to. Left null for battlefield effects.
-    private PMCharacater target = null;
+    private PMCharacter target = null;
 
-    public PMEffect(StatusEffect effect, TargetRule targeting, int dur = -1){
+    public PMStatus(StatusEffect effect, Targeting targetChar, int dur = -1){
         effectType = effect;
         duration = dur;
-        //TODO implement TargetRule to setting a parent
+        //TODO implement TargetingRule to setting a parent
         
         target.AddStatus(this);
     }

@@ -33,7 +33,7 @@ public class BattleCommandEnemyAttacks : BattleCommand {
         if(readyToExit){
             //parent.AddCommand(new BattlefieldCleanUp(false));
             parent.positionManager.InterpolateToDefaultPositions(3, 2);
-            parent.AddCommand(new PlayerMenuSelection());
+            //parent.AddCommand(new PlayerMenuSelection());
             parent.NextCommand();
         }
     }

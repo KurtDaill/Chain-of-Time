@@ -1,12 +1,12 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=94 format=2]
 
-[ext_resource path="res://PM Battle Mode/PMBattleAbility.cs" type="Script" id=1]
+[ext_resource path="res://PM Battle Mode/PMPlayerAbility.cs" type="Script" id=1]
 [ext_resource path="res://PM Battle Mode/PMBattle.cs" type="Script" id=2]
 [ext_resource path="res://Art/3D/Baths.glb" type="PackedScene" id=3]
 [ext_resource path="res://Art/Waterfall Top Top-Sheet.png" type="Texture" id=4]
 [ext_resource path="res://Art/Waterfall.png" type="Texture" id=5]
 [ext_resource path="res://Art/Tree for 3D.png" type="Texture" id=6]
-[ext_resource path="res://Battle Mode/GUI/BattleGUI.cs" type="Script" id=7]
+[ext_resource path="res://Battle Mode/GUI/PMBattleGUI.cs" type="Script" id=7]
 [ext_resource path="res://Battle Mode/GUI/TopMenu.cs" type="Script" id=8]
 [ext_resource path="res://Battle Mode/GUI/AttackMenu.cs" type="Script" id=9]
 [ext_resource path="res://GUI/Battle Menu Assets/Party Button Controller.png" type="Texture" id=10]
@@ -21,6 +21,7 @@
 [ext_resource path="res://GUI/Battle Menu Assets/Item Button Highlight.png" type="Texture" id=19]
 [ext_resource path="res://GUI/Battle Menu Assets/Skill Button Controller.png" type="Texture" id=20]
 [ext_resource path="res://GUI/Battle Menu Assets/Item Button Controller.png" type="Texture" id=21]
+[ext_resource path="res://Art/Kell Cato Master-Sheet.png" type="Texture" id=22]
 [ext_resource path="res://Art/Water Texture.png" type="Texture" id=23]
 [ext_resource path="res://GUI/Battle Menu Assets/Skill Card.png" type="Texture" id=24]
 [ext_resource path="res://Art/Waterfall Top Front-Sheet.png" type="Texture" id=25]
@@ -37,7 +38,8 @@
 [ext_resource path="res://GUI/Battle Menu Assets/Item Tab.png" type="Texture" id=36]
 [ext_resource path="res://Battle Mode/GUI/ItemMenu.cs" type="Script" id=37]
 [ext_resource path="res://Art/Character Pointer.png" type="Texture" id=38]
-[ext_resource path="res://Art/Cato Master Sprite Sheet.png" type="Texture" id=40]
+[ext_resource path="res://PM Battle Mode/PMPlayerCharacter.cs" type="Script" id=39]
+[ext_resource path="res://Art/Polymorphor Master Sprite Sheet.png" type="Texture" id=40]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Point"
@@ -68,38 +70,92 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "New Anim"
+resource_name = "Idle"
+length = 0.75
+loop = true
+step = 0.25
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:transform")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [  ]
+"values": [ 0, 2 ]
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "New Anim"
-tracks/0/type = "method"
-tracks/0/path = NodePath(".")
+resource_name = "Attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ 3 ],
-"method": "DealDamage"
-} ]
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 5, 9 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
 }
 
 [sub_resource type="Animation" id=4]
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 4, 5 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "com_atk", 3 ],
+"method": "StartHoldAttack"
+}, {
+"args": [  ],
+"method": "HoldAttackAcitvate"
+}, {
+"args": [ 15 ],
+"method": "HoldAttackPefectStart"
+}, {
+"args": [  ],
+"method": "HoldAttackPerfectStop"
+}, {
+"args": [ 5 ],
+"method": "HoldAttackTimeout"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
 length = 0.4
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:margin_top")
@@ -112,7 +168,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 )
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -126,19 +182,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 746.0, 741.0 ]
-}
-
-[sub_resource type="Animation" id=6]
-length = 0.4
-tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:margin_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 746, -0.25, 0, 0.25, 0, 909, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.4 )
 }
 
 [sub_resource type="Animation" id=7]
@@ -150,11 +193,24 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 909, -0.25, 0, 0.25, 0, 746, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 746, -0.25, 0, 0.25, 0, 909, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4 )
 }
 
 [sub_resource type="Animation" id=8]
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 909, -0.25, 0, 0.25, 0, 746, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4 )
+}
+
+[sub_resource type="Animation" id=9]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -168,19 +224,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 746.0, 741.0 ]
-}
-
-[sub_resource type="Animation" id=9]
-length = 0.4
-tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:margin_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 746, -0.25, 0, 0.25, 0, 909, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.4 )
 }
 
 [sub_resource type="Animation" id=10]
@@ -192,11 +235,24 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 909, -0.25, 0, 0.25, 0, 746, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 746, -0.25, 0, 0.25, 0, 909, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4 )
 }
 
 [sub_resource type="Animation" id=11]
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 909, -0.25, 0, 0.25, 0, 746, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4 )
+}
+
+[sub_resource type="Animation" id=12]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -210,19 +266,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 746.0, 741.0 ]
-}
-
-[sub_resource type="Animation" id=12]
-length = 0.4
-tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:margin_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 746, -0.25, 0, 0.25, 0, 909, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.4 )
 }
 
 [sub_resource type="Animation" id=13]
@@ -234,11 +277,24 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 909, -0.25, 0, 0.25, 0, 746, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 746, -0.25, 0, 0.25, 0, 909, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4 )
 }
 
 [sub_resource type="Animation" id=14]
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 909, -0.25, 0, 0.25, 0, 746, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4 )
+}
+
+[sub_resource type="Animation" id=15]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -254,7 +310,7 @@ tracks/0/keys = {
 "values": [ 746.0, 741.0 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 length = 0.4
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:margin_top")
@@ -267,7 +323,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 )
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 length = 0.6
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Card 3:margin_left")
@@ -340,7 +396,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.6 )
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=18]
 length = 0.4
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Card 1:margin_top")
@@ -383,7 +439,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.4 )
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=19]
 length = 0.1
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Item Tabs/Item Tab 0:modulate:a")
@@ -456,7 +512,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=20]
 length = 0.1
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Item Tabs/Item Tab 0:modulate:a")
@@ -529,7 +585,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=21]
 length = 0.35
 step = 0.05
 tracks/0/type = "bezier"
@@ -603,7 +659,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.35 )
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=22]
 length = 0.35
 step = 0.05
 tracks/0/type = "bezier"
@@ -677,171 +733,171 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.35 )
 }
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=23]
 flags = 19
 atlas = ExtResource( 26 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=24]
 flags = 19
 atlas = ExtResource( 26 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=25]
 flags = 19
 atlas = ExtResource( 26 )
 region = Rect2( 32, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=26]
 flags = 19
 atlas = ExtResource( 26 )
 region = Rect2( 48, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=27]
 flags = 19
 atlas = ExtResource( 26 )
 region = Rect2( 64, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=28]
 flags = 19
 atlas = ExtResource( 26 )
 region = Rect2( 80, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=28]
+[sub_resource type="SpriteFrames" id=29]
 animations = [ {
-"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
+"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
 "loop": true,
 "name": "default",
 "speed": 10.0
 } ]
 
-[sub_resource type="AtlasTexture" id=29]
-flags = 19
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 16, 32 )
-
 [sub_resource type="AtlasTexture" id=30]
 flags = 19
 atlas = ExtResource( 4 )
-region = Rect2( 16, 0, 16, 32 )
+region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=31]
 flags = 19
 atlas = ExtResource( 4 )
-region = Rect2( 32, 0, 16, 32 )
+region = Rect2( 16, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=32]
 flags = 19
 atlas = ExtResource( 4 )
-region = Rect2( 48, 0, 16, 32 )
+region = Rect2( 32, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=33]
 flags = 19
 atlas = ExtResource( 4 )
-region = Rect2( 64, 0, 16, 32 )
+region = Rect2( 48, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=34]
 flags = 19
 atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 19
+atlas = ExtResource( 4 )
 region = Rect2( 80, 0, 16, 32 )
 
-[sub_resource type="SpriteFrames" id=35]
+[sub_resource type="SpriteFrames" id=36]
 animations = [ {
-"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
+"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ],
 "loop": true,
 "name": "default",
 "speed": 12.0
 } ]
-
-[sub_resource type="AtlasTexture" id=36]
-flags = 19
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=37]
 flags = 19
 atlas = ExtResource( 5 )
-region = Rect2( 16, 0, 16, 32 )
+region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=38]
 flags = 19
 atlas = ExtResource( 5 )
-region = Rect2( 32, 0, 16, 32 )
+region = Rect2( 16, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=39]
 flags = 19
 atlas = ExtResource( 5 )
-region = Rect2( 48, 0, 16, 32 )
+region = Rect2( 32, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=40]
 flags = 19
 atlas = ExtResource( 5 )
-region = Rect2( 64, 0, 16, 32 )
+region = Rect2( 48, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=41]
 flags = 19
 atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 19
+atlas = ExtResource( 5 )
 region = Rect2( 80, 0, 16, 32 )
 
-[sub_resource type="SpriteFrames" id=42]
+[sub_resource type="SpriteFrames" id=43]
 animations = [ {
-"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ) ],
+"frames": [ SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
 "loop": true,
 "name": "default",
 "speed": 12.0
 } ]
-
-[sub_resource type="AtlasTexture" id=43]
-flags = 19
-atlas = ExtResource( 25 )
-region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=44]
 flags = 19
 atlas = ExtResource( 25 )
-region = Rect2( 16, 0, 16, 32 )
+region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=45]
 flags = 19
 atlas = ExtResource( 25 )
-region = Rect2( 32, 0, 16, 32 )
+region = Rect2( 16, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=46]
 flags = 19
 atlas = ExtResource( 25 )
-region = Rect2( 48, 0, 16, 32 )
+region = Rect2( 32, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=47]
 flags = 19
 atlas = ExtResource( 25 )
-region = Rect2( 64, 0, 16, 32 )
+region = Rect2( 48, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=48]
 flags = 19
 atlas = ExtResource( 25 )
+region = Rect2( 64, 0, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=49]
+flags = 19
+atlas = ExtResource( 25 )
 region = Rect2( 80, 0, 16, 32 )
 
-[sub_resource type="SpriteFrames" id=49]
+[sub_resource type="SpriteFrames" id=50]
 animations = [ {
-"frames": [ SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ) ],
+"frames": [ SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ) ],
 "loop": true,
 "name": "default",
 "speed": 12.0
 } ]
 
-[sub_resource type="BoxShape" id=50]
+[sub_resource type="BoxShape" id=51]
 extents = Vector3( 17.925, 0.001, 3.3563 )
 
-[sub_resource type="ProceduralSky" id=51]
+[sub_resource type="ProceduralSky" id=52]
 ground_bottom_color = Color( 0.0431373, 0.0705882, 0.501961, 1 )
 ground_horizon_color = Color( 0.411765, 0.607843, 0.764706, 1 )
 ground_curve = 0.226274
 sun_color = Color( 0.980469, 0.97987, 0.942169, 1 )
 sun_latitude = 12.0
 
-[sub_resource type="Environment" id=52]
+[sub_resource type="Environment" id=53]
 background_mode = 2
-background_sky = SubResource( 51 )
+background_sky = SubResource( 52 )
 fog_depth_begin = 0.0
 fog_depth_end = 2425.6
 fog_height_min = 0.0
@@ -851,6 +907,8 @@ dof_blur_near_amount = 1.0
 
 [node name="Battle" type="Spatial"]
 script = ExtResource( 2 )
+battleGUI = NodePath("Camera/BattleGUI")
+debugPlayerOne = NodePath("Battle Positions/Hero 1/Cato")
 
 [node name="Battle Positions" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1875 )
@@ -859,13 +917,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1875 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0.1875, 4 )
 
 [node name="Cato" type="Sprite3D" parent="Battle Positions/Hero 1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.5, 0 )
-pixel_size = 0.0625
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.25, 0 )
+pixel_size = 0.008
 shaded = true
 alpha_cut = 2
-texture = ExtResource( 40 )
-hframes = 12
-vframes = 13
+texture = ExtResource( 22 )
+hframes = 10
+frame = 3
+script = ExtResource( 39 )
 
 [node name="Pointer" type="Sprite3D" parent="Battle Positions/Hero 1/Cato"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.625, 0 )
@@ -877,13 +936,17 @@ texture = ExtResource( 38 )
 anims/Point = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Hero 1/Cato"]
-"anims/New Anim" = SubResource( 2 )
+anims/Idle = SubResource( 2 )
 
-[node name="CombatAbility" type="Node" parent="Battle Positions/Hero 1/Cato"]
+[node name="Basic Attack" type="Node" parent="Battle Positions/Hero 1/Cato"]
 script = ExtResource( 1 )
+effectValue = PoolIntArray( 10 )
+name = "Cato Basic Attack"
+firstAnimation = "Attack Wind Up"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Hero 1/Cato/CombatAbility"]
-"anims/New Anim" = SubResource( 3 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Hero 1/Cato/Basic Attack"]
+anims/Attack = SubResource( 3 )
+"anims/Attack Wind Up" = SubResource( 4 )
 
 [node name="Hero 1 Back" type="Spatial" parent="Battle Positions"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0.1875, 4 )
@@ -902,6 +965,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 0.1875, -4 )
 
 [node name="Enemy 1" type="Spatial" parent="Battle Positions"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.1875, 2.5 )
+
+[node name="Sprite3D" type="Sprite3D" parent="Battle Positions/Enemy 1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+pixel_size = 0.032
+texture = ExtResource( 40 )
+hframes = 13
 
 [node name="Enemy 1 Back" type="Spatial" parent="Battle Positions"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.1875, 2.5 )
@@ -1008,9 +1077,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/BattleGUI/Skill Menu/Card 4"]
-anims/Draw = SubResource( 4 )
-anims/Selected = SubResource( 5 )
-anims/Stow = SubResource( 6 )
+anims/Draw = SubResource( 5 )
+anims/Selected = SubResource( 6 )
+anims/Stow = SubResource( 7 )
 
 [node name="Card 3" type="TextureRect" parent="Camera/BattleGUI/Skill Menu"]
 margin_left = 5.0
@@ -1072,9 +1141,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/BattleGUI/Skill Menu/Card 3"]
-anims/Draw = SubResource( 7 )
-anims/Selected = SubResource( 8 )
-anims/Stow = SubResource( 9 )
+anims/Draw = SubResource( 8 )
+anims/Selected = SubResource( 9 )
+anims/Stow = SubResource( 10 )
 
 [node name="Card 2" type="TextureRect" parent="Camera/BattleGUI/Skill Menu"]
 margin_left = 5.0
@@ -1140,9 +1209,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/BattleGUI/Skill Menu/Card 2"]
-anims/Draw = SubResource( 10 )
-anims/Selected = SubResource( 11 )
-anims/Stow = SubResource( 12 )
+anims/Draw = SubResource( 11 )
+anims/Selected = SubResource( 12 )
+anims/Stow = SubResource( 13 )
 
 [node name="Card 1" type="TextureRect" parent="Camera/BattleGUI/Skill Menu"]
 margin_left = 8.51978
@@ -1204,13 +1273,13 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/BattleGUI/Skill Menu/Card 1"]
-anims/Draw = SubResource( 13 )
-anims/Selected = SubResource( 14 )
-anims/Stow = SubResource( 15 )
+anims/Draw = SubResource( 14 )
+anims/Selected = SubResource( 15 )
+anims/Stow = SubResource( 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/BattleGUI/Skill Menu"]
-anims/Enter = SubResource( 16 )
-anims/Exit = SubResource( 17 )
+anims/Enter = SubResource( 17 )
+anims/Exit = SubResource( 18 )
 
 [node name="Top Menu" type="Control" parent="Camera/BattleGUI"]
 visible = false
@@ -1556,10 +1625,10 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/BattleGUI/Item Menu"]
-"anims/Ready to Scroll Down" = SubResource( 18 )
-"anims/Ready to Scroll Up" = SubResource( 19 )
-"anims/Scroll Down" = SubResource( 20 )
-"anims/Scroll Up" = SubResource( 21 )
+"anims/Ready to Scroll Down" = SubResource( 19 )
+"anims/Ready to Scroll Up" = SubResource( 20 )
+"anims/Scroll Down" = SubResource( 21 )
+"anims/Scroll Up" = SubResource( 22 )
 
 [node name="Readouts" type="VBoxContainer" parent="Camera/BattleGUI"]
 anchor_left = 1.0
@@ -1602,8 +1671,8 @@ directional_shadow_split_3 = 1.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444457, -1.26219, -5.69706 )
 visible = false
 pixel_size = 0.1
-frames = SubResource( 28 )
-frame = 3
+frames = SubResource( 29 )
+frame = 5
 playing = true
 
 [node name="Baths" parent="." instance=ExtResource( 3 )]
@@ -1624,29 +1693,28 @@ texture = ExtResource( 6 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 axis = 1
-frames = SubResource( 35 )
-frame = 4
+frames = SubResource( 36 )
 playing = true
 
 [node name="Waterfall Piece" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 2.9375, -1.875 )
 pixel_size = 0.0625
-frames = SubResource( 42 )
-frame = 2
+frames = SubResource( 43 )
+frame = 4
 playing = true
 
 [node name="Waterfall Piece2" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 0.9375, -1.875 )
 pixel_size = 0.0625
-frames = SubResource( 42 )
-frame = 1
+frames = SubResource( 43 )
+frame = 3
 playing = true
 
 [node name="Waterfall Top" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
-frames = SubResource( 49 )
-frame = 2
+frames = SubResource( 50 )
+frame = 4
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="Baths"]
@@ -1660,9 +1728,9 @@ transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.538, 0.5, 1.0565 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Baths/Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0661667, 0.0445835, 0 )
-shape = SubResource( 50 )
+shape = SubResource( 51 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 52 )
+environment = SubResource( 53 )
 
 [editable path="Baths"]
