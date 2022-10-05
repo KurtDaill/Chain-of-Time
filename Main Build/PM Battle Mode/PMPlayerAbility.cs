@@ -9,13 +9,7 @@ public class PMPlayerAbility : PMBattleAbility
     private bool waitingForInput;
     private string targetInput, targetAnimation;
     private bool inHoldAttack, attackReady, criticalTiming, activate;
-    private int critDamage = -1;
 
-    private int failDamage = 0;
-    private int currentEffect = 0; 
-
-    //Used for timing inputs
-    //activate is when the input will be acepted, perfect is start of optimal time, late ends optimal time, and end is when the input is no longer accepted
     //private int activateTime, perfectTime, lateTime, endTime;
 
     public override void _Process(float delta)
@@ -36,31 +30,36 @@ public class PMPlayerAbility : PMBattleAbility
         }  
     }
 
-    public void StartHoldAttack(string input, string targetAnimation, int effect, int failDamage){
-        targetInput = input;
-        currentEffect = effect;
+    /*
+        StartHoldAttack begins a Hold Attack, where the player is intended to hold a button and release it in time.
+        This function starts that process, and sets some basic parameters of it.
+        Other methods (HoldAttackActivate, HoldAttackPerfectStart, etc.) should be called when appropriate on the Call Method Track. 
+    */
+    public void StartHoldAttack(string input, string targetAnimation, int failDamage){
+        WaitForInput(input);
         critDamage = -1;
-        waitingForInput = true;
         inHoldAttack = true;
         this.failDamage = failDamage;
         this.targetAnimation = targetAnimation;
-        animPlay.Stop(false);
     }
 
-    public void HoldAttackAcitvate(){
+    //This method is called when the player has held the hold input for long enough for the ability to be allowed to go off
+    public void HoldAttackActivate(){
         attackReady = true;
     }
 
+    //This method is called when the player has held the hold input for long enough to be in the "sweet spot" range 
     public void HoldAttackPefectStart(int critDamage){
         this.critDamage = critDamage;
     }
 
+    //This method is called when the player has held the hold input for long enough to fall out of "sweet spot" range 
     public void HoldAttackPerfectStop(){
         critDamage = -1;
     }
-
+    //This method is called wwhen the player has held the hold input to 'time out', automatically going to the target animation and dealing failDamage
     public void HoldAttackTimeout(int failDamage){
-        //DealDamage(failDamage, targets[currentEffect], aligns[currentEffect]);
+        this.failDamage = failDamage;
     }
 
     public void WaitForInput(string input){
@@ -68,31 +67,14 @@ public class PMPlayerAbility : PMBattleAbility
         targetInput = input;
     }
 
-    public override void DealDamage(int effectNum){
-        Targeting damageTargets = targets[effectNum];
-        int dmg = effectValue[effectNum];
-        AbilityAlignment damageType = aligns[effectNum];
-        
-        foreach(Targeting target in Enum.GetValues(typeof(Targeting))){
-            if((target & damageTargets) == target){
-                
-            }
-        }
-    }
-
-    public void SpawnNode(string path){
-        PackedScene scene = (PackedScene) GD.Load(path);
-        Node effect = scene.Instance();
-        AddChild(effect);
-    }
-
-    public void ExecuteEffect(int effectNum){
-        switch(effects[effectNum]){
-            case EffectType.Damage:
+    public void ExecuteEvent(int eventNum){
+        switch(events[eventNum]){
+            case EventType.Damage:
+                DealDamage(eventNum);
                 break;
-            case EffectType.Status:
+            case EventType.Status:
                 break;
-            case EffectType.Healing:
+            case EventType.Healing:
                 break;
         }
     }

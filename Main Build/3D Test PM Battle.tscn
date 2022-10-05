@@ -89,7 +89,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "Attack"
-length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("..:frame")
 tracks/0/interp = 1
@@ -109,12 +108,16 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0 ],
+"method": "ExecuteEffect"
+} ]
 }
 
 [sub_resource type="Animation" id=4]
+length = 2.0
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("..:frame")
@@ -123,7 +126,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5 ),
+"times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 3, 4, 5 ]
@@ -135,10 +138,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4, 0.5, 0.7, 0.9 ),
+"times": PoolRealArray( 0, 0.4, 1, 1.5, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "values": [ {
-"args": [ "com_atk", 3 ],
+"args": [ "com_atk", "Attack", 0, 3 ],
 "method": "StartHoldAttack"
 }, {
 "args": [  ],
@@ -923,7 +926,7 @@ shaded = true
 alpha_cut = 2
 texture = ExtResource( 22 )
 hframes = 10
-frame = 3
+frame = 9
 script = ExtResource( 39 )
 
 [node name="Pointer" type="Sprite3D" parent="Battle Positions/Hero 1/Cato"]
@@ -940,6 +943,7 @@ anims/Idle = SubResource( 2 )
 
 [node name="Basic Attack" type="Node" parent="Battle Positions/Hero 1/Cato"]
 script = ExtResource( 1 )
+targeting = PoolIntArray( 2 )
 effectValue = PoolIntArray( 10 )
 name = "Cato Basic Attack"
 firstAnimation = "Attack Wind Up"
@@ -1672,7 +1676,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444457, -1.26219, -5.69706 )
 visible = false
 pixel_size = 0.1
 frames = SubResource( 29 )
-frame = 5
+frame = 3
 playing = true
 
 [node name="Baths" parent="." instance=ExtResource( 3 )]
@@ -1694,27 +1698,27 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 axis = 1
 frames = SubResource( 36 )
+frame = 3
 playing = true
 
 [node name="Waterfall Piece" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 2.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 43 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Waterfall Piece2" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 0.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 43 )
-frame = 3
 playing = true
 
 [node name="Waterfall Top" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 50 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="Baths"]

@@ -28,7 +28,7 @@ public class PMBattle : Node
     PMPlayerCharacter[] playerCharacters = new PMPlayerCharacter[3];
     PMEnemyCharacter[] enemyCharacters = new PMEnemyCharacter[3];
 
-    Dictionary<Targeting, PMCharacter> TargetingLookup = new Dictionary<Targeting, PMCharacter>();
+    public Dictionary<Targeting, PMCharacter> TargetingLookup = new Dictionary<Targeting, PMCharacter>();
     Queue<PMCharacter> enemyBench = new Queue<PMCharacter>();
 
     Queue<PMPlayerAbility> playerAttacks;
@@ -130,7 +130,7 @@ public static class PMBattleUtilities{
         Tech = 2
     }
 
-    public enum EffectType{
+    public enum EventType{
         None = 0,
         Damage = 1,
         Status = 2,
