@@ -25,7 +25,7 @@ public class  PMBattleAbility : Node
 
     //Targeting refers to the data represeting what this attack *could* target
     [Export(PropertyHint.Enum)]
-    protected List<TargetingRule> targeting = new List<TargetingRule>{TargetingRule.Self};
+    protected TargetingRule targeting = TargetingRule.Self;
 
     //Targets refers to the exact targets that are being hit per effects
     protected Targeting[] targets = new Targeting[]{Targeting.EnemyOne}; 
@@ -40,8 +40,10 @@ public class  PMBattleAbility : Node
     protected int[] eventValue = new int[]{0};
 
     [Export]
-    protected List<Control> guiElements = new List<Control>();
+    protected int coolDown = -1;
 
+    [Export]
+    protected int limitedAmmo = -1;
 
     [Export]
     public string name = "Ability";
@@ -70,11 +72,21 @@ public class  PMBattleAbility : Node
 
     public void Begin(){
         complete = false;
+        if(limitedAmmo != -1){
+            if(limitedAmmo == 0){
+                throw new OverflowException(); //TODO write a custom Exception
+            }
+            limitedAmmo--;
+        }
         animPlay.Play(firstAnimation);
     }
 
     public void SetTargets(Targeting[] newTargets){
         targets = newTargets;
+    }
+
+    public TargetingRule GetTargetingRule(){
+        return targeting;
     }
 
     public void FinishSequence(string anim_name){
@@ -97,20 +109,21 @@ public class  PMBattleAbility : Node
         foreach(Targeting target in Enum.GetValues(typeof(Targeting))){
             if((target & damageTargets) == target){
                 PMCharacter character;
-                source.parentBattle.TargetingLookup.TryGetValue(target, out character);
+                character = source.parentBattle.TargetLookup(target);
                 if(character != null){
                     character.TakeDamage(dmg, damageType);
+                    source.parentBattle.UpdateDamageScoreboard(dmg, source);
                 }
             }
         }
     }
 
-    public void Heal(int heal, int target = -1, int al = -1){
+    public void Heal(int eventNum){ //TODO Write Me
         //TargetingRule localTarget = ConvertTarget(target);
         //AbilityAlignment localAlign = ConvertAlignment(al);
     }
 
-    public void InflictStatus(int status, int duration = 1, int target = -1, int al = -1){
+    public void InflictStatus(int eventNum){ //TODO Write Me
         //TargetingRule localTarget = ConvertTarget(target);
         //AbilityAlignment localAlign = ConvertAlignment(al);
     }   
@@ -119,6 +132,22 @@ public class  PMBattleAbility : Node
         PackedScene scene = (PackedScene) GD.Load(path);
         Node effect = scene.Instance();
         AddChild(effect);
+    }
+
+    
+
+    public virtual void ExecuteEvent(int eventNum){
+        switch(events[eventNum]){
+            case EventType.Damage:
+                DealDamage(eventNum);
+                break;
+            case EventType.Status:
+                InflictStatus(eventNum);
+                break;
+            case EventType.Healing:
+                Heal(eventNum);
+                break;
+        }
     }
     /*
     private TargetingRule ConvertTarget(int target){

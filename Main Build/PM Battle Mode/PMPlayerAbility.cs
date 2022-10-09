@@ -10,10 +10,16 @@ public class PMPlayerAbility : PMBattleAbility
     private string targetInput, targetAnimation;
     private bool inHoldAttack, attackReady, criticalTiming, activate;
 
+    private int delayCounter = 0;
+
     //private int activateTime, perfectTime, lateTime, endTime;
 
     public override void _Process(float delta)
     {
+        if(delayCounter > 0){
+            delayCounter--;
+            return;
+        }
         if(waitingForInput){
             if(Input.IsActionJustPressed(targetInput)){
                 waitingForInput = false;
@@ -36,11 +42,17 @@ public class PMPlayerAbility : PMBattleAbility
         Other methods (HoldAttackActivate, HoldAttackPerfectStart, etc.) should be called when appropriate on the Call Method Track. 
     */
     public void StartHoldAttack(string input, string targetAnimation, int failDamage){
+        StartDelay(10);
         WaitForInput(input);
         critDamage = -1;
         inHoldAttack = true;
         this.failDamage = failDamage;
         this.targetAnimation = targetAnimation;
+        GD.Print("Hi Bud");
+    }
+
+    public void StartDelay(int delay){
+        delayCounter = delay;
     }
 
     //This method is called when the player has held the hold input for long enough for the ability to be allowed to go off
@@ -60,23 +72,19 @@ public class PMPlayerAbility : PMBattleAbility
     //This method is called wwhen the player has held the hold input to 'time out', automatically going to the target animation and dealing failDamage
     public void HoldAttackTimeout(int failDamage){
         this.failDamage = failDamage;
+        animPlay.Play(targetAnimation);
+        inHoldAttack = false;
     }
 
     public void WaitForInput(string input){
         animPlay.Stop(false);
         targetInput = input;
+        waitingForInput = true;
     }
 
-    public void ExecuteEvent(int eventNum){
-        switch(events[eventNum]){
-            case EventType.Damage:
-                DealDamage(eventNum);
-                break;
-            case EventType.Status:
-                break;
-            case EventType.Healing:
-                break;
-        }
+    public override void ExecuteEvent(int eventNum)
+    {
+        base.ExecuteEvent(eventNum);
     }
 }
 

@@ -18,6 +18,15 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
         menus[4] = (BattleMenu) GetNode("Skill Menu");
     }
 
+    public void ShowGUI(){
+        ResetGUIState();
+        Visible = true;
+    }
+
+    public void HideGUI(){
+        Visible = false;
+    }
+
     public void ResetGUIState(){
         currentMenu.Visible = false;
         lastMenu = currentMenu;

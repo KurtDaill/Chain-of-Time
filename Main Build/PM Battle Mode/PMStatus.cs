@@ -5,13 +5,13 @@ using static PMBattleUtilities;
 public class PMStatus{
     //Number of turn this effect will last, set to -1 for effects that have to end at end of turn
     private int duration;
-    private StatusEffect EventType;
+    private StatusEffect statusType;
 
     //Character that this effect is applied to. Left null for battlefield effects.
     private PMCharacter target = null;
 
     public PMStatus(StatusEffect effect, Targeting targetChar, int dur = -1){
-        EventType = effect;
+        statusType = effect;
         duration = dur;
         //TODO implement TargetingRule to setting a parent
         
@@ -23,8 +23,8 @@ public class PMStatus{
         return true;
     }
 
-    public StatusEffect GetEventType(){
-        return EventType;
+    public StatusEffect GetStatusType(){
+        return statusType;
     }
 
     public int GetDuration(){

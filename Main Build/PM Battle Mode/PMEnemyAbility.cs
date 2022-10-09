@@ -1,16 +1,27 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using static BattleEnemyAI;
 
-public class PMEnemyAbility : Node
+public class PMEnemyAbility : PMBattleAbility
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
-
-    // Called when the node enters the scene tree for the first time.
+    [Export(PropertyHint.Enum)]
+    protected List<TargetPriority> targetingLogic = new List<TargetPriority>();
+    
+    [Export(PropertyHint.Enum)]
+    protected List<SpecialRequirement> requirements = new List<SpecialRequirement>();
+   
     public override void _Ready()
     {
         
+    }
+
+    public List<SpecialRequirement> GetRequirements(){
+        return requirements;
+    }
+
+    public List<TargetPriority> GetTargetingLogic(){
+        return targetingLogic;
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,4 +29,37 @@ public class PMEnemyAbility : Node
 //  {
 //      
 //  }
+
+    public override void ExecuteEvent(int eventNum)
+    {
+        base.ExecuteEvent(eventNum);
+    }
+}
+
+public static class BattleEnemyAI{
+    public enum TargetPriority{
+        MeleeHero,
+        MeleeEnemy,
+        RangedHeroes,
+        RangedEnemies,
+        BossEnemy,
+        HeroDamageLeader,
+        HeroHealingLeader,
+        HeroBuffLeader,
+        HeroTanking,
+        EnemyTank
+    }
+
+    public enum SpecialRequirement{
+        NoHeroTank,
+        HeroDown,
+        SelfDamagedThisTurn,
+        SelfUndamagedThisTurn,
+        NoEnemies,
+        ThreeEnemies,
+        SelfHurt,
+        EnemyHurt,
+        SelfBloodied,
+        EnemyBloodied
+    }
 }
