@@ -14,7 +14,7 @@ public class AttackMenu : BattleMenu
             //parentGUI.
         }else if(input == MenuInput.Select){
             ability = parentGUI.parentBattle.GetPlayerCharacter(parentGUI.playerCharacterSelected).GetBasicAttack();
-            ability.SetTargets(new PMBattleUtilities.Targeting[]{PMBattleUtilities.Targeting.EnemyOne});
+            //ability.SetTargets(new PMBattleUtilities.BattlePos[]{PMBattleUtilities.BattlePos.EnemyOne}); //TODO LOOK AT ME
         }
         return;
     }

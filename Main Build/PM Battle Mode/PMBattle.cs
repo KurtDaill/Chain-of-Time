@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using static PMBattleUtilities;
 using static BattleMenu;
@@ -27,16 +28,25 @@ public class PMBattle : Node
 
     List<PMStatus> upkeepEffects = new List<PMStatus>();
     Stack<PMStatus> effectStack;
-
     
     PMPlayerCharacter[] playerCharacters = new PMPlayerCharacter[3];
     PMEnemyCharacter[] enemyCharacters = new PMEnemyCharacter[3];
+    
+    private Dictionary<BattlePos, PMCharacter> battleRoster = new Dictionary<BattlePos, PMCharacter>(){
+        {BattlePos.HeroThree, new PMCharacter()},
+        {BattlePos.HeroTwo, new PMCharacter()},
+        {BattlePos.HeroOne, new PMCharacter()},
+        {BattlePos.EnemyOne, new PMCharacter()},
+        {BattlePos.EnemyTwo, new PMCharacter()},
+        {BattlePos.EnemyThree, new PMCharacter()}
+    };
     Queue<PMCharacter> enemyBench = new Queue<PMCharacter>();
 
     //Tracks the amount of damage done this turn by each character in order HeroOne, HeroTwo, HeroThree, EnemyOne, EnemyTwo, EnemyThree
-    private int[] damageScoreboard = new int[6];
+    
+    Dictionary<PMCharacter, int> damageScoreboard = new Dictionary<PMCharacter, int>();
     //Tracks healing in the same way as damageScoreboard
-    private int[] healingScoreboard = new int[6];
+    Dictionary<PMCharacter, int> healingScoreboard = new Dictionary<PMCharacter, int>();
 
     public bool heroTauntUp{
         get;
@@ -49,6 +59,7 @@ public class PMBattle : Node
 
     Queue<PMPlayerAbility> playerAttacks;
     Queue<PMEnemyAbility> enemyAttacks;
+    BattleRoster roster = new BattleRoster();
     public override void _Ready()
     {
         //Normal Goto upkeep functions
@@ -57,6 +68,7 @@ public class PMBattle : Node
         gui = (PMBattleGUI) GetNode(battleGUI);
         playerCharacters[0] = GetNode<PMPlayerCharacter>(debugPlayerOne);
         enemyCharacters[0] = GetNode<PMEnemyCharacter>(debugEnemyOne);
+        //Add Debugs to BattleRosters
         heroTauntUp = false;
         enemyTauntUp = false;
     }
@@ -83,9 +95,16 @@ public class PMBattle : Node
                     effectStack.Pop();  //Remove it  
                 }
                 
-                for(int i = 0; i < 3; i++){ //Reset the player half of the damage and healing scoreboard
-                    damageScoreboard[i] = 0;
-                    healingScoreboard[i] = 0;
+                 
+                foreach(PMCharacter character in damageScoreboard.Keys){ //Reset the Player Half of the Scoreboards
+                    if(character.GetType() == typeof(PMPlayerCharacter)){
+                        damageScoreboard.Remove(character);
+                    }
+                }
+                foreach(PMCharacter character in healingScoreboard.Keys){
+                    if(character.GetType() == typeof(PMPlayerCharacter)){
+                        healingScoreboard.Remove(character);
+                    }
                 }
                 //If Players should die, they do
                 break;
@@ -112,9 +131,15 @@ public class PMBattle : Node
                 }
                 break;
             case TurnPhase.TurnOverPause : 
-                for(int i = 3; i < 6; i++){ //Reset the enemy half of the damage and healing scoreboard
-                    damageScoreboard[i] = 0;
-                    healingScoreboard[i] = 0;
+                foreach(PMCharacter character in damageScoreboard.Keys){
+                    if(character.GetType() == typeof(PMEnemyCharacter)){
+                        damageScoreboard.Remove(character);
+                    }
+                }
+                foreach(PMCharacter character in healingScoreboard.Keys){
+                    if(character.GetType() == typeof(PMEnemyCharacter)){
+                        healingScoreboard.Remove(character);
+                    }
                 }
                 //If Enemies should die, they do
                 currentPhase = TurnPhase.EnemyAction;
@@ -125,23 +150,8 @@ public class PMBattle : Node
         }
     }
 
-    public PMCharacter TargetLookup(Targeting target){
-        switch(target){
-            case Targeting.HeroOne: 
-                return playerCharacters[0];
-            case Targeting.HeroTwo: 
-                return playerCharacters[1];
-            case Targeting.HeroThree: 
-                return playerCharacters[2];
-            case Targeting.EnemyOne:
-                return enemyCharacters[0];
-            case Targeting.EnemyTwo:
-                return enemyCharacters[1];
-            case Targeting.EnemyThree:
-                return enemyCharacters[2];
-            default :
-                return null;
-        }
+    public PMCharacter PositionLookup(BattlePos target){
+        return roster.GetSingle(target);
     }
 
     public PMPlayerCharacter GetPlayerCharacter(int index){
@@ -177,38 +187,32 @@ public class PMBattle : Node
         }
     }
 
-    public void UpdateDamageScoreboard(int damage, PMCharacter character){ //TODO can we make this less hideous?
-        for(int i = 0; i < 3; i++){
-            if(System.Object.ReferenceEquals(playerCharacters[i], character)){
-                damageScoreboard[i] += damage;
-            }
-        }
-        for(int i = 3; i < 6; i++){
-            if(System.Object.ReferenceEquals(enemyCharacters[i - 3], character)){
-                damageScoreboard[i] += damage;
-            }
-        }
+    public void UpdateDamageScoreboard(int damage, PMCharacter character){
+        int newTotal = 0;
+        damageScoreboard.TryGetValue(character, out newTotal);
+        damageScoreboard.Remove(character);
+        newTotal += damage;
+        damageScoreboard.Add(character, newTotal);
     }
 
-    public void UpdateHealingScoreboard(int heal, PMCharacter character){ //TODO can we make this less hideous?
-        for(int i = 0; i < 3; i++){
-            if(System.Object.ReferenceEquals(playerCharacters[i], character)){
-                healingScoreboard[i] += heal;
-            }
-        }
-        for(int i = 3; i < 6; i++){
-            if(System.Object.ReferenceEquals(enemyCharacters[i - 3], character)){
-                healingScoreboard[i] += heal;
-            }
-        }
+    public void UpdateHealingScoreboard(int heal, PMCharacter character){
+        int newTotal = 0;
+        healingScoreboard.TryGetValue(character, out newTotal);
+        healingScoreboard.Remove(character);
+        newTotal += heal;
+        healingScoreboard.Add(character, newTotal);
     }
 
     public PMPlayerCharacter GetPlayerDamageLeader(){
         int lead = 0;
         PMPlayerCharacter leader = null;
-        for(int i = 0; i < 3; i++){
-            if(damageScoreboard[i] > lead){
-                leader = playerCharacters[i];
+        foreach(PMCharacter testCharacter in damageScoreboard.Keys){
+            if(testCharacter.GetType() == typeof(PMPlayerCharacter)){
+                damageScoreboard.TryGetValue(testCharacter, out var temp);
+                if(temp > lead){
+                    lead = temp;
+                    leader = (PMPlayerCharacter) testCharacter;
+                }
             }
         }
         return leader;
@@ -217,27 +221,73 @@ public class PMBattle : Node
     public PMPlayerCharacter GetPlayerHealingLeader(){
         int lead = 0;
         PMPlayerCharacter leader = null;
-        for(int i = 0; i < 3; i++){
-            if(healingScoreboard[i] > lead){
-                leader = playerCharacters[i];
+        foreach(PMCharacter testCharacter in damageScoreboard.Keys){
+            if(testCharacter.GetType() == typeof(PMPlayerCharacter)){
+                healingScoreboard.TryGetValue(testCharacter, out var temp);
+                if(temp > lead){
+                    lead = temp;
+                    leader = (PMPlayerCharacter) testCharacter;
+                }
             }
         }
         return leader;
     }
 
-    public Targeting GetLegalTargets(){ //TODO Refactor this, maybe associate Targeting with the bigger system?
-        uint legal = 0b_000000;
-        if(playerCharacters[0] != null && playerCharacters[0].IsTargetable()) legal = legal | 0b_001000;
-        if(playerCharacters[1] != null && playerCharacters[1].IsTargetable()) legal = legal | 0b_010000;
-        if(playerCharacters[2] != null && playerCharacters[2].IsTargetable()) legal = legal | 0b_100000;
-        if(enemyCharacters[0] != null && enemyCharacters[0].IsTargetable()) legal = legal | 0b_000100;  
-        if(enemyCharacters[1] != null && enemyCharacters[1].IsTargetable()) legal = legal | 0b_000010;
-        if(enemyCharacters[2] != null && enemyCharacters[2].IsTargetable()) legal = legal | 0b_000001;
-        return (Targeting) legal;
+    public PMPlayerCharacter[] GetPlayerCharacters(){
+        return roster.GetPlayerCharacters();
+    }
+
+    public PMEnemyCharacter[] GetEnemyCharacters(){
+        return roster.GetEnemyCharacters();
+    }
+    private void SetNewPosition(BattlePos newPosition, PMCharacter ch){ //TODO make align with positioning rules
+
+    }
+
+    public BattlePos[] GetLegalTargets(){ //TODO Write me
+        return null;
     }
 }
 
+//Designed to handle where characters are standing in the battle
+public class BattleRoster{
+    private PMCharacter[] characters = new PMCharacter[6];
+    public PMCharacter GetSingle(BattlePos pos){
+        return characters[(int)Math.Log((uint)pos, 2)];
+    }
 
+    public List<PMCharacter> GetGroup(BattlePos[] pos){
+        List<PMCharacter> group = new List<PMCharacter>();
+        foreach(BattlePos addPos in pos){
+            group.Add(GetSingle(addPos));
+        }
+        return group;
+    }
+
+    public void MoveCharacter(PMCharacter ch, BattlePos pos){   
+
+    }
+    
+    public PMPlayerCharacter[] GetPlayerCharacters(){
+        List<PMPlayerCharacter> temp = new List<PMPlayerCharacter>();
+        foreach(PMCharacter ch in characters){
+            if(ch.GetType() == typeof(PMPlayerCharacter)) temp.Add((PMPlayerCharacter)ch);
+        }
+        return temp.ToArray();
+    }
+
+    public PMEnemyCharacter[] GetEnemyCharacters(){
+        List<PMEnemyCharacter> temp = new List<PMEnemyCharacter>();
+        foreach(PMCharacter ch in characters){
+            if(ch.GetType() == typeof(PMEnemyCharacter)) temp.Add((PMEnemyCharacter)ch);
+        }
+        return temp.ToArray();
+    }
+
+    public PMCharacter[] GetCharacters(){
+        return characters.Where(x => x != null).ToArray(); //Removes empty entries
+    }
+}
 public static class PMBattleUtilities{
 
     public static NodePath pathToBattle = "/root";
@@ -254,15 +304,16 @@ public static class PMBattleUtilities{
         Status = 2,
         Healing = 3
     }
+
     [Flags]
-    public enum Targeting{                                                                                                                                                                         
+    public enum BattlePos{                                                                                                                                                                        
         HeroOne = 0b_001000,
         HeroTwo = 0b_010000,                                                                            
         HeroThree = 0b_100000,
         EnemyOne = 0b_000100,
         EnemyTwo = 0b_000010,
         EnemyThree = 0b_000001
-    }                                                                                                       
+    }                                                                                                    
 
     [Flags]
     public enum TargetingRule{
@@ -274,13 +325,21 @@ public static class PMBattleUtilities{
         AllEnemy = 5,                                                                                                                           
         SingleAlly = 6,
         AllAlly = 7,
-        AllyOne = 10,
-        AllyTwo = 11,
-        AllyThree = 12,
+        HeroOne = 10,
+        HeroTwo = 11,
+        HeroThree = 12,
         EnemyOne = 13,
         EnemyTwo = 14,
         EnemyThree = 15
     }
+
+    /*
+    public BattlePos TargetingRuleToBattlePos(TargetingRule rule){
+        switch(rule){
+            //case 
+        }
+    }
+    */
 
     [Flags]
     public enum StatusEffect{

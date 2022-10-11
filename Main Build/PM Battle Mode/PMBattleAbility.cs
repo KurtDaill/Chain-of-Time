@@ -18,26 +18,9 @@ Later methods can have 'events numbers' passesd as arguments to look up the corr
 For Example, an attack may deal 3 instances of damage with different properties. So aligns might have {"Normal", "Normal", "Magic"} if only
 the third attack is magical, and "effectValue" might have {8, 10, 20} if that each instance scales up.
 */
+
 public class  PMBattleAbility : Node
 {
-    [Export(PropertyHint.Enum)]
-    protected List<AbilityAlignment> aligns = new List<AbilityAlignment>(){AbilityAlignment.Normal};
-
-    //Targeting refers to the data represeting what this attack *could* target
-    [Export(PropertyHint.Enum)]
-    protected TargetingRule targeting = TargetingRule.Self;
-
-    //Targets refers to the exact targets that are being hit per effects
-    protected Targeting[] targets = new Targeting[]{Targeting.EnemyOne}; 
-
-    [Export(PropertyHint.Enum)]
-    protected List<EventType> events = new List<EventType>{EventType.Damage};
-
-    [Export(PropertyHint.Enum)]
-    protected List<StatusEffect> statusEffect = new List<StatusEffect>{StatusEffect.None};
-
-    [Export]
-    protected int[] eventValue = new int[]{0};
 
     [Export]
     protected int coolDown = -1;
@@ -50,9 +33,21 @@ public class  PMBattleAbility : Node
 
     [Export]
     private string firstAnimation = "???";
+
+    [Export]
+    protected List<NodePath> eventIndex;
+
+    [Export]
+    protected TargetingRule targetingRule = TargetingRule.Self;
+
+    [Export]
+    protected bool canTargetFliers = false;
     
-    protected PMCharacter source;
+    protected AbilityEvent[] events;
+    public PMCharacter source;
     protected AnimationPlayer animPlay;
+
+    public PMCharacter[] selectedCharacters;
 
     //Is this ability done running for this iteration
     protected bool complete;
@@ -65,6 +60,10 @@ public class  PMBattleAbility : Node
     {
         animPlay = (AnimationPlayer) GetNode("AnimationPlayer");
         source = GetNode<PMCharacter>("..");
+        events = new AbilityEvent[eventIndex.Count];
+        for(int i = 0; i < eventIndex.Count; i++){
+            events[i] = GetNode<AbilityEvent>(eventIndex[i]);
+        }
     }
     public bool CheckForCompletion(){
         return complete;
@@ -81,13 +80,11 @@ public class  PMBattleAbility : Node
         animPlay.Play(firstAnimation);
     }
 
-    public void SetTargets(Targeting[] newTargets){
+    /*
+    public void SetTargets(BattlePos[][] newTargets){
         targets = newTargets;
     }
-
-    public TargetingRule GetTargetingRule(){
-        return targeting;
-    }
+    */
 
     public void FinishSequence(string anim_name){
         complete = true;
@@ -96,26 +93,31 @@ public class  PMBattleAbility : Node
     }
 
     protected virtual void DealDamage(int effectNum){
-        Targeting damageTargets = targets[effectNum];
-        int dmg = eventValue[effectNum];
-        AbilityAlignment damageType = aligns[effectNum];
+        //BattlePos[] damageTargets = events[effectNum].GetTargetPositions();
+        int dmg = events[effectNum].GetValue();
+        AbilityAlignment damageType = events[effectNum].GetAlignment();
+       // AbilityAlignment damageType = aligns[effectNum];
 
         if(critDamage != -1){
             dmg = critDamage;
         }else if(failDamage != -1){
             dmg = failDamage;
         }
-        
-        foreach(Targeting target in Enum.GetValues(typeof(Targeting))){
-            if((target & damageTargets) == target){
-                PMCharacter character;
-                character = source.parentBattle.TargetLookup(target);
-                if(character != null){
-                    character.TakeDamage(dmg, damageType);
-                    source.parentBattle.UpdateDamageScoreboard(dmg, source);
-                }
+        foreach(PMCharacter character in events[effectNum].GetTargets()){
+            if(character != null){
+                character.TakeDamage(dmg, damageType);
+                source.parentBattle.UpdateDamageScoreboard(dmg, source);
             }
         }
+        /*
+        for(int i = 0; i < damageTargets.Length; i++){
+            PMCharacter ch = source.parentBattle.PositionLookup(damageTargets[i]);
+            if(ch != null){
+                ch.TakeDamage(dmg, damageType);
+                source.parentBattle.UpdateDamageScoreboard(dmg, source);
+            }
+        }
+        */
     }
 
     public void Heal(int eventNum){ //TODO Write Me
@@ -137,7 +139,7 @@ public class  PMBattleAbility : Node
     
 
     public virtual void ExecuteEvent(int eventNum){
-        switch(events[eventNum]){
+       switch(events[eventNum].GetEventType()){
             case EventType.Damage:
                 DealDamage(eventNum);
                 break;
@@ -149,20 +151,5 @@ public class  PMBattleAbility : Node
                 break;
         }
     }
-    /*
-    private TargetingRule ConvertTarget(int target){
-        if(target == -1){
-            //return targeting;
-        }
-        return (TargetingRule) target;
-    }
-
-    private AbilityAlignment ConvertAlignment(int alignment){
-        if(alignment == -1){
-            //return align;
-        }
-        return (AbilityAlignment) alignment;
-    }
-    */
 }
 

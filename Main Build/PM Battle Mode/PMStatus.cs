@@ -10,7 +10,7 @@ public class PMStatus{
     //Character that this effect is applied to. Left null for battlefield effects.
     private PMCharacter target = null;
 
-    public PMStatus(StatusEffect effect, Targeting targetChar, int dur = -1){
+    public PMStatus(StatusEffect effect, BattlePos targetChar, int dur = -1){
         statusType = effect;
         duration = dur;
         //TODO implement TargetingRule to setting a parent

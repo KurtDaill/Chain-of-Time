@@ -2,7 +2,6 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using static BattleEnemyAI;
-
 public class PMEnemyAbility : PMBattleAbility
 {
     [Export(PropertyHint.Enum)]

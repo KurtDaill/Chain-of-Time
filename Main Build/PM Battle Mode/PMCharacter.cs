@@ -19,6 +19,8 @@ public class PMCharacter : Node{
     [Export(PropertyHint.Enum)]
     public List<AbilityAlignment>ModifiedDamageTypes;
 
+    public BattlePos myPosition;
+
     [Export]
     public List<float> Modifier;
     public Dictionary<AbilityAlignment, float> DamageModifiers = new Dictionary<AbilityAlignment, float>();
@@ -73,10 +75,6 @@ public class PMCharacter : Node{
         }
 
         statusEffects.Add(newEffect);
-    }
-
-    public void GetAbility(string name){
-
     }
 
     public void TakeDamage(int damage, AbilityAlignment alignment){

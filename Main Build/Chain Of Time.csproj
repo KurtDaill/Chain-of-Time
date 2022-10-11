@@ -4,6 +4,6 @@
     <RootNamespace>ChainOfTime</RootNamespace>
     <Configuration Condition=" '$(Configuration)' == '' ">Tools</Configuration>
     <TargetFrameworkVersion>6.0.4</TargetFrameworkVersion>
-    <LangVersion>9</LangVersion>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
 </Project>

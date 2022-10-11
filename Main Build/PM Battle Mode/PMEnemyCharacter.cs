@@ -32,23 +32,18 @@ public class PMEnemyCharacter : PMCharacter{
                 }
                 if(req.Contains(SpecialRequirement.HeroDown)){
                     bool isSomeoneDead = false;
-                    if(parentBattle.TargetLookup(Targeting.HeroThree) != null){ //Does Hero 3 exist?
-                        if(parentBattle.TargetLookup(Targeting.HeroThree).GetHP() == 0){ //Are they dead?
+                    foreach(PMPlayerCharacter pc in parentBattle.GetPlayerCharacters()){
+                        if(pc.GetHP() <= 0){
                             isSomeoneDead = true;
                         }
                     }
-                    if(parentBattle.TargetLookup(Targeting.HeroTwo) != null){ //Does Hero 2 exist?
-                        if(parentBattle.TargetLookup(Targeting.HeroTwo).GetHP()!= 0){ //Are they dead?
-                            isSomeoneDead = true;
-                        }
-                    }
-                    //The battle can't still be happening if Hero 1 is dead, so we assume they aren't
                     if(!isSomeoneDead) continue;
                 }
                 if(req.Contains(SpecialRequirement.SelfDamagedThisTurn)){
                     if(this.damageTakenThisTurn == 0) continue;
                     
-                }if(req.Contains(SpecialRequirement.SelfUndamagedThisTurn)){
+                }
+                if(req.Contains(SpecialRequirement.SelfUndamagedThisTurn)){
                        if(this.damageTakenThisTurn !=0 ) continue;
                 }
                 if(req.Contains(SpecialRequirement.SelfHurt)){
@@ -61,40 +56,32 @@ public class PMEnemyCharacter : PMCharacter{
                     bool enemyBloodied = false;
                     bool enemyHurt = false;
                     PMCharacter ch;
-                    for(uint j = 0b_000100; j != 0b_000000; j = j << 1){
-                        ch = parentBattle.TargetLookup((Targeting)j); //using the bitwise flags in Targeting (See ParentBattle)
-                        if(ch != null && !System.Object.ReferenceEquals(ch, this)){ //If Character exists and isn't me
-                            if(ch.IsHurt()) enemyHurt = true;
-                            if(ch.IsBloodied()) enemyBloodied = true;
-                        }
+                    foreach(PMEnemyCharacter enemy in parentBattle.GetEnemyCharacters()){
+                        if(System.Object.ReferenceEquals(this, enemy)) continue;  //If the character is me, I don't care. Remember that this continue only effects this inner for loop.
+                        if(enemy.IsHurt()) enemyHurt = true;
+                        if(enemy.IsBloodied()) enemyBloodied = true;
                     }
                     if(req.Contains(SpecialRequirement.EnemyHurt)) if(!enemyHurt) continue;
                     if(req.Contains(SpecialRequirement.EnemyBloodied)) if(!enemyBloodied) continue;
                 }
                 if(req.Contains(SpecialRequirement.NoEnemies) || req.Contains(SpecialRequirement.ThreeEnemies)){
-                    bool noEnemy = true;
-                    bool threeEnemy = true;
-                    for(uint j = 0b_000100; j != 0b_000000; j = j << 1){
-                        if(parentBattle.TargetLookup((Targeting)j) == null){
-                            threeEnemy = false;
-                        }else{
-                            noEnemy = false;
-                        }
-                    }
-                    if(req.Contains(SpecialRequirement.NoEnemies)) if(!noEnemy) continue;
-                    if(req.Contains(SpecialRequirement.ThreeEnemies)) if(!threeEnemy) continue;
+                    int count = parentBattle.GetEnemyCharacters().Length;
+                    if(req.Contains(SpecialRequirement.NoEnemies)) if(count > 1) continue; //If there's only 1 enemy (me), we fail the "no other enemies" condition
+                    if(req.Contains(SpecialRequirement.ThreeEnemies)) if(count != 3) continue; //If there's not 3 enemies total, we fail the 3 enemies condition
                 }
             }
-            //Check if there are Legal Targets
-            if(((uint)parentBattle.GetLegalTargets() & 0b_111000) == 0b_000000){
-                TargetingRule legal = abilities[i].GetTargetingRule();
-                //if(legal == Tar)
-            }
+            //Picks Optimal Target(s)
+            //Check if any of those targets are legal, if not pick again
             /*
-                Check for Taunt - Only Melee Hero Is Legal
-                Check for Invisible, PhasedOut, or missing characters: They're not legal targets
+                Pick the first target that matches the rule and preference
+                If it's Melee/Ranged/Reach/HeroOne/HeroTwo/HeroThree...
+                    Check if they're invsible or phased out, if so it's not legal
+                Otherwise
+                    Hey, is this attack ground only? If so check flying the same way as phased out next.
+                    Check if they're phased out
+                    Enemies will never execute an attack if all affected characters are phased out
+                
             */
-            //Picks Optimal Target
         }
     }
 } 
