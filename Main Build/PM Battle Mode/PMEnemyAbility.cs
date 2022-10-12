@@ -5,7 +5,7 @@ using static BattleEnemyAI;
 public class PMEnemyAbility : PMBattleAbility
 {
     [Export(PropertyHint.Enum)]
-    protected List<TargetPriority> targetingLogic = new List<TargetPriority>();
+    protected List<TargetPriority> targetsInPriorityOrder = new List<TargetPriority>();
     
     [Export(PropertyHint.Enum)]
     protected List<SpecialRequirement> requirements = new List<SpecialRequirement>();
@@ -19,8 +19,8 @@ public class PMEnemyAbility : PMBattleAbility
         return requirements;
     }
 
-    public List<TargetPriority> GetTargetingLogic(){
-        return targetingLogic;
+    public List<TargetPriority> GetTargetingPriorities(){
+        return targetsInPriorityOrder;
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,7 +46,8 @@ public static class BattleEnemyAI{
         HeroHealingLeader,
         HeroBuffLeader,
         HeroTanking,
-        EnemyTank
+        EnemyTank,
+        Any
     }
 
     public enum SpecialRequirement{

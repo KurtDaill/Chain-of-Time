@@ -72,8 +72,10 @@ public class PMEnemyCharacter : PMCharacter{
             }
             //Picks Optimal Target(s)
             //Check if any of those targets are legal, if not pick again
+            
+            //Pick the first target that matches the rule and preference
+            
             /*
-                Pick the first target that matches the rule and preference
                 If it's Melee/Ranged/Reach/HeroOne/HeroTwo/HeroThree...
                     Check if they're invsible or phased out, if so it's not legal
                 Otherwise
