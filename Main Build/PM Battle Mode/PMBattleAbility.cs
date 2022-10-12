@@ -136,7 +136,9 @@ public class  PMBattleAbility : Node
         AddChild(effect);
     }
 
-    
+    public bool CanTargetFliers(){
+        return canTargetFliers;
+    }
 
     public virtual void ExecuteEvent(int eventNum){
        switch(events[eventNum].GetEventType()){

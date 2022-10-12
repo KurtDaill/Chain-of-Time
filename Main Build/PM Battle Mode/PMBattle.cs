@@ -305,6 +305,16 @@ public static class PMBattleUtilities{
         Healing = 3
     }
 
+    public enum EnemyRole{
+        Minion,
+        Tank,
+        Bruiser,
+        Artillery,
+        Support,
+        SquadLeader,
+        Boss
+    }
+
     [Flags]
     public enum BattlePos{                                                                                                                                                                        
         HeroOne = 0b_001000,

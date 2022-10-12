@@ -9,6 +9,9 @@ public class PMEnemyCharacter : PMCharacter{
     protected NodePath[] abilitiesByPriority;
     protected PMEnemyAbility[] abilities;
 
+    [Export]
+    protected List<EnemyRole> combatRoles = new List<EnemyRole>{EnemyRole.Minion};
+
     public override void _Ready(){
         base._Ready();
         abilities = new PMEnemyAbility[abilitiesByPriority.Length];
@@ -16,11 +19,15 @@ public class PMEnemyCharacter : PMCharacter{
             abilities[i] = GetNode<PMEnemyAbility>(abilitiesByPriority[i]);
         }
     }
+
+    public List<EnemyRole> GetRoles(){
+        return combatRoles;
+    }
     public PMEnemyAbility DecideAttack(){
         return null; //Remove when Done
         PMEnemyAbility chosenAttack;
+        PMCharacter[] targets;
         for(int i = 0; i < abilities.Length; i++){
-
             //Checks for Special Conditions, going by kinds of conditions the list could have, and continuing to the next ability if any of them aren't met
             //TODO Test that the requirements work
             List<SpecialRequirement> req = abilities[i].GetRequirements();
@@ -74,7 +81,20 @@ public class PMEnemyCharacter : PMCharacter{
             //Check if any of those targets are legal, if not pick again
             
             //Pick the first target that matches the rule and preference
-            
+            targets = null;
+            foreach(TargetPriority prio in abilities[i].GetTargetingPriorities()){
+                switch(prio){
+                    case TargetPriority.MeleeHero:
+                        //We don't have to check whether HeroOne is null, someone has to hold that slot for the battle to be happening
+                        if(myPosition == BattlePos.EnemyOne && parentBattle.PositionLookup(BattlePos.HeroOne).IsTargetable(abilities[i].CanTargetFliers())){ //TODO Review this, is C# losing it?
+                            targets = new PMCharacter[]{parentBattle.PositionLookup(BattlePos.HeroOne)};
+                        }
+                        break;
+                    case TargetPriority.RangedHeroes:
+                        //Randomly pick a hero in slot 2 or 3
+                        break;
+                }
+            }
             /*
                 If it's Melee/Ranged/Reach/HeroOne/HeroTwo/HeroThree...
                     Check if they're invsible or phased out, if so it's not legal

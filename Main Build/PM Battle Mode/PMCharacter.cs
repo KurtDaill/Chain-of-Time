@@ -48,7 +48,8 @@ public class PMCharacter : Node{
         return currentHP;
     }
 
-    public bool IsTargetable(){
+    //Related whether this character is available to be targeted, taking whether the targeting can target fliers as an argument
+    public bool IsTargetable(bool targetsFliers){
         bool targetable = true;
         foreach(PMStatus status in statusEffects){
             StatusEffect type = status.GetStatusType();
@@ -56,6 +57,7 @@ public class PMCharacter : Node{
                 targetable = false;
                 break;
             }
+            //if(!targetsFliers && statusEffects.Contains())
         }
         return targetable;
     }
@@ -92,5 +94,13 @@ public class PMCharacter : Node{
 
     public void NewTurnUpkeep(){
         damageTakenThisTurn = 0;
+    }
+
+    public StatusEffect[] GetMyStatuses(){
+        List<StatusEffect> statuses = new List<StatusEffect>();
+        foreach(PMStatus statusObject in statusEffects){
+            statuses.Add(statusObject.GetStatusType());
+        }
+        return statuses.ToArray();
     }
 }
