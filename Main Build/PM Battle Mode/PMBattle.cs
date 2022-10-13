@@ -77,12 +77,10 @@ public class PMBattle : Node
     {
         switch(currentPhase){
             case TurnPhase.Upkeep :
-                foreach(PMCharacter hero in playerCharacters){
-                    hero.NewTurnUpkeep();
+                foreach(PMCharacter ch in roster.GetCharacters()){
+                    ch.NewTurnUpkeep();
                 }
-                foreach(PMCharacter enemy in enemyCharacters){
-                    enemy.NewTurnUpkeep();
-                }
+
                 if(upkeepEffects.Count == 0){ //If there's no more effects to resolve, continue
                     //TODO Check for Taunts
                     currentPhase = TurnPhase.PlayerMenu;
@@ -94,17 +92,16 @@ public class PMBattle : Node
                 if(effectStack.Peek().Execute()){ //Execute the Effect, if it's done...
                     effectStack.Pop();  //Remove it  
                 }
-                
-                 
-                foreach(PMCharacter character in damageScoreboard.Keys){ //Reset the Player Half of the Scoreboards
-                    if(character.GetType() == typeof(PMPlayerCharacter)){
-                        damageScoreboard.Remove(character);
-                    }
+
+                foreach(PMPlayerCharacter character in damageScoreboard.Keys){ //Reset the Player Half of the Scoreboards
+                    //if(character.GetType() == typeof(PMPlayerCharacter)){
+                    damageScoreboard.Remove(character);
+                    //}
                 }
-                foreach(PMCharacter character in healingScoreboard.Keys){
-                    if(character.GetType() == typeof(PMPlayerCharacter)){
-                        healingScoreboard.Remove(character);
-                    }
+                foreach(PMPlayerCharacter character in healingScoreboard.Keys){
+                    //if(character.GetType() == typeof(PMPlayerCharacter)){
+                    healingScoreboard.Remove(character);
+                    //}
                 }
                 //If Players should die, they do
                 break;
@@ -131,21 +128,36 @@ public class PMBattle : Node
                 }
                 break;
             case TurnPhase.TurnOverPause : 
-                foreach(PMCharacter character in damageScoreboard.Keys){
-                    if(character.GetType() == typeof(PMEnemyCharacter)){
-                        damageScoreboard.Remove(character);
-                    }
+                foreach(PMEnemyCharacter character in damageScoreboard.Keys){
+                    //if(character.GetType() == typeof(PMEnemyCharacter)){
+                    damageScoreboard.Remove(character);
+                    //}
                 }
-                foreach(PMCharacter character in healingScoreboard.Keys){
-                    if(character.GetType() == typeof(PMEnemyCharacter)){
-                        healingScoreboard.Remove(character);
-                    }
+                foreach(PMEnemyCharacter character in healingScoreboard.Keys){
+                    //if(character.GetType() == typeof(PMEnemyCharacter)){
+                    healingScoreboard.Remove(character);
+                    //}
                 }
                 //If Enemies should die, they do
+                enemyAttacks = new Queue<PMEnemyAbility>();
+                foreach(PMEnemyCharacter en in roster.GetEnemyCharacters()){
+                    var enAb = en.DecideAttack();
+                    if(enAb != null){
+                        enemyAttacks.Enqueue(enAb);
+                    }
+                }
                 currentPhase = TurnPhase.EnemyAction;
                 break;
             case TurnPhase.EnemyAction :
                 //Basically the same loop as PlayerAction but with the enemy stack 
+                if(enemyAttacks.Peek().CheckForCompletion()){//Peek Player Attack Stack, get notice whether the attack is still running or not
+                    enemyAttacks.Dequeue();
+                    if(enemyAttacks.Count == 0){//Is there any more attacks?
+                        currentPhase = TurnPhase.Upkeep;
+                    }else{
+                        enemyAttacks.Peek().Begin(); //Start the next attack, the previous attack should have reset itself
+                    }
+                }
                 break;
         }
     }
@@ -233,19 +245,20 @@ public class PMBattle : Node
         return leader;
     }
 
-    public PMPlayerCharacter[] GetPlayerCharacters(){
-        return roster.GetPlayerCharacters();
+    public PMPlayerCharacter[] GetPlayerCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true){
+        return roster.GetPlayerCharacters(includeFlying, includeInvisible, includePhasedOut);
     }
 
-    public PMEnemyCharacter[] GetEnemyCharacters(){
-        return roster.GetEnemyCharacters();
+    public PMEnemyCharacter[] GetEnemyCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true){
+        return roster.GetEnemyCharacters(includeFlying, includeInvisible, includePhasedOut);
     }
+
+    public PMCharacter[] GetCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true){
+        return roster.GetCharacters(includeFlying, includeInvisible, includePhasedOut);
+    }
+
     private void SetNewPosition(BattlePos newPosition, PMCharacter ch){ //TODO make align with positioning rules
 
-    }
-
-    public BattlePos[] GetLegalTargets(){ //TODO Write me
-        return null;
     }
 }
 
@@ -268,26 +281,71 @@ public class BattleRoster{
 
     }
     
-    public PMPlayerCharacter[] GetPlayerCharacters(){
-        List<PMPlayerCharacter> temp = new List<PMPlayerCharacter>();
+    //Returns all player characters, allowing to filter them by invisible, flying, and phased out.
+    public PMPlayerCharacter[] GetPlayerCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true){
+        List<PMPlayerCharacter> result = new List<PMPlayerCharacter>();
         foreach(PMCharacter ch in characters){
-            if(ch.GetType() == typeof(PMPlayerCharacter)) temp.Add((PMPlayerCharacter)ch);
+            if(ch.GetType() == typeof(PMPlayerCharacter)){
+                StatusEffect[] chStatus = ch.GetMyStatuses();
+                if(!includeInvisible){
+                    if(chStatus.Contains(StatusEffect.Invisible)){
+                        continue;
+                    }
+                }
+                if(!includeFlying){
+                    if(chStatus.Contains(StatusEffect.Flying)){
+                        continue;
+                    }
+                }
+                if(!includePhasedOut){
+                    if(chStatus.Contains(StatusEffect.PhasedOut)){
+                        continue;
+                    }
+                }
+                result.Add((PMPlayerCharacter)ch);
+            }
         }
-        return temp.ToArray();
+        return result.ToArray();
     }
 
-    public PMEnemyCharacter[] GetEnemyCharacters(){
-        List<PMEnemyCharacter> temp = new List<PMEnemyCharacter>();
+    public PMEnemyCharacter[] GetEnemyCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true){
+        List<PMEnemyCharacter> result = new List<PMEnemyCharacter>();
         foreach(PMCharacter ch in characters){
-            if(ch.GetType() == typeof(PMEnemyCharacter)) temp.Add((PMEnemyCharacter)ch);
+            if(ch.GetType() == typeof(PMEnemyCharacter)){
+                StatusEffect[] chStatus = ch.GetMyStatuses();
+                if(!includeInvisible){
+                    if(chStatus.Contains(StatusEffect.Invisible)){
+                        continue;
+                    }
+                }
+                if(!includeFlying){
+                    if(chStatus.Contains(StatusEffect.Flying)){
+                        continue;
+                    }
+                }
+                if(!includePhasedOut){
+                    if(chStatus.Contains(StatusEffect.PhasedOut)){
+                        continue;
+                    }
+                }
+                result.Add((PMEnemyCharacter)ch);
+            }
         }
-        return temp.ToArray();
+        return result.ToArray();
     }
 
-    public PMCharacter[] GetCharacters(){
-        return characters.Where(x => x != null).ToArray(); //Removes empty entries
+    public PMCharacter[] GetCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true){
+        List<PMCharacter> temp = characters.ToList<PMCharacter>();
+        foreach(PMCharacter ch in temp){
+            StatusEffect[] statuses = ch.GetMyStatuses();
+            if(!includeFlying && statuses.Contains(StatusEffect.Flying)) temp.Remove(ch);
+            if(!includeInvisible && statuses.Contains(StatusEffect.Flying)) temp.Remove(ch);
+            if(!includePhasedOut && statuses.Contains(StatusEffect.PhasedOut)) temp.Remove(ch);
+        } 
+        return temp.ToArray<PMCharacter>();
     }
 }
+
 public static class PMBattleUtilities{
 
     public static NodePath pathToBattle = "/root";
@@ -306,13 +364,13 @@ public static class PMBattleUtilities{
     }
 
     public enum EnemyRole{
-        Minion,
-        Tank,
-        Bruiser,
-        Artillery,
-        Support,
-        SquadLeader,
-        Boss
+        Minion = 0,
+        Tank = 1,
+        Bruiser = 2,
+        Artillery = 3,
+        Support = 4,
+        SquadLeader = 5,
+        Boss = 6
     }
 
     [Flags]
@@ -332,16 +390,18 @@ public static class PMBattleUtilities{
         SingleEnemyMelee = 2,
         SingleEnemyRanged = 3,
         SingleEnemyReach = 4,
-        AllEnemy = 5,                                                                                                                           
-        SingleHeroMelee = 6,
-        SingleHeroRanged = 7,
-        SingleHeroReach = 8,
+        AllEnemy = 5,
+        AllHero = 6,                                                                                                                           
+        SingleHeroMelee = 7,
+        SingleHeroRanged = 8,
+        SingleHeroReach = 9,
         HeroOne = 10,
         HeroTwo = 11,
         HeroThree = 12,
         EnemyOne = 13,
         EnemyTwo = 14,
-        EnemyThree = 15
+        EnemyThree = 15,
+        All = 16
     }
 
     /*

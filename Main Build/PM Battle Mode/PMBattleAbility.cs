@@ -32,7 +32,9 @@ public class  PMBattleAbility : Node
     public string name = "Ability";
 
     [Export]
-    private string firstAnimation = "???";
+    protected string firstAnimation = "???";
+
+    protected PMCharacter[] target;
 
     [Export]
     protected List<NodePath> eventIndex;
@@ -69,6 +71,9 @@ public class  PMBattleAbility : Node
         return complete;
     }
 
+    public TargetingRule GetTargetingRule(){
+        return targetingRule;
+    }
     public void Begin(){
         complete = false;
         if(limitedAmmo != -1){
@@ -80,11 +85,11 @@ public class  PMBattleAbility : Node
         animPlay.Play(firstAnimation);
     }
 
-    /*
-    public void SetTargets(BattlePos[][] newTargets){
-        targets = newTargets;
+    
+    public void SetTargets(PMCharacter[] target){
+        this.target = target;
     }
-    */
+    
 
     public void FinishSequence(string anim_name){
         complete = true;

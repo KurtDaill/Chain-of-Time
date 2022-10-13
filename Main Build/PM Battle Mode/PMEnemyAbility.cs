@@ -5,7 +5,7 @@ using static BattleEnemyAI;
 public class PMEnemyAbility : PMBattleAbility
 {
     [Export(PropertyHint.Enum)]
-    protected List<TargetPriority> targetsInPriorityOrder = new List<TargetPriority>();
+    protected List<TargetPriority> targetsInPriorityOrder = new List<TargetPriority>(){TargetPriority.MeleeHero};
     
     [Export(PropertyHint.Enum)]
     protected List<SpecialRequirement> requirements = new List<SpecialRequirement>();
@@ -37,17 +37,24 @@ public class PMEnemyAbility : PMBattleAbility
 
 public static class BattleEnemyAI{
     public enum TargetPriority{
+        Self,
         MeleeHero,
         MeleeEnemy,
         RangedHeroes,
         RangedEnemies,
-        BossEnemy,
         HeroDamageLeader,
         HeroHealingLeader,
         HeroBuffLeader,
         HeroTanking,
-        EnemyTank,
-        Any
+        EnemyMinion = 0,
+        EnemyTank = 1,
+        EnemyBruiser = 2,
+        EnemyArtillery = 3,
+        EnemySupport = 4,
+        EnemySquadLeader = 5,
+        EnemyBoss = 6,
+        AnyHero,
+        AnyEnemy
     }
 
     public enum SpecialRequirement{
