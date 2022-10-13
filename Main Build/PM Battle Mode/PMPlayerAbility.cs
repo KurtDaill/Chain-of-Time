@@ -85,8 +85,5 @@ public class PMPlayerAbility : PMBattleAbility
     {
         base.ExecuteEvent(eventNum);
     }
-    public override void FinishSequence(){
-        base.FinishSequence();
-    }
 }
 

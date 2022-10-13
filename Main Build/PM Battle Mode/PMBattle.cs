@@ -246,6 +246,7 @@ public class BattleRoster{
 
     public void SetCharacter(PMCharacter ch, BattlePos pos){
         characters[(uint)Math.Log((uint)pos, 2)] = ch;
+        ch.myPosition = pos;
     }
     public PMCharacter GetSingle(BattlePos pos){
         return characters[(uint)Math.Log((uint)pos, 2)];

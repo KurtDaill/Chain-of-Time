@@ -43,6 +43,7 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
         lastMenu = currentMenu;
         currentMenu = (BattleMenu) GetNode("Top Menu");
         currentMenu.OnOpen();
+        ShowGUI();
     }
 
     public void ChangeMenu(int newMenuIndex){

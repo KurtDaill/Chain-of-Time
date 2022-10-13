@@ -103,4 +103,8 @@ public class PMCharacter : Node{
         }
         return statuses.ToArray();
     }
+
+    public void ResetToIdleAnim(){
+        GetNode<AnimationPlayer>("AnimationPlayer").Play("Idle");
+    }
 }

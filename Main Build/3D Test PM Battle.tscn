@@ -86,6 +86,20 @@ tracks/0/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.0372453, -0.946897, -0.6, -0.00688668, 0.0342427, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.1, 0.6 )
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "ResetToIdleAnim"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.75
@@ -180,11 +194,14 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.8 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.8, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ 0 ],
 "method": "ExecuteEvent"
+}, {
+"args": [  ],
+"method": "FinishSequence"
 } ]
 }
 
@@ -997,7 +1014,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 pixel_size = 0.032
 texture = ExtResource( 40 )
 hframes = 13
-frame = 12
 script = ExtResource( 47 )
 ModifiedDamageTypes = [ 1 ]
 Modifier = [ 0.5 ]
@@ -1010,7 +1026,6 @@ anims/RESET = SubResource( 6 )
 
 [node name="Slide" type="Node" parent="Battle Positions/Enemy 1/Polymorphor"]
 script = ExtResource( 41 )
-name = "Slide"
 firstAnimation = "Slide Attack"
 eventIndex = [ NodePath("MainDamage") ]
 targetingRule = 2
@@ -1723,7 +1738,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444457, -1.26219, -5.69706 )
 visible = false
 pixel_size = 0.1
 frames = SubResource( 32 )
-frame = 4
 playing = true
 
 [node name="Baths" parent="." instance=ExtResource( 3 )]
@@ -1745,28 +1759,28 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 axis = 1
 frames = SubResource( 39 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="Waterfall Piece" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 2.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 46 )
-frame = 5
+frame = 2
 playing = true
 
 [node name="Waterfall Piece2" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 0.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 46 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Waterfall Top" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 53 )
-frame = 5
+frame = 2
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="Baths"]

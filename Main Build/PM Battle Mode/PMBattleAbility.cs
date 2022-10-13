@@ -96,6 +96,7 @@ public class  PMBattleAbility : Node
         complete = true;
         critDamage = -1;
         failDamage = -1;
+        source.ResetToIdleAnim();
     }
 
     protected virtual void DealDamage(int effectNum){
