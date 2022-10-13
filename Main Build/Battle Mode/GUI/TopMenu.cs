@@ -31,9 +31,8 @@ public class TopMenu : BattleMenu
        if(highlightedTab != -1) menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = true;
     }
 
-    public override void HandleInput(MenuInput input, out PMPlayerAbility ability)
+    public override PMPlayerAbility HandleInput(MenuInput input, PMPlayerCharacter character, PMBattle caller)
     {
-        ability = null;
         switch(input){
             case MenuInput.Up: 
                 if(highlightedTab != -1) menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = false;
@@ -68,5 +67,6 @@ public class TopMenu : BattleMenu
                 }
                 break;
         }
+        return null;
     }
 }

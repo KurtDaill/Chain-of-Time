@@ -8,14 +8,14 @@ public class AttackMenu : BattleMenu
         base.OnOpen();
     }
 
-    public override void HandleInput(MenuInput input, out PMPlayerAbility ability){  
-        ability = null;
+    public override PMPlayerAbility HandleInput(MenuInput input, PMPlayerCharacter character, PMBattle caller){
         if(input == MenuInput.Back){
             //parentGUI.
         }else if(input == MenuInput.Select){
-            ability = parentGUI.parentBattle.GetPlayerCharacter(parentGUI.playerCharacterSelected).GetBasicAttack();
-            //ability.SetTargets(new PMBattleUtilities.BattlePos[]{PMBattleUtilities.BattlePos.EnemyOne}); //TODO LOOK AT ME
+            var ability = character.GetBasicAttack();
+            ability.SetTargets(new PMCharacter[]{caller.PositionLookup(PMBattleUtilities.BattlePos.EnemyOne)});//TODO make conform with selection functions
+            return ability;
         }
-        return;
+        return null;
     }
 }

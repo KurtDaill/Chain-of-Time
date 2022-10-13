@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=2]
+[gd_scene load_steps=100 format=2]
 
 [ext_resource path="res://CatoBasicAttack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PM Battle Mode/PMBattle.cs" type="Script" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://PM Battle Mode/PMPlayerCharacter.cs" type="Script" id=39]
 [ext_resource path="res://Art/Polymorphor Master Sprite Sheet.png" type="Texture" id=40]
 [ext_resource path="res://PM Battle Mode/PMEnemyAbility.cs" type="Script" id=41]
+[ext_resource path="res://PM Battle Mode/AbilityEvent.cs" type="Script" id=42]
 [ext_resource path="res://PM Battle Mode/PMEnemyCharacter.cs" type="Script" id=47]
 
 [sub_resource type="Animation" id=1]
@@ -183,7 +184,7 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ 0 ],
-"method": "DealDamage"
+"method": "ExecuteEvent"
 } ]
 }
 
@@ -996,9 +997,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 pixel_size = 0.032
 texture = ExtResource( 40 )
 hframes = 13
+frame = 12
 script = ExtResource( 47 )
 ModifiedDamageTypes = [ 1 ]
 Modifier = [ 0.5 ]
+abilitiesByPriority = [ NodePath("Slide") ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Enemy 1/Polymorphor"]
 anims/HitReact = SubResource( 4 )
@@ -1009,10 +1012,16 @@ anims/RESET = SubResource( 6 )
 script = ExtResource( 41 )
 name = "Slide"
 firstAnimation = "Slide Attack"
-eventIndex = [  ]
+eventIndex = [ NodePath("MainDamage") ]
+targetingRule = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Enemy 1/Polymorphor/Slide"]
 "anims/Slide Attack" = SubResource( 7 )
+
+[node name="MainDamage" type="Node" parent="Battle Positions/Enemy 1/Polymorphor/Slide"]
+script = ExtResource( 42 )
+targeting = 1
+eventValue = 5
 
 [node name="Enemy 1 Back" type="Spatial" parent="Battle Positions"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.96, 0.1875, 3.9 )
@@ -1714,7 +1723,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444457, -1.26219, -5.69706 )
 visible = false
 pixel_size = 0.1
 frames = SubResource( 32 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="Baths" parent="." instance=ExtResource( 3 )]
@@ -1736,26 +1745,28 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 axis = 1
 frames = SubResource( 39 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Waterfall Piece" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 2.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 46 )
+frame = 5
 playing = true
 
 [node name="Waterfall Piece2" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 0.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 46 )
-frame = 5
+frame = 4
 playing = true
 
 [node name="Waterfall Top" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 53 )
+frame = 5
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="Baths"]

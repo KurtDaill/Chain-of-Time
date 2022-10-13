@@ -29,9 +29,6 @@ public class PMBattle : Node
     List<PMStatus> upkeepEffects = new List<PMStatus>();
     Stack<PMStatus> effectStack;
     
-    PMPlayerCharacter[] playerCharacters = new PMPlayerCharacter[3];
-    PMEnemyCharacter[] enemyCharacters = new PMEnemyCharacter[3];
-    
     private Dictionary<BattlePos, PMCharacter> battleRoster = new Dictionary<BattlePos, PMCharacter>(){
         {BattlePos.HeroThree, new PMCharacter()},
         {BattlePos.HeroTwo, new PMCharacter()},
@@ -66,9 +63,9 @@ public class PMBattle : Node
         currentPhase = TurnPhase.Upkeep;
         effectStack = new Stack<PMStatus>(upkeepEffects);
         gui = (PMBattleGUI) GetNode(battleGUI);
-        playerCharacters[0] = GetNode<PMPlayerCharacter>(debugPlayerOne);
-        enemyCharacters[0] = GetNode<PMEnemyCharacter>(debugEnemyOne);
         //Add Debugs to BattleRosters
+        roster.SetCharacter(GetNode<PMCharacter>(debugPlayerOne), BattlePos.HeroOne);
+        roster.SetCharacter(GetNode<PMCharacter>(debugEnemyOne), BattlePos.EnemyOne);
         heroTauntUp = false;
         enemyTauntUp = false;
     }
@@ -83,38 +80,33 @@ public class PMBattle : Node
 
                 if(upkeepEffects.Count == 0){ //If there's no more effects to resolve, continue
                     //TODO Check for Taunts
+                    gui.ResetGUIState(roster.GetPlayerCharacters());
                     currentPhase = TurnPhase.PlayerMenu;
                     playerAttacks = new Queue<PMPlayerAbility>();
-                    gui.ShowGUI();
                     break;            
                 } 
 
                 if(effectStack.Peek().Execute()){ //Execute the Effect, if it's done...
                     effectStack.Pop();  //Remove it  
+                    //TODO add some kind of timing mechanism to effects to allow them to play out in a way compresenible to the player
                 }
 
                 foreach(PMPlayerCharacter character in damageScoreboard.Keys){ //Reset the Player Half of the Scoreboards
-                    //if(character.GetType() == typeof(PMPlayerCharacter)){
                     damageScoreboard.Remove(character);
-                    //}
                 }
                 foreach(PMPlayerCharacter character in healingScoreboard.Keys){
-                    //if(character.GetType() == typeof(PMPlayerCharacter)){
                     healingScoreboard.Remove(character);
-                    //}
                 }
-                //If Players should die, they do
+                //TODO If Players should die, they do
                 break;
             case TurnPhase.PlayerMenu :
                 //Send Input to the Battle GUI
-                gui.currentMenu.HandleInput(GetPlayerInput(),out PMPlayerAbility ability);
-                if(ability != null){//Receive a Player Attack or Null
-                    playerAttacks.Enqueue(ability);
-                    if(gui.playerCharacterSelected == 3 || playerCharacters[gui.playerCharacterSelected + 1] == null){ //If there's no other character to input commands for...
-                        currentPhase = TurnPhase.PlayerAction;
-                        gui.HideGUI();
-                        playerAttacks.Peek().Begin();
-                    }
+                var temp = gui.Execute(GetPlayerInput(), this);
+                if(temp != null){
+                    playerAttacks = temp;
+                    gui.HideGUI();
+                    playerAttacks.Peek().Begin();
+                    currentPhase = TurnPhase.PlayerAction;
                 }
                 break;
             case TurnPhase.PlayerAction : 
@@ -128,16 +120,14 @@ public class PMBattle : Node
                 }
                 break;
             case TurnPhase.TurnOverPause : 
+            /*TODO: "Specified Cast Not Valid" on these functions: Check out 
                 foreach(PMEnemyCharacter character in damageScoreboard.Keys){
-                    //if(character.GetType() == typeof(PMEnemyCharacter)){
                     damageScoreboard.Remove(character);
-                    //}
                 }
                 foreach(PMEnemyCharacter character in healingScoreboard.Keys){
-                    //if(character.GetType() == typeof(PMEnemyCharacter)){
                     healingScoreboard.Remove(character);
-                    //}
                 }
+            */
                 //If Enemies should die, they do
                 enemyAttacks = new Queue<PMEnemyAbility>();
                 foreach(PMEnemyCharacter en in roster.GetEnemyCharacters()){
@@ -147,6 +137,7 @@ public class PMBattle : Node
                     }
                 }
                 currentPhase = TurnPhase.EnemyAction;
+                enemyAttacks.Peek().Begin();
                 break;
             case TurnPhase.EnemyAction :
                 //Basically the same loop as PlayerAction but with the enemy stack 
@@ -163,15 +154,8 @@ public class PMBattle : Node
     }
 
     public PMCharacter PositionLookup(BattlePos target){
+        var temp = roster.GetSingle(target);
         return roster.GetSingle(target);
-    }
-
-    public PMPlayerCharacter GetPlayerCharacter(int index){
-        return playerCharacters[index];
-    }
-
-    public PMEnemyCharacter GetEnemyCharacter(int index){
-        return enemyCharacters[index];
     }
 
     public MenuInput GetPlayerInput(){
@@ -189,13 +173,6 @@ public class PMBattle : Node
             return BattleMenu.MenuInput.Select;
         }else{
             return BattleMenu.MenuInput.None;
-        }
-    }
-
-    public void GetEnemyAttackPlan(){
-        enemyAttacks = new Queue<PMEnemyAbility>();
-        for(int i = 0; i < 3; i++){
-            enemyAttacks.Enqueue(enemyCharacters[i].DecideAttack());
         }
     }
 
@@ -264,9 +241,14 @@ public class PMBattle : Node
 
 //Designed to handle where characters are standing in the battle
 public class BattleRoster{
+    //Note: given how BattlePos' are bitwise flagged, using "log(2)" on a battle pos gets the correct position in the characters array
     private PMCharacter[] characters = new PMCharacter[6];
+
+    public void SetCharacter(PMCharacter ch, BattlePos pos){
+        characters[(uint)Math.Log((uint)pos, 2)] = ch;
+    }
     public PMCharacter GetSingle(BattlePos pos){
-        return characters[(int)Math.Log((uint)pos, 2)];
+        return characters[(uint)Math.Log((uint)pos, 2)];
     }
 
     public List<PMCharacter> GetGroup(BattlePos[] pos){
@@ -284,7 +266,9 @@ public class BattleRoster{
     //Returns all player characters, allowing to filter them by invisible, flying, and phased out.
     public PMPlayerCharacter[] GetPlayerCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true){
         List<PMPlayerCharacter> result = new List<PMPlayerCharacter>();
-        foreach(PMCharacter ch in characters){
+        var temp = characters.ToList<PMCharacter>();
+        temp.RemoveAll(x => x == null);
+        foreach(PMCharacter ch in temp){
             if(ch.GetType() == typeof(PMPlayerCharacter)){
                 StatusEffect[] chStatus = ch.GetMyStatuses();
                 if(!includeInvisible){
@@ -310,7 +294,9 @@ public class BattleRoster{
 
     public PMEnemyCharacter[] GetEnemyCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true){
         List<PMEnemyCharacter> result = new List<PMEnemyCharacter>();
-        foreach(PMCharacter ch in characters){
+        var temp = characters.ToList<PMCharacter>();
+        temp.RemoveAll(x => x == null);
+        foreach(PMCharacter ch in temp){
             if(ch.GetType() == typeof(PMEnemyCharacter)){
                 StatusEffect[] chStatus = ch.GetMyStatuses();
                 if(!includeInvisible){
@@ -336,6 +322,7 @@ public class BattleRoster{
 
     public PMCharacter[] GetCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true){
         List<PMCharacter> temp = characters.ToList<PMCharacter>();
+        temp.RemoveAll(x => x == null);
         foreach(PMCharacter ch in temp){
             StatusEffect[] statuses = ch.GetMyStatuses();
             if(!includeFlying && statuses.Contains(StatusEffect.Flying)) temp.Remove(ch);

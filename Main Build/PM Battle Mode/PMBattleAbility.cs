@@ -34,7 +34,7 @@ public class  PMBattleAbility : Node
     [Export]
     protected string firstAnimation = "???";
 
-    protected PMCharacter[] target;
+    public PMCharacter[] target;
 
     [Export]
     protected List<NodePath> eventIndex;
@@ -48,8 +48,6 @@ public class  PMBattleAbility : Node
     protected AbilityEvent[] events;
     public PMCharacter source;
     protected AnimationPlayer animPlay;
-
-    public PMCharacter[] selectedCharacters;
 
     //Is this ability done running for this iteration
     protected bool complete;
@@ -88,10 +86,13 @@ public class  PMBattleAbility : Node
     
     public void SetTargets(PMCharacter[] target){
         this.target = target;
+        foreach(AbilityEvent ev in events){
+            ev.SetTarget(this);
+        }
     }
     
 
-    public void FinishSequence(string anim_name){
+    public virtual void FinishSequence(){
         complete = true;
         critDamage = -1;
         failDamage = -1;

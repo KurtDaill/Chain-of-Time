@@ -48,7 +48,6 @@ public class PMPlayerAbility : PMBattleAbility
         inHoldAttack = true;
         this.failDamage = failDamage;
         this.targetAnimation = targetAnimation;
-        GD.Print("Hi Bud");
     }
 
     public void StartDelay(int delay){
@@ -85,6 +84,9 @@ public class PMPlayerAbility : PMBattleAbility
     public override void ExecuteEvent(int eventNum)
     {
         base.ExecuteEvent(eventNum);
+    }
+    public override void FinishSequence(){
+        base.FinishSequence();
     }
 }
 

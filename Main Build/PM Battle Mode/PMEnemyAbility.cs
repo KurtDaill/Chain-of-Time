@@ -12,7 +12,7 @@ public class PMEnemyAbility : PMBattleAbility
    
     public override void _Ready()
     {
-        
+        base._Ready();
     }
 
     public List<SpecialRequirement> GetRequirements(){

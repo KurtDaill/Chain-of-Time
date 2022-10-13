@@ -26,5 +26,5 @@ public abstract class BattleMenu : Control
 
     //Handles input from the core Menu Command
     //Returns a new menu in the scenario we have to switch between menus
-    public virtual void HandleInput(MenuInput input, out PMPlayerAbility ability){ability = null; return;}
+    public virtual PMPlayerAbility HandleInput(MenuInput input, PMPlayerCharacter character, PMBattle caller){ return null;}
 }

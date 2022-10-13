@@ -31,11 +31,14 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ 0 ],
 "method": "ExecuteEvent"
+}, {
+"args": [  ],
+"method": "FinishSequence"
 } ]
 }
 tracks/2/type = "value"
@@ -293,6 +296,7 @@ tracks/0/keys = {
 script = ExtResource( 8 )
 name = "Cato Basic Attack"
 firstAnimation = "Attack Wind Up"
+eventIndex = [ NodePath("Attack") ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Attack = SubResource( 1 )
@@ -363,5 +367,5 @@ stream = ExtResource( 7 )
 
 [node name="Attack" type="Node" parent="."]
 script = ExtResource( 9 )
-events = 1
+targeting = 1
 eventValue = 15

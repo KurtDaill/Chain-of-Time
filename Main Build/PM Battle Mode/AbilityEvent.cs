@@ -3,7 +3,6 @@ using System;
 using static PMBattleUtilities;
 
 public class AbilityEvent : Node{
-    PMBattleAbility parentAbility;
     
     [Export(PropertyHint.Enum)]
     protected AbilityAlignment alignment = AbilityAlignment.Normal;
@@ -27,12 +26,12 @@ public class AbilityEvent : Node{
     [Export(PropertyHint.Enum)]
     protected StatusEffect statusEffect = StatusEffect.None;
 
-    public void SetTarget(){
+    public void SetTarget(PMBattleAbility parentAbility){
         if(targeting == Target.Self){
              targets = new PMCharacter[]{parentAbility.source};
         }
         else if(targeting == Target.SelectedTarget){
-            targets = parentAbility.selectedCharacters;
+            targets = parentAbility.target;
         }
         else if(targeting == Target.AllHero){
             targets = parentAbility.source.parentBattle.GetPlayerCharacters();

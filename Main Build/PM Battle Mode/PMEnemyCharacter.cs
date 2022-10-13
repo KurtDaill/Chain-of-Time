@@ -7,7 +7,7 @@ using static PMBattleUtilities;
 
 public class PMEnemyCharacter : PMCharacter{
     [Export]
-    protected NodePath[] abilitiesByPriority;
+    protected List<NodePath> abilitiesByPriority;
     protected PMEnemyAbility[] abilities;
 
     [Export]
@@ -15,8 +15,8 @@ public class PMEnemyCharacter : PMCharacter{
 
     public override void _Ready(){
         base._Ready();
-        abilities = new PMEnemyAbility[abilitiesByPriority.Length];
-        for(int i = 0; i < abilitiesByPriority.Length; i++){
+        abilities = new PMEnemyAbility[abilitiesByPriority.Count];
+        for(int i = 0; i < abilitiesByPriority.Count; i++){
             abilities[i] = GetNode<PMEnemyAbility>(abilitiesByPriority[i]);
         }
     }

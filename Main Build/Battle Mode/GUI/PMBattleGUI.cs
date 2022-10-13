@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using static BattleMenu;
 public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to PlayerMenuSelection
 {
@@ -7,7 +8,9 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
     public BattleMenu currentMenu;
     public BattleMenu lastMenu;
     public PMBattle parentBattle;
-    public int playerCharacterSelected = 0;
+
+    private PMPlayerCharacter[] playersAbleToAct;
+    private Queue<PMPlayerAbility> abilitiesQueued;
     public BattleMenu[] menus = new BattleMenu[5];
     public override void _Ready(){
         currentMenu = (BattleMenu) GetNode("Top Menu");
@@ -18,8 +21,14 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
         menus[4] = (BattleMenu) GetNode("Skill Menu");
     }
 
+    //Returns the finished Queue when complete
+    public Queue<PMPlayerAbility> Execute(MenuInput input, PMBattle caller){
+        var temp = currentMenu.HandleInput(input, playersAbleToAct[abilitiesQueued.Count], caller);
+        if(temp != null) abilitiesQueued.Enqueue(temp);
+        if(abilitiesQueued.Count == playersAbleToAct.Length) return abilitiesQueued; //If all players have set an ability, we keep going
+        return null;
+    }
     public void ShowGUI(){
-        ResetGUIState();
         Visible = true;
     }
 
@@ -27,16 +36,13 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
         Visible = false;
     }
 
-    public void ResetGUIState(){
+    public void ResetGUIState(PMPlayerCharacter[] characters){
+        abilitiesQueued = new Queue<PMPlayerAbility>();
+        playersAbleToAct = characters;
         currentMenu.Visible = false;
         lastMenu = currentMenu;
         currentMenu = (BattleMenu) GetNode("Top Menu");
         currentMenu.OnOpen();
-    }
-
-    public void SetForNewPlayerMenuSelection(){
-        playerCharacterSelected = 0;
-        ResetGUIState();
     }
 
     public void ChangeMenu(int newMenuIndex){
