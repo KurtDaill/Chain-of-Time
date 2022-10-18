@@ -44,6 +44,9 @@ public class  PMBattleAbility : Node
 
     [Export]
     protected bool canTargetFliers = false;
+
+    [Export]
+    AbilityAlignment alignment = AbilityAlignment.Normal;
     
     protected AbilityEvent[] events;
     public PMCharacter source;
@@ -163,6 +166,13 @@ public class  PMBattleAbility : Node
                 Heal(eventNum);
                 break;
         }
+    }
+    public string GetAbilityName(){
+        return name;
+    }
+
+    public AbilityAlignment GetAbilityAlignment(){
+        return alignment;
     }
 }
 

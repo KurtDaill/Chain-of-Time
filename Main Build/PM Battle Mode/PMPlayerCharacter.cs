@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class PMPlayerCharacter : PMCharacter{
     List<PackedScene> abilitiesKnown = new List<PackedScene>();
+    
+    [Export]
+    List<NodePath> debugAbilities = new List<NodePath>(); //TODO Temp Code, Remove when Battle Starts are Implemented
     PMPlayerAbility[] abilitiesPrepared = new PMPlayerAbility[4];
 
     private int currentSP;
@@ -22,6 +25,11 @@ public class PMPlayerCharacter : PMCharacter{
         GetNode<AnimationPlayer>("AnimationPlayer").Play("Idle");
         myReadout = GetNode<PlayerCharacterReadout>(readout);
         currentSP = maxSP;
+        for(int i = 0 ; i < debugAbilities.Count; i++){ //TODO Temp Code, Remove when Battle Starts are Implemented
+            if(debugAbilities[i] != null){
+                abilitiesPrepared[i] = GetNode<PMPlayerAbility>(debugAbilities[i]);
+            }
+        }
     } 
     public PMPlayerAbility GetBasicAttack(){
         return basicAttack;
@@ -36,5 +44,9 @@ public class PMPlayerCharacter : PMCharacter{
     public void SetupReadout(){
         myReadout.UpdateHP(currentHP, MaxHP);
         myReadout.UpdateSP(currentSP, maxSP);
+    }
+
+    public PMPlayerAbility[] GetAbilities(){
+        return abilitiesPrepared;
     }
 }

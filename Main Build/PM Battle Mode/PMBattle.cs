@@ -80,7 +80,7 @@ public class PMBattle : Node
 
                 if(upkeepEffects.Count == 0){ //If there's no more effects to resolve, continue
                     //TODO Check for Taunts
-                    gui.ResetGUIState(roster.GetPlayerCharacters());
+                    gui.ResetGUIState(roster.GetPlayerCharacters(), this);
                     currentPhase = TurnPhase.PlayerMenu;
                     playerAttacks = new Queue<PMPlayerAbility>();
                     break;            

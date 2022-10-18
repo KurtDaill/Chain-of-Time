@@ -36,20 +36,27 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
         Visible = false;
     }
 
-    public void ResetGUIState(PMPlayerCharacter[] characters){
+    public void ResetGUIState(PMPlayerCharacter[] characters, PMBattle caller){
         abilitiesQueued = new Queue<PMPlayerAbility>();
         playersAbleToAct = characters;
         currentMenu.Visible = false;
         lastMenu = currentMenu;
         currentMenu = (BattleMenu) GetNode("Top Menu");
-        currentMenu.OnOpen();
+        currentMenu.OnOpen(playersAbleToAct[abilitiesQueued.Count], caller);
         ShowGUI();
     }
 
-    public void ChangeMenu(int newMenuIndex){
+    //Changes menu. Pass -1 into newMenuIndex to goto the last menu
+    public void ChangeMenu(int newMenuIndex, PMPlayerCharacter character, PMBattle caller){
         currentMenu.Visible = false;
-        lastMenu = currentMenu;
-        currentMenu = menus[newMenuIndex];
-        currentMenu.OnOpen();
+        if(newMenuIndex == -1){
+            var temp = currentMenu;
+            currentMenu = lastMenu;
+            lastMenu = temp;
+        }else{
+            lastMenu = currentMenu;
+            currentMenu = menus[newMenuIndex];
+        }
+        currentMenu.OnOpen(character, caller);
     }
 }

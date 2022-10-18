@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=2]
+[gd_scene load_steps=106 format=2]
 
 [ext_resource path="res://CatoBasicAttack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PM Battle Mode/PMBattle.cs" type="Script" id=2]
@@ -47,6 +47,8 @@
 [ext_resource path="res://GUI/Themes/Readout Text.tres" type="Theme" id=45]
 [ext_resource path="res://GUI/PlayerCharacterReadout.cs" type="Script" id=46]
 [ext_resource path="res://PM Battle Mode/PMEnemyCharacter.cs" type="Script" id=47]
+[ext_resource path="res://PM Battle Mode/PMPlayerAbility.cs" type="Script" id=48]
+[ext_resource path="res://GUI/Themes/Skill Card Spell Small.tres" type="Theme" id=49]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Point"
@@ -981,6 +983,7 @@ hframes = 10
 script = ExtResource( 39 )
 MaxHP = 10
 name = "Cato"
+debugAbilities = [ NodePath("Test Skill") ]
 maxSP = 5
 readout = NodePath("../../../Camera/BattleGUI/Readouts/Cato Readout")
 
@@ -998,6 +1001,19 @@ anims/HitReact = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 
 [node name="Basic Attack" parent="Battle Positions/Hero 1/Cato" instance=ExtResource( 1 )]
+
+[node name="Test Skill" type="Node" parent="Battle Positions/Hero 1/Cato"]
+script = ExtResource( 48 )
+name = "Magic Missile"
+eventIndex = [  ]
+targetingRule = 2
+alignment = 1
+rulesText = "[center][Ranged]
+[center]Deals 1d4 + 1 Magic Damage to Any Enemy"
+abilityType = "Spell"
+spCost = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Hero 1/Cato/Test Skill"]
 
 [node name="Hero 1 Back" type="Spatial" parent="Battle Positions"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98, 0.1875, 4 )
@@ -1081,7 +1097,6 @@ __meta__ = {
 }
 
 [node name="Skill Menu" type="Control" parent="Camera/BattleGUI"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 31 )
@@ -1090,8 +1105,8 @@ __meta__ = {
 }
 
 [node name="Card 4" type="TextureRect" parent="Camera/BattleGUI/Skill Menu"]
-margin_left = 5.0
-margin_top = 1086.0
+margin_left = 877.078
+margin_top = 909.0
 margin_right = 1165.0
 margin_bottom = 1248.0
 theme = ExtResource( 33 )
@@ -1154,8 +1169,8 @@ anims/Selected = SubResource( 9 )
 anims/Stow = SubResource( 10 )
 
 [node name="Card 3" type="TextureRect" parent="Camera/BattleGUI/Skill Menu"]
-margin_left = 5.0
-margin_top = 1086.0
+margin_left = 585.0
+margin_top = 909.0
 margin_right = 1165.0
 margin_bottom = 1248.0
 theme = ExtResource( 34 )
@@ -1218,8 +1233,8 @@ anims/Selected = SubResource( 12 )
 anims/Stow = SubResource( 13 )
 
 [node name="Card 2" type="TextureRect" parent="Camera/BattleGUI/Skill Menu"]
-margin_left = 5.0
-margin_top = 1086.0
+margin_left = 295.0
+margin_top = 909.0
 margin_right = 1165.0
 margin_bottom = 1248.0
 rect_pivot_offset = Vector2( 246.475, 158.516 )
@@ -1287,7 +1302,7 @@ anims/Stow = SubResource( 16 )
 
 [node name="Card 1" type="TextureRect" parent="Camera/BattleGUI/Skill Menu"]
 margin_left = 8.51978
-margin_top = 1086.0
+margin_top = 909.0
 margin_right = 1167.52
 margin_bottom = 1425.0
 theme = ExtResource( 29 )
@@ -1333,12 +1348,13 @@ __meta__ = {
 margin_left = 24.0
 margin_top = 180.0
 margin_right = 269.0
-margin_bottom = 330.0
+margin_bottom = 339.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 49 )
 bbcode_enabled = true
-bbcode_text = "
-[center]Default Rules Text"
-text = "
-Default Rules Text"
+bbcode_text = "I guess I should figure out a vauge method for"
+text = "I guess I should figure out a vauge method for"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1811,7 +1827,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444457, -1.26219, -5.69706 )
 visible = false
 pixel_size = 0.1
 frames = SubResource( 32 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="Baths" parent="." instance=ExtResource( 3 )]
@@ -1833,28 +1849,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 axis = 1
 frames = SubResource( 39 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="Waterfall Piece" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 2.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 46 )
-frame = 2
 playing = true
 
 [node name="Waterfall Piece2" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 0.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 46 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="Waterfall Top" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 53 )
-frame = 2
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="Baths"]

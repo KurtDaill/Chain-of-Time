@@ -20,7 +20,7 @@ public abstract class BattleMenu : Control
     }
 
     //Run when this menu is opened, resets values as needed from previous uses
-    public virtual void OnOpen(){
+    public virtual void OnOpen(PMPlayerCharacter character, PMBattle caller){
         this.Visible = true;
     }
 

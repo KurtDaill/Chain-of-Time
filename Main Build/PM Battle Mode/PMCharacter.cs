@@ -96,6 +96,7 @@ public class PMCharacter : Node{
         animPlay.Play("Idle");
     }
 
+    //Runs any functionality required when the Battle Starts a new turn
     public void NewTurnUpkeep(){
         damageTakenThisTurn = 0;
     }

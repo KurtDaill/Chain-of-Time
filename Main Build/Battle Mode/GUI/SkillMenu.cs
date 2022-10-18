@@ -3,12 +3,12 @@ using System;
 
 public class SkillMenu : BattleMenu
 {
-    /*
+    
     public AnimationPlayer menuAnim;
     public SkillCard[] cards = new SkillCard[4];
     private int selectedOption = -1;
     private int availableCards = 0;
-    private PlayerCombatant activeCharacter;
+    private PMPlayerCharacter activeCharacter;
 
     public override void _Ready()
     {
@@ -28,24 +28,24 @@ public class SkillMenu : BattleMenu
     {
         base._Process(delta);
     }
-    public override void OnOpen()
+    public override void OnOpen(PMPlayerCharacter character, PMBattle caller)
     {
-        activeCharacter = (PlayerCombatant) parentGUI.parentBattle.activeCombatants[parentGUI.playerCharacterSelected]; //TODO Reconfigure when player selection is implemented
+        activeCharacter = character;
+        var skills = activeCharacter.GetAbilities();
         for(int i = 0; i < 4; i++){
-            var skill = activeCharacter.GetSkill(i);
-            if(skill != null){
-                cards[i].SetDisplay(skill.GetAbilityName(), skill.GetRulesText(), skill.GetAbilityType(), skill.GetCost());
+            if(skills[i] != null){
+                cards[i].SetDisplay(skills[i].GetAbilityName(), skills[i].GetRulesText(), skills[i].GetAbilityType(), skills[i].GetAbilityAlignment(), skills[i].GetSPCost());
                 availableCards++;
             }else{
                 cards[i].Visible= false;
             }
         }
-        base.OnOpen();
+        base.OnOpen(character, caller);
         menuAnim.Play("Enter");
         //Check current characters readied skills, setup cards to match that data
     }
 
-    public override BattleMenu HandleInput(MenuInput input){       
+    public override PMPlayerAbility HandleInput(MenuInput input, PMPlayerCharacter character, PMBattle caller){       
         var oldCard = selectedOption;
         if(selectedOption == -1){
             if(input != MenuInput.None){
@@ -66,7 +66,7 @@ public class SkillMenu : BattleMenu
                     }
                     break;
                 case MenuInput.Select :
-                        //Select the thing!
+                    //Select the thing!
                     break;
             }
         }
@@ -76,9 +76,9 @@ public class SkillMenu : BattleMenu
         }
         if(input == MenuInput.Back){
             menuAnim.Play("Exit");
-            return parentGUI.lastMenu;
+            parentGUI.ChangeMenu(-1, character, caller);
+            return null;
         }
         return null;
     }
-    */
 }

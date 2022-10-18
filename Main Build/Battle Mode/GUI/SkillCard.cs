@@ -1,6 +1,6 @@
 using System;
 using Godot;
-using static AbilityUtilities;
+using static PMBattleUtilities;
 
 public class SkillCard : TextureRect{
     private RichTextLabel name, rules;
@@ -13,33 +13,27 @@ public class SkillCard : TextureRect{
         abilityType = (Label)GetNode("Type");
         anim = (AnimationPlayer)GetNode("AnimationPlayer");
     }
-    public void SetDisplay(string abilityName, string rulesText, PlayerAbilityQualities type, int spCost){
+    public void SetDisplay(string abilityName, string rulesText, string type, AbilityAlignment align, int spCost){
         this.Visible = true;
-        name.BbcodeText = abilityName;
+        name.BbcodeText = "[center]" + abilityName;
         rules.BbcodeText = rulesText;
-        switch(type & (PlayerAbilityQualities.Skill | PlayerAbilityQualities.Attack)){ //bitwise operation to sync up with switch logic
-            case PlayerAbilityQualities.Skill :
-                abilityType.Text = "Skill";
-                break;
-            case PlayerAbilityQualities.Attack :
-                abilityType.Text = "Attack";
-                break;
-        }
-        switch(type & (PlayerAbilityQualities.Normal | PlayerAbilityQualities.Spell | PlayerAbilityQualities.Tech)){ //bitwise operation to sync up with switch logic
-            case PlayerAbilityQualities.Normal :
+        abilityType.Text = type;
+        switch(align){ //bitwise operation to sync up with switch logic
+            case AbilityAlignment.Normal :
                 Texture = (Texture) GD.Load("res://GUI/Battle Menu Assets/Skill Card.png");
                 Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Normal.tres");
                 break;
-            case PlayerAbilityQualities.Spell :
+            case AbilityAlignment.Magic :
                 Texture = (Texture) GD.Load("res://GUI/Battle Menu Assets/Spell Card.png");
                 if(abilityType.Text == "Skill") abilityType.Text = "Spell";
                 Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Spell.tres");
                 break;
-            case PlayerAbilityQualities.Tech :
+            case AbilityAlignment.Tech :
                 Texture = (Texture) GD.Load("res://GUI/Battle Menu Assets/Tech Card.png");
-                if(abilityType.Text == "Skill") abilityType.Text = "Tech";
                 Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Tech.tres");
                 break;
+            default :
+                throw new NotImplementedException(); //TODO write custom exception
         }
         cost.Text = "" + spCost;
     }

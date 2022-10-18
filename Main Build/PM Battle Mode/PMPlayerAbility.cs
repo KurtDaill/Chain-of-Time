@@ -6,13 +6,17 @@ using static PMBattleUtilities;
 public class PMPlayerAbility : PMBattleAbility
 {
 
-    private bool waitingForInput;
-    private string targetInput, targetAnimation;
-    private bool inHoldAttack, attackReady, criticalTiming, activate;
+    protected bool waitingForInput;
+    protected string targetInput, targetAnimation;
+    protected bool inHoldAttack, attackReady, criticalTiming, activate;
+    protected int delayCounter = 0;
 
-    private int delayCounter = 0;
-
-    //private int activateTime, perfectTime, lateTime, endTime;
+    [Export(PropertyHint.MultilineText)]
+    protected string rulesText = "<Insert Rules Text Here>";
+    [Export]
+    protected string abilityType = "Attack";
+    [Export]
+    protected int spCost = -1;
 
     public override void _Process(float delta)
     {
@@ -84,6 +88,18 @@ public class PMPlayerAbility : PMBattleAbility
     public override void ExecuteEvent(int eventNum)
     {
         base.ExecuteEvent(eventNum);
+    }
+
+    public int GetSPCost(){
+        return spCost;
+    }
+
+    public string GetRulesText(){
+        return rulesText;
+    }
+
+    public string GetAbilityType(){
+        return abilityType;
     }
 }
 
