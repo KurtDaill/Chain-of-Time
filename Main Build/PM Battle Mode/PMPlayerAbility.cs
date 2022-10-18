@@ -11,8 +11,8 @@ public class PMPlayerAbility : PMBattleAbility
     protected bool inHoldAttack, attackReady, criticalTiming, activate;
     protected int delayCounter = 0;
 
-    [Export(PropertyHint.MultilineText)]
-    protected string rulesText = "<Insert Rules Text Here>";
+    [Export(PropertyHint.MultilineText)] //Developers can specify the font size for their rules text within the rules text string using [textSize] and "small" or "smallest"
+    protected string rulesText = "[textSize]<Insert Rules Text Here>";
     [Export]
     protected string abilityType = "Attack";
     [Export]

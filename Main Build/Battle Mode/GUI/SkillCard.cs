@@ -16,26 +16,55 @@ public class SkillCard : TextureRect{
     public void SetDisplay(string abilityName, string rulesText, string type, AbilityAlignment align, int spCost){
         this.Visible = true;
         name.BbcodeText = "[center]" + abilityName;
-        rules.BbcodeText = rulesText;
+        cost.Text = "" + spCost;
         abilityType.Text = type;
-        switch(align){ //bitwise operation to sync up with switch logic
+        
+        //Developers can specify the font size for their rules text within the rules text string, this parses that information
+        string textSize = "";
+        if(rulesText.StartsWith("[textSize]")){
+            rulesText = rulesText.Remove(0,10);
+            if(rulesText.StartsWith("smallest")){
+                textSize = "smallest";
+                rulesText = rulesText.Remove(0,8);
+            }
+            if(rulesText.StartsWith("small")){
+                textSize = "small";
+                rulesText = rulesText.Remove(0,5);
+            }
+        }
+        rules.BbcodeText = rulesText;
+
+        switch(align){ //Assigns the card's graphic and text theme to match it's alignment
             case AbilityAlignment.Normal :
                 Texture = (Texture) GD.Load("res://GUI/Battle Menu Assets/Skill Card.png");
                 Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Normal.tres");
+                if(textSize == "small"){
+                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Normal Small.tres");
+                }else if(textSize == "smallest"){
+                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Normal Smallest.tres");
+                } 
                 break;
             case AbilityAlignment.Magic :
                 Texture = (Texture) GD.Load("res://GUI/Battle Menu Assets/Spell Card.png");
-                if(abilityType.Text == "Skill") abilityType.Text = "Spell";
                 Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Spell.tres");
+                if(textSize == "small"){
+                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Spell Small.tres");
+                }else if(textSize == "smallest"){
+                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Spell Smallest.tres");
+                } 
                 break;
             case AbilityAlignment.Tech :
                 Texture = (Texture) GD.Load("res://GUI/Battle Menu Assets/Tech Card.png");
                 Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Tech.tres");
+                if(textSize == "small"){
+                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Tech Small.tres");
+                }else if(textSize == "smallest"){
+                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Tech Smallest.tres");
+                }
                 break;
             default :
                 throw new NotImplementedException(); //TODO write custom exception
         }
-        cost.Text = "" + spCost;
     }
 
     public void Select(){
