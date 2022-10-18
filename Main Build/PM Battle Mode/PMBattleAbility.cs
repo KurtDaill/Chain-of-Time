@@ -100,22 +100,26 @@ public class  PMBattleAbility : Node
     }
 
     protected virtual void DealDamage(int effectNum){
-        //BattlePos[] damageTargets = events[effectNum].GetTargetPositions();
+        string logOutput = name + " Attack Dealing ";
         int dmg = events[effectNum].GetValue();
         AbilityAlignment damageType = events[effectNum].GetAlignment();
-       // AbilityAlignment damageType = aligns[effectNum];
 
         if(critDamage != -1){
             dmg = critDamage;
         }else if(failDamage != -1){
             dmg = failDamage;
         }
+        logOutput += dmg + " Damage to ";
+        int targs = 0;
         foreach(PMCharacter character in events[effectNum].GetTargets()){
             if(character != null){
                 character.TakeDamage(dmg, damageType);
                 source.parentBattle.UpdateDamageScoreboard(dmg, source);
+                targs ++;
             }
         }
+        logOutput += targs + " Target(s).";
+        GD.Print(logOutput);
         /*
         for(int i = 0; i < damageTargets.Length; i++){
             PMCharacter ch = source.parentBattle.PositionLookup(damageTargets[i]);

@@ -23,6 +23,8 @@ public class PMCharacter : Node{
 
     [Export]
     public List<float> Modifier;
+    [Export]
+    string name;
     public Dictionary<AbilityAlignment, float> DamageModifiers = new Dictionary<AbilityAlignment, float>();
     public AnimationPlayer animPlay;
     public override void _Ready(){
@@ -79,12 +81,14 @@ public class PMCharacter : Node{
         statusEffects.Add(newEffect);
     }
 
-    public void TakeDamage(int damage, AbilityAlignment alignment){
+    public virtual void TakeDamage(int damage, AbilityAlignment alignment){
         foreach(KeyValuePair<AbilityAlignment, float> mod in DamageModifiers){
             damage = Mathf.RoundToInt(damage * mod.Value);
         }
+        this.currentHP -= damage;
         //TODO Add Damage Number System
         animPlay.Play("HitReact");
+        GD.Print(name + " is hit for: " + damage); //TODO modify this to print to a combat log?
     }
 
     //Called by OnAnimationFinished Signal

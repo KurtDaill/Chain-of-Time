@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=2]
+[gd_scene load_steps=104 format=2]
 
 [ext_resource path="res://CatoBasicAttack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PM Battle Mode/PMBattle.cs" type="Script" id=2]
@@ -42,6 +42,10 @@
 [ext_resource path="res://Art/Polymorphor Master Sprite Sheet.png" type="Texture" id=40]
 [ext_resource path="res://PM Battle Mode/PMEnemyAbility.cs" type="Script" id=41]
 [ext_resource path="res://PM Battle Mode/AbilityEvent.cs" type="Script" id=42]
+[ext_resource path="res://GUI/Battle Menu Assets/SPGem.tres" type="Texture" id=43]
+[ext_resource path="res://GUI/Battle Menu Assets/HPCandle.tres" type="Texture" id=44]
+[ext_resource path="res://GUI/Themes/Readout Text.tres" type="Theme" id=45]
+[ext_resource path="res://GUI/PlayerCharacterReadout.cs" type="Script" id=46]
 [ext_resource path="res://PM Battle Mode/PMEnemyCharacter.cs" type="Script" id=47]
 
 [sub_resource type="Animation" id=1]
@@ -172,10 +176,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.5, 0.6, 0.7, 0.75, 0.95, 1.1, 1.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 0.45, 0.5, 0.6, 0.7, 0.75, 0.95, 1.1, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 0 ]
+"values": [ 0, 1, 1, 2, 3, 4, 5, 6, 7, 0 ]
 }
 tracks/1/type = "bezier"
 tracks/1/path = NodePath("..:translation:x")
@@ -975,6 +979,10 @@ alpha_cut = 2
 texture = ExtResource( 22 )
 hframes = 10
 script = ExtResource( 39 )
+MaxHP = 10
+name = "Cato"
+maxSP = 5
+readout = NodePath("../../../Camera/BattleGUI/Readouts/Cato Readout")
 
 [node name="Pointer" type="Sprite3D" parent="Battle Positions/Hero 1/Cato"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.625, 0 )
@@ -1017,6 +1025,7 @@ hframes = 13
 script = ExtResource( 47 )
 ModifiedDamageTypes = [ 1 ]
 Modifier = [ 0.5 ]
+name = "Polymorphor"
 abilitiesByPriority = [ NodePath("Slide") ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Enemy 1/Polymorphor"]
@@ -1065,10 +1074,7 @@ script = ExtResource( 27 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 3.32721
-margin_top = -1085.89
-margin_right = 3.32727
-margin_bottom = -5.88867
+margin_top = -1080.0
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1471,9 +1477,9 @@ __meta__ = {
 visible = false
 anchor_top = 0.572
 anchor_bottom = 1.0
-margin_left = 3.0
+margin_left = 5.0
 margin_top = 0.23999
-margin_right = 1923.0
+margin_right = 1920.0
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1701,20 +1707,87 @@ anchor_left = 1.0
 anchor_top = 0.654
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -720.0
-margin_top = -0.320068
-margin_right = -4.0
+margin_left = -752.0
+margin_top = -0.44635
+margin_bottom = -0.126831
 custom_constants/separation = 50
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect2" type="TextureRect" parent="Camera/BattleGUI/Readouts"]
-margin_top = 146.0
-margin_right = 716.0
-margin_bottom = 227.0
+[node name="Cato Readout" type="TextureRect" parent="Camera/BattleGUI/Readouts"]
+margin_top = 138.0
+margin_right = 752.0
+margin_bottom = 234.0
 texture = ExtResource( 16 )
+script = ExtResource( 46 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+pathToDebugCharacter = NodePath("../../../../Battle Positions/Hero 1/Cato")
+
+[node name="HP Icon" type="TextureRect" parent="Camera/BattleGUI/Readouts/Cato Readout"]
+margin_left = 432.279
+margin_right = 528.279
+margin_bottom = 96.0
+texture = ExtResource( 44 )
+
+[node name="SP Icon" type="TextureRect" parent="Camera/BattleGUI/Readouts/Cato Readout"]
+margin_left = 576.188
+margin_right = 672.188
+margin_bottom = 96.0
+texture = ExtResource( 43 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP" type="Label" parent="Camera/BattleGUI/Readouts/Cato Readout"]
+margin_left = 337.889
+margin_top = 51.0068
+margin_right = 379.889
+margin_bottom = 83.0068
+theme = ExtResource( 45 )
+custom_colors/font_color = Color( 0.384314, 0.0941176, 0, 1 )
+text = "99"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Max HP" type="Label" parent="Camera/BattleGUI/Readouts/Cato Readout"]
+margin_left = 389.913
+margin_top = 51.0068
+margin_right = 431.913
+margin_bottom = 83.0068
+theme = ExtResource( 45 )
+custom_colors/font_color = Color( 0.384314, 0.0941176, 0, 1 )
+text = "99"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SP" type="Label" parent="Camera/BattleGUI/Readouts/Cato Readout"]
+margin_left = 500.478
+margin_top = 51.0068
+margin_right = 542.478
+margin_bottom = 83.0068
+theme = ExtResource( 45 )
+custom_colors/font_color = Color( 0.0470588, 0.129412, 0.282353, 1 )
+text = "99"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Max SP" type="Label" parent="Camera/BattleGUI/Readouts/Cato Readout"]
+margin_left = 552.502
+margin_top = 51.0068
+margin_right = 594.502
+margin_bottom = 83.0068
+theme = ExtResource( 45 )
+custom_colors/font_color = Color( 0.0470588, 0.129412, 0.282353, 1 )
+text = "99"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1738,6 +1811,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444457, -1.26219, -5.69706 )
 visible = false
 pixel_size = 0.1
 frames = SubResource( 32 )
+frame = 5
 playing = true
 
 [node name="Baths" parent="." instance=ExtResource( 3 )]
