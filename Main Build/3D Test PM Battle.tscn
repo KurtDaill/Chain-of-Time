@@ -1104,7 +1104,7 @@ __meta__ = {
 }
 
 [node name="Card 4" type="TextureRect" parent="Camera/BattleGUI/Skill Menu"]
-margin_left = 5.0
+margin_left = 877.078
 margin_top = 1086.0
 margin_right = 1165.0
 margin_bottom = 1248.0
@@ -1168,7 +1168,7 @@ anims/Selected = SubResource( 9 )
 anims/Stow = SubResource( 10 )
 
 [node name="Card 3" type="TextureRect" parent="Camera/BattleGUI/Skill Menu"]
-margin_left = 5.0
+margin_left = 585.0
 margin_top = 1086.0
 margin_right = 1165.0
 margin_bottom = 1248.0
@@ -1232,7 +1232,7 @@ anims/Selected = SubResource( 12 )
 anims/Stow = SubResource( 13 )
 
 [node name="Card 2" type="TextureRect" parent="Camera/BattleGUI/Skill Menu"]
-margin_left = 5.0
+margin_left = 295.0
 margin_top = 1086.0
 margin_right = 1165.0
 margin_bottom = 1248.0
@@ -1831,7 +1831,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444457, -1.26219, -5.69706 )
 visible = false
 pixel_size = 0.1
 frames = SubResource( 32 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="Baths" parent="." instance=ExtResource( 3 )]

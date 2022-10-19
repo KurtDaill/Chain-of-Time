@@ -65,9 +65,12 @@ public class SkillMenu : BattleMenu
                         selectedOption = 0;
                     }
                     break;
-                case MenuInput.Select :
-                    //Select the thing!
-                    break;
+                case MenuInput.Select : //Send this ability along                    
+                    menuAnim.Play("Exit");
+                    //Debug Code for testing
+                    var ability = character.GetBasicAttack();
+                    ability.SetTargets(new PMCharacter[]{caller.PositionLookup(PMBattleUtilities.BattlePos.EnemyOne)});//TODO make conform with selection functions
+                    return ability;
             }
         }
         if(oldCard != selectedOption){
