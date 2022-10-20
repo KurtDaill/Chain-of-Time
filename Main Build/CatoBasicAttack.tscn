@@ -22,7 +22,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 5, 9 ]
+"values": [ 50, 54 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -94,7 +94,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 3, 4, 5 ]
+"values": [ 48, 49, 50 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -311,7 +311,6 @@ texture = ExtResource( 3 )
 
 [node name="Orb 1" type="Sprite3D" parent="Frame"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1425, -0.24043, 0.002 )
-modulate = Color( 1, 1, 1, 0 )
 pixel_size = 0.008
 double_sided = false
 alpha_cut = 2
@@ -321,7 +320,6 @@ frame = 3
 
 [node name="Orb 2" type="Sprite3D" parent="Frame"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1775, -0.24043, 0.002 )
-modulate = Color( 1, 1, 1, 0 )
 pixel_size = 0.008
 double_sided = false
 alpha_cut = 2
@@ -331,7 +329,6 @@ frame = 3
 
 [node name="Orb 3" type="Sprite3D" parent="Frame"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4975, -0.24043, 0.002 )
-modulate = Color( 1, 1, 1, 0 )
 pixel_size = 0.008
 double_sided = false
 alpha_cut = 2
@@ -346,10 +343,10 @@ double_sided = false
 alpha_cut = 2
 texture = ExtResource( 1 )
 hframes = 3
+frame = 2
 
 [node name="Sword" type="Sprite3D" parent="Frame"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6975, -0.24043, 0.00200009 )
-modulate = Color( 1, 1, 1, 0 )
 pixel_size = 0.008
 alpha_cut = 2
 texture = ExtResource( 4 )
