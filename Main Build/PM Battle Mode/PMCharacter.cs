@@ -77,7 +77,7 @@ public class PMCharacter : Node{
                 }
             }
         }
-
+        AddChild(newEffect);
         statusEffects.Add(newEffect);
     }
 
@@ -101,12 +101,12 @@ public class PMCharacter : Node{
         damageTakenThisTurn = 0;
     }
 
-    public StatusEffect[] GetMyStatuses(){
+    public List<StatusEffect> GetMyStatuses(){
         List<StatusEffect> statuses = new List<StatusEffect>();
         foreach(PMStatus statusObject in statusEffects){
             statuses.Add(statusObject.GetStatusType());
         }
-        return statuses.ToArray();
+        return statuses;
     }
 
     public void ResetToIdleAnim(){

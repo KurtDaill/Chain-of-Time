@@ -23,8 +23,14 @@ public class AbilityEvent : Node{
     //Targets refers to the exact targets that are being hit per effect. The Second array are the effected positions, and the first array assigns those arrays to an event number.
     //protected BattlePos[] positions = new BattlePos[0];
 
-    [Export(PropertyHint.Enum)]
-    protected StatusEffect statusEffect = StatusEffect.None;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        if(eventType == EventType.Status){
+            throw new NotAStatusEventException();
+        }
+    }
 
     public void SetTarget(PMBattleAbility parentAbility){
         if(targeting == Target.Self){
@@ -43,10 +49,6 @@ public class AbilityEvent : Node{
              //Because the bitwise relationship for battle positions is shared between BattlePos and Target, we can cast any of the remaining possible Target to a BattlePos
             targets = new PMCharacter[]{parentAbility.source.parentBattle.PositionLookup((BattlePos)targeting)};
         }
-    }
-
-    public StatusEffect GetStatusEffect(){
-        return statusEffect;
     }
     public int GetValue(){
         return eventValue;
@@ -76,4 +78,11 @@ public class AbilityEvent : Node{
         EnemyTwo = 0b_000010,
         EnemyThree = 0b_000001,
     }
+}
+
+
+[Serializable]
+class NotAStatusEventException : Exception
+{
+    public NotAStatusEventException() : base(String.Format("Status Effect Event Type Set for Non Status Effect Event. Use the Ability Event Status Node Instead.")) {  }
 }

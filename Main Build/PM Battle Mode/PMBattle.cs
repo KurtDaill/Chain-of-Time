@@ -26,7 +26,7 @@ public class PMBattle : Node
 
     TurnPhase currentPhase;
 
-    List<PMStatus> upkeepEffects = new List<PMStatus>();
+    List<PMStatus> trackedStatusEffects = new List<PMStatus>();
     Stack<PMStatus> effectStack;
     
     private Dictionary<BattlePos, PMCharacter> battleRoster = new Dictionary<BattlePos, PMCharacter>(){
@@ -61,7 +61,7 @@ public class PMBattle : Node
     {
         //Normal Goto upkeep functions
         currentPhase = TurnPhase.Upkeep;
-        effectStack = new Stack<PMStatus>(upkeepEffects);
+        effectStack = new Stack<PMStatus>(trackedStatusEffects);
         gui = (PMBattleGUI) GetNode(battleGUI);
         //Add Debugs to BattleRosters
         roster.SetCharacter(GetNode<PMCharacter>(debugPlayerOne), BattlePos.HeroOne);
@@ -78,7 +78,7 @@ public class PMBattle : Node
                     ch.NewTurnUpkeep();
                 }
 
-                if(upkeepEffects.Count == 0){ //If there's no more effects to resolve, continue
+                if(trackedStatusEffects.Count == 0){ //If there's no more effects to resolve, continue
                     //TODO Check for Taunts
                     gui.ResetGUIState(roster.GetPlayerCharacters(), this);
                     currentPhase = TurnPhase.PlayerMenu;
@@ -87,8 +87,11 @@ public class PMBattle : Node
                 } 
 
                 if(effectStack.Peek().Execute()){ //Execute the Effect, if it's done...
-                    effectStack.Pop();  //Remove it  
-                    //TODO add some kind of timing mechanism to effects to allow them to play out in a way compresenible to the player
+                    if(effectStack.Peek().GetDuration() == 0){
+                        effectStack.Peek().Expire();
+                        
+                    }
+                    effectStack.Pop();  //Remove it 
                 }
 
                 foreach(PMPlayerCharacter character in damageScoreboard.Keys){ //Reset the Player Half of the Scoreboards
@@ -144,6 +147,10 @@ public class PMBattle : Node
                 if(enemyAttacks.Peek().CheckForCompletion()){//Peek Player Attack Stack, get notice whether the attack is still running or not
                     enemyAttacks.Dequeue();
                     if(enemyAttacks.Count == 0){//Is there any more attacks?
+                        //Setup the status effect stack, then turn it over to the next turn
+                        effectStack = new Stack<PMStatus>();
+                        foreach(PMStatus status in trackedStatusEffects) effectStack.Push(status);
+                        effectStack.Peek().StartUpkeep();
                         currentPhase = TurnPhase.Upkeep;
                     }else{
                         enemyAttacks.Peek().Begin(); //Start the next attack, the previous attack should have reset itself
@@ -271,7 +278,7 @@ public class BattleRoster{
         temp.RemoveAll(x => x == null);
         foreach(PMCharacter ch in temp){
             if(ch.GetType() == typeof(PMPlayerCharacter)){
-                StatusEffect[] chStatus = ch.GetMyStatuses();
+                List<StatusEffect> chStatus = ch.GetMyStatuses();
                 if(!includeInvisible){
                     if(chStatus.Contains(StatusEffect.Invisible)){
                         continue;
@@ -299,7 +306,7 @@ public class BattleRoster{
         temp.RemoveAll(x => x == null);
         foreach(PMCharacter ch in temp){
             if(ch.GetType() == typeof(PMEnemyCharacter)){
-                StatusEffect[] chStatus = ch.GetMyStatuses();
+                List<StatusEffect> chStatus = ch.GetMyStatuses();
                 if(!includeInvisible){
                     if(chStatus.Contains(StatusEffect.Invisible)){
                         continue;
@@ -325,7 +332,7 @@ public class BattleRoster{
         List<PMCharacter> temp = characters.ToList<PMCharacter>();
         temp.RemoveAll(x => x == null);
         foreach(PMCharacter ch in temp){
-            StatusEffect[] statuses = ch.GetMyStatuses();
+            List<StatusEffect> statuses = ch.GetMyStatuses();
             if(!includeFlying && statuses.Contains(StatusEffect.Flying)) temp.Remove(ch);
             if(!includeInvisible && statuses.Contains(StatusEffect.Flying)) temp.Remove(ch);
             if(!includePhasedOut && statuses.Contains(StatusEffect.PhasedOut)) temp.Remove(ch);
@@ -408,10 +415,10 @@ public static class PMBattleUtilities{
         Poisoned,
         Stunned,
         Flying,
-        TargetLocked,
         Silenced,
-        Busted,
+        Jinxed,
         Overcharged,
+        Empowered,
         Invisible,
         PhasedOut,
         Taunting

@@ -2,6 +2,7 @@ using Godot;
 using System;
 using static PMBattleUtilities;
 using System.Collections.Generic;
+using System.Linq;
 
 /*
 This Class Represents an Attack, Spell, or other action a character can take on their turn, functioning with an attached animation 
@@ -47,6 +48,11 @@ public class  PMBattleAbility : Node
 
     [Export]
     AbilityAlignment alignment = AbilityAlignment.Normal;
+
+    [Export]
+    bool usesEmpowered = true;
+    [Export]
+    bool consumesOvercharged = true;
     
     protected AbilityEvent[] events;
     public PMCharacter source;
@@ -106,11 +112,18 @@ public class  PMBattleAbility : Node
         string logOutput = name + " Attack Dealing ";
         int dmg = events[effectNum].GetValue();
         AbilityAlignment damageType = events[effectNum].GetAlignment();
-
         if(critDamage != -1){
             dmg = critDamage;
-        }else if(failDamage != -1){
+        }
+        if(failDamage != -1){
             dmg = failDamage;
+        }else{ //Bonuses aren't applied to fail damage
+            if(source.GetMyStatuses().Contains(StatusEffect.Empowered) && usesEmpowered){
+                dmg += source.statusEffects.Where<PMStatus>(x => x.GetStatusType() == StatusEffect.Empowered).ToArray<PMStatus>()[0].GetMagnitude();
+            }
+            if(source.GetMyStatuses().Contains(StatusEffect.Overcharged) && consumesOvercharged){
+                dmg += source.statusEffects.Where<PMStatus>(x => x.GetStatusType() == StatusEffect.Overcharged).ToArray<PMStatus>()[0].GetMagnitude();
+            }
         }
         logOutput += dmg + " Damage to ";
         int targs = 0;
@@ -123,15 +136,6 @@ public class  PMBattleAbility : Node
         }
         logOutput += targs + " Target(s).";
         GD.Print(logOutput);
-        /*
-        for(int i = 0; i < damageTargets.Length; i++){
-            PMCharacter ch = source.parentBattle.PositionLookup(damageTargets[i]);
-            if(ch != null){
-                ch.TakeDamage(dmg, damageType);
-                source.parentBattle.UpdateDamageScoreboard(dmg, source);
-            }
-        }
-        */
     }
 
     public void Heal(int eventNum){ //TODO Write Me
@@ -140,8 +144,16 @@ public class  PMBattleAbility : Node
     }
 
     public void InflictStatus(int eventNum){ //TODO Write Me
-        //TargetingRule localTarget = ConvertTarget(target);
-        //AbilityAlignment localAlign = ConvertAlignment(al);
+        /*
+            foreach(Target)
+                Load the PackedScene
+                Instance the PackedScene
+                Done inside of Event > Set Variables
+        */
+        var statusEvent = (AbilityEventStatusEffect)events[eventNum];
+        foreach(PMCharacter target in events[eventNum].GetTargets()){
+            target.AddStatus(statusEvent.InstanceStatusEffect());
+        }
     }   
 
     public void SpawnNode(string path){
