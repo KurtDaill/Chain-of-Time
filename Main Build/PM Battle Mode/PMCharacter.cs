@@ -27,10 +27,13 @@ public class PMCharacter : Node{
     string name;
     public Dictionary<AbilityAlignment, float> DamageModifiers = new Dictionary<AbilityAlignment, float>();
     public AnimationPlayer animPlay;
+
+    public Sprite3D pointerGraphic;
     public override void _Ready(){
         statusEffects = new List<PMStatus>();
         parentBattle = (PMBattle) GetNode("/root/Battle");
         animPlay = GetNode<AnimationPlayer>("AnimationPlayer");
+        pointerGraphic = GetNode<Sprite3D>("Pointer");
         currentHP = MaxHP;
     } 
 
@@ -111,5 +114,9 @@ public class PMCharacter : Node{
 
     public void ResetToIdleAnim(){
         GetNode<AnimationPlayer>("AnimationPlayer").Play("Idle");
+    }
+
+    public void SetPointerVisibility(bool set){
+        pointerGraphic.Visible = set;
     }
 }

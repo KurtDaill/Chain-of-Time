@@ -379,24 +379,19 @@ public static class PMBattleUtilities{
     }                                                                                                    
 
     [Flags]
+    //NOTE: Targeting rules less than ten require some choices, Targeting rules above ten are preset
     public enum TargetingRule{
         None = 0,
-        Self = 1,
-        SingleEnemyMelee = 2,
-        SingleEnemyRanged = 3,
-        SingleEnemyReach = 4,
-        AllEnemy = 5,
-        AllHero = 6,                                                                                                                           
-        SingleHeroMelee = 7,
-        SingleHeroRanged = 8,
-        SingleHeroReach = 9,
-        HeroOne = 10,
-        HeroTwo = 11,
-        HeroThree = 12,
-        EnemyOne = 13,
-        EnemyTwo = 14,
-        EnemyThree = 15,
-        All = 16
+        SingleEnemyMelee = 1,
+        SingleEnemyRanged = 2,
+        SingleEnemyReach = 3,                                                                                                                         
+        SingleHeroMelee = 4,
+        SingleHeroRanged = 5,
+        SingleHeroReach = 6,
+        Self = 10,
+        AllEnemy = 18,
+        AllHero = 19,
+        All = 20
     }
 
     /*

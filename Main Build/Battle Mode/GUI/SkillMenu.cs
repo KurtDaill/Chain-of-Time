@@ -8,8 +8,6 @@ public class SkillMenu : BattleMenu
     public SkillCard[] cards = new SkillCard[4];
     private int selectedOption = -1;
     private int availableCards = 0;
-    private PMPlayerCharacter activeCharacter;
-
     public override void _Ready()
     {
         base._Ready();
@@ -30,8 +28,7 @@ public class SkillMenu : BattleMenu
     }
     public override void OnOpen(PMPlayerCharacter character, PMBattle caller)
     {
-        activeCharacter = character;
-        var skills = activeCharacter.GetAbilities();
+        var skills = character.GetAbilities();
         for(int i = 0; i < 4; i++){
             if(skills[i] != null){
                 cards[i].SetDisplay(skills[i].GetAbilityName(), skills[i].GetRulesText(), skills[i].GetAbilityType(), skills[i].GetAbilityAlignment(), skills[i].GetSPCost());
@@ -65,10 +62,10 @@ public class SkillMenu : BattleMenu
                         selectedOption = 0;
                     }
                     break;
-                case MenuInput.Select : //Send this ability along                    
+                case MenuInput.Select : //TODO: Should go to a "Targeting" menu                 
                     menuAnim.Play("Exit");
                     //Debug Code for testing
-                    var ability = character.GetBasicAttack();
+                    var ability = character.GetAbilities()[selectedOption];
                     ability.SetTargets(new PMCharacter[]{caller.PositionLookup(PMBattleUtilities.BattlePos.EnemyOne)});//TODO make conform with selection functions
                     return ability;
             }

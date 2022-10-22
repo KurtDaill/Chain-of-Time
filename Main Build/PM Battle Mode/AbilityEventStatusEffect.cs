@@ -15,7 +15,6 @@ public class AbilityEventStatusEffect : AbilityEvent {
     private PackedScene statusEffectPS;
 
     public override void _Ready(){
-        base._Ready();
         statusEffectPS = GD.Load<PackedScene>(coreStatusEffect);
         eventType = EventType.Status;
     }

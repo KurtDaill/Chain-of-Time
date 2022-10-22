@@ -11,7 +11,7 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
 
     private PMPlayerCharacter[] playersAbleToAct;
     private Queue<PMPlayerAbility> abilitiesQueued;
-    public BattleMenu[] menus = new BattleMenu[5];
+    public BattleMenu[] menus = new BattleMenu[6];
     public override void _Ready(){
         currentMenu = (BattleMenu) GetNode("Top Menu");
         parentBattle = (PMBattle) GetNode("../..");    
@@ -19,6 +19,7 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
         menus[2] = (BattleMenu) GetNode("Item Menu");
         menus[3] = (BattleMenu) GetNode("Attack Menu");
         menus[4] = (BattleMenu) GetNode("Skill Menu");
+        menus[5] = (BattleMenu) GetNode("Targeting Menu");
     }
 
     //Returns the finished Queue when complete

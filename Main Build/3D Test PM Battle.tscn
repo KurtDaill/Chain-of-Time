@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=2]
+[gd_scene load_steps=114 format=2]
 
 [ext_resource path="res://CatoBasicAttack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PM Battle Mode/PMBattle.cs" type="Script" id=2]
@@ -50,35 +50,39 @@
 [ext_resource path="res://PM Battle Mode/PMPlayerAbility.cs" type="Script" id=48]
 [ext_resource path="res://GUI/Battle Menu Assets/Cato Focus Press X.png" type="Texture" id=49]
 [ext_resource path="res://GUI/Battle Menu Assets/Cato Focus Orb.png" type="Texture" id=50]
-[ext_resource path="res://PM Battle Mode/PMStatus.cs" type="Script" id=51]
+[ext_resource path="res://PM Battle Mode/Status Effects/Status Effect - Empowered.tscn" type="PackedScene" id=51]
 [ext_resource path="res://PM Battle Mode/AbilityEventStatusEffect.cs" type="Script" id=52]
+[ext_resource path="res://Battle Mode/GUI/TargetingMenu.cs" type="Script" id=53]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Point"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath(".:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [  ]
+"values": [ Vector3( -0.52, 1.76, 0 ), Vector3( -0.52, 1.68, 0 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:translation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 1,
-"values": [  ]
+
+[sub_resource type="Animation" id=60]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.51, 1.985, 0 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -125,6 +129,34 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0, 2 ]
+}
+
+[sub_resource type="Animation" id=59]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.24, 0 ) ]
 }
 
 [sub_resource type="Animation" id=58]
@@ -368,180 +400,6 @@ tracks/9/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0, 1, 4 ]
-}
-
-[sub_resource type="Animation" id=59]
-resource_name = "Apply"
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("..:modulate:r")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.4, 0.6, 1 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("..:modulate:g")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.976563, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.4, 0.6, 1 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("..:modulate:b")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.929412, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.4, 0.6, 1 )
-}
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("..:modulate:a")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.4, 0.6, 1 )
-}
-
-[sub_resource type="Animation" id=60]
-resource_name = "Expire"
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("..:modulate:r")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 0.505882, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("..:modulate:g")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 0.996078, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("..:modulate:b")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 0.964706, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1 )
-}
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("..:modulate:a")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1 )
-}
-
-[sub_resource type="Animation" id=61]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("..:modulate:r")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("..:modulate:g")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("..:modulate:b")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("..:modulate:a")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-
-[sub_resource type="Animation" id=62]
-resource_name = "Upkeep"
-length = 2.0
-loop = true
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("..:modulate:r")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.505882, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1, 2 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("..:modulate:g")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.996078, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1, 2 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("..:modulate:b")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.964706, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1, 2 )
-}
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("..:modulate:a")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1, 2 )
 }
 
 [sub_resource type="Animation" id=4]
@@ -1401,29 +1259,35 @@ alpha_cut = 2
 texture = ExtResource( 22 )
 hframes = 10
 vframes = 7
-frame = 34
 script = ExtResource( 39 )
 MaxHP = 10
+debugAbilities = [ NodePath("JustFocus") ]
+maxSP = 5
+readout = NodePath("../../../Camera/BattleGUI/Readouts/Cato Readout")
 
 [node name="Pointer" type="Sprite3D" parent="Battle Positions/Hero 1/Cato"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.625, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52, 1.76, 0 )
 visible = false
-pixel_size = 0.0625
+pixel_size = 0.04
 texture = ExtResource( 38 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Hero 1/Cato/Pointer"]
+autoplay = "Point"
+reset_on_save = false
 anims/Point = SubResource( 1 )
+anims/RESET = SubResource( 60 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Hero 1/Cato"]
 anims/HitReact = SubResource( 2 )
 anims/Idle = SubResource( 3 )
+anims/RESET = SubResource( 59 )
 
 [node name="Basic Attack" parent="Battle Positions/Hero 1/Cato" instance=ExtResource( 1 )]
 
 [node name="JustFocus" type="Node" parent="Battle Positions/Hero 1/Cato"]
 script = ExtResource( 48 )
 name = "Just...Focus"
-firstAnimation = "Focus"
+firstAnimation = "Tense"
 eventIndex = [  ]
 
 [node name="Focus" type="Sprite3D" parent="Battle Positions/Hero 1/Cato/JustFocus"]
@@ -1431,24 +1295,23 @@ transform = Transform( 1, 2.38419e-07, 0, -2.38419e-07, 1, 0, 0, 0, 1, -1.6, 4.5
 pixel_size = 0.008
 texture = ExtResource( 49 )
 hframes = 3
-frame = 2
 
 [node name="Orb" type="Sprite3D" parent="Battle Positions/Hero 1/Cato/JustFocus/Focus"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-07, 0.92, -0.0799999 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-07, 1.52, -0.0799999 )
 pixel_size = 0.008
 texture = ExtResource( 50 )
 hframes = 5
 frame = 4
 
 [node name="Orb2" type="Sprite3D" parent="Battle Positions/Hero 1/Cato/JustFocus/Focus"]
-transform = Transform( 1, -2.38419e-07, 0, 2.38419e-07, 1, 0, 0, 0, 1, 0.6, -0.6, -0.0799999 )
+transform = Transform( 1, -2.38419e-07, 0, 2.38419e-07, 1, 0, 0, 0, 1, 1.1, -0.92, -0.0799999 )
 pixel_size = 0.008
 texture = ExtResource( 50 )
 hframes = 5
 frame = 4
 
 [node name="Orb3" type="Sprite3D" parent="Battle Positions/Hero 1/Cato/JustFocus/Focus"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -0.6, 0.16 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, -0.919999, 0.16 )
 pixel_size = 0.008
 texture = ExtResource( 50 )
 hframes = 5
@@ -1462,18 +1325,9 @@ anims/Tense = SubResource( 57 )
 script = ExtResource( 52 )
 canHitFlyingCharacters = true
 eventType = 2
+coreStatusEffect = "res://PM Battle Mode/Status Effects/Status Effect - Empowered.tscn"
 
-[node name="Status Effect - Empowered" type="Node" parent="Battle Positions/Hero 1/Cato"]
-script = ExtResource( 51 )
-duration = 1
-magnitude = 1
-statusType = 9
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Hero 1/Cato/Status Effect - Empowered"]
-anims/Apply = SubResource( 59 )
-anims/Expire = SubResource( 60 )
-anims/RESET = SubResource( 61 )
-anims/Upkeep = SubResource( 62 )
+[node name="Status Effect - Empowered" parent="Battle Positions/Hero 1/Cato" instance=ExtResource( 51 )]
 
 [node name="Hero 1 Back" type="Spatial" parent="Battle Positions"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98, 0.1875, 4 )
@@ -2178,6 +2032,13 @@ __meta__ = {
 "anims/Scroll Down" = SubResource( 24 )
 "anims/Scroll Up" = SubResource( 25 )
 
+[node name="Targeting Menu" type="Control" parent="Camera/BattleGUI"]
+margin_right = 752.0
+script = ExtResource( 53 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Readouts" type="VBoxContainer" parent="Camera/BattleGUI"]
 anchor_left = 1.0
 anchor_top = 0.654
@@ -2287,7 +2148,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444457, -1.26219, -5.69706 )
 visible = false
 pixel_size = 0.1
 frames = SubResource( 32 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="Baths" parent="." instance=ExtResource( 3 )]
@@ -2309,28 +2170,28 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 axis = 1
 frames = SubResource( 39 )
-frame = 5
+frame = 4
 playing = true
 
 [node name="Waterfall Piece" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 2.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 46 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="Waterfall Piece2" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 0.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 46 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Waterfall Top" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 53 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="Baths"]
