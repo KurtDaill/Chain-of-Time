@@ -23,9 +23,10 @@ public class AbilityEventStatusEffect : AbilityEvent {
         return statusEffectPS;
     }
 
-    public PMStatus InstanceStatusEffect(){
+    public PMStatus InstanceStatusEffect(PMCharacter target){
         var status = statusEffectPS.Instance<PMStatus>();
         status.SetCustom(setCustomDuration, setCustomMagnitude);
+        status.Setup(target);
         return status;
     }
 }

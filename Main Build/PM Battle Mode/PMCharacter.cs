@@ -73,6 +73,7 @@ public class PMCharacter : Node{
             if(newEffect.GetStatusType() == oldEffect.GetStatusType()){
                 if(newEffect.GetDuration() > oldEffect.GetDuration()){
                     statusEffects.Remove(oldEffect);
+                    oldEffect.QueueFree();
                     statusEffects.Add(newEffect);
                     return;
                 }else{
@@ -80,7 +81,6 @@ public class PMCharacter : Node{
                 }
             }
         }
-        AddChild(newEffect);
         statusEffects.Add(newEffect);
     }
 
@@ -118,5 +118,15 @@ public class PMCharacter : Node{
 
     public void SetPointerVisibility(bool set){
         pointerGraphic.Visible = set;
+    }
+
+    
+    //Called by other nodes that need to animate this character for a while, and don't need their default animations breaking through
+    public void StopAnimation(){
+        animPlay.Stop();
+    }
+    //Restarts animation from StopAnimation
+    public void ResumeAnimation(){
+        animPlay.Play();
     }
 }

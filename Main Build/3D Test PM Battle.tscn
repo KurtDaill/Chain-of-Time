@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=2]
+[gd_scene load_steps=115 format=2]
 
 [ext_resource path="res://CatoBasicAttack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PM Battle Mode/PMBattle.cs" type="Script" id=2]
@@ -37,7 +37,7 @@
 [ext_resource path="res://GUI/Battle Menu Assets/Item Description Box.png" type="Texture" id=35]
 [ext_resource path="res://GUI/Battle Menu Assets/Item Tab.png" type="Texture" id=36]
 [ext_resource path="res://Battle Mode/GUI/ItemMenu.cs" type="Script" id=37]
-[ext_resource path="res://Art/Character Pointer.png" type="Texture" id=38]
+[ext_resource path="res://PM Battle Mode/Pointer.tscn" type="PackedScene" id=38]
 [ext_resource path="res://PM Battle Mode/PMPlayerCharacter.cs" type="Script" id=39]
 [ext_resource path="res://Art/Polymorphor Master Sprite Sheet.png" type="Texture" id=40]
 [ext_resource path="res://PM Battle Mode/PMEnemyAbility.cs" type="Script" id=41]
@@ -50,40 +50,9 @@
 [ext_resource path="res://PM Battle Mode/PMPlayerAbility.cs" type="Script" id=48]
 [ext_resource path="res://GUI/Battle Menu Assets/Cato Focus Press X.png" type="Texture" id=49]
 [ext_resource path="res://GUI/Battle Menu Assets/Cato Focus Orb.png" type="Texture" id=50]
-[ext_resource path="res://PM Battle Mode/Status Effects/Status Effect - Empowered.tscn" type="PackedScene" id=51]
 [ext_resource path="res://PM Battle Mode/AbilityEventStatusEffect.cs" type="Script" id=52]
 [ext_resource path="res://Battle Mode/GUI/TargetingMenu.cs" type="Script" id=53]
-
-[sub_resource type="Animation" id=1]
-resource_name = "Point"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Vector3( -0.52, 1.76, 0 ), Vector3( -0.52, 1.68, 0 ) ]
-}
-
-[sub_resource type="Animation" id=60]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( -0.51, 1.985, 0 ) ]
-}
+[ext_resource path="res://Audio/UI_No.wav" type="AudioStream" id=54]
 
 [sub_resource type="Animation" id=2]
 resource_name = "HitReact"
@@ -157,6 +126,22 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 1.24, 0 ) ]
+}
+
+[sub_resource type="Animation" id=61]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Focus:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=58]
@@ -280,11 +265,40 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ 0 ],
 "method": "ExecuteEvent"
+}, {
+"args": [  ],
+"method": "FinishSequence"
+} ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Focus:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "method"
+tracks/12/path = NodePath("..")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 1.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "ResetToIdleAnim"
 } ]
 }
 
@@ -300,7 +314,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.5, 1.5, 2.8, 3, 3.5, 4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 30, 31, 32, 33, 34, 35, 36, 36 ]
 }
 tracks/1/type = "value"
@@ -401,6 +415,174 @@ tracks/9/keys = {
 "update": 0,
 "values": [ 0, 1, 4 ]
 }
+tracks/10/type = "value"
+tracks/10/path = NodePath("Focus:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/11/type = "method"
+tracks/11/path = NodePath("..")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "StopAnimation"
+} ]
+}
+tracks/12/type = "method"
+tracks/12/path = NodePath(".")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 2.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "com_atk", "Release", "Tense Reverse" ],
+"method": "StartFluffHold"
+}, {
+"args": [  ],
+"method": "ReleaseReady"
+} ]
+}
+
+[sub_resource type="Animation" id=63]
+resource_name = "Tense Reverse"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5, 1.5, 2.8, 3, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 30, 31, 32, 33, 34, 35, 36, 36 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Focus/Orb:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 4 ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Focus/Orb:translation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 2.04, -0.25, 0, 0.25, 0, 2.04, -0.25, 0, 0.25, 0, 0.92, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Focus/Orb2:translation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1.76669, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 1, 2 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Focus/Orb2:translation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( -1.02, -0.25, 0, 0.25, 0, -0.6, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 1, 2 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Focus/Orb3:translation:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( -1.76669, -0.25, 0, 0.25, 0, -0.6, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 1.5, 2.5 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Focus/Orb3:translation:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( -1.02, -0.25, 0, 0.25, 0, -0.6, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 1.5, 2.5 )
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Focus:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Focus/Orb2:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 1, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 4 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Focus/Orb3:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 1.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 4 ]
+}
+tracks/10/type = "method"
+tracks/10/path = NodePath("..")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
 
 [sub_resource type="Animation" id=4]
 tracks/0/type = "value"
@@ -486,6 +668,23 @@ tracks/2/keys = {
 }, {
 "args": [  ],
 "method": "FinishSequence"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "StopAnimation"
+}, {
+"args": [  ],
+"method": "ResumeAnimation"
 } ]
 }
 
@@ -771,6 +970,105 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "points": PoolRealArray( 909, -0.25, 0, 0.25, 0, 1086, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4 )
+}
+
+[sub_resource type="Animation" id=66]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Card 4:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Card 4:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1086.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Card 3:margin_left")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Card 3:margin_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1086.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Card 2:margin_left")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Card 2:margin_top")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1086.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Card 1:margin_left")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8.51978 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Card 1:margin_top")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1086.0 ]
 }
 
 [sub_resource type="Animation" id=22]
@@ -1265,17 +1563,9 @@ debugAbilities = [ NodePath("JustFocus") ]
 maxSP = 5
 readout = NodePath("../../../Camera/BattleGUI/Readouts/Cato Readout")
 
-[node name="Pointer" type="Sprite3D" parent="Battle Positions/Hero 1/Cato"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52, 1.76, 0 )
+[node name="Pointer" parent="Battle Positions/Hero 1/Cato" instance=ExtResource( 38 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51, 1.985, 0 )
 visible = false
-pixel_size = 0.04
-texture = ExtResource( 38 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Hero 1/Cato/Pointer"]
-autoplay = "Point"
-reset_on_save = false
-anims/Point = SubResource( 1 )
-anims/RESET = SubResource( 60 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Hero 1/Cato"]
 anims/HitReact = SubResource( 2 )
@@ -1288,46 +1578,52 @@ anims/RESET = SubResource( 59 )
 script = ExtResource( 48 )
 name = "Just...Focus"
 firstAnimation = "Tense"
-eventIndex = [  ]
+eventIndex = [ NodePath("Event - Status") ]
+rulesText = "[center]Cato Becomes [color=yellow]Empowered[/color] for 2 Turns"
+spCost = 2
 
 [node name="Focus" type="Sprite3D" parent="Battle Positions/Hero 1/Cato/JustFocus"]
 transform = Transform( 1, 2.38419e-07, 0, -2.38419e-07, 1, 0, 0, 0, 1, -1.6, 4.54, 2.8 )
+visible = false
 pixel_size = 0.008
 texture = ExtResource( 49 )
 hframes = 3
+frame = 2
 
 [node name="Orb" type="Sprite3D" parent="Battle Positions/Hero 1/Cato/JustFocus/Focus"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-07, 1.52, -0.0799999 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-07, 0.92, -0.0799999 )
 pixel_size = 0.008
 texture = ExtResource( 50 )
 hframes = 5
 frame = 4
 
 [node name="Orb2" type="Sprite3D" parent="Battle Positions/Hero 1/Cato/JustFocus/Focus"]
-transform = Transform( 1, -2.38419e-07, 0, 2.38419e-07, 1, 0, 0, 0, 1, 1.1, -0.92, -0.0799999 )
+transform = Transform( 1, -2.38419e-07, 0, 2.38419e-07, 1, 0, 0, 0, 1, 0.6, -0.6, -0.0799999 )
 pixel_size = 0.008
 texture = ExtResource( 50 )
 hframes = 5
 frame = 4
 
 [node name="Orb3" type="Sprite3D" parent="Battle Positions/Hero 1/Cato/JustFocus/Focus"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, -0.919999, 0.16 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -0.6, 0.16 )
 pixel_size = 0.008
 texture = ExtResource( 50 )
 hframes = 5
 frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Hero 1/Cato/JustFocus"]
+anims/RESET = SubResource( 61 )
 anims/Release = SubResource( 58 )
 anims/Tense = SubResource( 57 )
+"anims/Tense Reverse" = SubResource( 63 )
 
 [node name="Event - Status" type="Node" parent="Battle Positions/Hero 1/Cato/JustFocus"]
 script = ExtResource( 52 )
 canHitFlyingCharacters = true
 eventType = 2
 coreStatusEffect = "res://PM Battle Mode/Status Effects/Status Effect - Empowered.tscn"
-
-[node name="Status Effect - Empowered" parent="Battle Positions/Hero 1/Cato" instance=ExtResource( 51 )]
+setCustomDuration = 2
+setCustomMagnitude = 2
 
 [node name="Hero 1 Back" type="Spatial" parent="Battle Positions"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98, 0.1875, 4 )
@@ -1357,6 +1653,10 @@ ModifiedDamageTypes = [ 1 ]
 Modifier = [ 0.5 ]
 abilitiesByPriority = [ NodePath("Slide") ]
 
+[node name="Pointer" parent="Battle Positions/Enemy 1/Polymorphor" instance=ExtResource( 38 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51, 1.985, 0 )
+visible = false
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Enemy 1/Polymorphor"]
 anims/HitReact = SubResource( 4 )
 anims/Idle = SubResource( 5 )
@@ -1364,6 +1664,7 @@ anims/RESET = SubResource( 6 )
 
 [node name="Slide" type="Node" parent="Battle Positions/Enemy 1/Polymorphor"]
 script = ExtResource( 41 )
+name = "Slide Attack"
 firstAnimation = "Slide Attack"
 eventIndex = [ NodePath("MainDamage") ]
 targetingRule = 2
@@ -1405,17 +1706,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -1080.0
 script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Skill Menu" type="Control" parent="Camera/BattleGUI"]
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 31 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Card 4" type="TextureRect" parent="Camera/BattleGUI/Skill Menu"]
 margin_left = 5.0
@@ -1425,9 +1720,6 @@ margin_bottom = 1248.0
 theme = ExtResource( 33 )
 texture = ExtResource( 24 )
 script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Name" type="RichTextLabel" parent="Camera/BattleGUI/Skill Menu/Card 4"]
 margin_left = 17.6326
@@ -1656,23 +1948,17 @@ margin_right = 198.0
 margin_bottom = 171.0
 text = "Spell"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Rules Text" type="RichTextLabel" parent="Camera/BattleGUI/Skill Menu/Card 1"]
-margin_left = 24.0
+margin_left = 20.0
 margin_top = 180.0
-margin_right = 269.0
+margin_right = 273.0
 margin_bottom = 339.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource( 29 )
 bbcode_enabled = true
 scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/BattleGUI/Skill Menu/Card 1"]
 anims/Draw = SubResource( 17 )
@@ -1682,6 +1968,7 @@ anims/Stow = SubResource( 19 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/BattleGUI/Skill Menu"]
 anims/Enter = SubResource( 20 )
 anims/Exit = SubResource( 21 )
+anims/RESET = SubResource( 66 )
 
 [node name="Top Menu" type="Control" parent="Camera/BattleGUI"]
 visible = false
@@ -2035,9 +2322,10 @@ __meta__ = {
 [node name="Targeting Menu" type="Control" parent="Camera/BattleGUI"]
 margin_right = 752.0
 script = ExtResource( 53 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="SelectError" type="AudioStreamPlayer" parent="Camera/BattleGUI/Targeting Menu"]
+stream = ExtResource( 54 )
+volume_db = 10.0
 
 [node name="Readouts" type="VBoxContainer" parent="Camera/BattleGUI"]
 anchor_left = 1.0
@@ -2170,28 +2458,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 axis = 1
 frames = SubResource( 39 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="Waterfall Piece" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 2.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 46 )
-frame = 2
 playing = true
 
 [node name="Waterfall Piece2" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 0.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 46 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="Waterfall Top" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 53 )
-frame = 2
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="Baths"]

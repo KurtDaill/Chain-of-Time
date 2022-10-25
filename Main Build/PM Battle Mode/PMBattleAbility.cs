@@ -109,7 +109,7 @@ public class  PMBattleAbility : Node
     }
 
     protected virtual void DealDamage(int effectNum){
-        string logOutput = name + " Attack Dealing ";
+        string logOutput = name + " Dealing ";
         int dmg = events[effectNum].GetValue();
         AbilityAlignment damageType = events[effectNum].GetAlignment();
         if(critDamage != -1){
@@ -152,7 +152,7 @@ public class  PMBattleAbility : Node
         */
         var statusEvent = (AbilityEventStatusEffect)events[eventNum];
         foreach(PMCharacter target in events[eventNum].GetTargets()){
-            target.AddStatus(statusEvent.InstanceStatusEffect());
+            target.AddStatus(statusEvent.InstanceStatusEffect(target));
         }
     }   
 

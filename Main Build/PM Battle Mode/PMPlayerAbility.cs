@@ -7,8 +7,8 @@ public class PMPlayerAbility : PMBattleAbility
 {
 
     protected bool waitingForInput;
-    protected string targetInput, targetAnimation;
-    protected bool inHoldAttack, attackReady, criticalTiming, activate;
+    protected string targetInput, targetAnimation, reverseAnimation;
+    protected bool inHoldAttack, attackReady, inFluffHold, inReverse, readyForRelease;
     protected int delayCounter = 0;
 
     [Export(PropertyHint.MultilineText)] //Developers can specify the font size for their rules text within the rules text string using [textSize] and "small" or "smallest"
@@ -31,13 +31,26 @@ public class PMPlayerAbility : PMBattleAbility
             }
             return;
         }
-
         if(inHoldAttack){
             if(!Input.IsActionPressed(targetInput)){
                 animPlay.Play(targetAnimation);
                 inHoldAttack = false;
             }
         }  
+        if(inReverse){
+            if(Input.IsActionPressed(targetInput)){
+                RestartFluffHold();
+            }
+        }else if (inFluffHold){
+            if(!Input.IsActionPressed(targetInput)){
+                if(readyForRelease){
+                    animPlay.Play(targetAnimation);
+                    inFluffHold = false;
+                }else{
+                    BackSlideFluffHold();
+                }
+            }
+        }
     }
 
     /*
@@ -54,6 +67,33 @@ public class PMPlayerAbility : PMBattleAbility
         this.targetAnimation = targetAnimation;
     }
 
+    //For game feel reasons, we have some attacks that require the player to hold a key, but without mechanical challenge
+    public void StartFluffHold(string input, string targetAnimation, string reverseAnimaiton){
+        StartDelay(10);
+        WaitForInput(input);
+        readyForRelease = false;
+        inFluffHold = true;
+        this.targetAnimation = targetAnimation;
+        this.reverseAnimation = reverseAnimaiton;
+    }
+
+    public void RestartFluffHold(){
+        var targetSeek = animPlay.CurrentAnimationPosition;
+        inReverse = false;
+        animPlay.Play(targetAnimation);
+        animPlay.Seek(targetSeek);
+    }
+
+    public void BackSlideFluffHold(){
+        var targetSeek = animPlay.CurrentAnimationPosition;
+        inReverse = true;
+        animPlay.PlayBackwards(reverseAnimation);
+        animPlay.Seek(targetSeek);
+    }
+
+    public void ReleaseReady(){
+        readyForRelease = true;
+    }
     public void StartDelay(int delay){
         delayCounter = delay;
     }
@@ -61,6 +101,7 @@ public class PMPlayerAbility : PMBattleAbility
     //This method is called when the player has held the hold input for long enough for the ability to be allowed to go off
     public void HoldAttackActivate(){
         attackReady = true;
+        failDamage = -1;
     }
 
     //This method is called when the player has held the hold input for long enough to be in the "sweet spot" range 
@@ -83,11 +124,6 @@ public class PMPlayerAbility : PMBattleAbility
         animPlay.Stop(false);
         targetInput = input;
         waitingForInput = true;
-    }
-
-    public override void ExecuteEvent(int eventNum)
-    {
-        base.ExecuteEvent(eventNum);
     }
 
     public int GetSPCost(){

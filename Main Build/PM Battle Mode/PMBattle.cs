@@ -89,7 +89,6 @@ public class PMBattle : Node
                 if(effectStack.Peek().Execute()){ //Execute the Effect, if it's done...
                     if(effectStack.Peek().GetDuration() == 0){
                         effectStack.Peek().Expire();
-                        
                     }
                     effectStack.Pop();  //Remove it 
                 }
@@ -150,7 +149,7 @@ public class PMBattle : Node
                         //Setup the status effect stack, then turn it over to the next turn
                         effectStack = new Stack<PMStatus>();
                         foreach(PMStatus status in trackedStatusEffects) effectStack.Push(status);
-                        effectStack.Peek().StartUpkeep();
+                        if(effectStack.Count != 0) effectStack.Peek().StartUpkeep();
                         currentPhase = TurnPhase.Upkeep;
                     }else{
                         enemyAttacks.Peek().Begin(); //Start the next attack, the previous attack should have reset itself

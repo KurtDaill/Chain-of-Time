@@ -65,9 +65,10 @@ public class SkillMenu : BattleMenu
                 case MenuInput.Select : //TODO: Should go to a "Targeting" menu                 
                     menuAnim.Play("Exit");
                     //Debug Code for testing
-                    var ability = character.GetAbilities()[selectedOption];
-                    ability.SetTargets(new PMCharacter[]{caller.PositionLookup(PMBattleUtilities.BattlePos.EnemyOne)});//TODO make conform with selection functions
-                    return ability;
+                    TargetingMenu tMenu = (TargetingMenu) parentGUI.menus[5];
+                    tMenu.SetAbilityForTargeting(character.GetAbilities()[selectedOption]);
+                    parentGUI.ChangeMenu(5, character, caller);
+                    return null;
             }
         }
         if(oldCard != selectedOption){

@@ -162,6 +162,7 @@ file_logging/enable_file_logging=true
 
 [mono]
 
+project/assembly_name="Chain Of Time"
 project/auto_update_project=false
 
 [physics]
