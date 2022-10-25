@@ -448,10 +448,10 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 2.4 ),
+"times": PoolRealArray( 0, 2.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
-"args": [ "com_atk", "Release", "Tense Reverse" ],
+"args": [ "com_atk", "Release", "Tense" ],
 "method": "StartFluffHold"
 }, {
 "args": [  ],
@@ -1576,11 +1576,12 @@ anims/RESET = SubResource( 59 )
 
 [node name="JustFocus" type="Node" parent="Battle Positions/Hero 1/Cato"]
 script = ExtResource( 48 )
-name = "Just...Focus"
+name = "Just Focus"
 firstAnimation = "Tense"
 eventIndex = [ NodePath("Event - Status") ]
-rulesText = "[center]Cato Becomes [color=yellow]Empowered[/color] for 2 Turns"
-spCost = 2
+usesEmpowered = false
+consumesOvercharged = false
+rulesText = "[center]Cato becomes [color=yellow]EMPOWERED[/color] for 2 turns."
 
 [node name="Focus" type="Sprite3D" parent="Battle Positions/Hero 1/Cato/JustFocus"]
 transform = Transform( 1, 2.38419e-07, 0, -2.38419e-07, 1, 0, 0, 0, 1, -1.6, 4.54, 2.8 )
@@ -1588,24 +1589,23 @@ visible = false
 pixel_size = 0.008
 texture = ExtResource( 49 )
 hframes = 3
-frame = 2
 
 [node name="Orb" type="Sprite3D" parent="Battle Positions/Hero 1/Cato/JustFocus/Focus"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-07, 0.92, -0.0799999 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-07, 1.52, -0.0799999 )
 pixel_size = 0.008
 texture = ExtResource( 50 )
 hframes = 5
 frame = 4
 
 [node name="Orb2" type="Sprite3D" parent="Battle Positions/Hero 1/Cato/JustFocus/Focus"]
-transform = Transform( 1, -2.38419e-07, 0, 2.38419e-07, 1, 0, 0, 0, 1, 0.6, -0.6, -0.0799999 )
+transform = Transform( 1, -2.38419e-07, 0, 2.38419e-07, 1, 0, 0, 0, 1, 1.1, -0.92, -0.0799999 )
 pixel_size = 0.008
 texture = ExtResource( 50 )
 hframes = 5
 frame = 4
 
 [node name="Orb3" type="Sprite3D" parent="Battle Positions/Hero 1/Cato/JustFocus/Focus"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -0.6, 0.16 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, -0.919999, 0.16 )
 pixel_size = 0.008
 texture = ExtResource( 50 )
 hframes = 5
@@ -1913,9 +1913,6 @@ margin_bottom = 1425.0
 theme = ExtResource( 29 )
 texture = ExtResource( 32 )
 script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Name" type="RichTextLabel" parent="Camera/BattleGUI/Skill Menu/Card 1"]
 margin_left = 17.6326
