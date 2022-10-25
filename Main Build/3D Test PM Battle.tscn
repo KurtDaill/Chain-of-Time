@@ -2433,7 +2433,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444457, -1.26219, -5.69706 )
 visible = false
 pixel_size = 0.1
 frames = SubResource( 32 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Baths" parent="." instance=ExtResource( 3 )]
@@ -2455,26 +2455,28 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 axis = 1
 frames = SubResource( 39 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="Waterfall Piece" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 2.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 46 )
+frame = 2
 playing = true
 
 [node name="Waterfall Piece2" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 0.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 46 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="Waterfall Top" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 53 )
+frame = 2
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="Baths"]

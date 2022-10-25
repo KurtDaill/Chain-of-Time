@@ -16,15 +16,15 @@
         },
         {
             "label": "build",
+            "type": "shell",
             "command": "C:/Users/kdail/Desktop/Godot_v3.3.3-stable_mono_win64/Godot_v3.3.3-stable_mono_win64/Godot_v3.3.3-stable_mono_win64.exe\r",
-            "type": "process",
             "args": [
-                "--build-solutions",
-                "--path",
-                "${workspaceRoot}",
-                "--no-window",
-                "-q"
+                "/p:Configuration=Tools;Platform=Any CPU;GenerateFullPaths=true"
             ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
             "problemMatcher": "$msCompile"
         }
     ]
