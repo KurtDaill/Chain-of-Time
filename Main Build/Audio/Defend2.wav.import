@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/FUI Button Beep Clean.wav-a8d38b9f46d43bb133b0ca31368eadab.sample"
+path="res://.import/Defend2.wav-4d7aa6ec08d16482bbfde1f7f39865fa.sample"
 
 [deps]
 
-source_file="res://Audio/FUI Button Beep Clean.wav"
-dest_files=[ "res://.import/FUI Button Beep Clean.wav-a8d38b9f46d43bb133b0ca31368eadab.sample" ]
+source_file="res://Audio/Defend2.wav"
+dest_files=[ "res://.import/Defend2.wav-4d7aa6ec08d16482bbfde1f7f39865fa.sample" ]
 
 [params]
 

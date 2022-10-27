@@ -15,7 +15,7 @@ public class AbilityEventStatusEffect : AbilityEvent {
     private PackedScene statusEffectPS;
 
     public override void _Ready(){
-        statusEffectPS = GD.Load<PackedScene>(coreStatusEffect);
+        statusEffectPS = ResourceLoader.Load<PackedScene>(coreStatusEffect);
         eventType = EventType.Status;
     }
 
@@ -24,7 +24,8 @@ public class AbilityEventStatusEffect : AbilityEvent {
     }
 
     public PMStatus InstanceStatusEffect(PMCharacter target){
-        var status = statusEffectPS.Instance<PMStatus>();
+        var status = statusEffectPS.Instance<PMStatus>(PackedScene.GenEditState.Instance);
+        target.AddChild(status);
         status.SetCustom(setCustomDuration, setCustomMagnitude);
         status.Setup(target);
         return status;

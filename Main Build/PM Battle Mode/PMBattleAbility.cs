@@ -65,6 +65,8 @@ public class  PMBattleAbility : Node
 
     protected int failDamage = -1;
 
+    protected bool successfulDefense = false;
+
     public override void _Ready()
     {
         animPlay = (AnimationPlayer) GetNode("AnimationPlayer");
@@ -109,7 +111,7 @@ public class  PMBattleAbility : Node
     }
 
     protected virtual void DealDamage(int effectNum){
-        string logOutput = name + " Dealing ";
+        string logOutput = name + " Dealt ";
         int dmg = events[effectNum].GetValue();
         AbilityAlignment damageType = events[effectNum].GetAlignment();
         if(critDamage != -1){
@@ -125,6 +127,7 @@ public class  PMBattleAbility : Node
                 dmg += source.statusEffects.Where<PMStatus>(x => x.GetStatusType() == StatusEffect.Overcharged).ToArray<PMStatus>()[0].GetMagnitude();
             }
         }
+        if(successfulDefense) dmg -= events[effectNum].GetDefenseFactor(); //Resolve weirdness for checking for player and enemy specific stuff in this class
         logOutput += dmg + " Damage to ";
         int targs = 0;
         foreach(PMCharacter character in events[effectNum].GetTargets()){
@@ -152,13 +155,15 @@ public class  PMBattleAbility : Node
         */
         var statusEvent = (AbilityEventStatusEffect)events[eventNum];
         foreach(PMCharacter target in events[eventNum].GetTargets()){
-            target.AddStatus(statusEvent.InstanceStatusEffect(target));
+            var stat = statusEvent.InstanceStatusEffect(target);
+            target.AddStatus(stat);
+            target.parentBattle.LogStatusEffect(stat);
         }
     }   
 
     public void SpawnNode(string path){
         PackedScene scene = (PackedScene) GD.Load(path);
-        Node effect = scene.Instance();
+        Node effect = scene.Instance(PackedScene.GenEditState.Instance);
         AddChild(effect);
     }
 

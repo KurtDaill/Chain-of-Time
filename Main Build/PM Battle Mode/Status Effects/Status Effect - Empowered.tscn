@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://PM Battle Mode/PMStatus.cs" type="Script" id=1]
 
@@ -11,7 +11,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4, 0.5, 1 )
 }
 tracks/1/type = "bezier"
@@ -145,6 +145,9 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 
+[sub_resource type="Animation" id=69]
+resource_name = "Unbugged Anim"
+
 [sub_resource type="Animation" id=62]
 resource_name = "Upkeep"
 length = 2.0
@@ -202,4 +205,5 @@ reset_on_save = false
 anims/Apply = SubResource( 67 )
 anims/Expire = SubResource( 60 )
 anims/RESET = SubResource( 68 )
+"anims/Unbugged Anim" = SubResource( 69 )
 anims/Upkeep = SubResource( 62 )

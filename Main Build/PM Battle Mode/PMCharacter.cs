@@ -28,6 +28,8 @@ public class PMCharacter : Node{
     public Dictionary<AbilityAlignment, float> DamageModifiers = new Dictionary<AbilityAlignment, float>();
     public AnimationPlayer animPlay;
 
+    private bool doneDying = false;
+
     public Sprite3D pointerGraphic;
     public override void _Ready(){
         statusEffects = new List<PMStatus>();
@@ -128,5 +130,20 @@ public class PMCharacter : Node{
     //Restarts animation from StopAnimation
     public void ResumeAnimation(){
         animPlay.Play();
+    }
+
+    public virtual bool DefeatMe(){
+        if(animPlay.CurrentAnimation != "Defeat"){
+            animPlay.Play("Defeat");
+        }
+        if(doneDying){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public virtual void FinishDefeat(){
+        doneDying = true;
     }
 }

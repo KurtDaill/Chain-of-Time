@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
     <RootNamespace>ChainOfTime</RootNamespace>
-    <Configuration Condition=" '$(Configuration)' == '' ">Tools</Configuration>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <TargetFrameworkVersion>6.0.4</TargetFrameworkVersion>
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>

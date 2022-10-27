@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/FUI Button Beep Clean.wav-a8d38b9f46d43bb133b0ca31368eadab.sample"
+path="res://.import/Crit Sound 2.wav-22eab42df4ee79013090ee9fdc860a25.sample"
 
 [deps]
 
-source_file="res://Audio/FUI Button Beep Clean.wav"
-dest_files=[ "res://.import/FUI Button Beep Clean.wav-a8d38b9f46d43bb133b0ca31368eadab.sample" ]
+source_file="res://Audio/Crit Sound 2.wav"
+dest_files=[ "res://.import/Crit Sound 2.wav-22eab42df4ee79013090ee9fdc860a25.sample" ]
 
 [params]
 

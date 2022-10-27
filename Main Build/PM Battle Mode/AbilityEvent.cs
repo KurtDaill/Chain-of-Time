@@ -15,6 +15,11 @@ public class AbilityEvent : Node{
     [Export(PropertyHint.Enum)]
     protected EventType eventType = EventType.Damage;
 
+    [Export]
+    protected bool affectedByPlayerDefense = false;
+    [Export]
+    int defenseFactor = 0;
+
     protected PMCharacter[] targets;
     
     [Export]
@@ -64,6 +69,16 @@ public class AbilityEvent : Node{
     }
     public bool CanThisHitFliers(){
         return canHitFlyingCharacters;
+    }
+    public int GetDefenseFactor(){
+        if(affectedByPlayerDefense == false) return 0;
+        else{
+            if(defenseFactor < 0){
+                GD.Print("Defense Factor set to less than 0. Remember that Defense is SUBTRACTED from damage");
+                return 0;
+            }
+            else return defenseFactor;
+        }
     }
     public enum Target{
         Self,

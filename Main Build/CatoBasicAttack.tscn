@@ -80,7 +80,7 @@ tracks/4/keys = {
 "values": [ 11 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=67]
 resource_name = "Attack Wind Up"
 length = 2.65
 step = 0.05
@@ -103,7 +103,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 1.5, 2, 2.65 ),
+"times": PoolRealArray( 0, 0.3, 1.5, 1.6, 2.65 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [ "com_atk", "Attack", 1 ],
@@ -277,7 +277,7 @@ tracks/13/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=68]
 resource_name = "RESET"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Frame:modulate")
@@ -300,8 +300,8 @@ eventIndex = [ NodePath("Attack") ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Attack = SubResource( 1 )
-"anims/Attack Wind Up" = SubResource( 2 )
-anims/RESET = SubResource( 3 )
+"anims/Attack Wind Up" = SubResource( 67 )
+anims/RESET = SubResource( 68 )
 
 [node name="Frame" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52, 4.52, 3 )
@@ -351,7 +351,6 @@ pixel_size = 0.008
 alpha_cut = 2
 texture = ExtResource( 4 )
 hframes = 12
-frame = 9
 
 [node name="Beep" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )

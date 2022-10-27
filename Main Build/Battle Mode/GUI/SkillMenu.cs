@@ -5,6 +5,7 @@ public class SkillMenu : BattleMenu
 {
     
     public AnimationPlayer menuAnim;
+    public AudioStreamPlayer rejectSound;
     public SkillCard[] cards = new SkillCard[4];
     private int selectedOption = -1;
     private int availableCards = 0;
@@ -12,7 +13,7 @@ public class SkillMenu : BattleMenu
     {
         base._Ready();
         menuAnim = (AnimationPlayer) GetNode("AnimationPlayer");
-        
+        rejectSound = GetNode<AudioStreamPlayer>("SelectError");
 
         cards[0] = (SkillCard)GetNode("Card 1");
         cards[1] = (SkillCard)GetNode("Card 2");
@@ -62,13 +63,18 @@ public class SkillMenu : BattleMenu
                         selectedOption = 0;
                     }
                     break;
-                case MenuInput.Select : //TODO: Should go to a "Targeting" menu                 
-                    menuAnim.Play("Exit");
-                    //Debug Code for testing
-                    TargetingMenu tMenu = (TargetingMenu) parentGUI.menus[5];
-                    tMenu.SetAbilityForTargeting(character.GetAbilities()[selectedOption]);
-                    parentGUI.ChangeMenu(5, character, caller);
-                    return null;
+                case MenuInput.Select : //TODO: Should go to a "Targeting" menu
+                    if(character.ChargeSP(character.GetAbilities()[selectedOption].GetSPCost())){ //Returns false if player can't pay
+                        menuAnim.Play("Exit");
+                        TargetingMenu tMenu = (TargetingMenu) parentGUI.menus[5];
+                        tMenu.SetAbilityForTargeting(character.GetAbilities()[selectedOption]);
+                        parentGUI.ChangeMenu(5, character, caller);
+                        return null;
+                    }else{
+                        rejectSound.Play();
+                        return null;
+                    }                 
+                    
             }
         }
         if(oldCard != selectedOption){
@@ -77,7 +83,7 @@ public class SkillMenu : BattleMenu
         }
         if(input == MenuInput.Back){
             menuAnim.Play("Exit");
-            parentGUI.ChangeMenu(-1, character, caller);
+            parentGUI.ChangeMenu(0, character, caller);
             return null;
         }
         return null;

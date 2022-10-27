@@ -19,7 +19,7 @@
             "type": "shell",
             "command": "C:/Users/kdail/Desktop/Godot_v3.3.3-stable_mono_win64/Godot_v3.3.3-stable_mono_win64/Godot_v3.3.3-stable_mono_win64.exe\r",
             "args": [
-                "/p:Configuration=Tools;Platform=Any CPU;GenerateFullPaths=true"
+                "/p:Configuration=Debug;Platform=Any CPU;GenerateFullPaths=true"
             ],
             "group": "build",
             "presentation": {

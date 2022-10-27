@@ -12,8 +12,8 @@ public class PMBattle : Node
         PlayerMenu,
         PlayerAction,
         TurnOverPause,
-        EnemyAction
-
+        EnemyAction,
+        HandleDefeat
     }
 
     [Export]
@@ -25,22 +25,15 @@ public class PMBattle : Node
     private PMBattleGUI gui;
 
     TurnPhase currentPhase;
+    TurnPhase returnPhase; //What phase do we return to after we've handled defeats
 
     List<PMStatus> trackedStatusEffects = new List<PMStatus>();
     Stack<PMStatus> effectStack;
-    
-    private Dictionary<BattlePos, PMCharacter> battleRoster = new Dictionary<BattlePos, PMCharacter>(){
-        {BattlePos.HeroThree, new PMCharacter()},
-        {BattlePos.HeroTwo, new PMCharacter()},
-        {BattlePos.HeroOne, new PMCharacter()},
-        {BattlePos.EnemyOne, new PMCharacter()},
-        {BattlePos.EnemyTwo, new PMCharacter()},
-        {BattlePos.EnemyThree, new PMCharacter()}
-    };
-    Queue<PMCharacter> enemyBench = new Queue<PMCharacter>();
+
+    Queue<PMCharacter> enemyBench = new Queue<PMCharacter>(); //Holds onto what enemies are waiting to join the encounter once there's space
+    List<PMCharacter> deadPool = new List<PMCharacter>(); //Holds onto what characters are defeated and currently playing their defeat animations
 
     //Tracks the amount of damage done this turn by each character in order HeroOne, HeroTwo, HeroThree, EnemyOne, EnemyTwo, EnemyThree
-    
     Dictionary<PMCharacter, int> damageScoreboard = new Dictionary<PMCharacter, int>();
     //Tracks healing in the same way as damageScoreboard
     Dictionary<PMCharacter, int> healingScoreboard = new Dictionary<PMCharacter, int>();
@@ -78,7 +71,7 @@ public class PMBattle : Node
                     ch.NewTurnUpkeep();
                 }
 
-                if(trackedStatusEffects.Count == 0){ //If there's no more effects to resolve, continue
+                if(effectStack.Count == 0){ //If there's no more effects to resolve, continue
                     //TODO Check for Taunts
                     gui.ResetGUIState(roster.GetPlayerCharacters(), this);
                     currentPhase = TurnPhase.PlayerMenu;
@@ -90,15 +83,17 @@ public class PMBattle : Node
                     if(effectStack.Peek().GetDuration() == 0){
                         effectStack.Peek().Expire();
                     }
+                    CheckForDefeats();
                     effectStack.Pop();  //Remove it 
                 }
-
-                foreach(PMPlayerCharacter character in damageScoreboard.Keys){ //Reset the Player Half of the Scoreboards
+                /*TODO: "Specified Cast Not Valid" on these functions: Check out
+                foreach(PMPlayerCharacter character in roster.GetPlayerCharacters()){ //Reset the Player Half of the Scoreboards
                     damageScoreboard.Remove(character);
                 }
-                foreach(PMPlayerCharacter character in healingScoreboard.Keys){
+                foreach(PMPlayerCharacter character in roster.GetPlayerCharacters()){
                     healingScoreboard.Remove(character);
                 }
+                */
                 //TODO If Players should die, they do
                 break;
             case TurnPhase.PlayerMenu :
@@ -115,7 +110,11 @@ public class PMBattle : Node
                 if(playerAttacks.Peek().CheckForCompletion()){//Peek Player Attack Stack, get notice whether the attack is still running or not
                     playerAttacks.Dequeue();
                     if(playerAttacks.Count == 0){//Is there any more attacks?
-                        currentPhase = TurnPhase.TurnOverPause;
+                        if(CheckForDefeats()){
+                            returnPhase = TurnPhase.TurnOverPause;
+                            currentPhase = TurnPhase.HandleDefeat;
+                        }
+                        else currentPhase = TurnPhase.TurnOverPause;
                     }else{
                         playerAttacks.Peek().Begin(); //Start the next attack, the previous attack should have reset itself
                     }
@@ -138,8 +137,8 @@ public class PMBattle : Node
                         enemyAttacks.Enqueue(enAb);
                     }
                 }
-                currentPhase = TurnPhase.EnemyAction;
                 enemyAttacks.Peek().Begin();
+                currentPhase = TurnPhase.EnemyAction;
                 break;
             case TurnPhase.EnemyAction :
                 //Basically the same loop as PlayerAction but with the enemy stack 
@@ -148,12 +147,42 @@ public class PMBattle : Node
                     if(enemyAttacks.Count == 0){//Is there any more attacks?
                         //Setup the status effect stack, then turn it over to the next turn
                         effectStack = new Stack<PMStatus>();
-                        foreach(PMStatus status in trackedStatusEffects) effectStack.Push(status);
-                        if(effectStack.Count != 0) effectStack.Peek().StartUpkeep();
-                        currentPhase = TurnPhase.Upkeep;
+                        foreach(PMStatus status in trackedStatusEffects){
+                            if(status == null){ trackedStatusEffects.Remove(status); return; }
+                            effectStack.Push(status);
+                        }
+                        
+                        if(CheckForDefeats()){
+                            returnPhase = TurnPhase.Upkeep;
+                            currentPhase = TurnPhase.HandleDefeat;
+                        }else{
+                            if(effectStack.Count != 0) effectStack.Peek().StartUpkeep();
+                            currentPhase = TurnPhase.Upkeep;
+                        }
                     }else{
                         enemyAttacks.Peek().Begin(); //Start the next attack, the previous attack should have reset itself
                     }
+                }
+                break;
+            case TurnPhase.HandleDefeat :
+                var defeatDone = true;
+                foreach(PMCharacter character in deadPool){
+                    if(character.DefeatMe() == false){
+                        defeatDone = false;
+                    }
+                }
+                if(defeatDone){
+                    if(GetPlayerCharacters(true, true, true, false).Count() == 0){ //if there are no undefeated heroes
+                        //End the Battle with a Game Over
+                        GD.Print("Game Over");
+                        GetTree().Quit();
+                    }
+                    if(GetEnemyCharacters(true, true, true, false).Count() == 0){
+                        //End the Battle with Victory
+                        GD.Print("You Win!");
+                        GetTree().Quit();
+                    }
+                    currentPhase = returnPhase; //Only reaches here if there's still a fight    
                 }
                 break;
         }
@@ -228,20 +257,33 @@ public class PMBattle : Node
         return leader;
     }
 
-    public PMPlayerCharacter[] GetPlayerCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true){
-        return roster.GetPlayerCharacters(includeFlying, includeInvisible, includePhasedOut);
+    public PMPlayerCharacter[] GetPlayerCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true, bool includeDefeated = true){
+        return roster.GetPlayerCharacters(includeFlying, includeInvisible, includePhasedOut, includeDefeated);
     }
 
-    public PMEnemyCharacter[] GetEnemyCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true){
-        return roster.GetEnemyCharacters(includeFlying, includeInvisible, includePhasedOut);
+    public PMEnemyCharacter[] GetEnemyCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = false, bool includeDefeated = false){
+        return roster.GetEnemyCharacters(includeFlying, includeInvisible, includePhasedOut, includeDefeated);
     }
 
-    public PMCharacter[] GetCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true){
-        return roster.GetCharacters(includeFlying, includeInvisible, includePhasedOut);
+    public PMCharacter[] GetCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true, bool includeDefeated = false){
+        return roster.GetCharacters(includeFlying, includeInvisible, includePhasedOut, includeDefeated);
     }
 
     private void SetNewPosition(BattlePos newPosition, PMCharacter ch){ //TODO make align with positioning rules
 
+    }
+
+    public void LogStatusEffect(PMStatus stat){
+        trackedStatusEffects.Add(stat);
+    }
+
+    public bool CheckForDefeats(){
+        foreach(PMCharacter character in GetCharacters(true, true, true, true)){
+            if(character.GetHP() <= 0){
+                deadPool.Add(character);
+            }
+        }
+        return (deadPool.Count > 0);
     }
 }
 
@@ -271,7 +313,7 @@ public class BattleRoster{
     }
     
     //Returns all player characters, allowing to filter them by invisible, flying, and phased out.
-    public PMPlayerCharacter[] GetPlayerCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true){
+    public PMPlayerCharacter[] GetPlayerCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true, bool includeDefeated = false){
         List<PMPlayerCharacter> result = new List<PMPlayerCharacter>();
         var temp = characters.ToList<PMCharacter>();
         temp.RemoveAll(x => x == null);
@@ -293,13 +335,18 @@ public class BattleRoster{
                         continue;
                     }
                 }
+                if(!includeDefeated){
+                    if(ch.GetHP() <= 0){
+                        continue;
+                    }
+                }
                 result.Add((PMPlayerCharacter)ch);
             }
         }
         return result.ToArray();
     }
 
-    public PMEnemyCharacter[] GetEnemyCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true){
+    public PMEnemyCharacter[] GetEnemyCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true, bool includeDefeated = false){
         List<PMEnemyCharacter> result = new List<PMEnemyCharacter>();
         var temp = characters.ToList<PMCharacter>();
         temp.RemoveAll(x => x == null);
@@ -321,13 +368,18 @@ public class BattleRoster{
                         continue;
                     }
                 }
+                if(!includeDefeated){
+                    if(ch.GetHP() <= 0){
+                        continue;
+                    }
+                }
                 result.Add((PMEnemyCharacter)ch);
             }
         }
         return result.ToArray();
     }
 
-    public PMCharacter[] GetCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true){
+    public PMCharacter[] GetCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true, bool includeDefeated = true){
         List<PMCharacter> temp = characters.ToList<PMCharacter>();
         temp.RemoveAll(x => x == null);
         foreach(PMCharacter ch in temp){
@@ -335,6 +387,7 @@ public class BattleRoster{
             if(!includeFlying && statuses.Contains(StatusEffect.Flying)) temp.Remove(ch);
             if(!includeInvisible && statuses.Contains(StatusEffect.Flying)) temp.Remove(ch);
             if(!includePhasedOut && statuses.Contains(StatusEffect.PhasedOut)) temp.Remove(ch);
+            if(!includeDefeated && ch.GetHP() <= 0) temp.Remove(ch);
         } 
         return temp.ToArray<PMCharacter>();
     }

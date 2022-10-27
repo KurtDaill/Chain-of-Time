@@ -10,7 +10,7 @@ public class AttackMenu : BattleMenu
 
     public override PMPlayerAbility HandleInput(MenuInput input, PMPlayerCharacter character, PMBattle caller){
         if(input == MenuInput.Back){
-            parentGUI.ChangeMenu(-1, character, caller);
+            parentGUI.ChangeMenu(0, character, caller);
             return null;
         }else if(input == MenuInput.Select){
             var ability = character.GetBasicAttack();

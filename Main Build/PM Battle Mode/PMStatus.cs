@@ -22,6 +22,9 @@ public class PMStatus : Node {
 
     //Returns true when done.
     public virtual bool Execute(){
+        if(duration > 0){
+            duration --;
+        }
         return true;
     }
 
@@ -52,6 +55,6 @@ public class PMStatus : Node {
     public void Setup(PMCharacter tar){
         target = tar;
         animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-        animPlayer.Play("Apply");
+        //animPlayer.Play("Apply");
     }
 }

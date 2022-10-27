@@ -41,6 +41,10 @@ public class PMPlayerCharacter : PMCharacter{
         myReadout.UpdateHP(currentHP, MaxHP);
     }
 
+    public void PlayDefenseAnimation(){
+        animPlay.Play("Defend");
+    }
+
     public void SetupReadout(){
         myReadout.UpdateHP(currentHP, MaxHP);
         myReadout.UpdateSP(currentSP, maxSP);
@@ -48,5 +52,24 @@ public class PMPlayerCharacter : PMCharacter{
 
     public PMPlayerAbility[] GetAbilities(){
         return abilitiesPrepared;
+    }
+
+    public bool ChargeSP(int cost){
+        if(cost > currentSP) return false;
+        else{
+            currentSP -= cost;
+            myReadout.UpdateSP(currentSP, maxSP);
+            return true;
+        }
+    }
+
+    public void DrainSP(int drain){
+        currentSP -= drain;
+        myReadout.UpdateSP(currentSP, maxSP);
+    }
+
+    public void GainSP(int gain){
+        currentSP += gain;
+        myReadout.UpdateSP(currentSP, maxSP);
     }
 }

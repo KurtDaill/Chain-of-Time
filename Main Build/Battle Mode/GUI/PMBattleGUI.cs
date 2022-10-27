@@ -11,6 +11,8 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
 
     private PMPlayerCharacter[] playersAbleToAct;
     private Queue<PMPlayerAbility> abilitiesQueued;
+
+    private Control playerCharacterReadouts;
     public BattleMenu[] menus = new BattleMenu[6];
     public override void _Ready(){
         currentMenu = (BattleMenu) GetNode("Top Menu");
@@ -20,6 +22,7 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
         menus[3] = (BattleMenu) GetNode("Attack Menu");
         menus[4] = (BattleMenu) GetNode("Skill Menu");
         menus[5] = (BattleMenu) GetNode("Targeting Menu");
+        playerCharacterReadouts = GetNode<Control>("Readouts");
     }
 
     //Returns the finished Queue when complete
@@ -30,11 +33,13 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
         return null;
     }
     public void ShowGUI(){
-        Visible = true;
+        currentMenu.Visible = true;
+        playerCharacterReadouts.Visible = true;
     }
 
-    public void HideGUI(){
-        Visible = false;
+    public void HideGUI(bool keepReadouts = true){
+        currentMenu.Visible = false;
+        if(!keepReadouts) playerCharacterReadouts.Visible = false;
     }
 
     public void ResetGUIState(PMPlayerCharacter[] characters, PMBattle caller){

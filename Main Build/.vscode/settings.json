@@ -12,5 +12,6 @@
         "System.StackOverflowException": "always",
         "System.SystemException": "always",
         "System.TypeInitializationException": "always"
-    }
+    },
+    "godot.csharp.executablePath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot_v3.5.1-stable_mono_win64\\Godot_v3.5.1-stable_mono_win64\\Godot_v3.5.1-stable_mono_win64.exe"
 }

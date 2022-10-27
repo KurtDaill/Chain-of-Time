@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/FUI Button Beep Clean.wav-a8d38b9f46d43bb133b0ca31368eadab.sample"
+path="res://.import/BitCrunchedHit.wav-881ee3287fef0092491fb3b26ea712c2.sample"
 
 [deps]
 
-source_file="res://Audio/FUI Button Beep Clean.wav"
-dest_files=[ "res://.import/FUI Button Beep Clean.wav-a8d38b9f46d43bb133b0ca31368eadab.sample" ]
+source_file="res://Audio/BitCrunchedHit.wav"
+dest_files=[ "res://.import/BitCrunchedHit.wav-881ee3287fef0092491fb3b26ea712c2.sample" ]
 
 [params]
 

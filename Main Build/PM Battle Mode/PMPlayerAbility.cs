@@ -7,7 +7,9 @@ public class PMPlayerAbility : PMBattleAbility
 {
 
     protected bool waitingForInput;
-    protected string targetInput, targetAnimation, reverseAnimation;
+    protected string targetInput, targetAnimation, mainAnimation, reverseAnimation;
+    protected string critAnimation = "";
+    protected string failAnimation = "";
     protected bool inHoldAttack, attackReady, inFluffHold, inReverse, readyForRelease;
     protected int delayCounter = 0;
 
@@ -33,7 +35,8 @@ public class PMPlayerAbility : PMBattleAbility
         }
         if(inHoldAttack){
             if(!Input.IsActionPressed(targetInput)){
-                animPlay.Play(targetAnimation);
+                if(critAnimation != "") animPlay.Play(critAnimation);
+                else animPlay.Play(targetAnimation);
                 inHoldAttack = false;
             }
         }  
@@ -58,13 +61,16 @@ public class PMPlayerAbility : PMBattleAbility
         This function starts that process, and sets some basic parameters of it.
         Other methods (HoldAttackActivate, HoldAttackPerfectStart, etc.) should be called when appropriate on the Call Method Track. 
     */
-    public void StartHoldAttack(string input, string targetAnimation, int failDamage){
+    public void StartHoldAttack(string input, string targetAnimation, int failDamage, string failAnim = ""){
         StartDelay(10);
         WaitForInput(input);
         critDamage = -1;
         inHoldAttack = true;
         this.failDamage = failDamage;
         this.targetAnimation = targetAnimation;
+        mainAnimation = animPlay.CurrentAnimation;
+        critAnimation = ""; //TODO: Make this cleaner
+        failAnimation = failAnim;
     }
 
     //For game feel reasons, we have some attacks that require the player to hold a key, but without mechanical challenge
@@ -73,6 +79,7 @@ public class PMPlayerAbility : PMBattleAbility
         WaitForInput(input);
         readyForRelease = false;
         inFluffHold = true;
+        mainAnimation = animPlay.AssignedAnimation;
         this.targetAnimation = targetAnimation;
         this.reverseAnimation = reverseAnimaiton;
     }
@@ -80,7 +87,7 @@ public class PMPlayerAbility : PMBattleAbility
     public void RestartFluffHold(){
         var targetSeek = animPlay.CurrentAnimationPosition;
         inReverse = false;
-        animPlay.Play(targetAnimation);
+        animPlay.Play(mainAnimation);
         animPlay.Seek(targetSeek);
     }
 
@@ -102,22 +109,26 @@ public class PMPlayerAbility : PMBattleAbility
     public void HoldAttackActivate(){
         attackReady = true;
         failDamage = -1;
+        failAnimation = "";
     }
 
     //This method is called when the player has held the hold input for long enough to be in the "sweet spot" range 
-    public void HoldAttackPefectStart(int critDamage){
-        this.critDamage = critDamage;
+    public void HoldAttackPefectStart(int critDamage, string critAnim = ""){
+        this.critDamage = critDamage; 
+        critAnimation = critAnim;
     }
 
     //This method is called when the player has held the hold input for long enough to fall out of "sweet spot" range 
     public void HoldAttackPerfectStop(){
         critDamage = -1;
+        critAnimation = "";
     }
     //This method is called wwhen the player has held the hold input to 'time out', automatically going to the target animation and dealing failDamage
-    public void HoldAttackTimeout(int failDamage){
+    public void HoldAttackTimeout(int failDamage, string failAnim = ""){
         this.failDamage = failDamage;
         animPlay.Play(targetAnimation);
         inHoldAttack = false;
+        failAnimation = failAnim;
     }
 
     public void WaitForInput(string input){

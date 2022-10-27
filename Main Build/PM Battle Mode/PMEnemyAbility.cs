@@ -9,7 +9,12 @@ public class PMEnemyAbility : PMBattleAbility
     
     [Export(PropertyHint.Enum)]
     protected List<SpecialRequirement> requirements = new List<SpecialRequirement>();
-   
+
+
+    //This variable is used to store whether we're within the window of time when the player can actively defend
+    private bool playerDefenseOnline = false;
+    //This variable is flipped to true if the player defended too early and has lost their opertunity
+    private bool defenseLocked = false;
     public override void _Ready()
     {
         base._Ready();
@@ -23,15 +28,35 @@ public class PMEnemyAbility : PMBattleAbility
         return targetsInPriorityOrder;
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+    public override void _Process(float delta){
+        base._Process(delta);
+        if(Input.IsActionJustPressed("com_def") && !defenseLocked){
+            if(playerDefenseOnline){
+                successfulDefense = true;
+                foreach(PMPlayerCharacter defender in target){
+                    defender.PlayDefenseAnimation();
+                }
+            }else{
+                defenseLocked = true;
+            }
+        }
+    }
 
     public override void ExecuteEvent(int eventNum)
     {
         base.ExecuteEvent(eventNum);
+    }
+
+    public void PlayerDefenseReactionOnline(){
+        playerDefenseOnline = true;
+    }
+    public void DisablePlayerDefense(){
+        playerDefenseOnline = false;
+    }
+    public void StartAttackRun(){
+        playerDefenseOnline = false;
+        successfulDefense = false;
+        defenseLocked = false;
     }
 }
 
