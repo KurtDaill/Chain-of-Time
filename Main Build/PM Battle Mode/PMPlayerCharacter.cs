@@ -41,6 +41,12 @@ public class PMPlayerCharacter : PMCharacter{
         myReadout.UpdateHP(currentHP, MaxHP);
     }
 
+    public override void TakeHealing(int heal, PMBattleUtilities.AbilityAlignment alignment)
+    {
+        base.TakeHealing(heal, alignment);
+        myReadout.UpdateHP(currentHP, MaxHP);
+    }
+
     public void PlayDefenseAnimation(){
         animPlay.Play("Defend");
     }

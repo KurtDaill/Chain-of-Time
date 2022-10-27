@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=2]
+[gd_scene load_steps=145 format=2]
 
 [ext_resource path="res://Audio/FUI Button Beep Clean Pitch Up.wav" type="AudioStream" id=1]
 [ext_resource path="res://PM Battle Mode/PMBattle.cs" type="Script" id=2]
@@ -66,6 +66,9 @@
 [ext_resource path="res://Audio/BitCrunchedHit.wav" type="AudioStream" id=64]
 [ext_resource path="res://Audio/Crit Sound 2.wav" type="AudioStream" id=65]
 [ext_resource path="res://Audio/Defend1.wav" type="AudioStream" id=66]
+[ext_resource path="res://GUI/Battle Menu Assets/Readout Highlight.png" type="Texture" id=67]
+[ext_resource path="res://GUI/Themes/Skill Card Normal Small.tres" type="Theme" id=68]
+[ext_resource path="res://Art/Silver Master Sprite-Sheet.png" type="Texture" id=69]
 
 [sub_resource type="Animation" id=69]
 resource_name = "Defeat"
@@ -830,10 +833,13 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
 "args": [ 0 ],
+"method": "ExecuteEvent"
+}, {
+"args": [ 1 ],
 "method": "ExecuteEvent"
 }, {
 "args": [  ],
@@ -1204,6 +1210,41 @@ tracks/10/keys = {
 "transitions": PoolRealArray(  ),
 "values": [  ]
 }
+
+[sub_resource type="Animation" id=77]
+resource_name = "Idle"
+length = 2.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 23 ]
+}
+
+[sub_resource type="Animation" id=78]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=79]
+resource_name = "Aim"
 
 [sub_resource type="Animation" id=70]
 tracks/0/type = "value"
@@ -2063,6 +2104,61 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.35 )
 }
 
+[sub_resource type="Animation" id=75]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 138.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=76]
+resource_name = "Select"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 138.0, 135 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [sub_resource type="AtlasTexture" id=26]
 flags = 19
 atlas = ExtResource( 26 )
@@ -2263,8 +2359,7 @@ maxSP = 2
 readout = NodePath("../../../Camera/BattleGUI/Readouts/Cato Readout")
 
 [node name="Pointer" parent="Battle Positions/Hero 1/Cato" instance=ExtResource( 38 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51, 1.985, 0 )
-visible = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51, 2.24, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Hero 1/Cato"]
 autoplay = "Idle"
@@ -2276,9 +2371,14 @@ anims/RESET = SubResource( 59 )
 
 [node name="Basic Attack" type="Node" parent="Battle Positions/Hero 1/Cato"]
 script = ExtResource( 48 )
-name = "Cato Basic Attack"
+name = "Basic Attack-Cato"
 firstAnimation = "Attack Wind Up"
 eventIndex = [ NodePath("Attack") ]
+targetingRule = 1
+rulesText = " [center][Melee]
+
+Deals [damageNumber] Damage"
+listedDamage = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Hero 1/Cato/Basic Attack"]
 anims/Attack = SubResource( 1 )
@@ -2365,10 +2465,11 @@ eventValue = 2
 script = ExtResource( 48 )
 name = "Just Focus"
 firstAnimation = "Tense"
-eventIndex = [ NodePath("Event - Status") ]
+eventIndex = [ NodePath("Event - Status"), NodePath("Event - Heal") ]
 usesEmpowered = false
 consumesOvercharged = false
-rulesText = "[center]Cato becomes [color=yellow]EMPOWERED[/color] for 2 turns."
+rulesText = "[center]Cato becomes [color=yellow]EMPOWERED[/color] for 2 turns and heals for 2"
+abilityType = "Skill"
 spCost = 2
 
 [node name="Focus" type="Sprite3D" parent="Battle Positions/Hero 1/Cato/JustFocus"]
@@ -2377,24 +2478,28 @@ visible = false
 pixel_size = 0.008
 texture = ExtResource( 49 )
 hframes = 3
+frame = 2
 
 [node name="Orb" type="Sprite3D" parent="Battle Positions/Hero 1/Cato/JustFocus/Focus"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-07, 2.04, -0.0799999 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-07, 0.922169, -0.0799999 )
 pixel_size = 0.008
 texture = ExtResource( 50 )
 hframes = 5
+frame = 4
 
 [node name="Orb2" type="Sprite3D" parent="Battle Positions/Hero 1/Cato/JustFocus/Focus"]
-transform = Transform( 1, -2.38419e-07, 0, 2.38419e-07, 1, 0, 0, 0, 1, 1.76669, -1.02, -0.0799999 )
+transform = Transform( 1, -2.38419e-07, 0, 2.38419e-07, 1, 0, 0, 0, 1, 0.604084, -0.600892, -0.0799999 )
 pixel_size = 0.008
 texture = ExtResource( 50 )
 hframes = 5
+frame = 4
 
 [node name="Orb3" type="Sprite3D" parent="Battle Positions/Hero 1/Cato/JustFocus/Focus"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76669, -1.02, 0.16 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.604084, -0.600892, 0.16 )
 pixel_size = 0.008
 texture = ExtResource( 50 )
 hframes = 5
+frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Hero 1/Cato/JustFocus"]
 anims/RESET = SubResource( 61 )
@@ -2409,6 +2514,12 @@ eventType = 2
 coreStatusEffect = "res://PM Battle Mode/Status Effects/Status Effect - Empowered.tscn"
 setCustomDuration = 3
 setCustomMagnitude = 2
+
+[node name="Event - Heal" type="Node" parent="Battle Positions/Hero 1/Cato/JustFocus"]
+script = ExtResource( 42 )
+alignment = 1
+eventType = 3
+eventValue = 2
 
 [node name="FirstNote" type="AudioStreamPlayer" parent="Battle Positions/Hero 1/Cato/JustFocus"]
 stream = ExtResource( 56 )
@@ -2430,7 +2541,38 @@ stream = ExtResource( 66 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98, 0.1875, 4 )
 
 [node name="Hero 2" type="Spatial" parent="Battle Positions"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48, 0.1875, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48, 0.1875, 3 )
+
+[node name="Silver" type="Sprite3D" parent="Battle Positions/Hero 2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56, 0 )
+pixel_size = 0.008
+texture = ExtResource( 69 )
+hframes = 12
+vframes = 5
+script = ExtResource( 39 )
+MaxHP = 6
+name = "Will Silver"
+debugAbilities = [ NodePath("Basic Attack") ]
+maxSP = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Hero 2/Silver"]
+autoplay = "Idle"
+anims/Idle = SubResource( 77 )
+anims/RESET = SubResource( 78 )
+
+[node name="Pointer" parent="Battle Positions/Hero 2/Silver" instance=ExtResource( 38 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.24, 0 )
+
+[node name="Basic Attack" type="Node" parent="Battle Positions/Hero 2/Silver"]
+script = ExtResource( 48 )
+name = "Basic Attack-Silver"
+firstAnimation = "Aim"
+targetingRule = 2
+canTargetFliers = true
+listedDamage = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Hero 2/Silver/Basic Attack"]
+anims/Aim = SubResource( 79 )
 
 [node name="Hero 2 Back" type="Spatial" parent="Battle Positions"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.48, 0.1875, 0 )
@@ -2457,8 +2599,6 @@ name = "Polymorhpor"
 abilitiesByPriority = [ NodePath("Slide") ]
 
 [node name="Pointer" parent="Battle Positions/Enemy 1/Polymorphor" instance=ExtResource( 38 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51, 1.985, 0 )
-visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Battle Positions/Enemy 1/Polymorphor"]
 autoplay = "Idle"
@@ -2518,6 +2658,7 @@ margin_top = -1080.0
 script = ExtResource( 7 )
 
 [node name="Skill Menu" type="Control" parent="Camera/BattleGUI"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 31 )
@@ -2909,17 +3050,14 @@ margin_left = 5.0
 margin_top = 0.23999
 margin_right = 1920.0
 script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Backboard" type="TextureRect" parent="Camera/BattleGUI/Attack Menu"]
 anchor_right = 0.289
 anchor_bottom = 1.0
-margin_left = 144.098
-margin_top = 102.572
-margin_right = 3.21832
-margin_bottom = -221.428
+margin_left = 144.133
+margin_top = 102.642
+margin_right = 4.69806
+margin_bottom = -143.358
 texture = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2933,9 +3071,30 @@ margin_top = 210.54
 margin_right = -151.57
 margin_bottom = 106.926
 texture = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Attack Name" type="Label" parent="Camera/BattleGUI/Attack Menu/Backboard"]
+margin_left = 15.0
+margin_top = 12.0
+margin_right = 399.0
+margin_bottom = 58.0
+theme = ExtResource( 33 )
+text = "Basic Attack Name"
+align = 1
+valign = 1
+
+[node name="Rules Text" type="RichTextLabel" parent="Camera/BattleGUI/Attack Menu/Backboard"]
+margin_left = 6.0
+margin_top = 84.0
+margin_right = 407.0
+margin_bottom = 190.0
+theme = ExtResource( 68 )
+bbcode_enabled = true
+bbcode_text = "[center] [Range]
+[Keywords]
+Basic Attack Text"
+text = " [Range]
+[Keywords]
+Basic Attack Text"
 
 [node name="Item Menu" type="Control" parent="Camera/BattleGUI"]
 visible = false
@@ -3160,6 +3319,14 @@ __meta__ = {
 }
 pathToDebugCharacter = NodePath("../../../../Battle Positions/Hero 1/Cato")
 
+[node name="TextureRect" type="TextureRect" parent="Camera/BattleGUI/Readouts/Cato Readout"]
+visible = false
+margin_left = -6.45422
+margin_top = -5.89294
+margin_right = 677.546
+margin_bottom = 102.107
+texture = ExtResource( 67 )
+
 [node name="HP Icon" type="TextureRect" parent="Camera/BattleGUI/Readouts/Cato Readout"]
 margin_left = 432.279
 margin_right = 528.279
@@ -3184,9 +3351,6 @@ theme = ExtResource( 45 )
 custom_colors/font_color = Color( 0.384314, 0.0941176, 0, 1 )
 text = "99"
 align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Max HP" type="Label" parent="Camera/BattleGUI/Readouts/Cato Readout"]
 margin_left = 389.913
@@ -3209,9 +3373,6 @@ theme = ExtResource( 45 )
 custom_colors/font_color = Color( 0.0470588, 0.129412, 0.282353, 1 )
 text = "99"
 align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Max SP" type="Label" parent="Camera/BattleGUI/Readouts/Cato Readout"]
 margin_left = 552.502
@@ -3221,6 +3382,10 @@ margin_bottom = 83.0068
 theme = ExtResource( 45 )
 custom_colors/font_color = Color( 0.0470588, 0.129412, 0.282353, 1 )
 text = "99"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera/BattleGUI/Readouts/Cato Readout"]
+anims/RESET = SubResource( 75 )
+anims/Select = SubResource( 76 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( -0.966492, -0.236493, 0.0998248, 0.255786, -0.854506, 0.452099, -0.0216172, 0.462484, 0.886364, -1.61092, 9.69981, 27.1195 )
@@ -3241,7 +3406,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444457, -1.26219, -5.69706 )
 visible = false
 pixel_size = 0.1
 frames = SubResource( 32 )
-frame = 3
+frame = 4
 playing = true
 
 [node name="Baths" parent="." instance=ExtResource( 3 )]
@@ -3263,28 +3428,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 axis = 1
 frames = SubResource( 39 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="Waterfall Piece" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 2.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 46 )
-frame = 2
 playing = true
 
 [node name="Waterfall Piece2" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 0.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 46 )
-frame = 1
+frame = 5
 playing = true
 
 [node name="Waterfall Top" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 53 )
-frame = 2
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="Baths"]

@@ -29,7 +29,7 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
     public Queue<PMPlayerAbility> Execute(MenuInput input, PMBattle caller){
         var temp = currentMenu.HandleInput(input, playersAbleToAct[abilitiesQueued.Count], caller);
         if(temp != null) abilitiesQueued.Enqueue(temp);
-        if(abilitiesQueued.Count == playersAbleToAct.Length) return abilitiesQueued; //If all players have set an ability, we keep going
+        if(abilitiesQueued.Count == playersAbleToAct.Length) return abilitiesQueued; //If all players have set an ability, we go to the next step in the battle
         return null;
     }
     public void ShowGUI(){

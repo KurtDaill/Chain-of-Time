@@ -50,9 +50,9 @@ public class  PMBattleAbility : Node
     AbilityAlignment alignment = AbilityAlignment.Normal;
 
     [Export]
-    bool usesEmpowered = true;
+    protected bool usesEmpowered = true;
     [Export]
-    bool consumesOvercharged = true;
+    protected bool consumesOvercharged = true;
     
     protected AbilityEvent[] events;
     public PMCharacter source;
@@ -142,8 +142,10 @@ public class  PMBattleAbility : Node
     }
 
     public void Heal(int eventNum){ //TODO Write Me
-        //TargetingRule localTarget = ConvertTarget(target);
-        //AbilityAlignment localAlign = ConvertAlignment(al);
+        foreach(PMCharacter character in events[eventNum].GetTargets()){
+            character.TakeHealing(events[eventNum].GetValue(), events[eventNum].GetAlignment());
+            GD.Print(name + " Healed " + character.GetCharacterName() + " for " + events[eventNum].GetValue() + " HP.");
+        }
     }
 
     public void InflictStatus(int eventNum){ //TODO Write Me

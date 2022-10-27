@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using static PMBattleUtilities;
 
 public class PMPlayerAbility : PMBattleAbility
@@ -14,7 +15,11 @@ public class PMPlayerAbility : PMBattleAbility
     protected int delayCounter = 0;
 
     [Export(PropertyHint.MultilineText)] //Developers can specify the font size for their rules text within the rules text string using [textSize] and "small" or "smallest"
-    protected string rulesText = "[textSize]<Insert Rules Text Here>";
+    protected string rulesText = "[textSize]<Insert Rules Text Here>[damageNumber]";
+     //This is the damage value displayed in rules text, and is the figure that's modified by bonuses/penalties (where [damageNumber] is written) before being shown to the player,
+     //leave at -1 if you don't want to display an ammount of damage this attack deals
+    [Export]
+    protected int listedDamage = -1;
     [Export]
     protected string abilityType = "Attack";
     [Export]
@@ -142,7 +147,24 @@ public class PMPlayerAbility : PMBattleAbility
     }
 
     public string GetRulesText(){
-        return rulesText;
+        var modifiedDamage = listedDamage;
+        var print = rulesText;
+        if(listedDamage != -1){
+            if(source.GetMyStatuses().Contains(StatusEffect.Empowered) && usesEmpowered){
+                modifiedDamage += source.statusEffects.Where<PMStatus>(x => x.GetStatusType() == StatusEffect.Empowered).ToArray<PMStatus>()[0].GetMagnitude();
+            }
+            if(source.GetMyStatuses().Contains(StatusEffect.Overcharged) && consumesOvercharged){
+                modifiedDamage += source.statusEffects.Where<PMStatus>(x => x.GetStatusType() == StatusEffect.Overcharged).ToArray<PMStatus>()[0].GetMagnitude();
+            }
+            if(modifiedDamage > listedDamage){
+                print = print.Replace("[damageNumber]", "[color=green]" + modifiedDamage + "[/color]");
+            }else if(modifiedDamage < listedDamage){
+                print = print.Replace("[damageNumber]", "[color=red]" + modifiedDamage + "[/color]");
+            }else{
+                print = print.Replace("[damageNumber]", "" + listedDamage);//We know modified damage = listed damage
+            }
+        }
+        return print;
     }
 
     public string GetAbilityType(){

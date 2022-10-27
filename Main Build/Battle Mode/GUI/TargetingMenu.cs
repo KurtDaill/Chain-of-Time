@@ -8,14 +8,14 @@ public class TargetingMenu : BattleMenu {
     private AudioStreamPlayer targetingErrorSound;
     private List<PMCharacter> plannedTargets;
     private TargetingRule workingRule;
-    private int spRefund;
+    private int spRefund = 0;
     private bool decisionRequired = true;
 
     //Because we want to avoid having to add a special case to the parent GUI class for opening this menu, we instead
     //Have the previous menu call this command on the targeting menu for setting up the current target instead
     public void SetAbilityForTargeting(PMPlayerAbility newAbility){
         abilityInQuestion = newAbility;
-        spRefund = newAbility.GetSPCost();
+        if(newAbility.GetSPCost() != -1) spRefund = newAbility.GetSPCost();
     }
 
     public override void _Ready()
@@ -163,8 +163,7 @@ public class TargetingMenu : BattleMenu {
         }
 
         
-        if(input == MenuInput.Select){
-                //Need to Double Check if that target is legal!
+        if(input == MenuInput.Select){//Need to Double Check if that target is legal!
                 if(CheckTargetLegality(plannedTargets, caller, out var realTargets)){
                     abilityInQuestion.SetTargets(realTargets.ToArray<PMCharacter>());
                     var result = abilityInQuestion;
@@ -231,7 +230,7 @@ public class TargetingMenu : BattleMenu {
                 actualTargets.Add(character);
             }
         }
-        actualTargets = null;
+        if(actualTargets != null) return true;
         return false;
     }
 }

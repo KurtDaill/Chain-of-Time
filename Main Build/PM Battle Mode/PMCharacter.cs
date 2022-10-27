@@ -96,6 +96,15 @@ public class PMCharacter : Node{
         GD.Print(name + " is hit for: " + damage); //TODO modify this to print to a combat log?
     }
 
+    public virtual void TakeHealing(int heal, AbilityAlignment alignment){
+        if(heal <= 0) throw new NotImplementedException(); //TODO Write custom exception
+        if(currentHP == 0){
+            animPlay.Play("Revive");
+        }
+        currentHP += heal;
+        if(currentHP > MaxHP) currentHP = MaxHP;
+    }
+
     //Called by OnAnimationFinished Signal
     public void ReturnToIdle(string anim_name){
         animPlay.Play("Idle");
@@ -114,6 +123,9 @@ public class PMCharacter : Node{
         return statuses;
     }
 
+    public string GetCharacterName(){
+        return name;
+    }
     public void ResetToIdleAnim(){
         GetNode<AnimationPlayer>("AnimationPlayer").Play("Idle");
     }
