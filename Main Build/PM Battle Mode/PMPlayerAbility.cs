@@ -11,7 +11,7 @@ public class PMPlayerAbility : PMBattleAbility
     protected string targetInput, targetAnimation, mainAnimation, reverseAnimation;
     protected string critAnimation = "";
     protected string failAnimation = "";
-    protected bool inHoldAttack, attackReady, inFluffHold, inReverse, readyForRelease;
+    protected bool inHoldAttack, attackReady, inFluffHold, inReverse, readyForRelease, inTimingAttack;
     protected int delayCounter = 0;
 
     [Export(PropertyHint.MultilineText)] //Developers can specify the font size for their rules text within the rules text string using [textSize] and "small" or "smallest"
@@ -41,8 +41,17 @@ public class PMPlayerAbility : PMBattleAbility
         if(inHoldAttack){
             if(!Input.IsActionPressed(targetInput)){
                 if(critAnimation != "") animPlay.Play(critAnimation);
+                else if(failAnimation != "") animPlay.Play(failAnimation);
                 else animPlay.Play(targetAnimation);
                 inHoldAttack = false;
+            }
+        }
+        if(inTimingAttack){
+            if(Input.IsActionJustPressed(targetInput)){
+                if(critAnimation != "") animPlay.Play(critAnimation);
+                else if (failAnimation != "")animPlay.Play(failAnimation);
+                else animPlay.Play(targetAnimation);
+                inTimingAttack = false;
             }
         }  
         if(inReverse){
@@ -77,6 +86,32 @@ public class PMPlayerAbility : PMBattleAbility
         critAnimation = ""; //TODO: Make this cleaner
         failAnimation = failAnim;
     }
+    
+    //This method is called when the player has held the hold input for long enough for the ability to be allowed to go off
+    public void HoldAttackActivate(){
+        attackReady = true;
+        failDamage = -1;
+        failAnimation = "";
+    }
+
+    //This method is called when the player has held the hold input for long enough to be in the "sweet spot" range 
+    public void HoldAttackPefectStart(int critDamage, string critAnim = ""){
+        this.critDamage = critDamage; 
+        critAnimation = critAnim;
+    }
+
+    //This method is called when the player has held the hold input for long enough to fall out of "sweet spot" range 
+    public void HoldAttackPerfectStop(){
+        critDamage = -1;
+        critAnimation = "";
+    }
+    //This method is called wwhen the player has held the hold input to 'time out', automatically going to the target animation and dealing failDamage
+    public void HoldAttackTimeout(int failDamage, string failAnim = ""){
+        this.failDamage = failDamage;
+        if(failAnim == "")animPlay.Play(targetAnimation);
+        else animPlay.Play(failAnim);
+        inHoldAttack = false;
+    }
 
     //For game feel reasons, we have some attacks that require the player to hold a key, but without mechanical challenge
     public void StartFluffHold(string input, string targetAnimation, string reverseAnimaiton){
@@ -103,37 +138,54 @@ public class PMPlayerAbility : PMBattleAbility
         animPlay.Seek(targetSeek);
     }
 
-    public void ReleaseReady(){
-        readyForRelease = true;
-    }
-    public void StartDelay(int delay){
-        delayCounter = delay;
+    public void StartTimingAttack(string input, string targetAnimation, int failDamage, string failAnim = ""){
+        StartDelay(10);
+        inTimingAttack = true;
+        targetInput = input;
+        attackReady = false;
+        this.targetAnimation = targetAnimation;
+        this.failDamage = failDamage;
+        failAnimation = failAnim;
     }
 
-    //This method is called when the player has held the hold input for long enough for the ability to be allowed to go off
-    public void HoldAttackActivate(){
+    public void SpawnNodeOnTarget(string resourcePath, bool useAimPoint = true){
+        PackedScene ps = GD.Load<PackedScene>(resourcePath);
+        foreach(PMCharacter character in target){
+            var scene = ps.Instance();
+            if(useAimPoint) character.GetNode("AimPoint").AddChild(scene);
+            else character.AddChild(scene);
+
+        }
+    }
+
+    public void ActivateTimingAttack(){
         attackReady = true;
         failDamage = -1;
         failAnimation = "";
     }
 
-    //This method is called when the player has held the hold input for long enough to be in the "sweet spot" range 
-    public void HoldAttackPefectStart(int critDamage, string critAnim = ""){
-        this.critDamage = critDamage; 
+    public void StartTimingAttackPerfect(int critDamage, string critAnim){
+        this.critDamage = critDamage;
         critAnimation = critAnim;
     }
 
-    //This method is called when the player has held the hold input for long enough to fall out of "sweet spot" range 
-    public void HoldAttackPerfectStop(){
+    public void StopTimingAttackPerfect(){
         critDamage = -1;
         critAnimation = "";
     }
-    //This method is called wwhen the player has held the hold input to 'time out', automatically going to the target animation and dealing failDamage
-    public void HoldAttackTimeout(int failDamage, string failAnim = ""){
+
+    public void TimingAttackTimeOut(int failDamage, string failAnim = ""){
         this.failDamage = failDamage;
-        animPlay.Play(targetAnimation);
-        inHoldAttack = false;
-        failAnimation = failAnim;
+        if(failAnim == "")animPlay.Play(targetAnimation);
+        else animPlay.Play(failAnim);
+        inTimingAttack = false;
+    }
+
+    public void ReleaseReady(){
+        readyForRelease = true;
+    }
+    public void StartDelay(int delay){
+        delayCounter = delay;
     }
 
     public void WaitForInput(string input){

@@ -21,6 +21,8 @@ public class PMBattle : Node
     [Export]
     private NodePath debugPlayerOne;
     [Export]
+    private NodePath debugPlayerTwo;
+    [Export]
     private NodePath debugEnemyOne;
     private PMBattleGUI gui;
 
@@ -58,6 +60,7 @@ public class PMBattle : Node
         gui = (PMBattleGUI) GetNode(battleGUI);
         //Add Debugs to BattleRosters
         roster.SetCharacter(GetNode<PMCharacter>(debugPlayerOne), BattlePos.HeroOne);
+        roster.SetCharacter(GetNode<PMCharacter>(debugPlayerTwo), BattlePos.HeroTwo);
         roster.SetCharacter(GetNode<PMCharacter>(debugEnemyOne), BattlePos.EnemyOne);
         heroTauntUp = false;
         enemyTauntUp = false;

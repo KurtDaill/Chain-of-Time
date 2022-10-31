@@ -106,6 +106,13 @@ enabled=PoolStringArray( "res://addons/MonoDebuggerQM-1.0.2/MonoDebuggerQM-1.0.2
 
 singletons=[ "res://git_api.gdnlib" ]
 
+[importer_defaults]
+
+texture={
+"flags/filter": false,
+"process/fix_alpha_border": false
+}
+
 [input]
 
 ui_caps={
@@ -143,17 +150,13 @@ dialogic_default_action={
 2d_physics/layer_1="Environment"
 3d_physics/layer_1="Ground"
 2d_physics/layer_2="Players"
-3d_physics/layer_2="Player HurtBox"
 2d_physics/layer_3="Enemies"
-3d_physics/layer_3="Enemy HurtBox"
 2d_physics/layer_4="HurtBox"
-3d_physics/layer_4="Player Hitbox"
 2d_physics/layer_5="Hitbox"
-3d_physics/layer_5="Enemy Hitbox"
-3d_physics/layer_6="Player Physics"
-3d_physics/layer_7="Enemy Physics"
 2d_physics/layer_10="Battle Ground Front"
+3d_physics/layer_10="Characater Hitbox"
 2d_physics/layer_11="Battle Ground Middle"
+3d_physics/layer_11="Crosshair"
 2d_physics/layer_12="Battle Ground Back"
 
 [logging]

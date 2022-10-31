@@ -52,16 +52,20 @@ public class TopMenu : BattleMenu
                 break;
             case MenuInput.Select:
                 switch(highlightedTab){
+                    case 0:
+                        //Goes to the Party Menu
+                        parentGUI.ChangeMenu(1,character, caller);
+                        break;
                     case 1:
-                        //Returns the Item Menu
+                        //Goes to the Item Menu
                         parentGUI.ChangeMenu(2, character, caller);
                         break;
                     case 2:
-                        //Returns the Attack Menu
+                        //Goes to the Attack Menu
                         parentGUI.ChangeMenu(3, character, caller);
                         break;
                     case 3:
-                        //Returns the Skill Menu
+                        //Goes to the Skill Menu
                         parentGUI.ChangeMenu(4, character, caller);
                         break;
                 }

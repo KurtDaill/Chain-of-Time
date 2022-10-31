@@ -1,0 +1,14 @@
+[gd_resource type="AnimatedTexture" load_steps=3 format=2]
+
+[ext_resource path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuOff.png" type="Texture" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/PartyMenuRunOn.png-b86fcadecbf3c88e029c95aa2af9e3bd.stex"
+
+[resource]
+frames = 2
+pause = true
+fps = 1.0
+frame_0/texture = SubResource( 1 )
+frame_1/texture = ExtResource( 1 )
+frame_1/delay_sec = 0.0

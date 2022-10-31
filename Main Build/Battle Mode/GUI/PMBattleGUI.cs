@@ -18,6 +18,7 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
         currentMenu = (BattleMenu) GetNode("Top Menu");
         parentBattle = (PMBattle) GetNode("../..");    
         menus[0] = (BattleMenu) GetNode("Top Menu");
+        menus[1] = (BattleMenu) GetNode("Party Menu");
         menus[2] = (BattleMenu) GetNode("Item Menu");
         menus[3] = (BattleMenu) GetNode("Attack Menu");
         menus[4] = (BattleMenu) GetNode("Skill Menu");
@@ -28,8 +29,11 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
     //Returns the finished Queue when complete
     public Queue<PMPlayerAbility> Execute(MenuInput input, PMBattle caller){
         var temp = currentMenu.HandleInput(input, playersAbleToAct[abilitiesQueued.Count], caller);
-        if(temp != null) abilitiesQueued.Enqueue(temp);
-        if(abilitiesQueued.Count == playersAbleToAct.Length) return abilitiesQueued; //If all players have set an ability, we go to the next step in the battle
+        if(temp != null){ 
+            abilitiesQueued.Enqueue(temp);
+            if(abilitiesQueued.Count == playersAbleToAct.Length) return abilitiesQueued; //If all players have set an ability, we go to the next step in the battle
+            else ChangeMenu(0, playersAbleToAct[abilitiesQueued.Count], caller);
+        } 
         return null;
     }
     public void ShowGUI(){

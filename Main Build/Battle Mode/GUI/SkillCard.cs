@@ -36,7 +36,7 @@ public class SkillCard : TextureRect{
 
         switch(align){ //Assigns the card's graphic and text theme to match it's alignment
             case AbilityAlignment.Normal :
-                Texture = (Texture) GD.Load("res://GUI/Battle Menu Assets/Skill Card.png");
+                Texture = (Texture) GD.Load("res://GUI/Battle Menu Assets/Skill Menu/Skill Card.png");
                 Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Normal.tres");
                 if(textSize == "small"){
                     rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Normal Small.tres");
@@ -45,7 +45,7 @@ public class SkillCard : TextureRect{
                 } 
                 break;
             case AbilityAlignment.Magic :
-                Texture = (Texture) GD.Load("res://GUI/Battle Menu Assets/Spell Card.png");
+                Texture = (Texture) GD.Load("res://GUI/Battle Menu Assets/Skill Menu/Spell Card.png");
                 Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Spell.tres");
                 if(textSize == "small"){
                     rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Spell Small.tres");
@@ -54,7 +54,7 @@ public class SkillCard : TextureRect{
                 } 
                 break;
             case AbilityAlignment.Tech :
-                Texture = (Texture) GD.Load("res://GUI/Battle Menu Assets/Tech Card.png");
+                Texture = (Texture) GD.Load("res://GUI/Battle Menu Assets/Skill Menu/Tech Card.png");
                 Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Tech.tres");
                 if(textSize == "small"){
                     rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Tech Small.tres");
