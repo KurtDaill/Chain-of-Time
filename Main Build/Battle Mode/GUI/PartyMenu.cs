@@ -59,6 +59,7 @@ public class PartyMenu : BattleMenu{
             case MenuInput.Select :
                 switch(optionSelected){
                     case 1 : //TODO go to swap menu
+                        parentGUI.ChangeMenu(6, character, caller);
                         break;
                 }
                 break;

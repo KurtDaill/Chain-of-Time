@@ -5,7 +5,7 @@ public class PlayerCharacterReadout : TextureRect
 {
     Label HP, SP;
     Label maxHPLabel, maxSPLabel;
-    AnimatedTexture hpIconTexture, spIconTexture;
+    TextureRect hpIconFull, hpIconHalf, hpIconEmpty, spIconFull, spIconHalf, spIconEmpty, highLight;
 
     [Export]
     NodePath pathToDebugCharacter; //TODO replace this with real solution
@@ -15,20 +15,28 @@ public class PlayerCharacterReadout : TextureRect
         SP = GetNode<Label>("SP");
         maxHPLabel = GetNode<Label>("Max HP");
         maxSPLabel = GetNode<Label>("Max SP");
-        hpIconTexture = (AnimatedTexture)this.GetNode<TextureRect>("HP Icon").Texture;
-        spIconTexture = (AnimatedTexture)this.GetNode<TextureRect>("SP Icon").Texture;
+        hpIconFull = this.GetNode<TextureRect>("HP Icon Full");
+        hpIconHalf = this.GetNode<TextureRect>("HP Icon Half");
+        hpIconEmpty = this.GetNode<TextureRect>("HP Icon Empty");
+        spIconFull = this.GetNode<TextureRect>("SP Icon Full");
+        spIconHalf = this.GetNode<TextureRect>("SP Icon Half");
+        spIconEmpty = this.GetNode<TextureRect>("SP Icon Empty");
+        highLight = this.GetNode<TextureRect>("Highlight");
         GetNode<PMPlayerCharacter>(pathToDebugCharacter).SetupReadout(); //TODO replace this with real solution
     }
     public void UpdateHP(int newHP, int newMaxHP){
         HP.Text = "" + newHP;
         maxHPLabel.Text = "" + newMaxHP;
         //Updates the little icon next to the HP number
+        hpIconFull.Visible = false;
+        hpIconHalf.Visible = false;
+        hpIconEmpty.Visible = false;
         if(newHP <= 0){
-            hpIconTexture.CurrentFrame = 2;
+            hpIconEmpty.Visible = true;
         }else if(newHP <= newMaxHP/2){
-            hpIconTexture.CurrentFrame = 1;
+            hpIconHalf.Visible = true;
         }else{
-            hpIconTexture.CurrentFrame = 0;
+            hpIconFull.Visible = true;
         }
     }
 
@@ -36,12 +44,23 @@ public class PlayerCharacterReadout : TextureRect
         SP.Text = "" + newSP;
         maxSPLabel.Text = "" + newMaxSP;
         //Updates the little icon next to the SP number
+        spIconFull.Visible = false;
+        spIconHalf.Visible = false;
+        spIconEmpty.Visible = false;
         if(newSP <= 0){
-            spIconTexture.CurrentFrame = 2;
+            spIconEmpty.Visible = true;
         }else if(newSP <= newMaxSP/2){
-            spIconTexture.CurrentFrame = 1;
+            spIconHalf.Visible = true;
         }else{
-            spIconTexture.CurrentFrame = 0;
+            spIconFull.Visible = true;
         }
+    }
+
+    public void EnableHighlight(){
+        highLight.Visible = true;
+    }
+
+    public void DisableHighlight(){
+        highLight.Visible = false;
     }
 }

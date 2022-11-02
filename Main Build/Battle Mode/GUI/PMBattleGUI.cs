@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using static BattleMenu;
 public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to PlayerMenuSelection
 {
@@ -12,8 +13,10 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
     private PMPlayerCharacter[] playersAbleToAct;
     private Queue<PMPlayerAbility> abilitiesQueued;
 
+    private bool noAbilityExit = false;
+
     private Control playerCharacterReadouts;
-    public BattleMenu[] menus = new BattleMenu[6];
+    public BattleMenu[] menus = new BattleMenu[7];
     public override void _Ready(){
         currentMenu = (BattleMenu) GetNode("Top Menu");
         parentBattle = (PMBattle) GetNode("../..");    
@@ -23,6 +26,7 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
         menus[3] = (BattleMenu) GetNode("Attack Menu");
         menus[4] = (BattleMenu) GetNode("Skill Menu");
         menus[5] = (BattleMenu) GetNode("Targeting Menu");
+        menus[6] = (BattleMenu) GetNode("Swap Menu");
         playerCharacterReadouts = GetNode<Control>("Readouts");
     }
 
@@ -30,10 +34,23 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
     public Queue<PMPlayerAbility> Execute(MenuInput input, PMBattle caller){
         var temp = currentMenu.HandleInput(input, playersAbleToAct[abilitiesQueued.Count], caller);
         if(temp != null){ 
+            playersAbleToAct[abilitiesQueued.Count].UnselectMe(); //The previous character should exit their excited idle
             abilitiesQueued.Enqueue(temp);
             if(abilitiesQueued.Count == playersAbleToAct.Length) return abilitiesQueued; //If all players have set an ability, we go to the next step in the battle
-            else ChangeMenu(0, playersAbleToAct[abilitiesQueued.Count], caller);
+            else{
+                playersAbleToAct[abilitiesQueued.Count].SelectMe();
+                ChangeMenu(0, playersAbleToAct[abilitiesQueued.Count], caller);
+            }
         } 
+        if(noAbilityExit){ 
+            playersAbleToAct[abilitiesQueued.Count].UnselectMe(); //The previous character should exit their excited idle
+            if(abilitiesQueued.Count == playersAbleToAct.Length) return abilitiesQueued; //If all players have set an ability, we go to the next step in the battle
+            else{
+                playersAbleToAct[abilitiesQueued.Count].SelectMe();
+                ChangeMenu(0, playersAbleToAct[abilitiesQueued.Count], caller);
+            }
+            noAbilityExit = false;
+        }
         return null;
     }
     public void ShowGUI(){
@@ -53,6 +70,7 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
         lastMenu = currentMenu;
         currentMenu = (BattleMenu) GetNode("Top Menu");
         currentMenu.OnOpen(playersAbleToAct[abilitiesQueued.Count], caller);
+        playersAbleToAct[0].SelectMe();
         ShowGUI();
     }
 
@@ -68,5 +86,12 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
             currentMenu = menus[newMenuIndex];
         }
         currentMenu.OnOpen(character, caller);
+    }
+
+    public void ExitWithoutQueueingAbility(PMPlayerCharacter character){
+        var temp = playersAbleToAct.ToList();
+        temp.Remove(character);
+        playersAbleToAct = temp.ToArray();
+        noAbilityExit = true;
     }
 }

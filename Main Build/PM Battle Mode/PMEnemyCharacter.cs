@@ -154,6 +154,12 @@ public class PMEnemyCharacter : PMCharacter{
                     break;
             }
         }
-        return null; //If nothing meets the targeting priorities, we send back null
+        return Array.Empty<PMCharacter>(); //If nothing meets the targeting priorities, we send back null
+    }
+
+    public override void FinishDefeat()
+    {
+        base.FinishDefeat();
+        this.QueueFree();
     }
 }    

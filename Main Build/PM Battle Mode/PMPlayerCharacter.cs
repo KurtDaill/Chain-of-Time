@@ -78,4 +78,14 @@ public class PMPlayerCharacter : PMCharacter{
         currentSP += gain;
         myReadout.UpdateSP(currentSP, maxSP);
     }
+
+    public void SelectMe(){
+        animPlay.Play("Excited Idle");
+        myReadout.EnableHighlight();
+    }
+
+    public void UnselectMe(){
+        animPlay.Play("Idle");
+        myReadout.DisableHighlight();
+    }
 }
