@@ -18,16 +18,6 @@ public class PMBattle : Node
 
     [Export]
     private NodePath battleGUI;
-    [Export]
-    private NodePath debugPlayerOne;
-    [Export]
-    private NodePath debugPlayerTwo;
-    [Export]
-    private NodePath debugEnemyOne;
-    [Export]
-    private NodePath debugEnemyTwo;
-    [Export]
-    private NodePath debugEnemyThree;
     private PMBattleGUI gui;
 
     TurnPhase currentPhase;
@@ -43,12 +33,7 @@ public class PMBattle : Node
     Dictionary<PMCharacter, int> damageScoreboard = new Dictionary<PMCharacter, int>();
     //Tracks healing in the same way as damageScoreboard
     Dictionary<PMCharacter, int> healingScoreboard = new Dictionary<PMCharacter, int>();
-
-    PMBattlePositionManager posManager;
-    //Used to store which two positions we're switching between
-    uint currentSwap = 0;
     float timer = 0;
-    AnimationPlayer animPlay;
     public bool heroTauntUp{
         get;
         private set;
@@ -60,7 +45,7 @@ public class PMBattle : Node
 
     Queue<PMPlayerAbility> playerAttacks;
     Queue<PMEnemyAbility> enemyAttacks;
-    BattleRoster roster = new BattleRoster();
+    PMBattleRoster roster;
 
     //Used to track what character we know are defeated, so they don't come up every time we check for defeats
     List<PMPlayerCharacter> knownDownedCharacters = new List<PMPlayerCharacter>();
@@ -70,16 +55,9 @@ public class PMBattle : Node
         currentPhase = TurnPhase.Upkeep;
         effectStack = new Stack<PMStatus>(trackedStatusEffects);
         gui = (PMBattleGUI) GetNode(battleGUI);
-        //Add Debugs to BattleRosters
-        roster.SetCharacter(GetNode<PMCharacter>(debugPlayerOne), BattlePos.HeroOne);
-        roster.SetCharacter(GetNode<PMCharacter>(debugPlayerTwo), BattlePos.HeroTwo);
-        roster.SetCharacter(GetNode<PMCharacter>(debugEnemyOne), BattlePos.EnemyOne);
-        roster.SetCharacter(GetNode<PMCharacter>(debugEnemyTwo), BattlePos.EnemyTwo);
-        roster.SetCharacter(GetNode<PMCharacter>(debugEnemyThree), BattlePos.EnemyThree);
         heroTauntUp = false;
         enemyTauntUp = false;
-        animPlay = this.GetNode<AnimationPlayer>("Battle Positions/AnimationPlayer");
-        posManager = this.GetNode<PMBattlePositionManager>("Battle Positions");
+        roster = GetNode<PMBattleRoster>("Battle Roster");
     }
 
     public override void _Process(float delta)
@@ -89,12 +67,17 @@ public class PMBattle : Node
                 foreach(PMCharacter ch in roster.GetCharacters()){
                     ch.NewTurnUpkeep();
                 }
-
                 if(effectStack.Count == 0){ //If there's no more effects to resolve, continue
                     //TODO Check for Taunts
-                    gui.ResetGUIState(roster.GetPlayerCharacters(), this);
-                    currentPhase = TurnPhase.PlayerMenu;
-                    playerAttacks = new Queue<PMPlayerAbility>();
+                    if(roster.HandleDefeat()){
+                        gui.ResetGUIState(roster.GetPlayerCharacters(), this);
+                        currentPhase = TurnPhase.PlayerMenu;
+                        playerAttacks = new Queue<PMPlayerAbility>();
+                    }else{
+                        currentPhase = TurnPhase.HandleDefeat;
+                        returnPhase = TurnPhase.PlayerMenu;
+                    }
+                    
                     break;            
                 } 
 
@@ -102,7 +85,6 @@ public class PMBattle : Node
                     if(effectStack.Peek().GetDuration() == 0){
                         effectStack.Peek().Expire();
                     }
-                    CheckForNewDefeats();
                     effectStack.Pop();  //Remove it 
                 }
                 /*TODO: "Specified Cast Not Valid" on these functions: Check out
@@ -133,11 +115,12 @@ public class PMBattle : Node
                 if(playerAttacks.Peek().CheckForCompletion()){//Peek Player Attack Stack, get notice whether the attack is still running or not
                     playerAttacks.Dequeue();
                     if(playerAttacks.Count == 0){//Is there any more attacks?
-                        if(CheckForNewDefeats()){
+                        if(roster.HandleDefeat()){
+                             currentPhase = TurnPhase.TurnOverPause;   
+                        }else{
                             returnPhase = TurnPhase.TurnOverPause;
                             currentPhase = TurnPhase.HandleDefeat;
                         }
-                        else currentPhase = TurnPhase.TurnOverPause;
                     }else{
                         playerAttacks.Peek().Begin(); //Start the next attack, the previous attack should have reset itself
                     }
@@ -153,7 +136,7 @@ public class PMBattle : Node
                 }
             */
             
-                if(timer < 2){
+                if(timer < 1){
                     timer += delta;
                     return;
                 }else{
@@ -184,12 +167,12 @@ public class PMBattle : Node
                             effectStack.Push(status);
                         }
                         
-                        if(CheckForNewDefeats()){
-                            returnPhase = TurnPhase.Upkeep;
-                            currentPhase = TurnPhase.HandleDefeat;
-                        }else{
+                        if(roster.HandleDefeat()){
                             if(effectStack.Count != 0) effectStack.Peek().StartUpkeep();
                             currentPhase = TurnPhase.Upkeep;
+                        }else{
+                            returnPhase = TurnPhase.Upkeep;
+                            currentPhase = TurnPhase.HandleDefeat;
                         }
                     }else{
                         enemyAttacks.Peek().Begin(); //Start the next attack, the previous attack should have reset itself
@@ -197,14 +180,7 @@ public class PMBattle : Node
                 }
                 break;
             case TurnPhase.HandleDefeat :
-
-                var defeatDone = true;
-                foreach(PMCharacter character in deadPool){
-                    if(character.DefeatMe() == false){
-                        defeatDone = false;
-                    }
-                }
-                if(defeatDone){
+                if(roster.HandleDefeat()){
                     if(GetPlayerCharacters(true, true, true, false).Count() == 0){ //if there are no undefeated heroes
                         //End the Battle with a Game Over
                         GD.Print("Game Over");
@@ -215,47 +191,10 @@ public class PMBattle : Node
                         GD.Print("You Win!");
                         GetTree().Quit();
                     }
-                    //TODO make this \/ less hideous   
-                    var checkSlots = roster.GetPlayersForPushing();
-                    if(checkSlots[0] == false){
-                        if(checkSlots[1] == false){
-                            if(checkSlots[2]){
-                                StartPositionSwap(BattlePos.HeroOne, BattlePos.HeroThree);
-                            }else{
-                                throw new NotImplementedException(); //TODO Custom Exception : Why are we here if every hero is dead or missing
-                            }
-                        }else{
-                            if(checkSlots[2]){
-                                posManager.StartPositionCrunch(true);
-                            }else{
-                                posManager.StartPositionSwap(BattlePos.HeroTwo, BattlePos.HeroOne);
-                            }
-                        }
-                    }else{
-                        if(checkSlots[1] == false){
-                            StartPositionSwap(BattlePos.HeroThree, BattlePos.HeroTwo);
-                        }
+                    if(returnPhase == TurnPhase.PlayerMenu){
+                        gui.ResetGUIState(roster.GetPlayerCharacters(), this);
+                        playerAttacks = new Queue<PMPlayerAbility>();
                     }
-                    checkSlots = roster.GetEnemiesForPushing();
-                    if(checkSlots[0] == false){
-                        if(checkSlots[1] == false){
-                            if(checkSlots[2]){
-                                StartPositionSwap(BattlePos.EnemyOne, BattlePos.EnemyThree);
-                            }else{
-                                throw new NotImplementedException(); //TODO Custom Exception : Why are we here if every hero is dead or missing
-                            }
-                        }else{
-                            if(checkSlots[2]){
-                                posManager.StartPositionCrunch(false);
-                            }else{
-                                posManager.StartPositionSwap(BattlePos.EnemyTwo, BattlePos.EnemyOne);
-                            }
-                        }
-                    }else{
-                        if(checkSlots[1] == false){
-                            StartPositionSwap(BattlePos.EnemyThree, BattlePos.EnemyTwo);
-                        }
-                    } 
                     currentPhase = returnPhase; //Only reaches here if there's still a fight
                     //Add something so we're not dependant on the turnover pause to handle death...
                 }
@@ -348,155 +287,12 @@ public class PMBattle : Node
         trackedStatusEffects.Add(stat);
     }
 
-    public bool CheckForNewDefeats(){
-        deadPool.Clear();
-        foreach(PMCharacter character in GetCharacters(true, true, true, true)){
-            if(character.GetHP() <= 0){
-                if(knownDownedCharacters.Contains(character)){
-                    continue;
-                }
-                deadPool.Add(character);
-                if(character is PMPlayerCharacter) knownDownedCharacters.Add((PMPlayerCharacter)character);
-            }
-        }
-        return (deadPool.Count > 0);
-    }
-
     public void StartPositionSwap(BattlePos one, BattlePos two){
-        posManager.StartPositionSwap(one, two);
+        roster.StartPositionSwap(one, two);
     }
 
     public void FinishPositionSwap(){
-        posManager.FinishPositionSwap(roster);
-    }
-}
-
-//Designed to handle where characters are standing in the battle
-public class BattleRoster{
-    //Note: given how BattlePos' are bitwise flagged, using "log(2)" on a battle pos gets the correct position in the characters array
-    private PMCharacter[] characters = new PMCharacter[6];
-
-    public void SetCharacter(PMCharacter ch, BattlePos pos){
-        characters[(uint)Math.Log((uint)pos, 2)] = ch;
-        ch.myPosition = pos;
-    }
-    public PMCharacter GetSingle(BattlePos pos){
-        return characters[(uint)Math.Log((uint)pos, 2)];
-    }
-
-    public List<PMCharacter> GetGroup(BattlePos[] pos){
-        List<PMCharacter> group = new List<PMCharacter>();
-        foreach(BattlePos addPos in pos){
-            group.Add(GetSingle(addPos));
-        }
-        return group;
-    }
-
-    //Returns all player characters, allowing to filter them by invisible, flying, and phased out.
-    public PMPlayerCharacter[] GetPlayerCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true, bool includeDefeated = false){
-        List<PMPlayerCharacter> result = new List<PMPlayerCharacter>();
-        var temp = characters.ToList<PMCharacter>();
-        temp.RemoveAll(x => x == null);
-        foreach(PMCharacter ch in temp){
-            if(ch.GetType() == typeof(PMPlayerCharacter)){
-                List<StatusEffect> chStatus = ch.GetMyStatuses();
-                if(!includeInvisible){
-                    if(chStatus.Contains(StatusEffect.Invisible)){
-                        continue;
-                    }
-                }
-                if(!includeFlying){
-                    if(chStatus.Contains(StatusEffect.Flying)){
-                        continue;
-                    }
-                }
-                if(!includePhasedOut){
-                    if(chStatus.Contains(StatusEffect.PhasedOut)){
-                        continue;
-                    }
-                }
-                if(!includeDefeated){
-                    if(ch.GetHP() <= 0){
-                        continue;
-                    }
-                }
-                result.Add((PMPlayerCharacter)ch);
-            }
-        }
-        return result.ToArray();
-    }
-
-    public PMEnemyCharacter[] GetEnemyCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true, bool includeDefeated = false){
-        List<PMEnemyCharacter> result = new List<PMEnemyCharacter>();
-        var temp = characters.ToList<PMCharacter>();
-        temp.RemoveAll(x => x == null);
-        foreach(PMCharacter ch in temp){
-            if(ch.GetType() == typeof(PMEnemyCharacter)){
-                List<StatusEffect> chStatus = ch.GetMyStatuses();
-                if(!includeInvisible){
-                    if(chStatus.Contains(StatusEffect.Invisible)){
-                        continue;
-                    }
-                }
-                if(!includeFlying){
-                    if(chStatus.Contains(StatusEffect.Flying)){
-                        continue;
-                    }
-                }
-                if(!includePhasedOut){
-                    if(chStatus.Contains(StatusEffect.PhasedOut)){
-                        continue;
-                    }
-                }
-                if(!includeDefeated){
-                    if(ch.GetHP() <= 0){
-                        continue;
-                    }
-                }
-                result.Add((PMEnemyCharacter)ch);
-            }
-        }
-        return result.ToArray();
-    }
-
-    public PMCharacter[] GetCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true, bool includeDefeated = true){
-        List<PMCharacter> temp = characters.ToList<PMCharacter>();
-        temp.RemoveAll(x => x == null);
-        foreach(PMCharacter ch in temp){
-            List<StatusEffect> statuses = ch.GetMyStatuses();
-            if(!includeFlying && statuses.Contains(StatusEffect.Flying)) temp.Remove(ch);
-            if(!includeInvisible && statuses.Contains(StatusEffect.Flying)) temp.Remove(ch);
-            if(!includePhasedOut && statuses.Contains(StatusEffect.PhasedOut)) temp.Remove(ch);
-            if(!includeDefeated && ch.GetHP() <= 0) temp.Remove(ch);
-        } 
-        return temp.ToArray<PMCharacter>();
-    }
-
-    //Returns an array indicating whether there's an active player on each slot: used for when we need to push inactive player character to the rear
-    public bool[] GetPlayersForPushing(){
-        var result = new bool[3];
-        for(int j = 0; j < 3; j++){
-            if(characters[j] == null || characters[j].GetHP() <= 0){
-                result[j]  = false;
-            }else{
-                result[j] = true;
-            }
-        }  
-        return result;
-    }
-    
-    public bool[] GetEnemiesForPushing(){
-        bool[] result = new bool[3];
-        for(int j = 5; j > 2; j--){
-            if(characters[j] == null || characters[j].GetHP() <= 0){
-                var t = 5 - j;
-                result[t] = false;
-            }else{
-                var t = 5 - j;
-                result[t] = true;
-            }
-        }  
-        return result;
+        roster.FinishPositionSwap();
     }
 }
 

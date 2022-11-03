@@ -166,7 +166,6 @@ file_logging/enable_file_logging=true
 [mono]
 
 project/assembly_name="Chain Of Time"
-debugger_agent/wait_for_debugger=true
 debugger_agent/wait_timeout=9000
 project/auto_update_project=false
 

@@ -160,6 +160,6 @@ public class PMEnemyCharacter : PMCharacter{
     public override void FinishDefeat()
     {
         base.FinishDefeat();
-        this.QueueFree();
+        //this.QueueFree();
     }
 }    

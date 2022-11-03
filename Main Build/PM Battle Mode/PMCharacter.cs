@@ -27,16 +27,22 @@ public class PMCharacter : Node{
     string name;
     public Dictionary<AbilityAlignment, float> DamageModifiers = new Dictionary<AbilityAlignment, float>();
     public AnimationPlayer animPlay;
-
     private bool doneDying = false;
-
     public Sprite3D pointerGraphic;
+    [Export(PropertyHint.File)]
+    public string HealingNumberResource = "res://PM Battle Mode/Healing Number.tscn";
+    [Export(PropertyHint.File)]
+    public string DamageNumberResource = "res://PM Battle Mode/Damage Number.tscn"; 
+
+    private PackedScene damageNum, healingNum;
     public override void _Ready(){
         statusEffects = new List<PMStatus>();
         parentBattle = (PMBattle) GetNode("/root/Battle");
         animPlay = GetNode<AnimationPlayer>("AnimationPlayer");
         pointerGraphic = GetNode<Sprite3D>("Pointer");
         currentHP = MaxHP;
+        damageNum = GD.Load<PackedScene>(DamageNumberResource);
+        healingNum = GD.Load<PackedScene>(HealingNumberResource);
     } 
 
     public override void _Process(float delta){
@@ -91,8 +97,10 @@ public class PMCharacter : Node{
             damage = Mathf.RoundToInt(damage * mod.Value);
         }
         this.currentHP -= damage;
-        //TODO Add Damage Number System
-        animPlay.Play("HitReact");
+        var dmg = (Label3D) damageNum.Instance();
+        dmg.Text = "" + damage;
+        this.AddChild(dmg);
+        if(damage > 0)animPlay.Play("HitReact");
         GD.Print(name + " is hit for: " + damage); //TODO modify this to print to a combat log?
     }
 
@@ -101,6 +109,9 @@ public class PMCharacter : Node{
         if(currentHP == 0){
             animPlay.Play("Revive");
         }
+        var healing = (Label3D) healingNum.Instance();
+        healing.Text = "" + heal;
+        this.AddChild(healing);
         currentHP += heal;
         if(currentHP > MaxHP) currentHP = MaxHP;
     }
@@ -144,6 +155,7 @@ public class PMCharacter : Node{
         animPlay.Play();
     }
 
+    //Returns true when the Defeat Animation is complete
     public virtual bool DefeatMe(){
         if(animPlay.CurrentAnimation != "Defeat"){
             animPlay.Play("Defeat");
