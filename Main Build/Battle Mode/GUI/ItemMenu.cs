@@ -3,6 +3,7 @@ using System;
 
 public class ItemMenu : BattleMenu
 {
+    
     /*
     // Declare member variables here. Examples:
     // private int a = 2;
@@ -44,20 +45,15 @@ public class ItemMenu : BattleMenu
         SetLabels(0);
         base.OnOpen(); 
     }
-
-    public override BattleMenu HandleInput(MenuInput input){
-        if(input == MenuInput.Down){
-            ScrollDown();
-        }
-        else if(input == MenuInput.Up){
-            ScrollUp();
-        }
-        else if(input == MenuInput.Back){
-            return parentGUI.lastMenu;
+*/
+    public override PMPlayerAbility HandleInput(MenuInput input, PMPlayerCharacter character, PMBattle caller){
+        if(input == MenuInput.Back){
+            parentGUI.ChangeMenu(0, character, caller);
+            return null;
         }
         return null;
     }
-
+/*
     public void ScrollDown(){
         /*
             Set Item Tabs such that "Item Tab 0"  is the top invisible tab, and "Item Tab 4" is visibly on the bottom

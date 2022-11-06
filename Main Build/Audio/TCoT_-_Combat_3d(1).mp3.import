@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/TCoT_-_Combat_3d(1).mp3-5373db3a78d68d8bf5382fc30756fbd8.mp3str"
+
+[deps]
+
+source_file="res://Audio/TCoT_-_Combat_3d(1).mp3"
+dest_files=[ "res://.import/TCoT_-_Combat_3d(1).mp3-5373db3a78d68d8bf5382fc30756fbd8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

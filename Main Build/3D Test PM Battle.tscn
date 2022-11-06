@@ -1,4 +1,4 @@
-[gd_scene load_steps=196 format=2]
+[gd_scene load_steps=198 format=2]
 
 [ext_resource path="res://Audio/FUI Button Beep Clean Pitch Up.wav" type="AudioStream" id=1]
 [ext_resource path="res://PM Battle Mode/PMBattle.cs" type="Script" id=2]
@@ -92,6 +92,7 @@
 [ext_resource path="res://GUI/Battle Menu Assets/Readouts/SP Gem Half.png" type="Texture" id=90]
 [ext_resource path="res://GUI/Battle Menu Assets/Readouts/HP Candle Half.png" type="Texture" id=91]
 [ext_resource path="res://GUI/Battle Menu Assets/Readouts/SP Gem Full.png" type="Texture" id=92]
+[ext_resource path="res://Audio/TCoT_-_Combat_3d(1).mp3" type="AudioStream" id=93]
 
 [sub_resource type="Animation" id=88]
 resource_name = "Excited Idle"
@@ -631,6 +632,24 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=123]
+resource_name = "Taunt Idle"
+length = 0.5
+loop = true
+step = 0.16
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.16, 0.32 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 66, 67, 68 ]
 }
 
 [sub_resource type="Animation" id=1]
@@ -4149,7 +4168,7 @@ shaded = true
 alpha_cut = 2
 texture = ExtResource( 22 )
 hframes = 10
-vframes = 7
+vframes = 9
 script = ExtResource( 39 )
 MaxHP = 10
 name = "Cato"
@@ -4168,6 +4187,7 @@ anims/Defend = SubResource( 73 )
 anims/HitReact = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/RESET = SubResource( 59 )
+"anims/Taunt Idle" = SubResource( 123 )
 
 [node name="Basic Attack" type="Node" parent="Battle Roster/Hero 1/Cato"]
 script = ExtResource( 48 )
@@ -5489,28 +5509,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 axis = 1
 frames = SubResource( 39 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Waterfall Piece" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 2.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 46 )
-frame = 5
 playing = true
 
 [node name="Waterfall Piece2" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 0.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 46 )
-frame = 4
+frame = 5
 playing = true
 
 [node name="Waterfall Top" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 53 )
-frame = 5
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="Baths"]
@@ -5528,5 +5546,10 @@ shape = SubResource( 54 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 56 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 93 )
+volume_db = -25.0
+autoplay = true
 
 [editable path="Baths"]
