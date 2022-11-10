@@ -124,16 +124,17 @@ public class PMBattleRoster : Spatial
     }
 
     public PMCharacter[] GetCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true, bool includeDefeated = true){
-        List<PMCharacter> temp = characters.ToList<PMCharacter>();
-        temp.RemoveAll(x => x == null);
-        foreach(PMCharacter ch in temp){
+        var result = new List<PMCharacter>();
+        foreach(PMCharacter ch in characters){
+            if(ch == null) continue;
             List<StatusEffect> statuses = ch.GetMyStatuses();
-            if(!includeFlying && statuses.Contains(StatusEffect.Flying)) temp.Remove(ch);
-            if(!includeInvisible && statuses.Contains(StatusEffect.Flying)) temp.Remove(ch);
-            if(!includePhasedOut && statuses.Contains(StatusEffect.PhasedOut)) temp.Remove(ch);
-            if(!includeDefeated && ch.GetHP() <= 0) temp.Remove(ch);
+            if(!includeFlying && statuses.Contains(StatusEffect.Flying)) continue;
+            if(!includeInvisible && statuses.Contains(StatusEffect.Flying)) continue;
+            if(!includePhasedOut && statuses.Contains(StatusEffect.PhasedOut)) continue;
+            if(!includeDefeated && ch.GetHP() <= 0) continue;
+            result.Add(ch); //If none of the previous conditions are met, we need this character
         } 
-        return temp.ToArray<PMCharacter>();
+        return result.ToArray();
     }
 
     //Returns an array indicating whether there's an active player on each slot: used for when we need to push inactive player character to the rear

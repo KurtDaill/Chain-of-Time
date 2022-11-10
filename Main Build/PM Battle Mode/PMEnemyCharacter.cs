@@ -10,6 +10,8 @@ public class PMEnemyCharacter : PMCharacter{
     protected List<NodePath> abilitiesByPriority;
     protected PMEnemyAbility[] abilities;
 
+    public bool chargedUp = false;
+
     [Export]
     protected List<EnemyRole> combatRoles = new List<EnemyRole>{EnemyRole.Minion};
 
@@ -23,6 +25,10 @@ public class PMEnemyCharacter : PMCharacter{
 
     public List<EnemyRole> GetRoles(){
         return combatRoles;
+    }
+
+    public void ChargeUp(){
+        chargedUp = false;
     }
     public PMEnemyAbility DecideAttack(){  //TODO use dependancy injection to make this shit suck less
         PMEnemyAbility chosenAbility;
@@ -101,6 +107,9 @@ public class PMEnemyCharacter : PMCharacter{
                     int count = parentBattle.GetEnemyCharacters().Length;
                     if(req.Contains(SpecialRequirement.NoEnemies)) if(count > 1) return false; //If there's only 1 enemy (me), we fail the "no other enemies" condition
                     if(req.Contains(SpecialRequirement.ThreeEnemies)) if(count != 3) return false; //If there's not 3 enemies total, we fail the 3 enemies condition
+                }
+                if(req.Contains(SpecialRequirement.Charged)){
+                    if(!chargedUp) return false;
                 }
             }
         return true;

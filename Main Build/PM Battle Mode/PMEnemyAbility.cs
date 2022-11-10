@@ -58,6 +58,25 @@ public class PMEnemyAbility : PMBattleAbility
         successfulDefense = false;
         defenseLocked = false;
     }
+
+    public void ChargeUp(){
+        var en = (PMEnemyCharacter) source;
+        en.chargedUp = true;
+    }
+
+    public void ExpendCharge(){
+        var en = (PMEnemyCharacter) source;
+        en.chargedUp = false;
+    }
+
+    public override void FinishSequence()
+    {
+        base.FinishSequence();
+        var en = (PMEnemyCharacter) source;
+        if(en.chargedUp){
+            en.animPlay.Play("ChargedIdle");
+        }
+    }
 }
 
 public static class BattleEnemyAI{
@@ -92,6 +111,7 @@ public static class BattleEnemyAI{
         SelfHurt,
         EnemyHurt,
         SelfBloodied,
-        EnemyBloodied
+        EnemyBloodied,
+        Charged
     }
 }
