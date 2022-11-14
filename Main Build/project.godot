@@ -90,6 +90,10 @@ config/name="Chain Of Time"
 run/main_scene="res://3D Test PM Battle.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameMaster="*res://GameMaster.cs"
+
 [display]
 
 window/size/width=1920

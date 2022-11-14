@@ -12,7 +12,7 @@ public class PMCharacter : Node{
     public PMBattle parentBattle;
 
     [Export]
-    protected int MaxHP;
+    protected int maxHP;
 
     protected int currentHP, damageTakenThisTurn;
 
@@ -40,7 +40,7 @@ public class PMCharacter : Node{
         parentBattle = (PMBattle) GetNode("/root/Battle");
         animPlay = GetNode<AnimationPlayer>("AnimationPlayer");
         pointerGraphic = GetNode<Sprite3D>("Pointer");
-        currentHP = MaxHP;
+        currentHP = maxHP;
         damageNum = GD.Load<PackedScene>(DamageNumberResource);
         healingNum = GD.Load<PackedScene>(HealingNumberResource);
     } 
@@ -50,11 +50,11 @@ public class PMCharacter : Node{
     }
 
     public bool IsBloodied(){
-        return (currentHP <= (MaxHP/2));
+        return (currentHP <= (maxHP/2));
     }
 
     public bool IsHurt(){
-        return (currentHP < MaxHP);
+        return (currentHP < maxHP);
     }
 
     public int GetHP(){
@@ -113,7 +113,7 @@ public class PMCharacter : Node{
         healing.Text = "" + heal;
         this.AddChild(healing);
         currentHP += heal;
-        if(currentHP > MaxHP) currentHP = MaxHP;
+        if(currentHP > maxHP) currentHP = maxHP;
     }
 
     //Called by OnAnimationFinished Signal

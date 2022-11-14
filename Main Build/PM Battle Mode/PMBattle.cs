@@ -20,6 +20,8 @@ public class PMBattle : Node
     private NodePath battleGUI;
     private PMBattleGUI gui;
 
+    private GameMaster master;
+
     TurnPhase currentPhase;
     TurnPhase returnPhase; //What phase do we return to after we've handled defeats
 
@@ -58,6 +60,7 @@ public class PMBattle : Node
         heroTauntUp = false;
         enemyTauntUp = false;
         roster = GetNode<PMBattleRoster>("Battle Roster");
+        master = GetNode<GameMaster>("/root/GameMaster");
     }
 
     public override void _Process(float delta)
@@ -183,13 +186,11 @@ public class PMBattle : Node
                 if(roster.HandleDefeat()){
                     if(GetPlayerCharacters(true, true, true, false).Count() == 0){ //if there are no undefeated heroes
                         //End the Battle with a Game Over
-                        GD.Print("Game Over");
-                        GetTree().Quit();
+                        EndBattle(true);
                     }
                     if(GetEnemyCharacters(true, true, true, false).Count() == 0){
                         //End the Battle with Victory
-                        GD.Print("You Win!");
-                        GetTree().Quit();
+                        EndBattle(false);
                     }
                     if(returnPhase == TurnPhase.PlayerMenu){
                         gui.ResetGUIState(roster.GetPlayerCharacters(), this);
@@ -202,6 +203,11 @@ public class PMBattle : Node
         }
     }
 
+    public virtual void EndBattle(bool gameOver){
+        if(gameOver)GD.Print("Game Over");
+        else GD.Print("You Win!");
+        GetTree().Quit();
+    }
     public PMCharacter PositionLookup(BattlePos target){
         var temp = roster.GetSingle(target);
         return roster.GetSingle(target);

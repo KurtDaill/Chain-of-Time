@@ -1,19 +1,31 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-
+using static GameMaster;
 public class PMPlayerCharacter : PMCharacter{
-    List<PackedScene> abilitiesKnown = new List<PackedScene>();
-    
     [Export]
-    List<NodePath> debugAbilities = new List<NodePath>(); //TODO Temp Code, Remove when Battle Starts are Implemented
-    PMPlayerAbility[] abilitiesPrepared = new PMPlayerAbility[4];
+    int[] abilitiesKnown = new int[0];
+    [Export]
+    int[] abilitiesPrepared = new int[0];
+    
+    [Export(PropertyHint.File)]
+    string[] allAbilities;
+    [Export(PropertyHint.File)]
+    string basicAttack;
+
+
+    //[Export]
+    //List<NodePath> debugAbilities = new List<NodePath>(); //TODO Temp Code, Remove when Battle Starts are Implemented
+    PMPlayerAbility[] abilitiesPreparedInstanced = new PMPlayerAbility[4];
+    
+    [Export(PropertyHint.Flags)]
+    string sceneFilePath;
 
     private int currentSP;
 
     [Export]
     private int maxSP;
-    PMPlayerAbility basicAttack;
+    PMPlayerAbility basicAttackInstanced;
 
     PlayerCharacterReadout myReadout;
     [Export]
@@ -21,30 +33,37 @@ public class PMPlayerCharacter : PMCharacter{
     public override void _Ready()
     {
         base._Ready();
-        basicAttack = (PMPlayerAbility) GetNode("Basic Attack");
+        var basicInstanced = GD.Load<PackedScene>(basicAttack).Instance<PMPlayerAbility>();
+        this.AddChild(basicInstanced);
+        basicAttackInstanced = basicInstanced;
         GetNode<AnimationPlayer>("AnimationPlayer").Play("Idle");
         myReadout = GetNode<PlayerCharacterReadout>(readout);
         currentSP = maxSP;
-        for(int i = 0 ; i < debugAbilities.Count; i++){ //TODO Temp Code, Remove when Battle Starts are Implemented
+        /*for(int i = 0 ; i < debugAbilities.Count; i++){ //TODO Temp Code, Remove when Battle Starts are Implemented
             if(debugAbilities[i] != null){
-                abilitiesPrepared[i] = GetNode<PMPlayerAbility>(debugAbilities[i]);
+                abilitiesPreparedInstanced[i] = GetNode<PMPlayerAbility>(debugAbilities[i]);
             }
+        }*/
+        for(int i = 0; i < abilitiesPrepared.Length; i++){
+            var instance = GD.Load<PackedScene>(allAbilities[abilitiesPrepared[i]]).Instance<PMPlayerAbility>();
+            this.AddChild(instance);
+            abilitiesPreparedInstanced[i] = instance; 
         }
     } 
     public PMPlayerAbility GetBasicAttack(){
-        return basicAttack;
+        return basicAttackInstanced;
     }
 
     public override void TakeDamage(int damage, PMBattleUtilities.AbilityAlignment alignment)
     {
         base.TakeDamage(damage, alignment);
-        myReadout.UpdateHP(currentHP, MaxHP);
+        myReadout.UpdateHP(currentHP, maxHP);
     }
 
     public override void TakeHealing(int heal, PMBattleUtilities.AbilityAlignment alignment)
     {
         base.TakeHealing(heal, alignment);
-        myReadout.UpdateHP(currentHP, MaxHP);
+        myReadout.UpdateHP(currentHP, maxHP);
     }
 
     public void PlayDefenseAnimation(){
@@ -52,12 +71,12 @@ public class PMPlayerCharacter : PMCharacter{
     }
 
     public void SetupReadout(){
-        myReadout.UpdateHP(currentHP, MaxHP);
+        myReadout.UpdateHP(currentHP, maxHP);
         myReadout.UpdateSP(currentSP, maxSP);
     }
 
     public PMPlayerAbility[] GetAbilities(){
-        return abilitiesPrepared;
+        return abilitiesPreparedInstanced;
     }
 
     public bool ChargeSP(int cost){
@@ -87,5 +106,18 @@ public class PMPlayerCharacter : PMCharacter{
     public void UnselectMe(){
         animPlay.Play("Idle");
         myReadout.DisableHighlight();
+    }
+
+    public PlayerCharacterData ExportData(){
+        return new PlayerCharacterData(
+            sceneFilePath,
+            currentHP,
+            maxHP,
+            currentSP,
+            maxSP,
+            (uint) myPosition,
+            abilitiesKnown,
+            abilitiesPrepared
+        );
     }
 }
