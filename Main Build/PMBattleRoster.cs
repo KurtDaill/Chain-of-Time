@@ -3,6 +3,7 @@ using System;
 using static PMBattleUtilities;
 using System.Collections.Generic;
 using System.Linq;
+using static GameMaster;
 
 
 //Designed to handle where characters are standing in the battle
@@ -19,6 +20,8 @@ public class PMBattleRoster : Spatial
     bool waitingOnSwaps;
     [Export]
     bool debugMode = false;
+    [Export]
+    bool EnemiesSetInEditor = true;
     //Note: given how BattlePos' are bitwise flagged, using "log(2)" on a battle pos gets the correct position in the characters array
     private PMCharacter[] characters = new PMCharacter[6];
     private List<PMCharacter> deadPool = new List<PMCharacter>();
@@ -39,6 +42,14 @@ public class PMBattleRoster : Spatial
                 if(character != null) SetCharacter(character, (BattlePos)(Mathf.Pow(2, (5-i))));
             }
         }
+        else if(EnemiesSetInEditor){
+            for(int i = 0; i < 6; i++){
+                var character = this.GetChild(i).GetChildOrNull<PMCharacter>(0);
+                if(character != null && character is PMEnemyCharacter){
+                    SetCharacter(character, (BattlePos)(Mathf.Pow(2, (5-i))));
+                }
+            }
+        }
     }
     public void SetCharacter(PMCharacter ch, BattlePos pos){
         characters[(uint)Math.Log((uint)pos, 2)] = ch;
@@ -56,6 +67,28 @@ public class PMBattleRoster : Spatial
         return group;
     }
 
+    public void LoadPlayerCharacters(PlayerCharacterData[] loadMe){
+        for(int i = 0; i < loadMe.Length; i++){
+            var instance = GD.Load<PackedScene>(loadMe[i].filePath).Instance<PMPlayerCharacter>();
+            instance.ImportData(loadMe[i]);
+            SetCharacter(instance, instance.myPosition);
+            switch(instance.myPosition){
+                case BattlePos.HeroOne:
+                    //this.GetNode("Hero 1").AddChild(instance);
+                    this.GetChild(2).AddChild(instance); //TODO There should be a better solution, right?
+                    break;
+                case BattlePos.HeroTwo:
+                    //this.GetNode("Hero 2").AddChild(instance);
+                    this.GetChild(1).AddChild(instance); 
+                    break;
+                case BattlePos.HeroThree:
+                    this.GetChild(0).AddChild(instance); 
+                    //this.GetNode("Hero 3").AddChild(instance);
+                    break;
+            }
+            //instance.Setup();
+        }
+    }
     //Returns all player characters, allowing to filter them by invisible, flying, and phased out.
     public PMPlayerCharacter[] GetPlayerCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true, bool includeDefeated = false){
         List<PMPlayerCharacter> result = new List<PMPlayerCharacter>();

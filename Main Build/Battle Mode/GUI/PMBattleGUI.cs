@@ -15,7 +15,7 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
 
     private bool noAbilityExit = false;
 
-    private Control playerCharacterReadouts;
+    private ReadoutContainer playerCharacterReadouts;
     public BattleMenu[] menus = new BattleMenu[7];
     public override void _Ready(){
         currentMenu = (BattleMenu) GetNode("Top Menu");
@@ -27,7 +27,7 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
         menus[4] = (BattleMenu) GetNode("Skill Menu");
         menus[5] = (BattleMenu) GetNode("Targeting Menu");
         menus[6] = (BattleMenu) GetNode("Swap Menu");
-        playerCharacterReadouts = GetNode<Control>("Readouts");
+        playerCharacterReadouts = GetNode<ReadoutContainer>("Readouts");
     }
 
     //Returns the finished Queue when complete

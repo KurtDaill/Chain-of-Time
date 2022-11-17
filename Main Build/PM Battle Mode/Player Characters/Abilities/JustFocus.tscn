@@ -552,6 +552,7 @@ spCost = 2
 transform = Transform( 1, 2.38419e-07, 0, -2.38419e-07, 1, 0, 0, 0, 1, -1.6, 4.54, 2.8 )
 visible = false
 pixel_size = 0.008
+no_depth_test = true
 texture = ExtResource( 4 )
 hframes = 3
 frame = 2
@@ -559,6 +560,7 @@ frame = 2
 [node name="Orb" type="Sprite3D" parent="Focus"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-07, 0.922169, -0.0799999 )
 pixel_size = 0.008
+no_depth_test = true
 texture = ExtResource( 1 )
 hframes = 5
 frame = 4
@@ -566,6 +568,7 @@ frame = 4
 [node name="Orb2" type="Sprite3D" parent="Focus"]
 transform = Transform( 1, -2.38419e-07, 0, 2.38419e-07, 1, 0, 0, 0, 1, 0.604084, -0.600892, -0.0799999 )
 pixel_size = 0.008
+no_depth_test = true
 texture = ExtResource( 1 )
 hframes = 5
 frame = 4
@@ -573,6 +576,7 @@ frame = 4
 [node name="Orb3" type="Sprite3D" parent="Focus"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.604084, -0.600892, 0.16 )
 pixel_size = 0.008
+no_depth_test = true
 texture = ExtResource( 1 )
 hframes = 5
 frame = 4

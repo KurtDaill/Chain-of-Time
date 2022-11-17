@@ -8,6 +8,7 @@ using static BattleMenu;
 public class PMBattle : Node
 {
     private enum TurnPhase{
+        LoadDelay,
         Upkeep,
         PlayerMenu,
         PlayerAction,
@@ -20,7 +21,7 @@ public class PMBattle : Node
     private NodePath battleGUI;
     private PMBattleGUI gui;
 
-    private GameMaster master;
+    protected GameMaster master;
 
     TurnPhase currentPhase;
     TurnPhase returnPhase; //What phase do we return to after we've handled defeats
@@ -35,7 +36,7 @@ public class PMBattle : Node
     Dictionary<PMCharacter, int> damageScoreboard = new Dictionary<PMCharacter, int>();
     //Tracks healing in the same way as damageScoreboard
     Dictionary<PMCharacter, int> healingScoreboard = new Dictionary<PMCharacter, int>();
-    float timer = 0;
+    float timer = 0F;
     public bool heroTauntUp{
         get;
         private set;
@@ -45,27 +46,44 @@ public class PMBattle : Node
         private set;
     }
 
-    Queue<PMPlayerAbility> playerAttacks;
-    Queue<PMEnemyAbility> enemyAttacks;
-    PMBattleRoster roster;
+    protected Queue<PMPlayerAbility> playerAttacks;
+    protected Queue<PMEnemyAbility> enemyAttacks;
+    public PMBattleRoster roster;
 
     //Used to track what character we know are defeated, so they don't come up every time we check for defeats
     List<PMPlayerCharacter> knownDownedCharacters = new List<PMPlayerCharacter>();
     public override void _Ready()
     {
         //Normal Goto upkeep functions
-        currentPhase = TurnPhase.Upkeep;
+        currentPhase = TurnPhase.LoadDelay;
         effectStack = new Stack<PMStatus>(trackedStatusEffects);
         gui = (PMBattleGUI) GetNode(battleGUI);
         heroTauntUp = false;
         enemyTauntUp = false;
         roster = GetNode<PMBattleRoster>("Battle Roster");
         master = GetNode<GameMaster>("/root/GameMaster");
+        
+        foreach(PMPlayerCharacter player in GetPlayerCharacters()){
+            player.SetupGUI(gui.GetNode<ReadoutContainer>("Readouts"));
+        }
+        /*if(master.IsPartyDataOnFile()){
+            LoadPlayerCharactersFromGM();
+        }*/
+        //master = GameMaster;
     }
 
     public override void _Process(float delta)
     {
         switch(currentPhase){
+            case TurnPhase.LoadDelay :
+                if(timer < 1){
+                    timer += delta;
+                    return;
+                }else{
+                    timer = 0;
+                    currentPhase = TurnPhase.Upkeep;
+                }
+                break;
             case TurnPhase.Upkeep :
                 foreach(PMCharacter ch in roster.GetCharacters()){
                     ch.NewTurnUpkeep();
@@ -299,6 +317,7 @@ public class PMBattle : Node
 
     public void FinishPositionSwap(){
         roster.FinishPositionSwap();
+        gui.GetNode<ReadoutContainer>("Readouts").Reorder();
     }
 }
 

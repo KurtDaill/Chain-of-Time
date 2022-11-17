@@ -14,7 +14,8 @@ public class PMCharacter : Node{
     [Export]
     protected int maxHP;
 
-    protected int currentHP, damageTakenThisTurn;
+    protected int currentHP = -1;
+    protected int damageTakenThisTurn;
 
     [Export(PropertyHint.Enum)]
     public List<AbilityAlignment>ModifiedDamageTypes;
@@ -40,7 +41,7 @@ public class PMCharacter : Node{
         parentBattle = (PMBattle) GetNode("/root/Battle");
         animPlay = GetNode<AnimationPlayer>("AnimationPlayer");
         pointerGraphic = GetNode<Sprite3D>("Pointer");
-        currentHP = maxHP;
+        if(currentHP == -1) currentHP = maxHP;
         damageNum = GD.Load<PackedScene>(DamageNumberResource);
         healingNum = GD.Load<PackedScene>(HealingNumberResource);
     } 
@@ -93,7 +94,7 @@ public class PMCharacter : Node{
     }
 
     public virtual void TakeDamage(int damage, AbilityAlignment alignment){
-        foreach(KeyValuePair<AbilityAlignment, float> mod in DamageModifiers){
+         foreach(KeyValuePair<AbilityAlignment, float> mod in DamageModifiers){
             damage = Mathf.RoundToInt(damage * mod.Value);
         }
         this.currentHP -= damage;

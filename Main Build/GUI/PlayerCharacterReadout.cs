@@ -6,9 +6,8 @@ public class PlayerCharacterReadout : TextureRect
     Label HP, SP;
     Label maxHPLabel, maxSPLabel;
     TextureRect hpIconFull, hpIconHalf, hpIconEmpty, spIconFull, spIconHalf, spIconEmpty, highLight;
+    public PMPlayerCharacter character;
 
-    [Export]
-    NodePath pathToDebugCharacter; //TODO replace this with real solution
     public override void _Ready()
     {
         HP = GetNode<Label>("HP");
@@ -22,7 +21,8 @@ public class PlayerCharacterReadout : TextureRect
         spIconHalf = this.GetNode<TextureRect>("SP Icon Half");
         spIconEmpty = this.GetNode<TextureRect>("SP Icon Empty");
         highLight = this.GetNode<TextureRect>("Highlight");
-        GetNode<PMPlayerCharacter>(pathToDebugCharacter).SetupReadout(); //TODO replace this with real solution
+        //character.SetupReadout();
+        //GetParent<ReadoutContainer>().Reorder();
     }
     public void UpdateHP(int newHP, int newMaxHP){
         HP.Text = "" + newHP;

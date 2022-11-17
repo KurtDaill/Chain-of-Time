@@ -176,5 +176,5 @@ pixel_size = 0.007
 shaded = true
 alpha_cut = 1
 frames = SubResource( 10 )
-frame = 5
+frame = 1
 playing = true

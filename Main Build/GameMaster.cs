@@ -3,10 +3,10 @@ using System;
 
 public class GameMaster : Node
 {
-    PlayerCharacterData[] playerData;
+    PlayerCharacterData[] playerData = Array.Empty<PlayerCharacterData>();
     public struct PlayerCharacterData{
-        public PlayerCharacterData(string coreNode, int hp, int maxHP, int sp, int maxSP, uint position, int[] abilitiesKnown, int[] abilitiesPrepared){
-            this.coreNode = coreNode;
+        public PlayerCharacterData(string filePath, int hp, int maxHP, int sp, int maxSP, uint position, int[] abilitiesKnown, int[] abilitiesPrepared){
+            this.filePath = filePath;
             this.hp = hp;
             this.maxHP = maxHP;
             this.sp = sp;
@@ -16,7 +16,7 @@ public class GameMaster : Node
             this.abilitiesPrepared = abilitiesPrepared;
         }
 
-        public string coreNode {get; set;}
+        public string filePath {get; set;}
         public int hp { get; set; }
         public int sp { get; set; }
         public int maxHP { get; set; }
@@ -26,11 +26,36 @@ public class GameMaster : Node
         public int [] abilitiesPrepared {get; set;}
     }
 
+    public override void _Process(float delta)
+    {
+        base._Process(delta);
+    }
+
     public void SavePlayerParty(PMBattleRoster roster){
         var players = roster.GetPlayerCharacters();
         playerData = new PlayerCharacterData[players.Length];
         for(int i = 0; i < players.Length; i++){
             playerData[i] = players[i].ExportData();
         }
+    }
+
+    public bool IsPartyDataOnFile(){
+        return(playerData != Array.Empty<PlayerCharacterData>());
+    }
+
+    public PlayerCharacterData[] GetPlayerCharacterData(){
+        return playerData;
+    }
+
+    public void NextWave(PackedScene newBattle){
+        PMBattle old = GetNode<PMBattle>("/root/Battle");
+        SavePlayerParty(old.roster);
+        PMBattle battle = newBattle.Instance<PMBattle>();
+        battle.GetChild<PMBattleRoster>(0).LoadPlayerCharacters(playerData);
+        playerData = Array.Empty<PlayerCharacterData>();
+        GetTree().Root.RemoveChild(old);
+        GetTree().Root.AddChild(battle);
+        old.Free();
+        //GetTree().ChangeScene(nextBattle);
     }
 }

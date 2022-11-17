@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cato Basic Attack Progress Orbs.png-d14e3e9e60738f936c54880b5bd07a41.stex"
+path="res://.import/MODULAR DUNGEON TILES.png-7d254da795fd3ae7d44f182d080cb5a7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GUI/Battle Ability GUI Assets/Cato Basic Attack Progress Orbs.png"
-dest_files=[ "res://.import/Cato Basic Attack Progress Orbs.png-d14e3e9e60738f936c54880b5bd07a41.stex" ]
+source_file="res://Art/3D/MODULAR DUNGEON TILES.png"
+dest_files=[ "res://.import/MODULAR DUNGEON TILES.png-7d254da795fd3ae7d44f182d080cb5a7.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=true
+flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

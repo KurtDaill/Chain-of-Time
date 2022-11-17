@@ -87,7 +87,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Chain Of Time"
-run/main_scene="res://3D Test PM Battle.tscn"
+run/main_scene="res://Levels/WaveBattleTest/WaveOne.tscn"
 config/icon="res://icon.png"
 
 [autoload]

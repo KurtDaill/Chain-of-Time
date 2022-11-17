@@ -187,9 +187,11 @@ tracks/3/keys = {
 } ]
 }
 
-[node name="Polymorphor 1" type="Sprite3D"]
+[node name="Polymorphor" type="Sprite3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 pixel_size = 0.032
+shaded = true
+alpha_cut = 2
 texture = ExtResource( 3 )
 hframes = 13
 script = ExtResource( 5 )

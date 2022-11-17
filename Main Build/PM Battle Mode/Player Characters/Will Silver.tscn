@@ -149,6 +149,7 @@ tracks/3/keys = {
 [node name="Silver" type="Sprite3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56, 0 )
 pixel_size = 0.008
+shaded = true
 texture = ExtResource( 1 )
 hframes = 12
 vframes = 6
@@ -159,7 +160,7 @@ allAbilities = PoolStringArray(  )
 basicAttack = "res://PM Battle Mode/Player Characters/Abilities/Silver Basic Attack.tscn"
 sceneFilePath = "res://PM Battle Mode/Player Characters/Will Silver.tscn"
 maxSP = 4
-readout = NodePath("../../../Camera/BattleGUI/Readouts/Silver Readout")
+readout = "res://GUI/Silver Readout.tscn"
 
 [node name="Pointer" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.24, 0 )
