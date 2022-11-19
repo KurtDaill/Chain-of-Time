@@ -1553,8 +1553,8 @@ anims/SwapHCrunch = SubResource( 122 )
 [node name="BattleDungeon" type="Spatial" parent="Battle Roster"]
 transform = Transform( 1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0.12, 2.48 )
 
-[node name="Candle" type="OmniLight" parent="Battle Roster/BattleDungeon"]
-transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.28, 1.728, -0.778 )
+[node name="Candle4" type="OmniLight" parent="Battle Roster/BattleDungeon"]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1.216, 1.728, -0.778 )
 light_color = Color( 0.898039, 0.690196, 0.25098, 1 )
 light_energy = 2.0
 light_specular = 0.0
@@ -1562,8 +1562,8 @@ shadow_bias = 10.0
 shadow_contact = 0.602
 omni_attenuation = 4.59479
 
-[node name="Candle4" type="OmniLight" parent="Battle Roster/BattleDungeon"]
-transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1.216, 1.728, -0.778 )
+[node name="Candle" type="OmniLight" parent="Battle Roster/BattleDungeon/Candle4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12, 0, 0 )
 light_color = Color( 0.898039, 0.690196, 0.25098, 1 )
 light_energy = 2.0
 light_specular = 0.0
@@ -1644,6 +1644,7 @@ spot_angle = 30.0
 
 [node name="CSGBox" type="CSGBox" parent="Battle Roster/BattleDungeon"]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 2.88, -5.226 )
+height = 2.4
 
 [node name="CSGBox2" type="CSGBox" parent="Battle Roster/BattleDungeon"]
 transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 2.016, 0.8, -5.226 )
@@ -1655,7 +1656,7 @@ transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.856, 0.8, -5.226 )
 mesh = SubResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.996195, 0.0871558, 0, -0.0871558, 0.996195, 0, 2.86, 18.16 )
+transform = Transform( 1, 0, 0, 0, 0.996195, 0.0871558, 0, -0.0871558, 0.996195, 0, 2.7, 18.16 )
 current = true
 fov = 40.0
 size = 0.1
@@ -2193,8 +2194,8 @@ margin_top = 54.0
 margin_right = 268.633
 margin_bottom = 132.0
 bbcode_enabled = true
-bbcode_text = "[center]Card Three"
-text = "Card Three"
+bbcode_text = "[center]Super Shot"
+text = "Super Shot"
 
 [node name="Cost" type="Label" parent="Camera/BattleGUI/Skill Menu/Card 3"]
 margin_left = 10.2563
@@ -2202,7 +2203,7 @@ margin_top = 8.91956
 margin_right = 52.2564
 margin_bottom = 40.9196
 theme = ExtResource( 36 )
-text = "0"
+text = "3"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2226,9 +2227,13 @@ margin_right = 269.0
 margin_bottom = 330.0
 bbcode_enabled = true
 bbcode_text = "
-[center]Default Rules Text"
+[center]Deals 8 [color=yellow]Tech[/color]
+Damage to
+one Target"
 text = "
-Default Rules Text"
+Deals 8 Tech
+Damage to
+one Target"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2248,9 +2253,6 @@ rect_pivot_offset = Vector2( 246.475, 158.516 )
 theme = ExtResource( 32 )
 texture = ExtResource( 5 )
 script = ExtResource( 44 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Name" type="RichTextLabel" parent="Camera/BattleGUI/Skill Menu/Card 2"]
 margin_left = 18.3397
@@ -2401,6 +2403,7 @@ script = ExtResource( 59 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 volume_db = -25.0
+autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 123 )
