@@ -58,7 +58,7 @@ public class TopMenu : BattleMenu
                         break;
                     case 1:
                         //Goes to the Item Menu
-                        parentGUI.ChangeMenu(2, character, caller);
+                        //parentGUI.ChangeMenu(2, character, caller);
                         break;
                     case 2:
                         //Goes to the Attack Menu

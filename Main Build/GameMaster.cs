@@ -10,7 +10,7 @@ public class GameMaster : Node
             this.hp = hp;
             this.maxHP = maxHP;
             this.sp = sp;
-            this.maxSP = sp;
+            this.maxSP = maxSP;
             this.position = position;
             this.abilitiesKnown = abilitiesKnown;
             this.abilitiesPrepared = abilitiesPrepared;

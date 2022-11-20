@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Polytox Master Sprite-Sheet.png-b12c65586a46932e028205f068d90e59.stex"
+path="res://.import/Ghost Animation-Sheet.png-7bacd268bd5572e5082c24bee30eb273.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Polytox Master Sprite-Sheet.png"
-dest_files=[ "res://.import/Polytox Master Sprite-Sheet.png-b12c65586a46932e028205f068d90e59.stex" ]
+source_file="res://Art/Ghost Animation-Sheet.png"
+dest_files=[ "res://.import/Ghost Animation-Sheet.png-7bacd268bd5572e5082c24bee30eb273.stex" ]
 
 [params]
 
@@ -19,11 +19,11 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=true
+flags/repeat=0
 flags/filter=false
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=false
 process/premult_alpha=false
 process/HDR_as_SRGB=false
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

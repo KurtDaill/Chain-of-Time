@@ -13,7 +13,6 @@
 [sub_resource type="Animation" id=79]
 resource_name = "Aim"
 length = 2.5
-step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("..:frame")
 tracks/0/interp = 1
@@ -61,7 +60,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.7, 1.55, 1.6, 1.75, 2 ),
+"times": PoolRealArray( 0, 0.7, 1.5, 1.58, 1.8, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [ "com_atk", "Fire", 0, "Miss" ],
@@ -73,7 +72,7 @@ tracks/3/keys = {
 "args": [  ],
 "method": "ActivateTimingAttack"
 }, {
-"args": [ 3, "Crit" ],
+"args": [ 2, "Crit" ],
 "method": "StartTimingAttackPerfect"
 }, {
 "args": [  ],
@@ -345,9 +344,9 @@ eventIndex = [ NodePath("Main Damage") ]
 targetingRule = 2
 canTargetFliers = true
 rulesText = "[center] [Ranged]
-
-Deals [damageNumber] Damage"
-listedDamage = 2
+Deals [damageNumber] Damage
+[Crit 1]"
+listedDamage = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Aim = SubResource( 79 )
@@ -384,4 +383,4 @@ pitch_scale = 0.9
 script = ExtResource( 8 )
 targeting = 1
 canHitFlyingCharacters = true
-eventValue = 2
+eventValue = 1

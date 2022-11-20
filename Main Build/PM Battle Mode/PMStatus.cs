@@ -48,10 +48,14 @@ public class PMStatus : Node {
         
     }
     public void Expire(){
-        //The Expire animation has to end with calling QueueFree() in order to properly delete this.
+        //The Expire animation has to end with calling Finish() in order to properly delete this.
         animPlayer.Play("Expire");
     }
 
+    public void Finish(){
+        target.statusEffects.Remove(this);
+        this.QueueFree();
+    }
     public void Setup(PMCharacter tar){
         target = tar;
         animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");

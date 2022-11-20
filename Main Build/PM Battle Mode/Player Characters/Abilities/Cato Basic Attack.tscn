@@ -475,8 +475,8 @@ firstAnimation = "Attack Wind Up"
 eventIndex = [ NodePath("Attack") ]
 targetingRule = 1
 rulesText = " [center][Melee]
-
-Deals [damageNumber] Damage"
+Deals [damageNumber] Damage
+[Crit 1]"
 listedDamage = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
