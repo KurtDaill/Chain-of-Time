@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Silver Blaster Crosshair-Sheet.png-a224ef1fccdf473be8608aa68c588ad1.s3tc.stex"
-path.etc2="res://.import/Silver Blaster Crosshair-Sheet.png-a224ef1fccdf473be8608aa68c588ad1.etc2.stex"
+path.s3tc="res://.import/Cato Focus Hold Button.png-cc58d9b7019005496c16eafc80b130c2.s3tc.stex"
+path.etc2="res://.import/Cato Focus Hold Button.png-cc58d9b7019005496c16eafc80b130c2.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://GUI/Battle Ability GUI Assets/Silver Blaster Crosshair-Sheet.png"
-dest_files=[ "res://.import/Silver Blaster Crosshair-Sheet.png-a224ef1fccdf473be8608aa68c588ad1.s3tc.stex", "res://.import/Silver Blaster Crosshair-Sheet.png-a224ef1fccdf473be8608aa68c588ad1.etc2.stex" ]
+source_file="res://GUI/Battle Menu Assets/Cato Focus Hold Button.png"
+dest_files=[ "res://.import/Cato Focus Hold Button.png-cc58d9b7019005496c16eafc80b130c2.s3tc.stex", "res://.import/Cato Focus Hold Button.png-cc58d9b7019005496c16eafc80b130c2.etc2.stex" ]
 
 [params]
 

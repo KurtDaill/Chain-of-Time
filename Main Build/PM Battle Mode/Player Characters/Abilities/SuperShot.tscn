@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Audio/SilverSuperShotCharge.wav" type="AudioStream" id=1]
 [ext_resource path="res://Audio/Silver Weapon Miss.wav" type="AudioStream" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://PM Battle Mode/PMPlayerAbility.cs" type="Script" id=5]
 [ext_resource path="res://PM Battle Mode/AbilityEvent.cs" type="Script" id=6]
 [ext_resource path="res://Audio/Silver Weapon Holster.wav" type="AudioStream" id=7]
+[ext_resource path="res://Audio/Silver Supershot Beep.wav" type="AudioStream" id=8]
+[ext_resource path="res://Audio/FUI Button Beep Clean Pitch Up.wav" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=134]
 resource_name = "Charge"
@@ -152,8 +154,8 @@ tracks/11/keys = {
 "method": "TimingAttackTimeOut"
 } ]
 }
-tracks/12/type = "value"
-tracks/12/path = NodePath("Charge:playing")
+tracks/12/type = "method"
+tracks/12/path = NodePath("..")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -161,11 +163,13 @@ tracks/12/enabled = true
 tracks/12/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"values": [ {
+"args": [  ],
+"method": "StopAnimation"
+} ]
 }
 tracks/13/type = "method"
-tracks/13/path = NodePath("..")
+tracks/13/path = NodePath("Charge")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -174,8 +178,45 @@ tracks/13/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [  ],
-"method": "StopAnimation"
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/14/type = "method"
+tracks/14/path = NodePath("Beep")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/15/type = "method"
+tracks/15/path = NodePath("Final Beep")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 2.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
 } ]
 }
 
@@ -235,8 +276,8 @@ tracks/3/keys = {
 "method": "FinishSequence"
 } ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("Charge:playing")
+tracks/4/type = "method"
+tracks/4/path = NodePath("Fire")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -244,30 +285,18 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/5/type = "method"
-tracks/5/path = NodePath("Fire")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ 0.0 ],
 "method": "play"
 } ]
 }
-tracks/6/type = "method"
-tracks/6/path = NodePath("..")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
+tracks/5/type = "method"
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 3.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -275,18 +304,32 @@ tracks/6/keys = {
 "method": "ResumeAnimation"
 } ]
 }
-tracks/7/type = "method"
-tracks/7/path = NodePath("Holster")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
+tracks/6/type = "method"
+tracks/6/path = NodePath("Holster")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
 "times": PoolRealArray( 2.1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ 0.0 ],
 "method": "play"
+} ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("Charge")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop"
 } ]
 }
 
@@ -346,8 +389,8 @@ tracks/3/keys = {
 "method": "FinishSequence"
 } ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("Charge:playing")
+tracks/4/type = "method"
+tracks/4/path = NodePath("Miss")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -355,30 +398,18 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/5/type = "method"
-tracks/5/path = NodePath("Miss")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ 0.0 ],
 "method": "play"
 } ]
 }
-tracks/6/type = "method"
-tracks/6/path = NodePath("..")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
+tracks/5/type = "method"
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 3.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -386,18 +417,32 @@ tracks/6/keys = {
 "method": "ResumeAnimation"
 } ]
 }
-tracks/7/type = "method"
-tracks/7/path = NodePath("Holster")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
+tracks/6/type = "method"
+tracks/6/path = NodePath("Holster")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
 "times": PoolRealArray( 2.1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ 0.0 ],
 "method": "play"
+} ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("Charge")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop"
 } ]
 }
 
@@ -523,18 +568,6 @@ tracks/10/keys = {
 "update": 0,
 "values": [ 54 ]
 }
-tracks/11/type = "value"
-tracks/11/path = NodePath("Charge:playing")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
 
 [node name="SuperShot" type="Node"]
 script = ExtResource( 5 )
@@ -585,11 +618,12 @@ frame = 1
 
 [node name="Charge" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+volume_db = -10.0
 
 [node name="Fire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 15.0
+pitch_scale = 0.8
 
 [node name="Miss" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
@@ -597,3 +631,10 @@ pitch_scale = 0.9
 
 [node name="Holster" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+
+[node name="Beep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = 5.0
+
+[node name="Final Beep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )

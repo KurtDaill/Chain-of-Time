@@ -127,13 +127,13 @@ public class PMBattle : Node
                     if(temp.Count == 0){
                         currentPhase = TurnPhase.TurnOverPause;
                     }else{
-                        playerAttacks.Peek().Begin();
-                        currentPhase = TurnPhase.PlayerAction;
+                            if(playerAttacks.Peek() != null) playerAttacks.Peek().Begin();
+                            currentPhase = TurnPhase.PlayerAction;
                     }
                 }
                 break;
             case TurnPhase.PlayerAction : 
-                if(playerAttacks.Peek().CheckForCompletion()){//Peek Player Attack Stack, get notice whether the attack is still running or not
+                if(playerAttacks.Peek() == null || playerAttacks.Peek().CheckForCompletion()){//Peek Player Attack Stack, get notice whether the attack is still running or not
                     playerAttacks.Dequeue();
                     if(playerAttacks.Count == 0){//Is there any more attacks?
                         if(roster.HandleDefeat()){
@@ -143,7 +143,7 @@ public class PMBattle : Node
                             currentPhase = TurnPhase.HandleDefeat;
                         }
                     }else{
-                        playerAttacks.Peek().Begin(); //Start the next attack, the previous attack should have reset itself
+                        if(playerAttacks.Peek() != null) playerAttacks.Peek().Begin(); //Start the next attack, the previous attack should have reset itself
                     }
                 }
                 break;

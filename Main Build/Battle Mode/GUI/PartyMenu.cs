@@ -58,8 +58,11 @@ public class PartyMenu : BattleMenu{
                 break;
             case MenuInput.Select :
                 switch(optionSelected){
-                    case 1 : //TODO go to swap menu
-                        parentGUI.ChangeMenu(6, character, caller);
+                    case 1 :
+                        if(parentGUI.parentBattle.GetPlayerCharacters().Length > 1) //If there's more than one player...
+                            parentGUI.ChangeMenu(6, character, caller); //Go to the Swap Menu
+                        else
+                            this.GetNode<AudioStreamPlayer>("SelectError").Play();
                         break;
                 }
                 break;

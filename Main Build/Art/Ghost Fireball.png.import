@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Ghost Animation-Sheet.png-7bacd268bd5572e5082c24bee30eb273.stex"
+path="res://.import/Ghost Fireball.png-8c2c0ebb482c722ec938bc71394cc6e1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Ghost Animation-Sheet.png"
-dest_files=[ "res://.import/Ghost Animation-Sheet.png-7bacd268bd5572e5082c24bee30eb273.stex" ]
+source_file="res://Art/Ghost Fireball.png"
+dest_files=[ "res://.import/Ghost Fireball.png-8c2c0ebb482c722ec938bc71394cc6e1.stex" ]
 
 [params]
 
@@ -23,7 +23,7 @@ flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=false
 process/premult_alpha=false
 process/HDR_as_SRGB=false
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

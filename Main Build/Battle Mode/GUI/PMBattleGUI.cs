@@ -44,13 +44,18 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
         } 
         if(noAbilityExit){ 
             playersAbleToAct[abilitiesQueued.Count].UnselectMe(); //The previous character should exit their excited idle
-            if(abilitiesQueued.Count == playersAbleToAct.Length) return abilitiesQueued; //If all players have set an ability, we go to the next step in the battle
+            abilitiesQueued.Enqueue(null);
+            if(abilitiesQueued.Count == playersAbleToAct.Length){
+                noAbilityExit = false;
+                return abilitiesQueued; //If all players have set an ability, we go to the next step in the battle
+            }
             else{
                 playersAbleToAct[abilitiesQueued.Count].SelectMe();
                 ChangeMenu(0, playersAbleToAct[abilitiesQueued.Count], caller);
             }
             noAbilityExit = false;
         }
+        
         return null;
     }
     public void ShowGUI(){
@@ -89,9 +94,9 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
     }
 
     public void ExitWithoutQueueingAbility(PMPlayerCharacter character){
-        var temp = playersAbleToAct.ToList();
-        temp.Remove(character);
-        playersAbleToAct = temp.ToArray();
+        //var temp = playersAbleToAct.ToList();
+        //temp.Remove(character);
+        //playersAbleToAct = temp.ToArray();
         noAbilityExit = true;
     }
 }

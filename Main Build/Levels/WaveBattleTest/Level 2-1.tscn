@@ -183,13 +183,13 @@ tracks/11/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/12/type = "bezier"
-tracks/12/path = NodePath("Enemy 1:translation:x")
+tracks/12/path = NodePath("Enemy 1:translation:z")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 4, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/13/type = "bezier"
@@ -203,13 +203,13 @@ tracks/13/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/14/type = "bezier"
-tracks/14/path = NodePath("Enemy 1:translation:z")
+tracks/14/path = NodePath("Enemy 1:translation:x")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"points": PoolRealArray( 4, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/15/type = "bezier"
@@ -289,23 +289,23 @@ tracks/21/keys = {
 resource_name = "SwapE12"
 length = 0.5
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("Enemy 1:translation:x")
+tracks/0/path = NodePath("Enemy 1:translation:z")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("Enemy 1:translation:z")
+tracks/1/path = NodePath("Enemy 1:translation:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4 )
 }
 tracks/2/type = "bezier"
@@ -347,23 +347,23 @@ tracks/4/keys = {
 resource_name = "SwapE13"
 length = 0.5
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("Enemy 1:translation:x")
+tracks/0/path = NodePath("Enemy 1:translation:z")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("Enemy 1:translation:z")
+tracks/1/path = NodePath("Enemy 1:translation:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4 )
 }
 tracks/2/type = "bezier"
@@ -495,23 +495,23 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath("Enemy 1:translation:x")
+tracks/2/path = NodePath("Enemy 1:translation:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.1, 0.6 )
 }
 tracks/3/type = "bezier"
-tracks/3/path = NodePath("Enemy 1:translation:z")
+tracks/3/path = NodePath("Enemy 1:translation:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.1, 0.6 )
 }
 tracks/4/type = "bezier"
@@ -1345,6 +1345,20 @@ tracks/6/enabled = true
 tracks/6/keys = {
 "points": PoolRealArray( 1086, -0.25, 0, 0.25, 0, 909, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.6 )
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("Card 1")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Draw"
+} ]
 }
 
 [sub_resource type="Animation" id=21]
@@ -2449,26 +2463,27 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 axis = 1
 frames = SubResource( 123 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="Waterfall Piece" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 2.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 124 )
+frame = 1
 playing = true
 
 [node name="Waterfall Piece2" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 0.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 124 )
-frame = 5
 playing = true
 
 [node name="Waterfall Top" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 125 )
+frame = 1
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="Baths"]

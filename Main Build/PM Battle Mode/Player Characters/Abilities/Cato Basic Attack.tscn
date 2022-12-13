@@ -495,7 +495,7 @@ no_depth_test = true
 texture = ExtResource( 3 )
 
 [node name="Orb 1" type="Sprite3D" parent="Frame"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28, 0.64195, 0.002 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16, 0.32195, 0.002 )
 pixel_size = 0.008
 double_sided = false
 no_depth_test = true
@@ -504,7 +504,7 @@ texture = ExtResource( 1 )
 hframes = 5
 
 [node name="Orb 2" type="Sprite3D" parent="Frame"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0400001, 0.64195, 0.002 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 0.32195, 0.002 )
 pixel_size = 0.008
 double_sided = false
 no_depth_test = true
@@ -513,7 +513,7 @@ texture = ExtResource( 1 )
 hframes = 5
 
 [node name="Orb 3" type="Sprite3D" parent="Frame"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36, 0.64195, 0.002 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48, 0.32195, 0.002 )
 pixel_size = 0.008
 double_sided = false
 no_depth_test = true
@@ -522,7 +522,7 @@ texture = ExtResource( 1 )
 hframes = 5
 
 [node name="Button" type="Sprite3D" parent="Frame"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.56, 0.64195, 0.002 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44, 0.32195, 0.002 )
 pixel_size = 0.008
 double_sided = false
 no_depth_test = true
@@ -532,13 +532,14 @@ hframes = 3
 frame = 2
 
 [node name="Sword" type="Sprite3D" parent="Frame"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.56, 0.64195, 0.002 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68, 0.32195, 0.002 )
 pixel_size = 0.008
 double_sided = false
 no_depth_test = true
 alpha_cut = 2
 texture = ExtResource( 7 )
 hframes = 14
+frame = 11
 
 [node name="Beep" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )

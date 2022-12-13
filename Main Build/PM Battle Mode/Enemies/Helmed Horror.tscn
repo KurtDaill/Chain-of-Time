@@ -262,7 +262,6 @@ name = "Great Cleave"
 firstAnimation = "Swing"
 eventIndex = [ NodePath("Damage Event") ]
 targetingRule = 1
-requirements = PoolIntArray( 10 )
 
 [node name="Damage Event" type="Node" parent="Great Cleave"]
 script = ExtResource( 6 )

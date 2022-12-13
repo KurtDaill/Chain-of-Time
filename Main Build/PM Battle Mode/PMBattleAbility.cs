@@ -193,5 +193,17 @@ public class  PMBattleAbility : Node
     public AbilityAlignment GetAbilityAlignment(){
         return alignment;
     }
+
+    public void PlayAnimationBasedOnTarget(string frontAnim, string middleAnim,  string backAnim){
+        if(target.Count() > 1) throw new NotImplementedException(); //TODO: Custom Exception, can't use this function unless we've got a single target
+        switch(target[0].myPosition){
+            case BattlePos.HeroOne: case BattlePos.EnemyOne:
+                break;
+            case BattlePos.HeroTwo: case BattlePos.EnemyTwo:
+                break;
+            case BattlePos.HeroThree: case BattlePos.EnemyThree:
+                break;
+        }
+    }
 }
 

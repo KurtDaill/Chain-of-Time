@@ -1873,6 +1873,10 @@ margin_right = 132.489
 margin_bottom = 92.6026
 texture = ExtResource( 17 )
 
+[node name="SelectError" type="AudioStreamPlayer" parent="Camera/BattleGUI/Party Menu"]
+stream = ExtResource( 13 )
+volume_db = 10.0
+
 [node name="Item Menu" type="Control" parent="Camera/BattleGUI"]
 visible = false
 margin_right = 40.0

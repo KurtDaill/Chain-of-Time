@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://GUI/Battle Ability GUI Assets/Silver Blaster Crosshair-Sheet.png" type="Texture" id=1]
-[ext_resource path="res://GUI/Battle Ability GUI Assets/Silver Blaster Crosshair Box-Sheet.png" type="Texture" id=2]
+[ext_resource path="res://GUI/Battle Ability GUI Assets/Silver Blaster Crosshair Box-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://GUI/Battle Ability GUI Assets/Silver Blaster Crosshair-Sheet.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=75]
 resource_name = "Aim"
@@ -16,20 +16,18 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 1.05, 1.1, 1.15 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ 0, 1, 2, 3, 4 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Box:frame")
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Cross:translation:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 1.05, 1.1, 1.15, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"points": PoolRealArray( -4, -0.25, 0, 0.3, 0.769215, 1.2, -0.25, 0, 0.25, 0, -8.9407e-08, -0.2, 0.176217, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.65, 1 )
 }
 tracks/2/type = "bezier"
 tracks/2/path = NodePath("Cross:translation:x")
@@ -41,15 +39,17 @@ tracks/2/keys = {
 "points": PoolRealArray( -4, -0.25, 0, 0.25, 0, 0.48, -0.25, 0, 0.25, 0, -2.68221e-07, -0.2, 0.0862771, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.65, 1 )
 }
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("Cross:translation:y")
+tracks/3/type = "value"
+tracks/3/path = NodePath("Box:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( -4, -0.25, 0, 0.3, 0.769215, 1.2, -0.25, 0, 0.25, 0, -8.9407e-08, -0.2, 0.176217, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.65, 1 )
+"times": PoolRealArray( 0, 1, 1.05, 1.1, 1.15, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
 }
 tracks/4/type = "method"
 tracks/4/path = NodePath(".")
@@ -80,17 +80,15 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("Box:frame")
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Cross:translation:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0 ]
+"points": PoolRealArray( -4, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
 }
 tracks/2/type = "bezier"
 tracks/2/path = NodePath("Cross:translation:x")
@@ -102,15 +100,17 @@ tracks/2/keys = {
 "points": PoolRealArray( -4, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("Cross:translation:y")
+tracks/3/type = "value"
+tracks/3/path = NodePath("Box:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( -4, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
 }
 
 [node name="Silver Crosshair" type="Spatial"]
@@ -120,14 +120,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.12 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -4, 0.08 )
 pixel_size = 0.008
 no_depth_test = true
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 hframes = 6
 
 [node name="Box" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08 )
 pixel_size = 0.008
 no_depth_test = true
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

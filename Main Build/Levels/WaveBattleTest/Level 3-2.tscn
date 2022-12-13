@@ -1789,7 +1789,6 @@ name = "Great Cleave"
 firstAnimation = "Swing"
 eventIndex = [ NodePath("Damage Event") ]
 targetingRule = 1
-requirements = PoolIntArray( 10 )
 
 [node name="Damage Event" type="Node" parent="Battle Roster/Enemy 2/Helmed Horror/Great Cleave"]
 script = ExtResource( 29 )
@@ -2407,7 +2406,7 @@ margin_right = 268.633
 margin_bottom = 132.0
 bbcode_enabled = true
 bbcode_text = "[center]Card Four"
-text = "Card Four"
+text = "[center]Card Four"
 
 [node name="Cost" type="Label" parent="Camera/BattleGUI/Skill Menu/Card 4"]
 margin_left = 10.0
@@ -2441,7 +2440,7 @@ bbcode_enabled = true
 bbcode_text = "
 [center]Default Rules Text"
 text = "
-Default Rules Text"
+[center]Default Rules Text"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2536,7 +2535,7 @@ margin_right = 269.34
 margin_bottom = 132.293
 bbcode_enabled = true
 bbcode_text = "[center] Card Two"
-text = " Card Two"
+text = "[center] Card Two"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2573,7 +2572,7 @@ bbcode_enabled = true
 bbcode_text = "
 [center]Default Rules Text"
 text = "
-Default Rules Text"
+[center]Default Rules Text"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
