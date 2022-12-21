@@ -174,3 +174,6 @@ anims/Defend = SubResource( 133 )
 "anims/Excited Idle" = SubResource( 88 )
 anims/Idle = SubResource( 77 )
 anims/RESET = SubResource( 78 )
+
+[node name="Aimpoint" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -0.04, 0 )

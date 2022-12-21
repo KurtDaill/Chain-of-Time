@@ -221,3 +221,6 @@ anims/RESET = SubResource( 59 )
 
 [node name="Defend" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+
+[node name="Aimpoint" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56, 0, 0 )

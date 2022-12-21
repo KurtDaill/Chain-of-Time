@@ -6,7 +6,7 @@ using static PMBattleUtilities;
 
 //TODO Add Logic to prevent a character from Taunting and Being Invisible or Phased Out
 //Possible have a taunt status stay up, but not effect anything while Invisible or PhasedOut
-public class PMCharacter : Node{
+public class PMCharacter : Sprite3D{
 
     public List<PMStatus> statusEffects;
     public PMBattle parentBattle;

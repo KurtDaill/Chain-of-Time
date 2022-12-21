@@ -194,16 +194,21 @@ public class  PMBattleAbility : Node
         return alignment;
     }
 
-    public void PlayAnimationBasedOnTarget(string frontAnim, string middleAnim,  string backAnim){
-        if(target.Count() > 1) throw new NotImplementedException(); //TODO: Custom Exception, can't use this function unless we've got a single target
-        switch(target[0].myPosition){
-            case BattlePos.HeroOne: case BattlePos.EnemyOne:
-                break;
-            case BattlePos.HeroTwo: case BattlePos.EnemyTwo:
-                break;
-            case BattlePos.HeroThree: case BattlePos.EnemyThree:
-                break;
-        }
+    //This function changes a keyframe on a "transform" track to the transform of our currently selected target
+    //A use case would be making a projectile thrown by this character properly hit it's target
+    public void SetKeyTransToSelectedTarget(int trackIndex, int keyIndex, string animation){
+        if(target.Length > 1 ) throw new NotImplementedException(); //TODO: Write Custom exception, can't use this function with multiple targets selected
+        Vector3 targetTransform = this.target[0].GlobalTranslation - source.GlobalTranslation;
+        animPlay.GetAnimation(animation).TrackSetKeyValue(trackIndex, keyIndex, targetTransform);//TODO: Convert between local coordinates
+    }   
+
+    public void SetKeyTransToSelectedTargetBezier(int xTrack, int yTrack, int zTrack, int keyIndex, string animation){
+        if(target.Length > 1 ) throw new NotImplementedException(); //TODO: Write Custom exception, can't use this function with multiple targets selected
+        Vector3 targetTransform = this.target[0].GlobalTranslation - source.GlobalTranslation;
+        Animation anim= animPlay.GetAnimation(animation);
+        anim.BezierTrackSetKeyValue(xTrack, keyIndex, targetTransform.x);//TODO: Convert between local coordinates
+        anim.BezierTrackSetKeyValue(yTrack, keyIndex, targetTransform.y);//TODO: Convert between local coordinates
+        anim.BezierTrackSetKeyValue(zTrack, keyIndex, targetTransform.z);//TODO: Convert between local coordinates
     }
 }
 

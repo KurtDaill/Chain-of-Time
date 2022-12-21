@@ -128,7 +128,7 @@ public class PMEnemyCharacter : PMCharacter{
                 case TargetPriority.RangedHeroes:
                     if(able.GetTargetingRule() != TargetingRule.SingleHeroRanged) throw new NotImplementedException(); //TODO make custom exception
                     //Randomly pick a hero in slot 2 or 3
-                    var temp = new Random().Next(1,3);
+                    var temp = new Random().Next(1,2);
                     PMCharacter[] players = parentBattle.roster.GetPlayerCharacters();
                     if(players[temp] != null){
                         return new PMCharacter[]{players[temp]};

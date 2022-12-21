@@ -1,58 +1,59 @@
-[gd_scene load_steps=106 format=2]
+[gd_scene load_steps=107 format=2]
 
-[ext_resource path="res://Art/Water Texture.png" type="Texture" id=1]
-[ext_resource path="res://Art/Waterfall Top Top-Sheet.png" type="Texture" id=2]
-[ext_resource path="res://Art/Waterfall Top Front-Sheet.png" type="Texture" id=3]
-[ext_resource path="res://Art/Waterfall.png" type="Texture" id=4]
-[ext_resource path="res://Art/Tree for 3D.png" type="Texture" id=5]
-[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Item Button Highlight.png" type="Texture" id=6]
-[ext_resource path="res://GUI/Battle Menu Assets/Item Menu/Item Description Box.png" type="Texture" id=7]
-[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Skill Button Highlight.png" type="Texture" id=8]
-[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Attack Button Highlight.png" type="Texture" id=9]
-[ext_resource path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuComboHighlight.png" type="Texture" id=10]
-[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Attack Button Controller.png" type="Texture" id=11]
-[ext_resource path="res://GUI/Battle Menu Assets/Skill Menu/Skill Card.png" type="Texture" id=12]
-[ext_resource path="res://GUI/Battle Menu Assets/Skill Menu/Tech Card.png" type="Texture" id=13]
-[ext_resource path="res://GUI/Battle Menu Assets/Party Menu/Party Menu Hub.png" type="Texture" id=14]
-[ext_resource path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuRunHighlight.png" type="Texture" id=15]
-[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Skill Button Controller.png" type="Texture" id=16]
-[ext_resource path="res://GUI/Battle Menu Assets/Skill Menu/Spell Card.png" type="Texture" id=17]
+[ext_resource path="res://PM Battle Mode/PMBattle.cs" type="Script" id=1]
+[ext_resource path="res://PMBattleRoster.cs" type="Script" id=2]
+[ext_resource path="res://Battle Mode/GUI/TargetingMenu.cs" type="Script" id=3]
+[ext_resource path="res://PM Battle Mode/Enemies/Polymorphor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Art/3D/Baths.glb" type="PackedScene" id=5]
+[ext_resource path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuComboHighlight.png" type="Texture" id=6]
+[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Skill Button Highlight.png" type="Texture" id=7]
+[ext_resource path="res://GUI/Battle Menu Assets/Skill Menu/Tech Card.png" type="Texture" id=8]
+[ext_resource path="res://Art/Tree for 3D.png" type="Texture" id=9]
+[ext_resource path="res://Art/Waterfall Top Top-Sheet.png" type="Texture" id=10]
+[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Skill Button Controller.png" type="Texture" id=11]
+[ext_resource path="res://GUI/Battle Menu Assets/Skill Menu/Spell Card.png" type="Texture" id=12]
+[ext_resource path="res://GUI/Battle Menu Assets/Item Menu/Item Tab.png" type="Texture" id=13]
+[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Party Button Highlight.png" type="Texture" id=14]
+[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Button Hub.png" type="Texture" id=15]
+[ext_resource path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuAllyHighlight.png" type="Texture" id=16]
+[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Item Button Highlight.png" type="Texture" id=17]
 [ext_resource path="res://Audio/UI_No.wav" type="AudioStream" id=18]
-[ext_resource path="res://GUI/Battle Menu Assets/Item Menu/Item Tab.png" type="Texture" id=19]
-[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Party Button Highlight.png" type="Texture" id=20]
-[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Button Hub.png" type="Texture" id=21]
-[ext_resource path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuAllyHighlight.png" type="Texture" id=22]
-[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Item Button Controller.png" type="Texture" id=23]
-[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Party Button Controller.png" type="Texture" id=24]
-[ext_resource path="res://GUI/Battle Menu Assets/Attack Menu/Attack Menu.png" type="Texture" id=25]
-[ext_resource path="res://Audio/TCoT_-_Combat_3d(1).mp3" type="AudioStream" id=26]
-[ext_resource path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuSwapHighlight.png" type="Texture" id=27]
-[ext_resource path="res://GUI/Themes/UI Impact.tres" type="Theme" id=28]
-[ext_resource path="res://GUI/Themes/Skill Card Normal Small.tres" type="Theme" id=29]
-[ext_resource path="res://GUI/Themes/Skill Card Normal.tres" type="Theme" id=30]
-[ext_resource path="res://GUI/Themes/Skill Card Tech.tres" type="Theme" id=31]
-[ext_resource path="res://GUI/Themes/Skill Card Spell.tres" type="Theme" id=32]
-[ext_resource path="res://Battle Mode/GUI/PartyMenu.cs" type="Script" id=33]
-[ext_resource path="res://MovingCamera.cs" type="Script" id=34]
-[ext_resource path="res://Battle Mode/GUI/SkillMenu.cs" type="Script" id=35]
-[ext_resource path="res://Battle Mode/GUI/AttackMenu.cs" type="Script" id=36]
-[ext_resource path="res://PM Battle Mode/PMBattleWaves.cs" type="Script" id=37]
-[ext_resource path="res://GUI/ReadoutContainer.cs" type="Script" id=38]
-[ext_resource path="res://Battle Mode/GUI/ItemMenu.cs" type="Script" id=39]
-[ext_resource path="res://Battle Mode/GUI/PMBattleGUI.cs" type="Script" id=40]
-[ext_resource path="res://Battle Mode/GUI/TopMenu.cs" type="Script" id=41]
-[ext_resource path="res://Battle Mode/GUI/SkillCard.cs" type="Script" id=42]
-[ext_resource path="res://Battle Mode/GUI/SwapMenu.cs" type="Script" id=43]
-[ext_resource path="res://Battle Mode/GUI/TargetingMenu.cs" type="Script" id=44]
-[ext_resource path="res://PMBattleRoster.cs" type="Script" id=45]
-[ext_resource path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres" type="Texture" id=46]
+[ext_resource path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuRunHighlight.png" type="Texture" id=19]
+[ext_resource path="res://GUI/Battle Menu Assets/Item Menu/Item Description Box.png" type="Texture" id=20]
+[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Attack Button Highlight.png" type="Texture" id=21]
+[ext_resource path="res://Art/Waterfall.png" type="Texture" id=22]
+[ext_resource path="res://Art/Water Texture.png" type="Texture" id=23]
+[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Attack Button Controller.png" type="Texture" id=24]
+[ext_resource path="res://GUI/Battle Menu Assets/Skill Menu/Skill Card.png" type="Texture" id=25]
+[ext_resource path="res://Art/Waterfall Top Front-Sheet.png" type="Texture" id=26]
+[ext_resource path="res://GUI/Battle Menu Assets/Party Menu/Party Menu Hub.png" type="Texture" id=27]
+[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Party Button Controller.png" type="Texture" id=28]
+[ext_resource path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuSwapHighlight.png" type="Texture" id=29]
+[ext_resource path="res://Audio/TCoT_-_Combat_3d(1).mp3" type="AudioStream" id=30]
+[ext_resource path="res://GUI/Battle Menu Assets/Attack Menu/Attack Menu.png" type="Texture" id=31]
+[ext_resource path="res://GUI/Battle Menu Assets/Top Menu/Item Button Controller.png" type="Texture" id=32]
+[ext_resource path="res://GUI/Themes/Skill Card Spell.tres" type="Theme" id=33]
+[ext_resource path="res://GUI/Themes/Skill Card Tech.tres" type="Theme" id=34]
+[ext_resource path="res://GUI/Themes/Skill Card Normal Small.tres" type="Theme" id=35]
+[ext_resource path="res://GUI/Themes/UI Impact.tres" type="Theme" id=36]
+[ext_resource path="res://GUI/Themes/Skill Card Normal.tres" type="Theme" id=37]
+[ext_resource path="res://Battle Mode/GUI/PMBattleGUI.cs" type="Script" id=38]
+[ext_resource path="res://Battle Mode/GUI/TopMenu.cs" type="Script" id=39]
+[ext_resource path="res://Battle Mode/GUI/SkillCard.cs" type="Script" id=40]
+[ext_resource path="res://Battle Mode/GUI/SwapMenu.cs" type="Script" id=41]
+[ext_resource path="res://Battle Mode/GUI/ItemMenu.cs" type="Script" id=42]
+[ext_resource path="res://MovingCamera.cs" type="Script" id=43]
+[ext_resource path="res://Battle Mode/GUI/AttackMenu.cs" type="Script" id=44]
+[ext_resource path="res://Battle Mode/GUI/SkillMenu.cs" type="Script" id=45]
+[ext_resource path="res://GUI/ReadoutContainer.cs" type="Script" id=46]
 [ext_resource path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres" type="Texture" id=47]
 [ext_resource path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres" type="Texture" id=48]
 [ext_resource path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres" type="Texture" id=49]
-[ext_resource path="res://PM Battle Mode/Enemies/Polymorphor.tscn" type="PackedScene" id=50]
-[ext_resource path="res://PM Battle Mode/Player Characters/Cato.tscn" type="PackedScene" id=51]
-[ext_resource path="res://Art/3D/Baths.glb" type="PackedScene" id=52]
-[ext_resource path="res://PM Battle Mode/Player Characters/Will Silver.tscn" type="PackedScene" id=53]
+[ext_resource path="res://Battle Mode/GUI/PartyMenu.cs" type="Script" id=50]
+[ext_resource path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres" type="Texture" id=51]
+[ext_resource path="res://PM Battle Mode/Enemies/Ghost.tscn" type="PackedScene" id=52]
+[ext_resource path="res://PM Battle Mode/Player Characters/Cato.tscn" type="PackedScene" id=55]
+[ext_resource path="res://PM Battle Mode/Player Characters/Will Silver.tscn" type="PackedScene" id=58]
 
 [sub_resource type="Animation" id=83]
 length = 0.001
@@ -183,13 +184,13 @@ tracks/11/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/12/type = "bezier"
-tracks/12/path = NodePath("Enemy 1:translation:z")
+tracks/12/path = NodePath("Enemy 1:translation:x")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"points": PoolRealArray( 4, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/13/type = "bezier"
@@ -203,13 +204,13 @@ tracks/13/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/14/type = "bezier"
-tracks/14/path = NodePath("Enemy 1:translation:x")
+tracks/14/path = NodePath("Enemy 1:translation:z")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 4, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/15/type = "bezier"
@@ -289,23 +290,23 @@ tracks/21/keys = {
 resource_name = "SwapE12"
 length = 0.5
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("Enemy 1:translation:z")
+tracks/0/path = NodePath("Enemy 1:translation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("Enemy 1:translation:x")
+tracks/1/path = NodePath("Enemy 1:translation:z")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4 )
 }
 tracks/2/type = "bezier"
@@ -347,23 +348,23 @@ tracks/4/keys = {
 resource_name = "SwapE13"
 length = 0.5
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("Enemy 1:translation:z")
+tracks/0/path = NodePath("Enemy 1:translation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("Enemy 1:translation:x")
+tracks/1/path = NodePath("Enemy 1:translation:z")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4 )
 }
 tracks/2/type = "bezier"
@@ -495,23 +496,23 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath("Enemy 1:translation:z")
+tracks/2/path = NodePath("Enemy 1:translation:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.1, 0.6 )
 }
 tracks/3/type = "bezier"
-tracks/3/path = NodePath("Enemy 1:translation:x")
+tracks/3/path = NodePath("Enemy 1:translation:z")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.1, 0.6 )
 }
 tracks/4/type = "bezier"
@@ -1346,20 +1347,6 @@ tracks/6/keys = {
 "points": PoolRealArray( 1086, -0.25, 0, 0.25, 0, 909, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.6 )
 }
-tracks/7/type = "method"
-tracks/7/path = NodePath("Card 1")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "Draw"
-} ]
-}
 
 [sub_resource type="Animation" id=21]
 length = 0.4
@@ -1505,32 +1492,32 @@ tracks/7/keys = {
 
 [sub_resource type="AtlasTexture" id=33]
 flags = 19
-atlas = ExtResource( 2 )
+atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=34]
 flags = 19
-atlas = ExtResource( 2 )
+atlas = ExtResource( 10 )
 region = Rect2( 16, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=35]
 flags = 19
-atlas = ExtResource( 2 )
+atlas = ExtResource( 10 )
 region = Rect2( 32, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=36]
 flags = 19
-atlas = ExtResource( 2 )
+atlas = ExtResource( 10 )
 region = Rect2( 48, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=37]
 flags = 19
-atlas = ExtResource( 2 )
+atlas = ExtResource( 10 )
 region = Rect2( 64, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=38]
 flags = 19
-atlas = ExtResource( 2 )
+atlas = ExtResource( 10 )
 region = Rect2( 80, 0, 16, 32 )
 
 [sub_resource type="SpriteFrames" id=123]
@@ -1543,32 +1530,32 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=40]
 flags = 19
-atlas = ExtResource( 4 )
+atlas = ExtResource( 22 )
 region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=41]
 flags = 19
-atlas = ExtResource( 4 )
+atlas = ExtResource( 22 )
 region = Rect2( 16, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=42]
 flags = 19
-atlas = ExtResource( 4 )
+atlas = ExtResource( 22 )
 region = Rect2( 32, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=43]
 flags = 19
-atlas = ExtResource( 4 )
+atlas = ExtResource( 22 )
 region = Rect2( 48, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=44]
 flags = 19
-atlas = ExtResource( 4 )
+atlas = ExtResource( 22 )
 region = Rect2( 64, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=45]
 flags = 19
-atlas = ExtResource( 4 )
+atlas = ExtResource( 22 )
 region = Rect2( 80, 0, 16, 32 )
 
 [sub_resource type="SpriteFrames" id=124]
@@ -1581,32 +1568,32 @@ animations = [ {
 
 [sub_resource type="AtlasTexture" id=47]
 flags = 19
-atlas = ExtResource( 3 )
+atlas = ExtResource( 26 )
 region = Rect2( 0, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=48]
 flags = 19
-atlas = ExtResource( 3 )
+atlas = ExtResource( 26 )
 region = Rect2( 16, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=49]
 flags = 19
-atlas = ExtResource( 3 )
+atlas = ExtResource( 26 )
 region = Rect2( 32, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=50]
 flags = 19
-atlas = ExtResource( 3 )
+atlas = ExtResource( 26 )
 region = Rect2( 48, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=51]
 flags = 19
-atlas = ExtResource( 3 )
+atlas = ExtResource( 26 )
 region = Rect2( 64, 0, 16, 32 )
 
 [sub_resource type="AtlasTexture" id=52]
 flags = 19
-atlas = ExtResource( 3 )
+atlas = ExtResource( 26 )
 region = Rect2( 80, 0, 16, 32 )
 
 [sub_resource type="SpriteFrames" id=125]
@@ -1641,13 +1628,12 @@ dof_blur_near_distance = 0.59
 dof_blur_near_amount = 1.0
 
 [node name="Battle" type="Spatial"]
-script = ExtResource( 37 )
+script = ExtResource( 1 )
 battleGUI = NodePath("Camera/BattleGUI")
-nextBattle = "res://Levels/WaveBattleTest/Level 2-2.tscn"
 
 [node name="Battle Roster" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7875 )
-script = ExtResource( 45 )
+script = ExtResource( 2 )
 debugMode = true
 EnemiesSetInEditor = false
 
@@ -1657,20 +1643,23 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.1875, 2 )
 [node name="Hero 2" type="Spatial" parent="Battle Roster"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1875, 3 )
 
-[node name="Silver" parent="Battle Roster/Hero 2" instance=ExtResource( 53 )]
+[node name="Silver" parent="Battle Roster/Hero 2" instance=ExtResource( 58 )]
 
 [node name="Hero 1" type="Spatial" parent="Battle Roster"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1875, 4 )
 
-[node name="Cato" parent="Battle Roster/Hero 1" instance=ExtResource( 51 )]
+[node name="Cato" parent="Battle Roster/Hero 1" instance=ExtResource( 55 )]
 
 [node name="Enemy 1" type="Spatial" parent="Battle Roster"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1875, 4 )
 
-[node name="Polymorphor" parent="Battle Roster/Enemy 1" instance=ExtResource( 50 )]
+[node name="Polymorphor" parent="Battle Roster/Enemy 1" instance=ExtResource( 4 )]
 
 [node name="Enemy 2" type="Spatial" parent="Battle Roster"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1875, 3 )
+
+[node name="Ghost" parent="Battle Roster/Enemy 2" instance=ExtResource( 52 )]
+combatRoles = PoolIntArray( 0 )
 
 [node name="Enemy 3" type="Spatial" parent="Battle Roster"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.1875, 2 )
@@ -1692,14 +1681,14 @@ current = true
 fov = 40.0
 size = 0.1
 far = 100000.0
-script = ExtResource( 34 )
+script = ExtResource( 43 )
 
 [node name="BattleGUI" type="Control" parent="Camera"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -1080.0
-script = ExtResource( 40 )
+script = ExtResource( 38 )
 
 [node name="Top Menu" type="Control" parent="Camera/BattleGUI"]
 visible = false
@@ -1707,7 +1696,7 @@ anchor_top = 0.647
 anchor_bottom = 1.0
 margin_top = 0.23999
 margin_right = 1920.0
-script = ExtResource( 41 )
+script = ExtResource( 39 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1719,7 +1708,7 @@ margin_left = 300.0
 margin_top = -46.0
 margin_right = 94.0
 margin_bottom = 46.5
-texture = ExtResource( 21 )
+texture = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1731,7 +1720,7 @@ margin_left = -62.9442
 margin_top = -105.439
 margin_right = 60.0558
 margin_bottom = -92.392
-texture = ExtResource( 24 )
+texture = ExtResource( 28 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1745,7 +1734,7 @@ margin_left = -0.0176699
 margin_top = 0.00686359
 margin_right = -0.0336761
 margin_bottom = -0.473137
-texture = ExtResource( 20 )
+texture = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1757,7 +1746,7 @@ margin_left = 93.181
 margin_top = 3.92108
 margin_right = 240.181
 margin_bottom = -2.07892
-texture = ExtResource( 23 )
+texture = ExtResource( 32 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1771,7 +1760,7 @@ margin_left = -0.0484923
 margin_top = -0.273073
 margin_right = -0.288498
 margin_bottom = -0.276077
-texture = ExtResource( 6 )
+texture = ExtResource( 17 )
 
 [node name="AtkButton" type="TextureRect" parent="Camera/BattleGUI/Top Menu/Button Hub"]
 anchor_right = 1.0
@@ -1780,7 +1769,7 @@ margin_left = -63.0503
 margin_top = 90.4484
 margin_right = 59.9497
 margin_bottom = 114.448
-texture = ExtResource( 11 )
+texture = ExtResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1794,7 +1783,7 @@ margin_left = -0.266647
 margin_top = 0.0233023
 margin_right = -0.0986633
 margin_bottom = -0.0516968
-texture = ExtResource( 9 )
+texture = ExtResource( 21 )
 
 [node name="SkillButton" type="TextureRect" parent="Camera/BattleGUI/Top Menu/Button Hub"]
 anchor_left = 0.02
@@ -1804,7 +1793,7 @@ margin_left = -245.307
 margin_top = 3.29266
 margin_right = -90.4475
 margin_bottom = -2.70734
-texture = ExtResource( 16 )
+texture = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1816,7 +1805,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 0.0297437
 margin_bottom = -0.408257
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1825,14 +1814,14 @@ __meta__ = {
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 33 )
+script = ExtResource( 50 )
 
 [node name="Hub" type="TextureRect" parent="Camera/BattleGUI/Party Menu"]
 margin_left = 320.907
 margin_top = 862.183
 margin_right = 371.907
 margin_bottom = 913.183
-texture = ExtResource( 14 )
+texture = ExtResource( 27 )
 
 [node name="Run!" type="TextureRect" parent="Camera/BattleGUI/Party Menu/Hub"]
 margin_left = -164.715
@@ -1847,7 +1836,7 @@ margin_left = -3.42136
 margin_top = -3.04822
 margin_right = 176.579
 margin_bottom = 47.9518
-texture = ExtResource( 15 )
+texture = ExtResource( 19 )
 
 [node name="Swap" type="TextureRect" parent="Camera/BattleGUI/Party Menu/Hub"]
 margin_left = -35.9748
@@ -1862,7 +1851,7 @@ margin_left = -3.41245
 margin_top = -2.5639
 margin_right = 131.588
 margin_bottom = 93.4361
-texture = ExtResource( 27 )
+texture = ExtResource( 29 )
 
 [node name="Combo" type="TextureRect" parent="Camera/BattleGUI/Party Menu/Hub"]
 margin_left = 42.1806
@@ -1877,14 +1866,14 @@ margin_left = -2.75
 margin_top = -3.04822
 margin_right = 180.25
 margin_bottom = 47.9518
-texture = ExtResource( 10 )
+texture = ExtResource( 6 )
 
 [node name="Ally" type="TextureRect" parent="Camera/BattleGUI/Party Menu/Hub"]
 margin_left = -39.3872
 margin_top = -81.0518
 margin_right = 89.6128
 margin_bottom = 8.94818
-texture = ExtResource( 46 )
+texture = ExtResource( 51 )
 
 [node name="Highlight" type="TextureRect" parent="Camera/BattleGUI/Party Menu/Hub/Ally"]
 visible = false
@@ -1892,13 +1881,13 @@ margin_left = -2.51083
 margin_top = -3.3974
 margin_right = 132.489
 margin_bottom = 92.6026
-texture = ExtResource( 22 )
+texture = ExtResource( 16 )
 
 [node name="Item Menu" type="Control" parent="Camera/BattleGUI"]
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 39 )
+script = ExtResource( 42 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1917,7 +1906,7 @@ margin_top = 663.0
 margin_right = 521.635
 margin_bottom = 817.354
 rect_pivot_offset = Vector2( 261.773, 37.7793 )
-texture = ExtResource( 19 )
+texture = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1927,7 +1916,7 @@ margin_left = 12.0
 margin_top = 12.0
 margin_right = 429.0
 margin_bottom = 57.0
-theme = ExtResource( 30 )
+theme = ExtResource( 37 )
 text = "Item 0"
 valign = 1
 __meta__ = {
@@ -1939,7 +1928,7 @@ margin_left = 447.0
 margin_top = 15.0
 margin_right = 504.0
 margin_bottom = 57.0
-theme = ExtResource( 30 )
+theme = ExtResource( 37 )
 text = "x00"
 valign = 1
 
@@ -1949,7 +1938,7 @@ margin_top = 748.0
 margin_right = 522.0
 margin_bottom = 902.0
 rect_pivot_offset = Vector2( 261.773, 37.7793 )
-texture = ExtResource( 19 )
+texture = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1959,7 +1948,7 @@ margin_left = 12.0
 margin_top = 12.0
 margin_right = 429.0
 margin_bottom = 57.0
-theme = ExtResource( 30 )
+theme = ExtResource( 37 )
 text = "Item 1"
 valign = 1
 __meta__ = {
@@ -1971,7 +1960,7 @@ margin_left = 447.0
 margin_top = 15.0
 margin_right = 504.0
 margin_bottom = 57.0
-theme = ExtResource( 30 )
+theme = ExtResource( 37 )
 text = "x00"
 valign = 1
 
@@ -1981,7 +1970,7 @@ margin_top = 833.0
 margin_right = 522.0
 margin_bottom = 986.0
 rect_pivot_offset = Vector2( 261.773, 37.7793 )
-texture = ExtResource( 19 )
+texture = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1993,7 +1982,7 @@ margin_left = 15.0
 margin_top = 9.31186
 margin_right = 427.0
 margin_bottom = 52.3119
-theme = ExtResource( 30 )
+theme = ExtResource( 37 )
 text = "Item 2"
 valign = 1
 __meta__ = {
@@ -2005,7 +1994,7 @@ margin_left = 447.0
 margin_top = 15.0
 margin_right = 504.0
 margin_bottom = 57.0
-theme = ExtResource( 30 )
+theme = ExtResource( 37 )
 text = "x00"
 valign = 1
 
@@ -2015,7 +2004,7 @@ margin_top = 917.0
 margin_right = 522.0
 margin_bottom = 1071.0
 rect_pivot_offset = Vector2( 261.773, 37.7793 )
-texture = ExtResource( 19 )
+texture = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2025,7 +2014,7 @@ margin_left = 12.0
 margin_top = 12.0
 margin_right = 429.0
 margin_bottom = 56.0
-theme = ExtResource( 30 )
+theme = ExtResource( 37 )
 text = "Item 3"
 valign = 1
 
@@ -2034,7 +2023,7 @@ margin_left = 447.0
 margin_top = 15.0
 margin_right = 504.0
 margin_bottom = 57.0
-theme = ExtResource( 30 )
+theme = ExtResource( 37 )
 text = "x00"
 valign = 1
 
@@ -2044,7 +2033,7 @@ margin_top = 1002.0
 margin_right = 522.0
 margin_bottom = 1156.0
 rect_pivot_offset = Vector2( 261.773, 37.7793 )
-texture = ExtResource( 19 )
+texture = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2054,7 +2043,7 @@ margin_left = 12.0
 margin_top = 12.0
 margin_right = 429.0
 margin_bottom = 57.0
-theme = ExtResource( 30 )
+theme = ExtResource( 37 )
 text = "Item 4"
 valign = 1
 __meta__ = {
@@ -2066,7 +2055,7 @@ margin_left = 447.0
 margin_top = 15.0
 margin_right = 504.0
 margin_bottom = 57.0
-theme = ExtResource( 30 )
+theme = ExtResource( 37 )
 text = "x00"
 valign = 1
 
@@ -2076,7 +2065,7 @@ margin_top = 748.0
 margin_right = 1164.0
 margin_bottom = 1075.0
 rect_pivot_offset = Vector2( 33.3853, 306.31 )
-texture = ExtResource( 7 )
+texture = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2094,7 +2083,7 @@ anchor_bottom = 1.0
 margin_left = 5.0
 margin_top = 0.23999
 margin_right = 1920.0
-script = ExtResource( 36 )
+script = ExtResource( 44 )
 
 [node name="Backboard" type="TextureRect" parent="Camera/BattleGUI/Attack Menu"]
 anchor_right = 0.289
@@ -2103,7 +2092,7 @@ margin_left = 144.133
 margin_top = 102.642
 margin_right = 4.69806
 margin_bottom = -143.358
-texture = ExtResource( 25 )
+texture = ExtResource( 31 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2115,14 +2104,14 @@ margin_left = 90.481
 margin_top = 210.54
 margin_right = -151.57
 margin_bottom = 106.926
-texture = ExtResource( 11 )
+texture = ExtResource( 24 )
 
 [node name="Attack Name" type="Label" parent="Camera/BattleGUI/Attack Menu/Backboard"]
 margin_left = 15.0
 margin_top = 12.0
 margin_right = 399.0
 margin_bottom = 58.0
-theme = ExtResource( 30 )
+theme = ExtResource( 37 )
 text = "Basic Attack Name"
 align = 1
 valign = 1
@@ -2132,7 +2121,7 @@ margin_left = 6.0
 margin_top = 84.0
 margin_right = 407.0
 margin_bottom = 190.0
-theme = ExtResource( 29 )
+theme = ExtResource( 35 )
 bbcode_enabled = true
 bbcode_text = "[center] [Range]
 [Keywords]
@@ -2144,16 +2133,16 @@ Basic Attack Text"
 [node name="Skill Menu" type="Control" parent="Camera/BattleGUI"]
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 35 )
+script = ExtResource( 45 )
 
 [node name="Card 4" type="TextureRect" parent="Camera/BattleGUI/Skill Menu"]
 margin_left = 5.0
 margin_top = 1086.0
 margin_right = 1165.0
 margin_bottom = 1248.0
-theme = ExtResource( 30 )
-texture = ExtResource( 12 )
-script = ExtResource( 42 )
+theme = ExtResource( 37 )
+texture = ExtResource( 25 )
+script = ExtResource( 40 )
 
 [node name="Name" type="RichTextLabel" parent="Camera/BattleGUI/Skill Menu/Card 4"]
 margin_left = 17.6326
@@ -2169,7 +2158,7 @@ margin_left = 10.0
 margin_top = 9.0
 margin_right = 52.0
 margin_bottom = 41.0
-theme = ExtResource( 28 )
+theme = ExtResource( 36 )
 text = "0"
 align = 1
 __meta__ = {
@@ -2212,9 +2201,9 @@ margin_left = 5.0
 margin_top = 1086.0
 margin_right = 1165.0
 margin_bottom = 1248.0
-theme = ExtResource( 31 )
-texture = ExtResource( 13 )
-script = ExtResource( 42 )
+theme = ExtResource( 34 )
+texture = ExtResource( 8 )
+script = ExtResource( 40 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2233,7 +2222,7 @@ margin_left = 10.2563
 margin_top = 8.91956
 margin_right = 52.2564
 margin_bottom = 40.9196
-theme = ExtResource( 28 )
+theme = ExtResource( 36 )
 text = "3"
 align = 1
 __meta__ = {
@@ -2281,9 +2270,9 @@ margin_top = 1086.0
 margin_right = 1165.0
 margin_bottom = 1248.0
 rect_pivot_offset = Vector2( 246.475, 158.516 )
-theme = ExtResource( 30 )
-texture = ExtResource( 12 )
-script = ExtResource( 42 )
+theme = ExtResource( 37 )
+texture = ExtResource( 25 )
+script = ExtResource( 40 )
 
 [node name="Name" type="RichTextLabel" parent="Camera/BattleGUI/Skill Menu/Card 2"]
 margin_left = 18.3397
@@ -2302,7 +2291,7 @@ margin_left = 10.0
 margin_top = 9.0
 margin_right = 52.0
 margin_bottom = 41.0
-theme = ExtResource( 28 )
+theme = ExtResource( 36 )
 text = "0"
 align = 1
 __meta__ = {
@@ -2345,9 +2334,9 @@ margin_left = 8.51978
 margin_top = 1086.0
 margin_right = 1167.52
 margin_bottom = 1425.0
-theme = ExtResource( 32 )
-texture = ExtResource( 17 )
-script = ExtResource( 42 )
+theme = ExtResource( 33 )
+texture = ExtResource( 12 )
+script = ExtResource( 40 )
 
 [node name="Name" type="RichTextLabel" parent="Camera/BattleGUI/Skill Menu/Card 1"]
 margin_left = 17.6326
@@ -2366,7 +2355,7 @@ margin_left = 10.2563
 margin_top = 8.91956
 margin_right = 52.2564
 margin_bottom = 40.9196
-theme = ExtResource( 28 )
+theme = ExtResource( 36 )
 text = "0"
 align = 1
 __meta__ = {
@@ -2388,7 +2377,7 @@ margin_right = 273.0
 margin_bottom = 339.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource( 32 )
+theme = ExtResource( 33 )
 bbcode_enabled = true
 scroll_active = false
 
@@ -2408,7 +2397,7 @@ volume_db = 10.0
 
 [node name="Targeting Menu" type="Control" parent="Camera/BattleGUI"]
 margin_right = 752.0
-script = ExtResource( 44 )
+script = ExtResource( 3 )
 
 [node name="SelectError" type="AudioStreamPlayer" parent="Camera/BattleGUI/Targeting Menu"]
 stream = ExtResource( 18 )
@@ -2417,7 +2406,7 @@ volume_db = 10.0
 [node name="Swap Menu" type="Control" parent="Camera/BattleGUI"]
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 43 )
+script = ExtResource( 41 )
 
 [node name="Readouts" type="VBoxContainer" parent="Camera/BattleGUI"]
 anchor_left = 1.0
@@ -2429,10 +2418,10 @@ margin_top = -0.44635
 margin_bottom = -0.126831
 custom_constants/separation = 50
 alignment = 1
-script = ExtResource( 38 )
+script = ExtResource( 46 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 26 )
+stream = ExtResource( 30 )
 volume_db = -25.0
 autoplay = true
 
@@ -2444,19 +2433,19 @@ spot_range = 9.0
 spot_attenuation = 0.965936
 spot_angle = 80.0
 
-[node name="Baths" parent="." instance=ExtResource( 52 )]
+[node name="Baths" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -2.6875 )
 
 [node name="Tree!" type="Sprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5625, 2.9375, -5.0625 )
 pixel_size = 0.0625
-texture = ExtResource( 5 )
+texture = ExtResource( 9 )
 
 [node name="Tree!2" type="Sprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.875, 2.5625, -5.8125 )
 flip_h = true
 pixel_size = 0.0625
-texture = ExtResource( 5 )
+texture = ExtResource( 9 )
 
 [node name="Waterfall Top Top" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
@@ -2489,7 +2478,7 @@ playing = true
 transform = Transform( 8.69488, 0, 0, 0, 1, 0, 0, 0, 3.81863, 0.0838966, -0.106471, 0.925688 )
 pixel_size = 0.0625
 axis = 1
-texture = ExtResource( 1 )
+texture = ExtResource( 23 )
 
 [node name="Area" type="StaticBody" parent="Baths"]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0.538, 0.5, 1.0565 )
