@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Silver Weapon Click.wav-2f178517cb605c1319f5e3dc33c2900b.sample"
+type="AudioStreamWAV"
+uid="uid://7jx0gqwncmja"
+path="res://.godot/imported/Silver Weapon Click.wav-2f178517cb605c1319f5e3dc33c2900b.sample"
 
 [deps]
 
 source_file="res://Audio/Silver Weapon Click.wav"
-dest_files=[ "res://.import/Silver Weapon Click.wav-2f178517cb605c1319f5e3dc33c2900b.sample" ]
+dest_files=["res://.godot/imported/Silver Weapon Click.wav-2f178517cb605c1319f5e3dc33c2900b.sample"]
 
 [params]
 

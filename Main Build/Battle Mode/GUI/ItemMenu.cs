@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class ItemMenu : BattleMenu
+public partial class ItemMenu : BattleMenu
 {
     
     /*
@@ -22,14 +22,14 @@ public class ItemMenu : BattleMenu
     {
         animPlayer = (AnimationPlayer) GetNode("AnimationPlayer");
         for(int i = 0; i < numberOfTabs; i++){
-            namePlates[i] = (Label) GetNode("Item Tabs/Item Tab " + i + "/Name");
-            counts[i] = (Label) GetNode("Item Tabs/Item Tab " + i + "/Count");
+            namePlates[i] = (Label) GetNode("Item TabBar/Item Tab " + i + "/Name");
+            counts[i] = (Label) GetNode("Item TabBar/Item Tab " + i + "/Count");
         }
         base._Ready();
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
+//  public override void _Process(double delta)
 //  {
 //      
 //  }
@@ -56,7 +56,7 @@ public class ItemMenu : BattleMenu
 /*
     public void ScrollDown(){
         /*
-            Set Item Tabs such that "Item Tab 0"  is the top invisible tab, and "Item Tab 4" is visibly on the bottom
+            Set Item TabBar such that "Item Tab 0"  is the top invisible tab, and "Item Tab 4" is visibly on the bottom
             Set Labels correctly
             Play Scroll Up
         */
@@ -70,7 +70,7 @@ public class ItemMenu : BattleMenu
 
     public void ScrollUp(){
         /*
-            Set Item Tabs such that "Item Tab 0"  is the top visible tab, and "Item Tab 4" is invisibly on the bottom
+            Set Item TabBar such that "Item Tab 0"  is the top visible tab, and "Item Tab 4" is invisibly on the bottom
             Set Labels correctly
             Play Scroll Up
         */

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class ExplorePlayerStateFree : ExplorePlayerState
+public partial class ExplorePlayerStateFree : ExplorePlayerState
 {
     public override void HandleInput(ExplorePlayer self){
         float deltaX = 0;
@@ -22,7 +22,7 @@ public class ExplorePlayerStateFree : ExplorePlayerState
         
         if(Input.IsActionJustPressed("ui_accept")){
             var scene = GD.Load<PackedScene>("res://Explore Mode/InteractBox.tscn");
-            var interactBox = scene.Instance();
+            var interactBox = scene.Instantiate();
             self.AddChild(interactBox);
             CollisionShape2D col = (CollisionShape2D) interactBox.GetChild(0);
             //Set the colliders transform
@@ -40,7 +40,7 @@ public class ExplorePlayerStateFree : ExplorePlayerState
         self.velocity *= self.moveSpeed;
 
         if(self.velocity.Length() != 0){ //If we're moving: animate the character facing that movement's direction      
-            float degrees = Mathf.Rad2Deg(Vector3.Right.AngleTo(self.velocity)); //Gets the angle of our current movement in radians, then converts to degrees
+            float degrees = Mathf.RadToDeg(Vector3.Right.AngleTo(self.velocity)); //Gets the angle of our current movement in radians, then converts to degrees
             self.direction = (int)Mathf.Round(degrees/90);
             self.direction = WrapInteger4D(self.direction);
             self.anim.Animation = "Walk" + self.direction;

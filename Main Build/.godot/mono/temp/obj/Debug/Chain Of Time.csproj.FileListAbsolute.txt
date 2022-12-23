@@ -1,0 +1,12 @@
+C:\Users\kdail\Desktop\Game Dev\Godot\Chain-of-Time\Main Build\.godot\mono\temp\obj\Debug\Chain Of Time.csproj.AssemblyReference.cache
+C:\Users\kdail\Desktop\Game Dev\Godot\Chain-of-Time\Main Build\.godot\mono\temp\obj\Debug\Chain Of Time.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kdail\Desktop\Game Dev\Godot\Chain-of-Time\Main Build\.godot\mono\temp\obj\Debug\Chain Of Time.AssemblyInfoInputs.cache
+C:\Users\kdail\Desktop\Game Dev\Godot\Chain-of-Time\Main Build\.godot\mono\temp\obj\Debug\Chain Of Time.AssemblyInfo.cs
+C:\Users\kdail\Desktop\Game Dev\Godot\Chain-of-Time\Main Build\.godot\mono\temp\obj\Debug\Chain Of Time.csproj.CoreCompileInputs.cache
+C:\Users\kdail\Desktop\Game Dev\Godot\Chain-of-Time\Main Build\.godot\mono\temp\bin\Debug\Chain Of Time.deps.json
+C:\Users\kdail\Desktop\Game Dev\Godot\Chain-of-Time\Main Build\.godot\mono\temp\bin\Debug\Chain Of Time.dll
+C:\Users\kdail\Desktop\Game Dev\Godot\Chain-of-Time\Main Build\.godot\mono\temp\bin\Debug\Chain Of Time.pdb
+C:\Users\kdail\Desktop\Game Dev\Godot\Chain-of-Time\Main Build\.godot\mono\temp\obj\Debug\Chain Of Time.dll
+C:\Users\kdail\Desktop\Game Dev\Godot\Chain-of-Time\Main Build\.godot\mono\temp\obj\Debug\refint\Chain Of Time.dll
+C:\Users\kdail\Desktop\Game Dev\Godot\Chain-of-Time\Main Build\.godot\mono\temp\obj\Debug\Chain Of Time.pdb
+C:\Users\kdail\Desktop\Game Dev\Godot\Chain-of-Time\Main Build\.godot\mono\temp\obj\Debug\ref\Chain Of Time.dll

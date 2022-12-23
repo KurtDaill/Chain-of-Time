@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/BitCrunchedHit.wav-881ee3287fef0092491fb3b26ea712c2.sample"
+type="AudioStreamWAV"
+uid="uid://cfk5vf3khmlyw"
+path="res://.godot/imported/BitCrunchedHit.wav-881ee3287fef0092491fb3b26ea712c2.sample"
 
 [deps]
 
 source_file="res://Audio/BitCrunchedHit.wav"
-dest_files=[ "res://.import/BitCrunchedHit.wav-881ee3287fef0092491fb3b26ea712c2.sample" ]
+dest_files=["res://.godot/imported/BitCrunchedHit.wav-881ee3287fef0092491fb3b26ea712c2.sample"]
 
 [params]
 

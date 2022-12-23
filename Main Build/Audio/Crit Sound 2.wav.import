@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Crit Sound 2.wav-22eab42df4ee79013090ee9fdc860a25.sample"
+type="AudioStreamWAV"
+uid="uid://f6p300dqx24k"
+path="res://.godot/imported/Crit Sound 2.wav-22eab42df4ee79013090ee9fdc860a25.sample"
 
 [deps]
 
 source_file="res://Audio/Crit Sound 2.wav"
-dest_files=[ "res://.import/Crit Sound 2.wav-22eab42df4ee79013090ee9fdc860a25.sample" ]
+dest_files=["res://.godot/imported/Crit Sound 2.wav-22eab42df4ee79013090ee9fdc860a25.sample"]
 
 [params]
 

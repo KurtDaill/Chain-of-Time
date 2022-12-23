@@ -1,37 +1,36 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path.s3tc="res://.import/Horror Sprite-Sheet.png-41c8c7188462f5dbe8c6f98ddd118009.s3tc.stex"
-path.etc2="res://.import/Horror Sprite-Sheet.png-41c8c7188462f5dbe8c6f98ddd118009.etc2.stex"
+type="CompressedTexture2D"
+uid="uid://dtlhyl6iavj5t"
+path.s3tc="res://.godot/imported/Horror Sprite-Sheet.png-41c8c7188462f5dbe8c6f98ddd118009.s3tc.ctex"
+path.etc2="res://.godot/imported/Horror Sprite-Sheet.png-41c8c7188462f5dbe8c6f98ddd118009.etc2.ctex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Art/Horror Sprite-Sheet.png"
-dest_files=[ "res://.import/Horror Sprite-Sheet.png-41c8c7188462f5dbe8c6f98ddd118009.s3tc.stex", "res://.import/Horror Sprite-Sheet.png-41c8c7188462f5dbe8c6f98ddd118009.etc2.stex" ]
+dest_files=["res://.godot/imported/Horror Sprite-Sheet.png-41c8c7188462f5dbe8c6f98ddd118009.s3tc.ctex", "res://.godot/imported/Horror Sprite-Sheet.png-41c8c7188462f5dbe8c6f98ddd118009.etc2.ctex"]
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.7
-compress/hdr_mode=0
+compress/hdr_compression=1
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=true
-flags/filter=false
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=1
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=false
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
 process/normal_map_invert_y=false
-stream=false
-size_limit=0
-detect_3d=false
-svg/scale=1.0
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

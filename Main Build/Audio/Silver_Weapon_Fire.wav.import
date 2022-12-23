@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Silver_Weapon_Fire.wav-c1b71a07980043e65bc74de85000edd6.sample"
+type="AudioStreamWAV"
+uid="uid://dadx4evqvemrf"
+path="res://.godot/imported/Silver_Weapon_Fire.wav-c1b71a07980043e65bc74de85000edd6.sample"
 
 [deps]
 
 source_file="res://Audio/Silver_Weapon_Fire.wav"
-dest_files=[ "res://.import/Silver_Weapon_Fire.wav-c1b71a07980043e65bc74de85000edd6.sample" ]
+dest_files=["res://.godot/imported/Silver_Weapon_Fire.wav-c1b71a07980043e65bc74de85000edd6.sample"]
 
 [params]
 

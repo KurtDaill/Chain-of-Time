@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [Serializable]
-public class UnexpectedParentException : Exception
+public partial class UnexpectedParentException : Exception
 {
     public UnexpectedParentException() : base() { }
     public UnexpectedParentException(string message) : base(message) { }

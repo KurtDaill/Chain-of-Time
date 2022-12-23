@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Silver Weapon Holster.wav-2ba296fe04b390f3608dfb9055ec4598.sample"
+type="AudioStreamWAV"
+uid="uid://rxwiufdo64ns"
+path="res://.godot/imported/Silver Weapon Holster.wav-2ba296fe04b390f3608dfb9055ec4598.sample"
 
 [deps]
 
 source_file="res://Art/Silver Weapon Holster.wav"
-dest_files=[ "res://.import/Silver Weapon Holster.wav-2ba296fe04b390f3608dfb9055ec4598.sample" ]
+dest_files=["res://.godot/imported/Silver Weapon Holster.wav-2ba296fe04b390f3608dfb9055ec4598.sample"]
 
 [params]
 

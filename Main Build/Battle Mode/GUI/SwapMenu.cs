@@ -1,7 +1,7 @@
 using System;
 using Godot;
 using static PMBattleUtilities;
-public class SwapMenu : BattleMenu{
+public partial class SwapMenu : BattleMenu{
     PMCharacter subject, rightTarget, leftTarget;
 
     private bool rightSelected = false;

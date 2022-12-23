@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public abstract class BattleMenu : Control
+public abstract partial class BattleMenu : Control
 {
     public PMBattleGUI parentGUI;
     public enum MenuInput

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Silver Weapon Chirp.wav-d64c58f7ebd699e761e05ecd83170cfc.sample"
+type="AudioStreamWAV"
+uid="uid://c3sstdvxognd0"
+path="res://.godot/imported/Silver Weapon Chirp.wav-d64c58f7ebd699e761e05ecd83170cfc.sample"
 
 [deps]
 
 source_file="res://Art/Silver Weapon Chirp.wav"
-dest_files=[ "res://.import/Silver Weapon Chirp.wav-d64c58f7ebd699e761e05ecd83170cfc.sample" ]
+dest_files=["res://.godot/imported/Silver Weapon Chirp.wav-d64c58f7ebd699e761e05ecd83170cfc.sample"]
 
 [params]
 

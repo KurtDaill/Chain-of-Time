@@ -8,7 +8,7 @@ using static GameMaster;
 
 //Designed to handle where characters are standing in the battle
 
-public class PMBattleRoster : Spatial
+public partial class PMBattleRoster : Node3D
 {
     enum DefeatStage{
         Check,
@@ -27,8 +27,8 @@ public class PMBattleRoster : Spatial
     private List<PMCharacter> deadPool = new List<PMCharacter>();
     uint currentSwap;
     AnimationPlayer animPlay;
-    Transform[] swapTrans = new Transform[3];
-    Spatial[] swapNode = new Spatial[3];
+    Transform3D[] swapTrans = new Transform3D[3];
+    Node3D[] swapNode = new Node3D[3];
     PMCharacter[] swapChar = new PMCharacter[3];
     BattlePos[] originalPosition = new BattlePos[3]; 
 
@@ -69,7 +69,7 @@ public class PMBattleRoster : Spatial
 
     public void LoadPlayerCharacters(PlayerCharacterData[] loadMe){
         for(int i = 0; i < loadMe.Length; i++){
-            var instance = GD.Load<PackedScene>(loadMe[i].filePath).Instance<PMPlayerCharacter>();
+            var instance = GD.Load<PackedScene>(loadMe[i].filePath).Instantiate<PMPlayerCharacter>();
             instance.ImportData(loadMe[i]);
             SetCharacter(instance, instance.myPosition);
             switch(instance.myPosition){
@@ -204,44 +204,44 @@ public class PMBattleRoster : Spatial
         switch(currentSwap){
             case 0b_011000:
                 animPlay.Play("SwapH12");
-                swapNode[0] = this.GetNode<Spatial>("Hero 1");
+                swapNode[0] = this.GetNode<Node3D>("Hero 1");
                 originalPosition[0] = BattlePos.HeroOne;
-                swapNode[1] = this.GetNode<Spatial>("Hero 2");
+                swapNode[1] = this.GetNode<Node3D>("Hero 2");
                 originalPosition[1] = BattlePos.HeroTwo;
                 break;
             case 0b_101000:
                 animPlay.Play("SwapH13");
-                swapNode[0] = this.GetNode<Spatial>("Hero 1");
+                swapNode[0] = this.GetNode<Node3D>("Hero 1");
                 originalPosition[0] = BattlePos.HeroOne;
-                swapNode[1] = this.GetNode<Spatial>("Hero 3");
+                swapNode[1] = this.GetNode<Node3D>("Hero 3");
                 originalPosition[1] = BattlePos.HeroThree;
                 break;
             case 0b_110000:
                 animPlay.Play("SwapH23");
-                swapNode[0] = this.GetNode<Spatial>("Hero 2");
+                swapNode[0] = this.GetNode<Node3D>("Hero 2");
                 originalPosition[0] = BattlePos.HeroTwo;
-                swapNode[1] = this.GetNode<Spatial>("Hero 3");
+                swapNode[1] = this.GetNode<Node3D>("Hero 3");
                 originalPosition[1] = BattlePos.HeroThree;
                 break;
             case 0b_000110:
                 animPlay.Play("SwapE12");
-                swapNode[0] = this.GetNode<Spatial>("Enemy 1");
+                swapNode[0] = this.GetNode<Node3D>("Enemy 1");
                 originalPosition[0] = BattlePos.EnemyOne;
-                swapNode[1] = this.GetNode<Spatial>("Enemy 2");
+                swapNode[1] = this.GetNode<Node3D>("Enemy 2");
                 originalPosition[1] = BattlePos.EnemyTwo;
                 break;
             case 0b_000101:
                 animPlay.Play("SwapE13");
-                swapNode[0] = this.GetNode<Spatial>("Enemy 1");
+                swapNode[0] = this.GetNode<Node3D>("Enemy 1");
                 originalPosition[0] = BattlePos.EnemyOne;
-                swapNode[1] = this.GetNode<Spatial>("Enemy 3");
+                swapNode[1] = this.GetNode<Node3D>("Enemy 3");
                 originalPosition[1] = BattlePos.EnemyThree;
                 break;
             case 0b_000011:
                 animPlay.Play("SwapE23");
-                swapNode[0] = this.GetNode<Spatial>("Enemy 2");
+                swapNode[0] = this.GetNode<Node3D>("Enemy 2");
                 originalPosition[0] = BattlePos.EnemyTwo;
-                swapNode[1] = this.GetNode<Spatial>("Enemy 3");
+                swapNode[1] = this.GetNode<Node3D>("Enemy 3");
                 originalPosition[1] = BattlePos.EnemyThree;
                 break;
             default:
@@ -258,14 +258,14 @@ public class PMBattleRoster : Spatial
         crunch = true;
         if(hero){
             animPlay.Play("SwapHCrunch");
-            swapNode[0] = this.GetNode<Spatial>("Hero 1");
-            swapNode[1] = this.GetNode<Spatial>("Hero 2");
-            swapNode[2] = this.GetNode<Spatial>("Hero 3");
+            swapNode[0] = this.GetNode<Node3D>("Hero 1");
+            swapNode[1] = this.GetNode<Node3D>("Hero 2");
+            swapNode[2] = this.GetNode<Node3D>("Hero 3");
         }else{
             animPlay.Play("SwapECrunch");
-            swapNode[0] = this.GetNode<Spatial>("Enemy 1");
-            swapNode[1] = this.GetNode<Spatial>("Enemy 2");
-            swapNode[2] = this.GetNode<Spatial>("Enemy 3");
+            swapNode[0] = this.GetNode<Node3D>("Enemy 1");
+            swapNode[1] = this.GetNode<Node3D>("Enemy 2");
+            swapNode[2] = this.GetNode<Node3D>("Enemy 3");
         }
 
         for(int i = 0; i < 3; i++){

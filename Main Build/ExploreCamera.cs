@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class ExploreCamera : Camera
+public partial class ExploreCamera : Camera3D
 {
     public AnimationPlayer animPlayer;
 
@@ -15,9 +15,9 @@ public class ExploreCamera : Camera
     }
 
     public void _on_AnimationPlayer_animation_finished(string animName){
-        EmitSignal(nameof(Camera_Action_Complete));
+        EmitSignal(nameof(Camera_Action_Complete_EventHandler));
     }
 
     [Signal]
-    public delegate void Camera_Action_Complete();
+    public delegate void Camera_Action_Complete_EventHandler();
 }

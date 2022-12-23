@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Silver Weapon Miss.wav-bf452c527acfabf6c3a16c5624b0d105.sample"
+type="AudioStreamWAV"
+uid="uid://x76yd34f4y53"
+path="res://.godot/imported/Silver Weapon Miss.wav-bf452c527acfabf6c3a16c5624b0d105.sample"
 
 [deps]
 
 source_file="res://Audio/Silver Weapon Miss.wav"
-dest_files=[ "res://.import/Silver Weapon Miss.wav-bf452c527acfabf6c3a16c5624b0d105.sample" ]
+dest_files=["res://.godot/imported/Silver Weapon Miss.wav-bf452c527acfabf6c3a16c5624b0d105.sample"]
 
 [params]
 

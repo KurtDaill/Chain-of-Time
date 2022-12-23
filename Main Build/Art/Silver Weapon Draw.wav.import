@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Silver Weapon Draw.wav-72f2a2f92b2d3bfe9479b393a33c99e0.sample"
+type="AudioStreamWAV"
+uid="uid://bs382qh20we53"
+path="res://.godot/imported/Silver Weapon Draw.wav-72f2a2f92b2d3bfe9479b393a33c99e0.sample"
 
 [deps]
 
 source_file="res://Art/Silver Weapon Draw.wav"
-dest_files=[ "res://.import/Silver Weapon Draw.wav-72f2a2f92b2d3bfe9479b393a33c99e0.sample" ]
+dest_files=["res://.godot/imported/Silver Weapon Draw.wav-72f2a2f92b2d3bfe9479b393a33c99e0.sample"]
 
 [params]
 

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/UI_Focus_Tonic.wav-fe2c58bf161c4996fc71a4424d49fe68.sample"
+type="AudioStreamWAV"
+uid="uid://bk6xhik3f6k6f"
+path="res://.godot/imported/UI_Focus_Tonic.wav-fe2c58bf161c4996fc71a4424d49fe68.sample"
 
 [deps]
 
 source_file="res://Audio/UI_Focus_Tonic.wav"
-dest_files=[ "res://.import/UI_Focus_Tonic.wav-fe2c58bf161c4996fc71a4424d49fe68.sample" ]
+dest_files=["res://.godot/imported/UI_Focus_Tonic.wav-fe2c58bf161c4996fc71a4424d49fe68.sample"]
 
 [params]
 

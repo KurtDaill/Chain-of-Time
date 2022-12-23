@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class GameMaster : Node
+public partial class GameMaster : Node
 {
     PlayerCharacterData[] playerData = Array.Empty<PlayerCharacterData>();
     public struct PlayerCharacterData{
@@ -26,7 +26,7 @@ public class GameMaster : Node
         public int [] abilitiesPrepared {get; set;}
     }
 
-    public override void _Process(float delta)
+    public override void _Process(double delta)
     {
         base._Process(delta);
     }
@@ -50,12 +50,12 @@ public class GameMaster : Node
     public void NextWave(PackedScene newBattle){
         PMBattle old = GetNode<PMBattle>("/root/Battle");
         SavePlayerParty(old.roster);
-        PMBattle battle = newBattle.Instance<PMBattle>();
+        PMBattle battle = newBattle.Instantiate<PMBattle>();
         battle.GetChild<PMBattleRoster>(0).LoadPlayerCharacters(playerData);
         playerData = Array.Empty<PlayerCharacterData>();
         GetTree().Root.RemoveChild(old);
         GetTree().Root.AddChild(battle);
         old.Free();
-        //GetTree().ChangeScene(nextBattle);
+        //GetTree().ChangeSceneToFile(nextBattle);
     }
 }

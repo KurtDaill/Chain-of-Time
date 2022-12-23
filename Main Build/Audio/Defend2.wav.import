@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Defend2.wav-4d7aa6ec08d16482bbfde1f7f39865fa.sample"
+type="AudioStreamWAV"
+uid="uid://bgo72bqe8ltrx"
+path="res://.godot/imported/Defend2.wav-4d7aa6ec08d16482bbfde1f7f39865fa.sample"
 
 [deps]
 
 source_file="res://Audio/Defend2.wav"
-dest_files=[ "res://.import/Defend2.wav-4d7aa6ec08d16482bbfde1f7f39865fa.sample" ]
+dest_files=["res://.godot/imported/Defend2.wav-4d7aa6ec08d16482bbfde1f7f39865fa.sample"]
 
 [params]
 

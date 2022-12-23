@@ -2,7 +2,7 @@ using System;
 using Godot;
 using static PMBattleUtilities;
 
-public class SkillCard : TextureRect{
+public partial class SkillCard : TextureRect{
     private RichTextLabel name, rules;
     private Label abilityType, cost;
     private AnimationPlayer anim;
@@ -15,7 +15,7 @@ public class SkillCard : TextureRect{
     }
     public void SetDisplay(string abilityName, string rulesText, string type, AbilityAlignment align, int spCost){
         this.Visible = true;
-        name.BbcodeText = "[center]" + abilityName;
+        name.Text = "[center]" + abilityName;
         cost.Text = "" + spCost;
         abilityType.Text = type;
         
@@ -32,11 +32,11 @@ public class SkillCard : TextureRect{
                 rulesText = rulesText.Remove(0,5);
             }
         }
-        rules.BbcodeText = rulesText;
+        rules.Text = rulesText;
 
         switch(align){ //Assigns the card's graphic and text theme to match it's alignment
             case AbilityAlignment.Normal :
-                Texture = (Texture) GD.Load("res://GUI/Battle Menu Assets/Skill Menu/Skill Card.png");
+                Texture = (Texture2D) GD.Load("res://GUI/Battle Menu Assets/Skill Menu/Skill Card.png");
                 Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Normal.tres");
                 if(textSize == "small"){
                     rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Normal Small.tres");
@@ -45,7 +45,7 @@ public class SkillCard : TextureRect{
                 } 
                 break;
             case AbilityAlignment.Magic :
-                Texture = (Texture) GD.Load("res://GUI/Battle Menu Assets/Skill Menu/Spell Card.png");
+                Texture = (Texture2D) GD.Load("res://GUI/Battle Menu Assets/Skill Menu/Spell Card.png");
                 Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Spell.tres");
                 if(textSize == "small"){
                     rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Spell Small.tres");
@@ -54,7 +54,7 @@ public class SkillCard : TextureRect{
                 } 
                 break;
             case AbilityAlignment.Tech :
-                Texture = (Texture) GD.Load("res://GUI/Battle Menu Assets/Skill Menu/Tech Card.png");
+                Texture = (Texture2D) GD.Load("res://GUI/Battle Menu Assets/Skill Menu/Tech Card.png");
                 Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Tech.tres");
                 if(textSize == "small"){
                     rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Tech Small.tres");

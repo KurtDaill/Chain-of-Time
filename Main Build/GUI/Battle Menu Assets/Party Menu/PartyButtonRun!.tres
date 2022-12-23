@@ -1,14 +1,11 @@
-[gd_resource type="AnimatedTexture" load_steps=3 format=2]
+[gd_resource type="AnimatedTexture" load_steps=3 format=3 uid="uid://l6unyyb4maph"]
 
-[ext_resource path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuOff.png" type="Texture" id=1]
-
-[sub_resource type="StreamTexture" id=1]
-load_path = "res://.import/PartyMenuRunOn.png-b86fcadecbf3c88e029c95aa2af9e3bd.stex"
+[ext_resource type="Texture2D" uid="uid://dns1l1ljson6s" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuOff.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://crut1q5no2jl7" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuRunOn.png" id="1_j77ch"]
 
 [resource]
 frames = 2
 pause = true
-fps = 1.0
-frame_0/texture = SubResource( 1 )
-frame_1/texture = ExtResource( 1 )
-frame_1/delay_sec = 0.0
+frame_0/texture = ExtResource("1_j77ch")
+frame_1/texture = ExtResource("1")
+frame_1/duration = 1.0

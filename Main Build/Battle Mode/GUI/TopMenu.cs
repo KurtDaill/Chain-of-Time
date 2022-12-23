@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class TopMenu : BattleMenu
+public partial class TopMenu : BattleMenu
 {
     //TODO Highlight Animations
 
@@ -25,7 +25,7 @@ public class TopMenu : BattleMenu
         highlightedTab = -1;
     }
         
-    public override void _Process(float delta)
+    public override void _Process(double delta)
     {
        //Tab Animation
        if(highlightedTab != -1) menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = true;

@@ -1,10 +1,7 @@
-[gd_resource type="Theme" load_steps=3 format=2]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://0sj6o2hvmgmt"]
 
-[ext_resource path="res://Fonts/manaspc.ttf" type="DynamicFontData" id=1]
-
-[sub_resource type="DynamicFont" id=1]
-size = 32
-font_data = ExtResource( 1 )
+[ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="1"]
 
 [resource]
-default_font = SubResource( 1 )
+default_font = ExtResource("1")
+default_font_size = 32

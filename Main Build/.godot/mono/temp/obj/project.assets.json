@@ -1,0 +1,164 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "Godot.SourceGenerators/4.0.0-beta.9": {
+        "type": "package",
+        "build": {
+          "build/Godot.SourceGenerators.props": {}
+        }
+      },
+      "GodotSharp/4.0.0-beta.9": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/GodotSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/GodotSharp.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "GodotSharpEditor/4.0.0-beta.9": {
+        "type": "package",
+        "dependencies": {
+          "GodotSharp": "4.0.0-beta.9"
+        },
+        "compile": {
+          "lib/net6.0/GodotSharpEditor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/GodotSharpEditor.dll": {
+            "related": ".xml"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Godot.SourceGenerators/4.0.0-beta.9": {
+      "sha512": "Cz6afUL74qNUoDy0Z+BvTHsNIzc2AdnPlR8Z5TrWwyPoLdOEEDFQ1V6Q27L6z3XVNmHJwfBC007i4z+6bFAynA==",
+      "type": "package",
+      "path": "godot.sourcegenerators/4.0.0-beta.9",
+      "files": [
+        ".nupkg.metadata",
+        "analyzers/dotnet/cs/Godot.SourceGenerators.dll",
+        "build/Godot.SourceGenerators.props",
+        "godot.sourcegenerators.4.0.0-beta.9.nupkg.sha512",
+        "godot.sourcegenerators.nuspec"
+      ]
+    },
+    "GodotSharp/4.0.0-beta.9": {
+      "sha512": "pUQUKmcuXQOIjizhyocI3RIRsJ8p/m282xA9Ohub2ZVxBZegrOBEzZdd6sGKJKFJZ+p4fav8K3u2rKvpluWVWg==",
+      "type": "package",
+      "path": "godotsharp/4.0.0-beta.9",
+      "files": [
+        ".nupkg.metadata",
+        "godotsharp.4.0.0-beta.9.nupkg.sha512",
+        "godotsharp.nuspec",
+        "lib/net6.0/GodotSharp.dll",
+        "lib/net6.0/GodotSharp.xml"
+      ]
+    },
+    "GodotSharpEditor/4.0.0-beta.9": {
+      "sha512": "nnFUDK9YYVV5zJCWWW9fTUrbXxyTaLwwyDCeZtaI0Cz3NBaH9RjhSA5y/AQZwWCVpayUo4DhHX/PA6WgkKN0ug==",
+      "type": "package",
+      "path": "godotsharpeditor/4.0.0-beta.9",
+      "files": [
+        ".nupkg.metadata",
+        "godotsharpeditor.4.0.0-beta.9.nupkg.sha512",
+        "godotsharpeditor.nuspec",
+        "lib/net6.0/GodotSharpEditor.dll",
+        "lib/net6.0/GodotSharpEditor.xml"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "Godot.SourceGenerators >= 4.0.0-beta.9",
+      "GodotSharp >= 4.0.0-beta.9",
+      "GodotSharpEditor >= 4.0.0-beta.9"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\kdail\\.nuget\\packages\\": {},
+    "C:\\Users\\kdail\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
+      "projectName": "Chain Of Time",
+      "projectPath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
+      "packagesPath": "C:\\Users\\kdail\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\.godot\\mono\\temp\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Users\\kdail\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\kdail\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kdail\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "dependencies": {
+          "Godot.SourceGenerators": {
+            "target": "Package",
+            "version": "[4.0.0-beta.9, )"
+          },
+          "GodotSharp": {
+            "target": "Package",
+            "version": "[4.0.0-beta.9, )"
+          },
+          "GodotSharpEditor": {
+            "target": "Package",
+            "version": "[4.0.0-beta.9, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.404\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

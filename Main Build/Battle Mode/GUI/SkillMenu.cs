@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class SkillMenu : BattleMenu
+public partial class SkillMenu : BattleMenu
 {
     
     public AnimationPlayer menuAnim;
@@ -25,7 +25,7 @@ public class SkillMenu : BattleMenu
         
     }
 
-    public override void _Process(float delta)
+    public override void _Process(double delta)
     {
         base._Process(delta);
     }

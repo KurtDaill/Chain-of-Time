@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public class PartyMenu : BattleMenu{
+public partial class PartyMenu : BattleMenu{
     //Used to control whether we display the 'enabled' or 'disabled' textures
     
     

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class PlayerCharacterReadout : TextureRect
+public partial class PlayerCharacterReadout : TextureRect
 {
     Label HP, SP;
     Label maxHPLabel, maxSPLabel;

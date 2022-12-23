@@ -1,14 +1,14 @@
 using Godot;
 using System;
 
-public class FTB_Teleporter : Area
+public partial class FTB_Teleporter : Area3D
 {
     [Export]
     private NodePath target;
     [Export]
     private NodePath cameraPath;
     private ExploreCamera camera;
-    private Spatial targetSpatial;
+    private Node3D targetSpatial;
 
     private ExplorePlayer3D teleportee;
 
@@ -17,7 +17,7 @@ public class FTB_Teleporter : Area
 
     public override void _Ready()
     {
-        targetSpatial = (Spatial) GetNode(target);
+        targetSpatial = (Node3D) GetNode(target);
         camera= (ExploreCamera) GetNode(cameraPath);
     }
 
@@ -33,7 +33,7 @@ public class FTB_Teleporter : Area
                 return;
             }
             camera.StartCameraAction("Fade to Black");
-            camera.Connect("Camera_Action_Complete", this, nameof(FinishTeleport));
+            camera.Connect("Camera_Action_Complete",new Callable(this,nameof(FinishTeleport)));
             teleportee = (ExplorePlayer3D) body;
             if(targetSpatial is FTB_Teleporter){
                 FTB_Teleporter temp = (FTB_Teleporter) targetSpatial;
@@ -41,15 +41,15 @@ public class FTB_Teleporter : Area
             }
             //animPlayer.Connect("Camera_Action_Complete", this, )
             //Cut to Black,
-            //Once We've Cut To Black -> Players Transform = Target;
+            //Once We've Cut To Black -> Players Transform3D = Target;
             //Once We've Teleported the Player -> Fade Up From Black
         }
     }
 
     private void FinishTeleport(){
-        teleportee.Translation = targetSpatial.Translation;
+        teleportee.Position = targetSpatial.Position;
         camera.StartCameraAction("Fade Up");
-        camera.Disconnect("Camera_Action_Complete", this, nameof(FinishTeleport));
+        camera.Disconnect("Camera_Action_Complete",new Callable(this,nameof(FinishTeleport)));
     }
 
 }

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/SilverSuperShotCharge.wav-6dab27067ef0284a71c9469b4ebcefe7.sample"
+type="AudioStreamWAV"
+uid="uid://1cadqqf4ps1a"
+path="res://.godot/imported/SilverSuperShotCharge.wav-6dab27067ef0284a71c9469b4ebcefe7.sample"
 
 [deps]
 
 source_file="res://Audio/SilverSuperShotCharge.wav"
-dest_files=[ "res://.import/SilverSuperShotCharge.wav-6dab27067ef0284a71c9469b4ebcefe7.sample" ]
+dest_files=["res://.godot/imported/SilverSuperShotCharge.wav-6dab27067ef0284a71c9469b4ebcefe7.sample"]
 
 [params]
 

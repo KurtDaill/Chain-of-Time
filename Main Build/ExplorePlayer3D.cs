@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class ExplorePlayer3D : KinematicBody
+public partial class ExplorePlayer3D : CharacterBody3D
 {
     private float deltaZ, deltaX;
     private Vector3 move;
@@ -15,7 +15,7 @@ public class ExplorePlayer3D : KinematicBody
         deltaZ = 0;
         deltaX = 0;
     }
-    public override void _Process(float delta)
+    public override void _Process(double delta)
     {
         if(Input.IsActionPressed("ui_right")){
             deltaZ = -1;

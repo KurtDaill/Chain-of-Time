@@ -1,7 +1,7 @@
 using Godot;
 using System;
 using static PMBattleUtilities;
-public class ReadoutContainer : VBoxContainer
+public partial class ReadoutContainer : VBoxContainer
 {   
     
     // Declare member variables here. Examples:
@@ -15,7 +15,7 @@ public class ReadoutContainer : VBoxContainer
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
+//  public override void _Process(double delta)
 //  {
 //      
 //  }

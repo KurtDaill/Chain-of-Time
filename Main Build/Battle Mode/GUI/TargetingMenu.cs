@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using static PMBattleUtilities;
-public class TargetingMenu : BattleMenu {
+public partial class TargetingMenu : BattleMenu {
     private PMPlayerAbility abilityInQuestion;
     private AudioStreamPlayer targetingErrorSound;
     private List<PMCharacter> plannedTargets;

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/FUI Button Beep Clean Pitch Up.wav-32b3de53fbcb5abeada17706b3348d7d.sample"
+type="AudioStreamWAV"
+uid="uid://cf7bpatv4ye2x"
+path="res://.godot/imported/FUI Button Beep Clean Pitch Up.wav-32b3de53fbcb5abeada17706b3348d7d.sample"
 
 [deps]
 
 source_file="res://Audio/FUI Button Beep Clean Pitch Up.wav"
-dest_files=[ "res://.import/FUI Button Beep Clean Pitch Up.wav-32b3de53fbcb5abeada17706b3348d7d.sample" ]
+dest_files=["res://.godot/imported/FUI Button Beep Clean Pitch Up.wav-32b3de53fbcb5abeada17706b3348d7d.sample"]
 
 [params]
 

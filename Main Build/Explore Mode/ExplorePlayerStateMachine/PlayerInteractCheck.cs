@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class PlayerInteractCheck : Area2D
+public partial class PlayerInteractCheck : Area2D
 {
     // Declare member variables here. Examples:
     // private int a = 2;
@@ -15,7 +15,7 @@ public class PlayerInteractCheck : Area2D
     }
 
 
-    public override void _Process(float delta)
+    public override void _Process(double delta)
     {
       //Get all overlapping Area2D's
       //Check if any of them are an Interactable's Interact Areas

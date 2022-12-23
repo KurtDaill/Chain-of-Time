@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Silver Supershot Beep.wav-00c50f6c817806aa6de76a1ca1f445c9.sample"
+type="AudioStreamWAV"
+uid="uid://ismxp57yx74j"
+path="res://.godot/imported/Silver Supershot Beep.wav-00c50f6c817806aa6de76a1ca1f445c9.sample"
 
 [deps]
 
 source_file="res://Audio/Silver Supershot Beep.wav"
-dest_files=[ "res://.import/Silver Supershot Beep.wav-00c50f6c817806aa6de76a1ca1f445c9.sample" ]
+dest_files=["res://.godot/imported/Silver Supershot Beep.wav-00c50f6c817806aa6de76a1ca1f445c9.sample"]
 
 [params]
 

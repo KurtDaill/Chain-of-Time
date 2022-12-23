@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/SuperShot.wav-4f98c867bfd710da2e2ed347563f1d38.sample"
+type="AudioStreamWAV"
+uid="uid://cwpkqqe1rbdlj"
+path="res://.godot/imported/SuperShot.wav-4f98c867bfd710da2e2ed347563f1d38.sample"
 
 [deps]
 
 source_file="res://Audio/SuperShot.wav"
-dest_files=[ "res://.import/SuperShot.wav-4f98c867bfd710da2e2ed347563f1d38.sample" ]
+dest_files=["res://.godot/imported/SuperShot.wav-4f98c867bfd710da2e2ed347563f1d38.sample"]
 
 [params]
 

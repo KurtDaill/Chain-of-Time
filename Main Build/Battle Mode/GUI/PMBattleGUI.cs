@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using static BattleMenu;
-public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to PlayerMenuSelection
+public partial class PMBattleGUI : Control //TODO Migrate a lot of this functionality to PlayerMenuSelection
 {
 
     public BattleMenu currentMenu;
@@ -95,7 +95,7 @@ public class PMBattleGUI : Control //TODO Migrate a lot of this functionality to
 
     public void ExitWithoutQueueingAbility(PMPlayerCharacter character){
         //var temp = playersAbleToAct.ToList();
-        //temp.Remove(character);
+        //temp.RemoveAt(character);
         //playersAbleToAct = temp.ToArray();
         noAbilityExit = true;
     }

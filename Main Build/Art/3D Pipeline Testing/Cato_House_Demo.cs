@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Cato_House_Demo : Spatial
+public partial class Cato_House_Demo : Node3D
 {
     // Declare member variables here. Examples:
     // private int a = 2;
@@ -13,7 +13,7 @@ public class Cato_House_Demo : Spatial
         
     }
 
-    public override void _Process(float delta)
+    public override void _Process(double delta)
     {
         if(Input.IsActionJustPressed("ui_accept")){
             AnimationPlayer player = (AnimationPlayer) GetNode("AnimationPlayer");

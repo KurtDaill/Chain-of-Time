@@ -1,0 +1,17 @@
+res://Battle Mode/Enemies/Polymorphor.tscn
+res://GUI/Themes/Skill Card Spell.tres
+res://GUI/Themes/Skill Card Tech.tres
+res://GUI/Themes/Skill Card Normal Small.tres
+res://GUI/Themes/UI Impact.tres
+res://GUI/Themes/Skill Card Normal.tres
+res://Battle Mode/Example Battle.tscn
+res://GUI/Themes/Readout Text.tres
+res://GUI/Cato Readout.tscn
+res://GUI/Silver Readout.tscn
+res://Battle Mode/Player Characters/Cato.tscn
+res://Battle Mode/Player Characters/Will Silver.tscn
+res://Battle Mode/Enemies/Ghost.tscn
+res://GUI/Themes/Skill Card Normal Smallest.tres
+res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres
+res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres
+res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres
