@@ -177,7 +177,6 @@ public class PMBattle : Node
                 currentPhase = TurnPhase.EnemyAction;
                 break;
             case TurnPhase.EnemyAction :
-                //Basically the same loop as PlayerAction but with the enemy stack 
                 if(enemyAttacks.Peek().CheckForCompletion()){//Peek Enemy Attack Stack, get notice whether the attack is still running or not
                     enemyAttacks.Dequeue();
                     if(enemyAttacks.Count == 0){//Is there any more attacks?

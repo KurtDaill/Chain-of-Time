@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=2]
+[gd_scene load_steps=110 format=2]
 
 [ext_resource path="res://PM Battle Mode/PMBattle.cs" type="Script" id=1]
 [ext_resource path="res://PMBattleRoster.cs" type="Script" id=2]
@@ -52,8 +52,17 @@
 [ext_resource path="res://Battle Mode/GUI/PartyMenu.cs" type="Script" id=50]
 [ext_resource path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres" type="Texture" id=51]
 [ext_resource path="res://PM Battle Mode/Enemies/Ghost.tscn" type="PackedScene" id=52]
+[ext_resource path="res://Art/Posion Bubble Particle.png" type="Texture" id=53]
 [ext_resource path="res://PM Battle Mode/Player Characters/Cato.tscn" type="PackedScene" id=55]
 [ext_resource path="res://PM Battle Mode/Player Characters/Will Silver.tscn" type="PackedScene" id=58]
+
+[sub_resource type="SpatialMaterial" id=128]
+flags_transparent = true
+albedo_texture = ExtResource( 53 )
+roughness = 0.0
+
+[sub_resource type="QuadMesh" id=129]
+material = SubResource( 128 )
 
 [sub_resource type="Animation" id=83]
 length = 0.001
@@ -1664,6 +1673,24 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1875, 4 )
 
 [node name="Cato" parent="Battle Roster/Hero 1" instance=ExtResource( 55 )]
 
+[node name="CPUParticles" type="CPUParticles" parent="Battle Roster/Hero 1/Cato"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.8, 0 )
+amount = 3
+lifetime = 2.0
+draw_order = 1
+mesh = SubResource( 129 )
+emission_shape = 2
+emission_box_extents = Vector3( 0.5, 0.1, 0.1 )
+flag_disable_z = true
+spread = 65.0
+gravity = Vector3( 0, 0.75, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+orbit_velocity_curve = null
+radial_accel = 0.1
+scale_amount = 0.2
+scale_amount_random = 0.05
+
 [node name="Enemy 1" type="Spatial" parent="Battle Roster"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1875, 4 )
 
@@ -2465,28 +2492,28 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 axis = 1
 frames = SubResource( 123 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="Waterfall Piece" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 2.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 124 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="Waterfall Piece2" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 0.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 124 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="Waterfall Top" type="AnimatedSprite3D" parent="Baths"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 4.9375, -1.875 )
 pixel_size = 0.0625
 frames = SubResource( 125 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="Sprite3D5" type="Sprite3D" parent="Baths"]

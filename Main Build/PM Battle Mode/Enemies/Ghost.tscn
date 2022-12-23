@@ -640,6 +640,7 @@ abilitiesByPriority = [ NodePath("Staff Attack"), NodePath("Fireball Attack") ]
 combatRoles = PoolIntArray( 3 )
 
 [node name="Pointer" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73, 2.24, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
@@ -649,7 +650,7 @@ anims/Idle = SubResource( 5 )
 anims/RESET = SubResource( 6 )
 
 [node name="AimPoint" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68, -0.36, 0 )
 
 [node name="Fireball Attack" type="Node" parent="."]
 script = ExtResource( 3 )
