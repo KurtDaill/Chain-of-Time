@@ -164,7 +164,7 @@ public class PMBattle : Node
                     timer = 0;
                 }
             
-                //If Enemies should die, they do
+                //Enemies each run their logic for deciding their attack this turn
                 enemyAttacks = new Queue<PMEnemyAbility>();
                 foreach(PMEnemyCharacter en in roster.GetEnemyCharacters()){
                     var enAb = en.DecideAttack();
@@ -178,7 +178,7 @@ public class PMBattle : Node
                 break;
             case TurnPhase.EnemyAction :
                 //Basically the same loop as PlayerAction but with the enemy stack 
-                if(enemyAttacks.Peek().CheckForCompletion()){//Peek Player Attack Stack, get notice whether the attack is still running or not
+                if(enemyAttacks.Peek().CheckForCompletion()){//Peek Enemy Attack Stack, get notice whether the attack is still running or not
                     enemyAttacks.Dequeue();
                     if(enemyAttacks.Count == 0){//Is there any more attacks?
                         //Setup the status effect stack, then turn it over to the next turn

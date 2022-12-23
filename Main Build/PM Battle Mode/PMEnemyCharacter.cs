@@ -79,9 +79,11 @@ public class PMEnemyCharacter : PMCharacter{
                     }
                     if(!isSomeoneDead) return false;
                 }
+                if(req.Contains(SpecialRequirement.InFrontLine)){
+                    if(myPosition != BattlePos.EnemyOne) return false;
+                }
                 if(req.Contains(SpecialRequirement.SelfDamagedThisTurn)){
                     if(this.damageTakenThisTurn == 0) return false;
-                    
                 }
                 if(req.Contains(SpecialRequirement.SelfUndamagedThisTurn)){
                        if(this.damageTakenThisTurn !=0 ) return false;
@@ -121,14 +123,14 @@ public class PMEnemyCharacter : PMCharacter{
                     return new PMCharacter[]{this};
                 case TargetPriority.MeleeHero:
                     //We don't have to check whether HeroOne is null, someone has to hold that slot for the battle to be happening
-                    if(myPosition == BattlePos.EnemyOne && parentBattle.PositionLookup(BattlePos.HeroOne).IsTargetable(able.CanTargetFliers())){
+                    if(parentBattle.PositionLookup(BattlePos.HeroOne).IsTargetable(able.CanTargetFliers())){
                         return new PMCharacter[]{parentBattle.PositionLookup(BattlePos.HeroOne)};
                     }
                     break;
                 case TargetPriority.RangedHeroes:
                     if(able.GetTargetingRule() != TargetingRule.SingleHeroRanged) throw new NotImplementedException(); //TODO make custom exception
                     //Randomly pick a hero in slot 2 or 3
-                    var temp = new Random().Next(1,2);
+                    var temp = new Random().Next(1,3);
                     PMCharacter[] players = parentBattle.roster.GetPlayerCharacters();
                     if(players[temp] != null){
                         return new PMCharacter[]{players[temp]};

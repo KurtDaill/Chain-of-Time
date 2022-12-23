@@ -104,6 +104,7 @@ public static class BattleEnemyAI{
     public enum SpecialRequirement{
         NoHeroTank,
         HeroDown,
+        InFrontLine,
         SelfDamagedThisTurn,
         SelfUndamagedThisTurn,
         NoEnemies,
