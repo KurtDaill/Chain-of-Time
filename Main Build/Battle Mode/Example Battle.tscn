@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://c1ni42l3v081f"]
+[gd_scene load_steps=107 format=3 uid="uid://c1ni42l3v081f"]
 
 [ext_resource type="Script" path="res://Battle Mode/PMBattle.cs" id="1"]
 [ext_resource type="Script" path="res://PMBattleRoster.cs" id="2"]
@@ -47,9 +47,10 @@
 [ext_resource type="Script" path="res://Battle Mode/GUI/TargetingMenu.cs" id="46_5ab3c"]
 [ext_resource type="Texture2D" uid="uid://l6unyyb4maph" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres" id="47"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/SwapMenu.cs" id="47_62n4i"]
-[ext_resource type="Texture2D" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres" id="48"]
+[ext_resource type="Texture2D" uid="uid://k1c0luw6jqjc" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres" id="48"]
 [ext_resource type="Texture2D" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres" id="49"]
-[ext_resource type="Texture2D" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres" id="51"]
+[ext_resource type="PackedScene" uid="uid://7df38myb1663" path="res://GUI/Cato Readout.tscn" id="49_rl0qb"]
+[ext_resource type="Texture2D" uid="uid://wxj5d30d2p8y" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres" id="51"]
 [ext_resource type="PackedScene" uid="uid://bqhhsywrd27ba" path="res://Battle Mode/Enemies/Ghost.tscn" id="52"]
 [ext_resource type="Texture2D" uid="uid://xd3i3hvk8rse" path="res://Art/Posion Bubble Particle.png" id="53"]
 [ext_resource type="PackedScene" uid="uid://bqb21t5xmngp7" path="res://Battle Mode/Player Characters/Cato.tscn" id="55"]
@@ -1218,212 +1219,42 @@ _data = {
 "Scroll Up": SubResource("25")
 }
 
-[sub_resource type="Animation" id="8"]
-length = 0.4
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-
-[sub_resource type="Animation" id="9"]
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [746.0, 741.0]
-}
-
-[sub_resource type="Animation" id="10"]
-length = 0.4
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nh761"]
-_data = {
-"Draw": SubResource("8"),
-"Selected": SubResource("9"),
-"Stow": SubResource("10")
-}
-
-[sub_resource type="Animation" id="11"]
-length = 0.4
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-
-[sub_resource type="Animation" id="12"]
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [746.0, 741.0]
-}
-
-[sub_resource type="Animation" id="13"]
-length = 0.4
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nbbkd"]
-_data = {
-"Draw": SubResource("11"),
-"Selected": SubResource("12"),
-"Stow": SubResource("13")
-}
-
-[sub_resource type="Animation" id="14"]
-length = 0.4
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-
-[sub_resource type="Animation" id="15"]
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [746.0, 741.0]
-}
-
-[sub_resource type="Animation" id="16"]
-length = 0.4
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kr1ux"]
-_data = {
-"Draw": SubResource("14"),
-"Selected": SubResource("15"),
-"Stow": SubResource("16")
-}
-
 [sub_resource type="Animation" id="17"]
-length = 0.4
+length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset_top")
+tracks/0/path = NodePath(".:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -158, -0.25, 0, 0.25, 0, -150, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5)
 }
 
 [sub_resource type="Animation" id="18"]
 length = 0.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset_top")
+tracks/0/path = NodePath(".:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [746.0, 741.0]
+"update": 0,
+"values": [-150.0, -153.0]
 }
 
 [sub_resource type="Animation" id="19"]
-length = 0.4
+length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:offset_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hic0e"]
-_data = {
-"Draw": SubResource("17"),
-"Selected": SubResource("18"),
-"Stow": SubResource("19")
-}
-
-[sub_resource type="Animation" id="20"]
-length = 0.6
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Card 3:offset_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1434,76 +1265,46 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Card 2:offset_left")
+tracks/1/path = NodePath(".:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-150, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Card 4:offset_left")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+
+[sub_resource type="Animation" id="Animation_dpyc2"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Card 1:offset_top")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hic0e"]
+_data = {
+"Draw": SubResource("17"),
+"RESET": SubResource("Animation_dpyc2"),
+"Selected": SubResource("18"),
+"Stow": SubResource("19")
 }
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Card 2:offset_top")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Card 3:offset_top")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Card 4:offset_top")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Card 1/AnimationPlayer")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+
+[sub_resource type="Animation" id="20"]
+length = 0.6
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Card Container/Card 1/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0.6),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -1511,52 +1312,30 @@ tracks/7/keys = {
 "method": &"play"
 }]
 }
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Card Container:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -181, -0.4, -54, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
 
 [sub_resource type="Animation" id="21"]
 length = 0.4
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Card 1:offset_top")
+tracks/0/path = NodePath("Card Container:offset_top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Card 2:offset_top")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Card 3:offset_top")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Card 4:offset_top")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-181, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4)
 }
 
 [sub_resource type="Animation" id="66"]
@@ -1564,98 +1343,25 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Card 4:offset_left")
+tracks/0/path = NodePath("Card Container/Card 1:offset_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [5.0]
+"values": [8.51978]
 }
-tracks/1/type = "value"
+tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Card 4:offset_top")
+tracks/1/path = NodePath("Card Container:offset_top")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1086.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Card 3:offset_left")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Card 3:offset_top")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1086.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Card 2:offset_left")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Card 2:offset_top")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1086.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Card 1:offset_left")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8.51978]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Card 1:offset_top")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1086.0]
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2acw7"]
@@ -1972,6 +1678,7 @@ offset_bottom = -0.408257
 texture = ExtResource("7")
 
 [node name="Party Menu" type="Control" parent="Camera3D/BattleGUI"]
+visible = false
 layout_mode = 1
 anchors_preset = 0
 offset_right = 40.0
@@ -2283,31 +1990,100 @@ Basic Attack Text"
 
 [node name="Skill Menu" type="Control" parent="Camera3D/BattleGUI"]
 layout_mode = 1
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1080.0
+offset_right = -1880.0
+offset_bottom = -1040.0
+grow_horizontal = 2
+grow_vertical = 0
 script = ExtResource("37_8cdnk")
 
-[node name="Card 4" type="TextureRect" parent="Camera3D/BattleGUI/Skill Menu"]
+[node name="Card Container" type="Control" parent="Camera3D/BattleGUI/Skill Menu"]
+layout_mode = 1
+anchor_top = 27.0
+anchor_right = 30.3
+anchor_bottom = 27.0
+
+[node name="Card 1" type="TextureRect" parent="Camera3D/BattleGUI/Skill Menu/Card Container"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
-offset_left = 5.0
-offset_top = 1086.0
-offset_right = 1165.0
-offset_bottom = 1248.0
-theme = ExtResource("37")
-texture = ExtResource("25")
+offset_left = 8.51978
+offset_right = 300.0
+offset_bottom = 339.0
+theme = ExtResource("33")
+texture = ExtResource("12")
+stretch_mode = 2
 script = ExtResource("39_stct0")
 
-[node name="Name" type="RichTextLabel" parent="Camera3D/BattleGUI/Skill Menu/Card 4"]
+[node name="Name" type="RichTextLabel" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
 layout_mode = 0
 offset_left = 17.6326
 offset_top = 54.0
 offset_right = 268.633
 offset_bottom = 132.0
 bbcode_enabled = true
-text = "Card Four"
+text = "[center]Just...Focus"
 
-[node name="Cost" type="Label" parent="Camera3D/BattleGUI/Skill Menu/Card 4"]
+[node name="Cost" type="Label" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
+layout_mode = 0
+offset_left = 10.2563
+offset_top = 8.91956
+offset_right = 52.2564
+offset_bottom = 40.9196
+theme = ExtResource("36")
+text = "0"
+horizontal_alignment = 1
+
+[node name="Type" type="Label" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 139.0
+offset_right = 198.0
+offset_bottom = 171.0
+text = "Spell"
+
+[node name="Rules Text" type="RichTextLabel" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 180.0
+offset_right = 273.0
+offset_bottom = 339.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("33")
+bbcode_enabled = true
+scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
+libraries = {
+"": SubResource("AnimationLibrary_hic0e")
+}
+
+[node name="Card 2" type="TextureRect" parent="Camera3D/BattleGUI/Skill Menu/Card Container"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 0
+offset_left = 304.0
+offset_right = 604.0
+offset_bottom = 339.0
+pivot_offset = Vector2(246.475, 158.516)
+theme = ExtResource("37")
+texture = ExtResource("25")
+stretch_mode = 2
+script = ExtResource("39_stct0")
+
+[node name="Name" type="RichTextLabel" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
+layout_mode = 0
+offset_left = 18.3397
+offset_top = 53.2929
+offset_right = 269.34
+offset_bottom = 132.293
+bbcode_enabled = true
+text = "[center] Card Two"
+
+[node name="Cost" type="Label" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 9.0
@@ -2315,16 +2091,17 @@ offset_right = 52.0
 offset_bottom = 41.0
 theme = ExtResource("36")
 text = "0"
+horizontal_alignment = 1
 
-[node name="Type" type="Label" parent="Camera3D/BattleGUI/Skill Menu/Card 4"]
+[node name="Type" type="Label" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
 layout_mode = 0
-offset_left = 99.0
+offset_left = 97.5858
 offset_top = 139.0
-offset_right = 198.0
+offset_right = 196.586
 offset_bottom = 171.0
-text = "Attack"
+text = "Skill"
 
-[node name="Rules Text" type="RichTextLabel" parent="Camera3D/BattleGUI/Skill Menu/Card 4"]
+[node name="Rules Text" type="RichTextLabel" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 180.0
@@ -2335,40 +2112,42 @@ text = "
 Default Rules Text"
 scroll_active = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/BattleGUI/Skill Menu/Card 4"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
 libraries = {
-"": SubResource("AnimationLibrary_nh761")
+"": SubResource("AnimationLibrary_hic0e")
 }
 
-[node name="Card 3" type="TextureRect" parent="Camera3D/BattleGUI/Skill Menu"]
+[node name="Card 3" type="TextureRect" parent="Camera3D/BattleGUI/Skill Menu/Card Container"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
-offset_left = 5.0
-offset_top = 1086.0
-offset_right = 1165.0
-offset_bottom = 1248.0
+offset_left = 608.0
+offset_right = 908.0
+offset_bottom = 339.0
 theme = ExtResource("34")
 texture = ExtResource("8")
+stretch_mode = 2
 script = ExtResource("39_stct0")
 
-[node name="Name" type="RichTextLabel" parent="Camera3D/BattleGUI/Skill Menu/Card 3"]
+[node name="Name" type="RichTextLabel" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
 layout_mode = 0
 offset_left = 17.6326
 offset_top = 54.0
 offset_right = 268.633
 offset_bottom = 132.0
 bbcode_enabled = true
-text = "Super Shot"
+text = "[center]Super Shot"
 
-[node name="Cost" type="Label" parent="Camera3D/BattleGUI/Skill Menu/Card 3"]
+[node name="Cost" type="Label" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
 layout_mode = 0
-offset_left = 10.2563
-offset_top = 8.91956
-offset_right = 52.2564
-offset_bottom = 40.9196
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 52.0
+offset_bottom = 44.0
 theme = ExtResource("36")
 text = "3"
+horizontal_alignment = 1
 
-[node name="Type" type="Label" parent="Camera3D/BattleGUI/Skill Menu/Card 3"]
+[node name="Type" type="Label" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
 layout_mode = 0
 offset_left = 99.0
 offset_top = 139.0
@@ -2376,7 +2155,7 @@ offset_right = 198.0
 offset_bottom = 171.0
 text = "Tech"
 
-[node name="Rules Text" type="RichTextLabel" parent="Camera3D/BattleGUI/Skill Menu/Card 3"]
+[node name="Rules Text" type="RichTextLabel" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 180.0
@@ -2389,32 +2168,32 @@ Damage to
 one Target"
 scroll_active = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/BattleGUI/Skill Menu/Card 3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
 libraries = {
-"": SubResource("AnimationLibrary_nbbkd")
+"": SubResource("AnimationLibrary_hic0e")
 }
 
-[node name="Card 2" type="TextureRect" parent="Camera3D/BattleGUI/Skill Menu"]
+[node name="Card 4" type="TextureRect" parent="Camera3D/BattleGUI/Skill Menu/Card Container"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
-offset_left = 5.0
-offset_top = 1086.0
-offset_right = 1165.0
-offset_bottom = 1248.0
-pivot_offset = Vector2(246.475, 158.516)
+offset_left = 912.0
+offset_right = 1212.0
+offset_bottom = 339.0
 theme = ExtResource("37")
 texture = ExtResource("25")
+stretch_mode = 2
 script = ExtResource("39_stct0")
 
-[node name="Name" type="RichTextLabel" parent="Camera3D/BattleGUI/Skill Menu/Card 2"]
+[node name="Name" type="RichTextLabel" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
 layout_mode = 0
-offset_left = 18.3397
-offset_top = 53.2929
-offset_right = 269.34
-offset_bottom = 132.293
+offset_left = 17.6326
+offset_top = 54.0
+offset_right = 268.633
+offset_bottom = 132.0
 bbcode_enabled = true
-text = " Card Two"
+text = "[center]Card Four"
 
-[node name="Cost" type="Label" parent="Camera3D/BattleGUI/Skill Menu/Card 2"]
+[node name="Cost" type="Label" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 9.0
@@ -2422,16 +2201,17 @@ offset_right = 52.0
 offset_bottom = 41.0
 theme = ExtResource("36")
 text = "0"
+horizontal_alignment = 1
 
-[node name="Type" type="Label" parent="Camera3D/BattleGUI/Skill Menu/Card 2"]
+[node name="Type" type="Label" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
 layout_mode = 0
-offset_left = 97.5858
+offset_left = 99.0
 offset_top = 139.0
-offset_right = 196.586
+offset_right = 198.0
 offset_bottom = 171.0
-text = "Skill"
+text = "Attack"
 
-[node name="Rules Text" type="RichTextLabel" parent="Camera3D/BattleGUI/Skill Menu/Card 2"]
+[node name="Rules Text" type="RichTextLabel" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 180.0
@@ -2442,63 +2222,16 @@ text = "
 Default Rules Text"
 scroll_active = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/BattleGUI/Skill Menu/Card 2"]
-libraries = {
-"": SubResource("AnimationLibrary_kr1ux")
-}
-
-[node name="Card 1" type="TextureRect" parent="Camera3D/BattleGUI/Skill Menu"]
-layout_mode = 0
-offset_left = 8.51978
-offset_top = 1086.0
-offset_right = 1167.52
-offset_bottom = 1425.0
-theme = ExtResource("33")
-texture = ExtResource("12")
-script = ExtResource("39_stct0")
-
-[node name="Name" type="RichTextLabel" parent="Camera3D/BattleGUI/Skill Menu/Card 1"]
-layout_mode = 0
-offset_left = 17.6326
-offset_top = 54.0
-offset_right = 268.633
-offset_bottom = 132.0
-bbcode_enabled = true
-text = "Just...Focus"
-
-[node name="Cost" type="Label" parent="Camera3D/BattleGUI/Skill Menu/Card 1"]
-layout_mode = 0
-offset_left = 10.2563
-offset_top = 8.91956
-offset_right = 52.2564
-offset_bottom = 40.9196
-theme = ExtResource("36")
-text = "0"
-
-[node name="Type" type="Label" parent="Camera3D/BattleGUI/Skill Menu/Card 1"]
-layout_mode = 0
-offset_left = 99.0
-offset_top = 139.0
-offset_right = 198.0
-offset_bottom = 171.0
-text = "Spell"
-
-[node name="Rules Text" type="RichTextLabel" parent="Camera3D/BattleGUI/Skill Menu/Card 1"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 180.0
-offset_right = 273.0
-offset_bottom = 339.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource("33")
-bbcode_enabled = true
-scroll_active = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/BattleGUI/Skill Menu/Card 1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
 libraries = {
 "": SubResource("AnimationLibrary_hic0e")
 }
+
+[node name="Control" type="Control" parent="Camera3D/BattleGUI/Skill Menu/Card Container"]
+anchors_preset = 0
+offset_left = 1216.0
+offset_right = 1216.0
+offset_bottom = 339.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/BattleGUI/Skill Menu"]
 libraries = {
@@ -2529,14 +2262,17 @@ script = ExtResource("47_62n4i")
 [node name="Readouts" type="VBoxContainer" parent="Camera3D/BattleGUI"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.0
+anchor_left = 0.644
 anchor_top = 0.654
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -684.0
+offset_left = -0.480103
 offset_top = -0.320007
 alignment = 1
 script = ExtResource("46")
+
+[node name="Cato Readout" parent="Camera3D/BattleGUI/Readouts" instance=ExtResource("49_rl0qb")]
+layout_mode = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("30")
