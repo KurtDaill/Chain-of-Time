@@ -209,12 +209,12 @@ vframes = 9
 script = ExtResource("22")
 abilitiesKnown = PackedInt32Array(0)
 abilitiesPrepared = PackedInt32Array(0)
-allAbilities = PackedStringArray("res://PM Battle Mode/Player Characters/Abilities/JustFocus.tscn")
-basicAttack = "res://PM Battle Mode/Player Characters/Abilities/Cato Basic Attack.tscn"
-sceneFilePath = "res://PM Battle Mode/Player Characters/Cato.tscn"
+basicAttack = "res://Battle Mode/Player Characters/Abilities/Cato Basic Attack.tscn"
+sceneFilePath = "res://Battle Mode/Player Characters/Cato.tscn"
 maxSP = 2
 readout = "res://GUI/Cato Readout.tscn"
 maxHP = 6
+name = "Cato"
 
 [node name="Pointer" parent="." instance=ExtResource("7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51, 2.24, 0)

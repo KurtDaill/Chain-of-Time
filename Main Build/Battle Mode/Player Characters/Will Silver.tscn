@@ -165,12 +165,14 @@ vframes = 6
 script = ExtResource("12")
 abilitiesKnown = PackedInt32Array(0)
 abilitiesPrepared = PackedInt32Array(0)
-allAbilities = PackedStringArray("res://PM Battle Mode/Player Characters/Abilities/SuperShot.tscn")
-basicAttack = "res://PM Battle Mode/Player Characters/Abilities/Silver Basic Attack.tscn"
-sceneFilePath = "res://PM Battle Mode/Player Characters/Will Silver.tscn"
+basicAttack = "res://Battle Mode/Player Characters/Abilities/Silver Basic Attack.tscn"
+sceneFilePath = "res://Battle Mode/Player Characters/Will Silver.tscn"
 maxSP = 4
 readout = "res://GUI/Silver Readout.tscn"
 maxHP = 4
+name = "Silver"
+HealingNumberResource = "res://Battle Mode/Healing Number.tscn"
+DamageNumberResource = "res://Battle Mode/Damage Number.tscn"
 
 [node name="Pointer" parent="." instance=ExtResource("9")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.24, 0)

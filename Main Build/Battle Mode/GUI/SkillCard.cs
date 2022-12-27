@@ -71,7 +71,7 @@ public partial class SkillCard : TextureRect{
         anim.Play("Select");
     }
 
-    public void Draw(){
+    new public void Draw(){
         anim.Play("Draw");
     }
     public void Stow(){

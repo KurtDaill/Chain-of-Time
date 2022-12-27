@@ -37,7 +37,7 @@ public partial class  PMBattleAbility : Node
 
     public PMCharacter[] target;
 
-    //[Export]
+    [Export]
     protected Godot.Collections.Array<NodePath> eventIndex;
 
     [Export]

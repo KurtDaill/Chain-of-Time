@@ -357,7 +357,6 @@ public static class PMBattleUtilities{
 		EnemyThree = 0b_000001
 	}                                                                                                    
 
-	[Flags]
 	//NOTE: Targeting rules less than ten require some choices, Targeting rules above ten are preset
 	public enum TargetingRule{
 		None = 0,

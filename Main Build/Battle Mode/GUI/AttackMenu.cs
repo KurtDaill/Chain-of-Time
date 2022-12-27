@@ -6,7 +6,6 @@ public partial class AttackMenu : BattleMenu
     public override void OnOpen(PMPlayerCharacter character, PMBattle caller)
     {
         base.OnOpen(character, caller);
-        this.GetNode<Label>("Backboard/Attack Name").Text = (character.GetBasicAttack().GetAbilityName());
         this.GetNode<RichTextLabel>("Backboard/Rules Text").Text = (character.GetBasicAttack().GetRulesText());
     }
 

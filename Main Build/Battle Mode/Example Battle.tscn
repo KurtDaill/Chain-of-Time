@@ -1,7 +1,8 @@
-[gd_scene load_steps=107 format=3 uid="uid://c1ni42l3v081f"]
+[gd_scene load_steps=103 format=3 uid="uid://c1ni42l3v081f"]
 
 [ext_resource type="Script" path="res://Battle Mode/PMBattle.cs" id="1"]
 [ext_resource type="Script" path="res://PMBattleRoster.cs" id="2"]
+[ext_resource type="PackedScene" uid="uid://drixqr1kasloi" path="res://Battle Mode/Player Characters/Will Silver.tscn" id="3_q00g6"]
 [ext_resource type="PackedScene" uid="uid://cy6ib5eho248k" path="res://Battle Mode/Enemies/Polymorphor.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://bydr1u81xlrfu" path="res://Art/3D/Baths.glb" id="5"]
 [ext_resource type="Texture2D" uid="uid://c74qsow25qfbm" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuComboHighlight.png" id="6"]
@@ -49,20 +50,9 @@
 [ext_resource type="Script" path="res://Battle Mode/GUI/SwapMenu.cs" id="47_62n4i"]
 [ext_resource type="Texture2D" uid="uid://k1c0luw6jqjc" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres" id="48"]
 [ext_resource type="Texture2D" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres" id="49"]
-[ext_resource type="PackedScene" uid="uid://7df38myb1663" path="res://GUI/Cato Readout.tscn" id="49_rl0qb"]
 [ext_resource type="Texture2D" uid="uid://wxj5d30d2p8y" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres" id="51"]
 [ext_resource type="PackedScene" uid="uid://bqhhsywrd27ba" path="res://Battle Mode/Enemies/Ghost.tscn" id="52"]
-[ext_resource type="Texture2D" uid="uid://xd3i3hvk8rse" path="res://Art/Posion Bubble Particle.png" id="53"]
 [ext_resource type="PackedScene" uid="uid://bqb21t5xmngp7" path="res://Battle Mode/Player Characters/Cato.tscn" id="55"]
-[ext_resource type="PackedScene" uid="uid://drixqr1kasloi" path="res://Battle Mode/Player Characters/Will Silver.tscn" id="58"]
-
-[sub_resource type="StandardMaterial3D" id="128"]
-transparency = 1
-albedo_texture = ExtResource("53")
-roughness = 0.0
-
-[sub_resource type="QuadMesh" id="129"]
-material = SubResource("128")
 
 [sub_resource type="Animation" id="83"]
 length = 0.001
@@ -1233,6 +1223,20 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.5)
 }
 
+[sub_resource type="Animation" id="Animation_dpyc2"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="18"]
 length = 0.8
 loop_mode = 1
@@ -1272,20 +1276,6 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(-150, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.5)
-}
-
-[sub_resource type="Animation" id="Animation_dpyc2"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hic0e"]
@@ -1499,30 +1489,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.1875, 2)
 [node name="Hero 2" type="Node3D" parent="Battle Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1875, 3)
 
-[node name="Silver" parent="Battle Roster/Hero 2" instance=ExtResource("58")]
+[node name="Silver" parent="Battle Roster/Hero 2" instance=ExtResource("3_q00g6")]
+allAbilities = null
 
 [node name="Hero 1" type="Node3D" parent="Battle Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1875, 4)
 
 [node name="Cato" parent="Battle Roster/Hero 1" instance=ExtResource("55")]
-
-[node name="CPUParticles3D" type="CPUParticles3D" parent="Battle Roster/Hero 1/Cato"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.8, 0)
-visible = false
-amount = 3
-lifetime = 2.0
-draw_order = 1
-mesh = SubResource("129")
-emission_shape = 2
-emission_sphere_radius = 1.0
-spread = 65.0
-gravity = Vector3(0, 0.75, 0)
+allAbilities = ["res://Battle Mode/Player Characters/Abilities/JustFocus.tscn"]
 
 [node name="Enemy 1" type="Node3D" parent="Battle Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1875, 4)
 
 [node name="Polymorphor" parent="Battle Roster/Enemy 1" instance=ExtResource("4")]
-maxHP = 6
 
 [node name="Enemy 2" type="Node3D" parent="Battle Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1875, 3)
@@ -2011,7 +1990,7 @@ anchor_bottom = 27.0
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
 offset_left = 8.51978
-offset_right = 300.0
+offset_right = 308.52
 offset_bottom = 339.0
 theme = ExtResource("33")
 texture = ExtResource("12")
@@ -2228,6 +2207,7 @@ libraries = {
 }
 
 [node name="Control" type="Control" parent="Camera3D/BattleGUI/Skill Menu/Card Container"]
+layout_mode = 1
 anchors_preset = 0
 offset_left = 1216.0
 offset_right = 1216.0
@@ -2271,13 +2251,9 @@ offset_top = -0.320007
 alignment = 1
 script = ExtResource("46")
 
-[node name="Cato Readout" parent="Camera3D/BattleGUI/Readouts" instance=ExtResource("49_rl0qb")]
-layout_mode = 2
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("30")
 volume_db = -25.0
-autoplay = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 7.96)

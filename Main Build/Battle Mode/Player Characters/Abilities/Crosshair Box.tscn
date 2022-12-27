@@ -1,12 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://tnjtbhe4r2px"]
 
-[ext_resource path="res://GUI/Battle Ability GUI Assets/Silver Blaster Crosshair Box-Sheet.png" type="Texture2D" id=1]
+[ext_resource type="Texture2D" uid="uid://dcp4kq3wcho1n" path="res://GUI/Battle Ability GUI Assets/Silver Blaster Crosshair Box-Sheet.png" id="1"]
 
 [node name="Box" type="Sprite3D"]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
 visible = false
 pixel_size = 0.008
 no_depth_test = true
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 hframes = 6
 frame = 5

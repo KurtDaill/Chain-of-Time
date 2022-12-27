@@ -703,6 +703,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68, -0.36, 0)
 [node name="Fireball Attack" type="Node" parent="."]
 script = ExtResource("4_ho7b1")
 firstAnimation = "Wind Up"
+eventIndex = [NodePath("Main Damage")]
 targetingRule = 5
 canTargetFliers = true
 alignment = 1
@@ -712,7 +713,7 @@ libraries = {
 "": SubResource("AnimationLibrary_ftvd4")
 }
 
-[node name="Damage" type="Node" parent="Fireball Attack"]
+[node name="Main Damage" type="Node" parent="Fireball Attack"]
 script = ExtResource("5_f7r3f")
 alignment = 1
 targeting = 1
@@ -724,6 +725,7 @@ eventValue = 3
 [node name="Staff Attack" type="Node" parent="."]
 script = ExtResource("4_ho7b1")
 firstAnimation = "Swing"
+eventIndex = [NodePath("Main Damage")]
 targetingRule = 4
 canTargetFliers = true
 
@@ -732,7 +734,7 @@ libraries = {
 "": SubResource("AnimationLibrary_8ppq8")
 }
 
-[node name="Damage" type="Node" parent="Staff Attack"]
+[node name="Main Damage" type="Node" parent="Staff Attack"]
 script = ExtResource("5_f7r3f")
 targeting = 1
 canHitFlyingCharacters = true

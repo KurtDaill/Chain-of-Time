@@ -17,10 +17,10 @@ public partial class SkillMenu : BattleMenu
         menuAnim = (AnimationPlayer) GetNode("AnimationPlayer");
         rejectSound = GetNode<AudioStreamPlayer>("SelectError");
 
-        cards[0] = (SkillCard)GetNode("Card 1");
-        cards[1] = (SkillCard)GetNode("Card 2");
-        cards[2] = (SkillCard)GetNode("Card 3");
-        cards[3] = (SkillCard)GetNode("Card 4");
+        cards[0] = (SkillCard)GetNode("Card Container/Card 1");
+        cards[1] = (SkillCard)GetNode("Card Container/Card 2");
+        cards[2] = (SkillCard)GetNode("Card Container/Card 3");
+        cards[3] = (SkillCard)GetNode("Card Container/Card 4");
 
         
     }

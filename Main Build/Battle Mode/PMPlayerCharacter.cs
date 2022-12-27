@@ -8,8 +8,8 @@ public partial class PMPlayerCharacter : PMCharacter{
 	[Export]
 	int[] abilitiesPrepared = new int[0];
 	
-	[Export(PropertyHint.File)]
-	string[] allAbilities;
+	[Export]
+	Godot.Collections.Array<string> allAbilities;
 	[Export(PropertyHint.File)]
 	string basicAttack;
 	bool init = true;
@@ -20,7 +20,7 @@ public partial class PMPlayerCharacter : PMCharacter{
 	//List<NodePath> debugAbilities = new List<NodePath>(); //TODO Temp Code, RemoveAt when Battle Starts are Implemented
 	PMPlayerAbility[] abilitiesPreparedInstanced = new PMPlayerAbility[4];
 	
-	[Export(PropertyHint.Flags)]
+	[Export(PropertyHint.File)]
 	string sceneFilePath;
 
 	private int currentSP = -1;
@@ -129,12 +129,14 @@ public partial class PMPlayerCharacter : PMCharacter{
 			}
 		}
 		//Load the abilites that should be present
-		for(int i = 0; i < abilitiesPrepared.Length; i++){
-			var instance = GD.Load<PackedScene>(allAbilities[abilitiesPrepared[i]]).Instantiate<PMPlayerAbility>();
+		if(allAbilities.Count != 0){
+			for(int i = 0; i < abilitiesPrepared.Length; i++){
+			var instance = ResourceLoader.Load<PackedScene>(allAbilities[abilitiesPrepared[i]]).Instantiate<PMPlayerAbility>();
 			this.AddChild(instance);
 			abilitiesPreparedInstanced[i] = instance; 
+			}
 		}
-		var basicInstanced = GD.Load<PackedScene>(basicAttack).Instantiate<PMPlayerAbility>();
+		var basicInstanced = ResourceLoader.Load<PackedScene>(basicAttack).Instantiate<PMPlayerAbility>();
 		this.AddChild(basicInstanced);
 		basicAttackInstanced = basicInstanced;
 	}
