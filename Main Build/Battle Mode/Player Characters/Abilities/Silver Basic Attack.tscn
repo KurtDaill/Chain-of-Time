@@ -66,7 +66,7 @@ tracks/3/keys = {
 "args": ["com_atk", "Fire", 0, "Miss"],
 "method": &"StartTimingAttack"
 }, {
-"args": ["res://PM Battle Mode/Crosshair.tscn", true],
+"args": ["res://Battle Mode/Crosshair.tscn", true],
 "method": &"SpawnNodeOnTarget"
 }, {
 "args": [],

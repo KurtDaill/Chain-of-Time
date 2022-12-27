@@ -87,6 +87,9 @@ public partial class PMPlayerCharacter : PMCharacter{
 		animPlay.Play("Defend");
 	}
 
+	public void PlayBlockAnimation(){
+		animPlay.Play("Block");
+	}
 	public PMPlayerAbility[] GetAbilities(){
 		return abilitiesPreparedInstanced;
 	}

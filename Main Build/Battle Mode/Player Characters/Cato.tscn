@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqb21t5xmngp7"]
+[gd_scene load_steps=14 format=3 uid="uid://bqb21t5xmngp7"]
 
 [ext_resource type="Texture2D" uid="uid://beln8ffrnhd44" path="res://Art/Kell Cato Master Sprite-Sheet.png" id="1_3kpye"]
 [ext_resource type="AudioStream" uid="uid://w7ay0t1p16xp" path="res://Audio/Defend1.wav" id="6"]
@@ -34,37 +34,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="73"]
-resource_name = "Defend"
-length = 1.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.35, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [24, 25, 26, 27, 28, 29]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Defend")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-
 [sub_resource type="Animation" id="87"]
 resource_name = "Excited Idle"
 length = 0.5
@@ -94,9 +63,9 @@ tracks/0/path = NodePath(".:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.1, -0.302459, -0.48, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6)
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -169,10 +138,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="123"]
 resource_name = "Taunt Idle"
 length = 0.5
+loop_mode = 1
 step = 0.16
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -187,10 +168,71 @@ tracks/0/keys = {
 "values": [66, 67, 68]
 }
 
+[sub_resource type="Animation" id="73"]
+resource_name = "Block"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.35, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Defend")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5s1s7"]
+resource_name = "Defend"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [28]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ResetToIdleAnim"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_phuej"]
 _data = {
+"Block": SubResource("73"),
 "Defeat": SubResource("69"),
-"Defend": SubResource("73"),
+"Defend": SubResource("Animation_5s1s7"),
 "Excited Idle": SubResource("87"),
 "HitReact": SubResource("2"),
 "Idle": SubResource("3"),
@@ -203,6 +245,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24, 0)
 pixel_size = 0.008
 shaded = true
 alpha_cut = 2
+texture_filter = 1
 texture = ExtResource("1_3kpye")
 hframes = 10
 vframes = 9
@@ -215,6 +258,8 @@ maxSP = 2
 readout = "res://GUI/Cato Readout.tscn"
 maxHP = 6
 name = "Cato"
+HealingNumberResource = "res://Battle Mode/Healing Number.tscn"
+DamageNumberResource = "res://Battle Mode/Damage Number.tscn"
 
 [node name="Pointer" parent="." instance=ExtResource("7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51, 2.24, 0)

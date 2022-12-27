@@ -197,9 +197,9 @@ tracks/0/path = NodePath("../Fireball:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.92, -0.25, 0, 0.25, 0, -4.44921, -0.2, 0.0705552, 0.25, 0),
+"times": PackedFloat32Array(0, 0.55)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -208,9 +208,9 @@ tracks/1/path = NodePath("../Fireball:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.16, -0.25, 0, 0.25, 0, -0.657797, -0.2, 0.113984, 0.25, 0),
+"times": PackedFloat32Array(0, 0.55)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -219,9 +219,9 @@ tracks/2/path = NodePath("../Fireball:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0, 0.2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.55)
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -254,8 +254,8 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.2, 0.4, 0.45, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.4, 0.419419, 0.45, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [0, 1, 2, 1, "Fireball"],
 "method": &"SetKeyTransToSelectedTargetBezier"
@@ -268,6 +268,9 @@ tracks/5/keys = {
 }, {
 "args": [],
 "method": &"DisablePlayerDefense"
+}, {
+"args": [],
+"method": &"PlayerBlockAnimation"
 }, {
 "args": [0],
 "method": &"ExecuteEvent"
@@ -655,11 +658,20 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.6, 0.9, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 0.85, 0.881657, 0.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"StartAttackRun"
+}, {
+"args": [],
+"method": &"PlayerDefenseReactionOnline"
+}, {
+"args": [],
+"method": &"DisablePlayerDefense"
+}, {
+"args": [],
+"method": &"PlayerBlockAnimation"
 }, {
 "args": [0],
 "method": &"DealDamage"
@@ -680,6 +692,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, 2.16, 0)
 pixel_size = 0.008
 shaded = true
 alpha_cut = 2
+texture_filter = 1
 texture = ExtResource("1_abq24")
 hframes = 4
 script = ExtResource("2_ux1b3")
@@ -687,6 +700,8 @@ abilitiesByPriority = [NodePath("Staff Attack"), NodePath("Fireball Attack")]
 maxHP = 3
 ModifiedDamageTypes = [1]
 Modifier = [0.5]
+HealingNumberResource = "res://Battle Mode/Healing Number.tscn"
+DamageNumberResource = "res://Battle Mode/Damage Number.tscn"
 
 [node name="Pointer" parent="." instance=ExtResource("3_uw7yc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73, 2.24, 0)
@@ -724,6 +739,7 @@ eventValue = 3
 
 [node name="Staff Attack" type="Node" parent="."]
 script = ExtResource("4_ho7b1")
+requirements = [2]
 firstAnimation = "Swing"
 eventIndex = [NodePath("Main Damage")]
 targetingRule = 4
@@ -743,7 +759,7 @@ defenseFactor = 1
 eventValue = 1
 
 [node name="Fireball" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92, 0.16, 0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.12009, -0.546025, 0.2)
 visible = false
 pixel_size = 0.04
 texture = ExtResource("6_moiij")

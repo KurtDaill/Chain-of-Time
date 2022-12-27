@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://drixqr1kasloi"]
+[gd_scene load_steps=11 format=3 uid="uid://drixqr1kasloi"]
 
 [ext_resource type="Texture2D" uid="uid://cx7c1lg6oon7l" path="res://Art/Silver Master Sprite-Sheet.png" id="1_xtxa2"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="9"]
@@ -31,34 +31,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"FinishDefeat"
 }]
-}
-
-[sub_resource type="Animation" id="133"]
-resource_name = "Defend"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [54, 0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector3(0, 1.56, 0), Vector3(-0.2, 1.56, 0), Vector3(-0.12, 1.56, 0), Vector3(-0.04, 1.56, 0), Vector3(7.45058e-09, 1.56, 0)]
 }
 
 [sub_resource type="Animation" id="88"]
@@ -146,10 +118,68 @@ tracks/3/keys = {
 "values": [Vector3(0, 1.56, 0)]
 }
 
+[sub_resource type="Animation" id="133"]
+resource_name = "Block"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [66, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.56, 0), Vector3(-0.2, 1.56, 0), Vector3(-0.12, 1.56, 0), Vector3(-0.04, 1.56, 0), Vector3(7.45058e-09, 1.56, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_401if"]
+resource_name = "Defend"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [66]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ResetToIdleAnim"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0r7c3"]
 _data = {
+"Block": SubResource("133"),
 "Defeat": SubResource("132"),
-"Defend": SubResource("133"),
+"Defend": SubResource("Animation_401if"),
 "Excited Idle": SubResource("88"),
 "Idle": SubResource("77"),
 "RESET": SubResource("78")
@@ -159,12 +189,14 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56, 0)
 pixel_size = 0.008
 shaded = true
+texture_filter = 1
 texture = ExtResource("1_xtxa2")
 hframes = 12
 vframes = 6
 script = ExtResource("12")
 abilitiesKnown = PackedInt32Array(0)
 abilitiesPrepared = PackedInt32Array(0)
+allAbilities = ["res://Battle Mode/Player Characters/Abilities/SuperShot.tscn"]
 basicAttack = "res://Battle Mode/Player Characters/Abilities/Silver Basic Attack.tscn"
 sceneFilePath = "res://Battle Mode/Player Characters/Will Silver.tscn"
 maxSP = 4

@@ -50,6 +50,13 @@ public partial class PMEnemyAbility : PMBattleAbility
     public void PlayerDefenseReactionOnline(){
         playerDefenseOnline = true;
     }
+    public void PlayerBlockAnimation(){
+        if(!successfulDefense) return;
+        foreach(PMPlayerCharacter defender in target)
+        {
+            defender.PlayBlockAnimation();
+        }
+    }
     public void DisablePlayerDefense(){
         playerDefenseOnline = false;
     }
