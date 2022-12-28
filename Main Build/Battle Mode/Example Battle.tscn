@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://c1ni42l3v081f"]
+[gd_scene load_steps=102 format=3 uid="uid://c1ni42l3v081f"]
 
 [ext_resource type="Script" path="res://Battle Mode/PMBattle.cs" id="1"]
 [ext_resource type="Script" path="res://PMBattleRoster.cs" id="2"]
@@ -53,14 +53,6 @@
 [ext_resource type="Texture2D" uid="uid://wxj5d30d2p8y" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres" id="51"]
 [ext_resource type="PackedScene" uid="uid://bqhhsywrd27ba" path="res://Battle Mode/Enemies/Ghost.tscn" id="52"]
 [ext_resource type="PackedScene" uid="uid://bqb21t5xmngp7" path="res://Battle Mode/Player Characters/Cato.tscn" id="55"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hek4g"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e1bd8"]
-gravity = Vector3(0, 2, 0)
-
-[sub_resource type="QuadMesh" id="QuadMesh_6yayd"]
-size = Vector2(0.2, 0.2)
 
 [sub_resource type="Animation" id="83"]
 length = 0.001
@@ -1501,12 +1493,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1875, 4)
 
 [node name="Cato" parent="Battle Roster/Hero 1" instance=ExtResource("55")]
 allAbilities = ["res://Battle Mode/Player Characters/Abilities/JustFocus.tscn"]
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Battle Roster/Hero 1/Cato"]
-material_override = SubResource("StandardMaterial3D_hek4g")
-amount = 3
-process_material = SubResource("ParticleProcessMaterial_e1bd8")
-draw_pass_1 = SubResource("QuadMesh_6yayd")
 
 [node name="Enemy 1" type="Node3D" parent="Battle Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1875, 4)

@@ -1,5 +1,9 @@
-CPUParticles3D
+TextureRect
+HBoxContainer
+Node
+Node3D
+AnimationPlayer
 GPUParticles3D
+CPUParticles3D
 Control
 Container
-HBoxContainer
