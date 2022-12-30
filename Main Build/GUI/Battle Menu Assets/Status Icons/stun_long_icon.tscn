@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://be518bd6cusji"]
+
+[ext_resource type="Texture2D" uid="uid://1k10qavpgq4c" path="res://GUI/Battle Menu Assets/Player Status Effect Stun.png" id="1_5a0vu"]
+
+[node name="Stun Long Icon" type="TextureRect"]
+texture = ExtResource("1_5a0vu")
+stretch_mode = 2

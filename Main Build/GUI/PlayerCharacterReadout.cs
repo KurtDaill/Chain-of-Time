@@ -1,11 +1,14 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class PlayerCharacterReadout : TextureRect
 {
 	Label HP, SP;
 	Label maxHPLabel, maxSPLabel;
 	TextureRect hpIconFull, hpIconHalf, hpIconEmpty, spIconFull, spIconHalf, spIconEmpty, highLight;
+
+	HBoxContainer statusBar;
 	public PMPlayerCharacter character;
 
 	public override void _Ready()
@@ -21,8 +24,7 @@ public partial class PlayerCharacterReadout : TextureRect
 		spIconHalf = this.GetNode<TextureRect>("SP Icon Half");
 		spIconEmpty = this.GetNode<TextureRect>("SP Icon Empty");
 		highLight = this.GetNode<TextureRect>("Highlight");
-		//character.SetupReadout();
-		//GetParent<ReadoutContainer>().Reorder();
+		statusBar = this.GetNode<HBoxContainer>("Status Bar");
 	}
 	public void UpdateHP(int newHP, int newMaxHP){
 		HP.Text = "" + newHP;
@@ -53,6 +55,21 @@ public partial class PlayerCharacterReadout : TextureRect
 			spIconHalf.Visible = true;
 		}else{
 			spIconFull.Visible = true;
+		}
+	}
+
+	public void UpdateStatus(List<PMStatus> statuses){
+		foreach(TextureRect statusIcon in statusBar.GetChildren()){
+			statusIcon.Free();
+		}
+		if(statuses.Count > 3){
+			foreach(PMStatus status in statuses){
+				statusBar.AddChild(status.GetShortIcon());
+			}
+		}else{
+			foreach(PMStatus status in statuses){
+				statusBar.AddChild(status.GetLongIcon());
+			}
 		}
 	}
 

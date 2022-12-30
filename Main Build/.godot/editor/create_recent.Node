@@ -1,8 +1,8 @@
-TextureRect
-HBoxContainer
+AnimationPlayer
 Node
 Node3D
-AnimationPlayer
+TextureRect
+HBoxContainer
 GPUParticles3D
 CPUParticles3D
 Control

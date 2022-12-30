@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bqb21t5xmngp7"]
+[gd_scene load_steps=20 format=3 uid="uid://bqb21t5xmngp7"]
 
 [ext_resource type="Texture2D" uid="uid://beln8ffrnhd44" path="res://Art/Kell Cato Master Sprite-Sheet.png" id="1_3kpye"]
+[ext_resource type="Script" path="res://Battle Mode/PMStatus.cs" id="5_4x516"]
 [ext_resource type="AudioStream" uid="uid://w7ay0t1p16xp" path="res://Audio/Defend1.wav" id="6"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="7"]
 [ext_resource type="Script" path="res://Battle Mode/PMPlayerCharacter.cs" id="22"]
@@ -82,15 +83,15 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".")
+tracks/1/path = NodePath("AnimationPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
-"method": &"ResetToIdleAnim"
+"args": ["Idle", -1, 1.0, false],
+"method": &"play"
 }]
 }
 
@@ -240,7 +241,132 @@ _data = {
 "Taunt Idle": SubResource("123")
 }
 
-[node name="Cato" type="Sprite3D"]
+[sub_resource type="Animation" id="Animation_jrnwj"]
+resource_name = "Apply"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.5)
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"StartUpkeep"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cbcgt"]
+resource_name = "Expire"
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_suarl"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_pa5dy"]
+resource_name = "Upkeep"
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_30bwb"]
+_data = {
+"Apply": SubResource("Animation_jrnwj"),
+"Expire": SubResource("Animation_cbcgt"),
+"RESET": SubResource("Animation_suarl"),
+"Upkeep": SubResource("Animation_pa5dy")
+}
+
+[node name="Cato" type="Sprite3D" node_paths=PackedStringArray("head", "core", "weapon", "feet")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24, 0)
 pixel_size = 0.008
 shaded = true
@@ -252,6 +378,7 @@ vframes = 9
 script = ExtResource("22")
 abilitiesKnown = PackedInt32Array(0)
 abilitiesPrepared = PackedInt32Array(0)
+allAbilities = ["res://Battle Mode/Player Characters/Abilities/JustFocus.tscn"]
 basicAttack = "res://Battle Mode/Player Characters/Abilities/Cato Basic Attack.tscn"
 sceneFilePath = "res://Battle Mode/Player Characters/Cato.tscn"
 maxSP = 2
@@ -260,6 +387,11 @@ maxHP = 6
 name = "Cato"
 HealingNumberResource = "res://Battle Mode/Healing Number.tscn"
 DamageNumberResource = "res://Battle Mode/Damage Number.tscn"
+head = NodePath("Body Ref/Head")
+core = NodePath("Body Ref/Core")
+weapon = NodePath("Body Ref/Weapon")
+feet = NodePath("Body Ref/Feet")
+debugStatusEffects = [NodePath("Status Effect - Stunned")]
 
 [node name="Pointer" parent="." instance=ExtResource("7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51, 2.24, 0)
@@ -272,12 +404,37 @@ libraries = {
 
 [node name="Defend" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6")
+volume_db = 10.0
 
 [node name="Aimpoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56, 0, 0)
 
-[node name="Body Ref" type="Node" parent="."]
+[node name="Body Ref" type="Node3D" parent="."]
 editor_description = "A Collection of Spatial Nodes intended to tell other nodes and functions where to spawn particle effects or other nodes on a characters head, core, feet, etc."
 
 [node name="Head" type="Node3D" parent="Body Ref"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52, 1.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48, 0.32, 0)
+
+[node name="Core" type="Node3D" parent="Body Ref"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56, -0.04, 0)
+
+[node name="Weapon" type="Node3D" parent="Body Ref"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36, -0.24, 0)
+
+[node name="Feet" type="Node3D" parent="Body Ref"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -1.24, 0)
+
+[node name="Status Effect - Stunned" type="Node" parent="."]
+script = ExtResource("5_4x516")
+duration = 3
+magnitude = -1
+statusType = 4
+particleResourcePath = "res://Battle Mode/Status Effects/Particles - Stun.tscn"
+longIconPath = "res://GUI/Battle Menu Assets/Status Icons/stun_long_icon.tscn"
+shortIconPath = "res://GUI/Battle Menu Assets/Status Icons/stun_short_icon.tscn"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Status Effect - Stunned"]
+autoplay = "Apply"
+libraries = {
+"": SubResource("AnimationLibrary_30bwb")
+}

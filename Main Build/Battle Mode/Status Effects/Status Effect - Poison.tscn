@@ -1,441 +1,501 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://dr6ehgqe8m6lr"]
 
 [ext_resource type="Script" path="res://Battle Mode/PMStatus.cs" id="1"]
-[ext_resource type="FontFile" uid="uid://rsyn58tx2dmf" path="res://Fonts/m5x7.ttf" id="2"]
+[ext_resource type="FontFile" uid="uid://cumxcbvw5u56y" path="res://Fonts/m5x7.ttf" id="2"]
 
-[sub_resource type="FontFile" id=123]
-size = 100
-outline_size = 5
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
+[sub_resource type="FontFile" id="123"]
+fallbacks = [ExtResource("2")]
+face_index = null
+embolden = null
+transform = null
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/32/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[sub_resource type="Animation" id=67]
+[sub_resource type="Animation" id="67"]
 resource_name = "Apply"
-tracks/0/type = "method"
-tracks/0/path = NodePath("AnimationPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 1 ),
-"transitions": PackedFloat32Array( 1 ),
-"values": [ {
-"args": [ "Upkeep", -1, 1.0, false ],
-"method": "play"
-} ]
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6, 1)
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("..:modulate:r")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 0.27451, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6, 1)
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath("..:modulate:g")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
+tracks/2/path = NodePath("..:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
 tracks/2/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 0.886275, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6, 1)
 }
 tracks/3/type = "bezier"
-tracks/3/path = NodePath("..:modulate:b")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
+tracks/3/path = NodePath("..:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
 tracks/3/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 0.14902, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 1 )
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6, 1)
 }
 tracks/4/type = "bezier"
-tracks/4/path = NodePath("..:modulate:a")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.3, 0.4, 0.6, 1 )
-}
-tracks/5/type = "bezier"
-tracks/5/path = NodePath("Posioned Text:modulate:r")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"points": PackedFloat32Array( 0.0352941, -0.25, 0, 0.25, 0, 0.0352941, -0.25, 0, 0.25, 0, 0.0352941, -0.25, 0, 0.25, 0, 0.0352941, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.2, 0.4, 1 )
-}
-tracks/6/type = "bezier"
-tracks/6/path = NodePath("Posioned Text:modulate:g")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"points": PackedFloat32Array( 0.917647, -0.25, 0, 0.25, 0, 0.917647, -0.25, 0, 0.25, 0, 0.917647, -0.25, 0, 0.25, 0, 0.917647, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.2, 0.4, 1 )
-}
-tracks/7/type = "bezier"
-tracks/7/path = NodePath("Posioned Text:modulate:b")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"points": PackedFloat32Array( 0.00784314, -0.25, 0, 0.25, 0, 0.00784314, -0.25, 0, 0.25, 0, 0.00784314, -0.25, 0, 0.25, 0, 0.00784314, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.2, 0.4, 1 )
-}
-tracks/8/type = "bezier"
-tracks/8/path = NodePath("Posioned Text:modulate:a")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.2, 0.4, 1 )
-}
-tracks/9/type = "bezier"
-tracks/9/path = NodePath("Posioned Text:outline_modulate:r")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.2, 0.4, 1 )
-}
-tracks/10/type = "bezier"
-tracks/10/path = NodePath("Posioned Text:outline_modulate:g")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.2, 0.4, 1 )
-}
-tracks/11/type = "bezier"
-tracks/11/path = NodePath("Posioned Text:outline_modulate:b")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.2, 0.4, 1 )
-}
-tracks/12/type = "bezier"
-tracks/12/path = NodePath("Posioned Text:outline_modulate:a")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.2, 0.4, 1 )
-}
-tracks/13/type = "bezier"
-tracks/13/path = NodePath("Posioned Text:position:x")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"points": PackedFloat32Array( -0.4, -0.25, 0, 0.25, 0, -0.4, -0.25, 0, 0.25, 0, -0.4, -0.25, 0, 0.25, 0, -0.4, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.2, 0.4, 1 )
-}
-tracks/14/type = "bezier"
-tracks/14/path = NodePath("Posioned Text:position:y")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
-"points": PackedFloat32Array( 2.02, -0.25, 0, 0.25, 0, 2.94, -0.25, 0, 0.25, 0, 2.94, -0.25, 0, 0.25, 0, 2.5, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.2, 0.4, 1 )
-}
-tracks/15/type = "bezier"
-tracks/15/path = NodePath("Posioned Text:position:z")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
-"points": PackedFloat32Array( -0.12, -0.25, 0, 0.25, 0, -0.12, -0.25, 0, 0.25, 0, -0.12, -0.25, 0, 0.25, 0, -0.12, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.2, 0.4, 1 )
-}
-
-[sub_resource type="Animation" id=60]
-resource_name = "Expire"
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("..:modulate:r")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PackedFloat32Array( 0.27451, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.5 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("..:modulate:g")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PackedFloat32Array( 0.886275, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.5 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("..:modulate:b")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PackedFloat32Array( 0.14902, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.5 )
-}
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("..:modulate:a")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0, 0.5 )
-}
-
-[sub_resource type="Animation" id=68]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("..:modulate:r")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("..:modulate:g")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
-}
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("..:modulate:b")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
-}
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("..:modulate:a")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
-}
-tracks/4/type = "bezier"
 tracks/4/path = NodePath("Posioned Text:modulate:r")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"points": PackedFloat32Array( 0.0352941, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("Posioned Text:modulate:g")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"points": PackedFloat32Array( 0.917647, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/path = NodePath("Posioned Text:modulate:b")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
 tracks/6/keys = {
-"points": PackedFloat32Array( 0.00784314, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
 tracks/7/path = NodePath("Posioned Text:modulate:a")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
 tracks/7/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
 tracks/8/path = NodePath("Posioned Text:outline_modulate:r")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
 tracks/8/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
 tracks/9/path = NodePath("Posioned Text:outline_modulate:g")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
 tracks/9/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
 tracks/10/path = NodePath("Posioned Text:outline_modulate:b")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
 tracks/10/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
 tracks/11/path = NodePath("Posioned Text:outline_modulate:a")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
 tracks/11/keys = {
-"points": PackedFloat32Array( 0, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
 tracks/12/path = NodePath("Posioned Text:position:x")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
 tracks/12/keys = {
-"points": PackedFloat32Array( -0.4, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
 tracks/13/path = NodePath("Posioned Text:position:y")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
 tracks/13/keys = {
-"points": PackedFloat32Array( 2.02, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/14/type = "bezier"
+tracks/14/imported = false
+tracks/14/enabled = true
 tracks/14/path = NodePath("Posioned Text:position:z")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
 tracks/14/keys = {
-"points": PackedFloat32Array( -0.12, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/15/type = "method"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath(".")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"StartUpkeep"
+}]
 }
 
-[sub_resource type="Animation" id=62]
-resource_name = "Upkeep"
-length = 2.0
-loop = true
+[sub_resource type="Animation" id="60"]
+resource_name = "Expire"
 tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("..:modulate:r")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"points": PackedFloat32Array( 0.27451, -0.25, 0, 0.25, 0, 0.729412, -0.25, 0, 0.25, 0, 0.27451, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0.2, 1, 1.8 )
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
 }
 tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("..:modulate:g")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"points": PackedFloat32Array( 0.886275, -0.25, 0, 0.25, 0, 0.972549, -0.25, 0, 0.25, 0, 0.886275, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0.2, 1, 1.8 )
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
 }
 tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("..:modulate:b")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"points": PackedFloat32Array( 0.14902, -0.25, 0, 0.25, 0, 0.678431, -0.25, 0, 0.25, 0, 0.14902, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0.2, 1, 1.8 )
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
 }
 tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("..:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="68"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
+tracks/3/path = NodePath("..:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
 tracks/3/keys = {
-"points": PackedFloat32Array( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
-"times": PackedFloat32Array( 0.2, 1, 1.8 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Posioned Text:modulate:r")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Posioned Text:modulate:g")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Posioned Text:modulate:b")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Posioned Text:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Posioned Text:outline_modulate:r")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Posioned Text:outline_modulate:g")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Posioned Text:outline_modulate:b")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Posioned Text:outline_modulate:a")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Posioned Text:position:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Posioned Text:position:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/14/type = "bezier"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Posioned Text:position:z")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+
+[sub_resource type="Animation" id="62"]
+resource_name = "Upkeep"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g0qjm"]
+_data = {
+"Apply": SubResource("67"),
+"Expire": SubResource("60"),
+"RESET": SubResource("68"),
+"Upkeep": SubResource("62")
 }
 
 [node name="Status Effect - Poison" type="Node"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 duration = 1
 magnitude = 1
 statusType = 3
+particleResourcePath = "res://Battle Mode/Status Effects/Particles - Poison.tscn"
+longIconPath = "res://GUI/Battle Menu Assets/Status Icons/posion_long_icon.tscn"
+shortIconPath = "res://GUI/Battle Menu Assets/Status Icons/poison_short_icon.tscn"
 
 [node name="Posioned Text" type="Label3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 2.5, -0.12 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 2.5, -0.12)
 no_depth_test = true
 alpha_cut = 2
-modulate = Color( 0.0352941, 0.917647, 0.00784314, 0 )
-outline_modulate = Color( 0, 0, 0, 0 )
+modulate = Color(0.0352941, 0.917647, 0.00784314, 0)
+outline_modulate = Color(0, 0, 0, 0)
 text = "Poisoned!"
-font = SubResource( 123 )
+font = SubResource("123")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Apply"
 reset_on_save = false
-anims/Apply = SubResource( 67 )
-anims/Expire = SubResource( 60 )
-anims/RESET = SubResource( 68 )
-anims/Upkeep = SubResource( 62 )
+libraries = {
+"": SubResource("AnimationLibrary_g0qjm")
+}

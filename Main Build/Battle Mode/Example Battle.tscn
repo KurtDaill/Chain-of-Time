@@ -1492,7 +1492,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1875, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1875, 4)
 
 [node name="Cato" parent="Battle Roster/Hero 1" instance=ExtResource("55")]
-allAbilities = ["res://Battle Mode/Player Characters/Abilities/JustFocus.tscn"]
 
 [node name="Enemy 1" type="Node3D" parent="Battle Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1875, 4)

@@ -379,8 +379,6 @@ public static class PMBattleUtilities{
 		}
 	}
 	*/
-
-	[Flags]
 	public enum StatusEffect{
 		None,
 		Burn,

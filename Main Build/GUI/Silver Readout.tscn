@@ -1,15 +1,15 @@
 [gd_scene load_steps=14 format=3 uid="uid://ca3skshssqtt1"]
 
-[ext_resource type="Theme" uid="uid://0sj6o2hvmgmt" path="res://GUI/Themes/Readout Text.tres" id="1_mofmv"]
-[ext_resource type="Texture2D" uid="uid://3h4w6mektumc" path="res://GUI/Battle Menu Assets/Readouts/Silver's Readout.png" id="2_g5qyt"]
-[ext_resource type="Script" path="res://GUI/PlayerCharacterReadout.cs" id="3_wygvd"]
-[ext_resource type="Texture2D" uid="uid://cuc7tn3snj7md" path="res://GUI/Battle Menu Assets/Readouts/Readout Highlight.png" id="4_iq63g"]
-[ext_resource type="Texture2D" uid="uid://b25aln4uhmkhi" path="res://GUI/Battle Menu Assets/Readouts/HP Candle Full.png" id="5_ix60x"]
-[ext_resource type="Texture2D" uid="uid://dpk6wt2nykmt2" path="res://GUI/Battle Menu Assets/Readouts/HP Candle Half.png" id="6_hopsx"]
-[ext_resource type="Texture2D" uid="uid://cuqh8yxm1dqtn" path="res://GUI/Battle Menu Assets/Readouts/HP Candle Empty.png" id="7_sdv1h"]
-[ext_resource type="Texture2D" uid="uid://di6ya5ja67qot" path="res://GUI/Battle Menu Assets/Readouts/SP Gem Full.png" id="8_pmhqn"]
-[ext_resource type="Texture2D" uid="uid://broetx6su77ym" path="res://GUI/Battle Menu Assets/Readouts/SP Gem Half.png" id="9_3vrri"]
-[ext_resource type="Texture2D" uid="uid://cdlwcpgki6y7o" path="res://GUI/Battle Menu Assets/Readouts/SP Gem Empty.png" id="10_qtfjy"]
+[ext_resource type="Theme" uid="uid://0sj6o2hvmgmt" path="res://GUI/Themes/Readout Text.tres" id="1_t2aa8"]
+[ext_resource type="Texture2D" uid="uid://3h4w6mektumc" path="res://GUI/Battle Menu Assets/Readouts/Silver's Readout.png" id="2_gpjko"]
+[ext_resource type="Script" path="res://GUI/PlayerCharacterReadout.cs" id="3_bx4x2"]
+[ext_resource type="Texture2D" uid="uid://cuc7tn3snj7md" path="res://GUI/Battle Menu Assets/Readouts/Readout Highlight.png" id="4_kuyuw"]
+[ext_resource type="Texture2D" uid="uid://b25aln4uhmkhi" path="res://GUI/Battle Menu Assets/Readouts/HP Candle Full.png" id="5_5fw0i"]
+[ext_resource type="Texture2D" uid="uid://dpk6wt2nykmt2" path="res://GUI/Battle Menu Assets/Readouts/HP Candle Half.png" id="6_mnvav"]
+[ext_resource type="Texture2D" uid="uid://cuqh8yxm1dqtn" path="res://GUI/Battle Menu Assets/Readouts/HP Candle Empty.png" id="7_rpfb3"]
+[ext_resource type="Texture2D" uid="uid://di6ya5ja67qot" path="res://GUI/Battle Menu Assets/Readouts/SP Gem Full.png" id="8_lwi3s"]
+[ext_resource type="Texture2D" uid="uid://broetx6su77ym" path="res://GUI/Battle Menu Assets/Readouts/SP Gem Half.png" id="9_n0nv6"]
+[ext_resource type="Texture2D" uid="uid://cdlwcpgki6y7o" path="res://GUI/Battle Menu Assets/Readouts/SP Gem Empty.png" id="10_0khrf"]
 
 [sub_resource type="Animation" id="75"]
 length = 0.001
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [138.0]
+"values": [0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -40,6 +40,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="76"]
 resource_name = "Select"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -50,7 +51,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [138.0, 135]
+"values": [0.0, 3]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -71,21 +72,25 @@ _data = {
 "Select": SubResource("76")
 }
 
-[node name="Cato Readout" type="TextureRect"]
-offset_top = 138.0
-offset_right = 684.0
-offset_bottom = 161.0
-theme = ExtResource("1_mofmv")
-texture = ExtResource("2_g5qyt")
+[node name="Silver Readout" type="TextureRect"]
+texture_filter = 1
+custom_minimum_size = Vector2(684, 143)
+anchors_preset = -1
+anchor_right = 0.356
+anchor_bottom = 0.132
+offset_right = 0.47998
+offset_bottom = 0.440002
+theme = ExtResource("1_t2aa8")
+texture = ExtResource("2_gpjko")
 stretch_mode = 2
-script = ExtResource("3_wygvd")
+script = ExtResource("3_bx4x2")
 
 [node name="Highlight" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
 offset_right = 684.0
 offset_bottom = 108.0
-texture = ExtResource("4_iq63g")
+texture = ExtResource("4_kuyuw")
 
 [node name="HP Icon Full" type="TextureRect" parent="."]
 layout_mode = 0
@@ -93,7 +98,7 @@ offset_left = 438.0
 offset_top = 6.0
 offset_right = 534.0
 offset_bottom = 102.0
-texture = ExtResource("5_ix60x")
+texture = ExtResource("5_5fw0i")
 stretch_mode = 2
 
 [node name="HP Icon Half" type="TextureRect" parent="."]
@@ -103,7 +108,7 @@ offset_left = 438.253
 offset_top = 5.66125
 offset_right = 534.253
 offset_bottom = 101.661
-texture = ExtResource("6_hopsx")
+texture = ExtResource("6_mnvav")
 
 [node name="HP Icon Empty" type="TextureRect" parent="."]
 visible = false
@@ -112,7 +117,7 @@ offset_left = 438.253
 offset_top = 5.66125
 offset_right = 534.253
 offset_bottom = 101.661
-texture = ExtResource("7_sdv1h")
+texture = ExtResource("7_rpfb3")
 
 [node name="SP Icon Full" type="TextureRect" parent="."]
 layout_mode = 1
@@ -123,7 +128,7 @@ offset_left = 582.0
 offset_top = 6.0
 offset_right = -6.0
 offset_bottom = 0.371994
-texture = ExtResource("8_pmhqn")
+texture = ExtResource("8_lwi3s")
 stretch_mode = 2
 
 [node name="SP Icon Half" type="TextureRect" parent="."]
@@ -133,7 +138,7 @@ offset_left = 582.162
 offset_top = 5.66125
 offset_right = 678.162
 offset_bottom = 101.661
-texture = ExtResource("9_3vrri")
+texture = ExtResource("9_n0nv6")
 
 [node name="SP Icon Empty" type="TextureRect" parent="."]
 visible = false
@@ -142,7 +147,7 @@ offset_left = 582.162
 offset_top = 5.66125
 offset_right = 678.162
 offset_bottom = 101.661
-texture = ExtResource("10_qtfjy")
+texture = ExtResource("10_0khrf")
 
 [node name="HP" type="Label" parent="."]
 layout_mode = 0
@@ -150,7 +155,8 @@ offset_left = 344.0
 offset_top = 54.0
 offset_right = 386.0
 offset_bottom = 89.0
-theme = ExtResource("1_mofmv")
+theme = ExtResource("1_t2aa8")
+theme_override_colors/font_color = Color(0.780392, 0.0941176, 0.0941176, 1)
 text = "99"
 horizontal_alignment = 2
 
@@ -160,7 +166,8 @@ offset_left = 396.0
 offset_top = 54.0
 offset_right = 438.0
 offset_bottom = 89.0
-theme = ExtResource("1_mofmv")
+theme = ExtResource("1_t2aa8")
+theme_override_colors/font_color = Color(0.780392, 0.0941176, 0.0941176, 1)
 text = "99"
 
 [node name="SP" type="Label" parent="."]
@@ -169,7 +176,8 @@ offset_left = 506.0
 offset_top = 54.0
 offset_right = 548.0
 offset_bottom = 89.0
-theme = ExtResource("1_mofmv")
+theme = ExtResource("1_t2aa8")
+theme_override_colors/font_color = Color(0.219608, 0.572549, 0.811765, 1)
 text = "99"
 horizontal_alignment = 2
 
@@ -179,10 +187,21 @@ offset_left = 558.0
 offset_top = 54.0
 offset_right = 600.0
 offset_bottom = 89.0
-theme = ExtResource("1_mofmv")
+theme = ExtResource("1_t2aa8")
+theme_override_colors/font_color = Color(0.219608, 0.572549, 0.811765, 1)
 text = "99"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_agruw")
 }
+
+[node name="Status Bar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -1.279
+anchor_bottom = -1.279
+offset_left = 33.0
+offset_top = 272.897
+offset_right = 644.0
+offset_bottom = 317.897

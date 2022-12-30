@@ -36,6 +36,7 @@ public partial class PMEnemyAbility : PMBattleAbility
                 foreach(PMPlayerCharacter defender in target){
                     defender.PlayDefenseAnimation();
                 }
+                playerDefenseOnline = false;
             }else{
                 defenseLocked = true;
             }
@@ -45,17 +46,14 @@ public partial class PMEnemyAbility : PMBattleAbility
     public override void ExecuteEvent(int eventNum)
     {
         base.ExecuteEvent(eventNum);
+        //Overrides the normal hit react animations played by dealing damage if the player is defending
+        if(events[eventNum].GetEventType() == PMBattleUtilities.EventType.Damage && successfulDefense){ 
+            foreach(PMPlayerCharacter defender in target) defender.PlayBlockAnimation();
+        }
     }
 
     public void PlayerDefenseReactionOnline(){
         playerDefenseOnline = true;
-    }
-    public void PlayerBlockAnimation(){
-        if(!successfulDefense) return;
-        foreach(PMPlayerCharacter defender in target)
-        {
-            defender.PlayBlockAnimation();
-        }
     }
     public void DisablePlayerDefense(){
         playerDefenseOnline = false;

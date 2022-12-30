@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using static PMBattleUtilities;
+using static PMCharacterUtilities;
 
 
 //TODO Add Logic to prevent a character from Taunting and Being Invisible or Phased Out
@@ -33,7 +34,20 @@ public partial class PMCharacter : Sprite3D{
     [Export(PropertyHint.File)]
     public string HealingNumberResource = "res://PM Battle Mode/Healing Number.tscn";
     [Export(PropertyHint.File)]
-    public string DamageNumberResource = "res://PM Battle Mode/Damage Number.tscn"; 
+    public string DamageNumberResource = "res://PM Battle Mode/Damage Number.tscn";
+    //These are used to store the markers for where a characters body parts are so animations and objects can properly
+    //be set to target the head, core of the body etc.
+    //i.e. Spawning in a "seeing stars" particle effect on a head region 
+    [Export]
+    protected Node3D head; 
+    [Export]
+    protected Node3D core; 
+    [Export]
+    protected Node3D weapon; 
+    [Export]
+    protected Node3D feet; 
+	[Export(PropertyHint.NodePathValidTypes)]
+	Godot.Collections.Array<NodePath> debugStatusEffects = new Godot.Collections.Array<NodePath>(); 
 
     private PackedScene damageNum, healingNum;
     public override void _Ready(){
@@ -44,6 +58,11 @@ public partial class PMCharacter : Sprite3D{
         if(currentHP == -1) currentHP = maxHP;
         damageNum = GD.Load<PackedScene>(DamageNumberResource);
         healingNum = GD.Load<PackedScene>(HealingNumberResource);
+        foreach(NodePath statusPath in debugStatusEffects){
+			var status = GetNode<PMStatus>(statusPath);
+            status.Setup(this);
+            AddStatus(status);
+		}
     } 
 
     public override void _Process(double delta){
@@ -76,21 +95,25 @@ public partial class PMCharacter : Sprite3D{
         return targetable;
     }
 
-    public void AddStatus(PMStatus newEffect){
+    public virtual void AddStatus(PMStatus newEffect){
         //Checks if the newEffect is another instance of a current effect, if so we keep the instance with more duration
         foreach(PMStatus oldEffect in statusEffects){
             if(newEffect.GetStatusType() == oldEffect.GetStatusType()){
                 if(newEffect.GetDuration() > oldEffect.GetDuration()){
                     statusEffects.Remove(oldEffect);
                     oldEffect.QueueFree();
-                    statusEffects.Add(newEffect);
-                    return;
                 }else{
                     return;
                 }
             }
         }
         statusEffects.Add(newEffect);
+    }
+
+    //This function exists so that children of PMCharacter can implement other functionality when they lose a status effect
+    //i.e. PlayerCharacters telling their readouts to remove the GUI element indicating that player has that status
+    public virtual void RemoveStatus(PMStatus removeEffect){
+        this.statusEffects.Remove(removeEffect);
     }
 
     public virtual void TakeDamage(int damage, AbilityAlignment alignment){
@@ -138,6 +161,20 @@ public partial class PMCharacter : Sprite3D{
     public string GetCharacterName(){
         return name;
     }
+	public Node3D GetBodyRegion(BodyRegions lookup){
+		switch(lookup){
+			case BodyRegions.Head :
+				return head;
+			case BodyRegions.Core :
+				return core;
+			case BodyRegions.Weapon :
+				return weapon;
+			case BodyRegions.Feet :
+				return feet;
+			default :
+				return core;
+		}
+	}
     public void ResetToIdleAnim(){
         GetNode<AnimationPlayer>("AnimationPlayer").Play("Idle");
     }
@@ -170,5 +207,14 @@ public partial class PMCharacter : Sprite3D{
 
     public virtual void FinishDefeat(){
         doneDying = true;
+    }
+}
+
+public static class PMCharacterUtilities{
+    public enum BodyRegions{
+        Head,
+        Core,
+        Weapon,
+        Feet
     }
 }

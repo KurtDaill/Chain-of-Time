@@ -10,11 +10,20 @@ public partial class PMStatus : Node {
     private int magnitude;
     [Export]
     private StatusEffect statusType;
+    [Export(PropertyHint.File)]
+    private string particleResourcePath;
+
+    //These two filepaths link to the larger icon used to indicate this status effect on the player readout
+    //and the other smaller icon used when the readout has many status effects, and for display on enemy characters
+    [Export(PropertyHint.File)]
+    private string longIconPath;
+    [Export(PropertyHint.File)]
+    private string shortIconPath;
+    private StatusEffectParticles particles;
 
     //Character that this effect is applied to. Left null for battlefield effects.
     private PMCharacter target = null;
     private AnimationPlayer animPlayer;
-    
     public void SetCustom(int dur, int mag){
         if(dur != -1) duration = dur;
         if(mag != -1) magnitude = mag;
@@ -41,6 +50,8 @@ public partial class PMStatus : Node {
     }
 
     public void StartUpkeep(){
+        particles = ResourceLoader.Load<PackedScene>(particleResourcePath).Instantiate<StatusEffectParticles>();
+        target.GetBodyRegion(particles.GetSpawnRegion()).AddChild(particles);
         animPlayer.Play("Upkeep");
     }
 
@@ -53,12 +64,21 @@ public partial class PMStatus : Node {
     }
 
     public void Finish(){
-        target.statusEffects.Remove(this);
+        target.RemoveStatus(this);
+        particles.QueueFree();
         this.QueueFree();
     }
     public void Setup(PMCharacter tar){
         target = tar;
         animPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
         //animPlayer.Play("Apply");
+    }
+
+    public TextureRect GetLongIcon(){
+        return ResourceLoader.Load<PackedScene>(longIconPath).Instantiate<TextureRect>();
+    }
+
+    public TextureRect GetShortIcon(){
+        return ResourceLoader.Load<PackedScene>(shortIconPath).Instantiate<TextureRect>();
     }
 }

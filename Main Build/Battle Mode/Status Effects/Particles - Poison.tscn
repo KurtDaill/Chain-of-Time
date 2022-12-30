@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ldkgth7qqebb"]
+[gd_scene load_steps=8 format=3 uid="uid://ldkgth7qqebb"]
 
 [ext_resource type="Texture2D" uid="uid://xd3i3hvk8rse" path="res://Art/Posion Bubble Particle.png" id="1_ypqt7"]
+[ext_resource type="Script" path="res://Battle Mode/StatusEffectParticles.cs" id="2_edjfm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hek4g"]
 transparency = 1
@@ -32,3 +33,4 @@ lifetime = 1.5
 randomness = 0.5
 process_material = SubResource("ParticleProcessMaterial_e1bd8")
 draw_pass_1 = SubResource("QuadMesh_6yayd")
+script = ExtResource("2_edjfm")

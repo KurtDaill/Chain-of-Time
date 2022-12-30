@@ -1,14 +1,15 @@
-res://GUI/Battle Menu Assets
 res://Battle Mode/Status Effects
-res://Art
-res://GUI
+res://Battle Mode/Player Characters/Abilities
+res://GUI/Battle Menu Assets/Status Icons
 res://Battle Mode
+res://GUI/Battle Menu Assets
+res://GUI/Battle Menu Assets/Readouts
+res://GUI
+res://Art
 res://Art/Textures
 res://Battle Mode/Enemies
 res://Battle Mode/Player Characters
-res://Battle Mode/Player Characters/Abilities
 res://GUI/Themes
 res://GUI/Battle Menu Assets/Party Menu
-res://GUI/Battle Menu Assets/Readouts
 res://Fonts
 C:/Users/kdail/AppData/Local/Programs/Microsoft VS Code

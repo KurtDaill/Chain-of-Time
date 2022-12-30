@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://7df38myb1663"]
+[gd_scene load_steps=14 format=3 uid="uid://7df38myb1663"]
 
 [ext_resource type="Texture2D" uid="uid://cdlwcpgki6y7o" path="res://GUI/Battle Menu Assets/Readouts/SP Gem Empty.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://b25aln4uhmkhi" path="res://GUI/Battle Menu Assets/Readouts/HP Candle Full.png" id="2"]
@@ -10,8 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cuc7tn3snj7md" path="res://GUI/Battle Menu Assets/Readouts/Readout Highlight.png" id="8"]
 [ext_resource type="Theme" uid="uid://0sj6o2hvmgmt" path="res://GUI/Themes/Readout Text.tres" id="9"]
 [ext_resource type="Script" path="res://GUI/PlayerCharacterReadout.cs" id="10"]
-[ext_resource type="Texture2D" uid="uid://1k10qavpgq4c" path="res://GUI/Battle Menu Assets/Player Status Effect Stun.png" id="11_4ig63"]
-[ext_resource type="Texture2D" uid="uid://bd6xx8k22fsmp" path="res://GUI/Battle Menu Assets/Player Status Effect Posion.png" id="12_j8j6l"]
 
 [sub_resource type="Animation" id="75"]
 length = 0.001
@@ -81,7 +79,7 @@ anchors_preset = -1
 anchor_top = 0.128
 anchor_right = 0.356
 anchor_bottom = 0.228
-offset_top = -0.240005
+offset_top = 138.0
 offset_right = 0.47998
 offset_bottom = 34.76
 theme = ExtResource("9")
@@ -160,6 +158,7 @@ offset_top = 54.0
 offset_right = 386.0
 offset_bottom = 89.0
 theme = ExtResource("9")
+theme_override_colors/font_color = Color(0.780392, 0.0941176, 0.0941176, 1)
 text = "99"
 horizontal_alignment = 2
 
@@ -170,6 +169,7 @@ offset_top = 54.0
 offset_right = 438.0
 offset_bottom = 89.0
 theme = ExtResource("9")
+theme_override_colors/font_color = Color(0.780392, 0.0941176, 0.0941176, 1)
 text = "99"
 
 [node name="SP" type="Label" parent="."]
@@ -179,6 +179,7 @@ offset_top = 54.0
 offset_right = 548.0
 offset_bottom = 89.0
 theme = ExtResource("9")
+theme_override_colors/font_color = Color(0.219608, 0.572549, 0.811765, 1)
 text = "99"
 horizontal_alignment = 2
 
@@ -189,6 +190,7 @@ offset_top = 54.0
 offset_right = 600.0
 offset_bottom = 89.0
 theme = ExtResource("9")
+theme_override_colors/font_color = Color(0.219608, 0.572549, 0.811765, 1)
 text = "99"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -196,7 +198,7 @@ libraries = {
 "": SubResource("AnimationLibrary_agruw")
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Status Bar" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -1.279
@@ -205,19 +207,3 @@ offset_left = 33.0
 offset_top = 272.897
 offset_right = 644.0
 offset_bottom = 317.897
-alignment = 2
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("11_4ig63")
-stretch_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("12_j8j6l")
-stretch_mode = 2
-
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("11_4ig63")
-stretch_mode = 2

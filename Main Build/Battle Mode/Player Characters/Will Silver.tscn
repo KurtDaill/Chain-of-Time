@@ -185,7 +185,7 @@ _data = {
 "RESET": SubResource("78")
 }
 
-[node name="Silver" type="Sprite3D"]
+[node name="Silver" type="Sprite3D" node_paths=PackedStringArray("head", "core", "weapon", "feet")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56, 0)
 pixel_size = 0.008
 shaded = true
@@ -205,6 +205,10 @@ maxHP = 4
 name = "Silver"
 HealingNumberResource = "res://Battle Mode/Healing Number.tscn"
 DamageNumberResource = "res://Battle Mode/Damage Number.tscn"
+head = NodePath("Body Ref/Head")
+core = NodePath("Body Ref/Core")
+weapon = NodePath("Body Ref/Weapon")
+feet = NodePath("Body Ref/Feet")
 
 [node name="Pointer" parent="." instance=ExtResource("9")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.24, 0)
@@ -218,8 +222,17 @@ libraries = {
 [node name="Aimpoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -0.04, 0)
 
-[node name="Body Ref" type="Node" parent="."]
+[node name="Body Ref" type="Node3D" parent="."]
 editor_description = "A Collection of Spatial Nodes intended to tell other nodes and functions where to spawn particle effects or other nodes on a characters head, core, feet, etc."
 
 [node name="Head" type="Node3D" parent="Body Ref"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52, 1.93509, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48, 0.36, 0)
+
+[node name="Core" type="Node3D" parent="Body Ref"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56, -0.0799999, 0)
+
+[node name="Weapon" type="Node3D" parent="Body Ref"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.64, -0.12, 0)
+
+[node name="Feet" type="Node3D" parent="Body Ref"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -1.56, 0)

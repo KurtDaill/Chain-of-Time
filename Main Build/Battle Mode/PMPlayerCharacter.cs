@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using static GameMaster;
+using static PMCharacterUtilities;
 public partial class PMPlayerCharacter : PMCharacter{
 	[Export]
 	int[] abilitiesKnown = new int[0];
@@ -65,12 +66,22 @@ public partial class PMPlayerCharacter : PMCharacter{
 		myReadout.UpdateHP(currentHP, maxHP);
 		myReadout.UpdateSP(currentSP, maxSP);
 		readouts.Reorder();
+		//This line is included to notify the readout of any statuses the character starts with
+		myReadout.UpdateStatus(statusEffects);
 		//SetupReadout();
 	}
 	public PMPlayerAbility GetBasicAttack(){
 		return basicAttackInstanced;
 	}
+	
+	public override void AddStatus(PMStatus newEffect){
+		base.AddStatus(newEffect);
+	} 
 
+	public override void RemoveStatus(PMStatus removeEffect){
+		base.RemoveStatus(removeEffect);
+		myReadout.UpdateStatus(statusEffects);
+	}
 	public override void TakeDamage(int damage, PMBattleUtilities.AbilityAlignment alignment)
 	{
 		base.TakeDamage(damage, alignment);
