@@ -6,189 +6,189 @@ using static BattleEnemyAI;
 using static PMBattleUtilities;
 
 public partial class PMEnemyCharacter : PMCharacter{
-    [Export]
-    protected Godot.Collections.Array<NodePath> abilitiesByPriority;
-    protected PMEnemyAbility[] abilities;
+	[Export]
+	protected Godot.Collections.Array<NodePath> abilitiesByPriority;
+	protected PMEnemyAbility[] abilities;
 
-    public bool chargedUp = false;
+	public bool chargedUp = false;
 
-    [Export]
-    protected Godot.Collections.Array<EnemyRole> combatRoles = new Godot.Collections.Array<EnemyRole>{EnemyRole.Minion};
+	[Export]
+	protected Godot.Collections.Array<EnemyRole> combatRoles = new Godot.Collections.Array<EnemyRole>{EnemyRole.Minion};
 
-    [Export]
-    private EnemyNameplate namePlate;
+	[Export]
+	private EnemyNameplate namePlate;
 
-    public override void _Ready(){
-        base._Ready();
-        abilities = new PMEnemyAbility[abilitiesByPriority.Count];
-        for(int i = 0; i < abilitiesByPriority.Count; i++){
-            abilities[i] = GetNode<PMEnemyAbility>(abilitiesByPriority[i]);
-        }
-    }
+	public override void _Ready(){
+		base._Ready();
+		abilities = new PMEnemyAbility[abilitiesByPriority.Count];
+		for(int i = 0; i < abilitiesByPriority.Count; i++){
+			abilities[i] = GetNode<PMEnemyAbility>(abilitiesByPriority[i]);
+		}
+	}
 
-    public Godot.Collections.Array<EnemyRole> GetRoles(){
-        return combatRoles;
-    }
+	public Godot.Collections.Array<EnemyRole> GetRoles(){
+		return combatRoles;
+	}
 
-    public void ChargeUp(){
-        chargedUp = false;
-    }
+	public void ChargeUp(){
+		chargedUp = false;
+	}
 
-    public override void SetSelected(bool set){
-        base.SetSelected(set);
-        if(set){
-            namePlate.Visible = true;
-            namePlate.UpdateHP(currentHP, maxHP);
-            namePlate.UpdateStatus(statusEffects);
-        }else{
-            namePlate.Visible = false;
-        }
-    }
-    public PMEnemyAbility DecideAttack(){  //TODO use dependancy injection to make this shit suck less
-        PMEnemyAbility chosenAbility;
-        PMCharacter[] targets = Array.Empty<PMCharacter>();
-        for(int i = 0; i < abilities.Length; i++){
-            if(CheckAbilitySpecialRequirements(abilities[i])){ //If this attacks requirements are met...
-                switch(abilities[i].GetTargetingRule()){ //We go to selecting a target. TargetRules of "All Enemy","All Hero", and "All" present special cases where we don't have to pick targets
-                    case TargetingRule.AllEnemy:
-                        targets = parentBattle.roster.GetEnemyCharacters(true, true, false).ToArray<PMCharacter>();
-                        break;
-                    case TargetingRule.AllHero:
-                        targets = parentBattle.roster.GetPlayerCharacters(true, true, false).ToArray<PMCharacter>();
-                        break;
-                    case TargetingRule.All:
-                        targets = parentBattle.roster.GetCharacters(true, true, false).ToArray<PMCharacter>();
-                        break;
-                    default: //In any other case: we go on to pick targets using the normal GetTargetByPriority function
-                        targets = GetTargetByPriority(abilities[i]);
-                        break;
-                }
-            }
-            if(targets == Array.Empty<PMCharacter>()) continue; //If we failed the requirements or couldn't pick a target, we go to the next ability
-            else{
-                chosenAbility = abilities[i];
-                chosenAbility.SetTargets(targets);
-                return chosenAbility;
-            }   
-        }
-        return null; //We reach this if no usable ability could be found...
-        //TODO add some kind of default "I can't do anything" ability to singal to the player that this enemy's got nothing?
-    }
+	public override void SetSelected(bool set){
+		base.SetSelected(set);
+		if(set){
+			namePlate.Visible = true;
+			namePlate.UpdateHP(currentHP, maxHP);
+			namePlate.UpdateStatus(statusEffects);
+		}else{
+			namePlate.Visible = false;
+		}
+	}
+	public PMEnemyAbility DecideAttack(){  //TODO use dependancy injection to make this shit suck less
+		PMEnemyAbility chosenAbility;
+		PMCharacter[] targets = Array.Empty<PMCharacter>();
+		for(int i = 0; i < abilities.Length; i++){
+			if(CheckAbilitySpecialRequirements(abilities[i])){ //If this attacks requirements are met...
+				switch(abilities[i].GetTargetingRule()){ //We go to selecting a target. TargetRules of "All Enemy","All Hero", and "All" present special cases where we don't have to pick targets
+					case TargetingRule.AllEnemy:
+						targets = parentBattle.roster.GetEnemyCharacters(true, true, false).ToArray<PMCharacter>();
+						break;
+					case TargetingRule.AllHero:
+						targets = parentBattle.roster.GetPlayerCharacters(true, true, false).ToArray<PMCharacter>();
+						break;
+					case TargetingRule.All:
+						targets = parentBattle.roster.GetCharacters(true, true, false).ToArray<PMCharacter>();
+						break;
+					default: //In any other case: we go on to pick targets using the normal GetTargetByPriority function
+						targets = GetTargetByPriority(abilities[i]);
+						break;
+				}
+			}
+			if(targets == Array.Empty<PMCharacter>()) continue; //If we failed the requirements or couldn't pick a target, we go to the next ability
+			else{
+				chosenAbility = abilities[i];
+				chosenAbility.SetTargets(targets);
+				return chosenAbility;
+			}   
+		}
+		return null; //We reach this if no usable ability could be found...
+		//TODO add some kind of default "I can't do anything" ability to singal to the player that this enemy's got nothing?
+	}
 
-        //TODO make some kind of "I don't have anything" default attack to play a little animation that makes it obvious to the player somethings up
-    public bool CheckAbilitySpecialRequirements(PMEnemyAbility able){//TODO Test that the requirements work
-        Godot.Collections.Array<SpecialRequirement> req = able.GetRequirements();
-            if(req.Count != 0){ //Does this one have any special conditions
-                if(req.Contains(SpecialRequirement.NoHeroTank)){
-                    if(parentBattle.heroTauntUp){
-                        return false;
-                    }
-                }
-                if(req.Contains(SpecialRequirement.HeroDown)){
-                    bool isSomeoneDead = false;
-                    foreach(PMPlayerCharacter pc in parentBattle.roster.GetPlayerCharacters()){
-                        if(pc.GetHP() <= 0){
-                            isSomeoneDead = true;
-                        }
-                    }
-                    if(!isSomeoneDead) return false;
-                }
-                if(req.Contains(SpecialRequirement.InFrontLine)){
-                    if(myPosition != BattlePos.EnemyOne) return false;
-                }
-                if(req.Contains(SpecialRequirement.SelfDamagedThisTurn)){
-                    if(this.damageTakenThisTurn == 0) return false;
-                }
-                if(req.Contains(SpecialRequirement.SelfUndamagedThisTurn)){
-                       if(this.damageTakenThisTurn !=0 ) return false;
-                }
-                if(req.Contains(SpecialRequirement.SelfHurt)){
-                    if(!IsHurt()) return false;
-                }
-                if(req.Contains(SpecialRequirement.SelfBloodied)){
-                    if(!IsBloodied()) return false;
-                }
-                if(req.Contains(SpecialRequirement.EnemyBloodied) || req.Contains(SpecialRequirement.EnemyHurt)){
-                    bool enemyBloodied = false;
-                    bool enemyHurt = false;
-                    foreach(PMEnemyCharacter enemy in parentBattle.roster.GetEnemyCharacters()){
-                        if(System.Object.ReferenceEquals(this, enemy)) continue;  //If the character is me, I don't care.
-                        if(enemy.IsHurt()) enemyHurt = true;
-                        if(enemy.IsBloodied()) enemyBloodied = true;
-                    }
-                    if(req.Contains(SpecialRequirement.EnemyHurt)) if(!enemyHurt) return false;
-                    if(req.Contains(SpecialRequirement.EnemyBloodied)) if(!enemyBloodied) return false;
-                }
-                if(req.Contains(SpecialRequirement.NoEnemies) || req.Contains(SpecialRequirement.ThreeEnemies)){
-                    int count = parentBattle.roster.GetEnemyCharacters().Length;
-                    if(req.Contains(SpecialRequirement.NoEnemies)) if(count > 1) return false; //If there's only 1 enemy (me), we fail the "no other enemies" condition
-                    if(req.Contains(SpecialRequirement.ThreeEnemies)) if(count != 3) return false; //If there's not 3 enemies total, we fail the 3 enemies condition
-                }
-                if(req.Contains(SpecialRequirement.Charged)){
-                    if(!chargedUp) return false;
-                }
-            }
-        return true;
-    }
-    public PMCharacter[] GetTargetByPriority(PMEnemyAbility able){
-        foreach(TargetPriority prio in able.GetTargetingPriorities()){
-            switch(prio){
-                case TargetPriority.Self:
-                    return new PMCharacter[]{this};
-                case TargetPriority.MeleeHero:
-                    //We don't have to check whether HeroOne is null, someone has to hold that slot for the battle to be happening
-                    if(parentBattle.PositionLookup(BattlePos.HeroOne).IsTargetable(able.CanTargetFliers())){
-                        return new PMCharacter[]{parentBattle.PositionLookup(BattlePos.HeroOne)};
-                    }
-                    break;
-                case TargetPriority.RangedHeroes:
-                    if(able.GetTargetingRule() != TargetingRule.SingleHeroRanged) throw new NotImplementedException(); //TODO make custom exception
-                    //Randomly pick a hero in slot 2 or 3
-                    var temp = new Random().Next(1,3);
-                    PMCharacter[] players = parentBattle.roster.GetPlayerCharacters();
-                    if(players[temp] != null){
-                        return new PMCharacter[]{players[temp]};
-                    }else if(players[3-temp] != null){
-                        return new PMCharacter[]{players[3 - temp]};
-                    }
-                    break;
-                case TargetPriority.MeleeEnemy:
-                    if(parentBattle.PositionLookup(BattlePos.EnemyOne).IsTargetable(able.CanTargetFliers())){
-                        return new PMCharacter[]{parentBattle.PositionLookup(BattlePos.EnemyOne)};
-                    }
-                    break;
-                case TargetPriority.RangedEnemies:
-                    if(able.GetTargetingRule() != TargetingRule.SingleHeroRanged) throw new NotImplementedException(); //TODO make custom exception
-                    //Randomly pick a hero in slot 2 or 3
-                    var rando = new Random().Next(1,3);
-                    PMCharacter[] pcs = parentBattle.roster.GetEnemyCharacters();
-                    if(pcs[rando] != null){
-                        return new PMCharacter[]{pcs[rando]};
-                    }else if(pcs[3 - rando] != null){
-                        return new PMCharacter[]{pcs[3 - rando]};
-                    }
-                    break;
-                case TargetPriority.EnemyBoss | TargetPriority.EnemyMinion | TargetPriority.EnemyArtillery | TargetPriority.EnemySquadLeader | TargetPriority.EnemyBruiser | TargetPriority.EnemyTank:
-                    Random rand = new Random();
-                    PMEnemyCharacter[] randomizedPMCharacters = parentBattle.roster.GetEnemyCharacters().OrderBy(x => rand.Next()).ToArray<PMEnemyCharacter>();
-                    foreach(PMEnemyCharacter en in randomizedPMCharacters){
-                        if(en.GetRoles().Contains((PMBattleUtilities.EnemyRole) prio)){
-                            return new PMCharacter[]{en};
-                        }
-                    }
-                    break;
-            }
-        }
-        return Array.Empty<PMCharacter>(); //If nothing meets the targeting priorities, we send back null
-    }
+		//TODO make some kind of "I don't have anything" default attack to play a little animation that makes it obvious to the player somethings up
+	public bool CheckAbilitySpecialRequirements(PMEnemyAbility able){//TODO Test that the requirements work
+		Godot.Collections.Array<SpecialRequirement> req = able.GetRequirements();
+			if(req.Count != 0){ //Does this one have any special conditions
+				if(req.Contains(SpecialRequirement.NoHeroTank)){
+					if(parentBattle.heroTauntUp){
+						return false;
+					}
+				}
+				if(req.Contains(SpecialRequirement.HeroDown)){
+					bool isSomeoneDead = false;
+					foreach(PMPlayerCharacter pc in parentBattle.roster.GetPlayerCharacters()){
+						if(pc.GetHP() <= 0){
+							isSomeoneDead = true;
+						}
+					}
+					if(!isSomeoneDead) return false;
+				}
+				if(req.Contains(SpecialRequirement.InFrontLine)){
+					if(myPosition != BattlePos.EnemyOne) return false;
+				}
+				if(req.Contains(SpecialRequirement.SelfDamagedThisTurn)){
+					if(this.damageTakenThisTurn == 0) return false;
+				}
+				if(req.Contains(SpecialRequirement.SelfUndamagedThisTurn)){
+					   if(this.damageTakenThisTurn !=0 ) return false;
+				}
+				if(req.Contains(SpecialRequirement.SelfHurt)){
+					if(!IsHurt()) return false;
+				}
+				if(req.Contains(SpecialRequirement.SelfBloodied)){
+					if(!IsBloodied()) return false;
+				}
+				if(req.Contains(SpecialRequirement.EnemyBloodied) || req.Contains(SpecialRequirement.EnemyHurt)){
+					bool enemyBloodied = false;
+					bool enemyHurt = false;
+					foreach(PMEnemyCharacter enemy in parentBattle.roster.GetEnemyCharacters()){
+						if(System.Object.ReferenceEquals(this, enemy)) continue;  //If the character is me, I don't care.
+						if(enemy.IsHurt()) enemyHurt = true;
+						if(enemy.IsBloodied()) enemyBloodied = true;
+					}
+					if(req.Contains(SpecialRequirement.EnemyHurt)) if(!enemyHurt) return false;
+					if(req.Contains(SpecialRequirement.EnemyBloodied)) if(!enemyBloodied) return false;
+				}
+				if(req.Contains(SpecialRequirement.NoEnemies) || req.Contains(SpecialRequirement.ThreeEnemies)){
+					int count = parentBattle.roster.GetEnemyCharacters().Length;
+					if(req.Contains(SpecialRequirement.NoEnemies)) if(count > 1) return false; //If there's only 1 enemy (me), we fail the "no other enemies" condition
+					if(req.Contains(SpecialRequirement.ThreeEnemies)) if(count != 3) return false; //If there's not 3 enemies total, we fail the 3 enemies condition
+				}
+				if(req.Contains(SpecialRequirement.Charged)){
+					if(!chargedUp) return false;
+				}
+			}
+		return true;
+	}
+	public PMCharacter[] GetTargetByPriority(PMEnemyAbility able){
+		foreach(TargetPriority prio in able.GetTargetingPriorities()){
+			switch(prio){
+				case TargetPriority.Self:
+					return new PMCharacter[]{this};
+				case TargetPriority.MeleeHero:
+					//We don't have to check whether HeroOne is null, someone has to hold that slot for the battle to be happening
+					if(parentBattle.PositionLookup(BattlePos.HeroOne).IsTargetable(able.CanTargetFliers())){
+						return new PMCharacter[]{parentBattle.PositionLookup(BattlePos.HeroOne)};
+					}
+					break;
+				case TargetPriority.RangedHeroes:
+					if(able.GetTargetingRule() != TargetingRule.SingleHeroRanged) throw new NotImplementedException(); //TODO make custom exception
+					//Randomly pick a hero in slot 2 or 3
+					var temp = new Random().Next(1,3);
+					PMCharacter[] players = parentBattle.roster.GetPlayerCharacters();
+					if(players[temp] != null){
+						return new PMCharacter[]{players[temp]};
+					}else if(players[3-temp] != null){
+						return new PMCharacter[]{players[3 - temp]};
+					}
+					break;
+				case TargetPriority.MeleeEnemy:
+					if(parentBattle.PositionLookup(BattlePos.EnemyOne).IsTargetable(able.CanTargetFliers())){
+						return new PMCharacter[]{parentBattle.PositionLookup(BattlePos.EnemyOne)};
+					}
+					break;
+				case TargetPriority.RangedEnemies:
+					if(able.GetTargetingRule() != TargetingRule.SingleHeroRanged) throw new NotImplementedException(); //TODO make custom exception
+					//Randomly pick a hero in slot 2 or 3
+					var rando = new Random().Next(1,3);
+					PMCharacter[] pcs = parentBattle.roster.GetEnemyCharacters();
+					if(pcs[rando] != null){
+						return new PMCharacter[]{pcs[rando]};
+					}else if(pcs[3 - rando] != null){
+						return new PMCharacter[]{pcs[3 - rando]};
+					}
+					break;
+				case TargetPriority.EnemyBoss | TargetPriority.EnemyMinion | TargetPriority.EnemyArtillery | TargetPriority.EnemySquadLeader | TargetPriority.EnemyBruiser | TargetPriority.EnemyTank:
+					Random rand = new Random();
+					PMEnemyCharacter[] randomizedPMCharacters = parentBattle.roster.GetEnemyCharacters().OrderBy(x => rand.Next()).ToArray<PMEnemyCharacter>();
+					foreach(PMEnemyCharacter en in randomizedPMCharacters){
+						if(en.GetRoles().Contains((PMBattleUtilities.EnemyRole) prio)){
+							return new PMCharacter[]{en};
+						}
+					}
+					break;
+			}
+		}
+		return Array.Empty<PMCharacter>(); //If nothing meets the targeting priorities, we send back null
+	}
 
-    public EnemyNameplate GetNameplate(){
-        return namePlate;
-    }
+	public EnemyNameplate GetNameplate(){
+		return namePlate;
+	}
 
-    public override void FinishDefeat()
-    {
-        base.FinishDefeat();
-        //this.QueueFree();
-    }
+	public override void FinishDefeat()
+	{
+		base.FinishDefeat();
+		//this.QueueFree();
+	}
 }    
