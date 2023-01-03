@@ -15,6 +15,9 @@ public partial class PMEnemyCharacter : PMCharacter{
     [Export]
     protected Godot.Collections.Array<EnemyRole> combatRoles = new Godot.Collections.Array<EnemyRole>{EnemyRole.Minion};
 
+    [Export]
+    private EnemyNameplate namePlate;
+
     public override void _Ready(){
         base._Ready();
         abilities = new PMEnemyAbility[abilitiesByPriority.Count];
@@ -29,6 +32,17 @@ public partial class PMEnemyCharacter : PMCharacter{
 
     public void ChargeUp(){
         chargedUp = false;
+    }
+
+    public override void SetSelected(bool set){
+        base.SetSelected(set);
+        if(set){
+            namePlate.Visible = true;
+            namePlate.UpdateHP(currentHP, maxHP);
+            namePlate.UpdateStatus(statusEffects);
+        }else{
+            namePlate.Visible = false;
+        }
     }
     public PMEnemyAbility DecideAttack(){  //TODO use dependancy injection to make this shit suck less
         PMEnemyAbility chosenAbility;
@@ -166,6 +180,10 @@ public partial class PMEnemyCharacter : PMCharacter{
             }
         }
         return Array.Empty<PMCharacter>(); //If nothing meets the targeting priorities, we send back null
+    }
+
+    public EnemyNameplate GetNameplate(){
+        return namePlate;
     }
 
     public override void FinishDefeat()

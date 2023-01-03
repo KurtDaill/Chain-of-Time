@@ -87,13 +87,11 @@ script = ExtResource("3_bx4x2")
 
 [node name="Highlight" type="TextureRect" parent="."]
 visible = false
-layout_mode = 0
 offset_right = 684.0
 offset_bottom = 108.0
 texture = ExtResource("4_kuyuw")
 
 [node name="HP Icon Full" type="TextureRect" parent="."]
-layout_mode = 0
 offset_left = 438.0
 offset_top = 6.0
 offset_right = 534.0
@@ -103,7 +101,6 @@ stretch_mode = 2
 
 [node name="HP Icon Half" type="TextureRect" parent="."]
 visible = false
-layout_mode = 0
 offset_left = 438.253
 offset_top = 5.66125
 offset_right = 534.253
@@ -112,7 +109,6 @@ texture = ExtResource("6_mnvav")
 
 [node name="HP Icon Empty" type="TextureRect" parent="."]
 visible = false
-layout_mode = 0
 offset_left = 438.253
 offset_top = 5.66125
 offset_right = 534.253
@@ -120,7 +116,6 @@ offset_bottom = 101.661
 texture = ExtResource("7_rpfb3")
 
 [node name="SP Icon Full" type="TextureRect" parent="."]
-layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.941
@@ -133,7 +128,6 @@ stretch_mode = 2
 
 [node name="SP Icon Half" type="TextureRect" parent="."]
 visible = false
-layout_mode = 0
 offset_left = 582.162
 offset_top = 5.66125
 offset_right = 678.162
@@ -142,7 +136,6 @@ texture = ExtResource("9_n0nv6")
 
 [node name="SP Icon Empty" type="TextureRect" parent="."]
 visible = false
-layout_mode = 0
 offset_left = 582.162
 offset_top = 5.66125
 offset_right = 678.162
@@ -150,45 +143,37 @@ offset_bottom = 101.661
 texture = ExtResource("10_0khrf")
 
 [node name="HP" type="Label" parent="."]
-layout_mode = 0
 offset_left = 344.0
 offset_top = 54.0
 offset_right = 386.0
 offset_bottom = 89.0
 theme = ExtResource("1_t2aa8")
-theme_override_colors/font_color = Color(0.780392, 0.0941176, 0.0941176, 1)
 text = "99"
 horizontal_alignment = 2
 
 [node name="Max HP" type="Label" parent="."]
-layout_mode = 0
 offset_left = 396.0
 offset_top = 54.0
 offset_right = 438.0
 offset_bottom = 89.0
 theme = ExtResource("1_t2aa8")
-theme_override_colors/font_color = Color(0.780392, 0.0941176, 0.0941176, 1)
 text = "99"
 
 [node name="SP" type="Label" parent="."]
-layout_mode = 0
 offset_left = 506.0
 offset_top = 54.0
 offset_right = 548.0
 offset_bottom = 89.0
 theme = ExtResource("1_t2aa8")
-theme_override_colors/font_color = Color(0.219608, 0.572549, 0.811765, 1)
 text = "99"
 horizontal_alignment = 2
 
 [node name="Max SP" type="Label" parent="."]
-layout_mode = 0
 offset_left = 558.0
 offset_top = 54.0
 offset_right = 600.0
 offset_bottom = 89.0
 theme = ExtResource("1_t2aa8")
-theme_override_colors/font_color = Color(0.219608, 0.572549, 0.811765, 1)
 text = "99"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -197,7 +182,6 @@ libraries = {
 }
 
 [node name="Status Bar" type="HBoxContainer" parent="."]
-layout_mode = 1
 anchors_preset = -1
 anchor_top = -1.279
 anchor_bottom = -1.279

@@ -483,6 +483,7 @@ statusType = 3
 particleResourcePath = "res://Battle Mode/Status Effects/Particles - Poison.tscn"
 longIconPath = "res://GUI/Battle Menu Assets/Status Icons/posion_long_icon.tscn"
 shortIconPath = "res://GUI/Battle Menu Assets/Status Icons/poison_short_icon.tscn"
+enemyTexturePath = "res://GUI/Battle Menu Assets/Enemy Status Effect Posion Short.png"
 
 [node name="Posioned Text" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 2.5, -0.12)

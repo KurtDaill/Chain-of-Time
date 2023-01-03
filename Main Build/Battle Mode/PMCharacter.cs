@@ -179,7 +179,7 @@ public partial class PMCharacter : Sprite3D{
         GetNode<AnimationPlayer>("AnimationPlayer").Play("Idle");
     }
 
-    public void SetPointerVisibility(bool set){
+    public virtual void SetSelected(bool set){
         pointerGraphic.Visible = set;
     }
 

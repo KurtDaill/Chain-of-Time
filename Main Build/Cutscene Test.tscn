@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c86nvd5i2frn"]
+
+[ext_resource type="Texture2D" uid="uid://beln8ffrnhd44" path="res://Art/Kell Cato Master Sprite-Sheet.png" id="1_sx57d"]
+[ext_resource type="PackedScene" uid="uid://ysgw0mocwq5u" path="res://Art/3D/battle_dungeon.tscn" id="2_rw2x6"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -0.6)
+texture = ExtResource("1_sx57d")
+hframes = 10
+vframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="BattleDungeon" parent="." instance=ExtResource("2_rw2x6")]

@@ -1,4 +1,9 @@
+AnimationTree
 AnimationPlayer
+Sprite3D
+Label3D
+SubViewport
+ProgressBar
 Node
 Node3D
 TextureRect

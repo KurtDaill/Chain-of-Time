@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhh44xrbceu6a"]
+
+[ext_resource type="Texture2D" uid="uid://bqnbjc010le1m" path="res://GUI/Battle Menu Assets/Readouts/Enemy Readout.png" id="1_thvm6"]
+[ext_resource type="Script" path="res://Battle Mode/EnemyNameplate.cs" id="2_44mbh"]
+[ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="3_nrqh3"]
+[ext_resource type="Texture2D" uid="uid://cake2huf76rgx" path="res://GUI/Battle Menu Assets/Enemy Status Effect Posion Short.png" id="4_nbmev"]
+[ext_resource type="Texture2D" uid="uid://bpbwwn7mc1sd8" path="res://GUI/Battle Menu Assets/Enemy Status Effect Stun Short.png" id="5_1304s"]
+
+[node name="Enemy Nameplate" type="Sprite3D" node_paths=PackedStringArray("maxHP", "currentHP")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12924e-07, 3.72, 0)
+visible = false
+pixel_size = 0.008
+double_sided = false
+alpha_cut = 2
+texture = ExtResource("1_thvm6")
+script = ExtResource("2_44mbh")
+statusSpritePath = [NodePath("Status 1"), NodePath("Status 2"), NodePath("Status 3"), NodePath("Status 4"), NodePath("Status 5")]
+maxHP = NodePath("Max HP")
+currentHP = NodePath("Current HP")
+
+[node name="Max HP" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.401533, -0.498662, 0.04)
+pixel_size = 0.008
+double_sided = false
+render_priority = 2
+outline_render_priority = 1
+text = "6"
+font = ExtResource("3_nrqh3")
+font_size = 60
+outline_size = 0
+
+[node name="Current HP" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.358467, -0.498662, 0.04)
+pixel_size = 0.008
+double_sided = false
+render_priority = 2
+outline_render_priority = 1
+text = "6
+"
+font = ExtResource("3_nrqh3")
+font_size = 60
+outline_size = 0
+
+[node name="Name" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49012e-08, 0.12, 0.04)
+pixel_size = 0.008
+double_sided = false
+render_priority = 2
+outline_render_priority = 1
+modulate = Color(0.443137, 0.254902, 0.231373, 1)
+text = "[Enemy Name]
+"
+font = ExtResource("3_nrqh3")
+font_size = 60
+outline_size = 0
+
+[node name="Status 1" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46054, -0.44, 0.008)
+visible = false
+pixel_size = 0.008
+texture_filter = 1
+render_priority = 1
+texture = ExtResource("4_nbmev")
+
+[node name="Status 2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45946, -0.44, 0.008)
+visible = false
+pixel_size = 0.008
+texture_filter = 1
+render_priority = 1
+texture = ExtResource("5_1304s")
+
+[node name="Status 3" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46054, -1, 0.008)
+visible = false
+pixel_size = 0.008
+texture_filter = 1
+render_priority = 2
+texture = ExtResource("4_nbmev")
+
+[node name="Status 4" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0194555, -1, 0.008)
+visible = false
+pixel_size = 0.008
+texture_filter = 1
+render_priority = 2
+texture = ExtResource("4_nbmev")
+
+[node name="Status 5" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45946, -1, 0.008)
+visible = false
+pixel_size = 0.008
+texture_filter = 1
+render_priority = 2
+texture = ExtResource("4_nbmev")

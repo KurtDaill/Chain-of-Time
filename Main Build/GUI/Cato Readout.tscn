@@ -157,8 +157,6 @@ offset_left = 344.0
 offset_top = 54.0
 offset_right = 386.0
 offset_bottom = 89.0
-theme = ExtResource("9")
-theme_override_colors/font_color = Color(0.780392, 0.0941176, 0.0941176, 1)
 text = "99"
 horizontal_alignment = 2
 
@@ -168,8 +166,6 @@ offset_left = 396.0
 offset_top = 54.0
 offset_right = 438.0
 offset_bottom = 89.0
-theme = ExtResource("9")
-theme_override_colors/font_color = Color(0.780392, 0.0941176, 0.0941176, 1)
 text = "99"
 
 [node name="SP" type="Label" parent="."]
@@ -178,8 +174,6 @@ offset_left = 506.0
 offset_top = 54.0
 offset_right = 548.0
 offset_bottom = 89.0
-theme = ExtResource("9")
-theme_override_colors/font_color = Color(0.219608, 0.572549, 0.811765, 1)
 text = "99"
 horizontal_alignment = 2
 
@@ -189,8 +183,6 @@ offset_left = 558.0
 offset_top = 54.0
 offset_right = 600.0
 offset_bottom = 89.0
-theme = ExtResource("9")
-theme_override_colors/font_color = Color(0.219608, 0.572549, 0.811765, 1)
 text = "99"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

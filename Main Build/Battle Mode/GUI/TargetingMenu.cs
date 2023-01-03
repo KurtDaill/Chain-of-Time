@@ -199,15 +199,15 @@ public partial class TargetingMenu : BattleMenu {
 
     public void SetPointers(PMCharacter character, PMBattle battle){
         foreach(PMCharacter ch in battle.GetCharacters()){
-            ch.SetPointerVisibility(false);
+            ch.SetSelected(false);
         }
-        character.SetPointerVisibility(true);
+        character.SetSelected(true);
     }
 
     public void SetPointers(List<PMCharacter> characters, PMBattle battle){
         foreach(PMCharacter ch in battle.GetCharacters()){
-            if(characters.Contains(ch)) ch.SetPointerVisibility(true);
-            else    ch.SetPointerVisibility(false);
+            if(characters.Contains(ch)) ch.SetSelected(true);
+            else    ch.SetSelected(false);
         }
     }
 

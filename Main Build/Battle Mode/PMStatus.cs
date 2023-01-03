@@ -19,6 +19,8 @@ public partial class PMStatus : Node {
     private string longIconPath;
     [Export(PropertyHint.File)]
     private string shortIconPath;
+    [Export(PropertyHint.File)]
+    private string enemyTexturePath;
     private StatusEffectParticles particles;
 
     //Character that this effect is applied to. Left null for battlefield effects.
@@ -80,5 +82,9 @@ public partial class PMStatus : Node {
 
     public TextureRect GetShortIcon(){
         return ResourceLoader.Load<PackedScene>(shortIconPath).Instantiate<TextureRect>();
+    }
+
+    public Texture2D GetEnemyTexture(){
+        return ResourceLoader.Load<Texture2D>(enemyTexturePath);
     }
 }

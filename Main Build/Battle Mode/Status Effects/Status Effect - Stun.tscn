@@ -484,6 +484,7 @@ statusType = 4
 particleResourcePath = "res://Battle Mode/Status Effects/Particles - Stun.tscn"
 longIconPath = "res://GUI/Battle Menu Assets/Status Icons/stun_long_icon.tscn"
 shortIconPath = "res://GUI/Battle Menu Assets/Status Icons/stun_short_icon.tscn"
+enemyTexturePath = "res://GUI/Battle Menu Assets/Enemy Status Effect Stun Short.png"
 
 [node name="Posioned Text" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 2.5, -0.12)

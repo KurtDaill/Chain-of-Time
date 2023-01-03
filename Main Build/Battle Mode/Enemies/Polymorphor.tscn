@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://cy6ib5eho248k"]
+[gd_scene load_steps=15 format=3 uid="uid://cy6ib5eho248k"]
 
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://d2obcal8mur0i" path="res://Art/Polymorphor Master Sprite Sheet.png" id="1_tnlsv"]
 [ext_resource type="Script" path="res://Battle Mode/PMEnemyAbility.cs" id="4"]
 [ext_resource type="Script" path="res://Battle Mode/PMEnemyCharacter.cs" id="5"]
 [ext_resource type="Script" path="res://Battle Mode/AbilityEvent.cs" id="6"]
+[ext_resource type="PackedScene" uid="uid://bhh44xrbceu6a" path="res://Battle Mode/GUI/enemy_nameplate.tscn" id="6_jnml7"]
 
 [sub_resource type="Animation" id="70"]
 tracks/0/type = "value"
@@ -68,26 +69,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:transform")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
+tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector3(0, 0.96, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l8j13"]
@@ -202,16 +203,16 @@ _data = {
 "Slide Attack": SubResource("7")
 }
 
-[node name="Polymorphor" type="Sprite3D" node_paths=PackedStringArray("head", "core", "weapon", "feet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28, 0)
-pixel_size = 0.04
+[node name="Polymorphor" type="Sprite3D" node_paths=PackedStringArray("namePlate", "head", "core", "weapon", "feet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96, 0)
+pixel_size = 0.008
 shaded = true
 alpha_cut = 2
-texture_filter = 2
 texture = ExtResource("1_tnlsv")
 hframes = 13
 script = ExtResource("5")
 abilitiesByPriority = [NodePath("Slide")]
+namePlate = NodePath("Enemy Nameplate")
 maxHP = 6
 name = "Polymorphor"
 HealingNumberResource = "res://Battle Mode/Healing Number.tscn"
@@ -222,6 +223,7 @@ weapon = NodePath("Body Ref/Weapon")
 feet = NodePath("Body Ref/Feet")
 
 [node name="Pointer" parent="." instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0899999, 2.24, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
@@ -263,3 +265,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.64, -0.92, 0)
 
 [node name="Feet" type="Node3D" parent="Body Ref"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, -1.28, 0)
+
+[node name="Enemy Nameplate" parent="." instance=ExtResource("6_jnml7")]
+
+[node name="Name" parent="Enemy Nameplate" index="2"]
+text = "Polymorphor"
+
+[editable path="Pointer"]
+[editable path="Enemy Nameplate"]

@@ -4,6 +4,7 @@
 
 [sub_resource type="Animation" id="77"]
 resource_name = "Point"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -53,10 +54,8 @@ _data = {
 [node name="Pointer" type="Sprite3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0899999, 2.24, 0)
 visible = false
-pixel_size = 0.04
-shaded = true
+pixel_size = 0.008
 no_depth_test = true
-texture_filter = 0
 texture = ExtResource("1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

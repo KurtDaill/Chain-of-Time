@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bqhhsywrd27ba"]
+[gd_scene load_steps=20 format=3 uid="uid://bqhhsywrd27ba"]
 
 [ext_resource type="Texture2D" uid="uid://7ck6e81uhun3" path="res://Art/Ghost Animation-Sheet.png" id="1_abq24"]
 [ext_resource type="Script" path="res://Battle Mode/PMEnemyCharacter.cs" id="2_ux1b3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Battle Mode/PMEnemyAbility.cs" id="4_ho7b1"]
 [ext_resource type="Script" path="res://Battle Mode/AbilityEvent.cs" id="5_f7r3f"]
 [ext_resource type="Texture2D" uid="uid://j5vxp8y1rlvs" path="res://Art/Ghost Fireball-Sheet.png" id="6_moiij"]
+[ext_resource type="PackedScene" uid="uid://bhh44xrbceu6a" path="res://Battle Mode/GUI/enemy_nameplate.tscn" id="7_lymeb"]
 
 [sub_resource type="Animation" id="70"]
 tracks/0/type = "value"
@@ -675,7 +676,7 @@ _data = {
 "Swing": SubResource("129")
 }
 
-[node name="Ghost" type="Sprite3D" node_paths=PackedStringArray("head", "core", "weapon", "feet")]
+[node name="Ghost" type="Sprite3D" node_paths=PackedStringArray("namePlate", "head", "core", "weapon", "feet")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08, 0)
 pixel_size = 0.008
 shaded = true
@@ -685,6 +686,7 @@ texture = ExtResource("1_abq24")
 hframes = 4
 script = ExtResource("2_ux1b3")
 abilitiesByPriority = [NodePath("Staff Attack"), NodePath("Fireball Attack")]
+namePlate = NodePath("Enemy Nameplate")
 maxHP = 3
 ModifiedDamageTypes = [1]
 Modifier = [0.5]
@@ -773,3 +775,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16, 0.4, 0)
 
 [node name="Feet" type="Node3D" parent="Body Ref"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.88, -1.56, 0)
+
+[node name="Enemy Nameplate" parent="." instance=ExtResource("7_lymeb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73, 4.04, 0)
+
+[node name="Name" parent="Enemy Nameplate" index="2"]
+text = "Ghost
+"
+
+[editable path="Enemy Nameplate"]
