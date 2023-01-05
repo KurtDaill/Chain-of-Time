@@ -205,7 +205,7 @@ public partial class  PMBattleAbility : Node
     public void SetKeyTransToSelectedTargetBezier(int xTrack, int yTrack, int zTrack, int keyIndex, string animation){
         if(target.Length > 1 ) throw new NotImplementedException(); //TODO: Write Custom exception, can't use this function with multiple targets selected
         Vector3 targetTransform = this.target[0].GlobalPosition - source.GlobalPosition;
-        Animation anim= animPlay.GetAnimation(animation);
+        Animation anim = animPlay.GetAnimation(animation);
         anim.BezierTrackSetKeyValue(xTrack, keyIndex, targetTransform.x);//TODO: Convert between local coordinates
         anim.BezierTrackSetKeyValue(yTrack, keyIndex, targetTransform.y);//TODO: Convert between local coordinates
         anim.BezierTrackSetKeyValue(zTrack, keyIndex, targetTransform.z);//TODO: Convert between local coordinates

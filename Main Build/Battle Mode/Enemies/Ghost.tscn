@@ -753,7 +753,7 @@ defenseFactor = 1
 eventValue = 1
 
 [node name="Fireball" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.92, 0.16, 0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.44921, -0.657797, 0.2)
 visible = false
 pixel_size = 0.008
 texture_filter = 1
