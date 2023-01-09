@@ -589,7 +589,8 @@ _data = {
 "RESET": SubResource("135")
 }
 
-[node name="SuperShot" type="Node"]
+[node name="SuperShot" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.36, 0)
 script = ExtResource("5")
 rulesText = "[center]Deals [damageNumber] [color=yellow]Tech[/color]
 Damage to
@@ -621,6 +622,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.99726, 6)
 visible = false
 no_depth_test = true
 alpha_cut = 2
+render_priority = 5
 texture = ExtResource("4")
 hframes = 2
 frame = 1
@@ -631,6 +633,7 @@ visible = false
 flip_v = true
 no_depth_test = true
 alpha_cut = 2
+render_priority = 5
 texture = ExtResource("4")
 hframes = 2
 frame = 1

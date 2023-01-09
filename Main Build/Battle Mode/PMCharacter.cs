@@ -208,6 +208,15 @@ public partial class PMCharacter : Sprite3D{
     public virtual void FinishDefeat(){
         doneDying = true;
     }
+
+    public bool IsStunned(){
+        foreach(PMStatus stat in statusEffects){
+            if(stat.GetStatusType() == StatusEffect.Stunned){
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 public static class PMCharacterUtilities{

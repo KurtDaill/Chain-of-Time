@@ -48,7 +48,7 @@ public partial class AbilityEvent : Node{
             targets = parentAbility.source.parentBattle.GetPlayerCharacters();
         }
         else if(targeting == Target.AllEnemy){
-            targets = parentAbility.source.parentBattle.GetPlayerCharacters(); //TODO Refactor this kind of dependancy relationship visa vi Battles?
+            targets = parentAbility.source.parentBattle.GetEnemyCharacters(); //TODO Refactor this kind of dependancy relationship visa vi Battles?
         }
         else{
              //Because the bitwise relationship for battle positions is shared between BattlePos and Target, we can cast any of the remaining possible Target to a BattlePos

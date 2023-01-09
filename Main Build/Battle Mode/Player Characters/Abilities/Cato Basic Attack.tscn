@@ -479,7 +479,7 @@ _data = {
 
 [node name="Basic Attack" type="Node"]
 script = ExtResource("11")
-rulesText = " [center][Melee]
+rulesText = "[center][Melee]
 Deals [damageNumber] Damage
 [Crit 1]"
 listedDamage = 2

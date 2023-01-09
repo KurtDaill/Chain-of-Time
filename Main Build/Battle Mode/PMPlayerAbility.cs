@@ -42,7 +42,7 @@ public partial class PMPlayerAbility : PMBattleAbility
             if(!Input.IsActionPressed(targetInput)){
                 if(critAnimation != "") animPlay.Play(critAnimation);
                 else if(failAnimation != "") animPlay.Play(failAnimation);
-                else animPlay.Play(targetAnimation);
+                else if(targetAnimation != "") animPlay.Play(targetAnimation);
                 inHoldAttack = false;
             }
         }
@@ -50,7 +50,7 @@ public partial class PMPlayerAbility : PMBattleAbility
             if(Input.IsActionJustPressed(targetInput)){
                 if(critAnimation != "") animPlay.Play(critAnimation);
                 else if (failAnimation != "")animPlay.Play(failAnimation);
-                else animPlay.Play(targetAnimation);
+                else if(targetAnimation != "") animPlay.Play(targetAnimation);
                 inTimingAttack = false;
             }
         }  
@@ -61,7 +61,7 @@ public partial class PMPlayerAbility : PMBattleAbility
         }else if (inFluffHold){
             if(!Input.IsActionPressed(targetInput)){
                 if(readyForRelease){
-                    animPlay.Play(targetAnimation);
+                    if(targetAnimation != "") animPlay.Play(targetAnimation);
                     inFluffHold = false;
                 }else{
                     BackSlideFluffHold();
@@ -137,7 +137,7 @@ public partial class PMPlayerAbility : PMBattleAbility
         animPlay.PlayBackwards(reverseAnimation);
         animPlay.Seek(targetSeek);
     }
-
+    //You can set targetAnimation to "" in order to not change animataions on successs/failure
     public void StartTimingAttack(string input, string targetAnimation, int failDamage, string failAnim = ""){
         StartDelay(10);
         inTimingAttack = true;
@@ -176,7 +176,11 @@ public partial class PMPlayerAbility : PMBattleAbility
 
     public void TimingAttackTimeOut(int failDamage, string failAnim = ""){
         this.failDamage = failDamage;
-        if(failAnim == "")animPlay.Play(targetAnimation);
+        if(failAnim == ""){
+            if(targetAnimation == ""){
+                FinishSequence();
+            }else animPlay.Play(targetAnimation);
+        }
         else animPlay.Play(failAnim);
         inTimingAttack = false;
     }

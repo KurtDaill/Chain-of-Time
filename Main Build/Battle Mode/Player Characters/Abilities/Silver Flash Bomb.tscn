@@ -68,6 +68,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [&"hidden"]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Da Bomb/OmniLight3D:light_energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [20.0]
+}
 
 [sub_resource type="Animation" id="Animation_ggq3f"]
 resource_name = "Throw"
@@ -276,7 +288,7 @@ animations = [{
 offsets = PackedFloat32Array(0, 0.780488, 1)
 colors = PackedColorArray(1, 1, 1, 0.98374, 0.980392, 0.980392, 0.980392, 1, 0.964706, 0.964706, 0.964706, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6447n"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3p6ux"]
 gradient = SubResource("Gradient_vqece")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k1fc3"]
@@ -289,9 +301,9 @@ initial_velocity_min = 15.0
 initial_velocity_max = 18.0
 damping_min = 3.0
 damping_max = 4.0
-color_ramp = SubResource("GradientTexture1D_6447n")
+color_ramp = SubResource("GradientTexture1D_3p6ux")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2oise"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ar20c"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -299,7 +311,7 @@ albedo_texture = ExtResource("4_8lywv")
 texture_filter = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_k0ruq"]
-material = SubResource("StandardMaterial3D_2oise")
+material = SubResource("StandardMaterial3D_ar20c")
 size = Vector2(0.12, 0.12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_may2j"]
@@ -334,7 +346,8 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Flash Bomb" type="Node"]
+[node name="Flash Bomb" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.56, 0)
 script = ExtResource("1_3by6d")
 rulesText = "[center][Reach]
 [color=yellow]Stuns[/color] an Enemy for 2 Turns"
@@ -351,7 +364,7 @@ consumesOvercharged = false
 [node name="Stun" type="Node" parent="."]
 script = ExtResource("2_ub8n4")
 coreStatusEffect = "res://Battle Mode/Status Effects/Status Effect - Stun.tscn"
-setCustomDuration = 2
+setCustomDuration = 1
 alignment = 2
 targeting = 1
 eventType = 2
@@ -370,7 +383,7 @@ animation = &"hidden"
 playing = true
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Da Bomb"]
-transform = Transform3D(-0.5, -0.866026, 0, 0.866026, -0.5, 0, 0, 0, 1, 1, -0.787052, 0.08)
+transform = Transform3D(-0.5, -0.866026, 0, 0.866026, -0.5, 0, 0, 0, 1, 0, 0, 0.08)
 emitting = false
 amount = 64
 lifetime = 0.3
@@ -380,7 +393,7 @@ process_material = SubResource("ParticleProcessMaterial_k1fc3")
 draw_pass_1 = SubResource("QuadMesh_k0ruq")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Da Bomb"]
-transform = Transform3D(-0.5, -0.866026, 0, 0.866026, -0.5, 0, 0, 0, 1, 1, -0.832052, 0.08)
+transform = Transform3D(-0.5, -0.866026, 0, 0.866026, -0.5, 0, 0, 0, 1, 0, 0, 0.08)
 light_energy = 20.0
 omni_range = 4.0
 omni_attenuation = 1.8025

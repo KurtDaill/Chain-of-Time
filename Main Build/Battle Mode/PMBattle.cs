@@ -26,7 +26,6 @@ public partial class PMBattle : Node
 	TurnPhase currentPhase;
 	TurnPhase returnPhase; //What phase do we return to after we've handled defeats
 
-	List<PMStatus> trackedStatusEffects = new List<PMStatus>();
 	Stack<PMStatus> effectStack;
 
 	Queue<PMCharacter> enemyBench = new Queue<PMCharacter>(); //Holds onto what enemies are waiting to join the encounter once there's space
@@ -56,12 +55,12 @@ public partial class PMBattle : Node
 	{
 		//Normal Goto upkeep functions
 		currentPhase = TurnPhase.LoadDelay;
-		effectStack = new Stack<PMStatus>(trackedStatusEffects);
 		gui = (PMBattleGUI) GetNode(battleGUI);
 		heroTauntUp = false;
 		enemyTauntUp = false;
 		roster = GetNode<PMBattleRoster>("Battle Roster");
 		master = GetNode<GameMaster>("/root/GameMaster");
+		effectStack = new Stack<PMStatus>();
 		
 		foreach(PMPlayerCharacter player in GetPlayerCharacters()){
 			player.SetupGUI(gui.GetNode<ReadoutContainer>("Readouts"));
@@ -167,12 +166,18 @@ public partial class PMBattle : Node
 				//Enemies each run their logic for deciding their attack this turn
 				enemyAttacks = new Queue<PMEnemyAbility>();
 				foreach(PMEnemyCharacter en in roster.GetEnemyCharacters()){
+					if(en.IsStunned()){
+						continue;
+					}
 					var enAb = en.DecideAttack();
 					if(enAb != null){
 						enemyAttacks.Enqueue(enAb);
 					}
 				}
-
+				if(enemyAttacks.Count == 0){
+					if(effectStack.Count != 0) effectStack.Peek().StartUpkeep();
+					currentPhase = TurnPhase.Upkeep;
+				}
 				enemyAttacks.Peek().Begin();
 				currentPhase = TurnPhase.EnemyAction;
 				break;
@@ -182,10 +187,11 @@ public partial class PMBattle : Node
 					if(enemyAttacks.Count == 0){//Is there any more attacks?
 						//Setup the status effect stack, then turn it over to the next turn
 						effectStack = new Stack<PMStatus>();
-						foreach(PMStatus status in trackedStatusEffects){
-							if(status == null){ trackedStatusEffects.Remove(status); return; }
-							effectStack.Push(status);
-						}
+						foreach(PMCharacter character in GetCharacters()){
+							foreach(PMStatus status in character.statusEffects){
+								effectStack.Push(status);
+							}
+						}	
 						
 						if(roster.HandleDefeat()){
 							if(effectStack.Count != 0) effectStack.Peek().StartUpkeep();
@@ -304,10 +310,6 @@ public partial class PMBattle : Node
 
 	public PMCharacter[] GetCharacters(bool includeFlying = true, bool includeInvisible = true, bool includePhasedOut = true, bool includeDefeated = false){
 		return roster.GetCharacters(includeFlying, includeInvisible, includePhasedOut, includeDefeated);
-	}
-
-	public void LogStatusEffect(PMStatus stat){
-		trackedStatusEffects.Add(stat);
 	}
 
 	public void StartPositionSwap(BattlePos one, BattlePos two){

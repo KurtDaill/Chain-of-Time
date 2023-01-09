@@ -159,7 +159,6 @@ public partial class  PMBattleAbility : Node
         foreach(PMCharacter target in events[eventNum].GetTargets()){
             var stat = statusEvent.InstanceStatusEffect(target);
             target.AddStatus(stat);
-            target.parentBattle.LogStatusEffect(stat);
         }
     }   
 

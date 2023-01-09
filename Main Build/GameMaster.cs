@@ -5,7 +5,8 @@ public partial class GameMaster : Node
 {
     PlayerCharacterData[] playerData = Array.Empty<PlayerCharacterData>();
     public struct PlayerCharacterData{
-        public PlayerCharacterData(string filePath, int hp, int maxHP, int sp, int maxSP, uint position, int[] abilitiesKnown, int[] abilitiesPrepared){
+        public PlayerCharacterData(string filePath, int hp, int maxHP, int sp, int maxSP, uint position, 
+        int[] abilitiesKnown, int[] abilitiesPrepared){
             this.filePath = filePath;
             this.hp = hp;
             this.maxHP = maxHP;

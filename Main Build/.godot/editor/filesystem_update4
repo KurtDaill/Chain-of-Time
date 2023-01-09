@@ -1,4 +1,4 @@
-res://Battle Mode/Player Characters/Will Silver.tscn
+res://Battle Mode/Example Battle.tscn
 res://GUI/Themes/Skill Card Spell.tres
 res://GUI/Themes/Skill Card Tech.tres
 res://GUI/Themes/Skill Card Normal Small.tres
@@ -6,11 +6,14 @@ res://GUI/Themes/UI Impact.tres
 res://GUI/Themes/Skill Card Normal.tres
 res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres
 res://GUI/Themes/Readout Text.tres
-res://Art/3D/MODULAR DUNGEON TILES.material
-res://Battle Mode/Example Battle.tscn
 res://GUI/Silver Readout.tscn
-res://Cutscene Test.tscn
-res://Art/3D/battle_dungeon.tscn
-res://Battle Mode/Player Characters/Abilities/JustFocus.tscn
+res://Battle Mode/Player Characters/Will Silver.tscn
 res://Battle Mode/Player Characters/Abilities/Silver Flash Bomb.tscn
 res://Battle Mode/Enemies/Ghost.tscn
+res://Battle Mode/Status Effects/Status Effect - Stun.tscn
+res://Battle Mode/Status Effects/Particles - Stun.tscn
+res://Battle Mode/Player Characters/Abilities/Cato Basic Attack.tscn
+res://Art/3D/MODULAR DUNGEON TILES.material
+res://Battle Mode/Player Characters/Abilities/Silver Nova Flash.tscn
+res://Battle Mode/Player Characters/Cato.tscn
+res://Battle Mode/Player Characters/Abilities/SuperShot.tscn

@@ -1295,9 +1295,12 @@ tracks/0/path = NodePath("Card Container/Card 1/AnimationPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": ["RESET", -1, 1.0, false],
+"method": &"play"
+}, {
 "args": ["Draw", -1, 1.0, false],
 "method": &"play"
 }]
@@ -1312,6 +1315,48 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -181, -0.4, -54, 0.25, 0),
 "times": PackedFloat32Array(0, 0.6)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Card Container/Card 2/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["RESET", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Card Container/Card 3/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["RESET", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Card Container/Card 4/AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["RESET", -1, 1.0, false],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="21"]
@@ -1492,6 +1537,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1875, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1875, 4)
 
 [node name="Cato" parent="Battle Roster/Hero 1" instance=ExtResource("55")]
+abilitiesKnown = [0]
+abilitiesPrepared = [0]
 
 [node name="Enemy 1" type="Node3D" parent="Battle Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1875, 4)
@@ -2136,10 +2183,9 @@ offset_top = 180.0
 offset_right = 269.0
 offset_bottom = 330.0
 bbcode_enabled = true
-text = "
-Deals 8 Tech
-Damage to
-one Target"
+text = "[center]Only on Critical Hit:
+Stun all Enemies
+"
 scroll_active = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]

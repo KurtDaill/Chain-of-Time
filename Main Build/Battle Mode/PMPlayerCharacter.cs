@@ -3,11 +3,12 @@ using System;
 using System.Collections.Generic;
 using static GameMaster;
 using static PMCharacterUtilities;
+using System.Linq;
 public partial class PMPlayerCharacter : PMCharacter{
 	[Export]
-	int[] abilitiesKnown = new int[0];
+	Godot.Collections.Array<int> abilitiesKnown = new Godot.Collections.Array<int>();
 	[Export]
-	int[] abilitiesPrepared = new int[0];
+	Godot.Collections.Array<int> abilitiesPrepared = new Godot.Collections.Array<int>();
 	
 	[Export]
 	Godot.Collections.Array<string> allAbilities;
@@ -144,7 +145,7 @@ public partial class PMPlayerCharacter : PMCharacter{
 		}
 		//Load the abilites that should be present
 		if(allAbilities.Count != 0){
-			for(int i = 0; i < abilitiesPrepared.Length; i++){
+			for(int i = 0; i < abilitiesPrepared.Count; i++){
 			var instance = ResourceLoader.Load<PackedScene>(allAbilities[abilitiesPrepared[i]]).Instantiate<PMPlayerAbility>();
 			this.AddChild(instance);
 			abilitiesPreparedInstanced[i] = instance; 
@@ -163,8 +164,8 @@ public partial class PMPlayerCharacter : PMCharacter{
 			currentSP,
 			maxSP,
 			(uint) myPosition,
-			abilitiesKnown,
-			abilitiesPrepared
+			abilitiesKnown.ToArray<int>(),
+			abilitiesPrepared.ToArray<int>()
 		);
 	}
 
@@ -174,8 +175,8 @@ public partial class PMPlayerCharacter : PMCharacter{
 		this.currentSP = loadMe.sp;
 		this.maxSP = loadMe.maxSP;
 		this.myPosition = (PMBattleUtilities.BattlePos)loadMe.position;
-		this.abilitiesKnown = loadMe.abilitiesKnown;
-		this.abilitiesPrepared = loadMe.abilitiesPrepared;
+		this.abilitiesKnown = new Godot.Collections.Array<int>(loadMe.abilitiesKnown);
+		this.abilitiesPrepared = new Godot.Collections.Array<int>(loadMe.abilitiesPrepared);
 	}
 	
 	public void SetupReadout(){
