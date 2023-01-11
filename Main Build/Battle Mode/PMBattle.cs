@@ -46,7 +46,7 @@ public partial class PMBattle : Node
 	}
 
 	protected Queue<PMPlayerAbility> playerAttacks;
-	protected Queue<PMEnemyAbility> enemyAttacks;
+	protected Queue<PMBattleAbility> enemyAttacks;
 	public PMBattleRoster roster;
 
 	//Used to track what character we know are defeated, so they don't come up every time we check for defeats
@@ -90,9 +90,12 @@ public partial class PMBattle : Node
 				if(effectStack.Count == 0){ //If there's no more effects to resolve, continue
 					//TODO Check for Taunts
 					if(roster.HandleDefeat()){
-						gui.ResetGUIState(roster.GetPlayerCharacters(), this);
-						currentPhase = TurnPhase.PlayerMenu;
-						playerAttacks = new Queue<PMPlayerAbility>();
+						if(gui.ResetGUIState(roster.GetPlayerCharacters(), this)){
+							currentPhase = TurnPhase.PlayerMenu;
+							playerAttacks = new Queue<PMPlayerAbility>();
+						}else{
+							currentPhase = TurnPhase.TurnOverPause;
+						}
 					}else{
 						currentPhase = TurnPhase.HandleDefeat;
 						returnPhase = TurnPhase.PlayerMenu;
@@ -164,15 +167,15 @@ public partial class PMBattle : Node
 				}
 			
 				//Enemies each run their logic for deciding their attack this turn
-				enemyAttacks = new Queue<PMEnemyAbility>();
+				enemyAttacks = new Queue<PMBattleAbility>();
 				foreach(PMEnemyCharacter en in roster.GetEnemyCharacters()){
-					if(en.IsStunned()){
-						continue;
+					PMBattleAbility tempAb = null;
+					if(en.IsAbleToAct(out tempAb, true)){ //TODO Replace with more general 'can act' check
+						enemyAttacks.Enqueue(en.DecideAttack());
+					}else{
+						enemyAttacks.Enqueue(tempAb);
 					}
-					var enAb = en.DecideAttack();
-					if(enAb != null){
-						enemyAttacks.Enqueue(enAb);
-					}
+					
 				}
 				if(enemyAttacks.Count == 0){
 					if(effectStack.Count != 0) effectStack.Peek().StartUpkeep();

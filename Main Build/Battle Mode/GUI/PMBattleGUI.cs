@@ -10,7 +10,7 @@ public partial class PMBattleGUI : Control //TODO Migrate a lot of this function
     public BattleMenu lastMenu;
     public PMBattle parentBattle;
 
-    private PMPlayerCharacter[] playersAbleToAct;
+    private Godot.Collections.Array<PMPlayerCharacter> playersInQuestion;
     private Queue<PMPlayerAbility> abilitiesQueued;
 
     private bool noAbilityExit = false;
@@ -32,26 +32,37 @@ public partial class PMBattleGUI : Control //TODO Migrate a lot of this function
 
     //Returns the finished Queue when complete
     public Queue<PMPlayerAbility> Execute(MenuInput input, PMBattle caller){
-        var temp = currentMenu.HandleInput(input, playersAbleToAct[abilitiesQueued.Count], caller);
+        /*
+            This function used the statement playersInQuestion[abilitiesQueued.Count] to refer to the current character
+            this is due to the fact that the number of abilites we've already queued is always the index of the next character who hasn't
+            specified what ability they want to use, or equals the length of playersInQuestion when we've gotten every characters action recorded
+        */
+        var temp = currentMenu.HandleInput(input, playersInQuestion[abilitiesQueued.Count], caller);
         if(temp != null){ 
-            playersAbleToAct[abilitiesQueued.Count].UnselectMe(); //The previous character should exit their excited idle
+            playersInQuestion[abilitiesQueued.Count].UnselectMe(); //The previous character should exit their excited idle/readout highlight
             abilitiesQueued.Enqueue(temp);
-            if(abilitiesQueued.Count == playersAbleToAct.Length) return abilitiesQueued; //If all players have set an ability, we go to the next step in the battle
-            else{
-                playersAbleToAct[abilitiesQueued.Count].SelectMe();
-                ChangeMenu(0, playersAbleToAct[abilitiesQueued.Count], caller);
+            
+            if(abilitiesQueued.Count == playersInQuestion.Count) return abilitiesQueued; //If all players have set an ability, we go to the next step in the battle
+
+            if(playersInQuestion[abilitiesQueued.Count].IsAbleToAct(true)){
+                playersInQuestion[abilitiesQueued.Count].SelectMe();
+                ChangeMenu(0, playersInQuestion[abilitiesQueued.Count], caller);
+            }else{
+                playersInQuestion.Remove(playersInQuestion[abilitiesQueued.Count]);
+                //This is checked twice to cover the case that the last character in the order wasn't able to go
+                if(abilitiesQueued.Count == playersInQuestion.Count) return abilitiesQueued;
             }
         } 
         if(noAbilityExit){ 
-            playersAbleToAct[abilitiesQueued.Count].UnselectMe(); //The previous character should exit their excited idle
+            playersInQuestion[abilitiesQueued.Count].UnselectMe(); //The previous character should exit their excited idle
             abilitiesQueued.Enqueue(null);
-            if(abilitiesQueued.Count == playersAbleToAct.Length){
+            if(abilitiesQueued.Count == playersInQuestion.Count){
                 noAbilityExit = false;
                 return abilitiesQueued; //If all players have set an ability, we go to the next step in the battle
             }
             else{
-                playersAbleToAct[abilitiesQueued.Count].SelectMe();
-                ChangeMenu(0, playersAbleToAct[abilitiesQueued.Count], caller);
+                playersInQuestion[abilitiesQueued.Count].SelectMe();
+                ChangeMenu(0, playersInQuestion[abilitiesQueued.Count], caller);
             }
             noAbilityExit = false;
         }
@@ -68,15 +79,28 @@ public partial class PMBattleGUI : Control //TODO Migrate a lot of this function
         if(!keepReadouts) playerCharacterReadouts.Visible = false;
     }
 
-    public void ResetGUIState(PMPlayerCharacter[] characters, PMBattle caller){
+    //returns true if we have any characters able to act, false otherwise
+    public bool ResetGUIState(PMPlayerCharacter[] characters, PMBattle caller){
         abilitiesQueued = new Queue<PMPlayerAbility>();
-        playersAbleToAct = characters;
+        playersInQuestion = new Godot.Collections.Array<PMPlayerCharacter>(characters);
         currentMenu.Visible = false;
         lastMenu = currentMenu;
         currentMenu = (BattleMenu) GetNode("Top Menu");
-        currentMenu.OnOpen(playersAbleToAct[abilitiesQueued.Count], caller);
-        playersAbleToAct[0].SelectMe();
+        if(playersInQuestion[0].IsAbleToAct(true)){
+            playersInQuestion[0].SelectMe();
+        }else if(playersInQuestion.Count > 1 && playersInQuestion[1].IsAbleToAct(true)){
+            playersInQuestion[1].SelectMe();
+            playersInQuestion.Remove(playersInQuestion[0]);
+        }else if (playersInQuestion.Count > 2 && playersInQuestion[2].IsAbleToAct(true)){
+            playersInQuestion[2].SelectMe();
+            playersInQuestion.Remove(playersInQuestion[0]);
+            playersInQuestion.Remove(playersInQuestion[1]);
+        }else{
+            return false;
+        }
+        currentMenu.OnOpen(playersInQuestion[abilitiesQueued.Count], caller);
         ShowGUI();
+        return true;
     }
 
     //Changes menu. Pass -1 into newMenuIndex to goto the last menu
@@ -94,9 +118,9 @@ public partial class PMBattleGUI : Control //TODO Migrate a lot of this function
     }
 
     public void ExitWithoutQueueingAbility(PMPlayerCharacter character){
-        //var temp = playersAbleToAct.ToList();
+        //var temp = playersInQuestion.ToList();
         //temp.RemoveAt(character);
-        //playersAbleToAct = temp.ToArray();
+        //playersInQuestion = temp.ToArray();
         noAbilityExit = true;
     }
 }

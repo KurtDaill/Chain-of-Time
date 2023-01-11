@@ -44,7 +44,7 @@ public partial class PMEnemyCharacter : PMCharacter{
 			namePlate.Visible = false;
 		}
 	}
-	public PMEnemyAbility DecideAttack(){  //TODO use dependancy injection to make this shit suck less
+	public PMBattleAbility DecideAttack(){  //TODO use dependancy injection to make this shit suck less
 		PMEnemyAbility chosenAbility;
 		PMCharacter[] targets = Array.Empty<PMCharacter>();
 		for(int i = 0; i < abilities.Length; i++){
@@ -71,8 +71,7 @@ public partial class PMEnemyCharacter : PMCharacter{
 				return chosenAbility;
 			}   
 		}
-		return null; //We reach this if no usable ability could be found...
-		//TODO add some kind of default "I can't do anything" ability to singal to the player that this enemy's got nothing?
+		return (PMBattleAbility)noAct; //We reach this if no usable ability could be found...
 	}
 
 		//TODO make some kind of "I don't have anything" default attack to play a little animation that makes it obvious to the player somethings up

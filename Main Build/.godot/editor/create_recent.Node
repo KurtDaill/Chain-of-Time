@@ -1,5 +1,6 @@
 Node3D
 AnimationPlayer
+Label3D
 Camera3D
 Sprite3D
 AnimatedSprite3D
@@ -8,7 +9,6 @@ OmniLight3D
 DirectionalLight3D
 GPUParticles3D
 AnimationTree
-Label3D
 SubViewport
 ProgressBar
 TextureRect

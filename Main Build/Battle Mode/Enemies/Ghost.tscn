@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bqhhsywrd27ba"]
+[gd_scene load_steps=21 format=3 uid="uid://bqhhsywrd27ba"]
 
 [ext_resource type="Texture2D" uid="uid://7ck6e81uhun3" path="res://Art/Ghost Animation-Sheet.png" id="1_abq24"]
 [ext_resource type="Script" path="res://Battle Mode/PMEnemyCharacter.cs" id="2_ux1b3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Battle Mode/PMEnemyAbility.cs" id="4_ho7b1"]
 [ext_resource type="Script" path="res://Battle Mode/AbilityEvent.cs" id="5_f7r3f"]
 [ext_resource type="Texture2D" uid="uid://j5vxp8y1rlvs" path="res://Art/Ghost Fireball-Sheet.png" id="6_moiij"]
+[ext_resource type="PackedScene" uid="uid://2684ifjixqps" path="res://Battle Mode/GenericNoActAbility.tscn" id="6_r76ar"]
 [ext_resource type="PackedScene" uid="uid://bhh44xrbceu6a" path="res://Battle Mode/GUI/enemy_nameplate.tscn" id="7_lymeb"]
 
 [sub_resource type="Animation" id="70"]
@@ -676,7 +677,7 @@ _data = {
 "Swing": SubResource("129")
 }
 
-[node name="Ghost" type="Sprite3D" node_paths=PackedStringArray("namePlate", "head", "core", "weapon", "feet")]
+[node name="Ghost" type="Sprite3D" node_paths=PackedStringArray("namePlate", "noAct", "head", "core", "weapon", "feet")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08, 0)
 pixel_size = 0.008
 shaded = true
@@ -690,6 +691,8 @@ namePlate = NodePath("Enemy Nameplate")
 maxHP = 3
 ModifiedDamageTypes = [1]
 Modifier = [0.5]
+name = "Ghost"
+noAct = NodePath("NoAct Ability")
 HealingNumberResource = "res://Battle Mode/Healing Number.tscn"
 DamageNumberResource = "res://Battle Mode/Damage Number.tscn"
 head = NodePath("Body Ref/Head")
@@ -752,6 +755,8 @@ affectedByPlayerDefense = true
 defenseFactor = 1
 eventValue = 1
 
+[node name="NoAct Ability" parent="." instance=ExtResource("6_r76ar")]
+
 [node name="Fireball" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.44921, -0.657797, 0.2)
 visible = false
@@ -777,7 +782,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16, 0.4, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.88, -1.56, 0)
 
 [node name="Enemy Nameplate" parent="." instance=ExtResource("7_lymeb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73, 4.04, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73, 3.56, 0)
 
 [node name="Name" parent="Enemy Nameplate" index="2"]
 text = "Ghost

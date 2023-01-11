@@ -1,10 +1,11 @@
-[gd_scene load_steps=102 format=3 uid="uid://c1ni42l3v081f"]
+[gd_scene load_steps=103 format=3 uid="uid://c1ni42l3v081f"]
 
 [ext_resource type="Script" path="res://Battle Mode/PMBattle.cs" id="1"]
 [ext_resource type="Script" path="res://PMBattleRoster.cs" id="2"]
 [ext_resource type="PackedScene" uid="uid://drixqr1kasloi" path="res://Battle Mode/Player Characters/Will Silver.tscn" id="3_q00g6"]
 [ext_resource type="PackedScene" uid="uid://cy6ib5eho248k" path="res://Battle Mode/Enemies/Polymorphor.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://bydr1u81xlrfu" path="res://Art/3D/Baths.glb" id="5"]
+[ext_resource type="PackedScene" uid="uid://codsgrgfuf32n" path="res://Battle Mode/Status Effects/Status Effect - Stun.tscn" id="5_7mbre"]
 [ext_resource type="Texture2D" uid="uid://c74qsow25qfbm" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuComboHighlight.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://dr54ux3u6u382" path="res://GUI/Battle Menu Assets/Top Menu/Skill Button Highlight.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://d08s06xg3bhk1" path="res://GUI/Battle Menu Assets/Skill Menu/Tech Card.png" id="8"]
@@ -1539,6 +1540,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1875, 4)
 [node name="Cato" parent="Battle Roster/Hero 1" instance=ExtResource("55")]
 abilitiesKnown = [0]
 abilitiesPrepared = [0]
+debugStatusEffects = [NodePath("Status Effect - Stun")]
+
+[node name="Status Effect - Stun" parent="Battle Roster/Hero 1/Cato" instance=ExtResource("5_7mbre")]
 
 [node name="Enemy 1" type="Node3D" parent="Battle Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1875, 4)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://drixqr1kasloi"]
+[gd_scene load_steps=12 format=3 uid="uid://drixqr1kasloi"]
 
 [ext_resource type="Texture2D" uid="uid://cx7c1lg6oon7l" path="res://Art/Silver Master Sprite-Sheet.png" id="1_xtxa2"]
+[ext_resource type="PackedScene" uid="uid://2684ifjixqps" path="res://Battle Mode/GenericNoActAbility.tscn" id="4_cckf1"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="9"]
 [ext_resource type="Script" path="res://Battle Mode/PMPlayerCharacter.cs" id="12"]
 
@@ -185,7 +186,7 @@ _data = {
 "RESET": SubResource("78")
 }
 
-[node name="Silver" type="Sprite3D" node_paths=PackedStringArray("head", "core", "weapon", "feet")]
+[node name="Silver" type="Sprite3D" node_paths=PackedStringArray("noAct", "head", "core", "weapon", "feet")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56, 0)
 pixel_size = 0.008
 shaded = true
@@ -203,6 +204,7 @@ maxSP = 6
 readout = "res://GUI/Silver Readout.tscn"
 maxHP = 4
 name = "Silver"
+noAct = NodePath("NoAct Ability")
 HealingNumberResource = "res://Battle Mode/Healing Number.tscn"
 DamageNumberResource = "res://Battle Mode/Damage Number.tscn"
 head = NodePath("Body Ref/Head")
@@ -236,3 +238,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.64, -0.12, 0)
 
 [node name="Feet" type="Node3D" parent="Body Ref"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -1.56, 0)
+
+[node name="NoAct Ability" parent="." instance=ExtResource("4_cckf1")]

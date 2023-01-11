@@ -31,6 +31,8 @@ public partial class PMCharacter : Sprite3D{
     public AnimationPlayer animPlay;
     private bool doneDying = false;
     public Sprite3D pointerGraphic;
+    [Export]
+    protected PMBattleNoActAbility noAct;
     [Export(PropertyHint.File)]
     public string HealingNumberResource = "res://PM Battle Mode/Healing Number.tscn";
     [Export(PropertyHint.File)]
@@ -47,7 +49,7 @@ public partial class PMCharacter : Sprite3D{
     [Export]
     protected Node3D feet; 
 	[Export(PropertyHint.NodePathValidTypes)]
-	Godot.Collections.Array<NodePath> debugStatusEffects = new Godot.Collections.Array<NodePath>(); 
+	Godot.Collections.Array<NodePath> debugStatusEffects = new Godot.Collections.Array<NodePath>();  
 
     private PackedScene damageNum, healingNum;
     public override void _Ready(){
@@ -209,13 +211,32 @@ public partial class PMCharacter : Sprite3D{
         doneDying = true;
     }
 
-    public bool IsStunned(){
+    /*
+        IsAbleToAct() is called when the battle needs to know whether this character can use an ability on this turn
+        returns true if the character can act, false if they cannot (if, for example, the character is stunned or frozen)
+        if showPopUp is set to true, a small animated notifaction will appear above the characters head describing why it can't act
+        If a fillerAbility out argument is specified, it will be asssigned an appropriate PMBattleAbility, designed to
+        remind the player why this character can't act, but occuring when they normally would act.
+        Otherwise, the out variable is bypassed via a method overload
+    */
+    public bool IsAbleToAct(out PMBattleAbility fillerAbility, bool showNotif = false){
+        fillerAbility = null;
         foreach(PMStatus stat in statusEffects){
-            if(stat.GetStatusType() == StatusEffect.Stunned){
-                return true;
+            if(stat.GetStatusType() == StatusEffect.Freeze || stat.GetStatusType() == StatusEffect.Stunned){
+                if(showNotif){
+                    stat.PlayNotification(head);
+                }
+                noAct.QueueNotification(stat.GetNotification());
+                fillerAbility = noAct;
+                return false;
             }
         }
-        return false;
+        return true;
+    }
+    public bool IsAbleToAct(bool showNotif = false){
+        PMBattleAbility temp;
+        bool result = IsAbleToAct(out temp, showNotif);
+        return result;
     }
 }
 

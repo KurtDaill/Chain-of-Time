@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bqb21t5xmngp7"]
+[gd_scene load_steps=15 format=3 uid="uid://bqb21t5xmngp7"]
 
 [ext_resource type="Texture2D" uid="uid://beln8ffrnhd44" path="res://Art/Kell Cato Master Sprite-Sheet.png" id="1_3kpye"]
+[ext_resource type="PackedScene" uid="uid://2684ifjixqps" path="res://Battle Mode/GenericNoActAbility.tscn" id="5_bs2ul"]
 [ext_resource type="AudioStream" uid="uid://w7ay0t1p16xp" path="res://Audio/Defend1.wav" id="6"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="7"]
 [ext_resource type="Script" path="res://Battle Mode/PMPlayerCharacter.cs" id="22"]
@@ -240,7 +241,7 @@ _data = {
 "Taunt Idle": SubResource("123")
 }
 
-[node name="Cato" type="Sprite3D" node_paths=PackedStringArray("head", "core", "weapon", "feet")]
+[node name="Cato" type="Sprite3D" node_paths=PackedStringArray("noAct", "head", "core", "weapon", "feet")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24, 0)
 pixel_size = 0.008
 shaded = true
@@ -258,6 +259,7 @@ maxSP = 2
 readout = "res://GUI/Cato Readout.tscn"
 maxHP = 6
 name = "Cato"
+noAct = NodePath("NoAct Ability")
 HealingNumberResource = "res://Battle Mode/Healing Number.tscn"
 DamageNumberResource = "res://Battle Mode/Damage Number.tscn"
 head = NodePath("Body Ref/Head")
@@ -295,3 +297,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36, -0.24, 0)
 
 [node name="Feet" type="Node3D" parent="Body Ref"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -1.24, 0)
+
+[node name="NoAct Ability" parent="." instance=ExtResource("5_bs2ul")]

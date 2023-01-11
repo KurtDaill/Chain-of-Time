@@ -21,6 +21,9 @@ public partial class PMStatus : Node {
     private string shortIconPath;
     [Export(PropertyHint.File)]
     private string enemyTexturePath;
+    [Export]
+    private StatusNotification notification;
+    [Export]
     private StatusEffectParticles particles;
 
     //Character that this effect is applied to. Left null for battlefield effects.
@@ -51,8 +54,12 @@ public partial class PMStatus : Node {
         return magnitude;
     }
 
+    public StatusNotification GetNotification(){
+        return notification;
+    }
+
     public void StartUpkeep(){
-        particles = ResourceLoader.Load<PackedScene>(particleResourcePath).Instantiate<StatusEffectParticles>();
+        particles.GlobalPosition = target.GetBodyRegion(particles.GetSpawnRegion()).GlobalPosition;
         target.GetBodyRegion(particles.GetSpawnRegion()).AddChild(particles);
         animPlayer.Play("Upkeep");
     }
@@ -67,7 +74,9 @@ public partial class PMStatus : Node {
 
     public void Finish(){
         target.RemoveStatus(this);
-        particles.QueueFree();
+        foreach(Node n in target.GetBodyRegion(particles.GetSpawnRegion()).GetChildren()){
+            if(n == particles) n.QueueFree();
+        }
         this.QueueFree();
     }
     public void Setup(PMCharacter tar){
@@ -86,5 +95,9 @@ public partial class PMStatus : Node {
 
     public Texture2D GetEnemyTexture(){
         return ResourceLoader.Load<Texture2D>(enemyTexturePath);
+    }
+
+    public void PlayNotification(Node3D spawnPoint){
+        notification.PlayNotification(spawnPoint);
     }
 }

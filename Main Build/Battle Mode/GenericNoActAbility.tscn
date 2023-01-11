@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://2684ifjixqps"]
+
+[ext_resource type="Script" path="res://Battle Mode/PMBattleNoActAbility.cs" id="1_wpbew"]
+
+[sub_resource type="Animation" id="Animation_7o1rd"]
+resource_name = "NoAction"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"SendNotification"
+}, {
+"args": [],
+"method": &"ResetState"
+}, {
+"args": [],
+"method": &"FinishSequence"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mtccp"]
+_data = {
+"NoAction": SubResource("Animation_7o1rd")
+}
+
+[node name="NoAct Ability" type="Node3D"]
+script = ExtResource("1_wpbew")
+name = "NoAct"
+firstAnimation = "NoAction"
+eventIndex = []
+targetingRule = 0
+usesEmpowered = false
+consumesOvercharged = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mtccp")
+}
