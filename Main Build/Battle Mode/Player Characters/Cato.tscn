@@ -248,14 +248,14 @@ shaded = true
 alpha_cut = 2
 texture = ExtResource("1_3kpye")
 hframes = 10
-vframes = 9
+vframes = 11
 script = ExtResource("22")
-abilitiesKnown = [1]
-abilitiesPrepared = [1]
-allAbilities = ["res://Battle Mode/Player Characters/Abilities/JustFocus.tscn"]
+abilitiesKnown = [0, 1]
+abilitiesPrepared = [0, 1]
+allAbilities = ["res://Battle Mode/Player Characters/Abilities/JustFocus.tscn", "res://Battle Mode/Player Characters/Abilities/Cato Shield Bash.tscn"]
 basicAttack = "res://Battle Mode/Player Characters/Abilities/Cato Basic Attack.tscn"
 sceneFilePath = "res://Battle Mode/Player Characters/Cato.tscn"
-maxSP = 2
+maxSP = 3
 readout = "res://GUI/Cato Readout.tscn"
 maxHP = 6
 name = "Cato"
@@ -278,7 +278,7 @@ libraries = {
 
 [node name="Defend" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6")
-volume_db = 10.0
+volume_db = -2.5
 
 [node name="Aimpoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56, 0, 0)

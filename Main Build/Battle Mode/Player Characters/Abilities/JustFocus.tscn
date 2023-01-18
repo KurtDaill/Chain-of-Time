@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://Battle Mode/PMPlayerAbility.cs" id="9"]
 [ext_resource type="Texture2D" uid="uid://d3basisbeck0x" path="res://GUI/Battle Menu Assets/Cato Focus Hold Button.png" id="10"]
 
-[sub_resource type="Animation" id="61"]
+[sub_resource type="Animation" id="Animation_cu3ci"]
 resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
@@ -62,8 +62,20 @@ tracks/3/keys = {
 "update": 0,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Focus:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
-[sub_resource type="Animation" id="58"]
+[sub_resource type="Animation" id="Animation_j1ut5"]
 resource_name = "Release"
 length = 1.5
 step = 0.05
@@ -98,9 +110,9 @@ tracks/2/path = NodePath("Focus/Orb:position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.920001, -0.25, 0, 0.25, 0, 1.44, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -109,9 +121,9 @@ tracks/3/path = NodePath("Focus/Orb2:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.68669, -0.25, 0, 0.25, 0, 1.12669, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -120,9 +132,9 @@ tracks/4/path = NodePath("Focus/Orb2:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.46, -0.25, 0, 0.25, 0, -0.86, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
@@ -131,9 +143,9 @@ tracks/5/path = NodePath("Focus/Orb3:position:x")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.68669, -0.25, 0, 0.25, 0, -1.12669, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
 }
 tracks/6/type = "bezier"
 tracks/6/imported = false
@@ -142,9 +154,9 @@ tracks/6/path = NodePath("Focus/Orb3:position:y")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.499998, -0.25, 0, 0.25, 0, -0.899998, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -209,10 +221,10 @@ tracks/11/path = NodePath("Focus:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(1.5),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [false]
+"values": []
 }
 tracks/12/type = "method"
 tracks/12/imported = false
@@ -242,8 +254,20 @@ tracks/13/keys = {
 "method": &"play"
 }]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Focus:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
-[sub_resource type="Animation" id="57"]
+[sub_resource type="Animation" id="Animation_dalnw"]
 resource_name = "Tense"
 length = 3.3
 tracks/0/type = "value"
@@ -277,9 +301,9 @@ tracks/2/path = NodePath("Focus/Orb:position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.04, -0.25, 0, 0.25, 0, 0.920001, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.5, 1.4)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -288,9 +312,9 @@ tracks/3/path = NodePath("Focus/Orb2:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1.76669, -0.25, 0, 0.25, 0, 1.76669, -0.25, 0, 0.25, 0, 0.68669, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.4, 2.3)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -299,9 +323,9 @@ tracks/4/path = NodePath("Focus/Orb2:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1.02, -0.25, 0, 0.25, 0, -1.02, -0.25, 0, 0.25, 0, -0.46, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.4, 2.3)
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
@@ -310,9 +334,9 @@ tracks/5/path = NodePath("Focus/Orb3:position:x")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1.76669, -0.25, 0, 0.25, 0, -1.76669, -0.25, 0, 0.25, 0, -0.68669, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.3, 3.2)
 }
 tracks/6/type = "bezier"
 tracks/6/imported = false
@@ -321,9 +345,9 @@ tracks/6/path = NodePath("Focus/Orb3:position:y")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1.02, -0.25, 0, 0.25, 0, -1.02, -0.25, 0, 0.25, 0, -0.499998, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.3, 3.2)
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -470,8 +494,20 @@ tracks/17/keys = {
 "update": 1,
 "values": [true, true, false]
 }
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Focus:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
-[sub_resource type="Animation" id="62"]
+[sub_resource type="Animation" id="Animation_mceeo"]
 resource_name = "Tense Reverse"
 length = 3.3
 tracks/0/type = "value"
@@ -505,9 +541,9 @@ tracks/2/path = NodePath("Focus/Orb:position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.04, -0.25, 0, 0.25, 0, 0.920001, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.5, 1.4)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -516,9 +552,9 @@ tracks/3/path = NodePath("Focus/Orb2:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1.76669, -0.25, 0, 0.25, 0, 1.76669, -0.25, 0, 0.25, 0, 0.68669, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.4, 2.3)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -527,9 +563,9 @@ tracks/4/path = NodePath("Focus/Orb2:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1.02, -0.25, 0, 0.25, 0, -1.02, -0.25, 0, 0.25, 0, -0.46, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.4, 2.3)
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
@@ -538,9 +574,9 @@ tracks/5/path = NodePath("Focus/Orb3:position:x")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1.76669, -0.25, 0, 0.25, 0, -1.76669, -0.25, 0, 0.25, 0, -0.68669, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.3, 3.2)
 }
 tracks/6/type = "bezier"
 tracks/6/imported = false
@@ -549,9 +585,9 @@ tracks/6/path = NodePath("Focus/Orb3:position:y")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1.02, -0.25, 0, 0.25, 0, -1.02, -0.25, 0, 0.25, 0, -0.499998, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.3, 3.2)
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -608,64 +644,56 @@ tracks/11/path = NodePath("..")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"StopAnimation"
-}]
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
-tracks/12/type = "method"
+tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath(".")
+tracks/12/path = NodePath("Focus/Hold Icon:frame")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 3.3),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": ["com_atk", "Release", "Tense Reverse"],
-"method": &"StartFluffHold"
-}, {
-"args": [],
-"method": &"ReleaseReady"
-}]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Focus/Hold Icon:frame")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Focus/Hold Icon:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Focus/Hold Icon:visible")
+tracks/14/path = NodePath("Focus:modulate")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4, 3.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [true, true, false, false]
+"values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xqfl6"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_14b0c"]
 _data = {
-"RESET": SubResource("61"),
-"Release": SubResource("58"),
-"Tense": SubResource("57"),
-"Tense Reverse": SubResource("62")
+"RESET": SubResource("Animation_cu3ci"),
+"Release": SubResource("Animation_j1ut5"),
+"Tense": SubResource("Animation_dalnw"),
+"Tense Reverse": SubResource("Animation_mceeo")
 }
 
-[node name="JustFocus" type="Node"]
+[node name="JustFocus" type="Node3D"]
 script = ExtResource("9")
 rulesText = "[center]Cato becomes [color=yellow]EMPOWERED[/color] for 2 turns and heals for 2"
 abilityType = "Skill"
@@ -677,7 +705,7 @@ usesEmpowered = false
 consumesOvercharged = false
 
 [node name="Focus" type="Sprite3D" parent="."]
-transform = Transform3D(1, 2.38419e-07, 0, -2.38419e-07, 1, 0, 0, 0, 1, -1.6, 4.54, 2.8)
+transform = Transform3D(1, 2.38419e-07, 0, -2.38419e-07, 1, 0, 0, 0, 1, -0.64, 2.72, 2.8)
 visible = false
 pixel_size = 0.008
 no_depth_test = true
@@ -686,7 +714,7 @@ hframes = 3
 frame = 2
 
 [node name="Orb" type="Sprite3D" parent="Focus"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-07, 2.04, -0.0799999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56592, -0.0799999)
 pixel_size = 0.008
 no_depth_test = true
 texture = ExtResource("1")
@@ -699,7 +727,6 @@ pixel_size = 0.008
 no_depth_test = true
 texture = ExtResource("1")
 hframes = 5
-frame = 4
 
 [node name="Orb3" type="Sprite3D" parent="Focus"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76669, -1.02, 0.16)
@@ -707,7 +734,6 @@ pixel_size = 0.008
 no_depth_test = true
 texture = ExtResource("1")
 hframes = 5
-frame = 4
 
 [node name="Hold Icon" type="Sprite3D" parent="Focus"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0.64, 0)
@@ -719,12 +745,12 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_xqfl6")
+"": SubResource("AnimationLibrary_14b0c")
 }
 
 [node name="Event - Status" type="Node" parent="."]
 script = ExtResource("8")
-coreStatusEffect = "res://PM Battle Mode/Status Effects/Status Effect - Empowered.tscn"
+coreStatusEffect = "res://Battle Mode/Status Effects/Status Effect - Empowered.tscn"
 setCustomDuration = 3
 setCustomMagnitude = 2
 canHitFlyingCharacters = true

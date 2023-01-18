@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://deaguajnmvycb"]
+
+[ext_resource type="Texture2D" uid="uid://ccvis1xicmhk1" path="res://GUI/Battle Menu Assets/Player Status Effect Empowered Short.png" id="1_u7cv2"]
+
+[node name="Empowered Short Icon" type="TextureRect"]
+texture = ExtResource("1_u7cv2")

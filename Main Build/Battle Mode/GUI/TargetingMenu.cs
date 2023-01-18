@@ -66,7 +66,7 @@ public partial class TargetingMenu : BattleMenu {
                         }
                         break;
                     case TargetingRule.SingleEnemyReach : //Only legal if we're in the front or middle slot
-                        if(character.myPosition != BattlePos.HeroOne || character.myPosition != BattlePos.HeroTwo){
+                        if(character.myPosition != BattlePos.HeroOne && character.myPosition != BattlePos.HeroTwo){
                             //Do the "This attack is super invalid" notification
                             RejectSelection();
                         }else{
@@ -98,11 +98,11 @@ public partial class TargetingMenu : BattleMenu {
                         if(caller.PositionLookup(BattlePos.EnemyTwo) != null && plannedTargets[0].myPosition == BattlePos.EnemyOne 
                         && input == MenuInput.Right && character.myPosition == BattlePos.HeroOne){
                         //You can only target the enemy in the second rank with a reach attack if you're right on the front (reach only gives you 2 slots of range)
-                            SetNewTargets(plannedTargets, caller);
+                            SetNewTargets(caller.PositionLookup(BattlePos.EnemyTwo), caller);
                         }
                         else if(plannedTargets[0].myPosition == BattlePos.EnemyTwo && input == MenuInput.Left){
                         //We don't check if enemy one exists because they have to in order for there to still be a battle    
-                            SetNewTargets(plannedTargets, caller);
+                            SetNewTargets(caller.PositionLookup(BattlePos.EnemyOne), caller);
                         }
                         break;
                     case TargetingRule.SingleEnemyRanged :

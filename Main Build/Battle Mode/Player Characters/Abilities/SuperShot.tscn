@@ -596,7 +596,6 @@ rulesText = "[center]Deals [damageNumber] [color=yellow]Tech[/color]
 Damage to
 one Target"
 listedDamage = 8
-abilityType = "Tech"
 spCost = 3
 name = "Super Shot"
 firstAnimation = "Charge"

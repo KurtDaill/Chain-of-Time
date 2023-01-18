@@ -1,15 +1,16 @@
-res://Battle Mode
+res://GUI/Themes
+res://Audio
 res://Battle Mode/Status Effects
-res://Fonts
-res://Battle Mode/GUI
+res://Battle Mode
+res://GUI/Battle Menu Assets/Status Icons
+res://GUI/Battle Menu Assets
+res://Art
 res://Battle Mode/Player Characters/Abilities
 res://GUI/Battle Ability GUI Assets
-res://Art
-res://GUI/Themes
+res://Fonts
+res://Battle Mode/GUI
 res://Art/3D
 res://
-res://GUI/Battle Menu Assets
-res://GUI/Battle Menu Assets/Status Icons
 res://GUI/Battle Menu Assets/Readouts
 res://GUI
 res://Art/Textures

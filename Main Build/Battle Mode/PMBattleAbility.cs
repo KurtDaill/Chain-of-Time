@@ -66,6 +66,8 @@ public partial class  PMBattleAbility : Node
     protected int failDamage = -1;
 
     protected bool successfulDefense = false;
+    [Export]
+    protected bool strikesFirst = false;
 
     public override void _Ready()
     {
@@ -132,6 +134,9 @@ public partial class  PMBattleAbility : Node
         int targs = 0;
         foreach(PMCharacter character in events[effectNum].GetTargets()){
             if(character != null){
+                if(events[effectNum].dealsBonusDamageOnStunned && character.GetMyStatuses().Contains(StatusEffect.Stunned) && failDamage == -1){ //TODO this is Jam code
+                    dmg += events[effectNum].stunBonusDamage;
+                }
                 character.TakeDamage(dmg, damageType);
                 source.parentBattle.UpdateDamageScoreboard(dmg, source);
                 targs ++;
@@ -208,6 +213,10 @@ public partial class  PMBattleAbility : Node
         anim.BezierTrackSetKeyValue(xTrack, keyIndex, targetTransform.x);//TODO: Convert between local coordinates
         anim.BezierTrackSetKeyValue(yTrack, keyIndex, targetTransform.y);//TODO: Convert between local coordinates
         anim.BezierTrackSetKeyValue(zTrack, keyIndex, targetTransform.z);//TODO: Convert between local coordinates
+    }
+
+    public bool hasStrikesFirst(){
+        return strikesFirst;
     }
 }
 

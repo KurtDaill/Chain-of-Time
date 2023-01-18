@@ -10,8 +10,6 @@ public partial class PMStatus : Node {
     private int magnitude;
     [Export]
     private StatusEffect statusType;
-    [Export(PropertyHint.File)]
-    private string particleResourcePath;
 
     //These two filepaths link to the larger icon used to indicate this status effect on the player readout
     //and the other smaller icon used when the readout has many status effects, and for display on enemy characters
@@ -59,7 +57,7 @@ public partial class PMStatus : Node {
     }
 
     public void StartUpkeep(){
-        particles.GlobalPosition = target.GetBodyRegion(particles.GetSpawnRegion()).GlobalPosition;
+        if(particles != null) particles.GlobalPosition = target.GetBodyRegion(particles.GetSpawnRegion()).GlobalPosition;
         target.GetBodyRegion(particles.GetSpawnRegion()).AddChild(particles);
         animPlayer.Play("Upkeep");
     }
@@ -74,8 +72,10 @@ public partial class PMStatus : Node {
 
     public void Finish(){
         target.RemoveStatus(this);
-        foreach(Node n in target.GetBodyRegion(particles.GetSpawnRegion()).GetChildren()){
-            if(n == particles) n.QueueFree();
+        if(particles != null){
+            foreach(Node n in target.GetBodyRegion(particles.GetSpawnRegion()).GetChildren()){
+                if(n == particles) n.QueueFree();
+            }
         }
         this.QueueFree();
     }
@@ -99,5 +99,25 @@ public partial class PMStatus : Node {
 
     public void PlayNotification(Node3D spawnPoint){
         notification.PlayNotification(spawnPoint);
+    }
+
+    //Called by status effect's animations when they need to signal animations in the particle effects
+    //TODO find a better way of talking to the particles once they're attached to the body region
+    public void ParticlesPlayUpkeep(){
+        foreach(StatusEffectParticles n in target.GetBodyRegion(particles.GetSpawnRegion()).GetChildren()){
+                if(n == particles){
+                    n.StartUpkeep();
+                    return;
+                }
+            }
+    }
+    public void ParticlesPlayExpire(){
+        foreach(StatusEffectParticles n in target.GetBodyRegion(particles.GetSpawnRegion()).GetChildren()){
+                if(n == particles){
+                    n.Expire();
+                    return;
+                }
+        }
+            
     }
 }

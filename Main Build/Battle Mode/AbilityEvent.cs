@@ -24,6 +24,10 @@ public partial class AbilityEvent : Node{
     
     [Export]
     protected int eventValue = 0;
+    [Export]
+    public bool dealsBonusDamageOnStunned = false; //TODO this was Jam code, check battle ability too
+    [Export]
+    public int stunBonusDamage = 0;
 
     //Targets refers to the exact targets that are being hit per effect. The Second array are the effected positions, and the first array assigns those arrays to an event number.
     //protected BattlePos[] positions = new BattlePos[0];

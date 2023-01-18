@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://sao43yvorm8m"
-path.s3tc="res://.godot/imported/Cato Focus Press X.png-11ef3d73db8c0add48571a70244740c9.s3tc.ctex"
-path.etc2="res://.godot/imported/Cato Focus Press X.png-11ef3d73db8c0add48571a70244740c9.etc2.ctex"
+path="res://.godot/imported/Cato Focus Press X.png-11ef3d73db8c0add48571a70244740c9.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://GUI/Battle Menu Assets/Cato Focus Press X.png"
-dest_files=["res://.godot/imported/Cato Focus Press X.png-11ef3d73db8c0add48571a70244740c9.s3tc.ctex", "res://.godot/imported/Cato Focus Press X.png-11ef3d73db8c0add48571a70244740c9.etc2.ctex"]
+dest_files=["res://.godot/imported/Cato Focus Press X.png-11ef3d73db8c0add48571a70244740c9.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0

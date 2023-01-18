@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cc6w5wj8k51vs"
+path="res://.godot/imported/Polymorphor Slosh.wav-f010376c7096682458118a7007916f18.sample"
+
+[deps]
+
+source_file="res://Audio/Polymorphor Slosh.wav"
+dest_files=["res://.godot/imported/Polymorphor Slosh.wav-f010376c7096682458118a7007916f18.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

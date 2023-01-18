@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://cp6f2j6j0vnoj"]
+[gd_scene load_steps=28 format=3 uid="uid://cp6f2j6j0vnoj"]
 
 [ext_resource type="Script" path="res://Battle Mode/PMPlayerAbility.cs" id="1_3by6d"]
 [ext_resource type="Script" path="res://Battle Mode/AbilityEventStatusEffect.cs" id="2_ub8n4"]
 [ext_resource type="Texture2D" uid="uid://dii1wqi7vjvxk" path="res://Art/Silver Flash Bomb-Sheet.png" id="3_7ich7"]
 [ext_resource type="Texture2D" uid="uid://nm8lnima5n7b" path="res://Art/Stun Particle.png" id="4_8lywv"]
+[ext_resource type="AudioStream" uid="uid://dfbhpxcq4cuyi" path="res://Audio/Silver Flash Bomb.wav" id="5_cmmjn"]
 
 [sub_resource type="Animation" id="Animation_y8g8a"]
 resource_name = "RESET"
@@ -78,7 +79,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [20.0]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_ggq3f"]
@@ -240,6 +241,20 @@ tracks/12/keys = {
 "update": 1,
 "values": ["hidden", "hidden", "default", "hidden"]
 }
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("AudioStreamPlayer")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d6u2w"]
 _data = {
@@ -356,7 +371,7 @@ spCost = 2
 name = "Flash Bomb"
 firstAnimation = "Throw"
 eventIndex = [NodePath("Stun")]
-targetingRule = 2
+targetingRule = 3
 alignment = 2
 usesEmpowered = false
 consumesOvercharged = false
@@ -364,7 +379,7 @@ consumesOvercharged = false
 [node name="Stun" type="Node" parent="."]
 script = ExtResource("2_ub8n4")
 coreStatusEffect = "res://Battle Mode/Status Effects/Status Effect - Stun.tscn"
-setCustomDuration = 1
+setCustomDuration = 2
 alignment = 2
 targeting = 1
 eventType = 2
@@ -394,7 +409,7 @@ draw_pass_1 = SubResource("QuadMesh_k0ruq")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Da Bomb"]
 transform = Transform3D(-0.5, -0.866026, 0, 0.866026, -0.5, 0, 0, 0, 1, 0, 0, 0.08)
-light_energy = 20.0
+light_energy = 0.0
 omni_range = 4.0
 omni_attenuation = 1.8025
 
@@ -403,3 +418,8 @@ transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -1.64, 1.2
 visible = false
 frames = SubResource("SpriteFrames_8amq1")
 playing = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_cmmjn")
+volume_db = -15.0
+pitch_scale = 1.1

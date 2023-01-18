@@ -536,7 +536,6 @@ no_depth_test = true
 alpha_cut = 2
 texture = ExtResource("5")
 hframes = 3
-frame = 2
 
 [node name="Sword" type="Sprite3D" parent="Frame"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68, 0.32195, 0.002)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bqhhsywrd27ba"]
+[gd_scene load_steps=24 format=3 uid="uid://bqhhsywrd27ba"]
 
 [ext_resource type="Texture2D" uid="uid://7ck6e81uhun3" path="res://Art/Ghost Animation-Sheet.png" id="1_abq24"]
 [ext_resource type="Script" path="res://Battle Mode/PMEnemyCharacter.cs" id="2_ux1b3"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://j5vxp8y1rlvs" path="res://Art/Ghost Fireball-Sheet.png" id="6_moiij"]
 [ext_resource type="PackedScene" uid="uid://2684ifjixqps" path="res://Battle Mode/GenericNoActAbility.tscn" id="6_r76ar"]
 [ext_resource type="PackedScene" uid="uid://bhh44xrbceu6a" path="res://Battle Mode/GUI/enemy_nameplate.tscn" id="7_lymeb"]
+[ext_resource type="AudioStream" uid="uid://0fhcdei1ewc3" path="res://Audio/Ghost Fireball.wav" id="9_ue60i"]
+[ext_resource type="AudioStream" uid="uid://c5fqfpvpuh51f" path="res://Audio/Ghost Hit.wav" id="10_ddws3"]
+[ext_resource type="AudioStream" uid="uid://d0qusoxiixxg2" path="res://Audio/Ghost Staff Hit.wav" id="10_m01d8"]
 
 [sub_resource type="Animation" id="70"]
 tracks/0/type = "value"
@@ -45,9 +48,9 @@ tracks/0/path = NodePath(".:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0, 0.247095, 0.68, -0.25, 0, 0.4, -0.00320715, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 1)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -56,9 +59,9 @@ tracks/1/path = NodePath(".:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(2.08, -0.25, 0, 0, -0.0551364, 2, -0.25, 0, 0.5, 0.00379992, 2.08, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 1)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -67,9 +70,23 @@ tracks/2/path = NodePath(".:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 1)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hit Sound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="5"]
@@ -319,6 +336,20 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Fireball Sound")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="71"]
@@ -670,6 +701,20 @@ tracks/5/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.7, 0.9, 0.95, 1.1, 1.15, 1.25)
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Weapon Hit")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.05),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8ppq8"]
 _data = {
@@ -787,5 +832,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73, 3.56, 0)
 [node name="Name" parent="Enemy Nameplate" index="2"]
 text = "Ghost
 "
+
+[node name="Fireball Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ue60i")
+volume_db = 5.0
+
+[node name="Weapon Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_m01d8")
+volume_db = -7.5
+
+[node name="Hit Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ddws3")
 
 [editable path="Enemy Nameplate"]

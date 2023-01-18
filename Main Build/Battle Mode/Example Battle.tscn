@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://drixqr1kasloi" path="res://Battle Mode/Player Characters/Will Silver.tscn" id="3_q00g6"]
 [ext_resource type="PackedScene" uid="uid://cy6ib5eho248k" path="res://Battle Mode/Enemies/Polymorphor.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://bydr1u81xlrfu" path="res://Art/3D/Baths.glb" id="5"]
-[ext_resource type="PackedScene" uid="uid://codsgrgfuf32n" path="res://Battle Mode/Status Effects/Status Effect - Stun.tscn" id="5_7mbre"]
 [ext_resource type="Texture2D" uid="uid://c74qsow25qfbm" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuComboHighlight.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://dr54ux3u6u382" path="res://GUI/Battle Menu Assets/Top Menu/Skill Button Highlight.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://d08s06xg3bhk1" path="res://GUI/Battle Menu Assets/Skill Menu/Tech Card.png" id="8"]
@@ -45,6 +44,7 @@
 [ext_resource type="Script" path="res://Battle Mode/GUI/SkillMenu.cs" id="37_8cdnk"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/SkillCard.cs" id="39_stct0"]
 [ext_resource type="Script" path="res://MovingCamera.cs" id="43"]
+[ext_resource type="Theme" uid="uid://doubhibnrt206" path="res://GUI/Themes/Skill Card Tech Small.tres" id="44_kesxn"]
 [ext_resource type="Script" path="res://GUI/ReadoutContainer.cs" id="46"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/TargetingMenu.cs" id="46_5ab3c"]
 [ext_resource type="Texture2D" uid="uid://l6unyyb4maph" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres" id="47"]
@@ -199,9 +199,9 @@ tracks/12/path = NodePath("Enemy 1:position:x")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/13/type = "bezier"
 tracks/13/imported = false
@@ -210,9 +210,9 @@ tracks/13/path = NodePath("Enemy 1:position:y")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.188, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/14/type = "bezier"
 tracks/14/imported = false
@@ -221,9 +221,9 @@ tracks/14/path = NodePath("Enemy 1:position:z")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/15/type = "bezier"
 tracks/15/imported = false
@@ -265,9 +265,9 @@ tracks/18/path = NodePath("Enemy 3:position:x")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/19/type = "bezier"
 tracks/19/imported = false
@@ -276,9 +276,9 @@ tracks/19/path = NodePath("Enemy 3:position:y")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.1875, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/20/type = "bezier"
 tracks/20/imported = false
@@ -287,9 +287,9 @@ tracks/20/path = NodePath("Enemy 3:position:z")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/21/type = "value"
 tracks/21/imported = false
@@ -314,9 +314,9 @@ tracks/0/path = NodePath("Enemy 1:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -325,9 +325,9 @@ tracks/1/path = NodePath("Enemy 1:position:z")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -336,9 +336,9 @@ tracks/2/path = NodePath("Enemy 2:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -347,9 +347,9 @@ tracks/3/path = NodePath("Enemy 2:position:z")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -376,9 +376,9 @@ tracks/0/path = NodePath("Enemy 1:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -387,9 +387,9 @@ tracks/1/path = NodePath("Enemy 1:position:z")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.494021)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -398,9 +398,9 @@ tracks/2/path = NodePath("Enemy 3:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -409,9 +409,9 @@ tracks/3/path = NodePath("Enemy 3:position:z")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -450,9 +450,9 @@ tracks/0/path = NodePath("Enemy 2:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -461,9 +461,9 @@ tracks/1/path = NodePath("Enemy 2:position:z")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -472,9 +472,9 @@ tracks/2/path = NodePath("Enemy 3:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -483,9 +483,9 @@ tracks/3/path = NodePath("Enemy 3:position:z")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -512,9 +512,9 @@ tracks/0/path = NodePath("Enemy 2:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -523,9 +523,9 @@ tracks/1/path = NodePath("Enemy 2:position:z")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -534,9 +534,9 @@ tracks/2/path = NodePath("Enemy 1:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.691842)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -545,9 +545,9 @@ tracks/3/path = NodePath("Enemy 1:position:z")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.691842)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -556,9 +556,9 @@ tracks/4/path = NodePath("Enemy 3:position:x")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
@@ -567,9 +567,9 @@ tracks/5/path = NodePath("Enemy 3:position:z")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/6/type = "method"
 tracks/6/imported = false
@@ -596,9 +596,9 @@ tracks/0/path = NodePath("Hero 1:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -607,9 +607,9 @@ tracks/1/path = NodePath("Hero 1:position:z")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -618,9 +618,9 @@ tracks/2/path = NodePath("Hero 2:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -629,9 +629,9 @@ tracks/3/path = NodePath("Hero 2:position:z")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -658,9 +658,9 @@ tracks/0/path = NodePath("Hero 3:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-5, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -669,9 +669,9 @@ tracks/1/path = NodePath("Hero 3:position:z")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -680,9 +680,9 @@ tracks/2/path = NodePath("Hero 1:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0, -6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -691,9 +691,9 @@ tracks/3/path = NodePath("Hero 1:position:z")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -732,9 +732,9 @@ tracks/0/path = NodePath("Hero 2:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -743,9 +743,9 @@ tracks/1/path = NodePath("Hero 2:position:z")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -754,9 +754,9 @@ tracks/2/path = NodePath("Hero 3:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-5, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -765,9 +765,9 @@ tracks/3/path = NodePath("Hero 3:position:z")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -786,6 +786,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="122"]
 resource_name = "SwapHCrunch"
+length = 0.7
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -793,9 +794,9 @@ tracks/0/path = NodePath("Hero 3:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-5, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -804,9 +805,9 @@ tracks/1/path = NodePath("Hero 3:position:z")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -815,9 +816,9 @@ tracks/2/path = NodePath("Hero 2:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -826,9 +827,9 @@ tracks/3/path = NodePath("Hero 2:position:z")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -837,9 +838,9 @@ tracks/4/path = NodePath("Hero 1:position:x")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0, -5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.7)
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
@@ -848,9 +849,9 @@ tracks/5/path = NodePath("Hero 1:position:z")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.7)
 }
 tracks/6/type = "method"
 tracks/6/imported = false
@@ -1507,6 +1508,9 @@ animations = [{
 sky_top_color = Color(0.164706, 0.47451, 0.72549, 1)
 sky_horizon_color = Color(0.584314, 0.690196, 0.588235, 1)
 ground_horizon_color = Color(0.65098, 0.662745, 0.592157, 1)
+ground_curve = 0.022974
+sun_angle_max = 43.01
+sun_curve = 0.0430762
 
 [sub_resource type="Sky" id="55"]
 sky_material = SubResource("ProceduralSkyMaterial_a5cr0")
@@ -1538,14 +1542,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1875, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1875, 4)
 
 [node name="Cato" parent="Battle Roster/Hero 1" instance=ExtResource("55")]
-abilitiesKnown = [0]
-abilitiesPrepared = [0]
-debugStatusEffects = [NodePath("Status Effect - Stun")]
-
-[node name="Status Effect - Stun" parent="Battle Roster/Hero 1/Cato" instance=ExtResource("5_7mbre")]
 
 [node name="Enemy 1" type="Node3D" parent="Battle Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1875, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.188, 4)
 
 [node name="Polymorphor" parent="Battle Roster/Enemy 1" instance=ExtResource("4")]
 
@@ -2076,7 +2075,6 @@ offset_right = 273.0
 offset_bottom = 339.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource("33")
 bbcode_enabled = true
 scroll_active = false
 
@@ -2131,7 +2129,6 @@ offset_left = 24.0
 offset_top = 180.0
 offset_right = 269.0
 offset_bottom = 330.0
-theme = ExtResource("35")
 bbcode_enabled = true
 text = "[center][Melee]
 Deals 2 Damage, +2 per Negative Status Effect on Target, Removing Them"
@@ -2186,9 +2183,10 @@ offset_left = 24.0
 offset_top = 180.0
 offset_right = 269.0
 offset_bottom = 330.0
+theme = ExtResource("44_kesxn")
 bbcode_enabled = true
-text = "[center]Only on Critical Hit:
-Stun all Enemies
+text = "[center][Strikes First]
+On Critical Hit: Stun all Enemies for 2 Turns
 "
 scroll_active = false
 
@@ -2299,6 +2297,7 @@ script = ExtResource("46")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("30")
 volume_db = -25.0
+autoplay = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 7.96)

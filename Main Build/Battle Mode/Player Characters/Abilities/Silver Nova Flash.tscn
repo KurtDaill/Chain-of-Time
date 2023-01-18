@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://bgsmiqyktjs6c"]
+[gd_scene load_steps=19 format=3 uid="uid://bgsmiqyktjs6c"]
 
 [ext_resource type="Script" path="res://Battle Mode/PMPlayerAbility.cs" id="1_3r5mi"]
 [ext_resource type="Script" path="res://Battle Mode/AbilityEventStatusEffect.cs" id="2_ow57k"]
 [ext_resource type="Texture2D" uid="uid://dii1wqi7vjvxk" path="res://Art/Silver Flash Bomb-Sheet.png" id="3_aleck"]
 [ext_resource type="Texture2D" uid="uid://dcp4kq3wcho1n" path="res://GUI/Battle Ability GUI Assets/Silver Blaster Crosshair Box-Sheet.png" id="4_5hd03"]
 [ext_resource type="Texture2D" uid="uid://k8a8d1neh1ow" path="res://GUI/Battle Ability GUI Assets/Silver Blaster Crosshair-Sheet.png" id="5_e7p6l"]
+[ext_resource type="AudioStream" uid="uid://vxbxk5tupiud" path="res://Audio/Silver Nova Flash.wav" id="6_pxx5k"]
 
 [sub_resource type="Animation" id="Animation_echmn"]
 resource_name = "Fail"
@@ -172,6 +173,20 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AudioStreamPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_i4vb1"]
@@ -501,8 +516,8 @@ animations = [{
 
 [node name="Nova Flash" type="Node3D"]
 script = ExtResource("1_3r5mi")
-rulesText = "[center]Only on Critical Hit:
-Stun all Enemies"
+rulesText = "[textSize]small[center][Strikes First]
+On Critical Hit: Stun all Enemies for 1 Turn"
 abilityType = "Tech"
 spCost = 3
 name = "Nova Flash"
@@ -513,11 +528,12 @@ canTargetFliers = true
 alignment = 2
 usesEmpowered = false
 consumesOvercharged = false
+strikesFirst = true
 
 [node name="Stun All" type="Node" parent="."]
 script = ExtResource("2_ow57k")
 coreStatusEffect = "res://Battle Mode/Status Effects/Status Effect - Stun.tscn"
-setCustomDuration = 2
+setCustomDuration = 1
 alignment = 2
 targeting = 3
 canHitFlyingCharacters = true
@@ -537,7 +553,7 @@ frames = SubResource("SpriteFrames_q1r4w")
 playing = true
 
 [node name="Thrown Bomb" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 8.08, -1.56, 0)
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 6.96, 3, 0)
 visible = false
 frames = SubResource("SpriteFrames_q1r4w")
 playing = true
@@ -571,3 +587,8 @@ shadow_transmittance_bias = 0.0
 distance_fade_begin = 30.0
 omni_range = 100.0
 omni_attenuation = 11.1701
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_pxx5k")
+volume_db = -5.0
+pitch_scale = 0.9

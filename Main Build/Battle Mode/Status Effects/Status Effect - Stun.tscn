@@ -11,7 +11,7 @@
 offsets = PackedFloat32Array(0, 0.639831, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_84b8w"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8hx70"]
 gradient = SubResource("Gradient_d2fya")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4s8vx"]
@@ -22,9 +22,9 @@ initial_velocity_min = -0.1
 initial_velocity_max = 0.1
 angle_min = 50.0
 angle_max = 50.0
-color_ramp = SubResource("GradientTexture1D_84b8w")
+color_ramp = SubResource("GradientTexture1D_8hx70")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6wjp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8k8i"]
 transparency = 1
 depth_draw_mode = 1
 shading_mode = 0
@@ -34,7 +34,7 @@ texture_filter = 1
 texture_repeat = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_7k76a"]
-material = SubResource("StandardMaterial3D_m6wjp")
+material = SubResource("StandardMaterial3D_x8k8i")
 size = Vector2(0.12, 0.12)
 
 [sub_resource type="Animation" id="Animation_7kkty"]
@@ -102,86 +102,52 @@ _data = {
 [sub_resource type="Animation" id="Animation_nenfa"]
 resource_name = "Notify"
 length = 1.5
-tracks/0/type = "bezier"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Stun Label:position:x")
+tracks/0/path = NodePath("Stun Label:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0, 0.4, 0.9, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.85098, 0, 0.278431), Color(1, 0.85098, 0, 1), Color(1, 0.85098, 0, 1), Color(1, 0.85098, 0, 0)]
 }
-tracks/1/type = "bezier"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Stun Label:position:y")
+tracks/1/path = NodePath("Stun Label:outline_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0, 0.952939, 1.6, -0.1, 0.00810182, 0.3, 0.00810182, 1.2, -0.2, 0.000445366, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2, 1.4)
+"times": PackedFloat32Array(0, 0.4, 0.9, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.278431), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Stun Label:position:z")
+tracks/2/path = NodePath("Stun Label:position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1.2, -0.25, 0, 0.1, 0.443742, 2.52, -0.25, 0, 0.25, 0, 2.2, -0.180065, 0.135302, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1.5)
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Stun Label:modulate")
+tracks/3/path = NodePath("Stun Label/Stun Effect/GPUParticles3D:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.9, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(0.980392, 0.894118, 0.470588, 0.392157), Color(1, 0.833333, 0, 1), Color(1, 0.833333, 0, 1), Color(1, 0.901961, 0.4, 1), Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Stun Label:outline_modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0.392157), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Stun Label/Stun Effect/GPUParticles3D:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true, false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Stun Label/Stun Effect/GPUParticles3D:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5rf8s"]
@@ -259,7 +225,6 @@ script = ExtResource("1_j46p6")
 duration = 1
 magnitude = 1
 statusType = 4
-particleResourcePath = "res://Battle Mode/Status Effects/Particles - Stun.tscn"
 longIconPath = "res://GUI/Battle Menu Assets/Status Icons/stun_long_icon.tscn"
 shortIconPath = "res://GUI/Battle Menu Assets/Status Icons/stun_short_icon.tscn"
 enemyTexturePath = "res://GUI/Battle Menu Assets/Enemy Status Effect Stun Short.png"
@@ -271,9 +236,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64, 2.52, 0)
 script = ExtResource("2_wst63")
 
 [node name="Stun Label" type="Label3D" parent="Notification"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
 texture_filter = 0
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 0.85098, 0, 0)
 outline_modulate = Color(0, 0, 0, 0)
 text = "Stun"
 font = ExtResource("3_o8lov")
@@ -286,7 +251,6 @@ script = ExtResource("4_tnnvo")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Notification/Stun Label/Stun Effect"]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -4.76837e-07, 0, 0.52)
-visible = false
 emitting = false
 amount = 5
 lifetime = 2.0

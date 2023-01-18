@@ -129,7 +129,19 @@ public partial class PMBattle : Node
 					if(temp.Count == 0){
 						currentPhase = TurnPhase.TurnOverPause;
 					}else{
-							if(playerAttacks.Peek() != null) playerAttacks.Peek().Begin();
+							if(playerAttacks.Peek() != null){ //Queues with no elements are handled in Player Action
+								var withStrikesFirst = new Queue<PMPlayerAbility>();
+								var withoutStrikesFirst = new Queue<PMPlayerAbility>();
+								foreach(PMPlayerAbility ability in playerAttacks){
+									if(ability.hasStrikesFirst()) withStrikesFirst.Enqueue(ability);
+									else withoutStrikesFirst.Enqueue(ability);
+								}
+								foreach(PMPlayerAbility ability in withoutStrikesFirst){
+									withStrikesFirst.Enqueue(ability);
+								}
+								playerAttacks = withStrikesFirst;
+								playerAttacks.Peek().Begin();
+							}
 							currentPhase = TurnPhase.PlayerAction;
 					}
 				}
