@@ -3,7 +3,11 @@ using System;
 
 public partial class GameMaster : Node
 {
-    PlayerCharacterData[] playerData = Array.Empty<PlayerCharacterData>();
+    
+    PlayerCharacterData[] playerData = Array.Empty<PlayerCharacterData>(); //TODO: Convert to Resource
+    
+    [Export]
+    StoryState state = new StoryState();
     public struct PlayerCharacterData{
         public PlayerCharacterData(string filePath, int hp, int maxHP, int sp, int maxSP, uint position, 
         int[] abilitiesKnown, int[] abilitiesPrepared){

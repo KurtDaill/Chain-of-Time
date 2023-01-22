@@ -8,6 +8,34 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node2D",
+"class": &"BaseDialogueTestScene",
+"language": &"GDScript",
+"path": "res://addons/dialogue_manager/test_scene.gd"
+}, {
+"base": "RefCounted",
+"class": &"DialogueLine",
+"language": &"GDScript",
+"path": "res://addons/dialogue_manager/dialogue_line.gd"
+}, {
+"base": "Resource",
+"class": &"DialogueResource",
+"language": &"GDScript",
+"path": "res://addons/dialogue_manager/dialogue_resource.gd"
+}, {
+"base": "RefCounted",
+"class": &"DialogueResponse",
+"language": &"GDScript",
+"path": "res://addons/dialogue_manager/dialogue_response.gd"
+}]
+_global_script_class_icons={
+"BaseDialogueTestScene": "",
+"DialogueLine": "",
+"DialogueResource": "res://addons/dialogue_manager/assets/icon.svg",
+"DialogueResponse": ""
+}
+
 [application]
 
 config/name="Chain Of Time"
@@ -18,6 +46,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GameMaster="*res://GameMaster.cs"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
@@ -34,7 +63,7 @@ project/assembly_name="Chain Of Time"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/MonoDebuggerQM-1.0.2/MonoDebuggerQM-1.0.2/plugin.cfg")
+enabled=PackedStringArray("res://addons/MonoDebuggerQM-1.0.2/MonoDebuggerQM-1.0.2/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
 
 [gdnative]
 

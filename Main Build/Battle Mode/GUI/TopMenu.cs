@@ -70,6 +70,9 @@ public partial class TopMenu : BattleMenu
                         break;
                 }
                 break;
+            case MenuInput.Back:
+                parentGUI.GotoPreviousCharacter(caller);
+                break;
         }
         return null;
     }

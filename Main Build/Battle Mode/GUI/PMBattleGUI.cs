@@ -123,4 +123,19 @@ public partial class PMBattleGUI : Control //TODO Migrate a lot of this function
         //playersInQuestion = temp.ToArray();
         noAbilityExit = true;
     }
+
+    public void GotoPreviousCharacter(PMBattle caller){
+        if(abilitiesQueued.Count > 0){
+            playersInQuestion[abilitiesQueued.Count].UnselectMe();
+            var resetQueue = abilitiesQueued.ToList<PMPlayerAbility>();
+            resetQueue.Remove(resetQueue.Last<PMPlayerAbility>());
+            abilitiesQueued = new Queue<PMPlayerAbility>();
+            foreach(PMPlayerAbility ab in resetQueue){
+                abilitiesQueued.Enqueue(ab);
+            }
+            
+            playersInQuestion[abilitiesQueued.Count].SelectMe();
+            ChangeMenu(0, playersInQuestion[abilitiesQueued.Count], caller);
+        }
+    }
 }

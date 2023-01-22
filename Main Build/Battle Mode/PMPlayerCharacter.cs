@@ -15,6 +15,7 @@ public partial class PMPlayerCharacter : PMCharacter{
 	[Export(PropertyHint.File)]
 	string basicAttack;
 	bool init = true;
+	SpotLight3D spotLight;
 
 
 
@@ -58,6 +59,7 @@ public partial class PMPlayerCharacter : PMCharacter{
 		}
 		//parentBattle.GetNode("Camera3D/BattleGUI/Readouts").Connect("ReadyToPopulateReadouts",new Callable(this,nameof(SetupGUI)));
 		//SetupGUI((ReadoutContainer)GetNode("Camera3D/BattleGUI/Readouts"));
+		spotLight = this.GetNode<SpotLight3D>("SpotLight");
 	}
 
 	public void SetupGUI(ReadoutContainer readouts){ //TODO: Check whether we need this later
@@ -128,11 +130,13 @@ public partial class PMPlayerCharacter : PMCharacter{
 	public void SelectMe(){
 		animPlay.Play("Excited Idle");
 		myReadout.EnableHighlight();
+		spotLight.Visible = true;
 	}
 
 	public void UnselectMe(){
 		animPlay.Play("Idle");
 		myReadout.DisableHighlight();
+		spotLight.Visible = false;
 	}
 
 	public void LoadAbilties(){
