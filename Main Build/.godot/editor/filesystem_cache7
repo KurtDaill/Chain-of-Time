@@ -1,16 +1,20 @@
-ba462e7d75ce2475d08c85f9f627a225
-::res://::1675179784
+0b7126e0c6e86d3ec295a72f5aa6e0bd
+::res://::1675391507
 3D Dollhouse Test.tscn::PackedScene::-1::1672111660::0::1::::<><>::res://Art/Kell Cato Idle Testing-Sheet.png<>res://Art/3D Pipeline Testing/oldtown brown house tiles.material
 3D Test PM Battle.tscn::PackedScene::-1::1672111660::0::1::::<><>::res://Battle Mode/Player Characters/Cato.tscn<>res://Battle Mode/PMBattle.cs<>uid://bydr1u81xlrfu<>uid://cg3jst7r85mxs<>uid://d2cmqnvkme2pj<>uid://dj8wfmjoexu2b<>res://Battle Mode/GUI/PMBattleGUI.cs<>res://Battle Mode/GUI/TopMenu.cs<>res://Battle Mode/GUI/AttackMenu.cs<>uid://c4qop4r4kknep<>uid://cm7bwe6xrk4bw<>uid://dr54ux3u6u382<>uid://d2v174ha8e02a<>res://Battle Mode/GUI/SkillCard.cs<>uid://byxwcawbevd4q<>uid://d2cqgciwqj4km<>uid://mcjyfmluy4vo<>uid://d1m7mihmo5vy2<>uid://cwrc2tvxawx3w<>uid://cx12cemchoyfp<>uid://3xst1bjiasti<>res://Art/Water Texture2D.png<>uid://doe0fcor7214h<>uid://dxktfpy2ogjj7<>uid://tqpq8anoaf3y<>res://MovingCamera.cs<>uid://lcud6pbsl6dn<>uid://cj8f3qneuw34e<>uid://d08s06xg3bhk1<>res://Battle Mode/GUI/SkillMenu.cs<>uid://jfvu1q88havg<>uid://dq2wt80l1hcrn<>uid://crl1yc2vxqufr<>uid://d145f3ww0wx4r<>uid://cenqt4ms2eal0<>res://Battle Mode/GUI/ItemMenu.cs<>res://Battle Mode/Player Characters/Will Silver.tscn<>res://Battle Mode/Enemies/Polymorphor.tscn<>uid://cdlwcpgki6y7o<>uid://b25aln4uhmkhi<>res://GUI/Themes/Readout Text.tres<>res://GUI/PlayerCharacterReadout.cs<>res://Battle Mode/GUI/TargetingMenu.cs<>uid://vrcv026r88aw<>uid://cuc7tn3snj7md<>uid://d4kx000io04gf<>uid://krkh6oeua0eq<>uid://l6unyyb4maph<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres<>uid://nli0mcpokh1x<>uid://8iltg8hieg8a<>uid://c74qsow25qfbm<>uid://b6xo1fe2mg5he<>res://Battle Mode/GUI/PartyMenu.cs<>res://Battle Mode/GUI/SwapMenu.cs<>res://PMBattleRoster.cs<>uid://3h4w6mektumc<>uid://cuqh8yxm1dqtn<>uid://broetx6su77ym<>uid://dpk6wt2nykmt2<>uid://di6ya5ja67qot<>uid://rqh26t4tp12q
 3D Test SM.tres::AnimationNodeStateMachinePlayback::-1::1672111660::0::1::::<><>::
 3D Test.tscn::PackedScene::-1::1672111660::0::1::::<><>::res://Battle Mode/Combatants/Player Characters/Silver/SilverCombatant.tscn<>res://Battle Mode/Combatants/Enemies/Polymorphor.tscn<>uid://bydr1u81xlrfu<>uid://cg3jst7r85mxs<>uid://d2cmqnvkme2pj<>uid://dj8wfmjoexu2b<>res://Battle Mode/GUI/BattleGUI.cs<>res://Battle Mode/GUI/TopMenu.cs<>res://Battle Mode/GUI/AttackMenu.cs<>uid://c4qop4r4kknep<>uid://cm7bwe6xrk4bw<>uid://dr54ux3u6u382<>uid://d2v174ha8e02a<>res://Battle Mode/GUI/SkillCard.cs<>uid://byxwcawbevd4q<>uid://d2cqgciwqj4km<>uid://mcjyfmluy4vo<>uid://d1m7mihmo5vy2<>uid://cwrc2tvxawx3w<>uid://cx12cemchoyfp<>uid://3xst1bjiasti<>res://Battle Mode/Battle.cs<>res://Art/Water Texture2D.png<>uid://doe0fcor7214h<>uid://dxktfpy2ogjj7<>uid://tqpq8anoaf3y<>res://MovingCamera.cs<>uid://lcud6pbsl6dn<>uid://cj8f3qneuw34e<>uid://d08s06xg3bhk1<>res://Battle Mode/GUI/SkillMenu.cs<>uid://jfvu1q88havg<>uid://dq2wt80l1hcrn<>uid://crl1yc2vxqufr<>uid://d145f3ww0wx4r<>uid://cenqt4ms2eal0<>res://Battle Mode/GUI/ItemMenu.cs<>res://Battle Mode/Combatants/Player Characters/Cato/CatoCombatant.tscn<>res://Battle Mode/BattlePositionManager.cs<>res://Art/3D Pipeline Testing/Baths Tileset.material
+3DTextboxTexture.tres::StandardMaterial3D::6399770576525432452::1675366909::0::1::::<><>::
 AbilityEvent.tres::Resource::-1::1672111660::0::1::::<><>::
-AdventureModePlayground.tscn::PackedScene::8531842711480757679::1675179784::0::1::::<><>::res://ExplorePlayer.cs<>uid://beln8ffrnhd44
+AdventureModePlayground.tscn::PackedScene::8531842711480757679::1675179804::0::1::::<><>::res://ExplorePlayer.cs<>uid://beln8ffrnhd44
 Battle Template.tscn::PackedScene::-1::1672111661::0::1::::<><>::uid://c4qop4r4kknep<>uid://d2v174ha8e02a<>uid://cwrc2tvxawx3w<>uid://cx12cemchoyfp<>uid://3xst1bjiasti<>uid://doe0fcor7214h<>uid://d2cqgciwqj4km<>uid://mcjyfmluy4vo<>uid://dr54ux3u6u382<>uid://d1m7mihmo5vy2<>uid://byxwcawbevd4q<>uid://cm7bwe6xrk4bw<>uid://d08s06xg3bhk1<>uid://jfvu1q88havg<>uid://lcud6pbsl6dn<>uid://cj8f3qneuw34e<>uid://crl1yc2vxqufr<>uid://d4kx000io04gf<>res://GUI/Themes/Readout Text.tres<>uid://dq2wt80l1hcrn<>uid://l6unyyb4maph<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres<>res://PMBattleRoster.cs<>uid://c74qsow25qfbm<>uid://b6xo1fe2mg5he<>uid://3h4w6mektumc<>uid://di6ya5ja67qot<>uid://rqh26t4tp12q<>uid://cenqt4ms2eal0<>uid://cdlwcpgki6y7o<>uid://dpk6wt2nykmt2<>uid://nli0mcpokh1x<>uid://cuqh8yxm1dqtn<>uid://broetx6su77ym<>uid://cuc7tn3snj7md<>uid://d145f3ww0wx4r<>uid://vrcv026r88aw<>uid://b25aln4uhmkhi<>uid://krkh6oeua0eq<>uid://8iltg8hieg8a<>res://Battle Mode/GUI/SkillMenu.cs<>res://Battle Mode/GUI/ItemMenu.cs<>res://Battle Mode/GUI/SkillCard.cs<>res://Battle Mode/PMBattle.cs<>res://Battle Mode/GUI/AttackMenu.cs<>res://GUI/PlayerCharacterReadout.cs<>res://Battle Mode/GUI/TopMenu.cs<>res://MovingCamera.cs<>res://Battle Mode/GUI/TargetingMenu.cs<>res://Battle Mode/GUI/PartyMenu.cs<>res://Battle Mode/GUI/PMBattleGUI.cs<>res://Battle Mode/GUI/SwapMenu.cs
 CatoBasicAttack.tscn::PackedScene::-1::1672111661::0::1::::<><>::uid://coqn12nqpe01r<>uid://cf7bpatv4ye2x<>uid://c1lc7udobqn68<>uid://cghb5l7vx30cj<>uid://cli7kf451cv5c<>uid://bk32v4sof1p24<>uid://dhxf3i4p35es6<>res://Battle Mode/PMPlayerAbility.cs<>res://Battle Mode/AbilityEvent.cs
-Cutscene Test.tscn::PackedScene::210408704256148667::1672893014::0::1::::<><>::uid://beln8ffrnhd44<>uid://ysgw0mocwq5u
+CharacterBallon.cs::CSharpScript::-1::1675391370::0::1::::<><>::
+CharacterBallonResponses.cs::CSharpScript::-1::1675372773::0::1::::<><>::
+Cutscene Test.tscn::PackedScene::210408704256148667::1675383814::0::1::::<><>::res://Cutscenes/CutsceneDirector.cs<>uid://beln8ffrnhd44<>res://DialogueBillboard.cs<>res://addons/dialogue_manager/dialogue_label.gd<>uid://cx7c1lg6oon7l<>res://CharacterBallon.cs<>uid://cxgdj0b1fdeee<>res://CharacterBallonResponses.cs<>uid://1seddp4pg0du<>uid://0rsllmd548ul
 DebugStoryState.tscn::PackedScene::2997921633456056598::1674141868::0::1::::<><>::res://StoryState.cs
 default_env.tres::Environment::-1::1672111661::0::1::::<><>::
+DialogueBillboard.cs::CSharpScript::-1::1675368167::0::1::::<><>::
 Dungeon Test.tscn::PackedScene::-1::1672111661::0::1::::<><>::res://Art/3D Pipeline Testing/MODULAR DUNGEON TILES.material<>res://Art/Kell Cato Idle Testing-Sheet.png
 Dungeon.tscn::PackedScene::-1::1672111661::0::1::::<><>::res://Art/3D/MODULAR DUNGEON TILES.material
 ExampleStoryState.tres::Resource::1844614002269687499::1674085799::0::1::::<><>::res://StoryState.cs
@@ -19,57 +23,14 @@ Game.cs::CSharpScript::-1::1672111661::0::1::::<><>::
 GameMaster.cs::CSharpScript::-1::1674079428::0::1::::<><>::
 icon.png::CompressedTexture2D::5713020306308269825::1672096895::1672111661::1::::<><>::
 MovingCamera.cs::CSharpScript::-1::1672111661::0::1::::<><>::
+Plane.dae::PackedScene::5731218152408376988::1675184924::1675184932::1::::<><>::
 PMBattleRoster.cs::CSharpScript::-1::1674509097::0::1::::<><>::
+README.md::TextFile::-1::1675391327::0::1::::<><>::
 StoryState.cs::CSharpScript::-1::1674085799::0::1::::<><>::
-::res://addons/::1674144251
-::res://addons/aseprite_importer/::1672096895
-::res://addons/aseprite_importer/interface/::1672096895
-::res://addons/aseprite_importer/interface/icons/::1672096895
-::res://addons/aseprite_importer/interface/spritesheet_inspector/::1672096895
-::res://addons/aseprite_importer/interface/spritesheet_inspector/godot_button/::1672096895
-::res://addons/dialogue_manager/::1674144251
-constants.gd::GDScript::-1::1674144251::0::1::::<>Node<>::
-DialogueManager.cs::CSharpScript::-1::1674144251::0::1::::<><>::
-dialogue_label.gd::GDScript::-1::1674144251::0::1::::<>RichTextLabel<>::
-dialogue_label.tscn::PackedScene::5518490004210093266::1674144251::0::1::::<><>::res://addons/dialogue_manager/dialogue_label.gd
-dialogue_line.gd::GDScript::-1::1674144251::0::1::::DialogueLine<>RefCounted<>::
-dialogue_manager.gd::GDScript::-1::1674144251::0::1::::<>Node<>::
-dialogue_resource.gd::GDScript::-1::1674144251::0::1::::DialogueResource<>Resource<>res://addons/dialogue_manager/assets/icon.svg::
-dialogue_response.gd::GDScript::-1::1674144251::0::1::::DialogueResponse<>RefCounted<>::
-import_plugin.gd::GDScript::-1::1674144251::0::1::::<>EditorImportPlugin<>::
-plugin.cfg::TextFile::-1::1674144251::0::1::::<><>::
-plugin.gd::GDScript::-1::1674144251::0::1::::<>EditorPlugin<>::
-test_scene.gd::GDScript::-1::1674144251::0::1::::BaseDialogueTestScene<>Node2D<>::
-test_scene.tscn::PackedScene::-1::1674144251::0::1::::<><>::res://addons/dialogue_manager/test_scene.gd
-::res://addons/dialogue_manager/assets/::1674144251
-icon.svg::CompressedTexture2D::7837098769458062462::1674144251::1674144251::1::::<><>::
-update.svg::CompressedTexture2D::6897359485043983721::1674144251::1674144251::1::::<><>::
-::res://addons/dialogue_manager/components/::1674144251
-code_edit.gd::GDScript::-1::1674144251::0::1::::<>CodeEdit<>::
-code_edit.tscn::PackedScene::5379618807048408118::1674144251::0::1::::<><>::res://addons/dialogue_manager/components/code_edit.gd
-download_update_panel.gd::GDScript::-1::1674144251::0::1::::<>Control<>::
-download_update_panel.tscn::PackedScene::1130642722554629364::1674144251::0::1::::<><>::res://addons/dialogue_manager/components/download_update_panel.gd<>uid://c5jerdp8p746h
-errors_panel.gd::GDScript::-1::1674144251::0::1::::<>HBoxContainer<>::
-errors_panel.tscn::PackedScene::6105315990352960875::1674144251::0::1::::<><>::res://addons/dialogue_manager/components/errors_panel.gd
-files_list.gd::GDScript::-1::1674144251::0::1::::<>VBoxContainer<>::
-files_list.tscn::PackedScene::8113335055803740416::1674144251::0::1::::<><>::res://addons/dialogue_manager/components/files_list.gd
-parser.gd::GDScript::-1::1674144251::0::1::::<>Object<>::
-search_and_replace.gd::GDScript::-1::1674144251::0::1::::<>VBoxContainer<>::
-search_and_replace.tscn::PackedScene::458254375860855630::1674144251::0::1::::<><>::res://addons/dialogue_manager/components/search_and_replace.gd
-settings.gd::GDScript::-1::1674144251::0::1::::<>Node<>::
-title_list.gd::GDScript::-1::1674144251::0::1::::<>VBoxContainer<>::
-title_list.tscn::PackedScene::6134415340044566558::1674144251::0::1::::<><>::res://addons/dialogue_manager/components/title_list.gd
-update_button.gd::GDScript::-1::1674144251::0::1::::<>Button<>::
-update_button.tscn::PackedScene::5825087957514786930::1674144251::0::1::::<><>::res://addons/dialogue_manager/components/update_button.gd<>uid://qdxrxv3c3hxk
-::res://addons/dialogue_manager/example_balloon/::1674144251
-example_balloon.gd::GDScript::-1::1674144251::0::1::::<>CanvasLayer<>::
-example_balloon.tscn::PackedScene::2304415056852043862::1674144251::0::1::::<><>::res://addons/dialogue_manager/example_balloon/example_balloon.gd<>uid://ckvgyvclnwggo
-small_example_balloon.tscn::PackedScene::4417311113468315280::1674144251::0::1::::<><>::res://addons/dialogue_manager/example_balloon/example_balloon.gd<>uid://ckvgyvclnwggo
-::res://addons/dialogue_manager/views/::1674144251
-main_view.gd::GDScript::-1::1674144251::0::1::::<>Control<>::
-main_view.tscn::PackedScene::4884668666408697448::1674144251::0::1::::<><>::res://addons/dialogue_manager/views/main_view.gd<>uid://civ6shmka5e8u<>uid://dnufpcdrreva3<>uid://ctns6ouwwd68i<>uid://co8yl23idiwbi<>uid://gr8nakpbrhby<>uid://cs8pwrxr5vxix<>uid://cpg4lg1r3ff6m
-settings_view.gd::GDScript::-1::1674144251::0::1::::<>VBoxContainer<>::
-settings_view.tscn::PackedScene::5839841081119266502::1674144251::0::1::::<><>::res://addons/dialogue_manager/views/settings_view.gd
+Temp.cs::CSharpScript::-1::1675366964::0::1::::<><>::
+TempTest.tscn::PackedScene::191843730789331448::1675391507::0::1::::<><>::
+TempTestDialogue.cs::CSharpScript::-1::1675391421::0::1::::<><>::
+::res://addons/::1675391463
 ::res://addons/MonoDebuggerQM-1.0.2/::1672096895
 ::res://addons/MonoDebuggerQM-1.0.2/MonoDebuggerQM-1.0.2/::1672111684
 debugger.gd::GDScript::-1::1672111661::0::1::::<>EditorPlugin<>::
@@ -152,7 +113,7 @@ Waterfall Bottom-Sheet.png::CompressedTexture2D::1367559134661477732::1672111660
 Waterfall Top Front-Sheet.png::CompressedTexture2D::8795412610298002918::1672111660::1672111660::1::::<><>::
 Waterfall Top Top-Sheet.png::CompressedTexture2D::5252356651748345584::1672111660::1672111660::1::::<><>::
 Waterfall.png::CompressedTexture2D::9059247477144996819::1672111660::1672111660::1::::<><>::
-::res://Art/3D/::1674413089
+::res://Art/3D/::1675201906
 Baths Tileset.material::StandardMaterial3D::-1::1672111660::0::1::::<><>::res://Art/Textures/Baths Tileset.png
 Baths.dae::PackedScene::5258307947353990838::1672111660::1672111684::1::::<><>::
 Baths.glb::PackedScene::4078225786444672330::1672111660::1672111660::1::::<><>::
@@ -165,7 +126,7 @@ Material.material::StandardMaterial3D::-1::1672111660::0::1::::<><>::res://Art/3
 Material_001.material::StandardMaterial3D::-1::1672111660::0::1::::<><>::res://Art/3D/Cleansing Baths.png
 Material_002.material::StandardMaterial3D::-1::1672111660::0::1::::<><>::res://Art/3D/Cleansing Baths.png
 Material_004.material::StandardMaterial3D::-1::1672111660::0::1::::<><>::res://Art/3D/Fountain Texture.png
-MODULAR DUNGEON TILES.material::StandardMaterial3D::8916385407296290747::1674413089::0::1::::<><>::uid://bf4jq1exo28a
+MODULAR DUNGEON TILES.material::StandardMaterial3D::8916385407296290747::1675201906::0::1::::<><>::uid://bf4jq1exo28a
 MODULAR DUNGEON TILES.png::CompressedTexture2D::82288478095279918::1672111660::1672759038::1::::<><>::
 ::res://Art/3D Pipeline Testing/::1675107900
 1 G TIle.glb::PackedScene::2742078178247454602::1672111660::1672111660::1::::<><>::
@@ -235,7 +196,7 @@ UI_Focus_Aproach_Note.wav::AudioStreamWAV::3089523239514874097::1672111660::1672
 UI_Focus_Chord.wav::AudioStreamWAV::5481553720517110034::1672111660::1672111660::1::::<><>::
 UI_Focus_Tonic.wav::AudioStreamWAV::3153714258755190803::1672111660::1672111660::1::::<><>::
 UI_No.wav::AudioStreamWAV::1509220430101255890::1672111660::1672111660::1::::<><>::
-::res://Battle Mode/::1675179784
+::res://Battle Mode/::1675179804
 AbilityEvent.cs::CSharpScript::-1::1673796675::0::1::::<><>::
 AbilityEventStatusEffect.cs::CSharpScript::-1::1673450311::0::1::::<><>::
 BattleGUI.tscn::PackedScene::-1::1672111660::0::1::::<><>::uid://crl1yc2vxqufr<>uid://lcud6pbsl6dn<>uid://d4kx000io04gf<>res://GUI/Themes/Readout Text.tres<>uid://dq2wt80l1hcrn<>uid://cj8f3qneuw34e<>uid://3h4w6mektumc<>uid://di6ya5ja67qot<>uid://cuc7tn3snj7md<>uid://dpk6wt2nykmt2<>uid://cuqh8yxm1dqtn<>uid://broetx6su77ym<>uid://cdlwcpgki6y7o<>uid://d2cqgciwqj4km<>uid://b25aln4uhmkhi<>uid://mcjyfmluy4vo<>uid://c4qop4r4kknep<>uid://d1m7mihmo5vy2<>uid://byxwcawbevd4q<>uid://8iltg8hieg8a<>uid://vrcv026r88aw<>uid://d145f3ww0wx4r<>uid://dr54ux3u6u382<>uid://doe0fcor7214h<>uid://c74qsow25qfbm<>uid://b6xo1fe2mg5he<>uid://krkh6oeua0eq<>uid://3xst1bjiasti<>uid://d2v174ha8e02a<>uid://jfvu1q88havg<>uid://cenqt4ms2eal0<>uid://nli0mcpokh1x<>uid://cm7bwe6xrk4bw<>uid://d08s06xg3bhk1<>uid://cwrc2tvxawx3w<>uid://cx12cemchoyfp<>uid://l6unyyb4maph<>res://Battle Mode/GUI/PMBattleGUI.cs<>res://Battle Mode/GUI/TargetingMenu.cs<>res://Battle Mode/GUI/TopMenu.cs<>res://Battle Mode/GUI/SkillCard.cs<>res://Battle Mode/GUI/SwapMenu.cs<>res://Battle Mode/GUI/ItemMenu.cs<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres<>res://GUI/PlayerCharacterReadout.cs<>res://Battle Mode/GUI/AttackMenu.cs<>res://Battle Mode/GUI/PartyMenu.cs<>res://Battle Mode/GUI/SkillMenu.cs<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres
@@ -243,7 +204,7 @@ Crosshair Box.tscn::PackedScene::-1::1672111660::0::1::::<><>::res://GUI/Battle 
 Crosshair.tscn::PackedScene::7148631131448982608::1672171445::0::1::::<><>::uid://k8a8d1neh1ow<>uid://dcp4kq3wcho1n
 Damage Number.tscn::PackedScene::4191783028595616218::1672159371::0::1::::<><>::uid://cumxcbvw5u56y
 EnemyNameplate.cs::CSharpScript::-1::1672688316::0::1::::<><>::
-Example Battle.tscn::PackedScene::6625127173167773909::1675179784::0::1::::<><>::res://Battle Mode/PMBattle.cs<>res://PMBattleRoster.cs<>uid://drixqr1kasloi<>uid://cy6ib5eho248k<>uid://bydr1u81xlrfu<>uid://c74qsow25qfbm<>uid://dr54ux3u6u382<>uid://d08s06xg3bhk1<>uid://dj8wfmjoexu2b<>res://Battle Mode/GUI/PMBattleGUI.cs<>uid://cg3jst7r85mxs<>res://Battle Mode/GUI/TopMenu.cs<>uid://cx12cemchoyfp<>uid://jfvu1q88havg<>uid://cenqt4ms2eal0<>uid://d1m7mihmo5vy2<>uid://d2v174ha8e02a<>uid://b6xo1fe2mg5he<>uid://cwrc2tvxawx3w<>uid://vrcv026r88aw<>uid://8iltg8hieg8a<>uid://d145f3ww0wx4r<>res://Battle Mode/GUI/PartyMenu.cs<>uid://mcjyfmluy4vo<>uid://d2cmqnvkme2pj<>uid://byxwcawbevd4q<>uid://doe0fcor7214h<>uid://dxktfpy2ogjj7<>uid://krkh6oeua0eq<>uid://c4qop4r4kknep<>uid://nli0mcpokh1x<>uid://rqh26t4tp12q<>res://Battle Mode/GUI/ItemMenu.cs<>uid://cm7bwe6xrk4bw<>uid://3xst1bjiasti<>uid://cj8f3qneuw34e<>uid://crl1yc2vxqufr<>res://Battle Mode/GUI/AttackMenu.cs<>uid://d4kx000io04gf<>uid://lcud6pbsl6dn<>uid://dq2wt80l1hcrn<>res://Battle Mode/GUI/SkillMenu.cs<>res://Battle Mode/GUI/SkillCard.cs<>res://MovingCamera.cs<>uid://doubhibnrt206<>res://GUI/ReadoutContainer.cs<>res://Battle Mode/GUI/TargetingMenu.cs<>uid://l6unyyb4maph<>res://Battle Mode/GUI/SwapMenu.cs<>uid://k1c0luw6jqjc<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres<>uid://wxj5d30d2p8y<>uid://bqhhsywrd27ba<>uid://bqb21t5xmngp7
+Example Battle.tscn::PackedScene::6625127173167773909::1675179804::0::1::::<><>::res://Battle Mode/PMBattle.cs<>res://PMBattleRoster.cs<>uid://drixqr1kasloi<>uid://cy6ib5eho248k<>uid://bydr1u81xlrfu<>uid://c74qsow25qfbm<>uid://dr54ux3u6u382<>uid://d08s06xg3bhk1<>uid://dj8wfmjoexu2b<>res://Battle Mode/GUI/PMBattleGUI.cs<>uid://cg3jst7r85mxs<>res://Battle Mode/GUI/TopMenu.cs<>uid://cx12cemchoyfp<>uid://jfvu1q88havg<>uid://cenqt4ms2eal0<>uid://d1m7mihmo5vy2<>uid://d2v174ha8e02a<>uid://b6xo1fe2mg5he<>uid://cwrc2tvxawx3w<>uid://vrcv026r88aw<>uid://8iltg8hieg8a<>uid://d145f3ww0wx4r<>res://Battle Mode/GUI/PartyMenu.cs<>uid://mcjyfmluy4vo<>uid://d2cmqnvkme2pj<>uid://byxwcawbevd4q<>uid://doe0fcor7214h<>uid://dxktfpy2ogjj7<>uid://krkh6oeua0eq<>uid://c4qop4r4kknep<>uid://nli0mcpokh1x<>uid://rqh26t4tp12q<>res://Battle Mode/GUI/ItemMenu.cs<>uid://cm7bwe6xrk4bw<>uid://3xst1bjiasti<>uid://cj8f3qneuw34e<>uid://crl1yc2vxqufr<>res://Battle Mode/GUI/AttackMenu.cs<>uid://d4kx000io04gf<>uid://lcud6pbsl6dn<>uid://dq2wt80l1hcrn<>res://Battle Mode/GUI/SkillMenu.cs<>res://Battle Mode/GUI/SkillCard.cs<>res://MovingCamera.cs<>uid://doubhibnrt206<>res://GUI/ReadoutContainer.cs<>res://Battle Mode/GUI/TargetingMenu.cs<>uid://l6unyyb4maph<>res://Battle Mode/GUI/SwapMenu.cs<>uid://k1c0luw6jqjc<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres<>uid://wxj5d30d2p8y<>uid://bqhhsywrd27ba<>uid://bqb21t5xmngp7
 GenericNoActAbility.tscn::PackedScene::1961150365718618472::1673382528::0::1::::<><>::res://Battle Mode/PMBattleNoActAbility.cs
 Healing Number.tscn::PackedScene::8193791688164855043::1672159371::0::1::::<><>::uid://cumxcbvw5u56y
 PMBattle.cs::CSharpScript::-1::1674142234::0::1::::<><>::
@@ -276,9 +237,9 @@ StatusNotification.cs::CSharpScript::-1::1673365746::0::1::::<><>::
 SwapMenu.cs::CSharpScript::-1::1672111660::0::1::::<><>::
 TargetingMenu.cs::CSharpScript::-1::1674056417::0::1::::<><>::
 TopMenu.cs::CSharpScript::-1::1674414588::0::1::::<><>::
-::res://Battle Mode/Player Characters/::1675179784
-Cato.tscn::PackedScene::3513193394451255230::1675179783::0::1::::<><>::uid://beln8ffrnhd44<>uid://2684ifjixqps<>uid://w7ay0t1p16xp<>uid://drrypbsjxq7n1<>res://Battle Mode/PMPlayerCharacter.cs
-Will Silver.tscn::PackedScene::8370413412011381088::1675179784::0::1::::<><>::uid://cx7c1lg6oon7l<>uid://2684ifjixqps<>uid://drrypbsjxq7n1<>res://Battle Mode/PMPlayerCharacter.cs
+::res://Battle Mode/Player Characters/::1675179804
+Cato.tscn::PackedScene::3513193394451255230::1675179804::0::1::::<><>::uid://beln8ffrnhd44<>uid://2684ifjixqps<>uid://w7ay0t1p16xp<>uid://drrypbsjxq7n1<>res://Battle Mode/PMPlayerCharacter.cs
+Will Silver.tscn::PackedScene::8370413412011381088::1675179804::0::1::::<><>::uid://cx7c1lg6oon7l<>uid://2684ifjixqps<>uid://drrypbsjxq7n1<>res://Battle Mode/PMPlayerCharacter.cs
 ::res://Battle Mode/Player Characters/Abilities/::1674144322
 Cato Basic Attack.tscn::PackedScene::1292252980449491096::1673797602::0::1::::<><>::uid://cli7kf451cv5c<>uid://cfk5vf3khmlyw<>uid://c1lc7udobqn68<>uid://f6p300dqx24k<>uid://coqn12nqpe01r<>uid://dhxf3i4p35es6<>uid://cghb5l7vx30cj<>uid://cf7bpatv4ye2x<>uid://bk32v4sof1p24<>res://Battle Mode/AbilityEvent.cs<>res://Battle Mode/PMPlayerAbility.cs
 Cato Shield Bash.tscn::PackedScene::2051072453723239259::1674144322::0::1::::<><>::res://Battle Mode/PMPlayerAbility.cs<>uid://w7ay0t1p16xp<>res://Battle Mode/AbilityEvent.cs<>uid://cfcfe8i5c27r0<>uid://b4b0mbuhy0bme<>uid://cli7kf451cv5c<>uid://coqn12nqpe01r<>uid://bk32v4sof1p24<>uid://cf7bpatv4ye2x
@@ -294,8 +255,14 @@ Particles - Stun.tscn::PackedScene::2083632358982271151::1673383883::0::1::::<><
 Status Effect - Empowered.tscn::PackedScene::5925532955151260885::1673977543::0::1::::<><>::res://Battle Mode/PMStatus.cs<>uid://c03u77cbparmo<>res://Battle Mode/StatusEffectParticles.cs<>res://Battle Mode/GUI/StatusNotification.cs<>uid://bgxlc0fv83uq3
 Status Effect - Poison.tscn::PackedScene::8416723811913427059::1672687495::0::1::::<><>::res://Battle Mode/PMStatus.cs<>uid://cumxcbvw5u56y
 Status Effect - Stun.tscn::PackedScene::5762782834633973147::1673986571::0::1::::<><>::res://Battle Mode/PMStatus.cs<>res://Battle Mode/GUI/StatusNotification.cs<>uid://bgxlc0fv83uq3<>res://Battle Mode/StatusEffectParticles.cs<>uid://nm8lnima5n7b<>uid://4xledlkq7mhr
-::res://Dialogue Files/::1674144262
-Dialogue Test.dialogue::Resource::3791386048903989574::1674077465::1674144262::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
+::res://Cutscenes/::1675435794
+Actor.cs::CSharpScript::-1::1675200658::0::1::::<><>::
+CutsceneDirector.cs::CSharpScript::-1::1675391385::0::1::::<><>::
+::res://Cutscenes/Dialogue Files/::1675385302
+::res://Cutscenes/Scene Loader/::1675435794
+::res://dialogue/::1675391331
+DialogueDialogues.gd::GDScript::-1::1675391331::0::1::::DialogueDialogues<>RefCounted<>::
+DialogueEvents.gd::GDScript::-1::1675391331::0::1::::DialogueEvents<>RefCounted<>::
 ::res://Explore Mode/::1675108188
 ::res://Fonts/::1672760264
 arial.ttf::FontFile::3812274973342629302::1575709706::1672760264::1::::<><>::
@@ -419,7 +386,7 @@ Party Button Controller.png::CompressedTexture2D::6842226252531629723::167211166
 Party Button Highlight.png::CompressedTexture2D::9010909323577818159::1672111661::1672111661::1::::<><>::
 Skill Button Controller.png::CompressedTexture2D::6442501751790862393::1672111661::1672111661::1::::<><>::
 Skill Button Highlight.png::CompressedTexture2D::8416201486458503805::1672111661::1672111661::1::::<><>::
-::res://GUI/Themes/::1675112680
+::res://GUI/Themes/::1675371199
 Readout Text Accessible.tres::Theme::6857303982784985077::1672760748::0::1::::<><>::uid://bukxu2jnjepoo
 Readout Text.tres::Theme::1792482480453046803::1673973385::0::1::::<><>::uid://bda5754wxhw2u
 Skill Card Normal Small.tres::Theme::9216824781891163565::1675112680::0::1::::<><>::uid://by3oeeep2oy71
@@ -432,6 +399,10 @@ Skill Card Tech Small.tres::Theme::8183267056988815461::1675112680::0::1::::<><>
 Skill Card Tech Smallest.tres::Theme::2760823978135132995::1672690236::0::1::::<><>::uid://by3oeeep2oy71
 Skill Card Tech.tres::Theme::5990381513135007067::1675112680::0::1::::<><>::uid://by3oeeep2oy71
 UI Impact.tres::Theme::777427384229398215::1675112680::0::1::::<><>::uid://bda5754wxhw2u
+::res://GUI/Themes/Dialogue/::1675381039
+Cutscene Test with GDS.tscn::PackedScene::2890181709747362951::1675381039::0::1::::<><>::res://Cutscenes/CutsceneDirector.cs<>uid://beln8ffrnhd44<>res://DialogueBillboard.cs<>uid://cx7c1lg6oon7l<>uid://cxgdj0b1fdeee<>res://addons/dialogue_manager/example_balloon/CoT Balloon.gd<>uid://1seddp4pg0du<>res://addons/dialogue_manager/dialogue_label.gd<>res://CharacterBallonResponses.cs
+DisabledResponse.tres::Theme::1790928658844655583::1675371580::0::1::::<><>::uid://bukxu2jnjepoo
+Normal Response.tres::Theme::1862317141594752350::1675371821::0::1::::<><>::uid://bukxu2jnjepoo
 ::res://Levels/::1674508944
 PMBattleTemplate.tscn::PackedScene::260332793531491932::1674412095::0::1::::<><>::res://Battle Mode/PMBattle.cs<>res://PMBattleRoster.cs<>uid://drixqr1kasloi<>uid://bqb21t5xmngp7<>uid://cy6ib5eho248k<>uid://bqhhsywrd27ba<>res://MovingCamera.cs<>res://Battle Mode/GUI/PMBattleGUI.cs<>res://Battle Mode/GUI/TopMenu.cs<>uid://d2v174ha8e02a<>uid://c4qop4r4kknep<>uid://d1m7mihmo5vy2<>uid://3xst1bjiasti<>uid://cwrc2tvxawx3w<>uid://byxwcawbevd4q<>uid://mcjyfmluy4vo<>uid://cx12cemchoyfp<>uid://dr54ux3u6u382<>res://Battle Mode/GUI/PartyMenu.cs<>uid://krkh6oeua0eq<>uid://l6unyyb4maph<>uid://8iltg8hieg8a<>uid://k1c0luw6jqjc<>uid://nli0mcpokh1x<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres<>uid://c74qsow25qfbm<>uid://wxj5d30d2p8y<>uid://b6xo1fe2mg5he<>res://Battle Mode/GUI/ItemMenu.cs<>uid://cenqt4ms2eal0<>uid://dq2wt80l1hcrn<>uid://d145f3ww0wx4r<>res://Battle Mode/GUI/AttackMenu.cs<>uid://cm7bwe6xrk4bw<>uid://d4kx000io04gf<>res://Battle Mode/GUI/SkillMenu.cs<>uid://cj8f3qneuw34e<>uid://jfvu1q88havg<>res://Battle Mode/GUI/SkillCard.cs<>uid://lcud6pbsl6dn<>uid://doe0fcor7214h<>uid://crl1yc2vxqufr<>uid://d08s06xg3bhk1<>uid://doubhibnrt206<>uid://vrcv026r88aw<>res://Battle Mode/GUI/TargetingMenu.cs<>res://Battle Mode/GUI/SwapMenu.cs<>res://GUI/ReadoutContainer.cs<>uid://rqh26t4tp12q<>uid://bydr1u81xlrfu<>uid://dj8wfmjoexu2b<>uid://cg3jst7r85mxs<>uid://d2cmqnvkme2pj<>uid://dxktfpy2ogjj7
 ::res://Levels/WaveBattleTest/::1672111661
@@ -440,5 +411,6 @@ Level 2-1.tscn::PackedScene::-1::1672111661::0::1::::<><>::res://Art/Water Textu
 Level 2-2.tscn::PackedScene::-1::1672111661::0::1::::<><>::res://Art/Water Texture2D.png<>uid://cg3jst7r85mxs<>uid://dxktfpy2ogjj7<>uid://d2cmqnvkme2pj<>uid://dj8wfmjoexu2b<>uid://cwrc2tvxawx3w<>uid://d145f3ww0wx4r<>uid://dr54ux3u6u382<>uid://mcjyfmluy4vo<>uid://c74qsow25qfbm<>uid://byxwcawbevd4q<>uid://doe0fcor7214h<>uid://d08s06xg3bhk1<>uid://krkh6oeua0eq<>uid://8iltg8hieg8a<>uid://cx12cemchoyfp<>uid://jfvu1q88havg<>uid://vrcv026r88aw<>uid://cenqt4ms2eal0<>uid://d1m7mihmo5vy2<>uid://d2v174ha8e02a<>uid://b6xo1fe2mg5he<>uid://3xst1bjiasti<>uid://c4qop4r4kknep<>uid://cm7bwe6xrk4bw<>uid://rqh26t4tp12q<>uid://nli0mcpokh1x<>uid://lcud6pbsl6dn<>uid://d4kx000io04gf<>uid://dq2wt80l1hcrn<>uid://crl1yc2vxqufr<>uid://cj8f3qneuw34e<>res://Battle Mode/GUI/PartyMenu.cs<>res://MovingCamera.cs<>res://Battle Mode/GUI/SkillMenu.cs<>res://Battle Mode/GUI/AttackMenu.cs<>res://Battle Mode/PMBattle.cs<>res://GUI/ReadoutContainer.cs<>res://Battle Mode/GUI/ItemMenu.cs<>res://Battle Mode/GUI/PMBattleGUI.cs<>res://Battle Mode/GUI/TopMenu.cs<>res://Battle Mode/GUI/SkillCard.cs<>res://Battle Mode/GUI/SwapMenu.cs<>res://Battle Mode/GUI/TargetingMenu.cs<>res://PMBattleRoster.cs<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres<>uid://l6unyyb4maph<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres<>res://Battle Mode/Enemies/Polymorphor.tscn<>uid://bydr1u81xlrfu
 Level 3-1.tscn::PackedScene::-1::1672111661::0::1::::<><>::uid://l6unyyb4maph<>uid://b6xo1fe2mg5he<>uid://cx12cemchoyfp<>uid://rqh26t4tp12q<>uid://d145f3ww0wx4r<>uid://3xst1bjiasti<>uid://c4qop4r4kknep<>uid://d1m7mihmo5vy2<>uid://nli0mcpokh1x<>uid://byxwcawbevd4q<>uid://d08s06xg3bhk1<>uid://krkh6oeua0eq<>uid://cm7bwe6xrk4bw<>uid://doe0fcor7214h<>uid://8iltg8hieg8a<>uid://cenqt4ms2eal0<>uid://jfvu1q88havg<>uid://cwrc2tvxawx3w<>uid://dr54ux3u6u382<>uid://c74qsow25qfbm<>uid://vrcv026r88aw<>uid://d2v174ha8e02a<>uid://mcjyfmluy4vo<>uid://dq2wt80l1hcrn<>uid://cj8f3qneuw34e<>uid://lcud6pbsl6dn<>uid://crl1yc2vxqufr<>uid://d4kx000io04gf<>res://Battle Mode/PMBattleWaves.cs<>res://Art/3D/MODULAR DUNGEON TILES.material<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres<>uid://dud6kbht5jc7f<>uid://bim1h22yuju1h<>res://Battle Mode/Enemies/Polymorphor.tscn<>res://PMBattleRoster.cs<>res://Battle Mode/GUI/PartyMenu.cs<>res://GUI/ReadoutContainer.cs<>res://Battle Mode/GUI/TopMenu.cs<>res://Battle Mode/GUI/SkillMenu.cs<>res://Battle Mode/GUI/AttackMenu.cs<>res://Battle Mode/GUI/SwapMenu.cs<>res://Battle Mode/GUI/ItemMenu.cs<>res://MovingCamera.cs<>res://Battle Mode/GUI/PMBattleGUI.cs<>res://Battle Mode/GUI/SkillCard.cs<>res://Battle Mode/GUI/TargetingMenu.cs<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres
 Level 3-2.tscn::PackedScene::-1::1672111661::0::1::::<><>::uid://l6unyyb4maph<>uid://b6xo1fe2mg5he<>uid://cx12cemchoyfp<>uid://rqh26t4tp12q<>uid://d145f3ww0wx4r<>uid://3xst1bjiasti<>uid://c4qop4r4kknep<>uid://d1m7mihmo5vy2<>uid://nli0mcpokh1x<>uid://byxwcawbevd4q<>uid://d08s06xg3bhk1<>uid://krkh6oeua0eq<>uid://cm7bwe6xrk4bw<>uid://doe0fcor7214h<>uid://8iltg8hieg8a<>uid://cenqt4ms2eal0<>uid://jfvu1q88havg<>uid://cwrc2tvxawx3w<>uid://dr54ux3u6u382<>uid://c74qsow25qfbm<>uid://vrcv026r88aw<>uid://d2v174ha8e02a<>uid://mcjyfmluy4vo<>uid://dq2wt80l1hcrn<>uid://cj8f3qneuw34e<>uid://lcud6pbsl6dn<>uid://crl1yc2vxqufr<>uid://d4kx000io04gf<>res://Battle Mode/AbilityEvent.cs<>res://Battle Mode/PMEnemyCharacter.cs<>res://Art/3D/MODULAR DUNGEON TILES.material<>res://Battle Mode/PMEnemyAbility.cs<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres<>res://Battle Mode/Enemies/Polymorphor.tscn<>uid://drrypbsjxq7n1<>res://Art/Horror Sprite2D-Sheet.png<>res://PMBattleRoster.cs<>res://Battle Mode/GUI/PartyMenu.cs<>res://GUI/ReadoutContainer.cs<>res://Battle Mode/GUI/TopMenu.cs<>res://Battle Mode/GUI/SkillMenu.cs<>res://Battle Mode/GUI/AttackMenu.cs<>res://Battle Mode/GUI/SwapMenu.cs<>res://Battle Mode/PMBattle.cs<>res://Battle Mode/GUI/ItemMenu.cs<>res://MovingCamera.cs<>res://Battle Mode/GUI/PMBattleGUI.cs<>res://Battle Mode/GUI/SkillCard.cs<>res://Battle Mode/GUI/TargetingMenu.cs<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres<>res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres
-::res://Technical/::1672111661
+::res://Technical/::1675201803
 UnexpectedParentException.cs::CSharpScript::-1::1672111661::0::1::::<><>::
+Viewport Testing.tscn::PackedScene::6303372772504020376::1675201803::0::1::::<><>::res://Cutscenes/CutsceneDirector.cs

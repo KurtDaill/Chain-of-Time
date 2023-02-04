@@ -1,0 +1,31 @@
+=Intro Room Banter=
+~Start
+	Silver: "Alright we're here."
+	Silver: "You ready?"
+	{OPT} "No." GOTO: Silver's Snark
+	{OPT[silverRep > 5]} "Let's Boogie." GOTO: Status
+	{OPT} "Ready for...what again?" GOTO: Remind
+
+~Silver's Snark
+	Silver: "What? Forget your lunchbox?"[ANIM(SilverFacepalm)]
+	Silver: "This is what I get with working with planet-huggers..."
+	[MOD(silverRep, -5)]	
+	[ANIM(SilverFinishFacepalm)]
+	Silver: "Look, those skeletons are probably coming back, so..."
+	GOTO: Timewarp
+	
+~Remind
+	[Anim(SilverWalksToCato)]
+	Silver: "Making with the whole 'turn back time' thing you keep going on about."
+	Silver: "The one that's supposed to get us out of here alive?"
+	[Anim(SilverWalksBack)]
+	Silver: "Look, just take a breath and..." GOTO: Timewarp
+
+~Timewarp
+	Silver: "Let's do the time warp"
+	{OPT} "Alright, I got it."
+
+~Status
+	Silver: "Let's do the time warp"[MOD(SilverRep, 3, public)]
+	{OPT} "Alright, I got it."
+	

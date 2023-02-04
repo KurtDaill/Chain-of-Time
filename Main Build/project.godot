@@ -9,44 +9,31 @@
 config_version=5
 
 _global_script_classes=[{
-"base": "Node2D",
-"class": &"BaseDialogueTestScene",
+"base": "RefCounted",
+"class": &"DialogueDialogues",
 "language": &"GDScript",
-"path": "res://addons/dialogue_manager/test_scene.gd"
+"path": "res://dialogue/DialogueDialogues.gd"
 }, {
 "base": "RefCounted",
-"class": &"DialogueLine",
+"class": &"DialogueEvents",
 "language": &"GDScript",
-"path": "res://addons/dialogue_manager/dialogue_line.gd"
-}, {
-"base": "Resource",
-"class": &"DialogueResource",
-"language": &"GDScript",
-"path": "res://addons/dialogue_manager/dialogue_resource.gd"
-}, {
-"base": "RefCounted",
-"class": &"DialogueResponse",
-"language": &"GDScript",
-"path": "res://addons/dialogue_manager/dialogue_response.gd"
+"path": "res://dialogue/DialogueEvents.gd"
 }]
 _global_script_class_icons={
-"BaseDialogueTestScene": "",
-"DialogueLine": "",
-"DialogueResource": "res://addons/dialogue_manager/assets/icon.svg",
-"DialogueResponse": ""
+"DialogueDialogues": "",
+"DialogueEvents": ""
 }
 
 [application]
 
 config/name="Chain Of Time"
-run/main_scene="res://Battle Mode/Example Battle.tscn"
+run/main_scene="res://TempTest.tscn"
 config/features=PackedStringArray("4.0", "C#")
 config/icon="res://icon.png"
 
 [autoload]
 
 GameMaster="*res://GameMaster.cs"
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
@@ -61,7 +48,7 @@ project/assembly_name="Chain Of Time"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/MonoDebuggerQM-1.0.2/MonoDebuggerQM-1.0.2/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/MonoDebuggerQM-1.0.2/MonoDebuggerQM-1.0.2/plugin.cfg")
 
 [gdnative]
 

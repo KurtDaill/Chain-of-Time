@@ -1,16 +1,250 @@
-[gd_scene load_steps=3 format=3 uid="uid://c86nvd5i2frn"]
+[gd_scene load_steps=16 format=3 uid="uid://c86nvd5i2frn"]
 
+[ext_resource type="Script" path="res://Cutscenes/CutsceneDirector.cs" id="1_hohda"]
 [ext_resource type="Texture2D" uid="uid://beln8ffrnhd44" path="res://Art/Kell Cato Master Sprite-Sheet.png" id="1_sx57d"]
-[ext_resource type="PackedScene" uid="uid://ysgw0mocwq5u" path="res://Art/3D/battle_dungeon.tscn" id="2_rw2x6"]
+[ext_resource type="Script" path="res://DialogueBillboard.cs" id="3_lb1a5"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="3_u06sm"]
+[ext_resource type="Texture2D" uid="uid://cx7c1lg6oon7l" path="res://Art/Silver Master Sprite-Sheet.png" id="3_we6lt"]
+[ext_resource type="Script" path="res://CharacterBallon.cs" id="4_li0mh"]
+[ext_resource type="Material" uid="uid://cxgdj0b1fdeee" path="res://3DTextboxTexture.tres" id="5_a1p2b"]
+[ext_resource type="Script" path="res://CharacterBallonResponses.cs" id="5_ci8h1"]
+[ext_resource type="Theme" uid="uid://1seddp4pg0du" path="res://GUI/Themes/Dialogue/Normal Response.tres" id="9_x8k6j"]
+[ext_resource type="Theme" uid="uid://0rsllmd548ul" path="res://GUI/Themes/Dialogue/DisabledResponse.tres" id="10_m3b8i"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_w4xik"]
+viewport_path = NodePath("Character Ballon/SubViewportContainer2/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8et5v"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_w4xik")
+
+[sub_resource type="QuadMesh" id="QuadMesh_3isku"]
+material = SubResource("StandardMaterial3D_8et5v")
+size = Vector2(6, 2)
+
+[sub_resource type="QuadMesh" id="QuadMesh_bg67a"]
+material = ExtResource("5_a1p2b")
+size = Vector2(6, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1qhu8"]
+size = Vector2(10, 5)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_hohda")
+dialogueFilePath = "res://Cutscenes/Dialogue Files/Default.dialogue"
+castNames = ["Cato", "Silver"]
+balloonPath = NodePath("Character Ballon")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -0.6)
+[node name="Cato" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, 0)
+
+[node name="Sprite" type="Sprite3D" parent="Cato"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+pixel_size = 0.008
 texture = ExtResource("1_sx57d")
 hframes = 10
-vframes = 9
+vframes = 14
+
+[node name="Response Plane" type="MeshInstance3D" parent="Cato" node_paths=PackedStringArray("targetViewPort")]
+transform = Transform3D(0.899143, 0, 0.0392574, 0, 0.9, 0, -0.0392574, 0, 0.899143, -0.92, 3.32, 0)
+mesh = SubResource("QuadMesh_3isku")
+script = ExtResource("3_lb1a5")
+targetViewPort = NodePath("../../Character Ballon/SubViewportContainer2/Response VP")
+
+[node name="Silver" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84, 0, 0)
+
+[node name="Sprite" type="Sprite3D" parent="Silver"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.6, 0)
+flip_h = true
+pixel_size = 0.008
+texture = ExtResource("3_we6lt")
+hframes = 12
+vframes = 8
+
+[node name="Label Plane" type="MeshInstance3D" parent="Silver" node_paths=PackedStringArray("targetViewPort")]
+transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 2.36, 3.4, 0)
+mesh = SubResource("QuadMesh_bg67a")
+script = ExtResource("3_lb1a5")
+targetViewPort = NodePath("../../Character Ballon/SubViewportContainer/Ballon VP")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_1qhu8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="BattleDungeon" parent="." instance=ExtResource("2_rw2x6")]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, -0.291028, 1.88, 4.24)
+
+[node name="Character Ballon" type="CanvasLayer" parent="." node_paths=PackedStringArray("characterNamePlate", "responseMenu")]
+script = ExtResource("4_li0mh")
+characterNamePlate = NodePath("SubViewportContainer/Ballon VP/Dialogue Label/Name Plate")
+responseMenu = NodePath("SubViewportContainer2/Response VP/Control/Response Container")
+debugDialogueResPath = "res://Cutscenes/Dialogue Files/Default.dialogue"
+dialogueLabelNode = NodePath("SubViewportContainer/Ballon VP/Dialogue Label")
+disabledResponse = ExtResource("10_m3b8i")
+normalResponse = ExtResource("9_x8k6j")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Character Ballon"]
+offset_left = 24.0
+offset_top = -297.0
+offset_right = 624.0
+offset_bottom = -197.0
+stretch = true
+
+[node name="Ballon VP" type="SubViewport" parent="Character Ballon/SubViewportContainer"]
+process_priority = 1
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(600, 100)
+render_target_update_mode = 4
+
+[node name="Dialogue Label" type="RichTextLabel" parent="Character Ballon/SubViewportContainer/Ballon VP"]
+clip_contents = false
+offset_top = 36.0
+offset_right = 600.0
+offset_bottom = 216.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = 4
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 25
+text = " Alright, what's on your mind?
+"
+script = ExtResource("3_u06sm")
+skip_action = "ui_accept"
+
+[node name="Name Plate" type="RichTextLabel" parent="Character Ballon/SubViewportContainer/Ballon VP/Dialogue Label"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -32.0
+offset_right = 280.0
+offset_bottom = -3.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Will Silver"
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="Character Ballon"]
+anchors_preset = -1
+anchor_left = 600.0
+anchor_right = 600.0
+offset_left = -690733.0
+offset_top = -340.0
+offset_right = -690133.0
+offset_bottom = -40.0
+
+[node name="Response VP" type="SubViewport" parent="Character Ballon/SubViewportContainer2"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(600, 300)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="Character Ballon/SubViewportContainer2/Response VP"]
+layout_mode = 3
+anchor_top = 0.375
+anchor_bottom = 0.375
+offset_top = -243.0
+offset_right = 39.0
+offset_bottom = -206.0
+
+[node name="Response Container" type="VBoxContainer" parent="Character Ballon/SubViewportContainer2/Response VP/Control"]
+layout_direction = 2
+layout_mode = 1
+offset_right = 600.0
+offset_bottom = 484.0
+script = ExtResource("5_ci8h1")
+
+[node name="Option 1" type="RichTextLabel" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme = ExtResource("9_x8k6j")
+theme_override_font_sizes/normal_font_size = 25
+text = " \"This is the first option.\""
+fit_content_height = true
+
+[node name="Highlight" type="ColorRect" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container/Option 1"]
+visible = false
+show_behind_parent = true
+layout_mode = 0
+offset_left = 1.0
+offset_right = 601.0
+offset_bottom = 70.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Spacer 1" type="TextureRect" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Option 2" type="RichTextLabel" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme = ExtResource("9_x8k6j")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = " [color=#db3939][Lie][/color]\"This is not an option\""
+fit_content_height = true
+
+[node name="Highlight" type="ColorRect" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container/Option 2"]
+show_behind_parent = true
+layout_mode = 1
+offset_left = 1.0
+offset_right = 601.0
+offset_bottom = 70.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Spacer 2" type="TextureRect" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Option 3" type="RichTextLabel" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme = ExtResource("9_x8k6j")
+bbcode_enabled = true
+text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
+fit_content_height = true
+
+[node name="Highlight" type="ColorRect" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container/Option 3"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 601.0
+offset_bottom = 54.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Spacer 3" type="TextureRect" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Option 4" type="RichTextLabel" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme = ExtResource("10_m3b8i")
+bbcode_enabled = true
+text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
+fit_content_height = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Highlight" type="ColorRect" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container/Option 4"]
+visible = false
+show_behind_parent = true
+clip_contents = true
+layout_mode = 1
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 601.0
+offset_bottom = 48.0
+color = Color(1, 1, 1, 0.784314)
