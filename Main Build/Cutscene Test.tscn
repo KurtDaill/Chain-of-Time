@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_label.gd" id="3_u06sm"]
 [ext_resource type="Texture2D" uid="uid://cx7c1lg6oon7l" path="res://Art/Silver Master Sprite-Sheet.png" id="3_we6lt"]
 [ext_resource type="Script" path="res://CharacterBallon.cs" id="4_li0mh"]
-[ext_resource type="Material" uid="uid://cxgdj0b1fdeee" path="res://3DTextboxTexture.tres" id="5_a1p2b"]
+[ext_resource type="Material" path="res://3DTextboxTexture.tres" id="5_a1p2b"]
 [ext_resource type="Script" path="res://CharacterBallonResponses.cs" id="5_ci8h1"]
 [ext_resource type="Theme" uid="uid://1seddp4pg0du" path="res://GUI/Themes/Dialogue/Normal Response.tres" id="9_x8k6j"]
 [ext_resource type="Theme" uid="uid://0rsllmd548ul" path="res://GUI/Themes/Dialogue/DisabledResponse.tres" id="10_m3b8i"]
@@ -33,9 +33,6 @@ size = Vector2(10, 5)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_hohda")
-dialogueFilePath = "res://Cutscenes/Dialogue Files/Default.dialogue"
-castNames = ["Cato", "Silver"]
-balloonPath = NodePath("Character Ballon")
 
 [node name="Cato" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, 0)
@@ -78,10 +75,8 @@ mesh = SubResource("PlaneMesh_1qhu8")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, -0.291028, 1.88, 4.24)
 
-[node name="Character Ballon" type="CanvasLayer" parent="." node_paths=PackedStringArray("characterNamePlate", "responseMenu")]
+[node name="Character Ballon" type="CanvasLayer" parent="."]
 script = ExtResource("4_li0mh")
-characterNamePlate = NodePath("SubViewportContainer/Ballon VP/Dialogue Label/Name Plate")
-responseMenu = NodePath("SubViewportContainer2/Response VP/Control/Response Container")
 debugDialogueResPath = "res://Cutscenes/Dialogue Files/Default.dialogue"
 dialogueLabelNode = NodePath("SubViewportContainer/Ballon VP/Dialogue Label")
 disabledResponse = ExtResource("10_m3b8i")
@@ -116,10 +111,8 @@ theme_override_font_sizes/normal_font_size = 25
 text = " Alright, what's on your mind?
 "
 script = ExtResource("3_u06sm")
-skip_action = "ui_accept"
 
 [node name="Name Plate" type="RichTextLabel" parent="Character Ballon/SubViewportContainer/Ballon VP/Dialogue Label"]
-layout_mode = 0
 offset_left = 1.0
 offset_top = -32.0
 offset_right = 280.0
@@ -159,14 +152,14 @@ offset_bottom = -206.0
 
 [node name="Response Container" type="VBoxContainer" parent="Character Ballon/SubViewportContainer2/Response VP/Control"]
 layout_direction = 2
-layout_mode = 1
 offset_right = 600.0
 offset_bottom = 484.0
 script = ExtResource("5_ci8h1")
 
 [node name="Option 1" type="RichTextLabel" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container"]
 custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
+offset_right = 600.0
+offset_bottom = 29.0
 theme = ExtResource("9_x8k6j")
 theme_override_font_sizes/normal_font_size = 25
 text = " \"This is the first option.\""
@@ -175,7 +168,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container/Option 1"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 601.0
 offset_bottom = 70.0
@@ -183,11 +175,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 1" type="TextureRect" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 33.0
+offset_right = 600.0
+offset_bottom = 43.0
 
 [node name="Option 2" type="RichTextLabel" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container"]
 custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
+offset_top = 47.0
+offset_right = 600.0
+offset_bottom = 76.0
 theme = ExtResource("9_x8k6j")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
@@ -196,7 +192,6 @@ fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container/Option 2"]
 show_behind_parent = true
-layout_mode = 1
 offset_left = 1.0
 offset_right = 601.0
 offset_bottom = 70.0
@@ -204,11 +199,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 2" type="TextureRect" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 80.0
+offset_right = 600.0
+offset_bottom = 90.0
 
 [node name="Option 3" type="RichTextLabel" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container"]
 custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
+offset_top = 94.0
+offset_right = 600.0
+offset_bottom = 123.0
 theme = ExtResource("9_x8k6j")
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
@@ -217,7 +216,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container/Option 3"]
 visible = false
 show_behind_parent = true
-layout_mode = 1
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 601.0
@@ -226,11 +224,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 3" type="TextureRect" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 127.0
+offset_right = 600.0
+offset_bottom = 137.0
 
 [node name="Option 4" type="RichTextLabel" parent="Character Ballon/SubViewportContainer2/Response VP/Control/Response Container"]
 custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
+offset_top = 141.0
+offset_right = 600.0
+offset_bottom = 170.0
 theme = ExtResource("10_m3b8i")
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
@@ -242,7 +244,6 @@ shortcut_keys_enabled = false
 visible = false
 show_behind_parent = true
 clip_contents = true
-layout_mode = 1
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 601.0

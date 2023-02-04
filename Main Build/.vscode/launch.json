@@ -1,22 +1,20 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Attach",
+            "name": "Launch",
             "type": "coreclr",
-            "request": "attach"
-        },
-        {
-            "name" : "Launch",
-            "type" : "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program" : "C:/Users/kdail/Desktop/Game Dev/Godot/Godot_v4.0-beta9_mono_win64/Godot_v4.0-beta9_mono_win64/Godot_v4.0-beta9_mono_win64.exe",
-            "console" : "internalConsole",
+            "program": "C:/Users/kdail/Desktop/Godot_v4.0-beta10_mono_win64/Godot_v4.0-beta10_mono_win64/Godot_v4.0-beta10_mono_win64.exe",
+            "console": "internalConsole",
             "stopAtEntry": false
+        },
+        {
+            "name": "Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:PickProcess}"
         }
     ]
 }

@@ -7,6 +7,7 @@ using System.Linq;
 public static class ScreenPlayLoader{
     public static ScreenPlay Load(string[] rawText){
         List<(string, int)> exchangeDirectory = new List<(string, int)>();
+        List<Exchange> exchanges = new List<Exchange>();
         int currentDirectoryIndex = 0;
 
         //Sets up the list so we can reference the written GOTO's to more code-friendlty indexes
@@ -42,20 +43,23 @@ public static class ScreenPlayLoader{
             if(textLine.Trim().StartsWith('~')){
                 textLine = textLine.Remove(0,1);
                 string exchangeName = textLine.Trim();
-                List<Line> exchangeLines = new List<Line>();
+                Queue<Line> exchangeLines = new Queue<Line>();
                 while(true){
                     if(textQueue.Peek().StartsWith("~")) break;
-                    if(textQueue.Peek() == "") continue;
+                    if(textQueue.Peek() == ""){
+                        textQueue.Dequeue();
+                        continue;
+                    }
                     textLine = textQueue.Dequeue().Trim();
                     if(textLine.StartsWith("[")){ //Brackets indicate action lines
                         if(textLine.StartsWith("[MOD") || textLine.StartsWith("[SET")){
-                           exchangeLines.Add(new Line("[ACT]", "[SET]", null, HandleModifier(textLine), null));
+                           exchangeLines.Enqueue(new Line("[ACT]", "[SET]", null, HandleModifier(textLine), null));
                         }
                         else if(textLine.StartsWith("[ANIM")){
                             textLine = textLine.Remove(0, textLine.IndexOf("(") + 1); //Removes "[ANIM("
                             textLine = textLine.Remove(textLine.Length - 2); //Removes the last ")]"
                             textLine = textLine.Trim();
-                            exchangeLines.Add(new Line("[ACT]", "[ANIM]", null, null, textLine));
+                            exchangeLines.Enqueue(new Line("[ACT]", "[ANIM]", null, null, textLine));
                         }
                         else{
                             throw new NotImplementedException(); //TODO Custom exception, unknown action line in script
@@ -125,6 +129,7 @@ public static class ScreenPlayLoader{
                                 textLine = textQueue.Dequeue(); //We grab that line and restart the process
                                 continue;
                             }
+                            //Add Responses to a data structure
                             break;
                         }
                     }
@@ -140,11 +145,12 @@ public static class ScreenPlayLoader{
                         textLine = textLine.Substring(1, textLine.Length - 3);
                         string finalLine;
                         TextEffect[] effects = ParseLineTextEffects(textLine, out finalLine);
-                        exchangeLines.Add(new Line(finalLine, characterName, effects, null, null));
+                        exchangeLines.Enqueue(new Line(finalLine, characterName, effects, null, null));
                     }
                 }
-            }
-            //Create an Exchange Object, add it to the list we give the ScreenPlay at the end
+                //Create an Exchange Object, add it to the list we give the ScreenPlay at the end
+                exchanges.Add(new Exchange(exchangeLines));
+            } 
         }
         return null;
     }
