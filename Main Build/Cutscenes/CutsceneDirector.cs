@@ -14,7 +14,8 @@ public partial class CutsceneDirector : Node3D
 			GD.Print(temp);
 			lines.Add(temp);
 		}
-		ScreenPlayLoader.Load(lines.ToArray());
+		ScreenPlay play = ScreenPlayLoader.Load(lines.ToArray());
+		GD.Print("HALLEUJA, HOLY SHIT");
 	}
 	/*
 	[Export(PropertyHint.File)]

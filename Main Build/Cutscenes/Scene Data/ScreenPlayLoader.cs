@@ -9,9 +9,8 @@ public static class ScreenPlayLoader{
         List<(string, int)> exchangeDirectory = new List<(string, int)>();
         List<Exchange> exchanges = new List<Exchange>();
         int currentDirectoryIndex = 0;
-
-        //Sets up the list so we can reference the written GOTO's to more code-friendlty indexes
-        for(int i = 0; i < rawText.Length; i++){
+        
+        for(int i = 0; i < rawText.Length; i++){ //Sets up the list so we can reference the written GOTO's to more code-friendlty indexes
             var textLine = rawText[i].Trim();
             if(textLine.StartsWith('~')){
                 textLine = textLine.Remove(0, 1);
@@ -21,138 +20,32 @@ public static class ScreenPlayLoader{
             }
         }
 
-        //Look for a line that starts with~
-            //Cut that line to just be the text after ~
-            //read the next lines:
-            //Does
         Queue<string> textQueue = new Queue<string>();
-        for(int i = 0; i < rawText.Length; i++){
+        for(int i = 0; i < rawText.Length; i++){ //Removes tab markers and populateas the textQueue with them
             while(rawText[i].Contains("\t")){
                 rawText[i] = rawText[i].Remove(rawText[i].IndexOf("\t"), 1);
             } 
             textQueue.Enqueue(rawText[i]);
         }
 
-        //TODO Add Parsing Error Exceptions?
-        while(textQueue.Count > 0){
+        while(textQueue.Count > 0){ //Main Loop: goes through each text lines and parses.
             string textLine = textQueue.Dequeue().Trim();
-            if(textLine.StartsWith("//")){ // "//" is used for comment lines
+            if(textLine.StartsWith("//") || textLine.StartsWith(" ")){ // "//" is used for comment lines
                 continue;
             }
 
-            if(textLine.Trim().StartsWith('~')){
-                textLine = textLine.Remove(0,1);
-                string exchangeName = textLine.Trim();
-                Queue<Line> exchangeLines = new Queue<Line>();
-                while(true){
-                    if(textQueue.Peek().StartsWith("~")) break;
-                    if(textQueue.Peek() == ""){
-                        textQueue.Dequeue();
-                        continue;
-                    }
-                    textLine = textQueue.Dequeue().Trim();
-                    if(textLine.StartsWith("[")){ //Brackets indicate action lines
-                        if(textLine.StartsWith("[MOD") || textLine.StartsWith("[SET")){
-                           exchangeLines.Enqueue(new Line("[ACT]", "[SET]", null, HandleModifier(textLine), null));
-                        }
-                        else if(textLine.StartsWith("[ANIM")){
-                            textLine = textLine.Remove(0, textLine.IndexOf("(") + 1); //Removes "[ANIM("
-                            textLine = textLine.Remove(textLine.Length - 2); //Removes the last ")]"
-                            textLine = textLine.Trim();
-                            exchangeLines.Enqueue(new Line("[ACT]", "[ANIM]", null, null, textLine));
-                        }
-                        else{
-                            throw new NotImplementedException(); //TODO Custom exception, unknown action line in script
-                        }
-                    }
-                    
-                    else if(textLine.StartsWith("{")){//Curly Braces indicate Options! These are nessicarily the end of this exchange
-                        List<Response> respsonses = new List<Response>();
-                        while(true){
-                            textLine = textLine.Remove(0, 4).Trim(); //Removes "{OPT"
-                            
-                            ResponseCondition condition = null;
-                            
-                            if(textLine.StartsWith("[")){ //Checks for conditions to allow the response (i.e. "{OPT[silverRep > 5]}")
+            if(textLine.Trim().StartsWith('~')){ //This is the start of an exchange block, which is processed as a block
 
-
-                                //shoud split the key from the operator from the value, i.e. {"silverRep", ">", "5"}
-                                string[] conditionData = textLine.Substring(1, textLine.IndexOf("]") - 1).Trim().Split(' ');
-                                for(int i = 0; i < conditionData.Length; i++) conditionData[i] = conditionData[i].Trim();
-                                
-                                if(conditionData[2] == "TRUE" || conditionData[2] == "FALSE"){ // Handle Booleans
-                                    bool temp = conditionData[2] == "TRUE";
-                                    if(conditionData[1] != "=") throw new NotImplementedException(); //we don't take greater/less than operators for bools
-                                    condition = new ResponseCondition(conditionData[0], ResponseCondition.ConditionType.ExactMatch, temp ? 1 :0);
-                                }
-                                else{ //Handles Integers
-                                    ResponseCondition.ConditionType type;
-                                    switch(conditionData[1]){
-                                        case "=" :
-                                            type = ResponseCondition.ConditionType.ExactMatch;
-                                            break;
-                                        case ">" :
-                                            type = ResponseCondition.ConditionType.IntGreaterThan;
-                                            break;
-                                        case ">=" :
-                                            type = ResponseCondition.ConditionType.IntGreaterThanOrEquals;
-                                            break;
-                                        case "<" :
-                                            type = ResponseCondition.ConditionType.IntLessThan;
-                                            break;
-                                        case "<=" :
-                                            type = ResponseCondition.ConditionType.IntLessThanOrEquals;
-                                            break;
-                                        default :
-                                            throw new NotImplementedException(); //TODO custom exception, conditions operator not recognized
-                                    }
-                                    condition = new ResponseCondition(conditionData[0], type, conditionData[2].ToInt());
-                                }
-                                textLine = textLine.Remove(0, textLine.IndexOf("]")+1);
-                            }
-                            textLine = textLine.Remove(0,1); //Removes "}"
-
-                            int nextExchangeIndex = -1;
-                            if(textLine.Contains("GOTO:")){
-                                nextExchangeIndex = ParseGotoStatement(textLine, exchangeDirectory, out textLine);
-                            }
-
-                            //The Substring call removes the "" from the text.
-                            string responseText =  textLine.Substring(1, textLine.Length - 2);
-                    
-                            respsonses.Add(new Response(responseText, condition, nextExchangeIndex)); 
-
-                            while(textQueue.Peek().Trim().StartsWith("//")){
-                                textQueue.Dequeue();
-                            }
-                            if(textQueue.Peek().Trim().StartsWith("{")){ //If the next line is another option...
-                                textLine = textQueue.Dequeue(); //We grab that line and restart the process
-                                continue;
-                            }
-                            //Add Responses to a data structure
-                            break;
-                        }
-                    }
-                    
-                    else{ //This should be a dialogue line, possibly with textEffects
-                        string characterName = textLine.Substring(0, textLine.IndexOf(":"));
-                        textLine = textLine.Remove(0, textLine.IndexOf(":") + 1).Trim();
-                        var gotoIndex = -1; 
-                        if(textLine.Contains("GOTO:")){
-                            gotoIndex = ParseGotoStatement(textLine, exchangeDirectory, out var newLine);
-                            textLine = newLine;
-                        }
-                        textLine = textLine.Substring(1, textLine.Length - 3);
-                        string finalLine;
-                        TextEffect[] effects = ParseLineTextEffects(textLine, out finalLine);
-                        exchangeLines.Enqueue(new Line(finalLine, characterName, effects, null, null));
-                    }
+                Queue<string> exchangeLines = new Queue<string>();
+                while(textQueue.Peek() != ""){
+                    exchangeLines.Enqueue(textQueue.Dequeue());
                 }
-                //Create an Exchange Object, add it to the list we give the ScreenPlay at the end
-                exchanges.Add(new Exchange(exchangeLines));
+                var newExchange = ParseExchange(exchangeLines, exchangeDirectory);
+
+                if(newExchange != null) exchanges.Add(newExchange);
             } 
         }
-        return null;
+        return new ScreenPlay(exchanges.ToArray());
     }
 
     public static ScreenplayModifier HandleModifier(string fragment){
@@ -180,7 +73,48 @@ public static class ScreenPlayLoader{
         }
     }
 
-    public static TextEffect[] ParseLineTextEffects(string lineIn, out string lineOut){
+    private static Exchange ParseExchange(Queue<string> rawExchange, List<(string, int)> exchangeDirectory){
+        Queue<Line> linesInExchange = new Queue<Line>();
+        Response[] responses = null;
+        while(rawExchange.Count > 0){ //This block processes the exchange as a unit
+            var textLine = rawExchange.Dequeue().Trim();
+            if(textLine.StartsWith("[")){ //Brackets indicate action lines
+                if(textLine.StartsWith("[MOD") || textLine.StartsWith("[SET")){
+                    linesInExchange.Enqueue(new Line("[ACT]", "[SET]", null, HandleModifier(textLine), null));
+                }
+                else if(textLine.StartsWith("[ANIM")){
+                    textLine = textLine.Remove(0, textLine.IndexOf("(") + 1); //Removes "[ANIM("
+                    textLine = textLine.Remove(textLine.Length - 2); //Removes the last ")]"
+                    textLine = textLine.Trim();
+                    linesInExchange.Enqueue(new Line("[ACT]", "[ANIM]", null, null, textLine));
+                }
+                else{
+                    throw new NotImplementedException(); //TODO Custom exception, unknown action line in script
+                }
+            }else{ //This should be a dialogue line, possibly with textEffects
+                string characterName = textLine.Substring(0, textLine.IndexOf(":"));
+                textLine = textLine.Remove(0, textLine.IndexOf(":") + 1).Trim();
+                var gotoIndex = -1; 
+                if(textLine.Contains("GOTO:")){
+                    gotoIndex = ParseGotoStatement(textLine, exchangeDirectory, out var newLine);
+                    textLine = newLine;
+                }
+                textLine = textLine.Substring(1, textLine.Length - 3);
+                string finalLine;
+                TextEffect[] effects = ParseLineTextEffects(textLine, out finalLine);
+                if(rawExchange.Count > 0 && rawExchange.Peek().StartsWith("{")){//Curly Braces indicate Options! These are nessicarily the end of this exchange. We check them here to append them to the last line
+                    //TODO: BUG. Putting an action block just before an option breaks this.
+                    responses = ParseResponses(rawExchange, exchangeDirectory);
+                    linesInExchange.Enqueue(new Line(finalLine, characterName, effects, null, null, -1, responses));
+                    break;
+                }
+                linesInExchange.Enqueue(new Line(finalLine, characterName, effects, null, null));
+            }
+        }
+        return new Exchange(linesInExchange);
+    }
+
+    private static TextEffect[] ParseLineTextEffects(string lineIn, out string lineOut){
         List<TextEffect>effects = new List<TextEffect>();
         while(lineIn.Contains("[Wave]")){
             effects.Add(new TextEffect(lineIn.IndexOf("[Wave]"), lineIn.IndexOf("[/Wave]"), TextEffectUtilities.TextEffectType.Wave));
@@ -207,7 +141,7 @@ public static class ScreenPlayLoader{
         return effects.ToArray();
     }
 
-    public static int ParseGotoStatement(string lineIn, List<(string, int)> directory, out string lineOut){
+    private static int ParseGotoStatement(string lineIn, List<(string, int)> directory, out string lineOut){
         if(lineIn.Contains("GOTO:")){
             var temp = lineIn.Substring(lineIn.IndexOf("GOTO:")).Trim();
             foreach((string, int) directoryEntry in directory){
@@ -220,5 +154,66 @@ public static class ScreenPlayLoader{
         }
         lineOut = lineIn;
         return -1;
+    }
+
+    private static Response[] ParseResponses(Queue<string> responseLines, List<(string, int)> exchangeDirectory){
+        List<Response> responses = new List<Response>();
+        while(responseLines.Count > 0){
+            var textLine = responseLines.Dequeue();
+            textLine = textLine.Remove(0, 4).Trim(); //Removes "{OPT"
+            
+            ResponseCondition condition = null;
+            
+            if(textLine.StartsWith("[")){ //Checks for conditions to allow the response (i.e. "{OPT[silverRep > 5]}")
+                string[] conditionData = textLine.Substring(1, textLine.IndexOf("]") - 1).Trim().Split(' ');//Splits the key from the operator from the value, i.e. {"silverRep", ">", "5"}
+                for(int i = 0; i < conditionData.Length; i++) conditionData[i] = conditionData[i].Trim();
+                
+                if(conditionData[2] == "TRUE" || conditionData[2] == "FALSE"){ // Handle Booleans
+                    bool temp = conditionData[2] == "TRUE";
+                    if(conditionData[1] != "=") throw new NotImplementedException(); //we don't take greater/less than operators for bools
+                    condition = new ResponseCondition(conditionData[0], ResponseCondition.ConditionType.ExactMatch, temp ? 1 :0);
+                }
+                else{ //Handles Integers
+                    ResponseCondition.ConditionType type;
+                    switch(conditionData[1]){
+                        case "=" :
+                            type = ResponseCondition.ConditionType.ExactMatch;
+                            break;
+                        case ">" :
+                            type = ResponseCondition.ConditionType.IntGreaterThan;
+                            break;
+                        case ">=" :
+                            type = ResponseCondition.ConditionType.IntGreaterThanOrEquals;
+                            break;
+                        case "<" :
+                            type = ResponseCondition.ConditionType.IntLessThan;
+                            break;
+                        case "<=" :
+                            type = ResponseCondition.ConditionType.IntLessThanOrEquals;
+                            break;
+                        default :
+                            throw new NotImplementedException(); //TODO custom exception, conditions operator not recognized
+                    }
+                    condition = new ResponseCondition(conditionData[0], type, conditionData[2].ToInt());
+                }
+                textLine = textLine.Remove(0, textLine.IndexOf("]")+1);
+            }
+            textLine = textLine.Remove(0,1); //Removes "}"
+
+            int nextExchangeIndex = -1;
+            if(textLine.Contains("GOTO:")){
+                nextExchangeIndex = ParseGotoStatement(textLine, exchangeDirectory, out textLine);
+            }
+
+            //The Substring call removes the "" from the text.
+            string responseText =  textLine.Substring(1, textLine.Length - 2);
+    
+            responses.Add(new Response(responseText, condition, nextExchangeIndex)); 
+
+            while(responseLines.Count > 0 && responseLines.Peek().Trim().StartsWith("//")){//Chews through any comments inside of the options
+                responseLines.Dequeue();
+            }
+        }
+        return responses.ToArray();
     }
 }

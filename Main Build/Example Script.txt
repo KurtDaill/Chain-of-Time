@@ -7,18 +7,18 @@
 	{OPT} "Ready for...what again?" GOTO: Remind
 
 ~Silver's Snark
-	Silver: "What? Forget your lunchbox?"[ANIM(SilverFacepalm)]
+	Silver: "What? Forget your lunchbox?"
+	[ANIM(SilverFacepalm)]
 	Silver: "This is what I get with working with planet-huggers..."
 	[MOD(silverRep, -5)]	
 	[ANIM(SilverFinishFacepalm)]
-	Silver: "Look, those skeletons are probably coming back, so..."
-	GOTO: Timewarp
+	Silver: "Look, those skeletons are probably coming back, so..." GOTO: Timewarp
 	
 ~Remind
-	[Anim(SilverWalksToCato)]
+	[ANIM(SilverWalksToCato)]
 	Silver: "Making with the whole 'turn back time' thing you keep going on about."
 	Silver: "The one that's supposed to get us out of here alive?"
-	[Anim(SilverWalksBack)]
+	[ANIM(SilverWalksBack)]
 	Silver: "Look, just take a breath and..." GOTO: Timewarp
 
 ~Timewarp
@@ -26,6 +26,7 @@
 	{OPT} "Alright, I got it."
 
 ~Status
-	Silver: "Let's do the time warp"[MOD(SilverRep, 3, public)]
+	[MOD(SilverRep, 3)]
+	Silver: "Let's do the time warp"
 	{OPT} "Alright, I got it."
 	

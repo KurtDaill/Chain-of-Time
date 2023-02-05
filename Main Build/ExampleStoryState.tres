@@ -4,11 +4,3 @@
 
 [resource]
 script = ExtResource("1_rr7mx")
-partyOpinions = {
-"Luciene": -5,
-"Will Silver": 15
-}
-storyFlags = {
-"El Generico Flag": true
-}
-dummy = 0
