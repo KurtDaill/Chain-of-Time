@@ -4,3 +4,7 @@
 
 [resource]
 script = ExtResource("1_rr7mx")
+values = {
+"silverRep": 0
+}
+flags = null

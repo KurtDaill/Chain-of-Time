@@ -26,7 +26,7 @@
 	{OPT} "Alright, I got it."
 
 ~Status
-	[MOD(SilverRep, 3)]
+	[MOD(silverRep, 3)]
 	Silver: "Let's do the time warp"
 	{OPT} "Alright, I got it."
 	

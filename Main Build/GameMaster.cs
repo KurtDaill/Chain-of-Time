@@ -31,6 +31,11 @@ public partial class GameMaster : Node
         public int [] abilitiesPrepared {get; set;}
     }
 
+    public override void _Ready()
+    {
+        state = GD.Load<StoryState>("res://ExampleStoryState.tres");
+    }
+
     public override void _Process(double delta)
     {
         base._Process(delta);
@@ -62,5 +67,8 @@ public partial class GameMaster : Node
         GetTree().Root.AddChild(battle);
         old.Free();
         //GetTree().ChangeSceneToFile(nextBattle);
+    }
+    public StoryState GetStoryState(){
+        return state;
     }
 }

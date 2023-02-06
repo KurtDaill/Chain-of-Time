@@ -10,4 +10,12 @@ public class Response{
         this.condition = condition;
         this.nextExchange = nextExchange;
     }
+
+    public string GetText(){
+        return text;
+    }
+
+    public int GetNextExchangeIndex(){
+        return nextExchange;
+    }
 }

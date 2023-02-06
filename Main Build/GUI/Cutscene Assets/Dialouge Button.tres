@@ -1,0 +1,17 @@
+[gd_resource type="AnimatedTexture" load_steps=4 format=3 uid="uid://b5ufkb4e1eno2"]
+
+[ext_resource type="Texture2D" uid="uid://emfs50durcwf" path="res://GUI/Cutscene Assets/Dialogue A Button 1.png" id="1_ifu6t"]
+[ext_resource type="Texture2D" uid="uid://kvxxdc7prse0" path="res://GUI/Cutscene Assets/Dialogue A Button 2.png" id="2_hxbk0"]
+[ext_resource type="Texture2D" uid="uid://1f5tj88ug6ws" path="res://GUI/Cutscene Assets/Dialogue A Button 3.png" id="3_6kv2m"]
+
+[resource]
+frames = 4
+one_shot = true
+frame_0/texture = ExtResource("1_ifu6t")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("2_hxbk0")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("3_6kv2m")
+frame_2/duration = 0.2
+frame_3/texture = ExtResource("1_ifu6t")
+frame_3/duration = 0.2

@@ -40,7 +40,7 @@ public static class ScreenPlayLoader{
                 while(textQueue.Peek() != ""){
                     exchangeLines.Enqueue(textQueue.Dequeue());
                 }
-                var newExchange = ParseExchange(exchangeLines, exchangeDirectory);
+                var newExchange = ParseExchange(exchangeLines, exchangeDirectory); 
 
                 if(newExchange != null) exchanges.Add(newExchange);
             } 
@@ -80,17 +80,21 @@ public static class ScreenPlayLoader{
             var textLine = rawExchange.Dequeue().Trim();
             if(textLine.StartsWith("[")){ //Brackets indicate action lines
                 if(textLine.StartsWith("[MOD") || textLine.StartsWith("[SET")){
-                    linesInExchange.Enqueue(new Line("[ACT]", "[SET]", null, HandleModifier(textLine), null));
+                    linesInExchange.Enqueue(new Line("[SET/MOD]", "[ACT]", null, HandleModifier(textLine), null));
                 }
                 else if(textLine.StartsWith("[ANIM")){
                     textLine = textLine.Remove(0, textLine.IndexOf("(") + 1); //Removes "[ANIM("
                     textLine = textLine.Remove(textLine.Length - 2); //Removes the last ")]"
                     textLine = textLine.Trim();
-                    linesInExchange.Enqueue(new Line("[ACT]", "[ANIM]", null, null, textLine));
+                    linesInExchange.Enqueue(new Line("[ANIM]", "[ACT]", null, null, textLine));
                 }
                 else{
                     throw new NotImplementedException(); //TODO Custom exception, unknown action line in script
                 }
+            }else if(textLine.StartsWith("{")){
+                responses = ParseResponses(textLine, rawExchange, exchangeDirectory);
+                linesInExchange.Enqueue(new ResponseLine(responses));
+                return new Exchange(linesInExchange);
             }else{ //This should be a dialogue line, possibly with textEffects
                 string characterName = textLine.Substring(0, textLine.IndexOf(":"));
                 textLine = textLine.Remove(0, textLine.IndexOf(":") + 1).Trim();
@@ -99,15 +103,9 @@ public static class ScreenPlayLoader{
                     gotoIndex = ParseGotoStatement(textLine, exchangeDirectory, out var newLine);
                     textLine = newLine;
                 }
-                textLine = textLine.Substring(1, textLine.Length - 3);
+                textLine = textLine.Substring(1, textLine.Length - 2);
                 string finalLine;
                 TextEffect[] effects = ParseLineTextEffects(textLine, out finalLine);
-                if(rawExchange.Count > 0 && rawExchange.Peek().StartsWith("{")){//Curly Braces indicate Options! These are nessicarily the end of this exchange. We check them here to append them to the last line
-                    //TODO: BUG. Putting an action block just before an option breaks this.
-                    responses = ParseResponses(rawExchange, exchangeDirectory);
-                    linesInExchange.Enqueue(new Line(finalLine, characterName, effects, null, null, -1, responses));
-                    break;
-                }
                 linesInExchange.Enqueue(new Line(finalLine, characterName, effects, null, null));
             }
         }
@@ -156,10 +154,17 @@ public static class ScreenPlayLoader{
         return -1;
     }
 
-    private static Response[] ParseResponses(Queue<string> responseLines, List<(string, int)> exchangeDirectory){
+    private static Response[] ParseResponses(string firstLine, Queue<string> responseLines, List<(string, int)> exchangeDirectory){
         List<Response> responses = new List<Response>();
+        var textLine = firstLine;
+        var tempQueue =  new Queue<string>();
+        tempQueue.Enqueue(firstLine);
+        foreach(string line in responseLines){ //TODO Make this lest ugly re: having to readd the first line to the queue
+            tempQueue.Enqueue(line);
+        }
+        responseLines = tempQueue;
         while(responseLines.Count > 0){
-            var textLine = responseLines.Dequeue();
+            textLine = responseLines.Dequeue();
             textLine = textLine.Remove(0, 4).Trim(); //Removes "{OPT"
             
             ResponseCondition condition = null;
@@ -205,8 +210,8 @@ public static class ScreenPlayLoader{
                 nextExchangeIndex = ParseGotoStatement(textLine, exchangeDirectory, out textLine);
             }
 
-            //The Substring call removes the "" from the text.
-            string responseText =  textLine.Substring(1, textLine.Length - 2);
+            //The Substring call removes the extra "" from the text.
+            string responseText =  textLine.Substring(1, textLine.Length - 1);
     
             responses.Add(new Response(responseText, condition, nextExchangeIndex)); 
 

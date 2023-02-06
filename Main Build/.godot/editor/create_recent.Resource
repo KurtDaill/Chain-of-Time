@@ -1,3 +1,4 @@
+AnimatedTexture
 Theme
 ViewportTexture
 Resource

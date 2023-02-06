@@ -1,4 +1,8 @@
+res://GUI/Cutscene Assets
+res://GUI/Battle Ability GUI Assets
+res://GUI/Themes/Dialogue
 res://
+res://Cutscenes
 C:/Users/kdail/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Visual Studio Code
 res://Battle Mode
 res://Levels
@@ -9,7 +13,6 @@ res://GUI/Battle Menu Assets/Status Icons
 res://GUI/Battle Menu Assets
 res://Art
 res://Battle Mode/Player Characters/Abilities
-res://GUI/Battle Ability GUI Assets
 res://Fonts
 res://Battle Mode/GUI
 res://Art/3D
@@ -17,5 +20,3 @@ res://GUI/Battle Menu Assets/Readouts
 res://GUI
 res://Art/Textures
 res://Battle Mode/Enemies
-res://Battle Mode/Player Characters
-res://GUI/Battle Menu Assets/Party Menu

@@ -2,15 +2,21 @@ using System;
 
 public class ScreenPlay{
     Exchange[] exchanges;
-    int currentIndex;
 
     public ScreenPlay(Exchange[] exchanges){
         this.exchanges = exchanges;
-        currentIndex = 0;
     }
 
     public Exchange Start(){
-        currentIndex = 0;
-        return exchanges[currentIndex];
+        return exchanges[0];
+    }
+
+    public bool TryGetExchange(int index, out Exchange newExchange){
+        if(exchanges.Length > index){
+            newExchange = exchanges[index];
+            return true;
+        }
+        newExchange = null;
+        return false;
     }
 }

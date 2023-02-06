@@ -4,3 +4,4 @@
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
+texture_filter = 1

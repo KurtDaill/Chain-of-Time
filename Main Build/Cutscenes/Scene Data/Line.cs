@@ -1,24 +1,23 @@
 using System;
 
 public class Line{
-    private string text;
-    private string speaker;
-    private TextEffect[] effects;
-    private ScreenplayModifier mods;
-    private string animation;
-    private int gotoIndex;
+    protected string text;
+    protected string speaker;
+    protected TextEffect[] effects;
+    protected ScreenplayModifier mod;
+    protected string animation; 
+    protected int gotoIndex;
 
-    private Response[] responses;
-
-    public Line(string text, string speaker, TextEffect[] effects, ScreenplayModifier mods, string animation, int gotoIndex = -1, Response[] responses = null){
+    public Line(string text, string speaker, TextEffect[] effects, ScreenplayModifier mod, string animation, int gotoIndex = -1, Response[] responses = null){
         this.text = text;
         this.speaker = speaker;
         this.effects = effects;
-        this.mods = mods;
+        this.mod = mod;
         this.animation = animation;
         this.gotoIndex = gotoIndex;
-        this.responses = responses;
     }
+
+    public Line(){}
 
     public string GetText(){
         return text;
@@ -27,8 +26,7 @@ public class Line{
         return speaker;
     }
 
-    public bool GetResponses(out Response[] responses){
-            responses = this.responses;
-            return (this.responses != null);
+    public ScreenplayModifier GetModifier(){
+        return mod;
     }
 }

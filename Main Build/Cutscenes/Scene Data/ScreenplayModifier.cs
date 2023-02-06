@@ -2,19 +2,31 @@ using System;
 
 public class ScreenplayModifier{
     private bool modIsInt = true;
-    private int mod;
+    private int value;
     private string valueKey;
 
     bool isSetter;
 
-    public ScreenplayModifier(bool modIsInt, int mod, string valueKey, bool isSetter = false){
+    public ScreenplayModifier(bool modIsInt, int value, string valueKey, bool isSetter = false){
         this.modIsInt = modIsInt;
-        this.mod = mod;
+        this.value = value;
         this.valueKey = valueKey;
         this.isSetter = isSetter;
     }
 
-    public bool DoesThisUseIntegers(){
+    public bool IsInt(){
         return modIsInt;
+    }
+
+    public bool IsSetter(){
+        return isSetter;
+    }
+
+    public string GetKey(){
+        return valueKey;
+    }
+
+    public int GetValue(){
+        return value;
     }
 }
