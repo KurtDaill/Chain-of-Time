@@ -29,4 +29,8 @@ public class Line{
     public ScreenplayModifier GetModifier(){
         return mod;
     }
+
+    public int GetGotoIndex(){
+        return gotoIndex;
+    }
 }

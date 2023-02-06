@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c86nvd5i2frn"]
+[gd_scene load_steps=21 format=3 uid="uid://c86nvd5i2frn"]
 
 [ext_resource type="Script" path="res://Cutscenes/CutsceneDirector.cs" id="1_hohda"]
 [ext_resource type="Texture2D" uid="uid://beln8ffrnhd44" path="res://Art/Kell Cato Master Sprite-Sheet.png" id="1_sx57d"]
@@ -50,12 +50,58 @@ grow = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_1qhu8"]
 size = Vector2(10, 5)
 
+[sub_resource type="Animation" id="Animation_vb05m"]
+resource_name = "Open"
+length = 0.2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.0237161, 0.00606333, 1, -0.0468616, 0.346494, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+
+[sub_resource type="Animation" id="Animation_063yh"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ecve"]
+_data = {
+"Open": SubResource("Animation_vb05m"),
+"RESET": SubResource("Animation_063yh")
+}
+
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("dLabel", "resContainer")]
 script = ExtResource("1_hohda")
 filepath = "res://Example Script.txt"
 dLabel = NodePath("TextBox Containers/LineContainer/Dialogue VP/Dialogue Label")
 dialogueNextAction = "ui_accept"
-resContainer = NodePath("TextBox Containers/Response Container/Response VP/Response Container")
+resContainer = NodePath("TextBox Containers/Response VPContainer/Response VP/Response Container")
 
 [node name="Cato" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, 0)
@@ -68,10 +114,10 @@ hframes = 10
 vframes = 14
 
 [node name="Response Plane" type="MeshInstance3D" parent="Cato" node_paths=PackedStringArray("targetViewPort")]
-transform = Transform3D(0.896575, 0, 0.0784401, 0, 0.9, 0, -0.0784401, 0, 0.896575, -0.52, 2.96, 0.2)
+transform = Transform3D(0.896575, 0, 0.0716036, 0, 0.9, 0, -0.0784401, 0, 0.818433, -0.84, 2.96, 0.2)
 mesh = SubResource("QuadMesh_3isku")
 script = ExtResource("3_lb1a5")
-targetViewPort = NodePath("../../TextBox Containers/Response Container/Response VP")
+targetViewPort = NodePath("../../TextBox Containers/Response VPContainer/Response VP")
 
 [node name="Silver" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84, 0, 0)
@@ -97,11 +143,11 @@ mesh = SubResource("PlaneMesh_1qhu8")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, -0.291028, 1.88, 4.24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.28, 5.96)
 
 [node name="TextBox Containers" type="Node" parent="."]
 
-[node name="Response Container" type="SubViewportContainer" parent="TextBox Containers"]
+[node name="Response VPContainer" type="SubViewportContainer" parent="TextBox Containers"]
 anchors_preset = -1
 anchor_left = 600.0
 anchor_right = 600.0
@@ -109,28 +155,29 @@ offset_left = -1.1508e+06
 offset_top = -600.0
 offset_right = -1.1496e+06
 
-[node name="Response VP" type="SubViewport" parent="TextBox Containers/Response Container"]
+[node name="Response VP" type="SubViewport" parent="TextBox Containers/Response VPContainer"]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1200, 600)
 render_target_update_mode = 4
 
-[node name="Response Container" type="VBoxContainer" parent="TextBox Containers/Response Container/Response VP" node_paths=PackedStringArray("director")]
+[node name="Response Container" type="VBoxContainer" parent="TextBox Containers/Response VPContainer/Response VP" node_paths=PackedStringArray("director")]
 layout_direction = 2
 offset_right = 1200.0
 offset_bottom = 600.0
+scale = Vector2(1e-05, 1)
 theme = ExtResource("9_x8k6j")
 script = ExtResource("5_3lq6q")
 director = NodePath("../../../..")
 
-[node name="Option 1" type="RichTextLabel" parent="TextBox Containers/Response Container/Response VP/Response Container"]
+[node name="Option 1" type="RichTextLabel" parent="TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
 fit_content_height = true
 
-[node name="Highlight" type="ColorRect" parent="TextBox Containers/Response Container/Response VP/Response Container/Option 1"]
+[node name="Highlight" type="ColorRect" parent="TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
 show_behind_parent = true
 layout_mode = 0
@@ -139,11 +186,11 @@ offset_right = 1201.0
 offset_bottom = 150.0
 color = Color(1, 1, 1, 0.784314)
 
-[node name="Spacer 1" type="TextureRect" parent="TextBox Containers/Response Container/Response VP/Response Container"]
+[node name="Spacer 1" type="TextureRect" parent="TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="Option 2" type="RichTextLabel" parent="TextBox Containers/Response Container/Response VP/Response Container"]
+[node name="Option 2" type="RichTextLabel" parent="TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
@@ -151,7 +198,7 @@ bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
 fit_content_height = true
 
-[node name="Highlight" type="ColorRect" parent="TextBox Containers/Response Container/Response VP/Response Container/Option 2"]
+[node name="Highlight" type="ColorRect" parent="TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
 layout_mode = 0
 offset_left = 1.0
@@ -159,11 +206,11 @@ offset_right = 1201.0
 offset_bottom = 150.0
 color = Color(1, 1, 1, 0.784314)
 
-[node name="Spacer 2" type="TextureRect" parent="TextBox Containers/Response Container/Response VP/Response Container"]
+[node name="Spacer 2" type="TextureRect" parent="TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="Option 3" type="RichTextLabel" parent="TextBox Containers/Response Container/Response VP/Response Container"]
+[node name="Option 3" type="RichTextLabel" parent="TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
@@ -171,7 +218,7 @@ bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
 fit_content_height = true
 
-[node name="Highlight" type="ColorRect" parent="TextBox Containers/Response Container/Response VP/Response Container/Option 3"]
+[node name="Highlight" type="ColorRect" parent="TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
 show_behind_parent = true
 layout_mode = 0
@@ -181,11 +228,11 @@ offset_right = 1201.0
 offset_bottom = 147.0
 color = Color(1, 1, 1, 0.784314)
 
-[node name="Spacer 3" type="TextureRect" parent="TextBox Containers/Response Container/Response VP/Response Container"]
+[node name="Spacer 3" type="TextureRect" parent="TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="Option 4" type="RichTextLabel" parent="TextBox Containers/Response Container/Response VP/Response Container"]
+[node name="Option 4" type="RichTextLabel" parent="TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
@@ -195,7 +242,7 @@ fit_content_height = true
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="Highlight" type="ColorRect" parent="TextBox Containers/Response Container/Response VP/Response Container/Option 4"]
+[node name="Highlight" type="ColorRect" parent="TextBox Containers/Response VPContainer/Response VP/Response Container/Option 4"]
 visible = false
 show_behind_parent = true
 clip_contents = true
@@ -205,6 +252,11 @@ offset_top = -3.0
 offset_right = 1201.0
 offset_bottom = 147.0
 color = Color(1, 1, 1, 0.784314)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextBox Containers/Response VPContainer/Response VP/Response Container"]
+libraries = {
+"": SubResource("AnimationLibrary_5ecve")
+}
 
 [node name="LineContainer" type="SubViewportContainer" parent="TextBox Containers"]
 offset_top = -400.0
@@ -216,6 +268,7 @@ process_priority = 1
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1200, 400)
+render_target_update_mode = 4
 
 [node name="Dialogue Label" type="RichTextLabel" parent="TextBox Containers/LineContainer/Dialogue VP" node_paths=PackedStringArray("speakerLabel")]
 clip_contents = false
@@ -229,6 +282,7 @@ text = "Test text, motherfucker. What's good?
 It's gonna just keep going and going to show you how long it gets!"
 script = ExtResource("8_udkc6")
 speakerLabel = NodePath("Name Plate")
+charactersPerSecond = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
 layout_mode = 0

@@ -15,9 +15,8 @@ public partial class ResponseContainer : VBoxContainer
 
 	[Export]
 	private CutsceneDirector director;
-	
-	[Signal]
-	public delegate void FinishedRespondingEventHandler();
+
+	private AnimationPlayer animPlay;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -27,7 +26,8 @@ public partial class ResponseContainer : VBoxContainer
 			if(child is RichTextLabel) responseLabels.Add((RichTextLabel)child);
 		}
 		responseObjects = new Response[responseLabels.Count];
-		ClearLabels();
+		Clear();
+		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,14 +48,14 @@ public partial class ResponseContainer : VBoxContainer
 			}else if(Input.IsActionJustPressed("ui_accept")){
 				director.MoveToNewExchange(responseObjects[selectedResponse].GetNextExchangeIndex());
 				this.responding = false;
-				ClearLabels();
+				Clear();
 			}
 		}
 		if(initialInputDelay > 0) initialInputDelay--;
 	}
 
 	public void DisplayResponses(Response[] responses){
-		ClearLabels();
+		Clear();
 		
 		responseObjects = responses;
 		for(int i = 0; i < responses.Length; i++){
@@ -65,14 +65,16 @@ public partial class ResponseContainer : VBoxContainer
 		responding = true;
 		selectedResponse = 0;
 		initialInputDelay = 20; //TODO: Make this more professional
+		animPlay.Play("Open");
 	}
 
-	public void ClearLabels(){
+	public void Clear(){
 		foreach(RichTextLabel label in responseLabels){
 			label.Text = "";
 		}
 		for(int i = 0; i < responseLabels.Count; i++){
 				responseLabels[i].GetChild<ColorRect>(0).Visible = false;
 		}
+		this.Scale = new Vector2(0,1); //Resets the scale such that the open animation doesn't stutter
 	}
 }

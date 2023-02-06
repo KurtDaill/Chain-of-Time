@@ -106,7 +106,7 @@ public static class ScreenPlayLoader{
                 textLine = textLine.Substring(1, textLine.Length - 2);
                 string finalLine;
                 TextEffect[] effects = ParseLineTextEffects(textLine, out finalLine);
-                linesInExchange.Enqueue(new Line(finalLine, characterName, effects, null, null));
+                linesInExchange.Enqueue(new Line(finalLine, characterName, effects, null, null, gotoIndex));
             }
         }
         return new Exchange(linesInExchange);
@@ -210,8 +210,7 @@ public static class ScreenPlayLoader{
                 nextExchangeIndex = ParseGotoStatement(textLine, exchangeDirectory, out textLine);
             }
 
-            //The Substring call removes the extra "" from the text.
-            string responseText =  textLine.Substring(1, textLine.Length - 1);
+            string responseText =  textLine.Trim();
     
             responses.Add(new Response(responseText, condition, nextExchangeIndex)); 
 

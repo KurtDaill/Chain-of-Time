@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cy6vx1q4jw5m"]
-
-[ext_resource type="Script" path="res://Cutscenes/CutsceneDirector.cs" id="1_jr4id"]
-
-[node name="TempTest" type="Node3D"]
-script = ExtResource("1_jr4id")
-filepath = "res://Example Script.txt"

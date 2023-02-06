@@ -1,3 +1,4 @@
+AnimationPlayer
 TextureRect
 Node
 MeshInstance3D
@@ -15,7 +16,6 @@ Container
 CanvasLayer
 Node3D
 Sprite3D
-AnimationPlayer
 CSGMesh3D
 CSGBox3D
 Window

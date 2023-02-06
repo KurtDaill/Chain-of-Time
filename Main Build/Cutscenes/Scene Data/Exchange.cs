@@ -9,6 +9,7 @@ public class Exchange{
     }
 
     public Line GetNextLine(){
+        if(lines.Count == 0) return null;
         return lines.Dequeue();
     }
 
