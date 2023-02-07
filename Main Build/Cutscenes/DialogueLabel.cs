@@ -8,9 +8,16 @@ public partial class DialogueLabel : RichTextLabel
 	public RichTextLabel speakerLabel;
 
 	[Export]
-	public int charactersPerSecond;
+	public double charactersPerSecond;
 
 	private double displayTime;
+
+	[Export]
+	private AudioStreamPlayer voice;
+
+	[Export]
+	private int voiceLetterRatio;
+	private int voiceTimer = 0;
 
 	private double timer;
 	// Called when the node enters the scene tree for the first time.
@@ -23,10 +30,26 @@ public partial class DialogueLabel : RichTextLabel
 	public override void _Process(double delta)
 	{
 		//Handle Inputs
-		timer += delta;
-		if(timer > displayTime){
+		if(timer >= displayTime){
 			timer -= displayTime;
-			if(this.VisibleCharacters < this.Text.Length) this.VisibleCharacters++; 
+			if(this.VisibleCharacters < this.Text.Length){
+				this.VisibleCharacters++;
+				if(this.Text[VisibleCharacters - 1] == '.' || this.Text[VisibleCharacters - 1] == '?'|| this.Text[VisibleCharacters - 1] == '!'){ //if this letter is a period
+					timer -= 0.5; //we wait longer
+					voiceTimer = voiceLetterRatio;
+				}else if(this.Text[VisibleCharacters - 1] == ','|| this.Text[VisibleCharacters - 1] == ';'){ //if this letter is a comma/semi-colon
+					timer -= 0.25; //we wait longer
+				}
+
+				if(voiceTimer >= voiceLetterRatio){
+					voice.Play();
+					voiceTimer = 0;
+				}else{
+					voiceTimer++;
+				}
+			}
+		}else{
+			timer += delta;
 		}
 	}
 
@@ -34,6 +57,7 @@ public partial class DialogueLabel : RichTextLabel
 		this.Text = newLine.GetText();
 		this.VisibleCharacters = 0;
 		this.speakerLabel.Text = " " + newLine.GetSpeaker(); //Added a space to fit the text box better
+		timer = 0;
 	}
 
 	public void ClearLine(){

@@ -1,3 +1,4 @@
+AudioStreamPlayer
 AnimationPlayer
 TextureRect
 Node
@@ -25,7 +26,6 @@ CharacterBody3D
 StaticBody3D
 SpotLight3D
 OmniLight3D
-AudioStreamPlayer
 GPUParticles3D
 Label3D
 AnimatedSprite3D
