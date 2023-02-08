@@ -1,7 +1,1 @@
-res://Cutscene Test.tscn
-res://GUI/Themes/Dialogue/Normal Response.tres
-res://GUI/Themes/Dialogue/DisabledResponse.tres
-res://3DTextboxTexture.tres
-res://TempTest.tscn
-res://GUI/Cutscene Assets/Dialouge Button.tres
-res://ExampleStoryState.tres
+res://Timewalk Test.tscn

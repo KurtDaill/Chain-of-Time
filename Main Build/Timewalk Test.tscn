@@ -1,0 +1,379 @@
+[gd_scene load_steps=10 format=3 uid="uid://be7pjlh6v1ikj"]
+
+[ext_resource type="Texture2D" uid="uid://b4bhsaihwdgdx" path="res://Art/Time Walk Heart-Sheet.png" id="2_6nqmu"]
+[ext_resource type="Texture2D" uid="uid://beln8ffrnhd44" path="res://Art/Kell Cato Master Sprite-Sheet.png" id="2_n2m4d"]
+
+[sub_resource type="Animation" id="Animation_20fdu"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCombiner3D/Subtract Sphere:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGCombiner3D2/Visible Sphere:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cato/CenterRef/Camera3D:fov")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cato/Heart/OmniLight3D:light_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.827451, 0.34902, 1, 1)]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cato/Heart/OmniLight3D:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cato/Heart:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cato/Heart:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_uk8v7"]
+resource_name = "Timewalk"
+length = 4.2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Cato/CenterRef:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cato/CenterRef:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.9, -0.900698, 6.28319, -0.7, 0.298233, 0.25, 0),
+"times": PackedFloat32Array(0, 2.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Cato/CenterRef:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CSGCombiner3D/Subtract Sphere:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 12, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.3)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CSGCombiner3D2/Visible Sphere:radius")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 12, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.2, 2.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cato/CenterRef/Camera3D:fov")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(75, -0.25, 0, 0.5, -10.6725, 5, -0.4, 0.285224, 0.4, 0.00614262, 5, -0.25, 0, 0, -0.543505, 4, -0.25, 0, 0.0497661, 38.2758, 75, -0.550234, 16.4542, 0.25, 0),
+"times": PackedFloat32Array(0, 2.4, 3, 3.2, 4.2)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CSGCombiner3D2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Cato/Sprite:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 3, 3.3, 3.6, 4, 4.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 30, 31, 33, 34, 35, 36, 30, 0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Cato/Heart/OmniLight3D:light_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2.9, 3, 3.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.827451, 0.34902, 1, 1), Color(0.827451, 0.34902, 1, 1), Color(0, 0.733333, 1, 1), Color(0, 0.733333, 1, 1)]
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Cato/Heart/OmniLight3D:light_energy")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.5, -0.25, 0, 0.25, 0, 2.5, -0.25, 0, 0.25, 0, 2.5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.9, 3, 3.2, 3.6)
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Cato/Heart:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 2.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.784314)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Cato/Heart:frame")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_t7565"]
+resource_name = "Return"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCombiner3D/Subtract Sphere:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(12, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGCombiner3D2/Visible Sphere:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(12, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.9)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cato/CenterRef/Camera3D:fov")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(75, -0.25, 0, 0.351957, 0.0198135, 67.5, -0.495422, 0.0135498, 0.25, 0, 67.5, -0.25, 0, 0.370268, 0.0135498, 75, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.793232, 1.2, 2)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cato/Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.1, 1.3, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 6, 0, 6, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4kjo8"]
+_data = {
+"RESET": SubResource("Animation_20fdu"),
+"Return": SubResource("Animation_t7565"),
+"Timewalk": SubResource("Animation_uk8v7")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6p7fq"]
+albedo_color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sko5o"]
+albedo_color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_toa2o"]
+albedo_color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4kjo8")
+}
+
+[node name="Cato" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04, 0.08, 0)
+
+[node name="Heart" type="Sprite3D" parent="Cato"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72, 1.6, 4.64)
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.008
+texture = ExtResource("2_6nqmu")
+hframes = 11
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Cato/Heart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 0.08, 0)
+light_color = Color(0.827451, 0.34902, 1, 1)
+light_energy = 0.0
+
+[node name="Sprite" type="Sprite3D" parent="Cato"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 1.6, 4.6)
+pixel_size = 0.008
+shaded = true
+alpha_cut = 1
+texture = ExtResource("2_n2m4d")
+hframes = 10
+vframes = 15
+
+[node name="CenterRef" type="Node3D" parent="Cato"]
+transform = Transform3D(1, 0, 4.46638e-06, 0, 1, 0, -4.46638e-06, 0, 1, -0.76, 0.32, 4.6)
+
+[node name="Camera3D" type="Camera3D" parent="Cato/CenterRef"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0.08, 4, 13.36)
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
+
+[node name="Past" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, 3.72)
+size = Vector3(13.6, 1, 11.44)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D2/Past"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.48, 0.68, -4.36)
+size = Vector3(1, 8.16, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D2/Past"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36, 0.68, -4.36)
+size = Vector3(1, 8.16, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D2/Past"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.44, 0.68, -4.36)
+size = Vector3(1, 8.16, 1)
+
+[node name="Visible Sphere" type="CSGSphere3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04, 1.6, 4.6)
+operation = 1
+radius = 12.0
+radial_segments = 24
+rings = 24
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, 3.72)
+
+[node name="Present" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(13.6, 1, 11.44)
+material = SubResource("StandardMaterial3D_6p7fq")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/Present"]
+transform = Transform3D(0.866025, 0.482963, -0.12941, -0.5, 0.836516, -0.224144, 0, 0.258819, 0.965926, -5.48, -1.16, -4.36)
+size = Vector3(1, 8.16, 1)
+material = SubResource("StandardMaterial3D_sko5o")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/Present"]
+transform = Transform3D(0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, 0.36, 0.68, -4.36)
+size = Vector3(1, 3.68, 1)
+material = SubResource("StandardMaterial3D_toa2o")
+
+[node name="Subtract Sphere" type="CSGSphere3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 1.8, 0.84)
+operation = 2
+radius = 12.0
+radial_segments = 24
+rings = 24
