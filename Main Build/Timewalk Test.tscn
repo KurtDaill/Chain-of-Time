@@ -229,7 +229,7 @@ tracks/11/keys = {
 
 [sub_resource type="Animation" id="Animation_t7565"]
 resource_name = "Return"
-length = 2.0
+length = 2.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -239,7 +239,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(12, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.1, 2)
+"times": PackedFloat32Array(0.1, 2.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -250,7 +250,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(12, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.9)
+"times": PackedFloat32Array(0, 2.4)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -260,8 +260,8 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(75, -0.25, 0, 0.351957, 0.0198135, 67.5, -0.495422, 0.0135498, 0.25, 0, 67.5, -0.25, 0, 0.370268, 0.0135498, 75, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.793232, 1.2, 2)
+"points": PackedFloat32Array(75, -0.25, 0, 0.351957, 0.0198135, 20, -0.8, -0.0330296, 0.25, 0, 20, -0.25, 0, 0.370268, 0.0135498, 75, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.9, 1.8, 2.5)
 }
 tracks/3/type = "value"
 tracks/3/imported = false

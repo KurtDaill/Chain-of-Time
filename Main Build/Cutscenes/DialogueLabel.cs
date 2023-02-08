@@ -19,11 +19,15 @@ public partial class DialogueLabel : RichTextLabel
 	private int voiceLetterRatio;
 	private int voiceTimer = 0;
 
+	private TextureRect button;
+
 	private double timer;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		displayTime = 1/charactersPerSecond;
+		button = this.GetNode<TextureRect>("Button");
+		button.Visible = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,11 +61,13 @@ public partial class DialogueLabel : RichTextLabel
 		this.Text = newLine.GetText();
 		this.VisibleCharacters = 0;
 		this.speakerLabel.Text = " " + newLine.GetSpeaker(); //Added a space to fit the text box better
+		button.Visible = true;
 		timer = 0;
 	}
 
 	public void ClearLine(){
 		this.Text = "";
 		this.speakerLabel.Text = "";
+		button.Visible = false;
 	}
 }

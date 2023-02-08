@@ -8,10 +8,8 @@
 
 ~Silver's Snark
 	Silver: "What? Forget your lunchbox?"
-	[ANIM(SilverFacepalm)]
 	Silver: "This is what I get with working with planet-huggers..."
 	[MOD(silverRep, -5)]	
-	[ANIM(SilverFinishFacepalm)]
 	Silver: "Look, those skeletons are probably coming back, so..." GOTO: Timewarp
 	
 ~Remind

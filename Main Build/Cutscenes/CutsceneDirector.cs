@@ -18,7 +18,9 @@ public partial class CutsceneDirector : Node3D
 
 	private Line currentLine;
 
-	private bool waitingOnResponse = false;
+	AnimationPlayer animPlay;
+
+	private bool waiting = false;
 	public override void _Ready(){
 		FileAccess file = FileAccess.Open(filepath, FileAccess.ModeFlags.Read);
 		List<string>lines = new List<string>();
@@ -31,12 +33,13 @@ public partial class CutsceneDirector : Node3D
 		currentExchange = play.Start();
 		currentLine = currentExchange.GetNextLine();
 		DisplayLine(currentLine);
+		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
 		
 	}
 
     public override void _Process(double delta)
     {
-		if(waitingOnResponse) return;
+		if(waiting) return;
 
         if(Input.IsActionJustPressed(dialogueNextAction)){
 			if(currentLine.GetGotoIndex() != -1){
@@ -51,24 +54,31 @@ public partial class CutsceneDirector : Node3D
 	public void MoveToNewExchange(int newIndex){
 		if(play.TryGetExchange(newIndex, out Exchange newExchange)){
 			currentExchange = newExchange;
-			waitingOnResponse = false;
+			waiting = false;
 		}
 		else throw new NotImplementedException(); //TODO Custom Exception: No exchange with given index
 		currentLine = currentExchange.GetNextLine();
 		DisplayLine(currentLine);
 	}
 
-	public void DisplayLine(Line line){
+	public async void DisplayLine(Line line){
 		switch(line.GetText()){
 			case "{OPT}" :
 				//we hand off control to the response object
 				resContainer.DisplayResponses(((ResponseLine)line).GetResponses());
-				waitingOnResponse = true;
+				waiting = true;
 				break; 
 			case "[ANIM]" :
 				//Play the animation, wait for signal from animation player
+					//currentLine = currentExchange.GetNextLine();
+					//DisplayLine(currentLine); //Temp code, ignores animation lines
+					animPlay.Play(line.GetAnimation());
+					dLabel.ClearLine();
+					waiting = true;
+					await ToSignal(animPlay, "animation_finished");
+					waiting = false;
 					currentLine = currentExchange.GetNextLine();
-					DisplayLine(currentLine); //Temp code, ignores animation lines
+					DisplayLine(currentLine);
 				break;
 			case "[SET/MOD]" :
 				//Mod the value in story state

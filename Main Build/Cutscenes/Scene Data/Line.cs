@@ -33,4 +33,8 @@ public class Line{
     public int GetGotoIndex(){
         return gotoIndex;
     }
+
+    public string GetAnimation(){
+        return animation;
+    }
 }
