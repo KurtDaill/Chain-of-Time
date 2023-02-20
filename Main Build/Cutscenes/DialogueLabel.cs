@@ -28,6 +28,7 @@ public partial class DialogueLabel : RichTextLabel
 		displayTime = 1/charactersPerSecond;
 		button = this.GetNode<TextureRect>("Button");
 		button.Visible = false;
+		ClearLine();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,10 +40,10 @@ public partial class DialogueLabel : RichTextLabel
 			if(this.VisibleCharacters < this.Text.Length){
 				this.VisibleCharacters++;
 				if(this.Text[VisibleCharacters - 1] == '.' || this.Text[VisibleCharacters - 1] == '?'|| this.Text[VisibleCharacters - 1] == '!'){ //if this letter is a period
-					timer -= 0.5; //we wait longer
+					timer -= 0.25; //we wait longer
 					voiceTimer = voiceLetterRatio;
 				}else if(this.Text[VisibleCharacters - 1] == ','|| this.Text[VisibleCharacters - 1] == ';'){ //if this letter is a comma/semi-colon
-					timer -= 0.25; //we wait longer
+					timer -= 0.12; //we wait longer
 				}
 
 				if(voiceTimer >= voiceLetterRatio){

@@ -46,9 +46,12 @@ public partial class ResponseContainer : VBoxContainer
 					selectedResponse++;
 				}
 			}else if(Input.IsActionJustPressed("ui_accept")){
-				director.MoveToNewExchange(responseObjects[selectedResponse].GetNextExchangeIndex());
-				this.responding = false;
-				Clear();
+				if(responseObjects[selectedResponse].isEnd()) director.ExitCutscene();
+				else{
+					director.MoveToNewExchange(responseObjects[selectedResponse].GetNextExchangeIndex());
+					this.responding = false;
+					Clear();
+				}
 			}
 		}
 		if(initialInputDelay > 0) initialInputDelay--;

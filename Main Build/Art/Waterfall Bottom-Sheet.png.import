@@ -2,22 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tqpq8anoaf3y"
-path.s3tc="res://.godot/imported/Waterfall Bottom-Sheet.png-5d0ec6c464bfca2a223057ada291f871.s3tc.ctex"
-path.etc2="res://.godot/imported/Waterfall Bottom-Sheet.png-5d0ec6c464bfca2a223057ada291f871.etc2.ctex"
+uid="uid://cbyrxj23q5cec"
+path="res://.godot/imported/Waterfall Bottom-Sheet.png-5d0ec6c464bfca2a223057ada291f871.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Art/Waterfall Bottom-Sheet.png"
-dest_files=["res://.godot/imported/Waterfall Bottom-Sheet.png-5d0ec6c464bfca2a223057ada291f871.s3tc.ctex", "res://.godot/imported/Waterfall Bottom-Sheet.png-5d0ec6c464bfca2a223057ada291f871.etc2.ctex"]
+dest_files=["res://.godot/imported/Waterfall Bottom-Sheet.png-5d0ec6c464bfca2a223057ada291f871.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/bptc_ldr=0
@@ -27,10 +25,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

@@ -12,13 +12,18 @@ public partial class CutsceneDirector : Node3D
 	public string dialogueNextAction;
 	[Export]
 	public ResponseContainer resContainer;
-
+	[Export]
+	public string playerCharacterActor = "Cato";
+	[Export]
+	public ExplorePlayer sceneExplorePlayer;
 	ScreenPlay play;
 	private Exchange currentExchange;
 
 	private Line currentLine;
 
 	AnimationPlayer animPlay;
+
+	Dictionary<string, Actor> cast; 
 
 	private bool waiting = false;
 	public override void _Ready(){
@@ -32,9 +37,15 @@ public partial class CutsceneDirector : Node3D
 		play = ScreenPlayLoader.Load(lines.ToArray());
 		currentExchange = play.Start();
 		currentLine = currentExchange.GetNextLine();
-		DisplayLine(currentLine);
+		//DisplayLine(currentLine);
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
-		
+		cast = new Dictionary<string, Actor>();
+		foreach(Node node in this.GetChildren()){
+			if(node is Actor){
+				Actor child = (Actor) node;
+				cast.Add(child.GetActorName(), child);
+			}
+		}
 	}
 
     public override void _Process(double delta)
@@ -42,6 +53,9 @@ public partial class CutsceneDirector : Node3D
 		if(waiting) return;
 
         if(Input.IsActionJustPressed(dialogueNextAction)){
+			if(currentLine.isEnd()){
+				ExitCutscene();
+			}
 			if(currentLine.GetGotoIndex() != -1){
 				MoveToNewExchange(currentLine.GetGotoIndex());
 			}else{
@@ -89,7 +103,36 @@ public partial class CutsceneDirector : Node3D
 				break;
 			default : //This should just be a normal line 
 				dLabel.DisplayNewLine(line);
+				SetDialogueBalloons(line.GetSpeaker());
 				break;
+		}
+	}
+
+	public void StartDialogue(){
+		DisplayLine(currentLine);
+	}
+
+	public void StartCutscene(){
+		sceneExplorePlayer.SetPlayerControl(false);
+		sceneExplorePlayer.Visible = false;
+	}
+
+	public void ExitCutscene(){
+		GD.Print("Exit Cutscene");
+		resContainer.Clear();
+		dLabel.ClearLine();
+		GetNode<ExplorePlayer>("/root/Node3D/ExplorePlayer").SetPlayerControl(true);
+		GetNode<ExplorePlayer>("/root/Node3D/ExplorePlayer").Visible = true;
+		cast.TryGetValue(playerCharacterActor, out Actor temp);
+		temp.SetVisiblity(false);
+	}
+
+	public void SetDialogueBalloons(string speaker){
+		foreach(Actor actor in cast.Values){
+			actor.HideBalloon();
+			if(actor.GetActorName() == speaker){
+				actor.ShowBalloon();
+			}
 		}
 	}
 }

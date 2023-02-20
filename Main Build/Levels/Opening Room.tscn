@@ -1,0 +1,847 @@
+[gd_scene load_steps=37 format=3 uid="uid://csbrbv208g2ms"]
+
+[ext_resource type="PackedScene" uid="uid://bpjyhjhfb8py5" path="res://Art/3D/Intro Room.dae" id="1_sfjtq"]
+[ext_resource type="PackedScene" uid="uid://cg5iu6gwypnal" path="res://Art/3D/Intro Room Past.dae" id="2_tr4na"]
+[ext_resource type="PackedScene" uid="uid://d3c1467kmloin" path="res://Explore Mode/explore_player.tscn" id="3_jfni8"]
+[ext_resource type="Script" path="res://Cutscenes/CutsceneDirector.cs" id="4_qnukb"]
+[ext_resource type="Theme" uid="uid://1seddp4pg0du" path="res://GUI/Themes/Dialogue/Normal Response.tres" id="5_wjjgv"]
+[ext_resource type="Script" path="res://Cutscenes/ResponseContainer.cs" id="6_1uqqj"]
+[ext_resource type="Script" path="res://Cutscenes/DialogueLabel.cs" id="7_lifij"]
+[ext_resource type="Texture2D" uid="uid://b5ufkb4e1eno2" path="res://GUI/Cutscene Assets/Dialouge Button.tres" id="8_7881j"]
+[ext_resource type="AudioStream" uid="uid://c46e1lhntug4v" path="res://Audio/Dialogue Noise.wav" id="9_4xhoo"]
+[ext_resource type="Script" path="res://Cutscenes/Actor.cs" id="10_scg5i"]
+[ext_resource type="Texture2D" uid="uid://bqt17hfxjsf8q" path="res://Art/Kell Cinematic Master-Sheet.png" id="11_62d45"]
+[ext_resource type="Script" path="res://DialogueBillboard.cs" id="12_p2xst"]
+[ext_resource type="Texture2D" uid="uid://d4mntjthu4tm0" path="res://Art/Silver Cinematics Master-Sheet.png" id="13_pjsfm"]
+[ext_resource type="Texture2D" uid="uid://b7wwuoke21ev6" path="res://Art/SerSejanus.png" id="14_ktnhr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hlnua"]
+size = Vector3(72.08, 1.008, 7.032)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vwvtm"]
+size = Vector3(39.742, 9.584, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iowpy"]
+size = Vector3(8.64, 7.496, 1)
+
+[sub_resource type="Animation" id="Animation_vkexe"]
+resource_name = "Camera Truck and Zoom"
+length = 6.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-29.471, -0.25, 0, 0.25, 0, 1.44, -0.3, 4.46419, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3.499, -0.25, 0, 0.25, 0, 3.4988, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Camera3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(9.817, -0.25, 0, 0.25, 0, 9.81709, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Camera3D:fov")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(75, -0.25, 0, 1.8, -0.107552, 75, 0, 0.866035, 0.1, -1.49375, 60, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.8, 6)
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"StartCutscene"
+}, {
+"args": [],
+"method": &"StartDialogue"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_6fw7m"]
+resource_name = "CameraMovesBackToCenter"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-7.724, -0.25, 0, 0.25, 0, -3.942, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3.499, -0.25, 0, 0.25, 0, 3.499, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Camera3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(9.817, -0.25, 0, 0.25, 0, 9.817, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cato Actor/Dialogue Balloon:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector3(-1.16, 3.28, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dulrc"]
+resource_name = "CatoLooksAround"
+length = 4.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1.44, -0.25, 0, 0.25, 0, 1.44, -0.25, 0, 0.25, 0, 1.22, -0.25, 0, 0.25, 0, 1.66, -0.5, 0.000743508, 0.5, 0.000743508, 1, -0.3, -0.00188237, 0.25, 0, 0.998118, -0.25, 0, 0.542525, -0.098004, -7.724, -0.846859, -0.00317669, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6, 1.3, 2, 2.19923, 4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(3.4988, -0.25, 0, 0.25, 0, 3.4988, -0.25, 0, 0.25, 0, 3.499, -0.25, 0, 0.25, 0, 3.499, -0.25, 0, 0.25, 0, 3.499, -0.25, 0, 0.25, 0, 3.499, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6, 1.3, 2, 4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Camera3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(9.81709, -0.25, 0, 0.25, 0, 9.81709, -0.25, 0, 0.25, 0, 9.817, -0.25, 0, 0.25, 0, 9.817, -0.25, 0, 0.25, 0, 9.817, -0.25, 0, 0.25, 0, 9.817, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6, 1.3, 2, 4)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cato Actor/Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.8, 1, 1.5, 1.7, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32, 31, 30, 4]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cato Actor/Sprite:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite3D:modulate:r")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 1.4)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite3D:modulate:g")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.862745, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 1.4)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite3D:modulate:b")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.94902, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 1.4)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sprite3D:modulate:a")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.345098, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 1.4)
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Cato Actor/Dialogue Balloon:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 3.98453),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector3(-1.16, 3.28, 0), Vector3(-3.36, 3.28, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jk6sr"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-51.836, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(3.4988, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Camera3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(9.81709, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Camera3D:fov")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(75, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite3D:modulate:r")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite3D:modulate:g")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite3D:modulate:b")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite3D:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Cato Actor/Dialogue Balloon:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.16, 3.28, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Cato Actor/Sprite:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [28]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_16ild"]
+_data = {
+"Camera Truck and Zoom": SubResource("Animation_vkexe"),
+"CameraMovesBackToCenter": SubResource("Animation_6fw7m"),
+"CatoLooksAround": SubResource("Animation_dulrc"),
+"RESET": SubResource("Animation_jk6sr")
+}
+
+[sub_resource type="Animation" id="Animation_vb05m"]
+resource_name = "Open"
+length = 0.2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.0237161, 0.00606333, 1, -0.0468616, 0.346494, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+
+[sub_resource type="Animation" id="Animation_063yh"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ecve"]
+_data = {
+"Open": SubResource("Animation_vb05m"),
+"RESET": SubResource("Animation_063yh")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1jr0w"]
+viewport_path = NodePath("Intro Cutscene/TextBox Containers/Response VPContainer/Response VP")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lturl"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_1jr0w")
+
+[sub_resource type="QuadMesh" id="QuadMesh_8d21w"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_lturl")
+size = Vector2(6, 3)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gibyj"]
+viewport_path = NodePath("Intro Cutscene/TextBox Containers/LineContainer/Dialogue VP")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1c47x"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_gibyj")
+
+[sub_resource type="QuadMesh" id="QuadMesh_odowo"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_1c47x")
+size = Vector2(6, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5moo3"]
+viewport_path = NodePath("Intro Cutscene/TextBox Containers/LineContainer/Dialogue VP")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k5mqe"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_5moo3")
+texture_filter = 1
+grow = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_85rqb"]
+
+[sub_resource type="Sky" id="Sky_78hc4"]
+sky_material = SubResource("ProceduralSkyMaterial_85rqb")
+
+[sub_resource type="Environment" id="Environment_vt6gh"]
+background_mode = 2
+sky = SubResource("Sky_78hc4")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Intro Room" parent="." instance=ExtResource("1_sfjtq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.04, 0.52, -1.64)
+
+[node name="Intro Room Past" parent="." instance=ExtResource("2_tr4na")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.04, 0.52, -1.64)
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999093, 0.0425732, 0, -0.0425732, 0.999093, -51.836, 3.4988, 9.81709)
+
+[node name="Door Section" type="CSGCombiner3D" parent="."]
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Door Section"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.132, 0, 0)
+size = Vector3(80, 1, 5.44)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Door Section"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.156, 2.12, -3.12)
+size = Vector3(80, 5.36, 0.96)
+
+[node name="Door" type="CSGBox3D" parent="Door Section"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12, 2.32, -2.88)
+operation = 2
+size = Vector3(1.92, 3.68, 2.32)
+
+[node name="Hole" type="CSGBox3D" parent="Door Section"]
+transform = Transform3D(0.902634, 0.412524, -0.122788, -0.426293, 0.896213, -0.122788, 0.0593912, 0.163176, 0.984808, -12.48, 3.4, -2.88)
+operation = 2
+size = Vector3(1.92, 4.022, 2.32)
+
+[node name="Hole5" type="CSGBox3D" parent="Door Section"]
+transform = Transform3D(0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0, 1, -4.8, 4.12, -3.08)
+operation = 2
+size = Vector3(1.92, 4.022, 2.32)
+
+[node name="Hole4" type="CSGBox3D" parent="Door Section"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.348, 3.4, -2.88)
+operation = 2
+size = Vector3(1.92, 4.022, 2.32)
+
+[node name="Hole3" type="CSGBox3D" parent="Door Section"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.536, 3.4, -2.88)
+operation = 2
+size = Vector3(3, 4.022, 2.32)
+
+[node name="Hole2" type="CSGBox3D" parent="Door Section"]
+transform = Transform3D(0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 0, 0, 1, -23.736, 5.248, -2.88)
+operation = 2
+size = Vector3(1.92, 2.88, 2.32)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Door Section"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.08, 4.56, -2.36)
+operation = 2
+radius = 2.778
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Door Section"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.504, 2.936, -3.26)
+operation = 2
+radius = 2.091
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="Door Section"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.296, 5.84, -3.26)
+operation = 2
+radius = 2.091
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="Door Section"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.388, 0.66, -3.26)
+operation = 2
+radius = 1.462
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Door Section"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.96, 2.12, -2.28)
+operation = 2
+polygon = PackedVector2Array(0, 0, -1.4, 2.92, 2.96, 2.68, 1, 0)
+depth = 3.3
+
+[node name="World Collision" type="StaticBody3D" parent="Door Section"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door Section/World Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.184, -0.028, -0.52)
+shape = SubResource("BoxShape3D_hlnua")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Door Section/World Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.608, 0, -3.128)
+shape = SubResource("BoxShape3D_vwvtm")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Door Section/World Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.46, 1.056, -3.136)
+shape = SubResource("BoxShape3D_iowpy")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Door Section"]
+transform = Transform3D(0.939693, -0.34202, 0, 0.321394, 0.883022, 0.34202, -0.116978, -0.321394, 0.939693, 1.94035, -0.3663, 2.46648)
+size = Vector3(0.5, 3, 0.5)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Door Section"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.06885, 2.0057, 2.46648)
+size = Vector3(0.5, 3, 0.5)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Door Section"]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, -7.62885, 0.6457, 2.46648)
+size = Vector3(0.5, 3, 0.5)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Door Section"]
+transform = Transform3D(0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0, 0, 1, -11.0688, -0.4743, 1.22648)
+size = Vector3(0.5, 3, 0.5)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Door Section"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0729, 2.0057, 2.46648)
+size = Vector3(0.5, 3, 0.5)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Door Section"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0929, -0.410298, 2.46648)
+size = Vector3(0.5, 3, 0.5)
+
+[node name="ExplorePlayer" parent="." instance=ExtResource("3_jfni8")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.632598, 0.430962, -0.6435, -0.258599, 0.90073, 0.349015, 0.730032, -0.054378, 0.681246, -11.2762, 9.69895, 9.304)
+light_color = Color(1, 0.92549, 0.74902, 1)
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 5.0
+
+[node name="Intro Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("dLabel", "resContainer", "sceneExplorePlayer")]
+script = ExtResource("4_qnukb")
+filepath = "res://Cutscenes/Intro Scene Script.txt"
+dLabel = NodePath("TextBox Containers/LineContainer/Dialogue VP/Dialogue Label")
+dialogueNextAction = "com_atk"
+resContainer = NodePath("TextBox Containers/Response VPContainer/Response VP/Response Container")
+sceneExplorePlayer = NodePath("../ExplorePlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Intro Cutscene"]
+autoplay = "Camera Truck and Zoom"
+libraries = {
+"": SubResource("AnimationLibrary_16ild")
+}
+
+[node name="TextBox Containers" type="Node" parent="Intro Cutscene"]
+
+[node name="Response VPContainer" type="SubViewportContainer" parent="Intro Cutscene/TextBox Containers"]
+anchors_preset = -1
+anchor_left = 600.0
+anchor_right = 600.0
+offset_left = -1.1508e+06
+offset_top = -600.0
+offset_right = -1.1496e+06
+
+[node name="Response VP" type="SubViewport" parent="Intro Cutscene/TextBox Containers/Response VPContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1200, 600)
+render_target_update_mode = 4
+
+[node name="Response Container" type="VBoxContainer" parent="Intro Cutscene/TextBox Containers/Response VPContainer/Response VP" node_paths=PackedStringArray("director")]
+layout_direction = 2
+offset_right = 1200.0
+offset_bottom = 600.0
+scale = Vector2(1e-05, 1)
+theme = ExtResource("5_wjjgv")
+script = ExtResource("6_1uqqj")
+director = NodePath("../../../..")
+
+[node name="Option 1" type="RichTextLabel" parent="Intro Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+text = " \"This is the first option.\""
+fit_content_height = true
+
+[node name="Highlight" type="ColorRect" parent="Intro Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
+visible = false
+show_behind_parent = true
+layout_mode = 0
+offset_left = 1.0
+offset_right = 1201.0
+offset_bottom = 150.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Spacer 1" type="TextureRect" parent="Intro Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Option 2" type="RichTextLabel" parent="Intro Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = " [color=#db3939][Lie][/color]\"This is not an option\""
+fit_content_height = true
+
+[node name="Highlight" type="ColorRect" parent="Intro Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 1.0
+offset_right = 1201.0
+offset_bottom = 150.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Spacer 2" type="TextureRect" parent="Intro Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Option 3" type="RichTextLabel" parent="Intro Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
+fit_content_height = true
+
+[node name="Highlight" type="ColorRect" parent="Intro Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
+visible = false
+show_behind_parent = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 1201.0
+offset_bottom = 147.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Spacer 3" type="TextureRect" parent="Intro Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Option 4" type="RichTextLabel" parent="Intro Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
+fit_content_height = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Highlight" type="ColorRect" parent="Intro Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 4"]
+visible = false
+show_behind_parent = true
+clip_contents = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 1201.0
+offset_bottom = 147.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Intro Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+libraries = {
+"": SubResource("AnimationLibrary_5ecve")
+}
+
+[node name="LineContainer" type="SubViewportContainer" parent="Intro Cutscene/TextBox Containers"]
+offset_top = -400.0
+offset_right = 1200.0
+stretch = true
+
+[node name="Dialogue VP" type="SubViewport" parent="Intro Cutscene/TextBox Containers/LineContainer"]
+process_priority = 1
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1200, 400)
+render_target_update_mode = 4
+
+[node name="Dialogue Label" type="RichTextLabel" parent="Intro Cutscene/TextBox Containers/LineContainer/Dialogue VP" node_paths=PackedStringArray("speakerLabel", "voice")]
+clip_contents = false
+offset_left = 20.0
+offset_top = 32.0
+offset_right = 1180.0
+offset_bottom = 352.0
+theme = ExtResource("5_wjjgv")
+theme_override_font_sizes/normal_font_size = 60
+text = "Test text, motherfucker. What's good?
+It's gonna just keep going and going to show you how long it gets!"
+script = ExtResource("7_lifij")
+speakerLabel = NodePath("Name Plate")
+charactersPerSecond = 50.0
+voice = NodePath("Voice")
+voiceLetterRatio = 2
+
+[node name="Name Plate" type="RichTextLabel" parent="Intro Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
+layout_mode = 0
+offset_top = -36.0
+offset_right = 300.0
+offset_bottom = -1.0
+theme = ExtResource("5_wjjgv")
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = " Will Silver"
+
+[node name="Button" type="TextureRect" parent="Intro Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.855
+anchor_top = 0.5
+anchor_right = 0.855
+anchor_bottom = 0.5
+offset_left = -80.8
+offset_top = -4.0
+offset_right = 42.2
+offset_bottom = 115.0
+texture = ExtResource("8_7881j")
+
+[node name="Voice" type="AudioStreamPlayer" parent="Intro Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
+stream = ExtResource("9_4xhoo")
+volume_db = -5.0
+max_polyphony = 10
+
+[node name="Cato Actor" type="Node3D" parent="Intro Cutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.588, -2.792)
+script = ExtResource("10_scg5i")
+name = "Cato"
+
+[node name="Sprite" type="Sprite3D" parent="Intro Cutscene/Cato Actor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68, 1.2, 0)
+flip_h = true
+pixel_size = 0.008
+shaded = true
+alpha_cut = 2
+texture = ExtResource("11_62d45")
+hframes = 10
+vframes = 4
+frame = 28
+
+[node name="Response Plane" type="MeshInstance3D" parent="Intro Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+transform = Transform3D(0.896575, 0, 0.0716036, 0, 0.9, 0, -0.0784401, 0, 0.818433, -1.24, 2.96, 0.2)
+mesh = SubResource("QuadMesh_8d21w")
+script = ExtResource("12_p2xst")
+targetViewPort = NodePath("../../TextBox Containers/Response VPContainer/Response VP")
+
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Intro Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16, 3.28, 0)
+mesh = SubResource("QuadMesh_odowo")
+surface_material_override/0 = SubResource("StandardMaterial3D_k5mqe")
+script = ExtResource("12_p2xst")
+targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
+
+[node name="Silver Actor" type="Node3D" parent="Intro Cutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88, 0.52, -2.76)
+script = ExtResource("10_scg5i")
+name = "Silver"
+
+[node name="Sprite" type="Sprite3D" parent="Intro Cutscene/Silver Actor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0399997, 1.28, 0)
+pixel_size = 0.008
+shaded = true
+alpha_cut = 2
+texture = ExtResource("13_pjsfm")
+hframes = 3
+region_enabled = true
+region_rect = Rect2(0, 2, 720, 318)
+
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Intro Cutscene/Silver Actor" node_paths=PackedStringArray("targetViewPort")]
+transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 2.28, 3.4, 0)
+mesh = SubResource("QuadMesh_odowo")
+surface_material_override/0 = SubResource("StandardMaterial3D_k5mqe")
+script = ExtResource("12_p2xst")
+targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
+
+[node name="Sprite3D" type="Sprite3D" parent="Intro Cutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.76, 2.12, -2.08)
+flip_h = true
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.008
+texture = ExtResource("14_ktnhr")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vt6gh")

@@ -37,7 +37,7 @@ public static class ScreenPlayLoader{
             if(textLine.Trim().StartsWith('~')){ //This is the start of an exchange block, which is processed as a block
 
                 Queue<string> exchangeLines = new Queue<string>();
-                while(textQueue.Peek() != ""){
+                while(textQueue.Count > 0 && textQueue.Peek() != ""){
                     exchangeLines.Enqueue(textQueue.Dequeue());
                 }
                 var newExchange = ParseExchange(exchangeLines, exchangeDirectory); 
@@ -103,10 +103,15 @@ public static class ScreenPlayLoader{
                     gotoIndex = ParseGotoStatement(textLine, exchangeDirectory, out var newLine);
                     textLine = newLine;
                 }
+                var end = false;
+                if(textLine.Contains("[END]")){
+                    end = true;
+                    textLine = textLine.Remove(textLine.IndexOf("[END]")).Trim();
+                }
                 textLine = textLine.Substring(1, textLine.Length - 2);
                 string finalLine;
                 TextEffect[] effects = ParseLineTextEffects(textLine, out finalLine);
-                linesInExchange.Enqueue(new Line(finalLine, characterName, effects, null, null, gotoIndex));
+                linesInExchange.Enqueue(new Line(finalLine, characterName, effects, null, null, gotoIndex, null, end));
             }
         }
         return new Exchange(linesInExchange);
@@ -206,13 +211,17 @@ public static class ScreenPlayLoader{
             textLine = textLine.Remove(0,1); //Removes "}"
 
             int nextExchangeIndex = -1;
+            var end = false;
             if(textLine.Contains("GOTO:")){
                 nextExchangeIndex = ParseGotoStatement(textLine, exchangeDirectory, out textLine);
             }
-
+            if(textLine.Contains("[END]")){
+                end = true;
+                textLine = textLine.Remove(textLine.IndexOf("[END]")).Trim();
+            }
             string responseText =  textLine.Trim();
     
-            responses.Add(new Response(responseText, condition, nextExchangeIndex)); 
+            responses.Add(new Response(responseText, condition, nextExchangeIndex, end)); 
 
             while(responseLines.Count > 0 && responseLines.Peek().Trim().StartsWith("//")){//Chews through any comments inside of the options
                 responseLines.Dequeue();

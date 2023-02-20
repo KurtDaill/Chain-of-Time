@@ -5,10 +5,13 @@ public class Response{
     private ResponseCondition condition;
     private int nextExchange = -1;
 
-    public Response(string text,ResponseCondition condition, int nextExchange){
+    private bool endsDialogue;
+
+    public Response(string text,ResponseCondition condition, int nextExchange, bool endsDialogue = true){
         this.text = text;
         this.condition = condition;
         this.nextExchange = nextExchange;
+        this.endsDialogue = endsDialogue;
     }
 
     public string GetText(){
@@ -17,5 +20,9 @@ public class Response{
 
     public int GetNextExchangeIndex(){
         return nextExchange;
+    }
+
+    public bool isEnd(){
+        return endsDialogue;
     }
 }

@@ -1,7 +1,7 @@
-[gd_scene load_steps=103 format=3 uid="uid://dydv4nnorh1e"]
+[gd_scene load_steps=103 format=3]
 
 [ext_resource type="Script" path="res://Battle Mode/PMBattle.cs" id="1_mx4ey"]
-[ext_resource type="Script" path="res://PMBattleRoster.cs" id="2_ev16s"]
+[ext_resource type="Script" path="res://Battle Mode/PMBattleRoster.cs" id="2_ev16s"]
 [ext_resource type="PackedScene" uid="uid://drixqr1kasloi" path="res://Battle Mode/Player Characters/Will Silver.tscn" id="3_mkboe"]
 [ext_resource type="PackedScene" uid="uid://bqb21t5xmngp7" path="res://Battle Mode/Player Characters/Cato.tscn" id="4_di7oe"]
 [ext_resource type="PackedScene" uid="uid://cy6ib5eho248k" path="res://Battle Mode/Enemies/Polymorphor.tscn" id="5_y3ywd"]

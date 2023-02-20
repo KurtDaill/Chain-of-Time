@@ -8,13 +8,16 @@ public class Line{
     protected string animation; 
     protected int gotoIndex;
 
-    public Line(string text, string speaker, TextEffect[] effects, ScreenplayModifier mod, string animation, int gotoIndex = -1, Response[] responses = null){
+    bool endLine;
+
+    public Line(string text, string speaker, TextEffect[] effects, ScreenplayModifier mod, string animation, int gotoIndex = -1, Response[] responses = null, bool endLine = false){
         this.text = text;
         this.speaker = speaker;
         this.effects = effects;
         this.mod = mod;
         this.animation = animation;
         this.gotoIndex = gotoIndex;
+        this.endLine = endLine;
     }
 
     public Line(){}
@@ -36,5 +39,9 @@ public class Line{
 
     public string GetAnimation(){
         return animation;
+    }
+
+    public bool isEnd(){
+        return endLine;
     }
 }

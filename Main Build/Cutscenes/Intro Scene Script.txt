@@ -1,0 +1,33 @@
+~Start
+	Silver: “So...uh...you ok pal?”
+	{OPT} "No." GOTO: Negative
+	{OPT} "Of Course Not." GOTO: Negative
+	{OPT} "What are you? Crazy?" GOTO: Negative
+	{OPT} "...yes?" GOTO: Positive
+
+~Negative
+	Silver: “Alright, look. This was your idea.”
+	Silver: “Whether or not you can play hero today is your business.”
+	Silver: “But you’ve got Will Silver on your side.”
+	Cato: "What?"
+	Silver: “And Will Silver’s business is grabbing and fencing whatever ancient garbage is in there.”
+	Silver: “Silver’s buying a ship to get off this rock, so he’s getting in there, so You are opening this door.”
+	Silver: “Do your thing, then me and my pulse pistol oughta handle it. Clear?”
+	{OPT} “ok.” GOTO: Tutorial
+	{OPT} “...” GOTO: Tutorial
+
+~Positive
+	Silver: ”...”
+	Silver: “I appreciate the optimism.”
+	Silver: ”Just handle the spooky side of the equation, and stick with me.”
+	Silver: “I doubt they’ve got anything worse than void pirates in there.”
+	{OPT}”...thanks?” GOTO: Tutorial
+	{OPT}”Ok. Let’s do it.” GOTO: Tutorial
+	
+~Tutorial
+	Silver: "Okay. You seeing it?"
+	[ANIM(CatoLooksAround)]
+	Cato: "Yeah...right there"
+	[ANIM(CameraMovesBackToCenter)]
+	Silver: "Ain't no time like the present." [END]
+

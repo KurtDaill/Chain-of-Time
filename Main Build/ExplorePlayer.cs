@@ -5,8 +5,11 @@ public partial class ExplorePlayer : CharacterBody3D
 {
 	[Export]
 	public float Speed = 5.0f;
+
 	[Export]
-	public float JumpVelocity = 4.5f;
+	public Camera3D exploreCamera;
+
+	public bool inControl = true;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
@@ -15,37 +18,31 @@ public partial class ExplorePlayer : CharacterBody3D
 
 	private Vector3 direction;
 
+	private TimeFragment timeFrag;
+
 	public override void _Ready(){
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if(!inControl) return;
 		Vector3 velocity = Velocity;
+
+		if(timeFrag != null && Input.IsActionJustPressed("com_atk")){
+			timeFrag.TimeTravel(this);
+		}
 
 		// Add the gravity.
 		if (!IsOnFloor())
 			velocity.y -= gravity * (float)delta;
 
-		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-			velocity.y = JumpVelocity;
-
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 		direction = (Transform.basis * new Vector3(inputDir.x, 0, inputDir.y)).Normalized();
-		if (direction != Vector3.Zero)
-		{
-			velocity.x = direction.x * Speed;
-			velocity.z = direction.z * Speed;
-		}
-		else
-		{
-			velocity.x = Mathf.MoveToward(Velocity.x, 0, Speed);
-			velocity.z = Mathf.MoveToward(Velocity.z, 0, Speed);
-		}
-
+		direction *= Speed;
+		velocity = new Vector3(direction.x, velocity.y, direction.z);
 		Velocity = velocity;
 		MoveAndSlide();
 	}
@@ -69,4 +66,21 @@ public partial class ExplorePlayer : CharacterBody3D
 			animPlay.Play("Idle");
 		}
     }
+
+	public void SetPlayerControl(bool set){
+		inControl = set;
+	}
+
+	public void OnInteractionAreaEntered(Area3D area){
+		if(area.GetGroups().Contains("Time Fragment")){
+			timeFrag = (TimeFragment) area;
+			if(((TimeFragment)area).ArmTimeFragment())timeFrag = (TimeFragment)area;
+		}
+	}
+
+	public void OnInteractionAreaExited(Area3D area){
+		if(area.GetGroups().Contains("Time Fragment")){
+			((TimeFragment)area).DisarmTimeFragment();
+		}
+	}
 }
