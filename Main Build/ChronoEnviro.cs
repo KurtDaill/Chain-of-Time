@@ -14,6 +14,10 @@ public partial class ChronoEnviro : Node3D
     int enviornmentTrackIndex;
     [Export]
     int sunTrackIndex;
+    [Export]
+    int returnEnvironmentTrackIndex;
+    [Export]
+    int returnSunTrackIndex;
 
     Godot.Environment pastEnvironment;
     Godot.Environment presentEnvironment;
@@ -28,9 +32,9 @@ public partial class ChronoEnviro : Node3D
     DirectionalLight3D pastSun;
     [Export]
     DirectionalLight3D presentSun;
+    private DirectionalLight3D realSun;
 
-    Godot.Collections.Array<Godot.Collections.Dictionary> pastSunProperties;
-    Godot.Collections.Array<Godot.Collections.Dictionary> presentSunProperties;
+    Godot.Collections.Array<Godot.Collections.Dictionary> sunProperties;
 
     AnimationPlayer animPlay;
 
@@ -44,11 +48,13 @@ public partial class ChronoEnviro : Node3D
         inPast = false;
         pastEnvironment = GD.Load<Godot.Environment>(pastEnvironmentRes);
         presentEnvironment = GD.Load<Godot.Environment>(presentEnvironmentRes);
-        this.realEnvironment.Environment = presentEnvironment;
+        this.realEnvironment.Environment = (Godot.Environment)presentEnvironment.Duplicate(true);
         
-        presentSunProperties = presentSun.GetPropertyList();
-        pastSunProperties = pastSun.GetPropertyList();
-        presentSun.Visible = true;
+        sunProperties = pastSun.GetPropertyList();
+        realSun = (DirectionalLight3D)presentSun.Duplicate();
+        this.AddChild(realSun);
+        realSun.Visible = true;
+        presentSun.Visible = false;
         pastSun.Visible = false; 
     }
 
@@ -58,9 +64,6 @@ public partial class ChronoEnviro : Node3D
         //Set Spheres to center on Cato
         subtractSphere.GlobalPosition = frag.GlobalPosition;
         visibleSphere.GlobalPosition = frag.GlobalPosition;
-
-        //Hanldes our transition between environments.
-        SetupEnvironmentAnimation();
         //Set the visible sphere to the right past scene
         visibleSphere.GetParent().RemoveChild(visibleSphere);
         frag.GetTargetEnvironment().AddChild(visibleSphere);
@@ -68,9 +71,9 @@ public partial class ChronoEnviro : Node3D
 
         //TEMP ANIMATION HARD CODING, WAITING ON FULL FIX
         GD.Print(visibleSphere.GetPath());
-        animPlay.GetAnimation("Timewarp").TrackSetPath(8, visibleSphere.GetPath() + ":size:x");
-        animPlay.GetAnimation("Timewarp").TrackSetPath(9, visibleSphere.GetPath() + ":size:y");
-        animPlay.GetAnimation("Timewarp").TrackSetPath(10, visibleSphere.GetPath() + ":size:z");
+        animPlay.GetAnimation("TimewarpTest").TrackSetPath(5, visibleSphere.GetPath() + ":size:x");
+        animPlay.GetAnimation("TimewarpTest").TrackSetPath(6, visibleSphere.GetPath() + ":size:y");
+        animPlay.GetAnimation("TimewarpTest").TrackSetPath(7, visibleSphere.GetPath() + ":size:z");
 
         frag.DisarmTimeFragment();
         //Hide the Explore Player
@@ -81,6 +84,10 @@ public partial class ChronoEnviro : Node3D
         explorer = ePlayer;
         currentFragment = frag;
         inPast = true;
+
+        //Hanldes our transition between environments.
+        SetupEnvironmentAnimation(false);
+
         //Start the Timewarp animation
         animPlay.Play("TimewarpTest"); //TODO change me back
     }
@@ -100,6 +107,7 @@ public partial class ChronoEnviro : Node3D
         TimeTravelCato.Visible = true;
         inPast = false;
         currentFragment.DisarmTimeFragment();
+        SetupEnvironmentAnimation(true);
         //Play the Return Animation
         animPlay.Play("Return");
     }
@@ -116,13 +124,13 @@ public partial class ChronoEnviro : Node3D
         return inPast;
     }
 
-    public void SetupEnvironmentAnimation(){
+    public void SetupEnvironmentAnimation(bool isReturnRun){
         //Read the track we set up to give us the Bezier Curve of Environment Animations
         //Compare the properties of the Past and Present, if any are different, add an animation track to the transition based on 'presentToPast'
         Godot.Collections.Array<Godot.Collections.Dictionary> presentEnvProperites = presentEnvironment.GetPropertyList();
         Godot.Collections.Array<Godot.Collections.Dictionary> pastEnvProperites = pastEnvironment.GetPropertyList();
 
-        SetupSunAnimation();
+        SetupSunAnimation(isReturnRun);
 
         for(int i = 0; i < pastEnvProperites.Count; i++){
             Godot.Collections.Dictionary pastDict = pastEnvProperites[i];
@@ -135,19 +143,17 @@ public partial class ChronoEnviro : Node3D
             pastDict.TryGetValue("type", out var typeVar); //Should be the same between environments, they're the same resource type!
             Variant.Type type = (Variant.Type)(int)typeVar;
             if(type == Variant.Type.Object && (string)name == "sky"){
-                HandleSky(pastEnvironment.Sky, presentEnvironment.Sky);
+                if(isReturnRun) HandleSky(presentEnvironment.Sky, pastEnvironment.Sky, isReturnRun);
+                else HandleSky(pastEnvironment.Sky, presentEnvironment.Sky, isReturnRun);
                 continue;
             }
-            AssignPropertyToAnimationTrack((string)name, type, pastVar, presentVar, ":environment", realEnvironment, enviornmentTrackIndex);
+            if(isReturnRun) AssignPropertyToAnimationTrack((string)name, type, presentVar, pastVar, ":environment", realEnvironment, returnEnvironmentTrackIndex, "Return");
+            else AssignPropertyToAnimationTrack((string)name, type, pastVar, presentVar, ":environment", realEnvironment, enviornmentTrackIndex, "TimewarpTest");
         }
-    
-        //Delete those two Bezier Curve Reference Tracks to save us some error messages
-        animPlay.GetAnimation("TimewarpTest").RemoveTrack(enviornmentTrackIndex);
-        animPlay.GetAnimation("TimewarpTest").RemoveTrack(sunTrackIndex);
     }
 
-    private void SetupSunAnimation(){
-        foreach(Godot.Collections.Dictionary property in pastSunProperties){
+    private void SetupSunAnimation(bool isReturnRun){
+        foreach(Godot.Collections.Dictionary property in sunProperties){
             property.TryGetValue("name", out var name);
             property.TryGetValue("type", out var typeVar);
             Godot.Variant.Type type = (Godot.Variant.Type)(int) typeVar;
@@ -155,100 +161,101 @@ public partial class ChronoEnviro : Node3D
             var presentVar = presentSun.Get((string)name);
             if((string)name == "visible") continue;
             if((string)name == "light_cull_mask") continue;
-            AssignPropertyToAnimationTrack((string)name, type, pastVar, presentVar, "", presentSun, sunTrackIndex);
+            if(isReturnRun) AssignPropertyToAnimationTrack((string)name, type, presentVar, pastVar, "", realSun, returnSunTrackIndex, "Return");
+            else AssignPropertyToAnimationTrack((string)name, type, pastVar, presentVar, "", realSun, sunTrackIndex, "TimewarpTest");
         }
     }
-
-    private void SetToggleAnimationTrack(Variant pastValue, Variant presentValue, string propertyPath, Node real){
-        Animation timeWarp = animPlay.GetAnimation("TimewarpTest"); //TODO Change me
+    private void SetToggleAnimationTrack(Variant endValue, Variant startValue, string propertyPath, Node real, string animation){
+        Animation timeWarp = animPlay.GetAnimation(animation); //TODO Change me
         int index = timeWarp.AddTrack(Animation.TrackType.Value);
         timeWarp.TrackSetPath(index, real.GetPath() + propertyPath);
-        timeWarp.TrackInsertKey(index, 4, pastValue);
-        //timeWarp.TrackInsertKey(index, timeWarp.Length, pastValue);
+        timeWarp.TrackInsertKey(index, 4, endValue);
+        //timeWarp.TrackInsertKey(index, timeWarp.Length, endValue);
     }
 
-    private void SetBezierAnimationTrack(float pastValue, float presentValue, string propertyPath, Node real, int templateIndex){
-        Animation timeWarp = animPlay.GetAnimation("TimewarpTest"); //TODO Change me
+    private void SetBezierAnimationTrack(float endValue, float startValue, string propertyPath, Node real, int templateIndex, string animation){
+        Animation timeWarp = animPlay.GetAnimation(animation); //TODO Change me
         int index = timeWarp.AddTrack(Animation.TrackType.Bezier);
         timeWarp.TrackSetPath(index, real.GetPath() + propertyPath);
-        timeWarp.BezierTrackInsertKey(index, timeWarp.TrackGetKeyTime(templateIndex, 0), presentValue);
+        timeWarp.BezierTrackInsertKey(index, timeWarp.TrackGetKeyTime(templateIndex, 0), startValue);
         //timeWarp.BezierTrackSetKeyInHandle(index, 0, timeWarp.BezierTrackGetKeyInHandle(enviornmentTrackIndex, 0));
         //timeWarp.BezierTrackSetKeyOutHandle(index, 0, timeWarp.BezierTrackGetKeyOutHandle(enviornmentTrackIndex, 0));
 
-        timeWarp.BezierTrackInsertKey(index, timeWarp.TrackGetKeyTime(templateIndex, 1), presentValue);
+        timeWarp.BezierTrackInsertKey(index, timeWarp.TrackGetKeyTime(templateIndex, 1), startValue);
         //timeWarp.BezierTrackSetKeyInHandle(index, 1, timeWarp.BezierTrackGetKeyInHandle(enviornmentTrackIndex, 1));
         //timeWarp.BezierTrackSetKeyOutHandle(index, 1, timeWarp.BezierTrackGetKeyOutHandle(enviornmentTrackIndex, 1));   
         
-        timeWarp.BezierTrackInsertKey(index, timeWarp.TrackGetKeyTime(templateIndex, 2), pastValue);
+        timeWarp.BezierTrackInsertKey(index, timeWarp.TrackGetKeyTime(templateIndex, 2), endValue);
         //timeWarp.BezierTrackSetKeyInHandle(index, 2, timeWarp.BezierTrackGetKeyInHandle(enviornmentTrackIndex, 2));
         //timeWarp.BezierTrackSetKeyOutHandle(index, 2, timeWarp.BezierTrackGetKeyOutHandle(enviornmentTrackIndex, 2));
 
     }
 
-    public void HandleSky(Sky pastSky, Sky presentSky){
-        Godot.Collections.Array<Godot.Collections.Dictionary> presentSkyProperites = presentSky.SkyMaterial.GetPropertyList();
-        Godot.Collections.Array<Godot.Collections.Dictionary> pastSkyProperites = pastSky.SkyMaterial.GetPropertyList();
-        for(int i = 0; i < pastSkyProperites.Count; i++){
-            Godot.Collections.Dictionary pastDict = pastSkyProperites[i];
-            Godot.Collections.Dictionary presentDict = presentSkyProperites[i];
-            pastDict.TryGetValue("name", out var name); //Should be the same between environments, they're the same resource type!
+    public void HandleSky(Sky endSky, Sky startSky, bool isReturnRun){
+        Godot.Collections.Array<Godot.Collections.Dictionary> startSkyProperites = startSky.SkyMaterial.GetPropertyList();
+        Godot.Collections.Array<Godot.Collections.Dictionary> endSkyProperites = endSky.SkyMaterial.GetPropertyList();
+        for(int i = 0; i < endSkyProperites.Count; i++){
+            Godot.Collections.Dictionary endDict = endSkyProperites[i];
+            Godot.Collections.Dictionary startDict = startSkyProperites[i];
+            endDict.TryGetValue("name", out var name); //Should be the same between environments, they're the same resource type!
 
-            var pastVar = pastEnvironment.Sky.SkyMaterial.Get((string)name);
-            var presentVar = presentEnvironment.Sky.SkyMaterial.Get((string)name);            
+            var endVar = endSky.SkyMaterial.Get((string)name);
+            var startVar = startSky.SkyMaterial.Get((string)name);            
 
-            pastDict.TryGetValue("type", out var typeVar); //Should be the same between environments, they're the same resource type!
+            endDict.TryGetValue("type", out var typeVar); //Should be the same between environments, they're the same resource type!
             Variant.Type type = (Variant.Type)(int)typeVar;
-            AssignPropertyToAnimationTrack((string)name, type, pastVar, presentVar, ":environment:sky:sky_material", realEnvironment, enviornmentTrackIndex);
+            if(isReturnRun) AssignPropertyToAnimationTrack((string)name, type, endVar, startVar, ":environment:sky:sky_material", realEnvironment, enviornmentTrackIndex, "Return");
+            else AssignPropertyToAnimationTrack((string)name, type, endVar, startVar, ":environment:sky:sky_material", realEnvironment, enviornmentTrackIndex, "TimewarpTest");
         }
     }
 
-    public void AssignPropertyToAnimationTrack(string propertyName, Variant.Type type, Variant pastVar, Variant presentVar, string propertyPath, Node real, int templateIndex){
+    public void AssignPropertyToAnimationTrack(string propertyName, Variant.Type type, Variant endVar, Variant startVar, string propertyPath, Node real, int templateIndex, string animation){
         switch(type){
                 case Variant.Type.Nil : 
                     //propertyPath = ":environment:" + ((string)name).ToLower();
                     break;
                 case Variant.Type.Bool :
-                    bool pastBool = (bool) pastVar;
-                    bool presentBool = (bool) presentVar;
-                    if(pastBool != presentBool) SetToggleAnimationTrack(pastBool, presentBool, propertyPath + ":" + propertyName, real);
+                    bool endBool = (bool) endVar;
+                    bool startBool = (bool) startVar;
+                    if(endBool != startBool) SetToggleAnimationTrack(endBool, startBool, propertyPath + ":" + propertyName, real, animation);
                     break;
                 case Variant.Type.Int :
-                    int pastInt = (int) pastVar;
-                    int presentInt = (int) presentVar;
-                    if(pastInt != presentInt) SetToggleAnimationTrack(pastInt, presentInt, propertyPath + ":" + propertyName, real);
+                    int endInt = (int) endVar;
+                    int startInt = (int) startVar;
+                    if(endInt != startInt) SetToggleAnimationTrack(endInt, startInt, propertyPath + ":" + propertyName, real, animation);
                     break;
                 case Variant.Type.Float :
-                    float pastFloat = (float) pastVar;
-                    float presentFloat = (float) presentVar;
-                    if(pastFloat != presentFloat) SetBezierAnimationTrack(pastFloat, presentFloat, propertyPath + ":" + propertyName, real, templateIndex);
+                    float endFloat = (float) endVar;
+                    float startFloat = (float) startVar;
+                    if(endFloat != startFloat) SetBezierAnimationTrack(endFloat, startFloat, propertyPath + ":" + propertyName, real, templateIndex, animation);
                     break;
                 case Variant.Type.Vector3   :
-                    Godot.Vector3 pastVector = (Godot.Vector3) pastVar;
-                    Godot.Vector3 presentVector = (Godot.Vector3) presentVar;
-                    if(pastVector != presentVector){
-                        SetBezierAnimationTrack(pastVector.x, presentVector.x, propertyPath + ":" + propertyName + ":x", real, templateIndex);
-                        SetBezierAnimationTrack(pastVector.y, presentVector.y, propertyPath + ":" + propertyName + ":y", real, templateIndex);
-                        SetBezierAnimationTrack(pastVector.z, presentVector.z, propertyPath + ":" + propertyName + ":z", real, templateIndex);
+                    Godot.Vector3 endVector = (Godot.Vector3) endVar;
+                    Godot.Vector3 startVector = (Godot.Vector3) startVar;
+                    if(endVector != startVector){
+                        SetBezierAnimationTrack(endVector.x, startVector.x, propertyPath + ":" + propertyName + ":x", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endVector.y, startVector.y, propertyPath + ":" + propertyName + ":y", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endVector.z, startVector.z, propertyPath + ":" + propertyName + ":z", real, templateIndex, animation);
                     }
                     break;
                 case Variant.Type.Quaternion :
-                    Godot.Quaternion pastQuat = (Godot.Quaternion) pastVar;
-                    Godot.Quaternion presentQuat = (Godot.Quaternion) presentVar;
-                    if(pastQuat != presentQuat){
-                        SetBezierAnimationTrack(pastQuat.x, presentQuat.x, propertyPath + ":" + propertyName + ":x", real, templateIndex);
-                        SetBezierAnimationTrack(pastQuat.y, presentQuat.y, propertyPath + ":" + propertyName + ":y", real, templateIndex);
-                        SetBezierAnimationTrack(pastQuat.z, presentQuat.z, propertyPath + ":" + propertyName + ":z", real, templateIndex);
-                        SetBezierAnimationTrack(pastQuat.w, presentQuat.w, propertyPath + ":" + propertyName + ":z", real, templateIndex);
+                    Godot.Quaternion endQuat = (Godot.Quaternion) endVar;
+                    Godot.Quaternion startQuat = (Godot.Quaternion) startVar;
+                    if(endQuat != startQuat){
+                        SetBezierAnimationTrack(endQuat.x, startQuat.x, propertyPath + ":" + propertyName + ":x", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endQuat.y, startQuat.y, propertyPath + ":" + propertyName + ":y", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endQuat.z, startQuat.z, propertyPath + ":" + propertyName + ":z", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endQuat.w, startQuat.w, propertyPath + ":" + propertyName + ":z", real, templateIndex, animation);
                     }
                     break; 
                 case Variant.Type.Color :
-                    Godot.Color pastColor = (Godot.Color) pastVar;
-                    Godot.Color presentColor = (Godot.Color) presentVar;
-                    if(pastColor != presentColor){
-                        SetBezierAnimationTrack(pastColor.r, presentColor.r, propertyPath + ":" +  propertyName + ":r", real, templateIndex);
-                        SetBezierAnimationTrack(pastColor.g, presentColor.g, propertyPath + ":" +  propertyName + ":g", real, templateIndex);
-                        SetBezierAnimationTrack(pastColor.b, presentColor.b, propertyPath + ":" +  propertyName + ":b", real, templateIndex);
-                        SetBezierAnimationTrack(pastColor.a, presentColor.a, propertyPath + ":" +  propertyName + ":a", real, templateIndex);
+                    Godot.Color endColor = (Godot.Color) endVar;
+                    Godot.Color startColor = (Godot.Color) startVar;
+                    if(endColor != startColor){
+                        SetBezierAnimationTrack(endColor.r, startColor.r, propertyPath + ":" +  propertyName + ":r", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endColor.g, startColor.g, propertyPath + ":" +  propertyName + ":g", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endColor.b, startColor.b, propertyPath + ":" +  propertyName + ":b", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endColor.a, startColor.a, propertyPath + ":" +  propertyName + ":a", real, templateIndex, animation);
                     }
                     break;
             }

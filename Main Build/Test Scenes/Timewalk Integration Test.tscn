@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bflrmtm8rw3u4"]
+[gd_scene load_steps=34 format=3 uid="uid://bflrmtm8rw3u4"]
 
 [ext_resource type="Material" uid="uid://c6vmqtlbh7xy2" path="res://Art/3D/DungeonNormalMaterial.tres" id="1_cstdf"]
 [ext_resource type="Script" path="res://ChronoEnviro.cs" id="1_d6bjt"]
@@ -9,7 +9,6 @@
 [ext_resource type="FontFile" uid="uid://by3oeeep2oy71" path="res://Fonts/lunchtime-doubly-so.regular.ttf" id="6_3p5sp"]
 [ext_resource type="PackedScene" uid="uid://d3c1467kmloin" path="res://Explore Mode/explore_player.tscn" id="6_gwwlh"]
 [ext_resource type="Texture2D" uid="uid://svrfwty7dyy2" path="res://Art/3D/tile_set.png" id="9_30pb0"]
-[ext_resource type="Environment" uid="uid://clyvx48350vys" path="res://Test Scenes/Present Environment.tres" id="11_6wesq"]
 [ext_resource type="Texture2D" uid="uid://b4bhsaihwdgdx" path="res://Art/Time Walk Heart-Sheet.png" id="14_3enyd"]
 [ext_resource type="AudioStream" uid="uid://b2bubqp3g6deh" path="res://Audio/Time_Travel_Sting_1b.wav" id="14_o28o7"]
 
@@ -272,353 +271,27 @@ tracks/8/keys = {
 "method": &"CompleteReturn"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_uk8v7"]
-resource_name = "Timewarp"
-length = 4.7
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Chrono-Enviro/Past Sun:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Chrono-Enviro/Past Sun:rotation:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.231463, -0.25, 0, 0.25, 0, 0.231463, -0.25, 0, 0.25, 0, -0.0773416, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3.5, 4.4)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Chrono-Enviro/Past Sun:rotation:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-2.44441, -0.25, 0, 0.25, 0, -2.44441, -0.25, 0, 0.25, 0, -2.41651, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3.5, 4.4)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Chrono-Enviro/Past Sun:rotation:z")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1.93495, -0.25, 0, 0.25, 0, 1.93495, -0.25, 0, 0.25, 0, 2.28928, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3.5, 4.4)
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Chrono-Enviro/Time Travel Cato/Cato Sprite:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 3.2, 3.4, 3.6, 4, 4.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [30, 31, 32, 33, 34, 35, 36, 30, 0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Chrono-Enviro/Time Travel Cato/Cato Sprite:layers")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 3.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1, 1024]
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Chrono-Enviro/Time Travel Cato/Time Travel Camera Ref:rotation:y")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 6.283, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.2, 2.7)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Chrono-Enviro/Time Travel Cato/Time Travel Camera Ref/Time Travel Camera:fov")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(75, -0.25, 0, 0.4, -7.20926, 5, -0.4, 1.39276, 0.25, 0, 5, -0.25, 0, 0, -0.534444, 4, -0.25, 0, 0, 4.02074, 75, -0.8, 21.978, 0.25, 0),
-"times": PackedFloat32Array(0.2, 2.6, 3.2, 3.4, 4.7)
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Chrono-Enviro/Past/Visible Box:size:x")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.5, 2.18213, 64, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3.3, 4.7)
-}
 tracks/9/type = "bezier"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Chrono-Enviro/Past/Visible Box:size:y")
+tracks/9/path = NodePath("Return Environment Curve")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.5, 3.25883, 64, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3.3, 4.7)
+"points": PackedFloat32Array(0.921569, -0.25, 0, 0.25, 0, 0.921569, -0.25, 0, 0.25, 0, 0.921569, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.4, 2.5)
 }
 tracks/10/type = "bezier"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Chrono-Enviro/Past/Visible Box:size:z")
+tracks/10/path = NodePath("Return Sun Curve")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.5, 3.25883, 64, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3.1, 4.5)
-}
-tracks/11/type = "bezier"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Chrono-Enviro/Present/Subtract Box:size:x")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.5, 2.98966, 64, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3.1, 4.5)
-}
-tracks/12/type = "bezier"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Chrono-Enviro/Present/Subtract Box:size:y")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.5, 4.33554, 64, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3.1, 4.5)
-}
-tracks/13/type = "bezier"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Chrono-Enviro/Present/Subtract Box:size:z")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.5, 2.98966, 64, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3.1, 4.5)
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Chrono-Enviro/Time Travel Cato/Cato Sprite/Heart:frame")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Chrono-Enviro/Time Travel Cato/Cato Sprite/Heart:modulate")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0.2, 2.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.784314)]
-}
-tracks/16/type = "bezier"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Chrono-Enviro/Time Travel Cato/Cato Sprite/Heart/OmniLight3D:light_energy")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1.5, -0.25, 0, 0.25, 0, 2.5, -0.25, 0, 0.25, 0, 2.5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.2, 2.9, 3, 3.2, 3.6)
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("Chrono-Enviro/Time Travel Cato/Cato Sprite/Heart/OmniLight3D:light_color")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0.2, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Color(0.827451, 0.34902, 1, 1), Color(0.25098, 1, 0.976471, 1)]
-}
-tracks/18/type = "bezier"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("Chrono-Enviro/WorldEnvironment:environment:sky:sky_material:sky_top_color:r")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.32549, -0.25, 0, 0.25, 0, 0.32549, -0.25, 0, 0.25, 0, 0.137255, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3, 4.2)
-}
-tracks/19/type = "bezier"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("Chrono-Enviro/WorldEnvironment:environment:sky:sky_material:sky_top_color:g")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.501961, -0.25, 0, 0.25, 0, 0.501961, -0.25, 0, 0.25, 0, 0.168627, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3, 4.2)
-}
-tracks/20/type = "bezier"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("Chrono-Enviro/WorldEnvironment:environment:sky:sky_material:sky_top_color:b")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.831373, -0.25, 0, 0.25, 0, 0.831373, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3, 4.2)
-}
-tracks/21/type = "bezier"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("Chrono-Enviro/WorldEnvironment:environment:sky:sky_material:sky_top_color:a")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3, 4.2)
-}
-tracks/22/type = "bezier"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("Chrono-Enviro/WorldEnvironment:environment:sky:sky_material:sky_horizon_color:r")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.419608, -0.25, 0, 0.25, 0, 0.419608, -0.25, 0, 0.25, 0, 0.968627, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3, 4.2)
-}
-tracks/23/type = "bezier"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("Chrono-Enviro/WorldEnvironment:environment:sky:sky_material:sky_horizon_color:g")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.815686, -0.25, 0, 0.25, 0, 0.815686, -0.25, 0, 0.25, 0, 0.690196, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3, 4.2)
-}
-tracks/24/type = "bezier"
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/path = NodePath("Chrono-Enviro/WorldEnvironment:environment:sky:sky_material:sky_horizon_color:b")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.203922, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3, 4.2)
-}
-tracks/25/type = "bezier"
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/path = NodePath("Chrono-Enviro/WorldEnvironment:environment:sky:sky_material:sky_horizon_color:a")
-tracks/25/interp = 1
-tracks/25/loop_wrap = true
-tracks/25/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3, 4.2)
-}
-tracks/26/type = "bezier"
-tracks/26/imported = false
-tracks/26/enabled = true
-tracks/26/path = NodePath("Chrono-Enviro/WorldEnvironment:environment:sky:sky_material:sky_curve")
-tracks/26/interp = 1
-tracks/26/loop_wrap = true
-tracks/26/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.0549033, -0.25, 0, 0.25, 0, 0.055, -0.25, 0, 0.25, 0, 0.0642731, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3, 4.2)
-}
-tracks/27/type = "method"
-tracks/27/imported = false
-tracks/27/enabled = true
-tracks/27/path = NodePath("Chrono-Enviro")
-tracks/27/interp = 1
-tracks/27/loop_wrap = true
-tracks/27/keys = {
-"times": PackedFloat32Array(4.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"StopDoingTheTimeWarp"
-}]
-}
-tracks/28/type = "value"
-tracks/28/imported = false
-tracks/28/enabled = true
-tracks/28/path = NodePath("Chrono-Enviro/Time Travel Cato:visible")
-tracks/28/interp = 1
-tracks/28/loop_wrap = true
-tracks/28/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/29/type = "method"
-tracks/29/imported = false
-tracks/29/enabled = true
-tracks/29/path = NodePath("Chrono-Enviro/AnimationPlayer/AudioStreamPlayer")
-tracks/29/interp = 1
-tracks/29/loop_wrap = true
-tracks/29/keys = {
-"times": PackedFloat32Array(0.05),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
+"points": PackedFloat32Array(0.901961, -0.25, 0, 0.25, 0, 0.901961, -0.25, 0, 0.25, 0, 0.901961, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.4, 2.5)
 }
 
 [sub_resource type="Animation" id="Animation_bomh6"]
@@ -899,7 +572,6 @@ _data = {
 "RESET": SubResource("Animation_20fdu"),
 "Return": SubResource("Animation_t7565"),
 "Test": SubResource("Animation_8wc3u"),
-"Timewarp": SubResource("Animation_uk8v7"),
 "TimewarpTest": SubResource("Animation_bomh6")
 }
 
@@ -1733,29 +1405,31 @@ presentEnvironmentRes = "res://Test Scenes/Present Environment.tres"
 pastEnvironmentRes = "res://Test Scenes/Past Environment.tres"
 realEnvironment = NodePath("WorldEnvironment")
 enviornmentTrackIndex = 15
+returnEnvironmentTrackIndex = 9
+returnSunTrackIndex = 10
 TimeTravelCato = NodePath("Time Travel Cato")
 subtractSphere = NodePath("Present/Subtract Box")
 visibleSphere = NodePath("Past/Visible Box")
 pastSun = NodePath("Past Sun")
-presentSun = NodePath("Present Sun")
+presentSun = NodePath("Present Moon")
 
 [node name="Past Sun" type="DirectionalLight3D" parent="Chrono-Enviro"]
-transform = Transform3D(0.29684, 0.707314, -0.641555, 0.933691, -0.355879, 0.0396514, -0.20027, -0.610784, -0.766051, -11.2762, 9.69895, 9.304)
+transform = Transform3D(-0.312823, -0.821795, -0.476231, -0.948459, 0.243523, 0.202787, -0.0506764, 0.515122, -0.855618, -11.2762, 9.69895, 9.304)
 visible = false
 layers = 0
-light_color = Color(0.901961, 0.709804, 0.333333, 1)
-light_energy = 1.3
+light_color = Color(1, 0.643137, 0.180392, 1)
+light_energy = 7.0
 light_bake_mode = 0
 light_cull_mask = 4293919745
 shadow_enabled = true
 shadow_bias = 0.0
 shadow_normal_bias = 5.0
 
-[node name="Present Sun" type="DirectionalLight3D" parent="Chrono-Enviro"]
+[node name="Present Moon" type="DirectionalLight3D" parent="Chrono-Enviro"]
 transform = Transform3D(0.632598, 0.430962, -0.6435, 0.449681, 0.472094, 0.758231, 0.630561, -0.769025, 0.10485, -11.2762, 9.69895, 9.304)
+visible = false
 layers = 0
-light_color = Color(1, 0.894118, 0.54902, 1)
-light_energy = 1.5
+light_energy = 0.5
 light_bake_mode = 0
 light_cull_mask = 4293919745
 shadow_enabled = true
@@ -1785,9 +1459,8 @@ shape = SubResource("CylinderShape3D_cjf8h")
 
 [node name="FragmentSprite" type="Sprite3D" parent="Chrono-Enviro/Fragment One"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1.64, -0.28)
-modulate = Color(0.627451, 0.760784, 0.85098, 0.607843)
+modulate = Color(0.627451, 0.760784, 0.85098, 0.145098)
 pixel_size = 0.008
-shaded = true
 alpha_cut = 2
 texture = ExtResource("4_qsoaa")
 
@@ -1817,6 +1490,7 @@ outline_size = 8
 
 [node name="Fragment Two" type="Area3D" parent="Chrono-Enviro" node_paths=PackedStringArray("timeEnvironment", "targetEnvironment") groups=["Time Fragment"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.64, 0.56, -1.64)
+visible = false
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_13gqw")
@@ -1871,7 +1545,6 @@ alpha_cut = 1
 texture = ExtResource("3_1t02q")
 hframes = 10
 vframes = 15
-frame = 30
 
 [node name="Heart" type="Sprite3D" parent="Chrono-Enviro/Time Travel Cato/Cato Sprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.68, 0, 0.04)
@@ -1914,7 +1587,6 @@ size = Vector3(0, 0, 0)
 
 [node name="Past" type="CSGCombiner3D" parent="Chrono-Enviro"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.32, 0, -6.52)
-visible = false
 layers = 1024
 
 [node name="Past" type="CSGMesh3D" parent="Chrono-Enviro/Past"]
@@ -1944,7 +1616,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.4, 
 mesh = SubResource("ArrayMesh_u2jpw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Chrono-Enviro"]
-environment = ExtResource("11_6wesq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Chrono-Enviro"]
 
