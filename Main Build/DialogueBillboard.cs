@@ -12,6 +12,7 @@ public partial class DialogueBillboard : MeshInstance3D
 		StandardMaterial3D mat = (StandardMaterial3D)GD.Load<StandardMaterial3D>("res://3DTextboxTexture.tres").Duplicate();
 		mat.AlbedoTexture = targetViewPort.GetTexture();
 		this.MaterialOverride = mat;
+		this.Visible = true;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

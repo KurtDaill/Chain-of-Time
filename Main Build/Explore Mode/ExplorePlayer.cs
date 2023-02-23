@@ -71,10 +71,19 @@ public partial class ExplorePlayer : CharacterBody3D
 		inControl = set;
 	}
 
+	public void SetActive(bool active){
+		SetPlayerControl(active);
+		this.Visible = active;
+	}
+
 	public void OnInteractionAreaEntered(Area3D area){
 		if(area.GetGroups().Contains("Time Fragment")){
 			timeFrag = (TimeFragment) area;
 			if(((TimeFragment)area).ArmTimeFragment())timeFrag = (TimeFragment)area;
+		}
+		if(area.GetGroups().Contains("Encounter")){
+			Encounter en = (Encounter) area;
+			en.StartEncounter(this);
 		}
 	}
 

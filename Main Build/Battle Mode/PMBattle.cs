@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using static PMBattleUtilities;
 using static BattleMenu;
 
-public partial class PMBattle : Node
+public partial class PMBattle : Node3D
 {
 	private enum TurnPhase{
 		LoadDelay,
@@ -36,6 +36,8 @@ public partial class PMBattle : Node
 	//Tracks healing in the same way as damageScoreboard
 	Dictionary<PMCharacter, int> healingScoreboard = new Dictionary<PMCharacter, int>();
 	double timer = 0F;
+
+	bool offline = true;
 	public bool heroTauntUp{
 		get;
 		private set;
@@ -69,10 +71,15 @@ public partial class PMBattle : Node
 			LoadPlayerCharactersFromGM();
 		}*/
 		//master = GameMaster;
+		if(offline){
+			this.gui.Visible = false;
+			this.Visible = false;
+		}
 	}
 
 	public override void _Process(double delta)
 	{
+		if(offline) return;
 		switch(currentPhase){
 			case TurnPhase.LoadDelay :
 				if(timer < 1){
@@ -242,9 +249,15 @@ public partial class PMBattle : Node
 	}
 
 	public virtual void EndBattle(bool gameOver){
-		if(gameOver)GD.Print("Game Over");
-		else GD.Print("You Win!");
-		GetTree().Quit();
+		if(gameOver){
+			GD.Print("Game Over");
+			GetTree().Quit();
+		}else{
+			if(this.GetParent() is Encounter){
+				((Encounter)this.GetParent()).FinishEncounter();
+			}
+			GD.Print("You Win!");
+		}
 	}
 	public PMCharacter PositionLookup(BattlePos target){
 		var temp = roster.GetSingle(target);
@@ -334,6 +347,14 @@ public partial class PMBattle : Node
 	public void FinishPositionSwap(){
 		roster.FinishPositionSwap();
 		gui.GetNode<ReadoutContainer>("Readouts").Reorder();
+	}
+
+	public void StartBattleFromExplore(){
+		//Become Visible
+		this.Visible = true;
+		this.gui.Visible = true;
+		//Go Online
+		offline = false;
 	}
 }
 

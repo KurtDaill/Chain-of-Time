@@ -477,7 +477,7 @@ _data = {
 "RESET": SubResource("68")
 }
 
-[node name="Basic Attack" type="Node"]
+[node name="Basic Attack" type="Node3D"]
 script = ExtResource("11")
 rulesText = "[center][Melee]
 Deals [damageNumber] Damage

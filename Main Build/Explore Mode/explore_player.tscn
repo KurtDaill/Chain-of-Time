@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://d3c1467kmloin"]
+[gd_scene load_steps=13 format=3 uid="uid://dy5wjqinmlghd"]
 
-[ext_resource type="Script" path="res://ExplorePlayer.cs" id="1_rbmfy"]
+[ext_resource type="Script" path="res://Explore Mode/ExplorePlayer.cs" id="1_rbmfy"]
 [ext_resource type="Texture2D" uid="uid://beln8ffrnhd44" path="res://Art/Kell Cato Master Sprite-Sheet.png" id="2_1xkts"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_003pa"]

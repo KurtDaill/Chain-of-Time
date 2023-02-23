@@ -14,11 +14,24 @@ public partial class TimeFragment : Area3D
 	[Export]
 	ChronoEnviro timeEnvironment;
 	[Export]
-	CSGCombiner3D targetEnvironment;
+	CronoScene targetCronoScene;
+	[Export(PropertyHint.File)]
+	string targetEnvironmentRes;
+	Godot.Environment targetEnvironment;
+	
+	[Export]
+	CutsceneDirector postTravelCustcene = null;
+
+	bool cutsceneAlreadyPlayed = false;
+
+	[Export]
+	DirectionalLight3D targetSun;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
+		targetEnvironment = GD.Load<Godot.Environment>(targetEnvironmentRes);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,11 +61,13 @@ public partial class TimeFragment : Area3D
 			armed = false;
 			animPlay.Play("Hide Prompt");
 			return true;
-		}else if(armedForReturn){
+		}
+		if(armedForReturn){
 			armedForReturn = false;
 			animPlay.Play("Hide Return Prompt");
 			return true;
-		}else{
+		}
+		else{
 			return false;
 		}
 	}
@@ -66,7 +81,24 @@ public partial class TimeFragment : Area3D
 		
 	}
 
-	public CSGCombiner3D GetTargetEnvironment(){
+	public CronoScene GetTargetCronoScene(){
+		return targetCronoScene;
+	}
+
+	public Godot.Environment GetTargetEnvironment(){
 		return targetEnvironment;
+	}
+
+	public DirectionalLight3D GetTargetSun(){
+		return targetSun;
+	}
+
+	public bool HasCutsceneArmed(){
+		return (postTravelCustcene != null && !cutsceneAlreadyPlayed);
+	}
+
+	public void PlayCutscene(){
+		cutsceneAlreadyPlayed = true;
+		postTravelCustcene.StartCutscene();
 	}
 }

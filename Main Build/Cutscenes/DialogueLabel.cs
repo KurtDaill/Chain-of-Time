@@ -34,27 +34,29 @@ public partial class DialogueLabel : RichTextLabel
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		//Handle Inputs
-		if(timer >= displayTime){
-			timer -= displayTime;
-			if(this.VisibleCharacters < this.Text.Length){
-				this.VisibleCharacters++;
-				if(this.Text[VisibleCharacters - 1] == '.' || this.Text[VisibleCharacters - 1] == '?'|| this.Text[VisibleCharacters - 1] == '!'){ //if this letter is a period
-					timer -= 0.25; //we wait longer
-					voiceTimer = voiceLetterRatio;
-				}else if(this.Text[VisibleCharacters - 1] == ','|| this.Text[VisibleCharacters - 1] == ';'){ //if this letter is a comma/semi-colon
-					timer -= 0.12; //we wait longer
-				}
+		if(this.Text != ""){
+			//Handle Inputs
+			if(timer >= displayTime){
+				timer -= displayTime;
+				if(this.VisibleCharacters < this.Text.Length){
+					this.VisibleCharacters++;
+					if(this.Text[VisibleCharacters - 1] == '.' || this.Text[VisibleCharacters - 1] == '?'|| this.Text[VisibleCharacters - 1] == '!'){ //if this letter is a period
+						timer -= 0.25; //we wait longer
+						voiceTimer = voiceLetterRatio;
+					}else if(this.Text[VisibleCharacters - 1] == ','|| this.Text[VisibleCharacters - 1] == ';'){ //if this letter is a comma/semi-colon
+						timer -= 0.12; //we wait longer
+					}
 
-				if(voiceTimer >= voiceLetterRatio){
-					voice.Play();
-					voiceTimer = 0;
-				}else{
-					voiceTimer++;
+					if(voiceTimer >= voiceLetterRatio){
+						voice.Play();
+						voiceTimer = 0;
+					}else{
+						voiceTimer++;
+					}
 				}
+			}else{
+				timer += delta;
 			}
-		}else{
-			timer += delta;
 		}
 	}
 

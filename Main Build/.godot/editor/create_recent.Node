@@ -1,11 +1,11 @@
+Node3D
+Sprite3D
+CollisionShape3D
+Area3D
 GPUParticles3D
 Label3D
 RichTextLabel
-Sprite3D
 AnimationPlayer
-Area3D
-CollisionShape3D
-Node3D
 Camera3D
 StaticBody3D
 CSGBox3D
@@ -30,4 +30,3 @@ VBoxContainer
 ColorRect
 SubViewport
 SubViewportContainer
-ReferenceRect

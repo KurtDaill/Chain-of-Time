@@ -1,10 +1,11 @@
-res://Test Scenes
 res://Explore Mode
+res://Art
+res://Battle Mode
+res://Test Scenes
 res://Art/3D
 C:/Users/kdail/Desktop
 res://Fonts
 res://GUI
-res://Art
 res://
 res://Audio
 res://Art/3D/Inherited Sceness
@@ -14,7 +15,6 @@ res://GUI/Cutscene Assets
 res://GUI/Battle Ability GUI Assets
 res://GUI/Themes/Dialogue
 C:/Users/kdail/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Visual Studio Code
-res://Battle Mode
 res://Levels
 res://GUI/Themes
 res://Battle Mode/Status Effects

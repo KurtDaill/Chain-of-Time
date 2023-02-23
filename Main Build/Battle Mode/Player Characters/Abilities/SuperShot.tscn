@@ -617,7 +617,7 @@ libraries = {
 }
 
 [node name="Top Letterbox" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.99726, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1, 6)
 visible = false
 no_depth_test = true
 alpha_cut = 2
@@ -627,7 +627,7 @@ hframes = 2
 frame = 1
 
 [node name="Bottom Letterbox" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.99751, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 6)
 visible = false
 flip_v = true
 no_depth_test = true

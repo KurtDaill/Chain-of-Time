@@ -54,7 +54,15 @@ public partial class PMCharacter : Sprite3D{
     private PackedScene damageNum, healingNum;
     public override void _Ready(){
         statusEffects = new List<PMStatus>();
-        parentBattle = (PMBattle) GetNode("/root/Battle");
+        //parentBattle = (PMBattle) GetNode("/root/Battle");
+        Node temp = this;
+        while(true){
+            temp = temp.GetParent();
+            if(temp is PMBattle){
+                parentBattle = (PMBattle) temp;
+                break;
+            }
+        }
         animPlay = GetNode<AnimationPlayer>("AnimationPlayer");
         pointerGraphic = GetNode<Sprite3D>("Pointer");
         if(currentHP == -1) currentHP = maxHP;

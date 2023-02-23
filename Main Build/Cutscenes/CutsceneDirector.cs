@@ -16,6 +16,8 @@ public partial class CutsceneDirector : Node3D
 	public string playerCharacterActor = "Cato";
 	[Export]
 	public ExplorePlayer sceneExplorePlayer;
+	[Export]
+	string initAnimation;
 	ScreenPlay play;
 	private Exchange currentExchange;
 
@@ -25,7 +27,10 @@ public partial class CutsceneDirector : Node3D
 
 	Dictionary<string, Actor> cast; 
 
-	private bool waiting = false;
+	private bool waiting;
+
+	[Export]
+	private bool startDisabled = false;
 	public override void _Ready(){
 		FileAccess file = FileAccess.Open(filepath, FileAccess.ModeFlags.Read);
 		List<string>lines = new List<string>();
@@ -46,15 +51,17 @@ public partial class CutsceneDirector : Node3D
 				cast.Add(child.GetActorName(), child);
 			}
 		}
+		waiting = startDisabled;
 	}
 
     public override void _Process(double delta)
     {
-		if(waiting) return;
-
-        if(Input.IsActionJustPressed(dialogueNextAction)){
+		if(waiting){
+			return;
+		}else if(Input.IsActionJustPressed(dialogueNextAction)){
 			if(currentLine.isEnd()){
 				ExitCutscene();
+				return;
 			}
 			if(currentLine.GetGotoIndex() != -1){
 				MoveToNewExchange(currentLine.GetGotoIndex());
@@ -113,8 +120,10 @@ public partial class CutsceneDirector : Node3D
 	}
 
 	public void StartCutscene(){
+		this.Visible = true;
 		sceneExplorePlayer.SetPlayerControl(false);
 		sceneExplorePlayer.Visible = false;
+		animPlay.Play(initAnimation);
 	}
 
 	public void ExitCutscene(){
@@ -125,6 +134,7 @@ public partial class CutsceneDirector : Node3D
 		GetNode<ExplorePlayer>("/root/Node3D/ExplorePlayer").Visible = true;
 		cast.TryGetValue(playerCharacterActor, out Actor temp);
 		temp.SetVisiblity(false);
+		waiting = true;
 	}
 
 	public void SetDialogueBalloons(string speaker){

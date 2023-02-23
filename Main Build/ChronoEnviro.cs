@@ -11,6 +11,8 @@ public partial class ChronoEnviro : Node3D
     [Export]
     WorldEnvironment realEnvironment;
     [Export]
+    CronoScene presentCronoScene;
+    [Export]
     int enviornmentTrackIndex;
     [Export]
     int sunTrackIndex;
@@ -66,8 +68,11 @@ public partial class ChronoEnviro : Node3D
         visibleSphere.GlobalPosition = frag.GlobalPosition;
         //Set the visible sphere to the right past scene
         visibleSphere.GetParent().RemoveChild(visibleSphere);
-        frag.GetTargetEnvironment().AddChild(visibleSphere);
-        frag.GetTargetEnvironment().Visible = true;
+        frag.GetTargetCronoScene().AddChild(visibleSphere);
+        frag.GetTargetCronoScene().Visible = true;
+
+        pastEnvironment = frag.GetTargetEnvironment();
+        pastSun = frag.GetTargetSun();
 
         //TEMP ANIMATION HARD CODING, WAITING ON FULL FIX
         GD.Print(visibleSphere.GetPath());
@@ -92,12 +97,26 @@ public partial class ChronoEnviro : Node3D
         animPlay.Play("TimewarpTest"); //TODO change me back
     }
 
-    public void StopDoingTheTimeWarp(){
-        explorer.Visible = true;
-        TimeTravelCato.Visible = false;
+    //Called by the transition animations to have the proper objects spawn/despawn for the time travel transition
+    public void SetupCronoScenes(bool isReturnRun){
+        if(isReturnRun){
+            currentFragment.GetTargetCronoScene().HideChildModules();
+            presentCronoScene.ShowChildModules();
+        }else{
+            currentFragment.GetTargetCronoScene().ShowChildModules();
+            presentCronoScene.HideChildModules();
+        }
+    }
 
-        explorer.exploreCamera.Current = false;
-        TimeTravelCato.GetNode<Camera3D>("Time Travel Camera Ref/Time Travel Camera").Current = true;
+    public void StopDoingTheTimeWarp(){
+        TimeTravelCato.Visible = false; 
+        TimeTravelCato.GetNode<Camera3D>("Time Travel Camera Ref/Time Travel Camera").Current = false;
+        if(currentFragment.HasCutsceneArmed()){
+            currentFragment.PlayCutscene();
+        }else{    
+            explorer.Visible = true;
+            explorer.exploreCamera.Current = true;
+        }
     }
 
     public void ReturnToThePresent(){
@@ -107,6 +126,7 @@ public partial class ChronoEnviro : Node3D
         TimeTravelCato.Visible = true;
         inPast = false;
         currentFragment.DisarmTimeFragment();
+        presentCronoScene.Visible = true;
         SetupEnvironmentAnimation(true);
         //Play the Return Animation
         animPlay.Play("Return");
@@ -115,7 +135,7 @@ public partial class ChronoEnviro : Node3D
     public void CompleteReturn(){
         explorer.Visible = true;
         TimeTravelCato.Visible = false;
-        currentFragment.GetTargetEnvironment().Visible = false;
+        currentFragment.GetTargetCronoScene().Visible = false;
         explorer.exploreCamera.Current = false;
         TimeTravelCato.GetNode<Camera3D>("Time Travel Camera Ref/Time Travel Camera").Current = true;
     }

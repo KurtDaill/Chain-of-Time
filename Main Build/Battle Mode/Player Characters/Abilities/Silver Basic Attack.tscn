@@ -344,7 +344,7 @@ _data = {
 "Miss": SubResource("82")
 }
 
-[node name="Basic Attack" type="Node"]
+[node name="Basic Attack" type="Node3D"]
 script = ExtResource("9")
 rulesText = "[center] [Ranged]
 Deals [damageNumber] Damage

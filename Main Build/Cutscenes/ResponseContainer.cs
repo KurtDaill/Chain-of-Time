@@ -59,7 +59,6 @@ public partial class ResponseContainer : VBoxContainer
 
 	public void DisplayResponses(Response[] responses){
 		Clear();
-		
 		responseObjects = responses;
 		for(int i = 0; i < responses.Length; i++){
 			if(i > responseLabels.Count) break;
