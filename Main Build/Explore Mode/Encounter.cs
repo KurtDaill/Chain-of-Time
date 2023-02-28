@@ -20,6 +20,7 @@ public partial class Encounter : Area3D
 			triggeringPlayer = player;
 			triggeringPlayer.SetActive(false);
 			sprite.Visible = false;
+			GetNode<CameraManager>("/root/CameraManager").SwitchCamera(battle.GetBattleCamera());
 		}
 	}
 
@@ -30,6 +31,7 @@ public partial class Encounter : Area3D
 			postFightCutscene.StartCutscene();
 		}else{
 			triggeringPlayer.SetActive(true);
+			GetNode<CameraManager>("/root/CameraManager").SwitchCamera(triggeringPlayer.exploreCamera);
 		}
 	} 
 }

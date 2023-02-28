@@ -1,9 +1,8 @@
-[gd_scene load_steps=103 format=3 uid="uid://b8ycog8vnd8yg"]
+[gd_scene load_steps=101 format=3 uid="uid://b8ycog8vnd8yg"]
 
 [ext_resource type="Script" path="res://Battle Mode/PMBattle.cs" id="1"]
 [ext_resource type="Script" path="res://Battle Mode/PMBattleRoster.cs" id="2_h05l4"]
 [ext_resource type="PackedScene" uid="uid://drixqr1kasloi" path="res://Battle Mode/Player Characters/Will Silver.tscn" id="3_q00g6"]
-[ext_resource type="PackedScene" uid="uid://cy6ib5eho248k" path="res://Battle Mode/Enemies/Polymorphor.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://bydr1u81xlrfu" path="res://Art/3D/Baths.glb" id="5"]
 [ext_resource type="Texture2D" uid="uid://c74qsow25qfbm" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuComboHighlight.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://dr54ux3u6u382" path="res://GUI/Battle Menu Assets/Top Menu/Skill Button Highlight.png" id="7"]
@@ -52,7 +51,6 @@
 [ext_resource type="Texture2D" uid="uid://k1c0luw6jqjc" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres" id="48"]
 [ext_resource type="Texture2D" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres" id="49"]
 [ext_resource type="Texture2D" uid="uid://wxj5d30d2p8y" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres" id="51"]
-[ext_resource type="PackedScene" uid="uid://bqhhsywrd27ba" path="res://Battle Mode/Enemies/Ghost.tscn" id="52"]
 [ext_resource type="PackedScene" uid="uid://bqb21t5xmngp7" path="res://Battle Mode/Player Characters/Cato.tscn" id="55"]
 
 [sub_resource type="Animation" id="83"]
@@ -1520,9 +1518,11 @@ background_mode = 2
 sky = SubResource("55")
 ambient_light_color = Color(0.745098, 0.745098, 0.745098, 1)
 
-[node name="Battle" type="Node3D"]
+[node name="Battle" type="Node3D" node_paths=PackedStringArray("battleCamera")]
 script = ExtResource("1")
 battleGUI = NodePath("Camera3D/BattleGUI")
+offline = false
+battleCamera = NodePath("Camera3D")
 
 [node name="Battle Roster" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7875)
@@ -1546,12 +1546,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1875, 4)
 [node name="Enemy 1" type="Node3D" parent="Battle Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.188, 4)
 
-[node name="Polymorphor" parent="Battle Roster/Enemy 1" instance=ExtResource("4")]
-
 [node name="Enemy 2" type="Node3D" parent="Battle Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1875, 3)
-
-[node name="Ghost" parent="Battle Roster/Enemy 2" instance=ExtResource("52")]
 
 [node name="Enemy 3" type="Node3D" parent="Battle Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.1875, 2)

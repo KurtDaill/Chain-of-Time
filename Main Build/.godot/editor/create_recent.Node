@@ -1,3 +1,5 @@
+Node
+AnimationPlayer
 Node3D
 Sprite3D
 CollisionShape3D
@@ -5,7 +7,6 @@ Area3D
 GPUParticles3D
 Label3D
 RichTextLabel
-AnimationPlayer
 Camera3D
 StaticBody3D
 CSGBox3D
@@ -23,7 +24,6 @@ OmniLight3D
 MeshInstance3D
 Decal
 TextureRect
-Node
 MultiMeshInstance3D
 Control
 VBoxContainer

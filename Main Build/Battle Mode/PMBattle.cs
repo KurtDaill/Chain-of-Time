@@ -37,6 +37,7 @@ public partial class PMBattle : Node3D
 	Dictionary<PMCharacter, int> healingScoreboard = new Dictionary<PMCharacter, int>();
 	double timer = 0F;
 
+	[Export]
 	bool offline = true;
 	public bool heroTauntUp{
 		get;
@@ -50,6 +51,9 @@ public partial class PMBattle : Node3D
 	protected Queue<PMPlayerAbility> playerAttacks;
 	protected Queue<PMBattleAbility> enemyAttacks;
 	public PMBattleRoster roster;
+
+	[Export]
+	Camera3D battleCamera;
 
 	//Used to track what character we know are defeated, so they don't come up every time we check for defeats
 	List<PMPlayerCharacter> knownDownedCharacters = new List<PMPlayerCharacter>();
@@ -355,6 +359,10 @@ public partial class PMBattle : Node3D
 		this.gui.Visible = true;
 		//Go Online
 		offline = false;
+	}
+
+	public Camera3D GetBattleCamera(){
+		return battleCamera;
 	}
 }
 

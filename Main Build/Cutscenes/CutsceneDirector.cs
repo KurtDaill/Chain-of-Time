@@ -18,6 +18,8 @@ public partial class CutsceneDirector : Node3D
 	public ExplorePlayer sceneExplorePlayer;
 	[Export]
 	string initAnimation;
+	[Export]
+	Camera3D cutsceneCamera;
 	ScreenPlay play;
 	private Exchange currentExchange;
 
@@ -27,10 +29,7 @@ public partial class CutsceneDirector : Node3D
 
 	Dictionary<string, Actor> cast; 
 
-	private bool waiting;
-
-	[Export]
-	private bool startDisabled = false;
+	private bool waiting = true;
 	public override void _Ready(){
 		FileAccess file = FileAccess.Open(filepath, FileAccess.ModeFlags.Read);
 		List<string>lines = new List<string>();
@@ -51,7 +50,6 @@ public partial class CutsceneDirector : Node3D
 				cast.Add(child.GetActorName(), child);
 			}
 		}
-		waiting = startDisabled;
 	}
 
     public override void _Process(double delta)
@@ -124,6 +122,8 @@ public partial class CutsceneDirector : Node3D
 		sceneExplorePlayer.SetPlayerControl(false);
 		sceneExplorePlayer.Visible = false;
 		animPlay.Play(initAnimation);
+		waiting = false;
+		GetNode<CameraManager>("/root/CameraManager").SwitchCamera(cutsceneCamera);
 	}
 
 	public void ExitCutscene(){
@@ -132,6 +132,7 @@ public partial class CutsceneDirector : Node3D
 		dLabel.ClearLine();
 		GetNode<ExplorePlayer>("/root/Node3D/ExplorePlayer").SetPlayerControl(true);
 		GetNode<ExplorePlayer>("/root/Node3D/ExplorePlayer").Visible = true;
+		GetNode<CameraManager>("/root/CameraManager").SwitchCamera(GetNode<ExplorePlayer>("/root/Node3D/ExplorePlayer").exploreCamera);
 		cast.TryGetValue(playerCharacterActor, out Actor temp);
 		temp.SetVisiblity(false);
 		waiting = true;
@@ -144,5 +145,13 @@ public partial class CutsceneDirector : Node3D
 				actor.ShowBalloon();
 			}
 		}
+	}
+
+	public void OnCinematicAnimationBegin(string anim_name){
+		waiting = true;
+	}
+
+	public void OnCinematicAnimationEnd(string anim_name){
+		waiting = false;
 	}
 }

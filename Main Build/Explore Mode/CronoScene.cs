@@ -15,7 +15,7 @@ public partial class CronoScene : CSGCombiner3D
 
 	public void HideChildModules(){
 		foreach(Node3D child in childModules){
-			child.Visible = false;
+			if(child != null) child.Visible = false;
 		}
 	}
 
