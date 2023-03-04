@@ -4,6 +4,8 @@ using System.Collections.Generic;
 //using DialogueManagerRuntime;
 public partial class CutsceneDirector : Node3D
 {
+	[Export]
+	public bool enabled;
 	[Export(PropertyHint.File)]
 	public string filepath;
 	[Export]
@@ -17,9 +19,11 @@ public partial class CutsceneDirector : Node3D
 	[Export]
 	public ExplorePlayer sceneExplorePlayer;
 	[Export]
-	string initAnimation;
+	string initAnimation = "None";
 	[Export]
 	Camera3D cutsceneCamera;
+	[Export]
+	Encounter postSceneEncounter;
 	ScreenPlay play;
 	private Exchange currentExchange;
 
@@ -40,25 +44,30 @@ public partial class CutsceneDirector : Node3D
 		}
 		play = ScreenPlayLoader.Load(lines.ToArray());
 		currentExchange = play.Start();
-		currentLine = currentExchange.GetNextLine();
+		//currentLine = currentExchange.GetNextLine();
 		//DisplayLine(currentLine);
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
 		cast = new Dictionary<string, Actor>();
 		foreach(Node node in this.GetChildren()){
 			if(node is Actor){
 				Actor child = (Actor) node;
+				if(child.GetActorName() == "Actor") throw new NotImplementedException(); //Actor names shouldn't be left as default
 				cast.Add(child.GetActorName(), child);
 			}
+		}
+		if(postSceneEncounter != null){
+			postSceneEncounter.Visible = false;
+			postSceneEncounter.enabled = false;
 		}
 	}
 
     public override void _Process(double delta)
     {
-		if(waiting){
+		if(waiting || !enabled){
 			return;
 		}else if(Input.IsActionJustPressed(dialogueNextAction)){
 			if(currentLine.isEnd()){
-				ExitCutscene();
+				ExitCutscene(currentLine.DoesTriggerCombat());
 				return;
 			}
 			if(currentLine.GetGotoIndex() != -1){
@@ -117,24 +126,37 @@ public partial class CutsceneDirector : Node3D
 		DisplayLine(currentLine);
 	}
 
-	public void StartCutscene(){
+	public async void StartCutscene(){
 		this.Visible = true;
 		sceneExplorePlayer.SetPlayerControl(false);
 		sceneExplorePlayer.Visible = false;
-		animPlay.Play(initAnimation);
-		waiting = false;
 		GetNode<CameraManager>("/root/CameraManager").SwitchCamera(cutsceneCamera);
+		if(initAnimation != "None"){
+			animPlay.Play(initAnimation);
+			await ToSignal(animPlay, "animation_finished");
+		}else{
+			waiting = false;
+		}
+		currentLine =  currentExchange.GetNextLine();
+		DisplayLine(currentLine);
 	}
 
-	public void ExitCutscene(){
+	public void ExitCutscene(bool doesBattleBegin){
 		GD.Print("Exit Cutscene");
 		resContainer.Clear();
 		dLabel.ClearLine();
-		GetNode<ExplorePlayer>("/root/Node3D/ExplorePlayer").SetPlayerControl(true);
-		GetNode<ExplorePlayer>("/root/Node3D/ExplorePlayer").Visible = true;
-		GetNode<CameraManager>("/root/CameraManager").SwitchCamera(GetNode<ExplorePlayer>("/root/Node3D/ExplorePlayer").exploreCamera);
-		cast.TryGetValue(playerCharacterActor, out Actor temp);
-		temp.SetVisiblity(false);
+		if(cast.TryGetValue(playerCharacterActor, out Actor temp)){	
+			temp.SetVisiblity(false);
+		}
+		if(postSceneEncounter != null && doesBattleBegin){
+			postSceneEncounter.enabled = true;
+			postSceneEncounter.Visible = true;
+			postSceneEncounter.StartEncounter(sceneExplorePlayer);
+		}else{	
+			GetNode<ExplorePlayer>("/root/Node3D/ExplorePlayer").SetPlayerControl(true);
+			GetNode<ExplorePlayer>("/root/Node3D/ExplorePlayer").Visible = true;
+			GetNode<CameraManager>("/root/CameraManager").SwitchCamera(GetNode<ExplorePlayer>("/root/Node3D/ExplorePlayer").exploreCamera);
+		}
 		waiting = true;
 	}
 

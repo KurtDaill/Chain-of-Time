@@ -1,5 +1,9 @@
 ~Start
-	Silver: “So...uh...you ok pal?”
+	Silver: "Ok...we just bust in these haunted ruins, clear out the living dead..."
+	Silver: "you get to save the village, and I get paid in appopriated ancient swag."
+	Silver: "Sounds like a plan."
+	Cato: "..."
+	Silver: “So...uh...you gonna be ok pal?”
 	{OPT} "No." GOTO: Negative
 	{OPT} "Of Course Not." GOTO: Negative
 	{OPT} "What are you? Crazy?" GOTO: Negative
@@ -7,27 +11,23 @@
 
 ~Negative
 	Silver: “Alright, look. This was your idea.”
-	Silver: “Whether or not you can play hero today is your business.”
-	Silver: “But you’ve got Will Silver on your side.”
-	Cato: "What?"
-	Silver: “And Will Silver’s business is grabbing and fencing whatever ancient garbage is in there.”
-	Silver: “Silver’s buying a ship to get off this rock, so he’s getting in there, so You are opening this door.”
-	Silver: “Do your thing, then me and my pulse pistol oughta handle it. Clear?”
-	{OPT} “ok.” GOTO: Tutorial
-	{OPT} “...” GOTO: Tutorial
+	Silver: "There *are* less dumb ways for me to make the scatch to get off this planet,"
+	Silver: "But somebody had a 'save my village from the undead in that castle' problem."
+	Cato: "I...uh...that's fair"
+	Silver: "*sigh*" GOTO: Door?
 
 ~Positive
 	Silver: ”...”
-	Silver: “I appreciate the optimism.”
-	Silver: ”Just handle the spooky side of the equation, and stick with me.”
-	Silver: “I doubt they’ve got anything worse than void pirates in there.”
-	{OPT}”...thanks?” GOTO: Tutorial
-	{OPT}”Ok. Let’s do it.” GOTO: Tutorial
-	
-~Tutorial
-	Silver: "Okay. You seeing it?"
+	Silver: “I appreciate the optimism.” GOTO: Door?
+
+~Door?
+	Silver: "So we think this thing is a door?"
+	//Add a "Cato Glances to the Side" animation
+	Cato: "Looks like it...uh...magical...there's probably a command word."
+	Silver: "Like a password?"
+	Cato: "A password no ones known since this place was destroyed 20 years ago"
+	Silver: "Wanna see if that time magic you got actually works?"
+	Cato: "...let me see..."
 	[ANIM(CatoLooksAround)]
-	Cato: "Yeah...right there"
-	[ANIM(CameraMovesBackToCenter)]
-	Silver: "Ain't no time like the present." [END]
+	Cato: "I see something, let me try it..." [END]
 

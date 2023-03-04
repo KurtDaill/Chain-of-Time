@@ -10,7 +10,9 @@ public class Line{
 
     bool endLine;
 
-    public Line(string text, string speaker, TextEffect[] effects, ScreenplayModifier mod, string animation, int gotoIndex = -1, Response[] responses = null, bool endLine = false){
+    bool triggersCombat;
+
+    public Line(string text, string speaker, TextEffect[] effects, ScreenplayModifier mod, string animation, int gotoIndex = -1, Response[] responses = null, bool endLine = false, bool triggersCombat = false){
         this.text = text;
         this.speaker = speaker;
         this.effects = effects;
@@ -18,6 +20,7 @@ public class Line{
         this.animation = animation;
         this.gotoIndex = gotoIndex;
         this.endLine = endLine;
+        this.triggersCombat = triggersCombat;
     }
 
     public Line(){}
@@ -43,5 +46,9 @@ public class Line{
 
     public bool isEnd(){
         return endLine;
+    }
+
+    public bool DoesTriggerCombat(){
+        return triggersCombat;
     }
 }

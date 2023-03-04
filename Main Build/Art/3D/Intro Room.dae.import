@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bpjyhjhfb8py5"
+uid="uid://cf15tk1g18cuh"
 path="res://.godot/imported/Intro Room.dae-69bb1d2adcbee4c56f60f623c3e906dc.scn"
 
 [deps]
@@ -29,21 +29,9 @@ animation/trimming=false
 import_script/path=""
 _subresources={
 "materials": {
-"tile_set": {
+"tile_set.001": {
 "use_external/enabled": true,
 "use_external/path": "res://Art/3D/DungeonNormalMaterial.tres"
-}
-},
-"meshes": {
-"Cube.001": {
-"generate/lightmap_uv": 2,
-"generate/lods": 2,
-"generate/shadow_meshes": 2,
-"lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
-"save_to_file/enabled": false,
-"save_to_file/make_streamable": "",
-"save_to_file/path": ""
 }
 }
 }

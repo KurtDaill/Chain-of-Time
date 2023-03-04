@@ -20,6 +20,8 @@ public partial class ExplorePlayer : CharacterBody3D
 
 	private TimeFragment timeFrag;
 
+	private ExploreNPC npcInRange;
+
 	public override void _Ready(){
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
 	}
@@ -29,8 +31,17 @@ public partial class ExplorePlayer : CharacterBody3D
 		if(!inControl) return;
 		Vector3 velocity = Velocity;
 
-		if(timeFrag != null && Input.IsActionJustPressed("com_atk")){
-			timeFrag.TimeTravel(this);
+		if(Input.IsActionJustPressed("com_atk")){
+			if(timeFrag != null){
+				timeFrag.TimeTravel(this);
+				if(npcInRange != null){
+					npcInRange.DisarmCutscene();
+					npcInRange = null;
+				}
+				timeFrag = null;
+			}else if(npcInRange != null){
+				npcInRange.PlayCutscene();
+			}
 		}
 
 		// Add the gravity.
@@ -84,6 +95,12 @@ public partial class ExplorePlayer : CharacterBody3D
 		if(area.GetGroups().Contains("Encounter")){
 			Encounter en = (Encounter) area;
 			en.StartEncounter(this);
+		}
+		if(area.GetGroups().Contains("NPC")){
+			ExploreNPC npc = (ExploreNPC) area.GetParent();
+			if(npc.ArmCutscene()){
+				npcInRange = npc;
+			}
 		}
 	}
 

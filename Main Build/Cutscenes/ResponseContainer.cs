@@ -46,7 +46,7 @@ public partial class ResponseContainer : VBoxContainer
 					selectedResponse++;
 				}
 			}else if(Input.IsActionJustPressed("ui_accept")){
-				if(responseObjects[selectedResponse].isEnd()) director.ExitCutscene();
+				if(responseObjects[selectedResponse].isEnd()) director.ExitCutscene(responseObjects[selectedResponse].DoesBattleBegin());
 				else{
 					director.MoveToNewExchange(responseObjects[selectedResponse].GetNextExchangeIndex());
 					this.responding = false;

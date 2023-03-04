@@ -4,6 +4,8 @@ using System;
 public partial class Encounter : Area3D
 {
 	[Export]
+	public bool enabled;
+	[Export]
 	PMBattle battle;
 	[Export]
 	Sprite3D sprite;
@@ -15,6 +17,7 @@ public partial class Encounter : Area3D
 	private bool battleArmed = true;
 
 	public void StartEncounter(ExplorePlayer player){
+		if(!enabled) return;
 		if(battleArmed){
 			battle.StartBattleFromExplore();
 			triggeringPlayer = player;

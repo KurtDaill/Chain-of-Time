@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cg5iu6gwypnal"
+uid="uid://cvsfcdu6xrymk"
 path="res://.godot/imported/Intro Room Past.dae-91d631c21616767c7f5955d71654d48f.scn"
 
 [deps]
@@ -29,10 +29,6 @@ animation/trimming=false
 import_script/path=""
 _subresources={
 "materials": {
-"tile_set": {
-"use_external/enabled": true,
-"use_external/path": "res://Art/3D/DungeonNormalMaterial.tres"
-},
 "tile_set.001": {
 "use_external/enabled": true,
 "use_external/path": "res://Art/3D/DungeonNormalMaterial.tres"

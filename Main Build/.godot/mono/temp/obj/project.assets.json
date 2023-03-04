@@ -2,13 +2,13 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "Godot.SourceGenerators/4.0.0-beta.9": {
+      "Godot.SourceGenerators/4.0.0-beta.10": {
         "type": "package",
         "build": {
           "build/Godot.SourceGenerators.props": {}
         }
       },
-      "GodotSharp/4.0.0-beta.9": {
+      "GodotSharp/4.0.0-beta.10": {
         "type": "package",
         "compile": {
           "lib/net6.0/GodotSharp.dll": {
@@ -21,10 +21,10 @@
           }
         }
       },
-      "GodotSharpEditor/4.0.0-beta.9": {
+      "GodotSharpEditor/4.0.0-beta.10": {
         "type": "package",
         "dependencies": {
-          "GodotSharp": "4.0.0-beta.9"
+          "GodotSharp": "4.0.0-beta.10"
         },
         "compile": {
           "lib/net6.0/GodotSharpEditor.dll": {
@@ -40,37 +40,37 @@
     }
   },
   "libraries": {
-    "Godot.SourceGenerators/4.0.0-beta.9": {
-      "sha512": "Cz6afUL74qNUoDy0Z+BvTHsNIzc2AdnPlR8Z5TrWwyPoLdOEEDFQ1V6Q27L6z3XVNmHJwfBC007i4z+6bFAynA==",
+    "Godot.SourceGenerators/4.0.0-beta.10": {
+      "sha512": "pTDKf+p0Jl9daLpeRlADUbRy3R9L3tywnVOFQziOFnW5QrdvQqQQT5uack6sUDAiKM/4byVj1zhLAYGZFhjbOA==",
       "type": "package",
-      "path": "godot.sourcegenerators/4.0.0-beta.9",
+      "path": "godot.sourcegenerators/4.0.0-beta.10",
       "files": [
         ".nupkg.metadata",
         "analyzers/dotnet/cs/Godot.SourceGenerators.dll",
         "build/Godot.SourceGenerators.props",
-        "godot.sourcegenerators.4.0.0-beta.9.nupkg.sha512",
+        "godot.sourcegenerators.4.0.0-beta.10.nupkg.sha512",
         "godot.sourcegenerators.nuspec"
       ]
     },
-    "GodotSharp/4.0.0-beta.9": {
-      "sha512": "pUQUKmcuXQOIjizhyocI3RIRsJ8p/m282xA9Ohub2ZVxBZegrOBEzZdd6sGKJKFJZ+p4fav8K3u2rKvpluWVWg==",
+    "GodotSharp/4.0.0-beta.10": {
+      "sha512": "XVHSGND/oQpuiRMo1u6qyE2523qDeU+SHiX4Nz2R/mfIE6POnYR5LYRzgANEyKrPRqwUPgHUUMqJnwiXVcRxEQ==",
       "type": "package",
-      "path": "godotsharp/4.0.0-beta.9",
+      "path": "godotsharp/4.0.0-beta.10",
       "files": [
         ".nupkg.metadata",
-        "godotsharp.4.0.0-beta.9.nupkg.sha512",
+        "godotsharp.4.0.0-beta.10.nupkg.sha512",
         "godotsharp.nuspec",
         "lib/net6.0/GodotSharp.dll",
         "lib/net6.0/GodotSharp.xml"
       ]
     },
-    "GodotSharpEditor/4.0.0-beta.9": {
-      "sha512": "nnFUDK9YYVV5zJCWWW9fTUrbXxyTaLwwyDCeZtaI0Cz3NBaH9RjhSA5y/AQZwWCVpayUo4DhHX/PA6WgkKN0ug==",
+    "GodotSharpEditor/4.0.0-beta.10": {
+      "sha512": "QS3BCS2W+6/OR7gH55s4vFh5hCebGDGC5kdfvbRqPr2lDr2x7XErePBMtntHsYrXdIWjjoce6RQuCU5uSuQGkg==",
       "type": "package",
-      "path": "godotsharpeditor/4.0.0-beta.9",
+      "path": "godotsharpeditor/4.0.0-beta.10",
       "files": [
         ".nupkg.metadata",
-        "godotsharpeditor.4.0.0-beta.9.nupkg.sha512",
+        "godotsharpeditor.4.0.0-beta.10.nupkg.sha512",
         "godotsharpeditor.nuspec",
         "lib/net6.0/GodotSharpEditor.dll",
         "lib/net6.0/GodotSharpEditor.xml"
@@ -79,9 +79,9 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Godot.SourceGenerators >= 4.0.0-beta.9",
-      "GodotSharp >= 4.0.0-beta.9",
-      "GodotSharpEditor >= 4.0.0-beta.9"
+      "Godot.SourceGenerators >= 4.0.0-beta.10",
+      "GodotSharp >= 4.0.0-beta.10",
+      "GodotSharpEditor >= 4.0.0-beta.10"
     ]
   },
   "packageFolders": {
@@ -91,11 +91,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
+      "projectUniqueName": "c:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
       "projectName": "Chain Of Time",
-      "projectPath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
+      "projectPath": "c:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
       "packagesPath": "C:\\Users\\kdail\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\.godot\\mono\\temp\\obj\\",
+      "outputPath": "c:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\.godot\\mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Users\\kdail\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder"
@@ -130,15 +130,15 @@
         "dependencies": {
           "Godot.SourceGenerators": {
             "target": "Package",
-            "version": "[4.0.0-beta.9, )"
+            "version": "[4.0.0-beta.10, )"
           },
           "GodotSharp": {
             "target": "Package",
-            "version": "[4.0.0-beta.9, )"
+            "version": "[4.0.0-beta.10, )"
           },
           "GodotSharpEditor": {
             "target": "Package",
-            "version": "[4.0.0-beta.9, )"
+            "version": "[4.0.0-beta.10, )"
           }
         },
         "imports": [

@@ -83,8 +83,9 @@ public partial class ChronoEnviro : Node3D
         frag.DisarmTimeFragment();
         //Hide the Explore Player
         ePlayer.Visible = false;
-        ePlayer.exploreCamera.Current = false;
-        TimeTravelCato.GetNode<Camera3D>("Time Travel Camera Ref/Time Travel Camera").Current = true;
+        //ePlayer.exploreCamera.Current = false;
+        //TimeTravelCato.GetNode<Camera3D>("Time Travel Camera Ref/Time Travel Camera").Current = true;
+        GetNode<CameraManager>("/root/CameraManager").SwitchCamera(TimeTravelCato.GetNode<Camera3D>("Time Travel Camera Ref/Time Travel Camera"));
 
         explorer = ePlayer;
         currentFragment = frag;
@@ -111,6 +112,7 @@ public partial class ChronoEnviro : Node3D
     public void StopDoingTheTimeWarp(){
         TimeTravelCato.Visible = false; 
         TimeTravelCato.GetNode<Camera3D>("Time Travel Camera Ref/Time Travel Camera").Current = false;
+        presentCronoScene.Visible = false;
         if(currentFragment.HasCutsceneArmed()){
             currentFragment.PlayCutscene();
         }else{    
@@ -121,8 +123,8 @@ public partial class ChronoEnviro : Node3D
 
     public void ReturnToThePresent(){
         //Hide the Explore Player
-        explorer.Visible = false;
-        explorer.exploreCamera.Current = false;
+        explorer.SetActive(false);
+        GetNode<CameraManager>("/root/CameraManager").SwitchCamera(TimeTravelCato.GetNode<Camera3D>("Time Travel Camera Ref/Time Travel Camera"));
         TimeTravelCato.Visible = true;
         inPast = false;
         currentFragment.DisarmTimeFragment();
@@ -133,11 +135,10 @@ public partial class ChronoEnviro : Node3D
     }
 
     public void CompleteReturn(){
-        explorer.Visible = true;
+        explorer.SetActive(true);
+        GetNode<CameraManager>("/root/CameraManager").SwitchCamera(explorer.exploreCamera);
         TimeTravelCato.Visible = false;
         currentFragment.GetTargetCronoScene().Visible = false;
-        explorer.exploreCamera.Current = false;
-        TimeTravelCato.GetNode<Camera3D>("Time Travel Camera Ref/Time Travel Camera").Current = true;
     }
 
     public bool IsInPast(){

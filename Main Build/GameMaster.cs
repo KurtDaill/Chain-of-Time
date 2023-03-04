@@ -71,4 +71,14 @@ public partial class GameMaster : Node
     public StoryState GetStoryState(){
         return state;
     }
+
+    public bool GetFlagValue(string flag){
+        bool result = false;
+        state.TryGetFlag(flag, out result);
+        return result;
+    }
+
+    public void SetFlagValue(string flag, bool value){
+        state.TrySetFlag(flag, value);
+    }
 }

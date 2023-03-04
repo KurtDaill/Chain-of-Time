@@ -7,11 +7,14 @@ public class Response{
 
     private bool endsDialogue;
 
-    public Response(string text,ResponseCondition condition, int nextExchange, bool endsDialogue = true){
+    private bool triggersCombat;
+
+    public Response(string text,ResponseCondition condition, int nextExchange, bool endsDialogue = true, bool triggersCombat = true){
         this.text = text;
         this.condition = condition;
         this.nextExchange = nextExchange;
         this.endsDialogue = endsDialogue;
+        this.triggersCombat = triggersCombat;
     }
 
     public string GetText(){
@@ -24,5 +27,9 @@ public class Response{
 
     public bool isEnd(){
         return endsDialogue;
+    }
+
+    public bool DoesBattleBegin(){
+        return triggersCombat;
     }
 }

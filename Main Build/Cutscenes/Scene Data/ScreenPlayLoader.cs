@@ -38,7 +38,8 @@ public static class ScreenPlayLoader{
 
                 Queue<string> exchangeLines = new Queue<string>();
                 while(textQueue.Count > 0 && textQueue.Peek() != ""){
-                    exchangeLines.Enqueue(textQueue.Dequeue());
+                    if(textQueue.Peek().StartsWith("//") || textQueue.Peek().StartsWith(" ")) textQueue.Dequeue();
+                    else    exchangeLines.Enqueue(textQueue.Dequeue());
                 }
                 var newExchange = ParseExchange(exchangeLines, exchangeDirectory); 
 
@@ -86,7 +87,14 @@ public static class ScreenPlayLoader{
                     textLine = textLine.Remove(0, textLine.IndexOf("(") + 1); //Removes "[ANIM("
                     textLine = textLine.Remove(textLine.Length - 2); //Removes the last ")]"
                     textLine = textLine.Trim();
-                    linesInExchange.Enqueue(new Line("[ANIM]", "[ACT]", null, null, textLine));
+                    var end = false;
+                    var battle = true;
+                    if(textLine.Contains("[END]")){
+                        if(textLine.Contains("[NOBATTLE]")) battle = false;
+                        end = true;
+                        textLine = textLine.Remove(textLine.IndexOf("[END]")).Trim();
+                    }
+                    linesInExchange.Enqueue(new Line("[ANIM]", "[ACT]", null, null, textLine, -1, null, end, battle));
                 }
                 else{
                     throw new NotImplementedException(); //TODO Custom exception, unknown action line in script
@@ -104,14 +112,16 @@ public static class ScreenPlayLoader{
                     textLine = newLine;
                 }
                 var end = false;
+                var battle = true;
                 if(textLine.Contains("[END]")){
+                    if(textLine.Contains("[NOBATTLE]")) battle = false;
                     end = true;
                     textLine = textLine.Remove(textLine.IndexOf("[END]")).Trim();
                 }
                 textLine = textLine.Substring(1, textLine.Length - 2);
                 string finalLine;
                 TextEffect[] effects = ParseLineTextEffects(textLine, out finalLine);
-                linesInExchange.Enqueue(new Line(finalLine, characterName, effects, null, null, gotoIndex, null, end));
+                linesInExchange.Enqueue(new Line(finalLine, characterName, effects, null, null, gotoIndex, null, end, battle));
             }
         }
         return new Exchange(linesInExchange);
@@ -211,17 +221,19 @@ public static class ScreenPlayLoader{
             textLine = textLine.Remove(0,1); //Removes "}"
 
             int nextExchangeIndex = -1;
-            var end = false;
             if(textLine.Contains("GOTO:")){
                 nextExchangeIndex = ParseGotoStatement(textLine, exchangeDirectory, out textLine);
             }
+            var end = false;
+            var battle = true;
             if(textLine.Contains("[END]")){
+                if(textLine.Contains("[NOBATTLE]")) battle = false;
                 end = true;
                 textLine = textLine.Remove(textLine.IndexOf("[END]")).Trim();
             }
             string responseText =  textLine.Trim();
     
-            responses.Add(new Response(responseText, condition, nextExchangeIndex, end)); 
+            responses.Add(new Response(responseText, condition, nextExchangeIndex, end, battle)); 
 
             while(responseLines.Count > 0 && responseLines.Peek().Trim().StartsWith("//")){//Chews through any comments inside of the options
                 responseLines.Dequeue();
