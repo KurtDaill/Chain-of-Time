@@ -11,7 +11,7 @@ public partial class ResponseContainer : VBoxContainer
 
 	int initialInputDelay;
 
-	bool responding = false;
+	public bool responding = false;
 
 	[Export]
 	private CutsceneDirector director;
@@ -49,8 +49,9 @@ public partial class ResponseContainer : VBoxContainer
 				if(responseObjects[selectedResponse].isEnd()) director.ExitCutscene(responseObjects[selectedResponse].DoesBattleBegin());
 				else{
 					director.MoveToNewExchange(responseObjects[selectedResponse].GetNextExchangeIndex());
-					this.responding = false;
-					Clear();
+					
+					//this.responding = false;
+					//Clear();
 				}
 			}
 		}

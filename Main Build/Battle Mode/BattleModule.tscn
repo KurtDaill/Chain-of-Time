@@ -2118,6 +2118,6 @@ offset_top = -0.320007
 alignment = 1
 script = ExtResource("48_bwj3k")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BattleMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("49_38f8s")
 volume_db = -25.0

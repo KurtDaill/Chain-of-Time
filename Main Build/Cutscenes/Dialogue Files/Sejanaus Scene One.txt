@@ -11,6 +11,7 @@
 	[SET(CatoKnowsPassword, TRUE)]
 	Sejanus: "To her warriors, all battles are won.”
 	[ANIM(DoorOpens)]
+	[ANIM(CameraTruck)]
 	Cato: "I hope that still works..."[END]
 
 	

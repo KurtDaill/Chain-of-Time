@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Actor : Node
+public partial class Actor : Node3D
 {
 	[Export]
 	string name = "Actor";
@@ -22,14 +22,14 @@ public partial class Actor : Node
 	}
 
 	public void HideBalloon(){
-		balloon.Visible = false;
+		if(balloon != null) balloon.Visible = false;
 	}
 
 	public void ShowBalloon(){
-		balloon.Visible = true;
+		if(balloon != null) balloon.Visible = true;
 	}
 
 	public void SetVisiblity(bool vis){
-		this.GetNode<Sprite3D>("Sprite").Visible = vis;
+		this.Visible = vis;
 	}
 }

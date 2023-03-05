@@ -189,7 +189,6 @@ alpha_cut = 2
 texture = ExtResource("1_nixdn")
 hframes = 10
 vframes = 4
-frame = 24
 script = ExtResource("2_wx54p")
 abilitiesByPriority = [NodePath("Cut"), NodePath("Thrust")]
 namePlate = NodePath("Enemy Nameplate")

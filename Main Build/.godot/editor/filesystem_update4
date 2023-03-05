@@ -12,4 +12,5 @@ res://GUI/Themes/Skill Card Tech Small.tres
 res://Cutscenes/cutscene_template.tscn
 res://Test Scenes/CSG Test.tscn
 res://Explore Mode/explore_player.tscn
-res://ExampleStoryState.tres
+res://Battle Mode/Enemies/Skeleton.tscn
+res://Battle Mode/BattleModule.tscn

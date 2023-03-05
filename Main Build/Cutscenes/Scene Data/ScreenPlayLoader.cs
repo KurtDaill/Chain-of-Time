@@ -35,7 +35,6 @@ public static class ScreenPlayLoader{
             }
 
             if(textLine.Trim().StartsWith('~')){ //This is the start of an exchange block, which is processed as a block
-
                 Queue<string> exchangeLines = new Queue<string>();
                 while(textQueue.Count > 0 && textQueue.Peek() != ""){
                     if(textQueue.Peek().StartsWith("//") || textQueue.Peek().StartsWith(" ")) textQueue.Dequeue();
@@ -84,9 +83,6 @@ public static class ScreenPlayLoader{
                     linesInExchange.Enqueue(new Line("[SET/MOD]", "[ACT]", null, HandleModifier(textLine), null));
                 }
                 else if(textLine.StartsWith("[ANIM")){
-                    textLine = textLine.Remove(0, textLine.IndexOf("(") + 1); //Removes "[ANIM("
-                    textLine = textLine.Remove(textLine.Length - 2); //Removes the last ")]"
-                    textLine = textLine.Trim();
                     var end = false;
                     var battle = true;
                     if(textLine.Contains("[END]")){
@@ -94,6 +90,9 @@ public static class ScreenPlayLoader{
                         end = true;
                         textLine = textLine.Remove(textLine.IndexOf("[END]")).Trim();
                     }
+                    textLine = textLine.Remove(0, textLine.IndexOf("(") + 1); //Removes "[ANIM("
+                    textLine = textLine.Remove(textLine.Length - 2); //Removes the last ")]"
+                    textLine = textLine.Trim();
                     linesInExchange.Enqueue(new Line("[ANIM]", "[ACT]", null, null, textLine, -1, null, end, battle));
                 }
                 else{

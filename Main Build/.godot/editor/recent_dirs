@@ -1,8 +1,9 @@
+res://Audio
+res://Art
+res://Cutscenes
 res://Cutscenes/Dialogue Files
 res://Explore Mode
 C:/Users/kdail/Desktop/Game Dev/Godot/Chain-of-Time/Main Build/Cutscenes/Dialogue Files
-res://Art
-res://Cutscenes
 res://Art/3D
 res://Test Scenes
 C:/Users/kdail/Desktop/Game Dev/Godot/Chain-of-Time/Main Build
@@ -13,7 +14,6 @@ res://Battle Mode
 C:/Users/kdail/Desktop
 res://Fonts
 res://GUI
-res://Audio
 res://Art/3D/Inherited Sceness
 C:/Users/kdail/Desktop/Game Dev/Godot/Chain-of-Time/Main Build/Cutscenes
 res://GUI/Cutscene Assets

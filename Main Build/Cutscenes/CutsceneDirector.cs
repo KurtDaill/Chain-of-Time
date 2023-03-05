@@ -35,15 +35,6 @@ public partial class CutsceneDirector : Node3D
 
 	private bool waiting = true;
 	public override void _Ready(){
-		FileAccess file = FileAccess.Open(filepath, FileAccess.ModeFlags.Read);
-		List<string>lines = new List<string>();
-		while(file.GetPosition() < file.GetLength()){
-			string temp = file.GetLine();
-			//GD.Print(temp);
-			lines.Add(temp);
-		}
-		play = ScreenPlayLoader.Load(lines.ToArray());
-		currentExchange = play.Start();
 		//currentLine = currentExchange.GetNextLine();
 		//DisplayLine(currentLine);
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
@@ -59,6 +50,7 @@ public partial class CutsceneDirector : Node3D
 			postSceneEncounter.Visible = false;
 			postSceneEncounter.enabled = false;
 		}
+		this.Visible = false;
 	}
 
     public override void _Process(double delta)
@@ -90,6 +82,10 @@ public partial class CutsceneDirector : Node3D
 	}
 
 	public async void DisplayLine(Line line){
+		if(line.GetText() != "{OPT}"){
+			resContainer.responding = false;
+			resContainer.Clear();
+		}
 		switch(line.GetText()){
 			case "{OPT}" :
 				//we hand off control to the response object
@@ -104,9 +100,13 @@ public partial class CutsceneDirector : Node3D
 					dLabel.ClearLine();
 					waiting = true;
 					await ToSignal(animPlay, "animation_finished");
-					waiting = false;
-					currentLine = currentExchange.GetNextLine();
-					DisplayLine(currentLine);
+					if(line.isEnd()){
+						ExitCutscene(line.DoesTriggerCombat());
+					}else{
+						waiting = false;
+						currentLine = currentExchange.GetNextLine();
+						DisplayLine(currentLine);
+					}
 				break;
 			case "[SET/MOD]" :
 				//Mod the value in story state
@@ -127,7 +127,16 @@ public partial class CutsceneDirector : Node3D
 	}
 
 	public async void StartCutscene(){
-		this.Visible = true;
+		FileAccess file = FileAccess.Open(filepath, FileAccess.ModeFlags.Read);
+		List<string>lines = new List<string>();
+		while(file.GetPosition() < file.GetLength()){
+			string temp = file.GetLine();
+			//GD.Print(temp);
+			lines.Add(temp);
+		}
+		play = ScreenPlayLoader.Load(lines.ToArray());
+		currentExchange = play.Start();
+
 		sceneExplorePlayer.SetPlayerControl(false);
 		sceneExplorePlayer.Visible = false;
 		GetNode<CameraManager>("/root/CameraManager").SwitchCamera(cutsceneCamera);

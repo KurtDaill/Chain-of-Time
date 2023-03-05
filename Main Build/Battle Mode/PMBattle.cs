@@ -37,6 +37,8 @@ public partial class PMBattle : Node3D
 	Dictionary<PMCharacter, int> healingScoreboard = new Dictionary<PMCharacter, int>();
 	double timer = 0F;
 
+	AudioStreamPlayer music;
+
 	[Export]
 	bool offline = true;
 	public bool heroTauntUp{
@@ -79,6 +81,8 @@ public partial class PMBattle : Node3D
 			this.gui.Visible = false;
 			this.Visible = false;
 		}
+
+		music = this.GetNode<AudioStreamPlayer>("BattleMusic");
 	}
 
 	public override void _Process(double delta)
@@ -253,6 +257,7 @@ public partial class PMBattle : Node3D
 	}
 
 	public virtual void EndBattle(bool gameOver){
+		music.Stop();
 		if(gameOver){
 			GD.Print("Game Over");
 			GetTree().Quit();
@@ -359,6 +364,7 @@ public partial class PMBattle : Node3D
 		this.gui.Visible = true;
 		//Go Online
 		offline = false;
+		music.Play();
 	}
 
 	public Camera3D GetBattleCamera(){

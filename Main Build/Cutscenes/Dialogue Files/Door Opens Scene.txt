@@ -1,48 +1,55 @@
 ~Start
 	Silver: "Good news?"
-	Cato: “Yes! There's an old pass phrase I overheard.”
+	Cato: "Yes! There's an old passphrasae I overheard."
 	Silver: "Lucky us. Feel free to crack 'er open."
 	[ANIM(Kneel)]
 	{OPT} "To her people..." GOTO: Fail1
 	{OPT} "To her servants..." GOTO: Poem1
 	{OPT} "To the righteous..." GOTO: Fail1
 	{OPT} "...I...uh...forgot it" GOTO: Quit
-	
+
 ~Poem1
 	{OPT} "...all doors are open." GOTO: Poem2
 	{OPT} "...all paths are seen" GOTO: Fail2
 	{OPT} "...all things are possible" GOTO: Fail2
-	{OPT} "...I don't remember the rest'" GOTO: Quit
+	{OPT} "...I don't remember the rest" GOTO: Quit
+
 ~Poem2
 	{OPT}  "To his knights..." GOTO: Fail3
 	{OPT} "To her warriors..." GOTO: Poem3
 	{OPT} "To her people..." GOTO: Fail3
-	{OPT} "...I don't remember the rest'" GOTO: Quit
+	{OPT} "...I don't remember the rest" GOTO: Quit
+
 ~Poem3
 	{OPT}  "...all doors will open" GOTO: Failure
 	{OPT} "...all victories belong." GOTO: Failure
 	{OPT} "...all battles are won." GOTO: Pass
-	{OPT} "...I don't remember the rest'" GOTO: Quit
+	{OPT} "...I don't remember the rest" GOTO: Quit
+
 ~Fail1
 	{OPT} "...all doors are open." GOTO: Fail2
 	{OPT} "...all paths seen" GOTO: Fail2
 	{OPT} "...all things are possible" GOTO: Fail2
-	{OPT} "...I don't remember the rest'" GOTO: Quit
+	{OPT} "...I don't remember the rest" GOTO: Quit
+
 ~Fail2
 	{OPT}  "To his knights..." GOTO: Fail3
 	{OPT} "To her warriors..." GOTO: Fail3
 	{OPT} "To her people..." GOTO: Fail3
-	{OPT} "...I don't remember the rest'" GOTO: Quit
+	{OPT} "...I don't remember the rest" GOTO: Quit
+
 ~Fail3
 	{OPT}  "...all doors will open" GOTO: Failure
 	{OPT} "...all victories belong." GOTO: Failure
 	{OPT} "...all battles are won." GOTO: Failure
-	{OPT} "...I don't remember the rest'" GOTO: Quit
+	{OPT} "...I don't remember the rest" GOTO: Quit
+
 ~Quit
 	[ANIM(SilverFacePalm)]
 	[ANIM(Stand)]
 	Silver: "Please tell me you can go back."
 	Cato: "I can! I...uh...I'll go do that." [END][NOBATTLE]
+
 ~Pass
 	[ANIM(Stand)]
 	Silver: "..."
@@ -54,9 +61,14 @@
 	Silver: "Well I'll be..."
 	[ANIM(SkeletonApproaches)]
 	Silver: "...did you hear that?"
-	[ANIM(SkeleotonAppears)][END]
-~Failure[ANIM(Stand)]
+	[ANIM(SkeletonAppears)][END]
+
+~Failure
+	[ANIM(Stand)]
 	Silver: "..."
 	Silver: "Was that it?"
 	Cato: "..."
-	Cato: "I...I guess it wasnt?" GOTO: Quit
+	Cato: "I...I guess it wasnt?"
+	[ANIM(SilverFacePalmAlt)]
+	Silver: "Please tell me you can go back."
+	Cato: "I can! I...uh...I'll go do that." [END][NOBATTLE]

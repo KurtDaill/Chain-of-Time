@@ -23,8 +23,10 @@
 ~Door?
 	Silver: "So we think this thing is a door?"
 	//Add a "Cato Glances to the Side" animation
+	[ANIM(CatoLooksRight)]
 	Cato: "Looks like it...uh...magical...there's probably a command word."
 	Silver: "Like a password?"
+	[ANIM(CatoLooksForward)]
 	Cato: "A password no ones known since this place was destroyed 20 years ago"
 	Silver: "Wanna see if that time magic you got actually works?"
 	Cato: "...let me see..."
