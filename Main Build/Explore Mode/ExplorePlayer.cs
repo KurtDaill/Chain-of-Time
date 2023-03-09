@@ -9,6 +9,12 @@ public partial class ExplorePlayer : CharacterBody3D
 	[Export]
 	public Camera3D exploreCamera;
 
+	[Export]
+	private float waypointSpacing = 2;
+
+	[Export(PropertyHint.File)]
+	private string waypointRes;
+
 	public bool inControl = true;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -21,6 +27,10 @@ public partial class ExplorePlayer : CharacterBody3D
 	private TimeFragment timeFrag;
 
 	private ExploreNPC npcInRange;
+
+	private Waypoint[] waypoints = new Waypoint[3];
+
+	private int promenade;
 
 	public override void _Ready(){
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
@@ -56,6 +66,7 @@ public partial class ExplorePlayer : CharacterBody3D
 		velocity = new Vector3(direction.x, velocity.y, direction.z);
 		Velocity = velocity;
 		MoveAndSlide();
+		ManageFollowerWaypoints();
 	}
 
     public override void _Process(double delta)
@@ -102,11 +113,42 @@ public partial class ExplorePlayer : CharacterBody3D
 				npcInRange = npc;
 			}
 		}
+		
+	}
+
+	public void OnBodyAreaEntered(Area3D area){
+		if(area.GetGroups().Contains("Promenade")){
+			promenade = ((Promenade)area).GetPromenadeIndex();
+		}
 	}
 
 	public void OnInteractionAreaExited(Area3D area){
 		if(area.GetGroups().Contains("Time Fragment")){
 			((TimeFragment)area).DisarmTimeFragment();
 		}
+		if(area.GetGroups().Contains("NPC")){
+			ExploreNPC npc = (ExploreNPC) area.GetParent();
+			npc.DisarmCutscene();
+		}
+	}
+
+	public void ManageFollowerWaypoints(){
+		if(waypoints[0] == null || Mathf.Abs((waypoints[0].GlobalPosition - this.GlobalPosition).Length()) > waypointSpacing){
+			if(waypoints[2] != null) waypoints[2].QueueFree();
+			waypoints[2] = waypoints[1];
+			waypoints[1] = waypoints[0];
+			waypoints[0] = GD.Load<PackedScene>(waypointRes).Instantiate<Waypoint>();
+			waypoints[0].GlobalPosition = this.GlobalPosition;
+			waypoints[0].SetPromenade(promenade);
+			this.GetParent().AddChild(waypoints[0]);
+		}
+	}
+
+	public Waypoint GetWaypoint(int waypoint){
+		return waypoints[waypoint];
+	}
+
+	public int GetCurrentPromenade(){
+		return promenade;
 	}
 }

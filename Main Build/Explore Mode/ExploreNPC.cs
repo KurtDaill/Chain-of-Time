@@ -19,9 +19,13 @@ public partial class ExploreNPC : Node3D
 	public bool enabled = true;
 	[Export]
 	private string storyFlagRequiredForCutscene = "";
+	[Export]
+	private Node dialgouePromptNode;
+	private DialoguePrompt dialoguePrompt;
 
 	private bool armed = false;
 
+	private int currentPromenade;
 	public enum CutsceneType{
 		Talk,
 		Listen
@@ -35,6 +39,7 @@ public partial class ExploreNPC : Node3D
 			this.interactArea.AddToGroup("NPC");
 		}
 		cutscene = (CutsceneDirector) cutsceneNode;
+		dialoguePrompt = (DialoguePrompt) dialgouePromptNode;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,7 +48,8 @@ public partial class ExploreNPC : Node3D
 	}
 
 	public bool ArmCutscene(){
-		if(hasCutscene){	
+		if(hasCutscene){
+			ShowDialoguePrompt();	
 			armed = true;
 			return true;
 		}
@@ -52,14 +58,33 @@ public partial class ExploreNPC : Node3D
 
 	public void DisarmCutscene(){
 		armed = false;
+		HideDialoguePrompt();
 	}
 
-	public void PlayCutscene(){
+	public async void PlayCutscene(){
 		if(enabled ){
 			if(storyFlagRequiredForCutscene != "" && !GetNode<GameMaster>("/root/GameMaster").GetFlagValue(storyFlagRequiredForCutscene)) return;
-			cutscene.StartCutscene();
+				cutscene.StartCutscene();
+				dialoguePrompt.Visible = false;
+				await ToSignal(cutscene, "CutsceneCompleted");
+				dialoguePrompt.Visible = true;
 			if(!cutsceneRepeats) hasCutscene = false;
-			this.DisarmCutscene();
+				this.DisarmCutscene();
 		}
+	}
+
+	private void ShowDialoguePrompt(){
+		switch(cutsceneType){
+			case CutsceneType.Talk :
+				dialoguePrompt.GetAnimPlay().Play("ShowTalk");
+				break;
+			case CutsceneType.Listen:
+				dialoguePrompt.GetAnimPlay().Play("ShowListen");
+				break;
+		}
+	}
+
+	private void HideDialoguePrompt(){
+		this.GetNode<AnimationPlayer>("DialoguePrompt/AnimationPlayer").Play("HidePrompt");
 	}
 }

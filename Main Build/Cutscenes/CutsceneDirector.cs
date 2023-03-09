@@ -4,6 +4,9 @@ using System.Collections.Generic;
 //using DialogueManagerRuntime;
 public partial class CutsceneDirector : Node3D
 {
+	[Signal]
+	public delegate void CutsceneCompletedEventHandler();
+
 	[Export]
 	public bool enabled;
 	[Export(PropertyHint.File)]
@@ -167,6 +170,7 @@ public partial class CutsceneDirector : Node3D
 			GetNode<CameraManager>("/root/CameraManager").SwitchCamera(GetNode<ExplorePlayer>("/root/Node3D/ExplorePlayer").exploreCamera);
 		}
 		waiting = true;
+		EmitSignal(nameof(SignalName.CutsceneCompleted));
 	}
 
 	public void SetDialogueBalloons(string speaker){

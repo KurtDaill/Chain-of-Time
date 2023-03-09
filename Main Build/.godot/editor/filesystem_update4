@@ -9,8 +9,7 @@ res://GUI/Themes/Skill Card Spell.tres
 res://GUI/Themes/UI Impact.tres
 res://GUI/Themes/Skill Card Tech.tres
 res://GUI/Themes/Skill Card Tech Small.tres
-res://Cutscenes/cutscene_template.tscn
-res://Test Scenes/CSG Test.tscn
-res://Explore Mode/explore_player.tscn
-res://Battle Mode/Enemies/Skeleton.tscn
-res://Battle Mode/BattleModule.tscn
+res://Test Scenes/Present Environment.tres
+res://Test Scenes/Past Environment.tres
+res://ExploreFollower.tscn
+res://Explore Mode/Waypoint.tscn

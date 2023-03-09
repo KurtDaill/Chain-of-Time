@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Chain Of Time"
-run/main_scene="res://Levels/Opening Room.tscn"
+run/main_scene="res://ExploreFollower.tscn"
 config/features=PackedStringArray("4.0", "C#")
 config/icon="res://icon.png"
 
@@ -148,6 +148,7 @@ com_magic={
 2d_physics/layer_2="Players"
 3d_physics/layer_2="Explore Interaction"
 2d_physics/layer_3="Enemies"
+3d_physics/layer_3="Promenades"
 2d_physics/layer_4="HurtBox"
 2d_physics/layer_5="Hitbox"
 2d_physics/layer_10="Battle Ground Front"

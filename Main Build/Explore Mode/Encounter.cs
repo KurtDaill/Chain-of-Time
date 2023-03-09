@@ -24,6 +24,7 @@ public partial class Encounter : Area3D
 			triggeringPlayer.SetActive(false);
 			sprite.Visible = false;
 			GetNode<CameraManager>("/root/CameraManager").SwitchCamera(battle.GetBattleCamera());
+			battleArmed = false;
 		}
 	}
 

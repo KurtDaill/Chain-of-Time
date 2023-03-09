@@ -1,0 +1,228 @@
+[gd_scene load_steps=20 format=3 uid="uid://daujk4kpwqyo5"]
+
+[ext_resource type="Script" path="res://SceneConfig.cs" id="1_qjtvf"]
+[ext_resource type="PackedScene" uid="uid://dy5wjqinmlghd" path="res://Explore Mode/explore_player.tscn" id="2_43qd0"]
+[ext_resource type="Environment" uid="uid://clyvx48350vys" path="res://Test Scenes/Past Environment.tres" id="3_ijcoe"]
+[ext_resource type="Script" path="res://Explore Mode/FollowerNPCcs.cs" id="4_6n7kq"]
+[ext_resource type="Texture2D" uid="uid://bng3ra0f1uwx4" path="res://Art/Silver Adventure Sprite Master-Sheet.png" id="5_47e0v"]
+[ext_resource type="Script" path="res://Explore Mode/PromenadeMap.cs" id="6_1e38j"]
+[ext_resource type="Script" path="res://Explore Mode/Promenade.cs" id="7_pmtaq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0xb5p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t4bmx"]
+size = Vector3(18.16, 1, 8.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_potsg"]
+size = Vector3(14.16, 1, 8.4)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ctkub"]
+height = 2.24
+radius = 0.56
+
+[sub_resource type="Animation" id="Animation_g7db3"]
+resource_name = "Idle"
+length = 2.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 23]
+}
+
+[sub_resource type="Animation" id="Animation_g3tl4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [49]
+}
+
+[sub_resource type="Animation" id="Animation_yxnfy"]
+resource_name = "Walk Down"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [48, 49, 50, 51, 52, 53]
+}
+
+[sub_resource type="Animation" id="Animation_8ha3x"]
+resource_name = "Walk Left"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [60, 61, 62, 63, 64, 65]
+}
+
+[sub_resource type="Animation" id="Animation_pchkg"]
+resource_name = "Walk Right"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40, 41]
+}
+
+[sub_resource type="Animation" id="Animation_x341f"]
+resource_name = "Walk Up"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j05ap"]
+_data = {
+"Idle": SubResource("Animation_g7db3"),
+"RESET": SubResource("Animation_g3tl4"),
+"Walk Down": SubResource("Animation_yxnfy"),
+"Walk Left": SubResource("Animation_8ha3x"),
+"Walk Right": SubResource("Animation_pchkg"),
+"Walk Up": SubResource("Animation_x341f")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o4p00"]
+size = Vector3(14.4, 4.56, 8.64)
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("camera", "ePlayer")]
+script = ExtResource("1_qjtvf")
+camera = NodePath("ExplorePlayer/Camera3D")
+ePlayer = NodePath("ExplorePlayer")
+
+[node name="ExplorePlayer" parent="." node_paths=PackedStringArray("exploreCamera") instance=ExtResource("2_43qd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.29987, 0.516, -2.228)
+exploreCamera = NodePath("Camera3D")
+waypointRes = "res://Explore Mode/Waypoint.tscn"
+
+[node name="Camera3D" type="Camera3D" parent="ExplorePlayer"]
+transform = Transform3D(1, 0, 0, 0, 0.999048, 0.0436194, 0, -0.0436194, 0.999048, 0, 2.32, 6.2)
+
+[node name="Body Area" type="Area3D" parent="ExplorePlayer"]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplorePlayer/Body Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04, 0)
+shape = SubResource("CylinderShape3D_0xb5p")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68, 0, -1.16)
+size = Vector3(14.16, 1, 8.48)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4, 0, -1.16)
+size = Vector3(14.16, 1, 8.48)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68, 0, -1.16)
+shape = SubResource("BoxShape3D_t4bmx")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.36, 0, -1.16)
+shape = SubResource("BoxShape3D_potsg")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_ijcoe")
+
+[node name="Silver Follower" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.72, 0.52, -2.28)
+script = ExtResource("4_6n7kq")
+personalSpaceRadius = 1.5
+Speed = 3.3
+
+[node name="Sprite3D" type="Sprite3D" parent="Silver Follower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 1.32, 0)
+pixel_size = 0.008
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("5_47e0v")
+hframes = 12
+vframes = 6
+frame = 49
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Silver Follower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16, 0)
+shape = SubResource("CylinderShape3D_ctkub")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Silver Follower"]
+libraries = {
+"": SubResource("AnimationLibrary_j05ap")
+}
+
+[node name="Promenade Map" type="Node3D" parent="."]
+script = ExtResource("6_1e38j")
+
+[node name="Prom 1" type="Area3D" parent="Promenade Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.56, 0.48, 0)
+script = ExtResource("7_pmtaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Promenade Map/Prom 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.76, 2.28, -1.2)
+shape = SubResource("BoxShape3D_o4p00")
+
+[node name="Prom 2" type="Area3D" parent="Promenade Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8, 0.48, 0)
+script = ExtResource("7_pmtaq")
+promenadeIndex = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Promenade Map/Prom 2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.76, 2.28, -1.2)
+shape = SubResource("BoxShape3D_o4p00")
+
+[connection signal="area_entered" from="ExplorePlayer/Body Area" to="ExplorePlayer" method="OnBodyAreaEntered"]
+
+[editable path="ExplorePlayer"]

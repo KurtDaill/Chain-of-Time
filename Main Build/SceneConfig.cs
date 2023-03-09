@@ -36,7 +36,9 @@ public partial class SceneConfig : Node
 		}
 	}
 
-
+	public ExplorePlayer GetExplorePlayer(){
+		return ePlayer;
+	}
 }
 
 
