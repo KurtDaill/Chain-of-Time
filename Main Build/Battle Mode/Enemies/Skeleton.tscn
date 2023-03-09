@@ -203,6 +203,8 @@ weapon = NodePath("Body Ref/Weapon")
 feet = NodePath("Body Ref/Feet")
 
 [node name="Pointer" parent="." instance=ExtResource("3_cd2ns")]
+shaded = true
+no_depth_test = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
@@ -211,7 +213,7 @@ libraries = {
 }
 
 [node name="AimPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44, -0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.754003, 0.048954, 0.525411)
 
 [node name="Body Ref" type="Node3D" parent="."]
 editor_description = "A Collection of Spatial Nodes intended to tell other nodes and functions where to spawn particle effects or other nodes on a characters head, core, feet, etc."

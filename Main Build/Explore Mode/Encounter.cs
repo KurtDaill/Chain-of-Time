@@ -19,6 +19,7 @@ public partial class Encounter : Area3D
 	public void StartEncounter(ExplorePlayer player){
 		if(!enabled) return;
 		if(battleArmed){
+			battleArmed = false;
 			battle.StartBattleFromExplore();
 			triggeringPlayer = player;
 			triggeringPlayer.SetActive(false);

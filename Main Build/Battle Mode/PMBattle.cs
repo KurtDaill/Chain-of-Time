@@ -364,7 +364,7 @@ public partial class PMBattle : Node3D
 		this.gui.Visible = true;
 		//Go Online
 		offline = false;
-		music.Play();
+		if(!music.Playing)music.Play();
 	}
 
 	public Camera3D GetBattleCamera(){
