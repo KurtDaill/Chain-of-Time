@@ -1,11 +1,11 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c6vmqtlbh7xy2"]
 
-[ext_resource type="Texture2D" uid="uid://bn0vq1lyjmhkv" path="res://Art/3D/tile_set.png" id="1_lyur4"]
+[ext_resource type="Texture2D" uid="uid://bn0vq1lyjmhkv" path="res://Art/3D/tile_set.png" id="1_3g4dg"]
 
 [resource]
 transparency = 2
 alpha_scissor_threshold = 0.01
 alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("1_lyur4")
+albedo_texture = ExtResource("1_3g4dg")
 texture_filter = 0
