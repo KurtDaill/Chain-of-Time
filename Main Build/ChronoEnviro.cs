@@ -13,13 +13,9 @@ public partial class ChronoEnviro : Node3D
     [Export]
     CronoScene presentCronoScene;
     [Export]
-    int enviornmentTrackIndex;
+    int environmentTrackIndex;
     [Export]
     int sunTrackIndex;
-    [Export]
-    int returnEnvironmentTrackIndex;
-    [Export]
-    int returnSunTrackIndex;
 
     Godot.Environment pastEnvironment;
     Godot.Environment presentEnvironment;
@@ -34,6 +30,10 @@ public partial class ChronoEnviro : Node3D
     DirectionalLight3D pastSun;
     [Export]
     DirectionalLight3D presentSun;
+    [Export]
+    int presentAnimationIndex;
+    [Export]
+    int pastAnimationIndex;
     private DirectionalLight3D realSun;
 
     Godot.Collections.Array<Godot.Collections.Dictionary> sunProperties;
@@ -63,22 +63,11 @@ public partial class ChronoEnviro : Node3D
     public void DoTheTimeWarp(TimeFragment frag, ExplorePlayer ePlayer){
         //Set TimeWarp-Cutscene Cato's position to match frag
         TimeTravelCato.GlobalPosition = frag.GlobalPosition;
-        //Set Spheres to center on Cato
-        subtractSphere.GlobalPosition = frag.GlobalPosition;
-        visibleSphere.GlobalPosition = frag.GlobalPosition;
-        //Set the visible sphere to the right past scene
-        visibleSphere.GetParent().RemoveChild(visibleSphere);
-        frag.GetTargetCronoScene().AddChild(visibleSphere);
-        frag.GetTargetCronoScene().Visible = true;
 
         pastEnvironment = frag.GetTargetEnvironment();
         pastSun = frag.GetTargetSun();
 
-        //TEMP ANIMATION HARD CODING, WAITING ON FULL FIX
-        GD.Print(visibleSphere.GetPath());
-        animPlay.GetAnimation("TimewarpTest").TrackSetPath(5, visibleSphere.GetPath() + ":size:x");
-        animPlay.GetAnimation("TimewarpTest").TrackSetPath(6, visibleSphere.GetPath() + ":size:y");
-        animPlay.GetAnimation("TimewarpTest").TrackSetPath(7, visibleSphere.GetPath() + ":size:z");
+
 
         frag.DisarmTimeFragment();
         //Hide the Explore Player
@@ -91,8 +80,10 @@ public partial class ChronoEnviro : Node3D
         currentFragment = frag;
         inPast = true;
 
+        //frag.Visible = false;
+
         //Hanldes our transition between environments.
-        SetupEnvironmentAnimation(false);
+        SetupEnvironmentAnimation();
 
         //Start the Timewarp animation
         animPlay.Play("TimewarpTest"); //TODO change me back
@@ -103,9 +94,13 @@ public partial class ChronoEnviro : Node3D
         if(isReturnRun){
             currentFragment.GetTargetCronoScene().HideChildModules();
             presentCronoScene.ShowChildModules();
+            currentFragment.GetTargetCronoScene().Visible = false;
+            presentCronoScene.Visible = true;
         }else{
             currentFragment.GetTargetCronoScene().ShowChildModules();
             presentCronoScene.HideChildModules();
+            currentFragment.GetTargetCronoScene().Visible = true;
+            presentCronoScene.Visible = false;
         }
     }
 
@@ -113,6 +108,7 @@ public partial class ChronoEnviro : Node3D
         TimeTravelCato.Visible = false; 
         TimeTravelCato.GetNode<Camera3D>("Time Travel Camera Ref/Time Travel Camera").Current = false;
         presentCronoScene.Visible = false;
+        //currentFragment.Visible = true;
         if(currentFragment.HasCutsceneArmed()){
             currentFragment.PlayCutscene();
         }else{    
@@ -122,6 +118,7 @@ public partial class ChronoEnviro : Node3D
     }
 
     public void ReturnToThePresent(){
+        /*
         //Hide the Explore Player
         explorer.SetActive(false);
         GetNode<CameraManager>("/root/CameraManager").SwitchCamera(TimeTravelCato.GetNode<Camera3D>("Time Travel Camera Ref/Time Travel Camera"));
@@ -132,6 +129,7 @@ public partial class ChronoEnviro : Node3D
         SetupEnvironmentAnimation(true);
         //Play the Return Animation
         animPlay.Play("Return");
+        */
     }
 
     public void CompleteReturn(){
@@ -145,14 +143,28 @@ public partial class ChronoEnviro : Node3D
         return inPast;
     }
 
-    public void SetupEnvironmentAnimation(bool isReturnRun){
+    public void SetupEnvironmentAnimation(){
         //Read the track we set up to give us the Bezier Curve of Environment Animations
         //Compare the properties of the Past and Present, if any are different, add an animation track to the transition based on 'presentToPast'
         Godot.Collections.Array<Godot.Collections.Dictionary> presentEnvProperites = presentEnvironment.GetPropertyList();
         Godot.Collections.Array<Godot.Collections.Dictionary> pastEnvProperites = pastEnvironment.GetPropertyList();
 
-        SetupSunAnimation(isReturnRun);
+        SetupSunAnimation();
 
+        foreach(MeshInstance3D mesh in presentCronoScene.GetMeshes()){
+            for(int i = 0; i < mesh.Mesh.GetSurfaceCount(); i++){
+                mesh.Mesh.SurfaceSetMaterial(i, (Material)mesh.Mesh.SurfaceGetMaterial(i).Duplicate());
+                //mesh.Mesh.SurfaceGetMaterial(i)
+                AssignPropertyToAnimationTrack("emission_energy_multiplier", Variant.Type.Float, 2, 0,  ":mesh:surface_" + i + "/material", mesh, presentAnimationIndex, "TimewarpTest");
+            }
+        }
+        foreach(MeshInstance3D mesh in currentFragment.GetTargetCronoScene().GetMeshes()){
+            for(int i = 0; i < mesh.Mesh.GetSurfaceCount(); i++){
+                mesh.Mesh.SurfaceSetMaterial(i, (Material)mesh.Mesh.SurfaceGetMaterial(i).Duplicate());
+                //mesh.Mesh.SurfaceGetMaterial(i)
+                AssignPropertyToAnimationTrack("emission_energy_multiplier", Variant.Type.Float, 0, 2,  ":mesh:surface_" + i + "/material", mesh, pastAnimationIndex, "TimewarpTest");
+            }
+        }
         for(int i = 0; i < pastEnvProperites.Count; i++){
             Godot.Collections.Dictionary pastDict = pastEnvProperites[i];
             Godot.Collections.Dictionary presentDict = presentEnvProperites[i];
@@ -164,16 +176,14 @@ public partial class ChronoEnviro : Node3D
             pastDict.TryGetValue("type", out var typeVar); //Should be the same between environments, they're the same resource type!
             Variant.Type type = (Variant.Type)(int)typeVar;
             if(type == Variant.Type.Object && (string)name == "sky"){
-                if(isReturnRun) HandleSky(presentEnvironment.Sky, pastEnvironment.Sky, isReturnRun);
-                else HandleSky(pastEnvironment.Sky, presentEnvironment.Sky, isReturnRun);
+                HandleSky(pastEnvironment.Sky, presentEnvironment.Sky);
                 continue;
             }
-            if(isReturnRun) AssignPropertyToAnimationTrack((string)name, type, presentVar, pastVar, ":environment", realEnvironment, returnEnvironmentTrackIndex, "Return");
-            else AssignPropertyToAnimationTrack((string)name, type, pastVar, presentVar, ":environment", realEnvironment, enviornmentTrackIndex, "TimewarpTest");
+            else AssignPropertyToAnimationTrack((string)name, type, pastVar, presentVar, ":environment", realEnvironment, environmentTrackIndex, "TimewarpTest");
         }
     }
 
-    private void SetupSunAnimation(bool isReturnRun){
+    private void SetupSunAnimation(){
         foreach(Godot.Collections.Dictionary property in sunProperties){
             property.TryGetValue("name", out var name);
             property.TryGetValue("type", out var typeVar);
@@ -182,7 +192,7 @@ public partial class ChronoEnviro : Node3D
             var presentVar = presentSun.Get((string)name);
             if((string)name == "visible") continue;
             if((string)name == "light_cull_mask") continue;
-            if(isReturnRun) AssignPropertyToAnimationTrack((string)name, type, presentVar, pastVar, "", realSun, returnSunTrackIndex, "Return");
+            //if(isReturnRun) AssignPropertyToAnimationTrack((string)name, type, presentVar, pastVar, "", realSun, returnSunTrackIndex, "Return");
             else AssignPropertyToAnimationTrack((string)name, type, pastVar, presentVar, "", realSun, sunTrackIndex, "TimewarpTest");
         }
     }
@@ -199,20 +209,20 @@ public partial class ChronoEnviro : Node3D
         int index = timeWarp.AddTrack(Animation.TrackType.Bezier);
         timeWarp.TrackSetPath(index, real.GetPath() + propertyPath);
         timeWarp.BezierTrackInsertKey(index, timeWarp.TrackGetKeyTime(templateIndex, 0), startValue);
-        //timeWarp.BezierTrackSetKeyInHandle(index, 0, timeWarp.BezierTrackGetKeyInHandle(enviornmentTrackIndex, 0));
-        //timeWarp.BezierTrackSetKeyOutHandle(index, 0, timeWarp.BezierTrackGetKeyOutHandle(enviornmentTrackIndex, 0));
+        timeWarp.BezierTrackSetKeyInHandle(index, 0, timeWarp.BezierTrackGetKeyInHandle(templateIndex, 0));
+        timeWarp.BezierTrackSetKeyOutHandle(index, 0, timeWarp.BezierTrackGetKeyOutHandle(templateIndex, 0));
 
         timeWarp.BezierTrackInsertKey(index, timeWarp.TrackGetKeyTime(templateIndex, 1), startValue);
-        //timeWarp.BezierTrackSetKeyInHandle(index, 1, timeWarp.BezierTrackGetKeyInHandle(enviornmentTrackIndex, 1));
-        //timeWarp.BezierTrackSetKeyOutHandle(index, 1, timeWarp.BezierTrackGetKeyOutHandle(enviornmentTrackIndex, 1));   
+        timeWarp.BezierTrackSetKeyInHandle(index, 1, timeWarp.BezierTrackGetKeyInHandle(templateIndex, 1));
+        timeWarp.BezierTrackSetKeyOutHandle(index, 1, timeWarp.BezierTrackGetKeyOutHandle(templateIndex, 1));   
         
         timeWarp.BezierTrackInsertKey(index, timeWarp.TrackGetKeyTime(templateIndex, 2), endValue);
-        //timeWarp.BezierTrackSetKeyInHandle(index, 2, timeWarp.BezierTrackGetKeyInHandle(enviornmentTrackIndex, 2));
-        //timeWarp.BezierTrackSetKeyOutHandle(index, 2, timeWarp.BezierTrackGetKeyOutHandle(enviornmentTrackIndex, 2));
+        timeWarp.BezierTrackSetKeyInHandle(index, 2, timeWarp.BezierTrackGetKeyInHandle(templateIndex, 2));
+        timeWarp.BezierTrackSetKeyOutHandle(index, 2, timeWarp.BezierTrackGetKeyOutHandle(templateIndex, 2));
 
     }
 
-    public void HandleSky(Sky endSky, Sky startSky, bool isReturnRun){
+    public void HandleSky(Sky endSky, Sky startSky){
         Godot.Collections.Array<Godot.Collections.Dictionary> startSkyProperites = startSky.SkyMaterial.GetPropertyList();
         Godot.Collections.Array<Godot.Collections.Dictionary> endSkyProperites = endSky.SkyMaterial.GetPropertyList();
         for(int i = 0; i < endSkyProperites.Count; i++){
@@ -225,8 +235,7 @@ public partial class ChronoEnviro : Node3D
 
             endDict.TryGetValue("type", out var typeVar); //Should be the same between environments, they're the same resource type!
             Variant.Type type = (Variant.Type)(int)typeVar;
-            if(isReturnRun) AssignPropertyToAnimationTrack((string)name, type, endVar, startVar, ":environment:sky:sky_material", realEnvironment, enviornmentTrackIndex, "Return");
-            else AssignPropertyToAnimationTrack((string)name, type, endVar, startVar, ":environment:sky:sky_material", realEnvironment, enviornmentTrackIndex, "TimewarpTest");
+            AssignPropertyToAnimationTrack((string)name, type, endVar, startVar, ":environment:sky:sky_material", realEnvironment, environmentTrackIndex, "TimewarpTest");
         }
     }
 

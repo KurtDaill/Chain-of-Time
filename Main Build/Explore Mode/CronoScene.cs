@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class CronoScene : CSGCombiner3D
+public partial class CronoScene : Node3D
 {
 	//Includes Characters, Cutscenes, encounters, and other things that have to be despawned/spawned when changing times
 	[Export]
@@ -9,7 +9,13 @@ public partial class CronoScene : CSGCombiner3D
 	[Export]
 	Godot.Collections.Array<NodePath> childModulePath;
 	Godot.Collections.Array<Node3D> childModules = new Godot.Collections.Array<Node3D>(); 
+
+	private Godot.Collections.Array<MeshInstance3D> meshes = new Godot.Collections.Array<MeshInstance3D>();
 	public override void _Ready(){
+		var temp = this.FindChildren("*", "MeshInstance3D");
+		foreach(Node mesh in temp){
+			meshes.Add((MeshInstance3D)mesh);
+		}		
 		foreach(NodePath path in childModulePath){
 			childModules.Add(GetNode<Node3D>(path));
 		}
@@ -49,4 +55,8 @@ public partial class CronoScene : CSGCombiner3D
 			}
 		}
 	}
+
+	public Godot.Collections.Array<MeshInstance3D> GetMeshes(){
+		return meshes;
+	} 
 }

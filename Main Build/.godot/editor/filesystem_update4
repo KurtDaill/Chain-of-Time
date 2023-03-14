@@ -1,19 +1,10 @@
-res://Levels/Opening Room.tscn
+res://Test Scenes/New Time Tavel.tscn
 res://Art/3D/DungeonNormalMaterial2.tres
+res://Test Scenes/Past Environment.tres
+res://Test Scenes/PresentEnvironmentChallengeRoom.tres
 res://GUI/Themes/Dialogue/Normal Response.tres
 res://GUI/Cutscene Assets/Dialouge Button.tres
-res://Art/3D/DungeonNormalMaterial.tres
-res://Battle Mode/PMBattleNoActAbility.cs
-res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres
-res://GUI/Themes/Skill Card Normal.tres
-res://GUI/Themes/Skill Card Normal Small.tres
-res://GUI/Themes/Skill Card Spell.tres
-res://GUI/Themes/UI Impact.tres
-res://GUI/Themes/Skill Card Tech.tres
-res://GUI/Themes/Skill Card Tech Small.tres
-res://Test Scenes/Present Environment.tres
-res://Test Scenes/Past Environment.tres
-res://Art/3D/DungeonNormalMaterialPast.tres
 res://ExploreFollower.tscn
 res://Explore Mode/Waypoint.tscn
 res://Test Challenge Room.tscn
+res://Test Scenes/PastEnvironmentChallengeRoom.tres
