@@ -1,7 +1,7 @@
+CollisionShape3D
 Node3D
 Sprite3D
 OmniLight3D
-CollisionShape3D
 SpotLight3D
 CSGBox3D
 CSGMesh3D

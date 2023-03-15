@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://clg6s88kqci27" path="res://Art/3D/tile_set_2.png" id="1_08q1x"]
 
 [resource]
-transparency = 4
+render_priority = -1
 cull_mode = 2
 albedo_texture = ExtResource("1_08q1x")
 metallic_specular = 0.0

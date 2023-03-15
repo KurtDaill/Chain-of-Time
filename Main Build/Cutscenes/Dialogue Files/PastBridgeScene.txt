@@ -1,0 +1,17 @@
+~Start
+	Sejanus: "Marcus!"
+	[ANIM(Attention)]
+	Guard: "Sir!"
+	Sejanus: "Summon the Bridge!"
+	[ANIM(BridgeAppears)][END]
+	[ANIM(SejanusCrosses)]
+	[ANIM(SejanusLooks)]
+	Sejanus: "Marcus, tell the captain I need sentries to go to double-shifts and everyone else on full rest."
+	Sejanus: "We'll be under seige by dawn."
+	Guard: "Aye!"
+	[ANIM(SejanusStartsWalking)]
+	Sejanus: "..."
+	Sejanus: "Goddess be with you, Marcus. You'be been one of our finest."
+	Guard: "She should be with you first sir...we'll all need it."
+	[ANIM(SejanusNods)]
+	[ANIM(SejanusExits)]
