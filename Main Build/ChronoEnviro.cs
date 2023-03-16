@@ -51,7 +51,8 @@ public partial class ChronoEnviro : Node3D
         pastEnvironment = GD.Load<Godot.Environment>(pastEnvironmentRes);
         presentEnvironment = GD.Load<Godot.Environment>(presentEnvironmentRes);
         this.realEnvironment.Environment = (Godot.Environment)presentEnvironment.Duplicate(true);
-        
+        //this.realEnvironment.Environment = (Godot.Environment)presentEnvironment.Duplicate();
+
         sunProperties = pastSun.GetPropertyList();
         realSun = (DirectionalLight3D)presentSun.Duplicate();
         this.AddChild(realSun);
@@ -108,7 +109,17 @@ public partial class ChronoEnviro : Node3D
         TimeTravelCato.Visible = false; 
         TimeTravelCato.GetNode<Camera3D>("Time Travel Camera Ref/Time Travel Camera").Current = false;
         presentCronoScene.Visible = false;
-        //currentFragment.Visible = true;
+        currentFragment.Visible = true;
+
+        foreach(MeshInstance3D mesh in presentCronoScene.GetMeshes()){
+            for(int i = 0; i < mesh.Mesh.GetSurfaceCount(); i++){
+                //mesh.Mesh.SurfaceSetMaterial(i, (Material)mesh.Mesh.SurfaceGetMaterial(i).Duplicate());
+                //mesh.Mesh.SurfaceGetMaterial(i)
+                //AssignPropertyToAnimationTrack("emission_energy_multiplier", Variant.Type.Float, 2, 0,  ":mesh:surface_" + i + "/material", mesh, presentAnimationIndex, "TimewarpTest");
+                ((StandardMaterial3D)mesh.Mesh.SurfaceGetMaterial(i)).EmissionEnergyMultiplier = 0;
+            }
+        }
+
         if(currentFragment.HasCutsceneArmed()){
             currentFragment.PlayCutscene();
         }else{    
@@ -118,27 +129,33 @@ public partial class ChronoEnviro : Node3D
     }
 
     public void ReturnToThePresent(){
-        /*
         //Hide the Explore Player
         explorer.SetActive(false);
         GetNode<CameraManager>("/root/CameraManager").SwitchCamera(TimeTravelCato.GetNode<Camera3D>("Time Travel Camera Ref/Time Travel Camera"));
         TimeTravelCato.Visible = true;
         inPast = false;
         currentFragment.DisarmTimeFragment();
-        presentCronoScene.Visible = true;
-        SetupEnvironmentAnimation(true);
+        //presentCronoScene.Visible = true;
+        //SetupEnvironmentAnimation();
         //Play the Return Animation
         animPlay.Play("Return");
-        */
     }
 
     public void CompleteReturn(){
         explorer.SetActive(true);
         GetNode<CameraManager>("/root/CameraManager").SwitchCamera(explorer.exploreCamera);
         TimeTravelCato.Visible = false;
-        currentFragment.GetTargetCronoScene().Visible = false;
     }
 
+    public void ReturnSwap(){
+        realEnvironment.Environment = (Godot.Environment)presentEnvironment.Duplicate();
+        realEnvironment.Environment.Sky = (Godot.Sky)presentEnvironment.Sky.Duplicate();
+        //realSun.QueueFree();
+        //realSun = (Godot.DirectionalLight3D) presentSun.Duplicate();
+        //realSun.Visible = true;
+        currentFragment.GetTargetCronoScene().Visible = false;
+        presentCronoScene.Visible = true;
+    }
     public bool IsInPast(){
         return inPast;
     }
@@ -179,7 +196,7 @@ public partial class ChronoEnviro : Node3D
                 HandleSky(pastEnvironment.Sky, presentEnvironment.Sky);
                 continue;
             }
-            else AssignPropertyToAnimationTrack((string)name, type, pastVar, presentVar, ":environment", realEnvironment, environmentTrackIndex, "TimewarpTest");
+            else AssignPropertyToAnimationTrack((string)name, type, presentVar, pastVar, ":environment", realEnvironment, environmentTrackIndex, "TimewarpTest");
         }
     }
 
@@ -209,16 +226,16 @@ public partial class ChronoEnviro : Node3D
         int index = timeWarp.AddTrack(Animation.TrackType.Bezier);
         timeWarp.TrackSetPath(index, real.GetPath() + propertyPath);
         timeWarp.BezierTrackInsertKey(index, timeWarp.TrackGetKeyTime(templateIndex, 0), startValue);
-        timeWarp.BezierTrackSetKeyInHandle(index, 0, timeWarp.BezierTrackGetKeyInHandle(templateIndex, 0));
-        timeWarp.BezierTrackSetKeyOutHandle(index, 0, timeWarp.BezierTrackGetKeyOutHandle(templateIndex, 0));
+        //timeWarp.BezierTrackSetKeyInHandle(index, 0, timeWarp.BezierTrackGetKeyInHandle(templateIndex, 0));
+        //timeWarp.BezierTrackSetKeyOutHandle(index, 0, timeWarp.BezierTrackGetKeyOutHandle(templateIndex, 0));
 
         timeWarp.BezierTrackInsertKey(index, timeWarp.TrackGetKeyTime(templateIndex, 1), startValue);
-        timeWarp.BezierTrackSetKeyInHandle(index, 1, timeWarp.BezierTrackGetKeyInHandle(templateIndex, 1));
-        timeWarp.BezierTrackSetKeyOutHandle(index, 1, timeWarp.BezierTrackGetKeyOutHandle(templateIndex, 1));   
+        //timeWarp.BezierTrackSetKeyInHandle(index, 1, timeWarp.BezierTrackGetKeyInHandle(templateIndex, 1));
+        //timeWarp.BezierTrackSetKeyOutHandle(index, 1, timeWarp.BezierTrackGetKeyOutHandle(templateIndex, 1));   
         
         timeWarp.BezierTrackInsertKey(index, timeWarp.TrackGetKeyTime(templateIndex, 2), endValue);
-        timeWarp.BezierTrackSetKeyInHandle(index, 2, timeWarp.BezierTrackGetKeyInHandle(templateIndex, 2));
-        timeWarp.BezierTrackSetKeyOutHandle(index, 2, timeWarp.BezierTrackGetKeyOutHandle(templateIndex, 2));
+        //timeWarp.BezierTrackSetKeyInHandle(index, 2, timeWarp.BezierTrackGetKeyInHandle(templateIndex, 2));
+        //timeWarp.BezierTrackSetKeyOutHandle(index, 2, timeWarp.BezierTrackGetKeyOutHandle(templateIndex, 2));
 
     }
 
@@ -235,7 +252,7 @@ public partial class ChronoEnviro : Node3D
 
             endDict.TryGetValue("type", out var typeVar); //Should be the same between environments, they're the same resource type!
             Variant.Type type = (Variant.Type)(int)typeVar;
-            AssignPropertyToAnimationTrack((string)name, type, endVar, startVar, ":environment:sky:sky_material", realEnvironment, environmentTrackIndex, "TimewarpTest");
+            AssignPropertyToAnimationTrack((string)name, type, startVar, endVar, ":environment:sky:sky_material", realEnvironment, environmentTrackIndex, "TimewarpTest");
         }
     }
 

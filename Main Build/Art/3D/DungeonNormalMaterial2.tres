@@ -4,6 +4,7 @@
 
 [resource]
 render_priority = -1
+transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("1_08q1x")
 metallic_specular = 0.0
