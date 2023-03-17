@@ -3,29 +3,29 @@ using System;
 
 public partial class TimeFragment : Area3D
 {
-	private AnimationPlayer animPlay;
+	protected AnimationPlayer animPlay;
 
-	private bool armed = false;
+	protected bool armed = false;
 
-	private bool isPortalBack;
+	protected bool isPortalBack;
 
-	private bool armedForReturn = false;
+	protected bool armedForReturn = false;
 
 	[Export]
-	ChronoEnviro timeEnvironment;
+	protected ChronoEnviro timeEnvironment;
 	[Export]
-	CronoScene targetCronoScene;
+	protected CronoScene targetCronoScene;
 	[Export(PropertyHint.File)]
-	string targetEnvironmentRes;
-	Godot.Environment targetEnvironment;
+	private string targetEnvironmentRes;
+	private Godot.Environment targetEnvironment;
 	
 	[Export]
-	CutsceneDirector postTravelCustcene = null;
+	protected CutsceneDirector postTravelCustcene = null;
 
-	bool cutsceneAlreadyPlayed = false;
+	protected bool cutsceneAlreadyPlayed = false;
 
 	[Export]
-	DirectionalLight3D targetSun;
+	private DirectionalLight3D targetSun;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -41,13 +41,14 @@ public partial class TimeFragment : Area3D
 	}
 
 	//Returns whether this Fragment was armed;
-	public bool ArmTimeFragment(){
+	public virtual bool ArmTimeFragment(){
 		if(timeEnvironment.IsInPast()){
-			if(isPortalBack){
+			//if(isPortalBack){
+				timeEnvironment.SetReturnTimeFragment(this);
 				armedForReturn = true;
 				animPlay.Play("Show Return Prompt");
 				return true;
-			}else return false;
+			//}else return false;
 		}else{
 			armed = true;
 			animPlay.Play("Show Prompt");
@@ -72,7 +73,7 @@ public partial class TimeFragment : Area3D
 		}
 	}
 
-	public void TimeTravel(ExplorePlayer caller){
+	public virtual void TimeTravel(ExplorePlayer caller){
 		if(armed){
 			timeEnvironment.DoTheTimeWarp(this, caller);
 			this.isPortalBack = true;
@@ -81,15 +82,15 @@ public partial class TimeFragment : Area3D
 		
 	}
 
-	public CronoScene GetTargetCronoScene(){
+	public virtual CronoScene GetTargetCronoScene(){
 		return targetCronoScene;
 	}
 
-	public Godot.Environment GetTargetEnvironment(){
+	public virtual Godot.Environment GetTargetEnvironment(){
 		return targetEnvironment;
 	}
 
-	public DirectionalLight3D GetTargetSun(){
+	public virtual DirectionalLight3D GetTargetSun(){
 		return targetSun;
 	}
 

@@ -1,31 +1,16 @@
 using Godot;
 using System;
 
-public partial class ExploreNPC : Node3D
+public partial class ExploreNPC : DialogueInteractable
 {
-	[Export]
-	public bool hasCutscene;
-	[Export]
-	public bool cutsceneRepeats;
-	[Export]
-	public Node3D cutsceneNode;
-	private CutsceneDirector cutscene;
-	[Export]
-	public CutsceneType cutsceneType;
-	[Export]
-	public Area3D interactArea;
-
-	[Export]
-	public bool enabled = true;
-	[Export]
-	private string storyFlagRequiredForCutscene = "";
 	[Export]
 	private Node dialgouePromptNode;
 	private DialoguePrompt dialoguePrompt;
 
-	private bool armed = false;
-
 	private int currentPromenade;
+	
+	[Export]
+	public CutsceneType cutsceneType;
 	public enum CutsceneType{
 		Talk,
 		Listen
@@ -47,7 +32,7 @@ public partial class ExploreNPC : Node3D
 	{
 	}
 
-	public bool ArmCutscene(){
+	public override bool ArmCutscene(){
 		if(hasCutscene){
 			ShowDialoguePrompt();	
 			armed = true;
@@ -56,13 +41,13 @@ public partial class ExploreNPC : Node3D
 		return false;
 	}
 
-	public void DisarmCutscene(){
+	public override void DisarmCutscene(){
 		armed = false;
 		HideDialoguePrompt();
 	}
 
-	public async void PlayCutscene(){
-		if(enabled ){
+	public override async void PlayCutscene(){
+		if(enabled){
 			if(storyFlagRequiredForCutscene != "" && !GetNode<GameMaster>("/root/GameMaster").GetFlagValue(storyFlagRequiredForCutscene)) return;
 				cutscene.StartCutscene();
 				dialoguePrompt.Visible = false;

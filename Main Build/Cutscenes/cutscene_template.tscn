@@ -376,7 +376,7 @@ _data = {
 "Start": SubResource("Animation_pbe8n")
 }
 
-[sub_resource type="Animation" id="Animation_cnwv3"]
+[sub_resource type="Animation" id="Animation_3o8qc"]
 resource_name = "Open"
 length = 0.2
 tracks/0/type = "bezier"
@@ -391,7 +391,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2)
 }
 
-[sub_resource type="Animation" id="Animation_vm43r"]
+[sub_resource type="Animation" id="Animation_worhe"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -416,10 +416,10 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_c5pnj"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yqwec"]
 _data = {
-"Open": SubResource("Animation_cnwv3"),
-"RESET": SubResource("Animation_vm43r")
+"Open": SubResource("Animation_3o8qc"),
+"RESET": SubResource("Animation_worhe")
 }
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ccpr7"]
@@ -594,7 +594,7 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TextBox Containers/Response VPContainer/Response VP/Response Container"]
 libraries = {
-"": SubResource("AnimationLibrary_c5pnj")
+"": SubResource("AnimationLibrary_yqwec")
 }
 
 [node name="LineContainer" type="SubViewportContainer" parent="TextBox Containers"]
@@ -719,7 +719,6 @@ texture = ExtResource("11_34kmx")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.999093, 0.0425732, 0, -0.0425732, 0.999093, -51.836, 3.4988, 9.81709)
-current = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="OnCinematicAnimationEnd"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="OnCinematicAnimationBegin"]

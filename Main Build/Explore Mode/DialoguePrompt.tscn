@@ -5,6 +5,142 @@
 [ext_resource type="Texture2D" uid="uid://etr2afqwulfg" path="res://Art/Speech Bubble.png" id="2_8lvuo"]
 [ext_resource type="FontFile" uid="uid://by3oeeep2oy71" path="res://Fonts/lunchtime-doubly-so.regular.ttf" id="2_nntay"]
 
+[sub_resource type="Animation" id="Animation_hya1g"]
+resource_name = "HidePrompt"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0, -0.384537, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label/Label3D:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.439216, -0.25, 0, 0.25, 0, 0.439216, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label/Label3D:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.254902, -0.25, 0, 0.25, 0, 0.254902, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label/Label3D:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.227451, -0.25, 0, 0.25, 0, 0.227451, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label/Label3D:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0, -0.428215, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Label:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Label:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3.4, -0.3, 0.259876, 0.2, -0.236684, 2.56, -0.2, 0.304853, 0.3, 0.0239086),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Label:position:z")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-9.68575e-08, -0.25, 0, 0.25, 0, -9.68575e-08, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Talk to Me Bubble:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0, 0.2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Talk to Me Bubble:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.36, -0.2, 0.278251, 0, 0.439337, 3.08, -0.3, 0.250746, 0.3, -0.00701523),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Talk to Me Bubble:position:z")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.12, -0.25, 0, 0.25, 0, 0.12, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Talk to Me Bubble:modulate:a")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0, 0.506269, 1, -0.25, 0, 0.3, 0.00128067),
+"times": PackedFloat32Array(0, 0.4)
+}
+
 [sub_resource type="Animation" id="Animation_k2wvi"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -185,8 +321,8 @@ tracks/15/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_drks5"]
-resource_name = "ShowTalk"
+[sub_resource type="Animation" id="Animation_7qidg"]
+resource_name = "ShowListen"
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -253,7 +389,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["Talk"]
+"values": ["Listen"]
 }
 tracks/6/type = "bezier"
 tracks/6/imported = false
@@ -333,144 +469,8 @@ tracks/12/keys = {
 "times": PackedFloat32Array(0, 0.5)
 }
 
-[sub_resource type="Animation" id="Animation_hya1g"]
-resource_name = "HidePrompt"
-length = 0.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0, -0.384537, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Label/Label3D:modulate:r")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.439216, -0.25, 0, 0.25, 0, 0.439216, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Label/Label3D:modulate:g")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.254902, -0.25, 0, 0.25, 0, 0.254902, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Label/Label3D:modulate:b")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.227451, -0.25, 0, 0.25, 0, 0.227451, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Label/Label3D:modulate:a")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0, -0.428215, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Label:position:x")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Label:position:y")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(3.4, -0.3, 0.259876, 0.2, -0.236684, 2.56, -0.2, 0.304853, 0.3, 0.0239086),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Label:position:z")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-9.68575e-08, -0.25, 0, 0.25, 0, -9.68575e-08, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Talk to Me Bubble:position:x")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0, 0.2, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.4)
-}
-tracks/9/type = "bezier"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Talk to Me Bubble:position:y")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(2.36, -0.2, 0.278251, 0, 0.439337, 3.08, -0.3, 0.250746, 0.3, -0.00701523),
-"times": PackedFloat32Array(0, 0.4)
-}
-tracks/10/type = "bezier"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Talk to Me Bubble:position:z")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.12, -0.25, 0, 0.25, 0, 0.12, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.4)
-}
-tracks/11/type = "bezier"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Talk to Me Bubble:modulate:a")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0, 0.506269, 1, -0.25, 0, 0.3, 0.00128067),
-"times": PackedFloat32Array(0, 0.4)
-}
-
-[sub_resource type="Animation" id="Animation_7qidg"]
-resource_name = "ShowListen"
+[sub_resource type="Animation" id="Animation_drks5"]
+resource_name = "ShowTalk"
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -537,7 +537,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["Listen"]
+"values": ["Talk"]
 }
 tracks/6/type = "bezier"
 tracks/6/imported = false

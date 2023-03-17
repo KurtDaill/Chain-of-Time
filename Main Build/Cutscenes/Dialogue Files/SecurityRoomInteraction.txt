@@ -1,0 +1,20 @@
+~Start
+	Cato: "Ok, there's this glowing panel and a broken lever..."
+	{OPT[BridgeOut = FALSE]}  "Touch the Panel" GOTO: Bridge
+	{OPT[GotLever = TRUE]} "Fix the Lever (Needs Replacement Parts)" GOTO: Portcullis
+	{OPT} "Leave" [END]
+	
+~Bridge
+	[ANIM(SummonBridge)]
+	[SET(BridgeOut, TRUE)]
+	Silver: "Finally!"
+	[ANIM(SilverWalksIn)]
+	Silver: "Was this thing always this screwy?"
+	Cato: "Seemed to work better back in the day."
+	Silver: "Figures."
+	Silver: "Welp. Let's get movin'"
+	[SET(SilverInParty, TRUE)]
+	[ANIM(Setup)][END]
+	
+~Portcullis
+	Cato: "Wait what?"[END]

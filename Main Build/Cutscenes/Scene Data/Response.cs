@@ -9,7 +9,7 @@ public class Response{
 
     private bool triggersCombat;
 
-    public Response(string text,ResponseCondition condition, int nextExchange, bool endsDialogue = true, bool triggersCombat = true){
+    public Response(string text, ResponseCondition condition, int nextExchange, bool endsDialogue = true, bool triggersCombat = true){
         this.text = text;
         this.condition = condition;
         this.nextExchange = nextExchange;
@@ -32,4 +32,8 @@ public class Response{
     public bool DoesBattleBegin(){
         return triggersCombat;
     }
+
+    public ResponseCondition GetCondition(){
+		return condition;
+	}
 }

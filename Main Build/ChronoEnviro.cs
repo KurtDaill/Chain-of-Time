@@ -42,6 +42,9 @@ public partial class ChronoEnviro : Node3D
 
     private ExplorePlayer explorer;
     private TimeFragment currentFragment;
+    private TimeFragment returnFragment;
+
+    private Godot.Collections.Array<ReturnOnlyFragment> returnFrags  = new Godot.Collections.Array<ReturnOnlyFragment>();
 
     private bool inPast;
 
@@ -79,8 +82,8 @@ public partial class ChronoEnviro : Node3D
 
         explorer = ePlayer;
         currentFragment = frag;
+        
         inPast = true;
-
         //frag.Visible = false;
 
         //Hanldes our transition between environments.
@@ -120,6 +123,11 @@ public partial class ChronoEnviro : Node3D
             }
         }
 
+        
+        foreach(ReturnOnlyFragment returnFrag in returnFrags){
+            returnFrag.Visible = true;
+        }
+
         if(currentFragment.HasCutsceneArmed()){
             currentFragment.PlayCutscene();
         }else{    
@@ -134,6 +142,19 @@ public partial class ChronoEnviro : Node3D
         GetNode<CameraManager>("/root/CameraManager").SwitchCamera(TimeTravelCato.GetNode<Camera3D>("Time Travel Camera Ref/Time Travel Camera"));
         TimeTravelCato.Visible = true;
         inPast = false;
+        foreach(ReturnOnlyFragment returnFrag in returnFrags){
+            returnFrag.Visible = false;
+        }
+        
+        foreach(MeshInstance3D mesh in presentCronoScene.GetMeshes()){
+            for(int i = 0; i < mesh.Mesh.GetSurfaceCount(); i++){
+                //mesh.Mesh.SurfaceSetMaterial(i, (Material)mesh.Mesh.SurfaceGetMaterial(i).Duplicate());
+                //mesh.Mesh.SurfaceGetMaterial(i)
+                //AssignPropertyToAnimationTrack("emission_energy_multiplier", Variant.Type.Float, 2, 0,  ":mesh:surface_" + i + "/material", mesh, presentAnimationIndex, "TimewarpTest");
+                ((StandardMaterial3D)mesh.Mesh.SurfaceGetMaterial(i)).EmissionEnergyMultiplier = 0;
+            }
+        }
+
         currentFragment.DisarmTimeFragment();
         //presentCronoScene.Visible = true;
         //SetupEnvironmentAnimation();
@@ -141,10 +162,22 @@ public partial class ChronoEnviro : Node3D
         animPlay.Play("Return");
     }
 
+    public void SetReturnTimeFragment(TimeFragment frag){
+        TimeTravelCato.GlobalPosition = frag.GlobalPosition;
+        returnFragment = frag;
+    }
     public void CompleteReturn(){
         explorer.SetActive(true);
         GetNode<CameraManager>("/root/CameraManager").SwitchCamera(explorer.exploreCamera);
         TimeTravelCato.Visible = false;
+        if(returnFragment != null){
+            if(returnFragment.HasCutsceneArmed()){
+            returnFragment.PlayCutscene();
+            }else{    
+                explorer.Visible = true;
+                explorer.exploreCamera.Current = true;
+            }
+        }
     }
 
     public void ReturnSwap(){
@@ -306,5 +339,9 @@ public partial class ChronoEnviro : Node3D
                     }
                     break;
             }
+    }
+
+    public void LogReturnFragment(ReturnOnlyFragment frag){
+        returnFrags.Add(frag);
     }
 }

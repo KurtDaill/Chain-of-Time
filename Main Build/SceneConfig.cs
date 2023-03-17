@@ -21,7 +21,7 @@ public partial class SceneConfig : Node
 	};
 
 	public override void _Ready(){
-		//this.GetNode<CameraManager>("/root/CameraManager").SwitchCamera(camera);
+		this.GetNode<CameraManager>("/root/CameraManager").SwitchCamera(camera);
 		ePlayer.SetActive(false);
 		switch(beginIn){
 			case StartingMode.Explore:

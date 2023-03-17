@@ -7,6 +7,8 @@ public partial class ResponseContainer : VBoxContainer
 	List<RichTextLabel> responseLabels;
 	Response[] responseObjects;
 
+	bool[] selectability;
+
 	int selectedResponse = 0;
 
 	int initialInputDelay;
@@ -46,6 +48,7 @@ public partial class ResponseContainer : VBoxContainer
 					selectedResponse++;
 				}
 			}else if(Input.IsActionJustPressed("ui_accept")){
+				if(selectability[selectedResponse] == false) return;
 				if(responseObjects[selectedResponse].isEnd()) director.ExitCutscene(responseObjects[selectedResponse].DoesBattleBegin());
 				else{
 					director.MoveToNewExchange(responseObjects[selectedResponse].GetNextExchangeIndex());
@@ -61,9 +64,24 @@ public partial class ResponseContainer : VBoxContainer
 	public void DisplayResponses(Response[] responses){
 		Clear();
 		responseObjects = responses;
+		selectability = new bool[responses.Length];
 		for(int i = 0; i < responses.Length; i++){
 			if(i > responseLabels.Count) break;
 			responseLabels[i].Text = responses[i].GetText();
+			if(responses[i].GetCondition() != null){
+				if(GetNode<GameMaster>("/root/GameMaster").GetStoryState().TryGetValue(responses[i].GetCondition().GetKey(), out int value)){
+					if(responses[i].GetCondition().isConditionMet(value)){
+						selectability[i] = true;
+						continue;
+					}else{
+						selectability[i] = false;
+						responseLabels[i].Text = "[color=red]" + responseLabels[i].Text + "[/color]";
+						continue;
+					}
+				}
+			}else{
+				selectability[i] = true;
+			}
 		}
 		responding = true;
 		selectedResponse = 0;

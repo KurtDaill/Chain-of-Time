@@ -38,6 +38,9 @@ public partial class CronoScene : Node3D
 			if(child is ExploreNPC){
 				((ExploreNPC)child).enabled = false;
 			}
+			if(child is TimeSensitiveCollider){
+				((TimeSensitiveCollider)child).Disable();
+			}
 		}
 	}
 
@@ -52,6 +55,9 @@ public partial class CronoScene : Node3D
 			}
 			if(child is ExploreNPC){
 				((ExploreNPC)child).enabled = true;
+			}
+			if(child is TimeSensitiveCollider){
+				((TimeSensitiveCollider)child).Enable();
 			}
 		}
 	}

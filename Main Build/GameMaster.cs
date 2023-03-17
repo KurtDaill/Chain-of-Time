@@ -73,9 +73,12 @@ public partial class GameMaster : Node
     }
 
     public bool GetFlagValue(string flag){
-        bool result = false;
+        state.TryGetValue(flag, out int result);
+        return result == 1;
+        /*bool result = false;
         state.TryGetFlag(flag, out result);
         return result;
+        */
     }
 
     public void SetFlagValue(string flag, bool value){

@@ -8,6 +8,7 @@ public partial class StoryState : Resource
     [Export]
     Godot.Collections.Dictionary<string, bool> flags;
 
+/*
     public bool TryGetFlag(string flag, out bool value){
         if(flags.TryGetValue(flag, out var result)){
             value = result;
@@ -17,10 +18,13 @@ public partial class StoryState : Resource
             return false;
         }
     }
-
+*/
     public bool TryGetValue(string flag, out int value){
         if(values.TryGetValue(flag, out var result)){
             value = result;
+            return true;
+        }else if (flags.TryGetValue(flag, out var resultBool)){
+            value = resultBool ? 1 : 0;
             return true;
         }else{
             value = 0;

@@ -1,0 +1,3 @@
+~Start
+	Cato: "There's definitely the parts I'd need to fix that lever"
+	Cato: "But I can't bring anything back through time...huh"[END]

@@ -28,6 +28,8 @@ public partial class ExplorePlayer : CharacterBody3D
 
 	private ExploreNPC npcInRange;
 
+	private InteractionPoint pointInRange;
+
 	private Waypoint[] waypoints = new Waypoint[3];
 
 	private int promenade;
@@ -51,6 +53,8 @@ public partial class ExplorePlayer : CharacterBody3D
 				timeFrag = null;
 			}else if(npcInRange != null){
 				npcInRange.PlayCutscene();
+			}else if (pointInRange != null){
+				pointInRange.PlayCutscene();
 			}
 		}
 
@@ -113,6 +117,12 @@ public partial class ExplorePlayer : CharacterBody3D
 				npcInRange = npc;
 			}
 		}
+		if(area.GetGroups().Contains("Interaction Points")){
+			InteractionPoint point = (InteractionPoint) area.GetParent();
+			if(point.ArmCutscene()){
+				pointInRange = point;
+			}
+		}
 		
 	}
 
@@ -129,6 +139,10 @@ public partial class ExplorePlayer : CharacterBody3D
 		if(area.GetGroups().Contains("NPC")){
 			ExploreNPC npc = (ExploreNPC) area.GetParent();
 			npc.DisarmCutscene();
+		}
+		if(area.GetGroups().Contains("Interaction Points")){
+			InteractionPoint point = (InteractionPoint) area.GetParent();
+			point.DisarmCutscene();
 		}
 	}
 

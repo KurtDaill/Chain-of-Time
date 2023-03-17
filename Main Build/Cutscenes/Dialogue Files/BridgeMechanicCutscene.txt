@@ -1,0 +1,7 @@
+~Start
+	Silver: "Hey bud..."
+	[ANIM(CatoLooksAround)]
+	Silver: "Neat trick bending *space* too, but I'm still kinda stuck over here."
+	Cato: "I think I know how to get the bridge up, give me a second."
+	Silver: "Alright, just remember you're fighting alone till then!"
+	[ANIM(RecenterCamera)][END]
