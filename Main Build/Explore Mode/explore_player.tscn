@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dy5wjqinmlghd"]
+[gd_scene load_steps=14 format=3 uid="uid://dy5wjqinmlghd"]
 
 [ext_resource type="Script" path="res://Explore Mode/ExplorePlayer.cs" id="1_rbmfy"]
 [ext_resource type="Texture2D" uid="uid://beln8ffrnhd44" path="res://Art/Kell Cato Master Sprite-Sheet.png" id="2_1xkts"]
@@ -136,6 +136,9 @@ _data = {
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_slt4t"]
 radius = 0.64
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qqqtg"]
+radius = 0.36
+
 [node name="ExplorePlayer" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05987, 0.516, -2.228)
 script = ExtResource("1_rbmfy")
@@ -170,5 +173,12 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 1.04, 0)
 shape = SubResource("CylinderShape3D_slt4t")
 
+[node name="BodyArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BodyArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04, 0)
+shape = SubResource("CylinderShape3D_qqqtg")
+
 [connection signal="area_entered" from="Interaction Radius" to="." method="OnInteractionAreaEntered"]
 [connection signal="area_exited" from="Interaction Radius" to="." method="OnInteractionAreaExited"]
+[connection signal="area_entered" from="BodyArea" to="." method="OnBodyAreaEntered"]

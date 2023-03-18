@@ -14,6 +14,8 @@ public partial class ExplorePlayer : CharacterBody3D
 
 	[Export(PropertyHint.File)]
 	private string waypointRes;
+	[Export]
+	private ChronoEnviro timeEnvironment;
 
 	public bool inControl = true;
 
@@ -70,7 +72,7 @@ public partial class ExplorePlayer : CharacterBody3D
 		velocity = new Vector3(direction.x, velocity.y, direction.z);
 		Velocity = velocity;
 		MoveAndSlide();
-		ManageFollowerWaypoints();
+		if(!timeEnvironment.IsInPast()) ManageFollowerWaypoints();
 	}
 
     public override void _Process(double delta)

@@ -2,7 +2,7 @@
 	Cato: "Ok, there's this glowing panel and a broken lever..."
 	{OPT[BridgeOut = FALSE]}  "Touch the Panel" GOTO: Bridge
 	{OPT[GotLever = TRUE]} "Fix the Lever (Needs Replacement Parts)" GOTO: Portcullis
-	{OPT} "Leave" [END]
+	{OPT} "Leave" GOTO: Leave
 	
 ~Bridge
 	[ANIM(SummonBridge)]
@@ -16,8 +16,14 @@
 	[SET(SilverInParty, TRUE)]
 	[ANIM(Setup)][END]
 	
+	
 ~Portcullis
 	Cato: "...Attach this here..."
 	[ANIM(PlaceSwitch)]
 	Cato: "Ok...now let's just flip it."
-	[ANIM(PortcullisOpens)][END]
+	[ANIM(PortcullisOpens)]
+	[ANIM(Setup)][END]
+	
+~Leave
+	Cato: "I'll have to come back here when I've figured this out."
+	[ANIM(Setup)][END]

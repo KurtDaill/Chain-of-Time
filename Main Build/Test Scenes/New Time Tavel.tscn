@@ -1,4 +1,4 @@
-[gd_scene load_steps=204 format=3 uid="uid://crgbd7n8j6scw"]
+[gd_scene load_steps=212 format=3 uid="uid://crgbd7n8j6scw"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_bnwgx"]
 [ext_resource type="Script" path="res://ChronoEnviro.cs" id="2_fkxt3"]
@@ -44,6 +44,8 @@
 [ext_resource type="Texture2D" uid="uid://b7wwuoke21ev6" path="res://Art/SerSejanus.png" id="35_j7rs6"]
 [ext_resource type="PackedScene" uid="uid://pgeher7dcgg0" path="res://Explore Mode/TimeSensitiveCollider.tscn" id="38_5dopr"]
 [ext_resource type="Script" path="res://Explore Mode/InteractionPoint.cs" id="39_k6ebi"]
+[ext_resource type="PackedScene" uid="uid://h46luk0df2um" path="res://Explore Mode/SilverFollower.tscn" id="46_83byh"]
+[ext_resource type="Script" path="res://Explore Mode/Promenade.cs" id="47_hewcl"]
 [ext_resource type="PackedScene" uid="uid://dy5wjqinmlghd" path="res://Explore Mode/explore_player.tscn" id="83_ins2c"]
 
 [sub_resource type="Animation" id="Animation_ukc0b"]
@@ -238,6 +240,20 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Silver Follower")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.55),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Enable"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_8wc3u"]
@@ -493,6 +509,20 @@ tracks/16/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/17/type = "method"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Silver Follower")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(3.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Disable"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_48btt"]
@@ -2709,6 +2739,18 @@ tracks/96/keys = {
 "update": 0,
 "values": [Vector3(11.2988, 3.068, -5.28723)]
 }
+tracks/97/type = "value"
+tracks/97/imported = false
+tracks/97/enabled = true
+tracks/97/path = NodePath("Sejanus Actor:visible")
+tracks/97/interp = 1
+tracks/97/loop_wrap = true
+tracks/97/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_7au08"]
 resource_name = "SejanusCrosses"
@@ -2801,11 +2843,23 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../ReturnFragment:visible")
+tracks/2/path = NodePath("Sejanus Actor:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(2),
+"times": PackedFloat32Array(1.8, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../ReturnFragment:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.9),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -3728,6 +3782,18 @@ tracks/15/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../../../Silver Follower:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_cc07w"]
 resource_name = "SceneSetup"
@@ -3743,6 +3809,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../Silver Follower:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Silver Actor:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_qp3l4"]
@@ -4109,6 +4199,18 @@ tracks/0/keys = {
 "args": [],
 "method": &"StartCutscene"
 }]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../Silver Follower:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_hyhky"]
@@ -4688,6 +4790,32 @@ tracks/2/keys = {
 "points": PackedFloat32Array(6.42453, -0.25, 0, 0.25, 0, 7.438, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../Silver Follower")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Enable"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Silver Actor:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_83m3a"]
 resource_name = "Start"
@@ -4787,6 +4915,20 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../../../Silver Follower")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Disable"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xlai6"]
@@ -5206,6 +5348,175 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ts4rb"]
 size = Vector3(1.28, 2.08, 1.92)
+
+[sub_resource type="Animation" id="Animation_vor3u"]
+resource_name = "PlaceSwitch"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Light/Control Room Switch Light:light_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 0, 0, 1), Color(0.0509804, 1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_favok"]
+resource_name = "PortcullisOpens"
+length = 6.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.203998, -0.25, 0, 0.2, -0.562795, -0.421, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.4188, -0.25, 0, 0.3, -1.52556, 0.144, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.37709, -0.25, 0, 0.3, -0.857836, 1.6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.0425861, -0.25, 0, 0.6, 0.257638, 0.174533, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.4, -0.671806, -0.733038, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%TimeSensitiveCollider:enabledInTimeScene")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.5, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%TimeSensitiveCollider")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Disable"
+}]
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Portcullis:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2.5, 6)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Portcullis:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 1.56026, -0.0274103, 4.351, -0.439737, 0.805014, 0.25, 0),
+"times": PackedFloat32Array(2.5, 6)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Portcullis:position:z")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2.5, 6)
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("%TimeSensitiveCollider/Collision Shape:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(5.7, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Portcullis Interact:enabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(5.7, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_sgvek"]
 length = 0.001
@@ -6004,10 +6315,84 @@ tracks/70/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/71/type = "value"
+tracks/71/imported = false
+tracks/71/enabled = true
+tracks/71/path = NodePath("../Portcullis Interact:enabled")
+tracks/71/interp = 1
+tracks/71/loop_wrap = true
+tracks/71/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/72/type = "value"
+tracks/72/imported = false
+tracks/72/enabled = true
+tracks/72/path = NodePath("../../20 Years/Interaction Point Storage Room:enabled")
+tracks/72/interp = 1
+tracks/72/loop_wrap = true
+tracks/72/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/73/type = "value"
+tracks/73/imported = false
+tracks/73/enabled = true
+tracks/73/path = NodePath("../../../Promenade Map/Bridge And Sec Room Promenade:promenadeIndex")
+tracks/73/interp = 1
+tracks/73/loop_wrap = true
+tracks/73/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
 
 [sub_resource type="Animation" id="Animation_kn636"]
 resource_name = "Setup"
-length = 0.5
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../Silver Follower:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.84, 4.96, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Silver Actor:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../Silver Follower")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Enable"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_gy75i"]
 resource_name = "SilverWalksIn"
@@ -6159,6 +6544,32 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../../Silver Follower")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Disable"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../../20 Years/Interaction Point Storage Room:enabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_pou3r"]
@@ -6808,162 +7219,17 @@ tracks/57/keys = {
 "method": &"Enable"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_vor3u"]
-resource_name = "PlaceSwitch"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Light/Control Room Switch Light:light_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+tracks/58/type = "value"
+tracks/58/imported = false
+tracks/58/enabled = true
+tracks/58/path = NodePath("../../../Promenade Map/Bridge And Sec Room Promenade:promenadeIndex")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/keys = {
+"times": PackedFloat32Array(1.2, 4.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Color(1, 0, 0, 1), Color(0.0509804, 1, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_favok"]
-resource_name = "PortcullisOpens"
-length = 6.0
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.203998, -0.25, 0, 0.2, -0.562795, -0.421, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(2.4188, -0.25, 0, 0.3, -1.52556, 0.144, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D:position:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(2.37709, -0.25, 0, 0.3, -0.857836, 1.6, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D:rotation:x")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-0.0425861, -0.25, 0, 0.6, 0.257638, 0.174533, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Camera3D:rotation:y")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.4, -0.671806, -0.733038, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Camera3D:rotation:z")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2)
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("%TimeSensitiveCollider:enabledInTimeScene")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(2.5, 2.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("%TimeSensitiveCollider")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(2.7),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"Disable"
-}]
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("../Portcullis:position:x")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(2.5, 6)
-}
-tracks/9/type = "bezier"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("../Portcullis:position:y")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 1.56026, -0.0274103, 4.351, -0.439737, 0.805014, 0.25, 0),
-"times": PackedFloat32Array(2.5, 6)
-}
-tracks/10/type = "bezier"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("../Portcullis:position:z")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(2.5, 6)
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("%TimeSensitiveCollider/Collision Shape:disabled")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(5.7, 6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"values": [1, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ukosc"]
@@ -7110,6 +7376,112 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_lpd7q"),
 "Start": SubResource("Animation_yci1f")
+}
+
+[sub_resource type="Animation" id="Animation_jifln"]
+resource_name = "CameraMove"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.744, -0.25, 0, 0.7, -0.00605786, -2.934, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(5.167, -0.25, 0, 0.6, 0.0301061, 3.398, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.312, -0.25, 0, 0.25, 0, 2.312, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.0872665, -0.25, 0, 0.5, 0.0414776, 0.261799, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.6, -0.0197048, -0.349066, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Silver Actor/Dialogue Balloon:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.072, 3.682, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Cato Actor/Response Plane:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.136, 3.911, -2.103)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Cato Actor/Dialogue Balloon:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.906, 4.691, -0.24)]
 }
 
 [sub_resource type="Animation" id="Animation_mx15g"]
@@ -7406,117 +7778,68 @@ tracks/0/keys = {
 "update": 1,
 "values": [true]
 }
-
-[sub_resource type="Animation" id="Animation_jifln"]
-resource_name = "CameraMove"
-length = 1.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-0.744, -0.25, 0, 0.7, -0.00605786, -2.934, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.5)
-}
-tracks/1/type = "bezier"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:position:y")
+tracks/1/path = NodePath("../../../Silver Follower")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(5.167, -0.25, 0, 0.6, 0.0301061, 3.398, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.5)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Disable"
+}]
 }
-tracks/2/type = "bezier"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D:position:z")
+tracks/2/path = NodePath("Silver Actor:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(2.312, -0.25, 0, 0.25, 0, 2.312, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.5)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D:rotation:x")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-0.0872665, -0.25, 0, 0.5, 0.0414776, 0.261799, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.5)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Camera3D:rotation:y")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.6, -0.0197048, -0.349066, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.5)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Camera3D:rotation:z")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.5)
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Silver Actor/Dialogue Balloon:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-2.072, 3.682, 0)]
+"update": 1,
+"values": [true]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Cato Actor/Response Plane:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.1),
+
+[sub_resource type="Animation" id="Animation_wd3s7"]
+resource_name = "SceneSetup"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../Silver Follower")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-5.136, 3.911, -2.103)]
+"values": [{
+"args": [],
+"method": &"Enable"
+}]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Cato Actor/Dialogue Balloon:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0.1),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Silver Actor:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.906, 4.691, -0.24)]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gv5dj"]
 _data = {
 "CameraMove": SubResource("Animation_jifln"),
 "RESET": SubResource("Animation_mx15g"),
+"SceneSetup": SubResource("Animation_wd3s7"),
 "Start": SubResource("Animation_l3it6")
 }
 
@@ -7560,12 +7883,28 @@ grow = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_j6ecc"]
 size = Vector3(1, 1, 3.44)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5dh08"]
+size = Vector3(19.92, 1.12, 5.92)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_05bc7"]
+size = Vector3(4.16, 4.24, 6.88)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rb48u"]
+size = Vector3(19.68, 4.72, 15.28)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_47gvt"]
+size = Vector3(5.68, 1, 15.28)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lxdmb"]
+size = Vector3(4.8, 4.08, 7.12)
+
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("camera", "ePlayer")]
 script = ExtResource("1_bnwgx")
 startCustscene = NodePath("Chrono-Enviro/Present/Entrance Cutscene")
 startBattle = NodePath("")
 camera = NodePath("ExplorePlayer/Explore Camera")
 ePlayer = NodePath("ExplorePlayer")
+beginIn = 1
 
 [node name="Chrono-Enviro" type="Node3D" parent="." node_paths=PackedStringArray("realEnvironment", "presentCronoScene", "TimeTravelCato", "subtractSphere", "visibleSphere", "pastSun", "presentSun")]
 script = ExtResource("2_fkxt3")
@@ -7582,11 +7921,12 @@ presentSun = NodePath("WorldEnvironment/Present Moon")
 presentAnimationIndex = 13
 pastAnimationIndex = 14
 
-[node name="Fragment One" parent="Chrono-Enviro" node_paths=PackedStringArray("timeEnvironment", "targetCronoScene", "targetSun") instance=ExtResource("3_xe5sm")]
+[node name="Fragment One" parent="Chrono-Enviro" node_paths=PackedStringArray("timeEnvironment", "targetCronoScene", "postTravelCustcene", "targetSun") instance=ExtResource("3_xe5sm")]
 visible = false
 timeEnvironment = NodePath("..")
 targetCronoScene = NodePath("../20 Years")
 targetEnvironmentRes = "res://Test Scenes/PastEnvironmentChallengeRoom.tres"
+postTravelCustcene = NodePath("../20 Years/Bridge Cutscene")
 targetSun = NodePath("../WorldEnvironment/Past Sun")
 
 [node name="ReturnFragment" parent="Chrono-Enviro" node_paths=PackedStringArray("timeEnvironment", "postTravelCustcene") instance=ExtResource("4_4n88h")]
@@ -7623,10 +7963,11 @@ alpha_cut = 2
 texture = ExtResource("8_b0aw1")
 hframes = 10
 vframes = 15
+frame = 36
 
 [node name="Heart" type="Sprite3D" parent="Chrono-Enviro/Time Travel Cato/Cato Sprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.68, 0, 0.04)
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.485528)
 pixel_size = 0.008
 texture = ExtResource("9_ef7gf")
 hframes = 11
@@ -7642,6 +7983,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0100002, -0.04, -0.0799999)
 [node name="Time Travel Camera" type="Camera3D" parent="Chrono-Enviro/Time Travel Cato/Time Travel Camera Ref"]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0.08, 4, 13.36)
 current = true
+fov = 44.2136
 far = 100.0
 
 [node name="EyeBlinkShutter" type="Sprite3D" parent="Chrono-Enviro/Time Travel Cato/Time Travel Camera Ref/Time Travel Camera"]
@@ -7750,7 +8092,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.24, 3.28, 3.01344)
 shape = SubResource("BoxShape3D_tiyat")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2, 4.9825, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2, 4.998, 0)
 shape = SubResource("BoxShape3D_xkmlu")
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
@@ -8364,6 +8706,7 @@ shape = SubResource("BoxShape3D_r4obp")
 [node name="Interaction Point Storage Room" parent="Chrono-Enviro/20 Years" node_paths=PackedStringArray("cutsceneNode") instance=ExtResource("31_pqafi")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.97972e-07, 2.52, 13.68)
 cutsceneNode = NodePath("../Storage Room Cutscene")
+enabled = false
 
 [node name="Label" parent="Chrono-Enviro/20 Years/Interaction Point Storage Room" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48, 2.56, 3.6)
@@ -8656,7 +8999,7 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
 show_behind_parent = true
-layout_mode = 1
+layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -8676,7 +9019,7 @@ fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
-layout_mode = 1
+layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -8697,7 +9040,7 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
 show_behind_parent = true
-layout_mode = 1
+layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -8722,7 +9065,7 @@ shortcut_keys_enabled = false
 visible = false
 show_behind_parent = true
 clip_contents = true
-layout_mode = 1
+layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -8763,7 +9106,7 @@ voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
-layout_mode = 1
+layout_mode = 0
 offset_top = -36.0
 offset_right = 300.0
 offset_bottom = -1.0
@@ -9466,7 +9809,6 @@ transform = Transform3D(1, 0, 0, 0, 0.999093, 0.0425732, 0, -0.0425732, 0.999093
 
 [node name="Mechanic Cutscene" type="Node3D" parent="Chrono-Enviro/Present" node_paths=PackedStringArray("dLabel", "resContainer", "sceneExplorePlayer", "cutsceneCamera")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.92, 4.44, -1.28)
-visible = false
 script = ExtResource("25_hgr31")
 enabled = true
 filepath = "res://Cutscenes/Dialogue Files/BridgeMechanicCutscene.txt"
@@ -10091,7 +10433,7 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
 show_behind_parent = true
-layout_mode = 1
+layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -10111,7 +10453,7 @@ fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
-layout_mode = 1
+layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -10132,7 +10474,7 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
 show_behind_parent = true
-layout_mode = 1
+layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -10157,7 +10499,7 @@ shortcut_keys_enabled = false
 visible = false
 show_behind_parent = true
 clip_contents = true
-layout_mode = 1
+layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -10198,7 +10540,7 @@ voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
-layout_mode = 1
+layout_mode = 0
 offset_top = -36.0
 offset_right = 300.0
 offset_bottom = -1.0
@@ -10496,6 +10838,7 @@ targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
 
 [node name="Silver Actor" type="Node3D" parent="Chrono-Enviro/Present/Portcullis Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.32, 2.4, -4.32)
+visible = false
 script = ExtResource("31_etcf1")
 name = "Silver"
 
@@ -10525,7 +10868,7 @@ pixel_size = 0.008
 texture = ExtResource("35_j7rs6")
 
 [node name="Camera3D" type="Camera3D" parent="Chrono-Enviro/Present/Portcullis Cutscene"]
-transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, -0.744, 5.167, 2.312)
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871558, 0, -0.0871558, 0.996195, -0.744, 5.167, 2.312)
 
 [node name="Portcullis Interact" parent="Chrono-Enviro/Present" node_paths=PackedStringArray("cutsceneNode") instance=ExtResource("31_pqafi")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.4377e-07, 4.64, 12.44)
@@ -10551,18 +10894,56 @@ enabledInTimeScene = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08, 0)
 shape = SubResource("BoxShape3D_e2t3u")
 
-[node name="ExplorePlayer" parent="." node_paths=PackedStringArray("exploreCamera") instance=ExtResource("83_ins2c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8888, 5.036, 2.052)
+[node name="ExplorePlayer" parent="." node_paths=PackedStringArray("exploreCamera", "timeEnvironment") instance=ExtResource("83_ins2c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0712, 6.116, 1.532)
 floor_max_angle = 0.872665
 safe_margin = 0.01
 exploreCamera = NodePath("Explore Camera")
 waypointRes = "res://Explore Mode/Waypoint.tscn"
+timeEnvironment = NodePath("../Chrono-Enviro")
 
 [node name="Sprite3D" parent="ExplorePlayer" index="0"]
 sorting_offset = 1.0
 
 [node name="Explore Camera" type="Camera3D" parent="ExplorePlayer"]
 transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0.238175, 3.524, 8.028)
+
+[node name="Silver Follower" parent="." instance=ExtResource("46_83byh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8, 4.96, -2.4)
+
+[node name="Promenade Map" type="Node3D" parent="."]
+
+[node name="First Promenade" type="Area3D" parent="Promenade Map"]
+script = ExtResource("47_hewcl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Promenade Map/First Promenade"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.68, 0.24)
+shape = SubResource("BoxShape3D_5dh08")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Promenade Map/First Promenade"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6, 7.24, 0)
+shape = SubResource("BoxShape3D_05bc7")
+
+[node name="Bridge And Sec Room Promenade" type="Area3D" parent="Promenade Map"]
+script = ExtResource("47_hewcl")
+promenadeIndex = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Promenade Map/Bridge And Sec Room Promenade"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.84, -4.12)
+shape = SubResource("BoxShape3D_rb48u")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Promenade Map/Bridge And Sec Room Promenade"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.92, 5.52, -4.12)
+shape = SubResource("BoxShape3D_47gvt")
+
+[node name="Area3D" type="Area3D" parent="Promenade Map"]
+script = ExtResource("47_hewcl")
+promenadeIndex = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Promenade Map/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.88, 2.52, 0)
+shape = SubResource("BoxShape3D_lxdmb")
 
 [connection signal="animation_finished" from="Chrono-Enviro/20 Years/Bridge Cutscene/AnimationPlayer" to="Chrono-Enviro/20 Years/Bridge Cutscene" method="OnCinematicAnimationEnd" flags=18]
 [connection signal="animation_started" from="Chrono-Enviro/20 Years/Bridge Cutscene/AnimationPlayer" to="Chrono-Enviro/20 Years/Bridge Cutscene" method="OnCinematicAnimationBegin" flags=18]
