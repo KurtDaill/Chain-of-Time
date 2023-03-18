@@ -10,5 +10,5 @@ values = {
 flags = {
 "BridgeOut": false,
 "CatoKnowsPassword": false,
-"GotLever": false
+"GotLever": true
 }

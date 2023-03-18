@@ -1,4 +1,4 @@
-[gd_scene load_steps=184 format=3 uid="uid://crgbd7n8j6scw"]
+[gd_scene load_steps=204 format=3 uid="uid://crgbd7n8j6scw"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_bnwgx"]
 [ext_resource type="Script" path="res://ChronoEnviro.cs" id="2_fkxt3"]
@@ -36,6 +36,7 @@
 [ext_resource type="Script" path="res://Cutscenes/Actor.cs" id="31_etcf1"]
 [ext_resource type="PackedScene" uid="uid://d3n81jf8xmd83" path="res://Explore Mode/InteractionPoint.tscn" id="31_pqafi"]
 [ext_resource type="PackedScene" uid="uid://7nuwa7vspu4p" path="res://Art/3D/Challenge Room Bridge Piece.dae" id="31_wpu70"]
+[ext_resource type="PackedScene" uid="uid://clfe838wqi3e" path="res://Art/3D/Challenge Room Portcullis.dae" id="32_7pk55"]
 [ext_resource type="Texture2D" uid="uid://bqt17hfxjsf8q" path="res://Art/Kell Cinematic Master-Sheet.png" id="32_ywixv"]
 [ext_resource type="Script" path="res://DialogueBillboard.cs" id="33_ekgrt"]
 [ext_resource type="PackedScene" uid="uid://bg3tv2ce7dp10" path="res://Art/3D/Challenge Room Bridge Piece Past.dae" id="33_jjxp5"]
@@ -539,8 +540,8 @@ size = Vector3(29.84, 30.56, 1.44)
 [sub_resource type="BoxShape3D" id="BoxShape3D_kr7a8"]
 size = Vector3(0.8, 15.28, 11.52)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_h7y1a"]
-size = Vector3(0.8, 15.28, 13.44)
+[sub_resource type="BoxShape3D" id="BoxShape3D_wf7v1"]
+size = Vector3(0.8, 15.28, 2.64)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_co45l"]
 size = Vector3(0.8, 12.32, 22.64)
@@ -3186,6 +3187,9 @@ shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_buavf")
 texture_filter = 1
 grow = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e2t3u"]
+size = Vector3(3.48, 5.191, 1)
 
 [sub_resource type="Animation" id="Animation_xgdy2"]
 resource_name = "AwkwardPause"
@@ -5907,6 +5911,99 @@ tracks/62/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/63/type = "value"
+tracks/63/imported = false
+tracks/63/enabled = true
+tracks/63/path = NodePath("../Light/Control Room Switch Light:light_color")
+tracks/63/interp = 1
+tracks/63/loop_wrap = true
+tracks/63/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+tracks/64/type = "value"
+tracks/64/imported = false
+tracks/64/enabled = true
+tracks/64/path = NodePath("Camera3D:position")
+tracks/64/interp = 1
+tracks/64/loop_wrap = true
+tracks/64/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.203998, 2.4188, 2.37709)]
+}
+tracks/65/type = "value"
+tracks/65/imported = false
+tracks/65/enabled = true
+tracks/65/path = NodePath("Camera3D:rotation")
+tracks/65/interp = 1
+tracks/65/loop_wrap = true
+tracks/65/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.165806, -0.820305, 0)]
+}
+tracks/66/type = "value"
+tracks/66/imported = false
+tracks/66/enabled = true
+tracks/66/path = NodePath("%TimeSensitiveCollider:enabledInTimeScene")
+tracks/66/interp = 1
+tracks/66/loop_wrap = true
+tracks/66/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/67/type = "bezier"
+tracks/67/imported = false
+tracks/67/enabled = true
+tracks/67/path = NodePath("../Portcullis:position:x")
+tracks/67/interp = 1
+tracks/67/loop_wrap = true
+tracks/67/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/68/type = "bezier"
+tracks/68/imported = false
+tracks/68/enabled = true
+tracks/68/path = NodePath("../Portcullis:position:y")
+tracks/68/interp = 1
+tracks/68/loop_wrap = true
+tracks/68/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/69/type = "bezier"
+tracks/69/imported = false
+tracks/69/enabled = true
+tracks/69/path = NodePath("../Portcullis:position:z")
+tracks/69/interp = 1
+tracks/69/loop_wrap = true
+tracks/69/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/70/type = "value"
+tracks/70/imported = false
+tracks/70/enabled = true
+tracks/70/path = NodePath("%TimeSensitiveCollider/Collision Shape:disabled")
+tracks/70/interp = 1
+tracks/70/loop_wrap = true
+tracks/70/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_kn636"]
 resource_name = "Setup"
@@ -6712,8 +6809,167 @@ tracks/57/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_vor3u"]
+resource_name = "PlaceSwitch"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Light/Control Room Switch Light:light_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 0, 0, 1), Color(0.0509804, 1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_favok"]
+resource_name = "PortcullisOpens"
+length = 6.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.203998, -0.25, 0, 0.2, -0.562795, -0.421, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.4188, -0.25, 0, 0.3, -1.52556, 0.144, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.37709, -0.25, 0, 0.3, -0.857836, 1.6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.0425861, -0.25, 0, 0.6, 0.257638, 0.174533, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.4, -0.671806, -0.733038, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%TimeSensitiveCollider:enabledInTimeScene")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.5, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%TimeSensitiveCollider")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Disable"
+}]
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Portcullis:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2.5, 6)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Portcullis:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 1.56026, -0.0274103, 4.351, -0.439737, 0.805014, 0.25, 0),
+"times": PackedFloat32Array(2.5, 6)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Portcullis:position:z")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2.5, 6)
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("%TimeSensitiveCollider/Collision Shape:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(5.7, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ukosc"]
 _data = {
+"PlaceSwitch": SubResource("Animation_vor3u"),
+"PortcullisOpens": SubResource("Animation_favok"),
 "RESET": SubResource("Animation_sgvek"),
 "Setup": SubResource("Animation_kn636"),
 "SilverWalksIn": SubResource("Animation_gy75i"),
@@ -6806,6 +7062,503 @@ grow = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_baldn"]
 size = Vector3(2.42209, 0.0702145, 20.1551)
+
+[sub_resource type="Animation" id="Animation_lpd7q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cato Actor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_yci1f"]
+resource_name = "Start"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cato Actor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qrq4l"]
+_data = {
+"RESET": SubResource("Animation_lpd7q"),
+"Start": SubResource("Animation_yci1f")
+}
+
+[sub_resource type="Animation" id="Animation_mx15g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sejanus/Dialogue Balloon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.16, 3.28, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sejanus/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Fragment One/FragmentSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.627451, 0.760784, 0.85098, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cutscene Camera:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.623, 3.499, 7.003)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cutscene Camera:fov")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Intro Room Past With Door:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../Past Room:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../Intro Room Past With Door/Past Door/OmniLight3D:light_energy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../../Intro Room Past With Door/Past Door:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.27989, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../../Intro Room Past With Door/Past Door:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../../Intro Room Past With Door/Past Door:position:z")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.52588e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../../Intro Room Past With Door/Past Door:rotation:x")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../../Intro Room Past With Door/Past Door:rotation:y")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(3.55271e-15, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../../Intro Room Past With Door/Past Door:rotation:z")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/14/type = "bezier"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Camera3D:position:x")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.744, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/15/type = "bezier"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Camera3D:position:y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(5.167, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/16/type = "bezier"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Camera3D:position:z")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.312, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/17/type = "bezier"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Camera3D:rotation:x")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.0872665, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/18/type = "bezier"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Camera3D:rotation:y")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/19/type = "bezier"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Camera3D:rotation:z")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Silver Actor/Dialogue Balloon:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.072, 3.682, 0)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Cato Actor/Response Plane:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.296, 3.911, -2.103)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Cato Actor/Dialogue Balloon:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.906, 4.691, -0.24)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath(".:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_l3it6"]
+resource_name = "Start"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_jifln"]
+resource_name = "CameraMove"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.744, -0.25, 0, 0.7, -0.00605786, -2.934, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(5.167, -0.25, 0, 0.6, 0.0301061, 3.398, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.312, -0.25, 0, 0.25, 0, 2.312, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.0872665, -0.25, 0, 0.5, 0.0414776, 0.261799, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.6, -0.0197048, -0.349066, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Silver Actor/Dialogue Balloon:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.072, 3.682, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Cato Actor/Response Plane:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.136, 3.911, -2.103)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Cato Actor/Dialogue Balloon:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.906, 4.691, -0.24)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gv5dj"]
+_data = {
+"CameraMove": SubResource("Animation_jifln"),
+"RESET": SubResource("Animation_mx15g"),
+"Start": SubResource("Animation_l3it6")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ttyth"]
+viewport_path = NodePath("Intro Cutscene/TextBox Containers/Response VPContainer/Response VP")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hi4q4"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_ttyth")
+
+[sub_resource type="QuadMesh" id="QuadMesh_uudvs"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_hi4q4")
+size = Vector2(6, 3)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_plpbh"]
+viewport_path = NodePath("Intro Cutscene/TextBox Containers/LineContainer/Dialogue VP")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fauk8"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_plpbh")
+
+[sub_resource type="QuadMesh" id="QuadMesh_38dmj"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_fauk8")
+size = Vector2(6, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jex45"]
+viewport_path = NodePath("Intro Cutscene/TextBox Containers/LineContainer/Dialogue VP")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pb4ou"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_jex45")
+texture_filter = 1
+grow = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j6ecc"]
+size = Vector3(1, 1, 3.44)
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("camera", "ePlayer")]
 script = ExtResource("1_bnwgx")
@@ -6961,8 +7714,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.56, 8, -0.84)
 shape = SubResource("BoxShape3D_kr7a8")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.64, 8, -0.84)
-shape = SubResource("BoxShape3D_h7y1a")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.64, 8, -2.76)
+shape = SubResource("BoxShape3D_wf7v1")
+
+[node name="CollisionShape3D20" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.64, 8, 3.28)
+shape = SubResource("BoxShape3D_wf7v1")
 
 [node name="Back Wall" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
 transform = Transform3D(5.21541e-08, 0, -1, 0, 1, 0, 1, 0, 5.21541e-08, 12.32, 8, -4.89733)
@@ -7847,11 +8604,261 @@ texture = ExtResource("35_j7rs6")
 [node name="Camera3D" type="Camera3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene"]
 transform = Transform3D(1, 0, -8.47033e-22, 0, 0.999093, 0.0425732, 0, -0.0425732, 0.999093, 1.142, 4.363, -1.545)
 
+[node name="Storage Room Cutscene2" type="Node3D" parent="Chrono-Enviro/20 Years" node_paths=PackedStringArray("dLabel", "resContainer", "sceneExplorePlayer", "cutsceneCamera")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.2, 0.08, 11.56)
+script = ExtResource("25_hgr31")
+enabled = true
+filepath = "res://Cutscenes/Dialogue Files/StorageRooomPastCutscene.txt"
+dLabel = NodePath("TextBox Containers/LineContainer/Dialogue VP/Dialogue Label")
+dialogueNextAction = "com_atk"
+resContainer = NodePath("TextBox Containers/Response VPContainer/Response VP/Response Container")
+sceneExplorePlayer = NodePath("../../../ExplorePlayer")
+initAnimation = "Start"
+cutsceneCamera = NodePath("Camera3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2"]
+libraries = {
+"": SubResource("AnimationLibrary_tyu8r")
+}
+
+[node name="TextBox Containers" type="Node" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2"]
+
+[node name="Response VPContainer" type="SubViewportContainer" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers"]
+anchors_preset = -1
+anchor_left = 600.0
+anchor_right = 600.0
+offset_left = -1.1508e+06
+offset_top = -600.0
+offset_right = -1.1496e+06
+
+[node name="Response VP" type="SubViewport" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1200, 600)
+render_target_update_mode = 4
+
+[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP" node_paths=PackedStringArray("director")]
+layout_direction = 2
+offset_right = 1200.0
+offset_bottom = 600.0
+scale = Vector2(1e-05, 1)
+theme = ExtResource("26_qh4m1")
+script = ExtResource("27_2wtb0")
+director = NodePath("../../../..")
+
+[node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+text = " \"This is the first option.\""
+fit_content_height = true
+
+[node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+offset_left = 1.0
+offset_right = 1201.0
+offset_bottom = 150.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = " [color=#db3939][Lie][/color]\"This is not an option\""
+fit_content_height = true
+
+[node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
+show_behind_parent = true
+layout_mode = 1
+offset_left = 1.0
+offset_right = 1201.0
+offset_bottom = 150.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
+fit_content_height = true
+
+[node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 1201.0
+offset_bottom = 147.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
+fit_content_height = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 4"]
+visible = false
+show_behind_parent = true
+clip_contents = true
+layout_mode = 1
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 1201.0
+offset_bottom = 147.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+libraries = {
+"": SubResource("AnimationLibrary_yqwec")
+}
+
+[node name="LineContainer" type="SubViewportContainer" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers"]
+offset_top = -400.0
+offset_right = 1200.0
+stretch = true
+
+[node name="Dialogue VP" type="SubViewport" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/LineContainer"]
+process_priority = 1
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1200, 400)
+render_target_update_mode = 4
+
+[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/LineContainer/Dialogue VP" node_paths=PackedStringArray("speakerLabel", "voice")]
+clip_contents = false
+offset_left = 20.0
+offset_top = 32.0
+offset_right = 1180.0
+offset_bottom = 352.0
+theme = ExtResource("26_qh4m1")
+theme_override_font_sizes/normal_font_size = 60
+text = "Test text, motherfucker. What's good?
+It's gonna just keep going and going to show you how long it gets!"
+script = ExtResource("28_dhyet")
+speakerLabel = NodePath("Name Plate")
+charactersPerSecond = 50.0
+voice = NodePath("Voice")
+voiceLetterRatio = 2
+
+[node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
+layout_mode = 1
+offset_top = -36.0
+offset_right = 300.0
+offset_bottom = -1.0
+theme = ExtResource("26_qh4m1")
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = " Will Silver"
+
+[node name="Button" type="TextureRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.855
+anchor_top = 0.5
+anchor_right = 0.855
+anchor_bottom = 0.5
+offset_left = -80.8
+offset_top = -4.0
+offset_right = 42.2
+offset_bottom = 115.0
+texture = ExtResource("29_gtohc")
+
+[node name="Voice" type="AudioStreamPlayer" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
+stream = ExtResource("30_ua2ww")
+volume_db = -5.0
+max_polyphony = 10
+
+[node name="Cato Actor" type="Node3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.588, -2.792)
+visible = false
+script = ExtResource("31_etcf1")
+name = "Cato"
+
+[node name="Sprite" type="Sprite3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/Cato Actor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 2.64, -6.08)
+pixel_size = 0.008
+shaded = true
+alpha_cut = 2
+texture = ExtResource("32_ywixv")
+hframes = 10
+vframes = 10
+frame = 4
+
+[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+transform = Transform3D(0.896575, 0, 0.0716036, 0, 0.9, 0, -0.0784401, 0, 0.818433, -1.24, 2.96, 0.2)
+visible = false
+mesh = SubResource("QuadMesh_0es08")
+script = ExtResource("33_ekgrt")
+targetViewPort = NodePath("../../TextBox Containers/Response VPContainer/Response VP")
+
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 5.32, -2.48)
+mesh = SubResource("QuadMesh_881y8")
+surface_material_override/0 = SubResource("StandardMaterial3D_ak6pm")
+script = ExtResource("33_ekgrt")
+targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
+
+[node name="Sprite3D" type="Sprite3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.76, 2.12, -2.08)
+flip_h = true
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.008
+texture = ExtResource("35_j7rs6")
+
+[node name="Camera3D" type="Camera3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2"]
+transform = Transform3D(1, 0, -8.47033e-22, 0, 0.999093, 0.0425732, 0, -0.0425732, 0.999093, 1.142, 4.363, -1.545)
+
+[node name="TimeSensitiveColliderPortcullis" type="StaticBody3D" parent="Chrono-Enviro/20 Years"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.280001, 5.52, 15)
+script = ExtResource("30_u301r")
+enabledInTimeScene = true
+
+[node name="Collision Shape" type="CollisionShape3D" parent="Chrono-Enviro/20 Years/TimeSensitiveColliderPortcullis"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08, 0)
+shape = SubResource("BoxShape3D_e2t3u")
+disabled = true
+
 [node name="Present" type="Node3D" parent="Chrono-Enviro"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("10_g5tb0")
 beginEnabled = true
-childModulePath = [NodePath("Entrance Cutscene"), NodePath("Mechanic Cutscene"), NodePath("TimeSensitiveCollider - Rubble"), NodePath("TimeSensitiveCollider - Bridge"), NodePath("Interaction Point"), NodePath("Interact Cutscene")]
+childModulePath = [NodePath("Entrance Cutscene"), NodePath("Mechanic Cutscene"), NodePath("TimeSensitiveCollider - Rubble"), NodePath("TimeSensitiveCollider - Bridge"), NodePath("Interaction Point"), NodePath("Interact Cutscene"), NodePath("Storage Room Interact"), NodePath("Storage Room Cutscene")]
+
+[node name="Portcullis" type="Node3D" parent="Chrono-Enviro/Present"]
+
+[node name="Challenge Room Portcullis" parent="Chrono-Enviro/Present/Portcullis" instance=ExtResource("32_7pk55")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.5, 0)
+
+[node name="Challenge Room" parent="Chrono-Enviro/Present" instance=ExtResource("18_p7y38")]
 
 [node name="Bridge" type="Node3D" parent="Chrono-Enviro/Present"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 0, 0)
@@ -8136,7 +9143,7 @@ light_energy = 0.06
 omni_range = 3.0
 omni_attenuation = 4.14102
 
-[node name="Control Room Hand Light2" type="OmniLight3D" parent="Chrono-Enviro/Present/Light"]
+[node name="Control Room Switch Light" type="OmniLight3D" parent="Chrono-Enviro/Present/Light"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.56, 5.72, -0.28)
 light_color = Color(1, 0, 0, 1)
 light_energy = 0.06
@@ -8707,14 +9714,6 @@ targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
 [node name="Camera3D" type="Camera3D" parent="Chrono-Enviro/Present/Mechanic Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 0.999093, 0.0425732, 0, -0.0425732, 0.999093, 0, 2.933, 5.171)
 
-[node name="Challenge Room" parent="Chrono-Enviro/Present" instance=ExtResource("18_p7y38")]
-
-[node name="Dollhouse Front Panel" parent="Chrono-Enviro/Present/Challenge Room" index="0"]
-visible = false
-
-[node name="Windows" parent="Chrono-Enviro/Present/Challenge Room" index="1"]
-layers = 32769
-
 [node name="TimeSensitiveCollider - Rubble" parent="Chrono-Enviro/Present" instance=ExtResource("38_5dopr")]
 enabledInTimeScene = true
 
@@ -8984,12 +9983,14 @@ frame = 4
 
 [node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/Present/Interact Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
 transform = Transform3D(0.896575, 0, 0.0716036, 0, 0.9, 0, -0.0784401, 0, 0.818433, 0.96, 3.68, 1.88)
+visible = false
 mesh = SubResource("QuadMesh_xjrtm")
 script = ExtResource("33_ekgrt")
 targetViewPort = NodePath("../../TextBox Containers/Response VPContainer/Response VP")
 
 [node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Interact Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.92, 5.08, 1.68)
+visible = false
 mesh = SubResource("QuadMesh_ppovm")
 surface_material_override/0 = SubResource("StandardMaterial3D_rlfx0")
 script = ExtResource("33_ekgrt")
@@ -9030,9 +10031,528 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.248, 4.981, 0)
 shape = SubResource("BoxShape3D_baldn")
 disabled = true
 
-[node name="ExplorePlayer" parent="." node_paths=PackedStringArray("exploreCamera") instance=ExtResource("83_ins2c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.791201, 5.556, -3.868)
+[node name="Storage Room Interact" parent="Chrono-Enviro/Present" node_paths=PackedStringArray("cutsceneNode") instance=ExtResource("31_pqafi")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.800001, 2.36, 14)
+cutsceneNode = NodePath("../Storage Room Cutscene")
+
+[node name="Label" parent="Chrono-Enviro/Present/Storage Room Interact" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 2.56, 3.04)
+
+[node name="Storage Room Cutscene" type="Node3D" parent="Chrono-Enviro/Present" node_paths=PackedStringArray("dLabel", "resContainer", "sceneExplorePlayer", "cutsceneCamera")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.2, 0.08, 11.56)
+script = ExtResource("25_hgr31")
+enabled = true
+filepath = "res://Cutscenes/Dialogue Files/StorageRoomPresentCutscene.txt"
+dLabel = NodePath("TextBox Containers/LineContainer/Dialogue VP/Dialogue Label")
+dialogueNextAction = "com_atk"
+resContainer = NodePath("TextBox Containers/Response VPContainer/Response VP/Response Container")
+sceneExplorePlayer = NodePath("../../../ExplorePlayer")
+initAnimation = "Start"
+cutsceneCamera = NodePath("Camera3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Storage Room Cutscene"]
+libraries = {
+"": SubResource("AnimationLibrary_qrq4l")
+}
+
+[node name="TextBox Containers" type="Node" parent="Chrono-Enviro/Present/Storage Room Cutscene"]
+unique_name_in_owner = true
+
+[node name="Response VPContainer" type="SubViewportContainer" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers"]
+anchors_preset = -1
+anchor_left = 600.0
+anchor_right = 600.0
+offset_left = -1.1508e+06
+offset_top = -600.0
+offset_right = -1.1496e+06
+
+[node name="Response VP" type="SubViewport" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1200, 600)
+render_target_update_mode = 4
+
+[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP" node_paths=PackedStringArray("director")]
+layout_direction = 2
+offset_right = 1200.0
+offset_bottom = 600.0
+scale = Vector2(1e-05, 1)
+theme = ExtResource("26_qh4m1")
+script = ExtResource("27_2wtb0")
+director = NodePath("../../../..")
+
+[node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+text = " \"This is the first option.\""
+fit_content_height = true
+
+[node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
+show_behind_parent = true
+layout_mode = 1
+offset_left = 1.0
+offset_right = 1201.0
+offset_bottom = 150.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = " [color=#db3939][Lie][/color]\"This is not an option\""
+fit_content_height = true
+
+[node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
+show_behind_parent = true
+layout_mode = 1
+offset_left = 1.0
+offset_right = 1201.0
+offset_bottom = 150.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
+fit_content_height = true
+
+[node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 1201.0
+offset_bottom = 147.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
+fit_content_height = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 4"]
+visible = false
+show_behind_parent = true
+clip_contents = true
+layout_mode = 1
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 1201.0
+offset_bottom = 147.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+libraries = {
+"": SubResource("AnimationLibrary_yqwec")
+}
+
+[node name="LineContainer" type="SubViewportContainer" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers"]
+offset_top = -400.0
+offset_right = 1200.0
+stretch = true
+
+[node name="Dialogue VP" type="SubViewport" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/LineContainer"]
+process_priority = 1
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1200, 400)
+render_target_update_mode = 4
+
+[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/LineContainer/Dialogue VP" node_paths=PackedStringArray("speakerLabel", "voice")]
+clip_contents = false
+offset_left = 20.0
+offset_top = 32.0
+offset_right = 1180.0
+offset_bottom = 352.0
+theme = ExtResource("26_qh4m1")
+theme_override_font_sizes/normal_font_size = 60
+text = "Test text, motherfucker. What's good?
+It's gonna just keep going and going to show you how long it gets!"
+script = ExtResource("28_dhyet")
+speakerLabel = NodePath("Name Plate")
+charactersPerSecond = 50.0
+voice = NodePath("Voice")
+voiceLetterRatio = 2
+
+[node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
+layout_mode = 1
+offset_top = -36.0
+offset_right = 300.0
+offset_bottom = -1.0
+theme = ExtResource("26_qh4m1")
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = " Will Silver"
+
+[node name="Button" type="TextureRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.855
+anchor_top = 0.5
+anchor_right = 0.855
+anchor_bottom = 0.5
+offset_left = -80.8
+offset_top = -4.0
+offset_right = 42.2
+offset_bottom = 115.0
+texture = ExtResource("29_gtohc")
+
+[node name="Voice" type="AudioStreamPlayer" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
+stream = ExtResource("30_ua2ww")
+volume_db = -5.0
+max_polyphony = 10
+
+[node name="Cato Actor" type="Node3D" parent="Chrono-Enviro/Present/Storage Room Cutscene"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.588, -2.792)
+visible = false
+script = ExtResource("31_etcf1")
+name = "Cato"
+
+[node name="Sprite" type="Sprite3D" parent="Chrono-Enviro/Present/Storage Room Cutscene/Cato Actor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 2.64, -6.08)
+pixel_size = 0.008
+shaded = true
+alpha_cut = 2
+texture = ExtResource("32_ywixv")
+hframes = 10
+vframes = 10
+frame = 4
+
+[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/Present/Storage Room Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+transform = Transform3D(0.896575, 0, 0.0716036, 0, 0.9, 0, -0.0784401, 0, 0.818433, -1.24, 2.96, 0.2)
+visible = false
+mesh = SubResource("QuadMesh_0es08")
+script = ExtResource("33_ekgrt")
+targetViewPort = NodePath("../../TextBox Containers/Response VPContainer/Response VP")
+
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Storage Room Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.902, 4.805, -1.729)
+mesh = SubResource("QuadMesh_881y8")
+surface_material_override/0 = SubResource("StandardMaterial3D_ak6pm")
+script = ExtResource("33_ekgrt")
+targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
+
+[node name="Sprite3D" type="Sprite3D" parent="Chrono-Enviro/Present/Storage Room Cutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.76, 2.12, -2.08)
+flip_h = true
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.008
+texture = ExtResource("35_j7rs6")
+
+[node name="Camera3D" type="Camera3D" parent="Chrono-Enviro/Present/Storage Room Cutscene"]
+transform = Transform3D(1, 0, -8.47033e-22, 0, 0.999093, 0.0425732, 0, -0.0425732, 0.999093, 1.142, 4.363, -1.545)
+
+[node name="Portcullis Cutscene" type="Node3D" parent="Chrono-Enviro/Present" node_paths=PackedStringArray("dLabel", "resContainer", "sceneExplorePlayer", "cutsceneCamera")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.2, 2.6, 13.32)
+visible = false
+script = ExtResource("25_hgr31")
+enabled = true
+filepath = "res://Cutscenes/Dialogue Files/Portcullis Cutscene.txt"
+dLabel = NodePath("TextBox Containers/LineContainer/Dialogue VP/Dialogue Label")
+dialogueNextAction = "com_atk"
+resContainer = NodePath("TextBox Containers/Response VPContainer/Response VP/Response Container")
+sceneExplorePlayer = NodePath("../../../ExplorePlayer")
+initAnimation = "Start"
+cutsceneCamera = NodePath("Camera3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Portcullis Cutscene"]
+libraries = {
+"": SubResource("AnimationLibrary_gv5dj")
+}
+
+[node name="TextBox Containers" type="Node" parent="Chrono-Enviro/Present/Portcullis Cutscene"]
+
+[node name="Response VPContainer" type="SubViewportContainer" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers"]
+anchors_preset = -1
+anchor_left = 600.0
+anchor_right = 600.0
+offset_left = -1.1508e+06
+offset_top = -600.0
+offset_right = -1.1496e+06
+
+[node name="Response VP" type="SubViewport" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1200, 600)
+render_target_update_mode = 4
+
+[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP" node_paths=PackedStringArray("director")]
+layout_direction = 2
+offset_right = 1200.0
+offset_bottom = 600.0
+scale = Vector2(1e-05, 1)
+theme = ExtResource("26_qh4m1")
+script = ExtResource("27_2wtb0")
+director = NodePath("../../../..")
+
+[node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+text = " \"This is the first option.\""
+fit_content_height = true
+
+[node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
+visible = false
+show_behind_parent = true
+layout_mode = 0
+offset_left = 1.0
+offset_right = 1201.0
+offset_bottom = 150.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = " [color=#db3939][Lie][/color]\"This is not an option\""
+fit_content_height = true
+
+[node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 1.0
+offset_right = 1201.0
+offset_bottom = 150.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
+fit_content_height = true
+
+[node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
+visible = false
+show_behind_parent = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 1201.0
+offset_bottom = 147.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
+fit_content_height = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 4"]
+visible = false
+show_behind_parent = true
+clip_contents = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = -3.0
+offset_right = 1201.0
+offset_bottom = 147.0
+color = Color(1, 1, 1, 0.784314)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
+libraries = {
+"": SubResource("AnimationLibrary_yqwec")
+}
+
+[node name="LineContainer" type="SubViewportContainer" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers"]
+offset_top = -400.0
+offset_right = 1200.0
+stretch = true
+
+[node name="Dialogue VP" type="SubViewport" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/LineContainer"]
+process_priority = 1
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1200, 400)
+render_target_update_mode = 4
+
+[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/LineContainer/Dialogue VP" node_paths=PackedStringArray("speakerLabel", "voice")]
+clip_contents = false
+offset_left = 20.0
+offset_top = 32.0
+offset_right = 1180.0
+offset_bottom = 352.0
+theme = ExtResource("26_qh4m1")
+theme_override_font_sizes/normal_font_size = 60
+text = "Test text, motherfucker. What's good?
+It's gonna just keep going and going to show you how long it gets!"
+script = ExtResource("28_dhyet")
+speakerLabel = NodePath("Name Plate")
+charactersPerSecond = 50.0
+voice = NodePath("Voice")
+voiceLetterRatio = 2
+
+[node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
+layout_mode = 0
+offset_top = -36.0
+offset_right = 300.0
+offset_bottom = -1.0
+theme = ExtResource("26_qh4m1")
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = " Will Silver"
+
+[node name="Button" type="TextureRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.855
+anchor_top = 0.5
+anchor_right = 0.855
+anchor_bottom = 0.5
+offset_left = -80.8
+offset_top = -4.0
+offset_right = 42.2
+offset_bottom = 115.0
+texture = ExtResource("29_gtohc")
+
+[node name="Voice" type="AudioStreamPlayer" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
+stream = ExtResource("30_ua2ww")
+volume_db = -5.0
+max_polyphony = 10
+
+[node name="Cato Actor" type="Node3D" parent="Chrono-Enviro/Present/Portcullis Cutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.588, -2.792)
+script = ExtResource("31_etcf1")
+name = "Cato"
+
+[node name="Sprite" type="Sprite3D" parent="Chrono-Enviro/Present/Portcullis Cutscene/Cato Actor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24, 3.08, 0)
+pixel_size = 0.008
+shaded = true
+alpha_cut = 2
+texture = ExtResource("32_ywixv")
+hframes = 10
+vframes = 10
+frame = 4
+
+[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/Present/Portcullis Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.821559, -2.296, 3.911, -2.103)
+visible = false
+mesh = SubResource("QuadMesh_uudvs")
+script = ExtResource("33_ekgrt")
+targetViewPort = NodePath("../../TextBox Containers/Response VPContainer/Response VP")
+
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Portcullis Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.906, 4.691, -0.24)
+mesh = SubResource("QuadMesh_38dmj")
+surface_material_override/0 = SubResource("StandardMaterial3D_pb4ou")
+script = ExtResource("33_ekgrt")
+targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
+
+[node name="Silver Actor" type="Node3D" parent="Chrono-Enviro/Present/Portcullis Cutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.32, 2.4, -4.32)
+script = ExtResource("31_etcf1")
+name = "Silver"
+
+[node name="Sprite" type="Sprite3D" parent="Chrono-Enviro/Present/Portcullis Cutscene/Silver Actor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24, 1.28, 0)
+pixel_size = 0.008
+shaded = true
+alpha_cut = 2
+texture = ExtResource("34_soh7x")
+hframes = 10
+vframes = 8
+frame = 55
+region_rect = Rect2(0, 2, 720, 318)
+
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Portcullis Cutscene/Silver Actor" node_paths=PackedStringArray("targetViewPort")]
+transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871558, 0, 0.0871557, 0.996195, -2.072, 3.682, 0)
+mesh = SubResource("QuadMesh_38dmj")
+surface_material_override/0 = SubResource("StandardMaterial3D_pb4ou")
+script = ExtResource("33_ekgrt")
+targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
+
+[node name="Sprite3D" type="Sprite3D" parent="Chrono-Enviro/Present/Portcullis Cutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.76, 2.12, -2.08)
+flip_h = true
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.008
+texture = ExtResource("35_j7rs6")
+
+[node name="Camera3D" type="Camera3D" parent="Chrono-Enviro/Present/Portcullis Cutscene"]
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, -0.744, 5.167, 2.312)
+
+[node name="Portcullis Interact" parent="Chrono-Enviro/Present" node_paths=PackedStringArray("cutsceneNode") instance=ExtResource("31_pqafi")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.4377e-07, 4.64, 12.44)
+cutsceneNode = NodePath("../Portcullis Cutscene")
+
+[node name="Label" parent="Chrono-Enviro/Present/Portcullis Interact" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24, 2.56, -9.68575e-08)
+
+[node name="Interact Area" parent="Chrono-Enviro/Present/Portcullis Interact" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.88, 1.06581e-14)
+
+[node name="CollisionShape3D" parent="Chrono-Enviro/Present/Portcullis Interact/Interact Area" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.24)
+shape = SubResource("BoxShape3D_j6ecc")
+
+[node name="TimeSensitiveCollider" type="StaticBody3D" parent="Chrono-Enviro/Present"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.280001, 5.52, 15)
+script = ExtResource("30_u301r")
+enabledInTimeScene = true
+
+[node name="Collision Shape" type="CollisionShape3D" parent="Chrono-Enviro/Present/TimeSensitiveCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08, 0)
+shape = SubResource("BoxShape3D_e2t3u")
+
+[node name="ExplorePlayer" parent="." node_paths=PackedStringArray("exploreCamera") instance=ExtResource("83_ins2c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8888, 5.036, 2.052)
 floor_max_angle = 0.872665
 safe_margin = 0.01
 exploreCamera = NodePath("Explore Camera")
@@ -9048,16 +10568,23 @@ transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195
 [connection signal="animation_started" from="Chrono-Enviro/20 Years/Bridge Cutscene/AnimationPlayer" to="Chrono-Enviro/20 Years/Bridge Cutscene" method="OnCinematicAnimationBegin" flags=18]
 [connection signal="animation_finished" from="Chrono-Enviro/20 Years/Storage Room Cutscene/AnimationPlayer" to="Chrono-Enviro/20 Years/Storage Room Cutscene" method="OnCinematicAnimationEnd" flags=18]
 [connection signal="animation_started" from="Chrono-Enviro/20 Years/Storage Room Cutscene/AnimationPlayer" to="Chrono-Enviro/20 Years/Storage Room Cutscene" method="OnCinematicAnimationBegin" flags=18]
+[connection signal="animation_finished" from="Chrono-Enviro/20 Years/Storage Room Cutscene2/AnimationPlayer" to="Chrono-Enviro/20 Years/Storage Room Cutscene2" method="OnCinematicAnimationEnd" flags=18]
+[connection signal="animation_started" from="Chrono-Enviro/20 Years/Storage Room Cutscene2/AnimationPlayer" to="Chrono-Enviro/20 Years/Storage Room Cutscene2" method="OnCinematicAnimationBegin" flags=18]
 [connection signal="animation_finished" from="Chrono-Enviro/Present/Entrance Cutscene/AnimationPlayer" to="Chrono-Enviro/Present/Entrance Cutscene" method="OnCinematicAnimationEnd" flags=18]
 [connection signal="animation_started" from="Chrono-Enviro/Present/Entrance Cutscene/AnimationPlayer" to="Chrono-Enviro/Present/Entrance Cutscene" method="OnCinematicAnimationBegin" flags=18]
 [connection signal="animation_finished" from="Chrono-Enviro/Present/Mechanic Cutscene/AnimationPlayer" to="Chrono-Enviro/Present/Mechanic Cutscene" method="OnCinematicAnimationEnd" flags=18]
 [connection signal="animation_started" from="Chrono-Enviro/Present/Mechanic Cutscene/AnimationPlayer" to="Chrono-Enviro/Present/Mechanic Cutscene" method="OnCinematicAnimationBegin" flags=18]
 [connection signal="animation_finished" from="Chrono-Enviro/Present/Interact Cutscene/AnimationPlayer" to="Chrono-Enviro/Present/Interact Cutscene" method="OnCinematicAnimationEnd" flags=18]
 [connection signal="animation_started" from="Chrono-Enviro/Present/Interact Cutscene/AnimationPlayer" to="Chrono-Enviro/Present/Interact Cutscene" method="OnCinematicAnimationBegin" flags=18]
+[connection signal="animation_finished" from="Chrono-Enviro/Present/Storage Room Cutscene/AnimationPlayer" to="Chrono-Enviro/Present/Storage Room Cutscene" method="OnCinematicAnimationEnd" flags=18]
+[connection signal="animation_started" from="Chrono-Enviro/Present/Storage Room Cutscene/AnimationPlayer" to="Chrono-Enviro/Present/Storage Room Cutscene" method="OnCinematicAnimationBegin" flags=18]
+[connection signal="animation_finished" from="Chrono-Enviro/Present/Portcullis Cutscene/AnimationPlayer" to="Chrono-Enviro/Present/Portcullis Cutscene" method="OnCinematicAnimationEnd" flags=18]
+[connection signal="animation_started" from="Chrono-Enviro/Present/Portcullis Cutscene/AnimationPlayer" to="Chrono-Enviro/Present/Portcullis Cutscene" method="OnCinematicAnimationBegin" flags=18]
 
 [editable path="Chrono-Enviro/Fragment Two"]
 [editable path="Chrono-Enviro/20 Years/Interaction Point Storage Room"]
-[editable path="Chrono-Enviro/Present/Challenge Room"]
 [editable path="Chrono-Enviro/Present/TimeSensitiveCollider - Rubble"]
 [editable path="Chrono-Enviro/Present/TimeSensitiveCollider - Bridge"]
+[editable path="Chrono-Enviro/Present/Storage Room Interact"]
+[editable path="Chrono-Enviro/Present/Portcullis Interact"]
 [editable path="ExplorePlayer"]

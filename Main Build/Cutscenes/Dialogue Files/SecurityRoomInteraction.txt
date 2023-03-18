@@ -17,4 +17,7 @@
 	[ANIM(Setup)][END]
 	
 ~Portcullis
-	Cato: "Wait what?"[END]
+	Cato: "...Attach this here..."
+	[ANIM(PlaceSwitch)]
+	Cato: "Ok...now let's just flip it."
+	[ANIM(PortcullisOpens)][END]
