@@ -51,8 +51,8 @@ public partial class ChronoEnviro : Node3D
     public override void _Ready(){
         animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
         inPast = false;
-        pastEnvironment = GD.Load<Godot.Environment>(pastEnvironmentRes);
-        presentEnvironment = GD.Load<Godot.Environment>(presentEnvironmentRes);
+        pastEnvironment = GD.Load<Godot.Environment>(presentEnvironmentRes); //DONT CHANGE THESE BEFORE YOU FIGURE OUT WHERE ELSE IN THE CODE WE FLIPPED PAST AND PRESENT
+        presentEnvironment = GD.Load<Godot.Environment>(pastEnvironmentRes);
         this.realEnvironment.Environment = (Godot.Environment)presentEnvironment.Duplicate(true);
         //this.realEnvironment.Environment = (Godot.Environment)presentEnvironment.Duplicate();
 
@@ -68,7 +68,7 @@ public partial class ChronoEnviro : Node3D
         //Set TimeWarp-Cutscene Cato's position to match frag
         TimeTravelCato.GlobalPosition = frag.GlobalPosition;
 
-        pastEnvironment = frag.GetTargetEnvironment();
+        presentEnvironment = frag.GetTargetEnvironment();  //DONT CHANGE THESE BEFORE YOU FIGURE OUT WHERE ELSE IN THE CODE WE FLIPPED PAST AND PRESENT
         pastSun = frag.GetTargetSun();
 
 
@@ -229,7 +229,7 @@ public partial class ChronoEnviro : Node3D
                 HandleSky(pastEnvironment.Sky, presentEnvironment.Sky);
                 continue;
             }
-            else AssignPropertyToAnimationTrack((string)name, type, presentVar, pastVar, ":environment", realEnvironment, environmentTrackIndex, "TimewarpTest");
+            else AssignPropertyToAnimationTrack((string)name, type, pastVar, presentVar, ":environment", realEnvironment, environmentTrackIndex, "TimewarpTest");
         }
     }
 
@@ -285,7 +285,7 @@ public partial class ChronoEnviro : Node3D
 
             endDict.TryGetValue("type", out var typeVar); //Should be the same between environments, they're the same resource type!
             Variant.Type type = (Variant.Type)(int)typeVar;
-            AssignPropertyToAnimationTrack((string)name, type, startVar, endVar, ":environment:sky:sky_material", realEnvironment, environmentTrackIndex, "TimewarpTest");
+            AssignPropertyToAnimationTrack((string)name, type,endVar, startVar,  ":environment:sky:sky_material", realEnvironment, environmentTrackIndex, "TimewarpTest");
         }
     }
 

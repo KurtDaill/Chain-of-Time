@@ -534,23 +534,27 @@ _data = {
 "TimewarpTest": SubResource("Animation_bomh6")
 }
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g8f3g"]
-sky_top_color = Color(0.0313726, 0, 0.117647, 1)
-sky_horizon_color = Color(0.0156863, 0.0941176, 0.4, 1)
-ground_bottom_color = Color(0.14902, 0.12549, 0.0980392, 1)
-ground_horizon_color = Color(0.25098, 0.180392, 0.176471, 1)
-sun_angle_max = 3.0
-sun_curve = 0.106066
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1v76k"]
+sky_top_color = Color(0.192157, 0.356863, 0.658824, 1)
+sky_horizon_color = Color(0.921569, 0.513726, 0.109804, 1)
+sky_curve = 0.13308
+ground_horizon_color = Color(0.647059, 0.654902, 0.670588, 1)
+sun_angle_max = 25.0
+sun_curve = 0.0652913
 
-[sub_resource type="Sky" id="Sky_g6s3e"]
-sky_material = SubResource("ProceduralSkyMaterial_g8f3g")
+[sub_resource type="Sky" id="Sky_7g6t1"]
+sky_material = SubResource("ProceduralSkyMaterial_1v76k")
 
-[sub_resource type="Environment" id="Environment_o4gi6"]
+[sub_resource type="Environment" id="Environment_ajhqa"]
 background_mode = 2
-sky = SubResource("Sky_g6s3e")
+sky = SubResource("Sky_7g6t1")
 ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.02
+ambient_light_color = Color(0.921569, 0.784314, 0.513726, 1)
+ambient_light_energy = 0.33
+fog_light_color = Color(1, 1, 1, 1)
+fog_light_energy = 0.0
+fog_density = 0.0
+fog_sky_affect = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_munbv"]
 size = Vector3(3.04, 3.52, 3.44)
@@ -7763,6 +7767,36 @@ tracks/23/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_wd3s7"]
+resource_name = "SceneSetup"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../Silver Follower")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Enable"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Silver Actor:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_l3it6"]
 resource_name = "Start"
 length = 0.1
@@ -7803,36 +7837,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_wd3s7"]
-resource_name = "SceneSetup"
-length = 0.1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../../Silver Follower")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"Enable"
-}]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Silver Actor:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gv5dj"]
@@ -7904,7 +7908,6 @@ startCustscene = NodePath("Chrono-Enviro/Present/Entrance Cutscene")
 startBattle = NodePath("")
 camera = NodePath("ExplorePlayer/Explore Camera")
 ePlayer = NodePath("ExplorePlayer")
-beginIn = 1
 
 [node name="Chrono-Enviro" type="Node3D" parent="." node_paths=PackedStringArray("realEnvironment", "presentCronoScene", "TimeTravelCato", "subtractSphere", "visibleSphere", "pastSun", "presentSun")]
 script = ExtResource("2_x2kdt")
@@ -7993,7 +7996,7 @@ texture = ExtResource("8_gcrka")
 hframes = 6
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Chrono-Enviro"]
-environment = SubResource("Environment_o4gi6")
+environment = SubResource("Environment_ajhqa")
 
 [node name="Past Sun" type="DirectionalLight3D" parent="Chrono-Enviro/WorldEnvironment"]
 transform = Transform3D(-0.227182, -0.968637, 0.100656, -0.972415, 0.231245, 0.0305675, -0.052885, -0.0909348, -0.994452, -11.2762, 9.69895, 9.304)
@@ -8205,7 +8208,8 @@ director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_right = 1200.0
+offset_bottom = 75.0
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
 fit_content_height = true
@@ -8213,7 +8217,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -8221,11 +8224,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 79.0
+offset_right = 1200.0
+offset_bottom = 89.0
 
 [node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 93.0
+offset_right = 1200.0
+offset_bottom = 168.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
@@ -8233,7 +8240,6 @@ fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -8241,11 +8247,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 172.0
+offset_right = 1200.0
+offset_bottom = 182.0
 
 [node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 186.0
+offset_right = 1200.0
+offset_bottom = 261.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
@@ -8254,7 +8264,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -8263,11 +8272,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 265.0
+offset_right = 1200.0
+offset_bottom = 275.0
 
 [node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 279.0
+offset_right = 1200.0
+offset_bottom = 354.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
@@ -8279,7 +8292,6 @@ shortcut_keys_enabled = false
 visible = false
 show_behind_parent = true
 clip_contents = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -8320,7 +8332,6 @@ voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
-layout_mode = 0
 offset_top = -36.0
 offset_right = 300.0
 offset_bottom = -1.0
@@ -8336,7 +8347,6 @@ text = " Will Silver"
 [node name="Button" type="TextureRect" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
 texture_filter = 1
 texture_repeat = 1
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.855
 anchor_top = 0.5
@@ -8759,7 +8769,8 @@ director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_right = 1200.0
+offset_bottom = 75.0
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
 fit_content_height = true
@@ -8767,7 +8778,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -8775,11 +8785,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 79.0
+offset_right = 1200.0
+offset_bottom = 89.0
 
 [node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 93.0
+offset_right = 1200.0
+offset_bottom = 168.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
@@ -8787,7 +8801,6 @@ fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -8795,11 +8808,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 172.0
+offset_right = 1200.0
+offset_bottom = 182.0
 
 [node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 186.0
+offset_right = 1200.0
+offset_bottom = 261.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
@@ -8808,7 +8825,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -8817,11 +8833,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 265.0
+offset_right = 1200.0
+offset_bottom = 275.0
 
 [node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 279.0
+offset_right = 1200.0
+offset_bottom = 354.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
@@ -8833,7 +8853,6 @@ shortcut_keys_enabled = false
 visible = false
 show_behind_parent = true
 clip_contents = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -8874,7 +8893,6 @@ voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
-layout_mode = 0
 offset_top = -36.0
 offset_right = 300.0
 offset_bottom = -1.0
@@ -8890,7 +8908,6 @@ text = " Will Silver"
 [node name="Button" type="TextureRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
 texture_filter = 1
 texture_repeat = 1
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.855
 anchor_top = 0.5
@@ -8991,7 +9008,8 @@ director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_right = 1200.0
+offset_bottom = 75.0
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
 fit_content_height = true
@@ -8999,7 +9017,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -9007,11 +9024,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 79.0
+offset_right = 1200.0
+offset_bottom = 89.0
 
 [node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 93.0
+offset_right = 1200.0
+offset_bottom = 168.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
@@ -9019,7 +9040,6 @@ fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -9027,11 +9047,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 172.0
+offset_right = 1200.0
+offset_bottom = 182.0
 
 [node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 186.0
+offset_right = 1200.0
+offset_bottom = 261.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
@@ -9040,7 +9064,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -9049,11 +9072,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 265.0
+offset_right = 1200.0
+offset_bottom = 275.0
 
 [node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 279.0
+offset_right = 1200.0
+offset_bottom = 354.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
@@ -9065,7 +9092,6 @@ shortcut_keys_enabled = false
 visible = false
 show_behind_parent = true
 clip_contents = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -9106,7 +9132,6 @@ voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
-layout_mode = 0
 offset_top = -36.0
 offset_right = 300.0
 offset_bottom = -1.0
@@ -9122,7 +9147,6 @@ text = " Will Silver"
 [node name="Button" type="TextureRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
 texture_filter = 1
 texture_repeat = 1
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.855
 anchor_top = 0.5
@@ -9595,7 +9619,8 @@ director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_right = 1200.0
+offset_bottom = 75.0
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
 fit_content_height = true
@@ -9603,7 +9628,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -9611,11 +9635,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 79.0
+offset_right = 1200.0
+offset_bottom = 89.0
 
 [node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 93.0
+offset_right = 1200.0
+offset_bottom = 168.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
@@ -9623,7 +9651,6 @@ fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -9631,11 +9658,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 172.0
+offset_right = 1200.0
+offset_bottom = 182.0
 
 [node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 186.0
+offset_right = 1200.0
+offset_bottom = 261.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
@@ -9644,7 +9675,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -9653,11 +9683,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 265.0
+offset_right = 1200.0
+offset_bottom = 275.0
 
 [node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 279.0
+offset_right = 1200.0
+offset_bottom = 354.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
@@ -9669,7 +9703,6 @@ shortcut_keys_enabled = false
 visible = false
 show_behind_parent = true
 clip_contents = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -9710,7 +9743,6 @@ voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
-layout_mode = 0
 offset_top = -36.0
 offset_right = 300.0
 offset_bottom = -1.0
@@ -9726,7 +9758,6 @@ text = " Will Silver"
 [node name="Button" type="TextureRect" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
 texture_filter = 1
 texture_repeat = 1
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.855
 anchor_top = 0.5
@@ -9851,7 +9882,8 @@ director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_right = 1200.0
+offset_bottom = 75.0
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
 fit_content_height = true
@@ -9859,7 +9891,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -9867,11 +9898,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 79.0
+offset_right = 1200.0
+offset_bottom = 89.0
 
 [node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 93.0
+offset_right = 1200.0
+offset_bottom = 168.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
@@ -9879,7 +9914,6 @@ fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -9887,11 +9921,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 172.0
+offset_right = 1200.0
+offset_bottom = 182.0
 
 [node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 186.0
+offset_right = 1200.0
+offset_bottom = 261.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
@@ -9900,7 +9938,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -9909,11 +9946,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 265.0
+offset_right = 1200.0
+offset_bottom = 275.0
 
 [node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 279.0
+offset_right = 1200.0
+offset_bottom = 354.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
@@ -9925,7 +9966,6 @@ shortcut_keys_enabled = false
 visible = false
 show_behind_parent = true
 clip_contents = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -9966,7 +10006,6 @@ voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
-layout_mode = 0
 offset_top = -36.0
 offset_right = 300.0
 offset_bottom = -1.0
@@ -9982,7 +10021,6 @@ text = " Will Silver"
 [node name="Button" type="TextureRect" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
 texture_filter = 1
 texture_repeat = 1
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.855
 anchor_top = 0.5
@@ -10158,7 +10196,8 @@ director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_right = 1200.0
+offset_bottom = 75.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " \"This is the first option.\""
@@ -10167,7 +10206,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -10175,11 +10213,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 79.0
+offset_right = 1200.0
+offset_bottom = 89.0
 
 [node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 93.0
+offset_right = 1200.0
+offset_bottom = 168.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
@@ -10187,7 +10229,6 @@ fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -10195,11 +10236,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 172.0
+offset_right = 1200.0
+offset_bottom = 182.0
 
 [node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 186.0
+offset_right = 1200.0
+offset_bottom = 261.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
@@ -10208,7 +10253,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -10217,11 +10261,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 265.0
+offset_right = 1200.0
+offset_bottom = 275.0
 
 [node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 279.0
+offset_right = 1200.0
+offset_bottom = 354.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
@@ -10233,7 +10281,6 @@ shortcut_keys_enabled = false
 visible = false
 show_behind_parent = true
 clip_contents = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -10274,7 +10321,6 @@ voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
-layout_mode = 0
 offset_top = -36.0
 offset_right = 300.0
 offset_bottom = -1.0
@@ -10290,7 +10336,6 @@ text = " Will Silver"
 [node name="Button" type="TextureRect" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
 texture_filter = 1
 texture_repeat = 1
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.855
 anchor_top = 0.5
@@ -10425,7 +10470,8 @@ director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_right = 1200.0
+offset_bottom = 75.0
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
 fit_content_height = true
@@ -10433,7 +10479,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -10441,11 +10486,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 79.0
+offset_right = 1200.0
+offset_bottom = 89.0
 
 [node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 93.0
+offset_right = 1200.0
+offset_bottom = 168.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
@@ -10453,7 +10502,6 @@ fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -10461,11 +10509,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 172.0
+offset_right = 1200.0
+offset_bottom = 182.0
 
 [node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 186.0
+offset_right = 1200.0
+offset_bottom = 261.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
@@ -10474,7 +10526,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -10483,11 +10534,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 265.0
+offset_right = 1200.0
+offset_bottom = 275.0
 
 [node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 279.0
+offset_right = 1200.0
+offset_bottom = 354.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
@@ -10499,7 +10554,6 @@ shortcut_keys_enabled = false
 visible = false
 show_behind_parent = true
 clip_contents = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -10540,7 +10594,6 @@ voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
-layout_mode = 0
 offset_top = -36.0
 offset_right = 300.0
 offset_bottom = -1.0
@@ -10556,7 +10609,6 @@ text = " Will Silver"
 [node name="Button" type="TextureRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
 texture_filter = 1
 texture_repeat = 1
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.855
 anchor_top = 0.5
@@ -10659,7 +10711,8 @@ director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_right = 1200.0
+offset_bottom = 75.0
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
 fit_content_height = true
@@ -10667,7 +10720,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -10675,11 +10727,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 79.0
+offset_right = 1200.0
+offset_bottom = 89.0
 
 [node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 93.0
+offset_right = 1200.0
+offset_bottom = 168.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
@@ -10687,7 +10743,6 @@ fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -10695,11 +10750,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 172.0
+offset_right = 1200.0
+offset_bottom = 182.0
 
 [node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 186.0
+offset_right = 1200.0
+offset_bottom = 261.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
@@ -10708,7 +10767,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -10717,11 +10775,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 265.0
+offset_right = 1200.0
+offset_bottom = 275.0
 
 [node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 279.0
+offset_right = 1200.0
+offset_bottom = 354.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
@@ -10733,7 +10795,6 @@ shortcut_keys_enabled = false
 visible = false
 show_behind_parent = true
 clip_contents = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -10774,7 +10835,6 @@ voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
-layout_mode = 0
 offset_top = -36.0
 offset_right = 300.0
 offset_bottom = -1.0
@@ -10790,7 +10850,6 @@ text = " Will Silver"
 [node name="Button" type="TextureRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
 texture_filter = 1
 texture_repeat = 1
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.855
 anchor_top = 0.5
@@ -10910,6 +10969,7 @@ transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195
 
 [node name="Silver Follower" parent="." instance=ExtResource("46_8joln")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8, 4.96, -2.4)
+visible = false
 
 [node name="Promenade Map" type="Node3D" parent="."]
 

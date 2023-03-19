@@ -22,3 +22,13 @@ res://GUI/Themes/UI Impact.tres
 res://GUI/Themes/Skill Card Tech.tres
 res://GUI/Themes/Skill Card Tech Small.tres
 res://Test Scenes/Present Environment.tres
+res://Levels/Opening Room Retrofit.tscn
+res://Levels/Challenge Room.tscn
+res://Test Scenes/PastEnvironmentChallengeRoom.tres
+res://Test Scenes/PresentEnvironmentChallengeRoom.tres
+res://Levels/Boss Room.tscn
+res://Test Scenes/Boss Room.tres
+res://Battle Mode/Enemies/Ser Sejanus Alpha.tscn
+res://Battle Mode/Enemies/Ghost.tscn
+res://Levels/Opening Room.tscn
+res://Battle Mode/Player Characters/Will Silver.tscn
