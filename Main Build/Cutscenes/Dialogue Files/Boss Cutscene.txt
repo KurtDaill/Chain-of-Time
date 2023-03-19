@@ -60,16 +60,17 @@
 	Sejanus: "...I wish...I wish it were otherwise" GOTO: NamedEnd
 	
 ~End
-	[EndCameraMove]
+	[ANIM(EndCameraMove)]
 	???: "I am guardian of this place, in the name of the Goddess, you will not pass me."
-	[TransitionToBattleCam][END]
+	[ANIM(TransitionToBattleCam)][END]
+
 ~NamedEnd
-	[EndCameraMove]
+	[ANIM(EndCameraMove)]
 	Sejanus: "I am..."
 	Sejanus: "..."
 	Sejanus: "In this place, there was once Sejanus Castellan of the Black Keep."
 	Sejanus: "He swore to defend this place, even beyond nameless death."
 	Sejanus: "The man died. The oath lives on."
 	Sejanus: "We fight because we must."
-	[TransitionToBattleCam][END]
+	[ANIM(TransitionToBattleCam)][END]
 	

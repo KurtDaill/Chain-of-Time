@@ -132,6 +132,10 @@ public partial class ExplorePlayer : CharacterBody3D
 		if(area.GetGroups().Contains("Promenade")){
 			promenade = ((Promenade)area).GetPromenadeIndex();
 		}
+		if(area.GetGroups().Contains("Temp")){
+			Temp temporarySolution = (Temp) area;
+			temporarySolution.OnAreaEntered();
+		}
 	}
 
 	public void OnInteractionAreaExited(Area3D area){

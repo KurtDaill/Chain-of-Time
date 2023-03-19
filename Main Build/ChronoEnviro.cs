@@ -53,7 +53,7 @@ public partial class ChronoEnviro : Node3D
         inPast = false;
         pastEnvironment = GD.Load<Godot.Environment>(presentEnvironmentRes); //DONT CHANGE THESE BEFORE YOU FIGURE OUT WHERE ELSE IN THE CODE WE FLIPPED PAST AND PRESENT
         presentEnvironment = GD.Load<Godot.Environment>(pastEnvironmentRes);
-        this.realEnvironment.Environment = (Godot.Environment)presentEnvironment.Duplicate(true);
+        this.realEnvironment.Environment = (Godot.Environment)pastEnvironment.Duplicate(true);
         //this.realEnvironment.Environment = (Godot.Environment)presentEnvironment.Duplicate();
 
         sunProperties = pastSun.GetPropertyList();
@@ -181,13 +181,24 @@ public partial class ChronoEnviro : Node3D
     }
 
     public void ReturnSwap(){
-        realEnvironment.Environment = (Godot.Environment)presentEnvironment.Duplicate();
-        realEnvironment.Environment.Sky = (Godot.Sky)presentEnvironment.Sky.Duplicate();
+        realEnvironment.Environment = (Godot.Environment)pastEnvironment.Duplicate();
+        realEnvironment.Environment.Sky = (Godot.Sky)pastEnvironment.Sky.Duplicate();
         //realSun.QueueFree();
         //realSun = (Godot.DirectionalLight3D) presentSun.Duplicate();
         //realSun.Visible = true;
         currentFragment.GetTargetCronoScene().Visible = false;
         presentCronoScene.Visible = true;
+        foreach(Godot.Collections.Dictionary property in sunProperties){
+            property.TryGetValue("name", out var name);
+            property.TryGetValue("type", out var typeVar);
+            Godot.Variant.Type type = (Godot.Variant.Type)(int) typeVar;
+            var pastVar = pastSun.Get((string)name);
+            var presentVar = presentSun.Get((string)name);
+            if((string)name == "visible") continue;
+            if((string)name == "light_cull_mask") continue;
+            //if(isReturnRun) AssignPropertyToAnimationTrack((string)name, type, presentVar, pastVar, "", realSun, returnSunTrackIndex, "Return");
+            else realSun.Set((string)name, presentSun.Get((string)name));
+        }
     }
     public bool IsInPast(){
         return inPast;
