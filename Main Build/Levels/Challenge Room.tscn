@@ -1,4 +1,4 @@
-[gd_scene load_steps=289 format=3 uid="uid://di0uvfcwuijik"]
+[gd_scene load_steps=290 format=3 uid="uid://di0uvfcwuijik"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_nwe6j"]
 [ext_resource type="Script" path="res://ChronoEnviro.cs" id="2_x2kdt"]
@@ -98,6 +98,7 @@
 [ext_resource type="Script" path="res://Battle Mode/GUI/SwapMenu.cs" id="91_i68lw"]
 [ext_resource type="Script" path="res://GUI/ReadoutContainer.cs" id="92_jb1p4"]
 [ext_resource type="AudioStream" uid="uid://rqh26t4tp12q" path="res://Audio/TCoT_-_Combat_3d(1).mp3" id="93_2cext"]
+[ext_resource type="PackedScene" uid="uid://cbp4mrf66li5b" path="res://Art/3D/Challenge Room Box.dae" id="94_34w2h"]
 
 [sub_resource type="Animation" id="Animation_ukc0b"]
 resource_name = "Delay"
@@ -7286,6 +7287,20 @@ tracks/58/keys = {
 "update": 1,
 "values": [1, 0]
 }
+tracks/59/type = "method"
+tracks/59/imported = false
+tracks/59/enabled = true
+tracks/59/path = NodePath("../../../ExplorePlayer")
+tracks/59/interp = 1
+tracks/59/loop_wrap = true
+tracks/59/keys = {
+"times": PackedFloat32Array(4.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"SetPromenade"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ukosc"]
 _data = {
@@ -9310,7 +9325,7 @@ size = Vector3(5.68, 1, 15.28)
 size = Vector3(4.8, 4.08, 7.12)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_umn4m"]
-size = Vector3(1, 3.6, 1)
+size = Vector3(1, 3.6, 6)
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("camera", "ePlayer", "bgMusic")]
 script = ExtResource("1_nwe6j")
@@ -9480,6 +9495,10 @@ shape = SubResource("BoxShape3D_wf7v1")
 
 [node name="Back Wall" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
 transform = Transform3D(5.21541e-08, 0, -1, 0, 1, 0, 1, 0, 5.21541e-08, 12.32, 8, -4.89733)
+shape = SubResource("BoxShape3D_co45l")
+
+[node name="Back Wall4" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(5.21541e-08, 0, -1, 0, 1, 0, 1, 0, 5.21541e-08, -18.8, 8, -3.37733)
 shape = SubResource("BoxShape3D_co45l")
 
 [node name="Back Wall2" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
@@ -13306,6 +13325,9 @@ script = ExtResource("92_jb1p4")
 stream = ExtResource("93_2cext")
 volume_db = -25.0
 
+[node name="Challenge Room Box" parent="Chrono-Enviro/Present" instance=ExtResource("94_34w2h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56, -7.52, -1)
+
 [node name="ExplorePlayer" parent="." node_paths=PackedStringArray("exploreCamera", "timeEnvironment") instance=ExtResource("45_0cq5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1912, 4.956, -0.548)
 floor_max_angle = 0.872665
@@ -13395,4 +13417,5 @@ shape = SubResource("BoxShape3D_umn4m")
 [editable path="Chrono-Enviro/Present/TimeSensitiveCollider - Bridge"]
 [editable path="Chrono-Enviro/Present/Storage Room Interact"]
 [editable path="Chrono-Enviro/Present/Portcullis Interact"]
+[editable path="Chrono-Enviro/Present/Challenge Room Box"]
 [editable path="ExplorePlayer"]

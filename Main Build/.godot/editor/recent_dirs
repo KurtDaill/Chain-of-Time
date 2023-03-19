@@ -1,4 +1,7 @@
 res://Levels
+C:/Users/kdail/Desktop
+res://Art/3D
+res://Art
 res://Audio
 res://Cutscenes/Dialogue Files
 res://Art/ChainOfTimeDisplay
@@ -9,10 +12,7 @@ res://
 res://Battle Mode
 res://Battle Mode/Enemies
 C:/Users/kdail/Desktop/Game Dev/Godot/Chain-of-Time/Main Build
-res://Art
-res://Art/3D
 res://Cutscenes
-C:/Users/kdail/Desktop
 res://Fonts
 res://GUI
 res://Art/3D/Inherited Sceness
@@ -20,4 +20,3 @@ C:/Users/kdail/Desktop/Game Dev/Godot/Chain-of-Time/Main Build/Cutscenes
 res://GUI/Cutscene Assets
 res://GUI/Battle Ability GUI Assets
 res://GUI/Themes/Dialogue
-C:/Users/kdail/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Visual Studio Code

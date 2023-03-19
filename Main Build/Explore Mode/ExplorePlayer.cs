@@ -175,4 +175,8 @@ public partial class ExplorePlayer : CharacterBody3D
 	public int GetCurrentPromenade(){
 		return promenade;
 	}
+
+	public void SetPromenade(int i ){ //TEMP CODE
+		promenade = i;
+	}
 }

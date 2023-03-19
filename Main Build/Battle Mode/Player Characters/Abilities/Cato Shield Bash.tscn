@@ -423,6 +423,7 @@ stream = ExtResource("2_y8rx2")
 [node name="Node" type="Node" parent="."]
 script = ExtResource("3_58rnh")
 targeting = 1
+eventValue = 2
 dealsBonusDamageOnStunned = true
 stunBonusDamage = 2
 

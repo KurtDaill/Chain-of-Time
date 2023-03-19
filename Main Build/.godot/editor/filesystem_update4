@@ -1,6 +1,5 @@
-res://Levels/Opening Room Retrofit.tscn
-res://Test Scenes/Boss Room.tres
-res://Art/3D/DungeonNormalMaterial2.tres
+res://Levels/Boss Room.tscn
+res://Art/3D/DungeonNormalMaterial.tres
 res://GUI/Themes/Dialogue/Normal Response.tres
 res://GUI/Cutscene Assets/Dialouge Button.tres
 res://Battle Mode/PMBattleNoActAbility.cs
@@ -11,7 +10,12 @@ res://GUI/Themes/Skill Card Spell.tres
 res://GUI/Themes/UI Impact.tres
 res://GUI/Themes/Skill Card Tech.tres
 res://GUI/Themes/Skill Card Tech Small.tres
-res://Art/3D/DungeonNormalMaterial.tres
+res://Art/3D/DungeonNormalMaterial2.tres
+res://Test Scenes/Boss Room.tres
+res://Levels/Opening Room Retrofit.tscn
 res://Levels/Challenge Room.tscn
-res://Levels/Boss Room.tscn
+res://Battle Mode/Player Characters/Abilities/Silver Flash Bomb.tscn
 res://Battle Mode/Enemies/Ser Sejanus Alpha.tscn
+res://Battle Mode/Enemies/Polymorphor.tscn
+res://Battle Mode/Enemies/Ghost.tscn
+res://Battle Mode/Player Characters/Abilities/Cato Shield Bash.tscn

@@ -1,6 +1,6 @@
 ~Start
 	Silver: "Ok...we just bust in these haunted ruins, clear out the living dead..."
-	Silver: "you get to save the village, and I get paid in appopriated ancient swag."
+	Silver: "you get to save the village, and I get paid in appropiated ancient swag."
 	Silver: "Sounds like a plan."
 	Cato: "..."
 	Silver: “So...uh...you gonna be ok pal?”
