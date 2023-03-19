@@ -8,43 +8,36 @@
 	[ANIM(WalkIn)]
 	???: "I know why you are here."
 	???: "You should not have come."
-	???: "I have sworn to defend this gate until my final death."
 	???: "Leave now."
 	{OPT} "We have no choice, you've attacked my people." GOTO: Duchess
 	{OPT} "I know you."" GOTO: Recognize
-	{OPT} "..." GOTO: Silence
+	{OPT} "..." GOTO: End
 
 ~Recognize
 	???: "That is...impossible"
 	Cato: "You're Ser Sejanus, the Castellan." 
-	???: "No one living knows that name, boy."
+	???: "No one living knows that name."
 	Cato: "I do."
-	Sejanus: "..."
-	Sejanus: "That name...no longer belongs to the living."
-	Sejanus: "Not you, nor I. Not any more."
-	Sejanus: "..."
-	Sejanus: "Please, turn back...I beg you."
-	{OPT} "I'm sorry, I can't" GOTO: EnguardEmotional
+	Sejanus?: "..."
+	Sejanus?: "That name...no longer belongs to the living."
+	Sejanus?: "Not you, nor I. Not any more."
+	Sejanus?: "..."
+	Sejanus?: "Please, turn back...I beg you."
+	{OPT} "I'm sorry. I can't" GOTO: EnguardEmotional
 	{OPT} "..." GOTO: EnguardNamed
 
 ~Duchess
-	???: "The Duchess may deal with her subjects as she sees fit."
+	???: "The Duchess retains the right to deal with subjects as she sees fit."
 	Silver: "She's been dead for twenty years, pal, I think you need fresh orders."
 	???: "..."
-	???: "You know little, orc.""
-	???: "Death means little to the servants of the Goddess, she reigns over the boundary betwixt life and death."
+	???: "You know little, orc."
+	???: "Death means little to the servants of the Goddess. 
+	???: "Through her, the Duchess reigns over the boundary betwixt life and death."
 	???: "She yet commands this place, and it's people."
 	???: "I cannot question her orders, nor change them. I am only sworn to uphold them."
 	???: "So I ask again. Leave."
 	{OPT} "..." GOTO: Fight
 	{OPT} "Silver, get ready for a fight." GOTO: Silver
-
-~Silence
-	???: "I have been a Knight of the Hawks, sworn to the Queen of Moonhaven."
-	???: "I have sworn the Seven Oaths of the Sword in open battle."
-	???: "I have passed beyond nameless death, and returned complete."
-	???: "I serve the Goddess, and the Duchess, even now."
-	???: "Prepare yourself." GOTO: End
 
 ~Fight
 	???: "Then you leave me no choice." GOTO: End
@@ -53,24 +46,25 @@
 	Silver: "Way ahead of you Cato" GOTO: End
 
 ~EnguardNamed
-	Sejanus: "Then fight well, Kell." GOTO: NamedEnd
+	Sejanus?: "Then fight well, Kell." GOTO: NamedEnd
 	
 ~EnguardEmotional
-	Sejanus: "..."
-	Sejanus: "...I wish...I wish it were otherwise" GOTO: NamedEnd
+	Sejanus?: "..."
+	Sejanus?: "...I wish...I wish it were otherwise" GOTO: NamedEnd
 	
 ~End
 	[ANIM(EndCameraMove)]
-	???: "I am guardian of this place, in the name of the Goddess, you will not pass me."
-	[ANIM(TransitionToBattleCam)][END]
+	???: "I am bound to defend this gate until my final death."
+	???: "If your death is required, so be it." 
+	[ANIM(Setup)][END]
 
 ~NamedEnd
 	[ANIM(EndCameraMove)]
-	Sejanus: "I am..."
-	Sejanus: "..."
-	Sejanus: "In this place, there was once Sejanus Castellan of the Black Keep."
-	Sejanus: "He swore to defend this place, even beyond nameless death."
-	Sejanus: "The man died. The oath lives on."
-	Sejanus: "We fight because we must."
-	[ANIM(TransitionToBattleCam)][END]
+	Sejanus?: "I am..."
+	Sejanus?: "..."
+	Sejanus?: "In this place, there was once Sejanus, Castellan of the Black Keep."
+	Sejanus?: "He swore to defend this place, even beyond nameless death."
+	Sejanus?: "The man died. The oath lives on."
+	Sejanus?: "We fight because we must." 
+	[ANIM(Setup)][END]
 	

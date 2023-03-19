@@ -136,6 +136,10 @@ public partial class ExplorePlayer : CharacterBody3D
 			Temp temporarySolution = (Temp) area;
 			temporarySolution.OnAreaEntered();
 		}
+		if(area.GetGroups().Contains("Transition")){
+			LevelTransition trans = (LevelTransition) area;
+			trans.Transition();
+		}
 	}
 
 	public void OnInteractionAreaExited(Area3D area){

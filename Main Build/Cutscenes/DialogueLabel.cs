@@ -14,6 +14,8 @@ public partial class DialogueLabel : RichTextLabel
 
 	[Export]
 	private AudioStreamPlayer voice;
+	[Export]
+	private AudioStreamPlayer altVoice;
 
 	[Export]
 	private int voiceLetterRatio;
@@ -48,7 +50,9 @@ public partial class DialogueLabel : RichTextLabel
 					}
 
 					if(voiceTimer >= voiceLetterRatio){
-						voice.Play();
+						
+						if(altVoice != null && (this.speakerLabel.Text == " ???" || this.speakerLabel.Text == " Sejanus?"|| this.speakerLabel.Text == " Death Knight")) altVoice.Play();
+						else voice.Play();
 						voiceTimer = 0;
 					}else{
 						voiceTimer++;

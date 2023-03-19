@@ -38,6 +38,8 @@ public partial class PMBattle : Node3D
 	double timer = 0F;
 
 	AudioStreamPlayer music;
+	[Export]
+	AudioStreamPlayer debugMusic;
 
 	[Export]
 	bool offline = true;
@@ -83,6 +85,9 @@ public partial class PMBattle : Node3D
 		}
 
 		music = this.GetNode<AudioStreamPlayer>("BattleMusic");
+		if(music == null){
+			music = debugMusic;
+		}
 	}
 
 	public override void _Process(double delta)
@@ -364,7 +369,7 @@ public partial class PMBattle : Node3D
 		this.gui.Visible = true;
 		//Go Online
 		offline = false;
-		if(!music.Playing)music.Play();
+		if(music != null)if(!music.Playing)music.Play();
 	}
 
 	public Camera3D GetBattleCamera(){

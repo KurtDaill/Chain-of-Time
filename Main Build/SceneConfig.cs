@@ -13,6 +13,8 @@ public partial class SceneConfig : Node
 	ExplorePlayer ePlayer;
 	[Export(PropertyHint.Enum)]
 	StartingMode beginIn;
+	[Export]
+	AudioStreamPlayer bgMusic;
 
 	private enum StartingMode{
 		Explore,
@@ -38,6 +40,14 @@ public partial class SceneConfig : Node
 
 	public ExplorePlayer GetExplorePlayer(){
 		return ePlayer;
+	}
+
+	public void StopMusic(){
+		bgMusic.Stop();
+	}
+
+	public void StartMusic(){
+		bgMusic.Play();
 	}
 }
 

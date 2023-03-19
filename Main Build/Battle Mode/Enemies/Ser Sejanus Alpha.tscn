@@ -380,11 +380,11 @@ _data = {
 }
 
 [node name="Ser Sejanus Alpha" type="Sprite3D" node_paths=PackedStringArray("namePlate", "noAct")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.56, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28, 2.56, 0)
 pixel_size = 0.008
 shaded = true
 texture = ExtResource("1_w5ot8")
-hframes = 7
+hframes = 8
 frame = 1
 script = ExtResource("1_tukar")
 abilitiesByPriority = [NodePath("Great Cleave"), NodePath("Heft Sword"), NodePath("Attack")]
@@ -476,9 +476,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24, -1.32, 0.2)
 
 [node name="Enemy Nameplate" parent="." instance=ExtResource("7_itt66")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23, 3.36, 0)
-
-[node name="Max HP" parent="Enemy Nameplate" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.401533, -0.498662, 0.04)
 
 [node name="Name" parent="Enemy Nameplate" index="2"]
 text = "Death Knight

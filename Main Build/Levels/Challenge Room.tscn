@@ -1,4 +1,4 @@
-[gd_scene load_steps=212 format=3 uid="uid://di0uvfcwuijik"]
+[gd_scene load_steps=289 format=3 uid="uid://di0uvfcwuijik"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_nwe6j"]
 [ext_resource type="Script" path="res://ChronoEnviro.cs" id="2_x2kdt"]
@@ -45,8 +45,59 @@
 [ext_resource type="Texture2D" uid="uid://bbtxfdtxop34o" path="res://GUI/Warp Time.png" id="43_ksj0a"]
 [ext_resource type="FontFile" uid="uid://by3oeeep2oy71" path="res://Fonts/lunchtime-doubly-so.regular.ttf" id="44_bsol0"]
 [ext_resource type="PackedScene" uid="uid://dy5wjqinmlghd" path="res://Explore Mode/explore_player.tscn" id="45_0cq5x"]
+[ext_resource type="Script" path="res://Explore Mode/Encounter.cs" id="45_nf8lm"]
 [ext_resource type="PackedScene" uid="uid://h46luk0df2um" path="res://Explore Mode/SilverFollower.tscn" id="46_8joln"]
+[ext_resource type="Texture2D" uid="uid://caeitxxodib2g" path="res://Art/Skeleton Animations Master-Sheet.png" id="46_kxgug"]
 [ext_resource type="Script" path="res://Explore Mode/Promenade.cs" id="47_6fc35"]
+[ext_resource type="Script" path="res://Battle Mode/PMBattle.cs" id="47_e5vrl"]
+[ext_resource type="Script" path="res://Battle Mode/PMBattleRoster.cs" id="48_4vnos"]
+[ext_resource type="AudioStream" uid="uid://mf37gwjc304a" path="res://Audio/mus_dungeon_01.ogg" id="48_yandm"]
+[ext_resource type="PackedScene" uid="uid://bqb21t5xmngp7" path="res://Battle Mode/Player Characters/Cato.tscn" id="49_4dk7r"]
+[ext_resource type="Script" path="res://Explore Mode/LevelTransition.cs" id="49_7mxbn"]
+[ext_resource type="PackedScene" uid="uid://ccu5ecaivjphf" path="res://Battle Mode/Enemies/Skeleton.tscn" id="50_lghjy"]
+[ext_resource type="Script" path="res://MovingCamera.cs" id="51_tfyha"]
+[ext_resource type="Script" path="res://Battle Mode/GUI/PMBattleGUI.cs" id="52_swtmd"]
+[ext_resource type="Script" path="res://Battle Mode/GUI/TopMenu.cs" id="53_i6fou"]
+[ext_resource type="Texture2D" uid="uid://d2v174ha8e02a" path="res://GUI/Battle Menu Assets/Top Menu/Button Hub.png" id="54_l10e2"]
+[ext_resource type="Texture2D" uid="uid://c4qop4r4kknep" path="res://GUI/Battle Menu Assets/Top Menu/Party Button Controller.png" id="55_ttotw"]
+[ext_resource type="Texture2D" uid="uid://d1m7mihmo5vy2" path="res://GUI/Battle Menu Assets/Top Menu/Party Button Highlight.png" id="56_pe8nv"]
+[ext_resource type="Texture2D" uid="uid://3xst1bjiasti" path="res://GUI/Battle Menu Assets/Top Menu/Item Button Controller.png" id="57_fne75"]
+[ext_resource type="Texture2D" uid="uid://cwrc2tvxawx3w" path="res://GUI/Battle Menu Assets/Top Menu/Item Button Highlight.png" id="58_ns8l6"]
+[ext_resource type="Texture2D" uid="uid://byxwcawbevd4q" path="res://GUI/Battle Menu Assets/Top Menu/Attack Button Controller.png" id="59_b4loe"]
+[ext_resource type="Texture2D" uid="uid://mcjyfmluy4vo" path="res://GUI/Battle Menu Assets/Top Menu/Attack Button Highlight.png" id="60_4b0n4"]
+[ext_resource type="Texture2D" uid="uid://cx12cemchoyfp" path="res://GUI/Battle Menu Assets/Top Menu/Skill Button Controller.png" id="61_w3ss1"]
+[ext_resource type="Texture2D" uid="uid://dr54ux3u6u382" path="res://GUI/Battle Menu Assets/Top Menu/Skill Button Highlight.png" id="62_s5tsx"]
+[ext_resource type="Script" path="res://Battle Mode/GUI/PartyMenu.cs" id="63_iy61s"]
+[ext_resource type="Texture2D" uid="uid://krkh6oeua0eq" path="res://GUI/Battle Menu Assets/Party Menu/Party Menu Hub.png" id="64_7lw35"]
+[ext_resource type="Texture2D" uid="uid://l6unyyb4maph" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres" id="65_6rpqc"]
+[ext_resource type="Texture2D" uid="uid://8iltg8hieg8a" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuRunHighlight.png" id="66_1im1r"]
+[ext_resource type="Texture2D" uid="uid://k1c0luw6jqjc" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres" id="67_qnw6s"]
+[ext_resource type="Texture2D" uid="uid://nli0mcpokh1x" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuSwapHighlight.png" id="68_xw8j4"]
+[ext_resource type="Texture2D" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres" id="69_jfy1v"]
+[ext_resource type="Texture2D" uid="uid://c74qsow25qfbm" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuComboHighlight.png" id="70_l2sry"]
+[ext_resource type="Texture2D" uid="uid://wxj5d30d2p8y" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres" id="71_2fhyf"]
+[ext_resource type="Texture2D" uid="uid://b6xo1fe2mg5he" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuAllyHighlight.png" id="72_sgsxn"]
+[ext_resource type="Script" path="res://Battle Mode/GUI/ItemMenu.cs" id="73_6ycrv"]
+[ext_resource type="Texture2D" uid="uid://cenqt4ms2eal0" path="res://GUI/Battle Menu Assets/Item Menu/Item Tab.png" id="74_qegoh"]
+[ext_resource type="Theme" uid="uid://dq2wt80l1hcrn" path="res://GUI/Themes/Skill Card Normal.tres" id="75_bdgck"]
+[ext_resource type="Texture2D" uid="uid://d145f3ww0wx4r" path="res://GUI/Battle Menu Assets/Item Menu/Item Description Box.png" id="76_qrc3c"]
+[ext_resource type="Script" path="res://Battle Mode/GUI/AttackMenu.cs" id="77_ipmxx"]
+[ext_resource type="Texture2D" uid="uid://cm7bwe6xrk4bw" path="res://GUI/Battle Menu Assets/Attack Menu/Attack Menu.png" id="78_rv5s2"]
+[ext_resource type="Theme" uid="uid://d4kx000io04gf" path="res://GUI/Themes/Skill Card Normal Small.tres" id="79_7r0m2"]
+[ext_resource type="Script" path="res://Battle Mode/GUI/SkillMenu.cs" id="80_n65gi"]
+[ext_resource type="Theme" uid="uid://cj8f3qneuw34e" path="res://GUI/Themes/Skill Card Spell.tres" id="81_1lim2"]
+[ext_resource type="Texture2D" uid="uid://jfvu1q88havg" path="res://GUI/Battle Menu Assets/Skill Menu/Spell Card.png" id="82_8vnm2"]
+[ext_resource type="Script" path="res://Battle Mode/GUI/SkillCard.cs" id="83_dcs8e"]
+[ext_resource type="Theme" uid="uid://lcud6pbsl6dn" path="res://GUI/Themes/UI Impact.tres" id="84_pqpma"]
+[ext_resource type="Texture2D" uid="uid://doe0fcor7214h" path="res://GUI/Battle Menu Assets/Skill Menu/Skill Card.png" id="85_xyey5"]
+[ext_resource type="Theme" uid="uid://crl1yc2vxqufr" path="res://GUI/Themes/Skill Card Tech.tres" id="86_mn6b1"]
+[ext_resource type="Texture2D" uid="uid://d08s06xg3bhk1" path="res://GUI/Battle Menu Assets/Skill Menu/Tech Card.png" id="87_16i16"]
+[ext_resource type="Theme" uid="uid://doubhibnrt206" path="res://GUI/Themes/Skill Card Tech Small.tres" id="88_6uq6e"]
+[ext_resource type="AudioStream" uid="uid://vrcv026r88aw" path="res://Audio/UI_No.wav" id="89_vgflb"]
+[ext_resource type="Script" path="res://Battle Mode/GUI/TargetingMenu.cs" id="90_r7hww"]
+[ext_resource type="Script" path="res://Battle Mode/GUI/SwapMenu.cs" id="91_i68lw"]
+[ext_resource type="Script" path="res://GUI/ReadoutContainer.cs" id="92_jb1p4"]
+[ext_resource type="AudioStream" uid="uid://rqh26t4tp12q" path="res://Audio/TCoT_-_Combat_3d(1).mp3" id="93_2cext"]
 
 [sub_resource type="Animation" id="Animation_ukc0b"]
 resource_name = "Delay"
@@ -7887,6 +7938,1362 @@ grow = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_j6ecc"]
 size = Vector3(1, 1, 3.44)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ho2bk"]
+size = Vector3(1.84, 1.2, 1)
+
+[sub_resource type="Animation" id="83"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hero 1:position:z")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hero 1:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hero 1:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hero 2:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hero 2:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hero 2:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Hero 1:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1, 0.1875, 4)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Hero 2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3, 0.1875, 3)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Hero 3:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5, 0.1875, 2)]
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Hero 3:position:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Hero 3:position:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Hero 3:position:z")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Enemy 1:position:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Enemy 1:position:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.188, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/14/type = "bezier"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Enemy 1:position:z")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/15/type = "bezier"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Enemy 2:position:x")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/16/type = "bezier"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Enemy 2:position:y")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/17/type = "bezier"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Enemy 2:position:z")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/18/type = "bezier"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Enemy 3:position:x")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/19/type = "bezier"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Enemy 3:position:y")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.1875, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/20/type = "bezier"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Enemy 3:position:z")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Enemy 2:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3, 0.1875, 3)]
+}
+
+[sub_resource type="Animation" id="116"]
+resource_name = "SwapE12"
+length = 0.7
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy 1:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy 1:position:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Enemy 2:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Enemy 2:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"FinishPositionSwap"
+}]
+}
+
+[sub_resource type="Animation" id="117"]
+resource_name = "SwapE13"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy 1:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy 1:position:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.494021)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Enemy 3:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Enemy 3:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Enemy 2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(3, 0.1875, 3), Vector3(4, 0.1875, 3), Vector3(3, 0.1875, 3)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"FinishPositionSwap"
+}]
+}
+
+[sub_resource type="Animation" id="118"]
+resource_name = "SwapE23"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy 2:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy 2:position:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Enemy 3:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Enemy 3:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"FinishPositionSwap"
+}]
+}
+
+[sub_resource type="Animation" id="119"]
+resource_name = "SwapECrunch"
+length = 0.7
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy 2:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy 2:position:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Enemy 1:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.691842)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Enemy 1:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.691842)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Enemy 3:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Enemy 3:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"FinishPositionSwap"
+}]
+}
+
+[sub_resource type="Animation" id="84"]
+resource_name = "SwapH12"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hero 1:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hero 1:position:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hero 2:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hero 2:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"FinishPositionSwap"
+}]
+}
+
+[sub_resource type="Animation" id="120"]
+resource_name = "SwapH13"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hero 3:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-5, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hero 3:position:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hero 1:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0, -6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hero 1:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hero 2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-3, 0.1875, 3), Vector3(-3.5, 0.1875, 3), Vector3(-3, 0.1875, 3)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"FinishPositionSwap"
+}]
+}
+
+[sub_resource type="Animation" id="121"]
+resource_name = "SwapH23"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hero 2:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hero 2:position:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hero 3:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-5, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hero 3:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"FinishPositionSwap"
+}]
+}
+
+[sub_resource type="Animation" id="122"]
+resource_name = "SwapHCrunch"
+length = 0.7
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hero 3:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-5, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hero 3:position:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hero 2:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hero 2:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hero 1:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0, -5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.7)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hero 1:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.7)
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"FinishPositionSwap"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dtywi"]
+_data = {
+"RESET": SubResource("83"),
+"SwapE12": SubResource("116"),
+"SwapE13": SubResource("117"),
+"SwapE23": SubResource("118"),
+"SwapECrunch": SubResource("119"),
+"SwapH12": SubResource("84"),
+"SwapH13": SubResource("120"),
+"SwapH23": SubResource("121"),
+"SwapHCrunch": SubResource("122")
+}
+
+[sub_resource type="Animation" id="22"]
+length = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Item TabBar/Item Tab 0:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Item TabBar/Item Tab 0:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Item TabBar/Item Tab 4:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Item TabBar/Item Tab 4:offset_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Item TabBar/Item Tab 1:offset_top")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Item TabBar/Item Tab 2:offset_top")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Item TabBar/Item Tab 3:offset_top")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+
+[sub_resource type="Animation" id="23"]
+length = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Item TabBar/Item Tab 0:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Item TabBar/Item Tab 0:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Item TabBar/Item Tab 4:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Item TabBar/Item Tab 4:offset_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Item TabBar/Item Tab 1:offset_top")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Item TabBar/Item Tab 2:offset_top")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Item TabBar/Item Tab 3:offset_top")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+
+[sub_resource type="Animation" id="24"]
+length = 0.35
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Item TabBar/Item Tab 0:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Item TabBar/Item Tab 0:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Item TabBar/Item Tab 4:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Item TabBar/Item Tab 4:offset_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Item TabBar/Item Tab 1:offset_top")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Item TabBar/Item Tab 2:offset_top")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Item TabBar/Item Tab 3:offset_top")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+
+[sub_resource type="Animation" id="25"]
+length = 0.35
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Item TabBar/Item Tab 0:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Item TabBar/Item Tab 0:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Item TabBar/Item Tab 4:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Item TabBar/Item Tab 4:offset_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Item TabBar/Item Tab 1:offset_top")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Item TabBar/Item Tab 2:offset_top")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Item TabBar/Item Tab 3:offset_top")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4fq1h"]
+_data = {
+"Ready to Scroll Down": SubResource("22"),
+"Ready to Scroll Up": SubResource("23"),
+"Scroll Down": SubResource("24"),
+"Scroll Up": SubResource("25")
+}
+
+[sub_resource type="Animation" id="17"]
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -158, -0.25, 0, 0.25, 0, -150, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_dpyc2"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="18"]
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-150.0, -153.0]
+}
+
+[sub_resource type="Animation" id="19"]
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-150, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hic0e"]
+_data = {
+"Draw": SubResource("17"),
+"RESET": SubResource("Animation_dpyc2"),
+"Selected": SubResource("18"),
+"Stow": SubResource("19")
+}
+
+[sub_resource type="Animation" id="20"]
+length = 0.6
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Card Container/Card 1/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["RESET", -1, 1.0, false],
+"method": &"play"
+}, {
+"args": ["Draw", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Card Container:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -181, -0.4, -54, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Card Container/Card 2/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["RESET", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Card Container/Card 3/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["RESET", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Card Container/Card 4/AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["RESET", -1, 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="21"]
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Card Container:offset_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-181, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+
+[sub_resource type="Animation" id="66"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Card Container/Card 1:offset_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8.51978]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Card Container:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2acw7"]
+_data = {
+"Enter": SubResource("20"),
+"Exit": SubResource("21"),
+"RESET": SubResource("66")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_5dh08"]
 size = Vector3(19.92, 1.12, 5.92)
 
@@ -7902,12 +9309,17 @@ size = Vector3(5.68, 1, 15.28)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lxdmb"]
 size = Vector3(4.8, 4.08, 7.12)
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("camera", "ePlayer")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_umn4m"]
+size = Vector3(1, 3.6, 1)
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("camera", "ePlayer", "bgMusic")]
 script = ExtResource("1_nwe6j")
 startCustscene = NodePath("Chrono-Enviro/Present/Entrance Cutscene")
 startBattle = NodePath("")
 camera = NodePath("ExplorePlayer/Explore Camera")
 ePlayer = NodePath("ExplorePlayer")
+beginIn = 1
+bgMusic = NodePath("BG Music")
 
 [node name="Chrono-Enviro" type="Node3D" parent="." node_paths=PackedStringArray("realEnvironment", "presentCronoScene", "TimeTravelCato", "subtractSphere", "visibleSphere", "pastSun", "presentSun")]
 script = ExtResource("2_x2kdt")
@@ -10897,8 +12309,1005 @@ enabledInTimeScene = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08, 0)
 shape = SubResource("BoxShape3D_e2t3u")
 
+[node name="Encounter" type="Area3D" parent="Chrono-Enviro/Present" node_paths=PackedStringArray("battle", "sprite", "postFightCutscene") groups=["Encounter"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.8, 4.88, 2.04)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("45_nf8lm")
+enabled = true
+battle = NodePath("Battle Module")
+sprite = NodePath("Sprite3D")
+postFightCutscene = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chrono-Enviro/Present/Encounter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04, 1.2, 1.64)
+shape = SubResource("BoxShape3D_ho2bk")
+
+[node name="Sprite3D" type="Sprite3D" parent="Chrono-Enviro/Present/Encounter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68, 1.48, 1.52)
+pixel_size = 0.008
+shaded = true
+texture_filter = 0
+texture = ExtResource("46_kxgug")
+hframes = 10
+vframes = 3
+
+[node name="Battle Module" type="Node3D" parent="Chrono-Enviro/Present/Encounter" node_paths=PackedStringArray("debugMusic", "battleCamera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.48, -2.04)
+visible = false
+script = ExtResource("47_e5vrl")
+battleGUI = NodePath("Camera3D/BattleGUI")
+debugMusic = NodePath("BattleMusic")
+battleCamera = NodePath("Camera3D")
+
+[node name="Battle Roster" type="Node3D" parent="Chrono-Enviro/Present/Encounter/Battle Module"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7875)
+script = ExtResource("48_4vnos")
+debugMode = true
+EnemiesSetInEditor = false
+
+[node name="Hero 3" type="Node3D" parent="Chrono-Enviro/Present/Encounter/Battle Module/Battle Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.1875, 2)
+
+[node name="Hero 2" type="Node3D" parent="Chrono-Enviro/Present/Encounter/Battle Module/Battle Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1875, 3)
+
+[node name="Hero 1" type="Node3D" parent="Chrono-Enviro/Present/Encounter/Battle Module/Battle Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1875, 4)
+
+[node name="Cato" parent="Chrono-Enviro/Present/Encounter/Battle Module/Battle Roster/Hero 1" instance=ExtResource("49_4dk7r")]
+name = ""
+
+[node name="Enemy 1" type="Node3D" parent="Chrono-Enviro/Present/Encounter/Battle Module/Battle Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.188, 4)
+
+[node name="Skeleton" parent="Chrono-Enviro/Present/Encounter/Battle Module/Battle Roster/Enemy 1" instance=ExtResource("50_lghjy")]
+
+[node name="Enemy 2" type="Node3D" parent="Chrono-Enviro/Present/Encounter/Battle Module/Battle Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.1875, 3)
+
+[node name="Enemy 3" type="Node3D" parent="Chrono-Enviro/Present/Encounter/Battle Module/Battle Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.1875, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Encounter/Battle Module/Battle Roster"]
+libraries = {
+"": SubResource("AnimationLibrary_dtywi")
+}
+
+[node name="Camera3D" type="Camera3D" parent="Chrono-Enviro/Present/Encounter/Battle Module"]
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871558, 0, -0.0871558, 0.996195, 0, 2.7, 22.306)
+fov = 40.0
+size = 0.1
+far = 100000.0
+script = ExtResource("51_tfyha")
+
+[node name="BattleGUI" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1080.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("52_swtmd")
+
+[node name="Top Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
+layout_mode = 1
+anchor_top = 0.647
+anchor_bottom = 1.0
+offset_top = 0.23999
+offset_right = 1920.0
+script = ExtResource("53_i6fou")
+
+[node name="Button Hub" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 300.0
+offset_top = -46.0
+offset_right = 94.0
+offset_bottom = 46.5
+grow_vertical = 2
+texture = ExtResource("54_l10e2")
+
+[node name="PartyButton" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.021
+offset_left = -62.9442
+offset_top = -105.439
+offset_right = 60.0558
+offset_bottom = -92.392
+texture = ExtResource("55_ttotw")
+
+[node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub/PartyButton"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.06
+anchor_right = 1.028
+anchor_bottom = 1.0
+offset_left = -0.0176699
+offset_top = 0.00686359
+offset_right = -0.0336761
+offset_bottom = -0.473137
+texture = ExtResource("56_pe8nv")
+
+[node name="ItemButton" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 93.181
+offset_top = 3.92108
+offset_right = 240.181
+offset_bottom = -2.07892
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("57_fne75")
+
+[node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub/ItemButton"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.069
+anchor_right = 1.026
+anchor_bottom = 1.0
+offset_left = -0.0484923
+offset_top = -0.273073
+offset_right = -0.288498
+offset_bottom = -0.276077
+texture = ExtResource("58_ns8l6")
+
+[node name="AtkButton" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -63.0503
+offset_top = 90.4484
+offset_right = 59.9497
+offset_bottom = 114.448
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("59_b4loe")
+
+[node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub/AtkButton"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.022
+anchor_right = 1.027
+anchor_bottom = 0.997
+offset_left = -0.266647
+offset_top = 0.0233023
+offset_right = -0.0986633
+offset_bottom = -0.0516968
+texture = ExtResource("60_4b0n4")
+
+[node name="SkillButton" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -245.307
+offset_top = 3.29266
+offset_right = -90.4475
+offset_bottom = -2.70734
+texture = ExtResource("61_w3ss1")
+
+[node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub/SkillButton"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.074
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.0297437
+offset_bottom = -0.408257
+texture = ExtResource("62_s5tsx")
+
+[node name="Party Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("63_iy61s")
+
+[node name="Hub" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu"]
+layout_mode = 0
+offset_left = 320.907
+offset_top = 862.183
+offset_right = 371.907
+offset_bottom = 913.183
+texture = ExtResource("64_7lw35")
+
+[node name="Run!" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub"]
+layout_mode = 0
+offset_left = -164.715
+offset_top = 3.04822
+offset_right = 9.285
+offset_bottom = 48.0482
+texture = ExtResource("65_6rpqc")
+
+[node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub/Run!"]
+visible = false
+layout_mode = 0
+offset_left = -3.42136
+offset_top = -3.04822
+offset_right = 176.579
+offset_bottom = 47.9518
+texture = ExtResource("66_1im1r")
+
+[node name="Swap" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub"]
+layout_mode = 0
+offset_left = -35.9748
+offset_top = 42.3809
+offset_right = 93.0252
+offset_bottom = 132.381
+texture = ExtResource("67_qnw6s")
+
+[node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub/Swap"]
+visible = false
+layout_mode = 0
+offset_left = -3.41245
+offset_top = -2.5639
+offset_right = 131.588
+offset_bottom = 93.4361
+texture = ExtResource("68_xw8j4")
+
+[node name="Combo" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub"]
+layout_mode = 0
+offset_left = 42.1806
+offset_top = 3.04822
+offset_right = 219.181
+offset_bottom = 48.0482
+texture = ExtResource("69_jfy1v")
+
+[node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub/Combo"]
+visible = false
+layout_mode = 0
+offset_left = -2.75
+offset_top = -3.04822
+offset_right = 180.25
+offset_bottom = 47.9518
+texture = ExtResource("70_l2sry")
+
+[node name="Ally" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub"]
+layout_mode = 0
+offset_left = -39.3872
+offset_top = -81.0518
+offset_right = 89.6128
+offset_bottom = 8.94818
+texture = ExtResource("71_2fhyf")
+
+[node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub/Ally"]
+visible = false
+layout_mode = 0
+offset_left = -2.51083
+offset_top = -3.3974
+offset_right = 132.489
+offset_bottom = 92.6026
+texture = ExtResource("72_sgsxn")
+
+[node name="Item Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("73_6ycrv")
+
+[node name="Item TabBar" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Item Tab 0" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 8.63457
+offset_top = 663.0
+offset_right = 521.635
+offset_bottom = 817.354
+pivot_offset = Vector2(261.773, 37.7793)
+texture = ExtResource("74_qegoh")
+
+[node name="Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 0"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 429.0
+offset_bottom = 57.0
+theme = ExtResource("75_bdgck")
+text = "Item 0"
+
+[node name="Count" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 0"]
+layout_mode = 0
+offset_left = 447.0
+offset_top = 15.0
+offset_right = 504.0
+offset_bottom = 57.0
+theme = ExtResource("75_bdgck")
+text = "x00"
+
+[node name="Item Tab 1" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 748.0
+offset_right = 522.0
+offset_bottom = 902.0
+pivot_offset = Vector2(261.773, 37.7793)
+texture = ExtResource("74_qegoh")
+
+[node name="Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 1"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 429.0
+offset_bottom = 57.0
+theme = ExtResource("75_bdgck")
+text = "Item 1"
+
+[node name="Count" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 1"]
+layout_mode = 0
+offset_left = 447.0
+offset_top = 15.0
+offset_right = 504.0
+offset_bottom = 57.0
+theme = ExtResource("75_bdgck")
+text = "x00"
+
+[node name="Item Tab 2" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 833.0
+offset_right = 522.0
+offset_bottom = 986.0
+pivot_offset = Vector2(261.773, 37.7793)
+texture = ExtResource("74_qegoh")
+
+[node name="Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.0306414
+anchor_bottom = 0.0306414
+offset_left = 15.0
+offset_top = 9.31186
+offset_right = 427.0
+offset_bottom = 52.3119
+theme = ExtResource("75_bdgck")
+text = "Item 2"
+
+[node name="Count" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 2"]
+layout_mode = 0
+offset_left = 447.0
+offset_top = 15.0
+offset_right = 504.0
+offset_bottom = 57.0
+theme = ExtResource("75_bdgck")
+text = "x00"
+
+[node name="Item Tab 3" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 917.0
+offset_right = 522.0
+offset_bottom = 1071.0
+pivot_offset = Vector2(261.773, 37.7793)
+texture = ExtResource("74_qegoh")
+
+[node name="Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 3"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 429.0
+offset_bottom = 56.0
+theme = ExtResource("75_bdgck")
+text = "Item 3"
+
+[node name="Count" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 3"]
+layout_mode = 0
+offset_left = 447.0
+offset_top = 15.0
+offset_right = 504.0
+offset_bottom = 57.0
+theme = ExtResource("75_bdgck")
+text = "x00"
+
+[node name="Item Tab 4" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 1002.0
+offset_right = 522.0
+offset_bottom = 1156.0
+pivot_offset = Vector2(261.773, 37.7793)
+texture = ExtResource("74_qegoh")
+
+[node name="Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 4"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 429.0
+offset_bottom = 57.0
+theme = ExtResource("75_bdgck")
+text = "Item 4"
+
+[node name="Count" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 4"]
+layout_mode = 0
+offset_left = 447.0
+offset_top = 15.0
+offset_right = 504.0
+offset_bottom = 57.0
+theme = ExtResource("75_bdgck")
+text = "x00"
+
+[node name="Item Description" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu"]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 748.0
+offset_right = 1164.0
+offset_bottom = 1075.0
+pivot_offset = Vector2(33.3853, 306.31)
+texture = ExtResource("76_qrc3c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu"]
+libraries = {
+"": SubResource("AnimationLibrary_4fq1h")
+}
+
+[node name="Attack Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
+visible = false
+layout_mode = 1
+anchor_top = 0.572
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -0.76001
+offset_right = 1909.0
+offset_bottom = -1.0
+script = ExtResource("77_ipmxx")
+
+[node name="Backboard" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.289
+anchor_bottom = 1.0
+offset_left = 144.0
+offset_top = 103.0
+offset_right = 4.565
+offset_bottom = -143.0
+texture = ExtResource("78_rv5s2")
+stretch_mode = 2
+
+[node name="ATK Button" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu/Backboard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = 213.0
+offset_right = -102.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("59_b4loe")
+stretch_mode = 2
+
+[node name="Attack Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu/Backboard"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 12.0
+offset_right = 399.0
+offset_bottom = 58.0
+theme = ExtResource("75_bdgck")
+text = "Basic Attack Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rules Text" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu/Backboard"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 84.0
+offset_right = 407.0
+offset_bottom = 190.0
+theme = ExtResource("79_7r0m2")
+bbcode_enabled = true
+text = "[center][Range]
+[Keywords]
+Basic Attack Text"
+
+[node name="17847" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu/Backboard/Rules Text"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 1.0
+
+[node name="16791" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu/Backboard/Rules Text"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 1.0
+
+[node name="Skill Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1080.0
+offset_right = -1880.0
+offset_bottom = -1040.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("80_n65gi")
+
+[node name="Card Container" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu"]
+layout_mode = 1
+anchor_top = 27.0
+anchor_right = 30.3
+anchor_bottom = 27.0
+
+[node name="Card 1" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 0
+offset_left = 8.51978
+offset_right = 308.52
+offset_bottom = 339.0
+theme = ExtResource("81_1lim2")
+texture = ExtResource("82_8vnm2")
+stretch_mode = 2
+script = ExtResource("83_dcs8e")
+
+[node name="Name" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
+layout_mode = 0
+offset_left = 17.6326
+offset_top = 54.0
+offset_right = 268.633
+offset_bottom = 132.0
+bbcode_enabled = true
+text = "[center]Just...Focus"
+
+[node name="17848" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1/Name"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 1.0
+
+[node name="16792" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1/Name"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 33.0
+step = 1.0
+page = 33.0
+
+[node name="Cost" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
+layout_mode = 0
+offset_left = 10.2563
+offset_top = 8.91956
+offset_right = 52.2564
+offset_bottom = 40.9196
+theme = ExtResource("84_pqpma")
+text = "0"
+horizontal_alignment = 1
+
+[node name="Type" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 139.0
+offset_right = 198.0
+offset_bottom = 171.0
+text = "Spell"
+
+[node name="Rules Text" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 180.0
+offset_right = 273.0
+offset_bottom = 339.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+bbcode_enabled = true
+scroll_active = false
+
+[node name="17849" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1/Rules Text"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 1.0
+
+[node name="16793" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1/Rules Text"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 1.0
+page = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
+libraries = {
+"": SubResource("AnimationLibrary_hic0e")
+}
+
+[node name="Card 2" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 0
+offset_left = 304.0
+offset_right = 604.0
+offset_bottom = 339.0
+pivot_offset = Vector2(246.475, 158.516)
+theme = ExtResource("75_bdgck")
+texture = ExtResource("85_xyey5")
+stretch_mode = 2
+script = ExtResource("83_dcs8e")
+
+[node name="Name" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
+layout_mode = 0
+offset_left = 18.3397
+offset_top = 53.2929
+offset_right = 269.34
+offset_bottom = 132.293
+bbcode_enabled = true
+text = "[center]Pommel Strike"
+
+[node name="17850" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2/Name"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 1.0
+
+[node name="16794" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2/Name"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 33.0
+step = 1.0
+page = 33.0
+
+[node name="Cost" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 52.0
+offset_bottom = 41.0
+theme = ExtResource("84_pqpma")
+text = "1"
+horizontal_alignment = 1
+
+[node name="Type" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
+layout_mode = 0
+offset_left = 97.5858
+offset_top = 139.0
+offset_right = 196.586
+offset_bottom = 171.0
+text = "Attack
+"
+
+[node name="Rules Text" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 180.0
+offset_right = 269.0
+offset_bottom = 330.0
+bbcode_enabled = true
+text = "[center][Melee]
+Deals 2 Damage, +2 per Negative Status Effect on Target, Removing Them"
+scroll_active = false
+
+[node name="17851" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2/Rules Text"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 1.0
+
+[node name="16795" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2/Rules Text"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 264.0
+step = 1.0
+page = 150.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
+libraries = {
+"": SubResource("AnimationLibrary_hic0e")
+}
+
+[node name="Card 3" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 0
+offset_left = 608.0
+offset_right = 908.0
+offset_bottom = 339.0
+theme = ExtResource("86_mn6b1")
+texture = ExtResource("87_16i16")
+stretch_mode = 2
+script = ExtResource("83_dcs8e")
+
+[node name="Name" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
+layout_mode = 0
+offset_left = 17.6326
+offset_top = 54.0
+offset_right = 268.633
+offset_bottom = 132.0
+bbcode_enabled = true
+text = "[center]Super Shot"
+
+[node name="17852" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3/Name"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 1.0
+
+[node name="16796" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3/Name"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 33.0
+step = 1.0
+page = 33.0
+
+[node name="Cost" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 52.0
+offset_bottom = 44.0
+theme = ExtResource("84_pqpma")
+text = "3"
+horizontal_alignment = 1
+
+[node name="Type" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 139.0
+offset_right = 198.0
+offset_bottom = 171.0
+text = "Tech"
+
+[node name="Rules Text" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 180.0
+offset_right = 269.0
+offset_bottom = 330.0
+theme = ExtResource("88_6uq6e")
+bbcode_enabled = true
+text = "[center][Strikes First]
+On Critical Hit: Stun all Enemies for 2 Turns
+"
+scroll_active = false
+
+[node name="17853" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3/Rules Text"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 1.0
+
+[node name="16797" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3/Rules Text"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 105.0
+step = 1.0
+page = 105.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
+libraries = {
+"": SubResource("AnimationLibrary_hic0e")
+}
+
+[node name="Card 4" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 0
+offset_left = 912.0
+offset_right = 1212.0
+offset_bottom = 339.0
+theme = ExtResource("75_bdgck")
+texture = ExtResource("85_xyey5")
+stretch_mode = 2
+script = ExtResource("83_dcs8e")
+
+[node name="Name" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
+layout_mode = 0
+offset_left = 17.6326
+offset_top = 54.0
+offset_right = 268.633
+offset_bottom = 132.0
+bbcode_enabled = true
+text = "[center]Card Four"
+
+[node name="17854" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4/Name"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 1.0
+
+[node name="16798" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4/Name"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 33.0
+step = 1.0
+page = 33.0
+
+[node name="Cost" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 52.0
+offset_bottom = 41.0
+theme = ExtResource("84_pqpma")
+text = "0"
+horizontal_alignment = 1
+
+[node name="Type" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 139.0
+offset_right = 198.0
+offset_bottom = 171.0
+text = "Attack"
+
+[node name="Rules Text" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 180.0
+offset_right = 269.0
+offset_bottom = 330.0
+bbcode_enabled = true
+text = "
+Default Rules Text"
+scroll_active = false
+
+[node name="17855" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4/Rules Text"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 1.0
+
+[node name="16799" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4/Rules Text"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 67.0
+step = 1.0
+page = 67.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
+libraries = {
+"": SubResource("AnimationLibrary_hic0e")
+}
+
+[node name="Control" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 1216.0
+offset_right = 1216.0
+offset_bottom = 339.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu"]
+libraries = {
+"": SubResource("AnimationLibrary_2acw7")
+}
+
+[node name="SelectError" type="AudioStreamPlayer" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu"]
+stream = ExtResource("89_vgflb")
+volume_db = 10.0
+
+[node name="Targeting Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 752.0
+script = ExtResource("90_r7hww")
+
+[node name="SelectError" type="AudioStreamPlayer" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Targeting Menu"]
+stream = ExtResource("89_vgflb")
+volume_db = 10.0
+
+[node name="Swap Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("91_i68lw")
+
+[node name="Readouts" type="VBoxContainer" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.644
+anchor_top = 0.654
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.480103
+offset_top = -0.320007
+alignment = 1
+script = ExtResource("92_jb1p4")
+
+[node name="BattleMusic" type="AudioStreamPlayer" parent="Chrono-Enviro/Present/Encounter/Battle Module"]
+stream = ExtResource("93_2cext")
+volume_db = -25.0
+
 [node name="ExplorePlayer" parent="." node_paths=PackedStringArray("exploreCamera", "timeEnvironment") instance=ExtResource("45_0cq5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0712, 6.116, 1.532)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1912, 4.956, -0.548)
 floor_max_angle = 0.872665
 safe_margin = 0.01
 exploreCamera = NodePath("Explore Camera")
@@ -10948,6 +13357,20 @@ promenadeIndex = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Promenade Map/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.88, 2.52, 0)
 shape = SubResource("BoxShape3D_lxdmb")
+
+[node name="BG Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("48_yandm")
+volume_db = -20.0
+autoplay = true
+
+[node name="Area3D" type="Area3D" parent="." groups=["Transition"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.52, 4.4, -2.08)
+script = ExtResource("49_7mxbn")
+gotoScenePath = "res://Levels/Boss Room.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 2.4, 1.16)
+shape = SubResource("BoxShape3D_umn4m")
 
 [connection signal="animation_finished" from="Chrono-Enviro/20 Years/Bridge Cutscene/AnimationPlayer" to="Chrono-Enviro/20 Years/Bridge Cutscene" method="OnCinematicAnimationEnd" flags=18]
 [connection signal="animation_started" from="Chrono-Enviro/20 Years/Bridge Cutscene/AnimationPlayer" to="Chrono-Enviro/20 Years/Bridge Cutscene" method="OnCinematicAnimationBegin" flags=18]
