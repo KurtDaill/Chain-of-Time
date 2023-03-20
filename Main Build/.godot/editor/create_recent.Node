@@ -1,8 +1,8 @@
+CollisionShape3D
 AudioStreamPlayer
 AudioStreamPlayer3D
 Sprite2D
 Camera2D
-CollisionShape3D
 Area3D
 OmniLight3D
 Sprite3D

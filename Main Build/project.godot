@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Chain Of Time"
-run/main_scene="res://Levels/Boss Room.tscn"
+run/main_scene="res://Levels/Opening Room Retrofit.tscn"
 config/features=PackedStringArray("4.0", "C#")
 config/icon="res://icon.png"
 

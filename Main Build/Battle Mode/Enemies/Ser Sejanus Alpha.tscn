@@ -390,7 +390,7 @@ script = ExtResource("1_tukar")
 abilitiesByPriority = [NodePath("Great Cleave"), NodePath("Heft Sword"), NodePath("Attack")]
 combatRoles = [6]
 namePlate = NodePath("Enemy Nameplate")
-maxHP = 20
+maxHP = 18
 ModifiedDamageTypes = [1]
 Modifier = [2.0]
 name = "Helmed Horror"
@@ -440,7 +440,7 @@ script = ExtResource("4_1cpce")
 targeting = 1
 affectedByPlayerDefense = true
 defenseFactor = 2
-eventValue = 6
+eventValue = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Great Cleave"]
 libraries = {
