@@ -51,9 +51,10 @@ public partial class ChronoEnviro : Node3D
     public override void _Ready(){
         animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
         inPast = false;
-        pastEnvironment = GD.Load<Godot.Environment>(presentEnvironmentRes); //DONT CHANGE THESE BEFORE YOU FIGURE OUT WHERE ELSE IN THE CODE WE FLIPPED PAST AND PRESENT
-        presentEnvironment = GD.Load<Godot.Environment>(pastEnvironmentRes);
-        this.realEnvironment.Environment = (Godot.Environment)pastEnvironment.Duplicate(true);
+        pastEnvironment = GD.Load<Godot.Environment>(pastEnvironmentRes); //DONT CHANGE THESE BEFORE YOU FIGURE OUT WHERE ELSE IN THE CODE WE FLIPPED PAST AND PRESENT
+        presentEnvironment = GD.Load<Godot.Environment>(presentEnvironmentRes);
+        this.realEnvironment.Environment = (Godot.Environment)presentEnvironment.Duplicate(true);
+        this.realEnvironment.Environment.Sky = (Godot.Sky)presentEnvironment.Sky.Duplicate(true);
         //this.realEnvironment.Environment = (Godot.Environment)presentEnvironment.Duplicate();
 
         sunProperties = pastSun.GetPropertyList();
@@ -68,7 +69,7 @@ public partial class ChronoEnviro : Node3D
         //Set TimeWarp-Cutscene Cato's position to match frag
         TimeTravelCato.GlobalPosition = frag.GlobalPosition;
 
-        presentEnvironment = frag.GetTargetEnvironment();  //DONT CHANGE THESE BEFORE YOU FIGURE OUT WHERE ELSE IN THE CODE WE FLIPPED PAST AND PRESENT
+        pastEnvironment = frag.GetTargetEnvironment();
         pastSun = frag.GetTargetSun();
 
 
@@ -181,8 +182,8 @@ public partial class ChronoEnviro : Node3D
     }
 
     public void ReturnSwap(){
-        realEnvironment.Environment = (Godot.Environment)pastEnvironment.Duplicate();
-        realEnvironment.Environment.Sky = (Godot.Sky)pastEnvironment.Sky.Duplicate();
+        realEnvironment.Environment = (Godot.Environment)presentEnvironment.Duplicate(true);
+        realEnvironment.Environment.Sky = (Godot.Sky)presentEnvironment.Sky.Duplicate(true);
         //realSun.QueueFree();
         //realSun = (Godot.DirectionalLight3D) presentSun.Duplicate();
         //realSun.Visible = true;
@@ -190,10 +191,10 @@ public partial class ChronoEnviro : Node3D
         presentCronoScene.Visible = true;
         foreach(Godot.Collections.Dictionary property in sunProperties){
             property.TryGetValue("name", out var name);
-            property.TryGetValue("type", out var typeVar);
-            Godot.Variant.Type type = (Godot.Variant.Type)(int) typeVar;
-            var pastVar = pastSun.Get((string)name);
-            var presentVar = presentSun.Get((string)name);
+            //property.TryGetValue("type", out var typeVar);
+            //Godot.Variant.Type type = (Godot.Variant.Type)(int) typeVar;
+            //var pastVar = pastSun.Get((string)name);
+            //var presentVar = presentSun.Get((string)name);
             if((string)name == "visible") continue;
             if((string)name == "light_cull_mask") continue;
             //if(isReturnRun) AssignPropertyToAnimationTrack((string)name, type, presentVar, pastVar, "", realSun, returnSunTrackIndex, "Return");
@@ -237,7 +238,7 @@ public partial class ChronoEnviro : Node3D
             pastDict.TryGetValue("type", out var typeVar); //Should be the same between environments, they're the same resource type!
             Variant.Type type = (Variant.Type)(int)typeVar;
             if(type == Variant.Type.Object && (string)name == "sky"){
-                HandleSky(pastEnvironment.Sky, presentEnvironment.Sky);
+                HandleSky((Sky)pastEnvironment.Sky.Duplicate(), (Sky)presentEnvironment.Sky.Duplicate());
                 continue;
             }
             else AssignPropertyToAnimationTrack((string)name, type, pastVar, presentVar, ":environment", realEnvironment, environmentTrackIndex, "TimewarpTest");
@@ -296,7 +297,7 @@ public partial class ChronoEnviro : Node3D
 
             endDict.TryGetValue("type", out var typeVar); //Should be the same between environments, they're the same resource type!
             Variant.Type type = (Variant.Type)(int)typeVar;
-            AssignPropertyToAnimationTrack((string)name, type,endVar, startVar,  ":environment:sky:sky_material", realEnvironment, environmentTrackIndex, "TimewarpTest");
+            AssignPropertyToAnimationTrack((string)name, type, endVar, startVar,  ":environment:sky:sky_material", realEnvironment, environmentTrackIndex, "TimewarpTest");
         }
     }
 

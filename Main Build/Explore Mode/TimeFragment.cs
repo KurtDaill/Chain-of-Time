@@ -87,11 +87,11 @@ public partial class TimeFragment : Area3D
 	}
 
 	public virtual Godot.Environment GetTargetEnvironment(){
-		return targetEnvironment;
+		return (Godot.Environment)targetEnvironment;
 	}
 
 	public virtual DirectionalLight3D GetTargetSun(){
-		return targetSun;
+		return (DirectionalLight3D)targetSun;
 	}
 
 	public bool HasCutsceneArmed(){

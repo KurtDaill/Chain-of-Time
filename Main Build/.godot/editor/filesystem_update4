@@ -18,3 +18,6 @@ res://Levels/Boss Room.tscn
 res://ExampleStoryState.tres
 res://Levels/Tutorial Splash.tscn
 res://Battle Mode/BattleModule.tscn
+res://Test Scenes/Past Environment.tres
+res://Test Scenes/Present Environment.tres
+res://Test Scenes/PresentEnvironmentChallengeRoom.tres

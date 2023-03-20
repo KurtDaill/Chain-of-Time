@@ -1,4 +1,4 @@
-[gd_scene load_steps=290 format=3 uid="uid://di0uvfcwuijik"]
+[gd_scene load_steps=287 format=3 uid="uid://di0uvfcwuijik"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_nwe6j"]
 [ext_resource type="Script" path="res://ChronoEnviro.cs" id="2_x2kdt"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://beln8ffrnhd44" path="res://Art/Kell Cato Master Sprite-Sheet.png" id="6_xxf6l"]
 [ext_resource type="Texture2D" uid="uid://b4bhsaihwdgdx" path="res://Art/Time Walk Heart-Sheet.png" id="7_8ik6g"]
 [ext_resource type="Texture2D" uid="uid://mlgb52yqv57b" path="res://Art/Eye Blink-Sheet.png" id="8_gcrka"]
+[ext_resource type="Environment" uid="uid://bq3vmgmc370xj" path="res://Test Scenes/PresentEnvironmentChallengeRoom.tres" id="9_ic304"]
 [ext_resource type="Script" path="res://Explore Mode/CronoScene.cs" id="9_ommr2"]
 [ext_resource type="Script" path="res://Cutscenes/CutsceneDirector.cs" id="10_u3cgx"]
 [ext_resource type="Theme" uid="uid://1seddp4pg0du" path="res://GUI/Themes/Dialogue/Normal Response.tres" id="11_5xxto"]
@@ -98,7 +99,6 @@
 [ext_resource type="Script" path="res://Battle Mode/GUI/SwapMenu.cs" id="91_i68lw"]
 [ext_resource type="Script" path="res://GUI/ReadoutContainer.cs" id="92_jb1p4"]
 [ext_resource type="AudioStream" uid="uid://rqh26t4tp12q" path="res://Audio/TCoT_-_Combat_3d(1).mp3" id="93_2cext"]
-[ext_resource type="PackedScene" uid="uid://cbp4mrf66li5b" path="res://Art/3D/Challenge Room Box.dae" id="94_34w2h"]
 
 [sub_resource type="Animation" id="Animation_ukc0b"]
 resource_name = "Delay"
@@ -585,28 +585,6 @@ _data = {
 "Test": SubResource("Animation_8wc3u"),
 "TimewarpTest": SubResource("Animation_bomh6")
 }
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1v76k"]
-sky_top_color = Color(0.192157, 0.356863, 0.658824, 1)
-sky_horizon_color = Color(0.921569, 0.513726, 0.109804, 1)
-sky_curve = 0.13308
-ground_horizon_color = Color(0.647059, 0.654902, 0.670588, 1)
-sun_angle_max = 25.0
-sun_curve = 0.0652913
-
-[sub_resource type="Sky" id="Sky_7g6t1"]
-sky_material = SubResource("ProceduralSkyMaterial_1v76k")
-
-[sub_resource type="Environment" id="Environment_ajhqa"]
-background_mode = 2
-sky = SubResource("Sky_7g6t1")
-ambient_light_source = 2
-ambient_light_color = Color(0.921569, 0.784314, 0.513726, 1)
-ambient_light_energy = 0.33
-fog_light_color = Color(1, 1, 1, 1)
-fog_light_energy = 0.0
-fog_density = 0.0
-fog_sky_affect = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_munbv"]
 size = Vector3(3.04, 3.52, 3.44)
@@ -9333,6 +9311,7 @@ startCustscene = NodePath("Chrono-Enviro/Present/Entrance Cutscene")
 startBattle = NodePath("")
 camera = NodePath("ExplorePlayer/Explore Camera")
 ePlayer = NodePath("ExplorePlayer")
+beginIn = 1
 bgMusic = NodePath("BG Music")
 
 [node name="Chrono-Enviro" type="Node3D" parent="." node_paths=PackedStringArray("realEnvironment", "presentCronoScene", "TimeTravelCato", "subtractSphere", "visibleSphere", "pastSun", "presentSun")]
@@ -9341,7 +9320,6 @@ presentEnvironmentRes = "res://Test Scenes/PresentEnvironmentChallengeRoom.tres"
 pastEnvironmentRes = "res://Test Scenes/PastEnvironmentChallengeRoom.tres"
 realEnvironment = NodePath("WorldEnvironment")
 presentCronoScene = NodePath("Present")
-environmentTrackIndex = 15
 TimeTravelCato = NodePath("Time Travel Cato")
 subtractSphere = NodePath("")
 visibleSphere = NodePath("")
@@ -9392,11 +9370,11 @@ alpha_cut = 2
 texture = ExtResource("6_xxf6l")
 hframes = 10
 vframes = 15
-frame = 36
+frame = 34
 
 [node name="Heart" type="Sprite3D" parent="Chrono-Enviro/Time Travel Cato/Cato Sprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.68, 0, 0.04)
-modulate = Color(1, 1, 1, 0.485528)
+modulate = Color(1, 1, 1, 0.672269)
 pixel_size = 0.008
 texture = ExtResource("7_8ik6g")
 hframes = 11
@@ -9404,7 +9382,7 @@ hframes = 11
 [node name="OmniLight3D" type="OmniLight3D" parent="Chrono-Enviro/Time Travel Cato/Cato Sprite/Heart"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 0.08, 0)
 light_color = Color(0.827451, 0.34902, 1, 1)
-light_energy = 0.0
+light_energy = 2.5
 
 [node name="Time Travel Camera Ref" type="Node3D" parent="Chrono-Enviro/Time Travel Cato"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0100002, -0.04, -0.0799999)
@@ -9412,7 +9390,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0100002, -0.04, -0.0799999)
 [node name="Time Travel Camera" type="Camera3D" parent="Chrono-Enviro/Time Travel Cato/Time Travel Camera Ref"]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0.08, 4, 13.36)
 current = true
-fov = 44.2136
+fov = 4.38204
 far = 100.0
 
 [node name="EyeBlinkShutter" type="Sprite3D" parent="Chrono-Enviro/Time Travel Cato/Time Travel Camera Ref/Time Travel Camera"]
@@ -9422,7 +9400,7 @@ texture = ExtResource("8_gcrka")
 hframes = 6
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Chrono-Enviro"]
-environment = SubResource("Environment_ajhqa")
+environment = ExtResource("9_ic304")
 
 [node name="Past Sun" type="DirectionalLight3D" parent="Chrono-Enviro/WorldEnvironment"]
 transform = Transform3D(-0.227182, -0.968637, 0.100656, -0.972415, 0.231245, 0.0305675, -0.052885, -0.0909348, -0.994452, -11.2762, 9.69895, 9.304)
@@ -10138,8 +10116,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.12)
 [node name="Challenge Room Bridge Piece Past18" parent="Chrono-Enviro/20 Years/Bridge B/Non-Animated" instance=ExtResource("28_2hadr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.58)
 
-[node name="Challenge Room Past" parent="Chrono-Enviro/20 Years" instance=ExtResource("29_jfjrv")]
-
 [node name="TimeSensitiveCollider" type="StaticBody3D" parent="Chrono-Enviro/20 Years"]
 script = ExtResource("30_bvxb6")
 
@@ -10366,6 +10342,7 @@ name = "Cato"
 
 [node name="Sprite" type="Sprite3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/Cato Actor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 2.64, -6.08)
+modulate = Color(1, 1, 1, 0.490196)
 pixel_size = 0.008
 shaded = true
 alpha_cut = 2
@@ -10648,6 +10625,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08, 0)
 shape = SubResource("BoxShape3D_e2t3u")
 disabled = true
 
+[node name="Challenge Room Past2" parent="Chrono-Enviro/20 Years" instance=ExtResource("29_jfjrv")]
+
 [node name="Present" type="Node3D" parent="Chrono-Enviro"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("9_ommr2")
@@ -10658,8 +10637,6 @@ childModulePath = [NodePath("Entrance Cutscene"), NodePath("Mechanic Cutscene"),
 
 [node name="Challenge Room Portcullis" parent="Chrono-Enviro/Present/Portcullis" instance=ExtResource("32_b6d0l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.5, 0)
-
-[node name="Challenge Room" parent="Chrono-Enviro/Present" instance=ExtResource("33_cgejv")]
 
 [node name="Bridge" type="Node3D" parent="Chrono-Enviro/Present"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13, 0, 0)
@@ -13307,8 +13284,7 @@ script = ExtResource("92_jb1p4")
 stream = ExtResource("93_2cext")
 volume_db = -25.0
 
-[node name="Challenge Room Box" parent="Chrono-Enviro/Present" instance=ExtResource("94_34w2h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56, -7.52, -1)
+[node name="Challenge Room2" parent="Chrono-Enviro/Present" instance=ExtResource("33_cgejv")]
 
 [node name="ExplorePlayer" parent="." node_paths=PackedStringArray("exploreCamera", "timeEnvironment") instance=ExtResource("45_0cq5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7912, 4.956, -0.268)
@@ -13399,5 +13375,4 @@ shape = SubResource("BoxShape3D_umn4m")
 [editable path="Chrono-Enviro/Present/TimeSensitiveCollider - Bridge"]
 [editable path="Chrono-Enviro/Present/Storage Room Interact"]
 [editable path="Chrono-Enviro/Present/Portcullis Interact"]
-[editable path="Chrono-Enviro/Present/Challenge Room Box"]
 [editable path="ExplorePlayer"]
