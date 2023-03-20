@@ -33,7 +33,8 @@ public partial class ExploreNPC : DialogueInteractable
 	}
 
 	public override bool ArmCutscene(){
-		if(hasCutscene){
+		if(storyFlagRequiredForCutscene != "" && !GetNode<GameMaster>("/root/GameMaster").GetFlagValue(storyFlagRequiredForCutscene)) return false;
+		if(hasCutscene && enabled){
 			ShowDialoguePrompt();	
 			armed = true;
 			return true;
@@ -42,12 +43,13 @@ public partial class ExploreNPC : DialogueInteractable
 	}
 
 	public override void DisarmCutscene(){
+		if(storyFlagRequiredForCutscene != "" && !GetNode<GameMaster>("/root/GameMaster").GetFlagValue(storyFlagRequiredForCutscene)) return;
 		armed = false;
-		HideDialoguePrompt();
+		if(enabled) HideDialoguePrompt();
 	}
 
 	public override async void PlayCutscene(){
-		if(enabled){
+		if(enabled && armed){
 			if(storyFlagRequiredForCutscene != "" && !GetNode<GameMaster>("/root/GameMaster").GetFlagValue(storyFlagRequiredForCutscene)) return;
 				cutscene.StartCutscene();
 				dialoguePrompt.Visible = false;

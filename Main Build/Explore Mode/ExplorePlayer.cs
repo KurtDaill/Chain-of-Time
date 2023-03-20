@@ -38,6 +38,7 @@ public partial class ExplorePlayer : CharacterBody3D
 
 	public override void _Ready(){
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
+		promenade = 0;
 	}
 
 	public override void _PhysicsProcess(double delta)

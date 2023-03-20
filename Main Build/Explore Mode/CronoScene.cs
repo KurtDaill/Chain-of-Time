@@ -35,8 +35,8 @@ public partial class CronoScene : Node3D
 			if(child is CutsceneDirector){
 				((CutsceneDirector)child).enabled = false;
 			}
-			if(child is ExploreNPC){
-				((ExploreNPC)child).enabled = false;
+			if(child is DialogueInteractable){
+				((DialogueInteractable)child).enabled = false;
 			}
 			if(child is TimeSensitiveCollider){
 				((TimeSensitiveCollider)child).Disable();
@@ -53,8 +53,8 @@ public partial class CronoScene : Node3D
 			if(child is CutsceneDirector){
 				((CutsceneDirector)child).enabled = true;
 			}
-			if(child is ExploreNPC){
-				((ExploreNPC)child).enabled = true;
+			if(child is DialogueInteractable){
+				((DialogueInteractable)child).enabled = true;
 			}
 			if(child is TimeSensitiveCollider){
 				((TimeSensitiveCollider)child).Enable();

@@ -9316,7 +9316,7 @@ size = Vector3(19.92, 1.12, 5.92)
 size = Vector3(4.16, 4.24, 6.88)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rb48u"]
-size = Vector3(19.68, 4.72, 15.28)
+size = Vector3(3.76, 1.28, 15.28)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_47gvt"]
 size = Vector3(5.68, 1, 15.28)
@@ -9333,7 +9333,6 @@ startCustscene = NodePath("Chrono-Enviro/Present/Entrance Cutscene")
 startBattle = NodePath("")
 camera = NodePath("ExplorePlayer/Explore Camera")
 ePlayer = NodePath("ExplorePlayer")
-beginIn = 1
 bgMusic = NodePath("BG Music")
 
 [node name="Chrono-Enviro" type="Node3D" parent="." node_paths=PackedStringArray("realEnvironment", "presentCronoScene", "TimeTravelCato", "subtractSphere", "visibleSphere", "pastSun", "presentSun")]
@@ -9499,6 +9498,10 @@ shape = SubResource("BoxShape3D_co45l")
 
 [node name="Back Wall4" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
 transform = Transform3D(5.21541e-08, 0, -1, 0, 1, 0, 1, 0, 5.21541e-08, -18.8, 8, -3.37733)
+shape = SubResource("BoxShape3D_co45l")
+
+[node name="Back Wall5" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(5.21541e-08, 0, -1, 0, 1, 0, 1, 0, 5.21541e-08, 18.68, 8, -3.37733)
 shape = SubResource("BoxShape3D_co45l")
 
 [node name="Back Wall2" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
@@ -13308,7 +13311,7 @@ volume_db = -25.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56, -7.52, -1)
 
 [node name="ExplorePlayer" parent="." node_paths=PackedStringArray("exploreCamera", "timeEnvironment") instance=ExtResource("45_0cq5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1912, 4.956, -0.548)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7912, 4.956, -0.268)
 floor_max_angle = 0.872665
 safe_margin = 0.01
 exploreCamera = NodePath("Explore Camera")
@@ -13331,7 +13334,7 @@ visible = false
 script = ExtResource("47_6fc35")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Promenade Map/First Promenade"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.68, 0.24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.72, 0.24)
 shape = SubResource("BoxShape3D_5dh08")
 disabled = true
 
@@ -13344,7 +13347,7 @@ script = ExtResource("47_6fc35")
 promenadeIndex = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Promenade Map/Bridge And Sec Room Promenade"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.84, -4.12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.96, -4.12)
 shape = SubResource("BoxShape3D_rb48u")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Promenade Map/Bridge And Sec Room Promenade"]

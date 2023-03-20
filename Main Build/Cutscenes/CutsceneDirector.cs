@@ -61,6 +61,10 @@ public partial class CutsceneDirector : Node3D
 		if(waiting || !enabled){
 			return;
 		}else if(Input.IsActionJustPressed(dialogueNextAction)){
+			if(!dLabel.IsDoneDisplaying()){
+				dLabel.DisplayAll();
+				return;
+			}
 			if(currentLine.isEnd()){
 				ExitCutscene(currentLine.DoesTriggerCombat());
 				return;

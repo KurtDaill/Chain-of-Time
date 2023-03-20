@@ -1,4 +1,4 @@
-[gd_scene load_steps=151 format=3 uid="uid://c008jq0nofhlk"]
+[gd_scene load_steps=153 format=3 uid="uid://c008jq0nofhlk"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_eqru4"]
 [ext_resource type="Script" path="res://ChronoEnviro.cs" id="2_axtem"]
@@ -568,6 +568,12 @@ _data = {
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ulqy0"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_mx6ud"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ejq4g"]
+size = Vector3(0.56, 12.48, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_80owu"]
+size = Vector3(9.36, 13.28, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_uya2h"]
 _surfaces = [{
@@ -3487,8 +3493,68 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.08, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_ulqy0")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -9.08, 0, -2.12715)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.24, 0, -7.00715)
 shape = SubResource("WorldBoundaryShape3D_mx6ud")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 1.24, 0, 9.47285)
+shape = SubResource("WorldBoundaryShape3D_mx6ud")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -38.72, 0, 0.592849)
+shape = SubResource("WorldBoundaryShape3D_mx6ud")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(-4.47035e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.47035e-08, 1.77636e-15, 14.16, 0, 0.592849)
+shape = SubResource("WorldBoundaryShape3D_mx6ud")
+
+[node name="Pillar Collider" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.08, 3.36, -2.4)
+shape = SubResource("BoxShape3D_ejq4g")
+
+[node name="Pillar Collider2" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.64, 3.36, -2.4)
+shape = SubResource("BoxShape3D_ejq4g")
+
+[node name="Pillar Collider3" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.52, 3.36, -2.4)
+shape = SubResource("BoxShape3D_ejq4g")
+
+[node name="Pillar Collider4" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.36, 3.36, -2.4)
+shape = SubResource("BoxShape3D_ejq4g")
+
+[node name="Pillar Collider5" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.88, 3.36, -2.4)
+shape = SubResource("BoxShape3D_ejq4g")
+
+[node name="Pillar Collider6" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.68, 3.36, -2.4)
+shape = SubResource("BoxShape3D_ejq4g")
+
+[node name="Pillar Collider7" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.48, 3.36, -2.4)
+shape = SubResource("BoxShape3D_ejq4g")
+
+[node name="Pillar Collider8" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.27999, 3.36, -2.4)
+shape = SubResource("BoxShape3D_ejq4g")
+
+[node name="Pillar Collider9" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.08, 3.36, -2.4)
+shape = SubResource("BoxShape3D_ejq4g")
+
+[node name="Pillar Collider10" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88, 3.36, -2.4)
+shape = SubResource("BoxShape3D_ejq4g")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 3.6, 2.88, -6.28)
+shape = SubResource("BoxShape3D_80owu")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 11.84, 2.88, -4.92)
+shape = SubResource("BoxShape3D_80owu")
 
 [node name="Present" type="Node3D" parent="Chrono-Enviro"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -3512,7 +3578,8 @@ skeleton = NodePath("")
 [node name="Lights" type="Node3D" parent="Chrono-Enviro/Present"]
 
 [node name="Glass Light 1" type="SpotLight3D" parent="Chrono-Enviro/Present/Lights"]
-transform = Transform3D(-0.149021, -0.951626, 0.268701, 0.0415709, 0.265466, 0.963224, -0.98796, 0.15471, 1.20724e-07, 2.97382, 7.50768, -36.52)
+transform = Transform3D(-0.144831, -0.924868, 0.351629, 0.0544009, 0.347395, 0.936139, -0.98796, 0.154711, 1.16129e-07, 2.45184, 7.56697, -36.52)
+layers = 1048575
 light_energy = 32.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
@@ -3520,18 +3587,15 @@ light_projector = ExtResource("22_j0mwo")
 light_size = 1.0
 light_specular = 0.0
 shadow_enabled = true
-shadow_bias = 0.0
-shadow_normal_bias = 0.0
-shadow_transmittance_bias = -16.0
-shadow_opacity = 0.0
-shadow_blur = 3.677
+shadow_blur = 0.05
 spot_range = 13.92
 spot_attenuation = 1.68179
 spot_angle = 9.14
 spot_angle_attenuation = 0.341511
 
 [node name="Glass Light 2" type="SpotLight3D" parent="Chrono-Enviro/Present/Lights"]
-transform = Transform3D(-0.149021, -0.951626, 0.268701, 0.0415709, 0.265466, 0.963224, -0.98796, 0.15471, 1.20724e-07, 2.97382, 7.50768, -30.12)
+transform = Transform3D(-0.144831, -0.924868, 0.351629, 0.0544009, 0.347395, 0.936139, -0.98796, 0.154711, 1.16129e-07, 2.45184, 7.56697, -30.12)
+layers = 1048575
 light_energy = 32.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
@@ -3539,18 +3603,15 @@ light_projector = ExtResource("23_w146s")
 light_size = 1.0
 light_specular = 0.0
 shadow_enabled = true
-shadow_bias = 0.0
-shadow_normal_bias = 0.0
-shadow_transmittance_bias = -16.0
-shadow_opacity = 0.0
-shadow_blur = 3.677
+shadow_blur = 0.05
 spot_range = 13.92
 spot_attenuation = 1.68179
 spot_angle = 9.14
 spot_angle_attenuation = 0.341511
 
 [node name="Glass Light 3" type="SpotLight3D" parent="Chrono-Enviro/Present/Lights"]
-transform = Transform3D(-0.149021, -0.951626, 0.268701, 0.0415709, 0.265466, 0.963224, -0.98796, 0.15471, 1.20724e-07, 2.97382, 7.50768, -23.64)
+transform = Transform3D(-0.144831, -0.924868, 0.351629, 0.0544009, 0.347395, 0.936139, -0.98796, 0.154711, 1.16129e-07, 2.45184, 7.56697, -23.64)
+layers = 1048575
 light_energy = 32.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
@@ -3558,18 +3619,15 @@ light_projector = ExtResource("24_euwj3")
 light_size = 1.0
 light_specular = 0.0
 shadow_enabled = true
-shadow_bias = 0.0
-shadow_normal_bias = 0.0
-shadow_transmittance_bias = -16.0
-shadow_opacity = 0.0
-shadow_blur = 3.677
+shadow_blur = 0.05
 spot_range = 13.92
 spot_attenuation = 1.68179
 spot_angle = 9.14
 spot_angle_attenuation = 0.341511
 
 [node name="Glass Light 4" type="SpotLight3D" parent="Chrono-Enviro/Present/Lights"]
-transform = Transform3D(-0.149021, -0.951626, 0.268701, 0.0415709, 0.265466, 0.963224, -0.98796, 0.15471, 1.20724e-07, 2.97382, 7.50768, -17.28)
+transform = Transform3D(-0.144831, -0.924868, 0.351629, 0.0544009, 0.347395, 0.936139, -0.98796, 0.154711, 1.16129e-07, 2.45184, 7.56697, -17.28)
+layers = 1048575
 light_energy = 32.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
@@ -3577,18 +3635,15 @@ light_projector = ExtResource("25_p51w2")
 light_size = 1.0
 light_specular = 0.0
 shadow_enabled = true
-shadow_bias = 0.0
-shadow_normal_bias = 0.0
-shadow_transmittance_bias = -16.0
-shadow_opacity = 0.0
-shadow_blur = 3.677
+shadow_blur = 0.05
 spot_range = 13.92
 spot_attenuation = 1.68179
 spot_angle = 9.14
 spot_angle_attenuation = 0.341511
 
 [node name="Glass Light 5" type="SpotLight3D" parent="Chrono-Enviro/Present/Lights"]
-transform = Transform3D(-0.149021, -0.951626, 0.268701, 0.0415709, 0.265466, 0.963224, -0.98796, 0.15471, 1.20724e-07, 2.97382, 7.50768, -10.96)
+transform = Transform3D(-0.144831, -0.924868, 0.351629, 0.0544009, 0.347395, 0.936139, -0.98796, 0.154711, 1.16129e-07, 2.45184, 7.56697, -10.96)
+layers = 1048575
 light_energy = 32.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
@@ -3596,18 +3651,15 @@ light_projector = ExtResource("26_wjnkv")
 light_size = 1.0
 light_specular = 0.0
 shadow_enabled = true
-shadow_bias = 0.0
-shadow_normal_bias = 0.0
-shadow_transmittance_bias = -16.0
-shadow_opacity = 0.0
-shadow_blur = 3.677
+shadow_blur = 0.05
 spot_range = 13.92
 spot_attenuation = 1.68179
 spot_angle = 9.14
 spot_angle_attenuation = 0.341511
 
 [node name="Glass Light 6" type="SpotLight3D" parent="Chrono-Enviro/Present/Lights"]
-transform = Transform3D(-0.149021, -0.951626, 0.268701, 0.0415709, 0.265466, 0.963224, -0.98796, 0.15471, 1.20724e-07, 2.97382, 7.50768, -4.4)
+transform = Transform3D(-0.144831, -0.924868, 0.351629, 0.0544009, 0.347395, 0.936139, -0.98796, 0.154711, 1.16129e-07, 2.45184, 7.56697, -4.4)
+layers = 1048575
 light_energy = 32.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
@@ -3615,30 +3667,23 @@ light_projector = ExtResource("39_8mrvs")
 light_size = 1.0
 light_specular = 0.0
 shadow_enabled = true
-shadow_bias = 0.0
-shadow_normal_bias = 0.0
-shadow_transmittance_bias = -16.0
-shadow_opacity = 0.0
-shadow_blur = 3.677
+shadow_blur = 0.05
 spot_range = 13.92
 spot_attenuation = 1.68179
 spot_angle = 9.14
 spot_angle_attenuation = 0.341511
 
 [node name="Glass Light 7" type="SpotLight3D" parent="Chrono-Enviro/Present/Lights"]
-transform = Transform3D(-0.130998, -0.803427, 0.580814, -0.415811, 0.576367, 0.703493, -0.899967, -0.149353, -0.409576, 7.71971, 7.87394, 7.2)
-light_energy = 24.0
+transform = Transform3D(-0.16674, -0.750136, 0.639917, -0.402811, 0.644197, 0.650195, -0.899967, -0.149353, -0.409577, 7.21159, 7.5182, 7.2)
+layers = 1048575
+light_energy = 32.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 16.0
 light_projector = ExtResource("16_hro8w")
 light_size = 1.0
 light_specular = 0.0
 shadow_enabled = true
-shadow_bias = 0.0
-shadow_normal_bias = 0.0
-shadow_transmittance_bias = -16.0
-shadow_opacity = 0.0
-shadow_blur = 3.677
+shadow_blur = 0.05
 spot_range = 18.499
 spot_attenuation = 2.07053
 spot_angle = 9.14
@@ -3646,64 +3691,82 @@ spot_angle_attenuation = 0.341511
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Chrono-Enviro/Present/Lights"]
 transform = Transform3D(1, -2.98023e-08, -3.68255e-09, 2.98023e-08, 1, 2.02011e-09, 3.68255e-09, -2.02011e-09, 1, 2.2, 7.92, -36.48)
-layers = 262144
+layers = 1048575
 light_energy = 0.3
-light_cull_mask = 4294836222
+light_size = 1.0
+light_specular = 0.0
+shadow_enabled = true
 omni_range = 1.625
 omni_attenuation = 1.36604
 
 [node name="OmniLight3D7" type="OmniLight3D" parent="Chrono-Enviro/Present/Lights"]
-transform = Transform3D(1, -2.98023e-08, -3.68255e-09, 2.98023e-08, 1, 2.02011e-09, 3.68255e-09, -2.02011e-09, 1, 7, 7.92, 7.08001)
-layers = 262144
-light_energy = 3.039
-light_cull_mask = 4294836222
+transform = Transform3D(1, -2.98023e-08, -3.68255e-09, 2.98023e-08, 1, 2.02011e-09, 3.68255e-09, -2.02011e-09, 1, 7.32, 7.92, 7.08001)
+layers = 1048575
+light_energy = 2.0
+light_size = 1.0
+light_specular = 0.0
+shadow_enabled = true
 omni_range = 3.814
 omni_attenuation = 2.29739
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Chrono-Enviro/Present/Lights"]
 transform = Transform3D(1, -2.98023e-08, -3.68255e-09, 2.98023e-08, 1, 2.02011e-09, 3.68255e-09, -2.02011e-09, 1, 2.2, 7.92, -30.08)
-layers = 262144
+layers = 1048575
 light_energy = 0.3
-light_cull_mask = 4294836222
+light_size = 1.0
+light_specular = 0.0
+shadow_enabled = true
 omni_range = 1.625
 omni_attenuation = 1.36604
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Chrono-Enviro/Present/Lights"]
 transform = Transform3D(1, -2.98023e-08, -3.68255e-09, 2.98023e-08, 1, 2.02011e-09, 3.68255e-09, -2.02011e-09, 1, 2.2, 7.92, -23.6)
-layers = 262144
+layers = 1048575
 light_energy = 0.3
-light_cull_mask = 4294836222
+light_size = 1.0
+light_specular = 0.0
+shadow_enabled = true
 omni_range = 1.625
 omni_attenuation = 1.36604
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="Chrono-Enviro/Present/Lights"]
 transform = Transform3D(1, -2.98023e-08, -3.68255e-09, 2.98023e-08, 1, 2.02011e-09, 3.68255e-09, -2.02011e-09, 1, 2.2, 7.92, -17.24)
-layers = 262144
+layers = 1048575
 light_energy = 0.3
-light_cull_mask = 4294836222
+light_size = 1.0
+light_specular = 0.0
+shadow_enabled = true
 omni_range = 1.625
 omni_attenuation = 1.36604
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="Chrono-Enviro/Present/Lights"]
 transform = Transform3D(1, -2.98023e-08, -3.68255e-09, 2.98023e-08, 1, 2.02011e-09, 3.68255e-09, -2.02011e-09, 1, 2.2, 7.92, -10.92)
-layers = 262144
+layers = 1048575
 light_energy = 0.3
-light_cull_mask = 4294836222
+light_size = 1.0
+light_specular = 0.0
+shadow_enabled = true
 omni_range = 1.625
 omni_attenuation = 1.36604
 
 [node name="OmniLight3D6" type="OmniLight3D" parent="Chrono-Enviro/Present/Lights"]
 transform = Transform3D(1, -2.98023e-08, -3.68255e-09, 2.98023e-08, 1, 2.02011e-09, 3.68255e-09, -2.02011e-09, 1, 2.2, 7.92, -4.36)
-layers = 262144
+layers = 1048575
 light_energy = 0.3
-light_cull_mask = 4294836222
+light_size = 1.0
+light_specular = 0.0
+shadow_enabled = true
 omni_range = 1.625
 omni_attenuation = 1.36604
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Chrono-Enviro/Present/Lights"]
 transform = Transform3D(0.965926, -0.12941, -0.224144, 0.258819, 0.482963, 0.836516, 2.03663e-08, -0.866025, 0.5, -3.56, 13.24, 11.32)
+layers = 1048575
 light_color = Color(0.658824, 0.658824, 0.658824, 1)
 light_energy = 2.0
+light_size = 1.0
+light_specular = 0.0
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 15.0
 
@@ -3889,7 +3952,8 @@ director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_right = 1200.0
+offset_bottom = 75.0
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
 fit_content_height = true
@@ -3897,7 +3961,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -3905,11 +3968,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 79.0
+offset_right = 1200.0
+offset_bottom = 89.0
 
 [node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 93.0
+offset_right = 1200.0
+offset_bottom = 168.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
@@ -3917,7 +3984,6 @@ fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -3925,11 +3991,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 172.0
+offset_right = 1200.0
+offset_bottom = 182.0
 
 [node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 186.0
+offset_right = 1200.0
+offset_bottom = 261.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
@@ -3938,7 +4008,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -3947,11 +4016,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 265.0
+offset_right = 1200.0
+offset_bottom = 275.0
 
 [node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 279.0
+offset_right = 1200.0
+offset_bottom = 354.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
@@ -3963,7 +4036,6 @@ shortcut_keys_enabled = false
 visible = false
 show_behind_parent = true
 clip_contents = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -4005,7 +4077,6 @@ altVoice = NodePath("Alt Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
-layout_mode = 0
 offset_top = -36.0
 offset_right = 300.0
 offset_bottom = -1.0
@@ -4021,7 +4092,6 @@ text = " Will Silver"
 [node name="Button" type="TextureRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
 texture_filter = 1
 texture_repeat = 1
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.855
 anchor_top = 0.5
@@ -4184,7 +4254,8 @@ director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_right = 1200.0
+offset_bottom = 75.0
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
 fit_content_height = true
@@ -4192,7 +4263,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -4200,11 +4270,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 79.0
+offset_right = 1200.0
+offset_bottom = 89.0
 
 [node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 93.0
+offset_right = 1200.0
+offset_bottom = 168.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
@@ -4212,7 +4286,6 @@ fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -4220,11 +4293,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 172.0
+offset_right = 1200.0
+offset_bottom = 182.0
 
 [node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 186.0
+offset_right = 1200.0
+offset_bottom = 261.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
@@ -4233,7 +4310,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -4242,11 +4318,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
+offset_top = 265.0
+offset_right = 1200.0
+offset_bottom = 275.0
 
 [node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+offset_top = 279.0
+offset_right = 1200.0
+offset_bottom = 354.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
@@ -4258,7 +4338,6 @@ shortcut_keys_enabled = false
 visible = false
 show_behind_parent = true
 clip_contents = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -4300,7 +4379,6 @@ altVoice = NodePath("Alt Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
-layout_mode = 0
 offset_top = -36.0
 offset_right = 300.0
 offset_bottom = -1.0
@@ -4316,7 +4394,6 @@ text = " Will Silver"
 [node name="Button" type="TextureRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
 texture_filter = 1
 texture_repeat = 1
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.855
 anchor_top = 0.5
@@ -4508,7 +4585,7 @@ grow_vertical = 0
 script = ExtResource("38_jetgp")
 
 [node name="Top Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
-layout_mode = 1
+layout_mode = 3
 anchor_top = 0.647
 anchor_bottom = 1.0
 offset_top = 0.23999
@@ -4516,7 +4593,6 @@ offset_right = 1920.0
 script = ExtResource("39_ph5f0")
 
 [node name="Button Hub" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu"]
-layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -4528,7 +4604,6 @@ grow_vertical = 2
 texture = ExtResource("40_ajx3a")
 
 [node name="PartyButton" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub"]
-layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.021
@@ -4540,7 +4615,6 @@ texture = ExtResource("41_y4yok")
 
 [node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub/PartyButton"]
 visible = false
-layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.06
 anchor_right = 1.028
@@ -4552,7 +4626,6 @@ offset_bottom = -0.473137
 texture = ExtResource("42_7vgkb")
 
 [node name="ItemButton" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -4566,7 +4639,6 @@ texture = ExtResource("43_t3lqy")
 
 [node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub/ItemButton"]
 visible = false
-layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.069
 anchor_right = 1.026
@@ -4578,7 +4650,6 @@ offset_bottom = -0.276077
 texture = ExtResource("44_2wqyt")
 
 [node name="AtkButton" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -4592,7 +4663,6 @@ texture = ExtResource("45_lu3nw")
 
 [node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub/AtkButton"]
 visible = false
-layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.022
 anchor_right = 1.027
@@ -4604,7 +4674,6 @@ offset_bottom = -0.0516968
 texture = ExtResource("46_pb5ui")
 
 [node name="SkillButton" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub"]
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_right = 1.0
@@ -4617,7 +4686,6 @@ texture = ExtResource("47_ibt5j")
 
 [node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub/SkillButton"]
 visible = false
-layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.074
 anchor_right = 1.0
@@ -4628,14 +4696,13 @@ texture = ExtResource("48_2j1ax")
 
 [node name="Party Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("49_nfnpm")
 
 [node name="Hub" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu"]
-layout_mode = 0
 offset_left = 320.907
 offset_top = 862.183
 offset_right = 371.907
@@ -4643,7 +4710,6 @@ offset_bottom = 913.183
 texture = ExtResource("50_6d6h6")
 
 [node name="Run!" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub"]
-layout_mode = 0
 offset_left = -164.715
 offset_top = 3.04822
 offset_right = 9.285
@@ -4652,7 +4718,6 @@ texture = ExtResource("51_1hmca")
 
 [node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub/Run!"]
 visible = false
-layout_mode = 0
 offset_left = -3.42136
 offset_top = -3.04822
 offset_right = 176.579
@@ -4660,7 +4725,6 @@ offset_bottom = 47.9518
 texture = ExtResource("52_a7nvj")
 
 [node name="Swap" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub"]
-layout_mode = 0
 offset_left = -35.9748
 offset_top = 42.3809
 offset_right = 93.0252
@@ -4669,7 +4733,6 @@ texture = ExtResource("53_dp4gc")
 
 [node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub/Swap"]
 visible = false
-layout_mode = 0
 offset_left = -3.41245
 offset_top = -2.5639
 offset_right = 131.588
@@ -4677,7 +4740,6 @@ offset_bottom = 93.4361
 texture = ExtResource("54_fjylu")
 
 [node name="Combo" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub"]
-layout_mode = 0
 offset_left = 42.1806
 offset_top = 3.04822
 offset_right = 219.181
@@ -4686,7 +4748,6 @@ texture = ExtResource("55_ib30k")
 
 [node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub/Combo"]
 visible = false
-layout_mode = 0
 offset_left = -2.75
 offset_top = -3.04822
 offset_right = 180.25
@@ -4694,7 +4755,6 @@ offset_bottom = 47.9518
 texture = ExtResource("56_33cm7")
 
 [node name="Ally" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub"]
-layout_mode = 0
 offset_left = -39.3872
 offset_top = -81.0518
 offset_right = 89.6128
@@ -4703,7 +4763,6 @@ texture = ExtResource("57_p50un")
 
 [node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub/Ally"]
 visible = false
-layout_mode = 0
 offset_left = -2.51083
 offset_top = -3.3974
 offset_right = 132.489
@@ -4712,21 +4771,20 @@ texture = ExtResource("58_s58ae")
 
 [node name="Item Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("59_j18ke")
 
 [node name="Item TabBar" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Item Tab 0" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar"]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
 offset_left = 8.63457
 offset_top = 663.0
 offset_right = 521.635
@@ -4735,7 +4793,6 @@ pivot_offset = Vector2(261.773, 37.7793)
 texture = ExtResource("60_0vqrq")
 
 [node name="Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 0"]
-layout_mode = 0
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 429.0
@@ -4744,7 +4801,6 @@ theme = ExtResource("61_lwlk5")
 text = "Item 0"
 
 [node name="Count" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 0"]
-layout_mode = 0
 offset_left = 447.0
 offset_top = 15.0
 offset_right = 504.0
@@ -4753,7 +4809,6 @@ theme = ExtResource("61_lwlk5")
 text = "x00"
 
 [node name="Item Tab 1" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar"]
-layout_mode = 0
 offset_left = 9.0
 offset_top = 748.0
 offset_right = 522.0
@@ -4762,7 +4817,6 @@ pivot_offset = Vector2(261.773, 37.7793)
 texture = ExtResource("60_0vqrq")
 
 [node name="Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 1"]
-layout_mode = 0
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 429.0
@@ -4771,7 +4825,6 @@ theme = ExtResource("61_lwlk5")
 text = "Item 1"
 
 [node name="Count" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 1"]
-layout_mode = 0
 offset_left = 447.0
 offset_top = 15.0
 offset_right = 504.0
@@ -4780,7 +4833,6 @@ theme = ExtResource("61_lwlk5")
 text = "x00"
 
 [node name="Item Tab 2" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar"]
-layout_mode = 0
 offset_left = 9.0
 offset_top = 833.0
 offset_right = 522.0
@@ -4789,7 +4841,6 @@ pivot_offset = Vector2(261.773, 37.7793)
 texture = ExtResource("60_0vqrq")
 
 [node name="Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 2"]
-layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.0306414
 anchor_bottom = 0.0306414
@@ -4801,7 +4852,6 @@ theme = ExtResource("61_lwlk5")
 text = "Item 2"
 
 [node name="Count" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 2"]
-layout_mode = 0
 offset_left = 447.0
 offset_top = 15.0
 offset_right = 504.0
@@ -4810,7 +4860,6 @@ theme = ExtResource("61_lwlk5")
 text = "x00"
 
 [node name="Item Tab 3" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar"]
-layout_mode = 0
 offset_left = 9.0
 offset_top = 917.0
 offset_right = 522.0
@@ -4819,7 +4868,6 @@ pivot_offset = Vector2(261.773, 37.7793)
 texture = ExtResource("60_0vqrq")
 
 [node name="Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 3"]
-layout_mode = 0
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 429.0
@@ -4828,7 +4876,6 @@ theme = ExtResource("61_lwlk5")
 text = "Item 3"
 
 [node name="Count" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 3"]
-layout_mode = 0
 offset_left = 447.0
 offset_top = 15.0
 offset_right = 504.0
@@ -4837,7 +4884,6 @@ theme = ExtResource("61_lwlk5")
 text = "x00"
 
 [node name="Item Tab 4" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar"]
-layout_mode = 0
 offset_left = 9.0
 offset_top = 1002.0
 offset_right = 522.0
@@ -4846,7 +4892,6 @@ pivot_offset = Vector2(261.773, 37.7793)
 texture = ExtResource("60_0vqrq")
 
 [node name="Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 4"]
-layout_mode = 0
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 429.0
@@ -4855,7 +4900,6 @@ theme = ExtResource("61_lwlk5")
 text = "Item 4"
 
 [node name="Count" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 4"]
-layout_mode = 0
 offset_left = 447.0
 offset_top = 15.0
 offset_right = 504.0
@@ -4864,7 +4908,6 @@ theme = ExtResource("61_lwlk5")
 text = "x00"
 
 [node name="Item Description" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu"]
-layout_mode = 0
 offset_left = 540.0
 offset_top = 748.0
 offset_right = 1164.0
@@ -4879,7 +4922,7 @@ libraries = {
 
 [node name="Attack Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchor_top = 0.572
 anchor_bottom = 1.0
 offset_left = -3.0
@@ -4889,7 +4932,6 @@ offset_bottom = -1.0
 script = ExtResource("63_t7q7l")
 
 [node name="Backboard" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu"]
-layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.289
 anchor_bottom = 1.0
@@ -4901,7 +4943,6 @@ texture = ExtResource("64_nl3n6")
 stretch_mode = 2
 
 [node name="ATK Button" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu/Backboard"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -4915,7 +4956,6 @@ texture = ExtResource("45_lu3nw")
 stretch_mode = 2
 
 [node name="Attack Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu/Backboard"]
-layout_mode = 0
 offset_left = 15.0
 offset_top = 12.0
 offset_right = 399.0
@@ -4926,7 +4966,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Rules Text" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu/Backboard"]
-layout_mode = 0
 offset_left = 6.0
 offset_top = 84.0
 offset_right = 407.0
@@ -4939,7 +4978,6 @@ Basic Attack Text"
 
 [node name="17847" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu/Backboard/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -4949,7 +4987,6 @@ step = 1.0
 
 [node name="16791" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu/Backboard/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -4958,7 +4995,7 @@ grow_vertical = 2
 step = 1.0
 
 [node name="Skill Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -4971,14 +5008,13 @@ grow_vertical = 0
 script = ExtResource("66_wqwec")
 
 [node name="Card Container" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu"]
-layout_mode = 1
+layout_mode = 3
 anchor_top = 27.0
 anchor_right = 30.3
 anchor_bottom = 27.0
 
 [node name="Card 1" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container"]
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 0
 offset_left = 8.51978
 offset_right = 308.52
 offset_bottom = 339.0
@@ -4988,7 +5024,6 @@ stretch_mode = 2
 script = ExtResource("69_si5nh")
 
 [node name="Name" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
-layout_mode = 0
 offset_left = 17.6326
 offset_top = 54.0
 offset_right = 268.633
@@ -4998,7 +5033,6 @@ text = "[center]Just...Focus"
 
 [node name="17848" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1/Name"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5008,7 +5042,6 @@ step = 1.0
 
 [node name="16792" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1/Name"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5019,7 +5052,6 @@ step = 1.0
 page = 33.0
 
 [node name="Cost" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
-layout_mode = 0
 offset_left = 10.2563
 offset_top = 8.91956
 offset_right = 52.2564
@@ -5029,7 +5061,6 @@ text = "0"
 horizontal_alignment = 1
 
 [node name="Type" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
-layout_mode = 0
 offset_left = 99.0
 offset_top = 139.0
 offset_right = 198.0
@@ -5037,7 +5068,6 @@ offset_bottom = 171.0
 text = "Spell"
 
 [node name="Rules Text" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
-layout_mode = 0
 offset_left = 20.0
 offset_top = 180.0
 offset_right = 273.0
@@ -5049,7 +5079,6 @@ scroll_active = false
 
 [node name="17849" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5059,7 +5088,6 @@ step = 1.0
 
 [node name="16793" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5076,7 +5104,6 @@ libraries = {
 
 [node name="Card 2" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container"]
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 0
 offset_left = 304.0
 offset_right = 604.0
 offset_bottom = 339.0
@@ -5087,7 +5114,6 @@ stretch_mode = 2
 script = ExtResource("69_si5nh")
 
 [node name="Name" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
-layout_mode = 0
 offset_left = 18.3397
 offset_top = 53.2929
 offset_right = 269.34
@@ -5097,7 +5123,6 @@ text = "[center]Pommel Strike"
 
 [node name="17850" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2/Name"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5107,7 +5132,6 @@ step = 1.0
 
 [node name="16794" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2/Name"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5118,7 +5142,6 @@ step = 1.0
 page = 33.0
 
 [node name="Cost" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
-layout_mode = 0
 offset_left = 10.0
 offset_top = 9.0
 offset_right = 52.0
@@ -5128,7 +5151,6 @@ text = "1"
 horizontal_alignment = 1
 
 [node name="Type" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
-layout_mode = 0
 offset_left = 97.5858
 offset_top = 139.0
 offset_right = 196.586
@@ -5137,7 +5159,6 @@ text = "Attack
 "
 
 [node name="Rules Text" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
-layout_mode = 0
 offset_left = 24.0
 offset_top = 180.0
 offset_right = 269.0
@@ -5149,7 +5170,6 @@ scroll_active = false
 
 [node name="17851" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5159,7 +5179,6 @@ step = 1.0
 
 [node name="16795" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5176,7 +5195,6 @@ libraries = {
 
 [node name="Card 3" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container"]
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 0
 offset_left = 608.0
 offset_right = 908.0
 offset_bottom = 339.0
@@ -5186,7 +5204,6 @@ stretch_mode = 2
 script = ExtResource("69_si5nh")
 
 [node name="Name" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
-layout_mode = 0
 offset_left = 17.6326
 offset_top = 54.0
 offset_right = 268.633
@@ -5196,7 +5213,6 @@ text = "[center]Super Shot"
 
 [node name="17852" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3/Name"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5206,7 +5222,6 @@ step = 1.0
 
 [node name="16796" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3/Name"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5217,7 +5232,6 @@ step = 1.0
 page = 33.0
 
 [node name="Cost" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
-layout_mode = 0
 offset_left = 10.0
 offset_top = 9.0
 offset_right = 52.0
@@ -5227,7 +5241,6 @@ text = "3"
 horizontal_alignment = 1
 
 [node name="Type" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
-layout_mode = 0
 offset_left = 99.0
 offset_top = 139.0
 offset_right = 198.0
@@ -5235,7 +5248,6 @@ offset_bottom = 171.0
 text = "Tech"
 
 [node name="Rules Text" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
-layout_mode = 0
 offset_left = 24.0
 offset_top = 180.0
 offset_right = 269.0
@@ -5249,7 +5261,6 @@ scroll_active = false
 
 [node name="17853" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5259,7 +5270,6 @@ step = 1.0
 
 [node name="16797" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5276,7 +5286,6 @@ libraries = {
 
 [node name="Card 4" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container"]
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 0
 offset_left = 912.0
 offset_right = 1212.0
 offset_bottom = 339.0
@@ -5286,7 +5295,6 @@ stretch_mode = 2
 script = ExtResource("69_si5nh")
 
 [node name="Name" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
-layout_mode = 0
 offset_left = 17.6326
 offset_top = 54.0
 offset_right = 268.633
@@ -5296,7 +5304,6 @@ text = "[center]Card Four"
 
 [node name="17854" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4/Name"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5306,7 +5313,6 @@ step = 1.0
 
 [node name="16798" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4/Name"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5317,7 +5323,6 @@ step = 1.0
 page = 33.0
 
 [node name="Cost" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
-layout_mode = 0
 offset_left = 10.0
 offset_top = 9.0
 offset_right = 52.0
@@ -5327,7 +5332,6 @@ text = "0"
 horizontal_alignment = 1
 
 [node name="Type" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
-layout_mode = 0
 offset_left = 99.0
 offset_top = 139.0
 offset_right = 198.0
@@ -5335,7 +5339,6 @@ offset_bottom = 171.0
 text = "Attack"
 
 [node name="Rules Text" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
-layout_mode = 0
 offset_left = 24.0
 offset_top = 180.0
 offset_right = 269.0
@@ -5347,7 +5350,6 @@ scroll_active = false
 
 [node name="17855" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5357,7 +5359,6 @@ step = 1.0
 
 [node name="16799" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5373,7 +5374,7 @@ libraries = {
 }
 
 [node name="Control" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_left = 1216.0
 offset_right = 1216.0
@@ -5389,7 +5390,7 @@ stream = ExtResource("75_fdqyg")
 volume_db = 10.0
 
 [node name="Targeting Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_right = 752.0
 script = ExtResource("76_73pp0")
@@ -5399,14 +5400,13 @@ stream = ExtResource("75_fdqyg")
 volume_db = 10.0
 
 [node name="Swap Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("77_52351")
 
 [node name="Readouts" type="VBoxContainer" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.644
 anchor_top = 0.654
@@ -5423,7 +5423,7 @@ stream = ExtResource("79_tsecd")
 volume_db = -25.0
 
 [node name="ExplorePlayer" parent="." node_paths=PackedStringArray("exploreCamera", "timeEnvironment") instance=ExtResource("45_xsi2w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.7512, 0.0359998, 0.251999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.8312, 0.0359998, -0.268001)
 floor_max_angle = 0.872665
 safe_margin = 0.01
 exploreCamera = NodePath("Explore Camera")
@@ -5438,7 +5438,7 @@ sorting_offset = 1.0
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0.238175, 3.524, 8.028)
 
 [node name="Silver Follower" parent="." instance=ExtResource("46_b3uk2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.52, -0.04, -0.12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.76, -0.04, -0.64)
 personalSpaceRadius = 2.0
 
 [node name="BG Music" type="AudioStreamPlayer" parent="."]

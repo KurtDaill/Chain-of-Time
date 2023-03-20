@@ -51,7 +51,7 @@ public partial class DialogueLabel : RichTextLabel
 
 					if(voiceTimer >= voiceLetterRatio){
 						
-						if(altVoice != null && (this.speakerLabel.Text == " ???" || this.speakerLabel.Text == " Sejanus?"|| this.speakerLabel.Text == " Death Knight")) altVoice.Play();
+						if(altVoice != null && (this.speakerLabel.Text == " ???" || this.speakerLabel.Text == " Sejanus?"|| this.speakerLabel.Text == " Death")) altVoice.Play();
 						else voice.Play();
 						voiceTimer = 0;
 					}else{
@@ -76,5 +76,13 @@ public partial class DialogueLabel : RichTextLabel
 		this.Text = "";
 		this.speakerLabel.Text = "";
 		button.Visible = false;
+	}
+
+	public bool IsDoneDisplaying(){
+		return !(this.VisibleCharacters < this.Text.Length);
+	}
+
+	public void DisplayAll(){
+		this.VisibleCharacters = this.Text.Length;
 	}
 }

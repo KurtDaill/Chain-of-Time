@@ -24,24 +24,27 @@ public partial class InteractionPoint : DialogueInteractable
 
     public override bool ArmCutscene()
     {
+		if(!enabled) return false;
 		animPlay.Play("ShowPrompt");
         return base.ArmCutscene();
     }
 
 	public override void DisarmCutscene(){
-		animPlay.Play("HidePrompt");
+		if(armed)animPlay.Play("HidePrompt");
 		base.DisarmCutscene();
 	}
 
 	public override async void PlayCutscene(){
-		if(enabled){
+		if(enabled && armed){
 			if(storyFlagRequiredForCutscene != "" && !GetNode<GameMaster>("/root/GameMaster").GetFlagValue(storyFlagRequiredForCutscene)) return;
-				cutscene.StartCutscene();
-				animPlay.Play("HidePrompt");
-				await ToSignal(cutscene, "CutsceneCompleted");
-				animPlay.Play("ShowPrompt");
+			
+			cutscene.StartCutscene();
+			animPlay.Play("HidePrompt");
+			await ToSignal(cutscene, "CutsceneCompleted");
+			animPlay.Play("ShowPrompt");
+			
 			if(!cutsceneRepeats) hasCutscene = false;
-				this.DisarmCutscene();
+			this.DisarmCutscene();
 		}
 	}
 }

@@ -1,4 +1,8 @@
-res://Levels/Opening Room Retrofit.tscn
+res://Battle Mode/Player Characters/Will Silver.tscn
+res://Art/3D/DungeonNormalMaterial2.tres
+res://Art/3D/DungeonNormalMaterial.tres
+res://GUI/Themes/Dialogue/Normal Response.tres
+res://GUI/Cutscene Assets/Dialouge Button.tres
 res://Battle Mode/PMBattleNoActAbility.cs
 res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres
 res://GUI/Themes/Skill Card Normal.tres
@@ -7,7 +11,10 @@ res://GUI/Themes/Skill Card Spell.tres
 res://GUI/Themes/UI Impact.tres
 res://GUI/Themes/Skill Card Tech.tres
 res://GUI/Themes/Skill Card Tech Small.tres
+res://Test Scenes/Boss Room.tres
 res://Levels/Challenge Room.tscn
+res://Levels/Opening Room Retrofit.tscn
 res://Levels/Boss Room.tscn
-res://Battle Mode/Enemies/Ser Sejanus Alpha.tscn
-res://Art/3D/DungeonNormalMaterial2.tres
+res://ExampleStoryState.tres
+res://Levels/Tutorial Splash.tscn
+res://Battle Mode/BattleModule.tscn
