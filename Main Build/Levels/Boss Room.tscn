@@ -3952,7 +3952,6 @@ director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
 fit_content_height = true
@@ -3960,7 +3959,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -3968,11 +3966,9 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
 
 [node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
@@ -3980,7 +3976,6 @@ fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -3988,11 +3983,9 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
 
 [node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
@@ -4001,7 +3994,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -4010,11 +4002,9 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
 
 [node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
@@ -4026,7 +4016,6 @@ shortcut_keys_enabled = false
 visible = false
 show_behind_parent = true
 clip_contents = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -4068,7 +4057,6 @@ altVoice = NodePath("Alt Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
-layout_mode = 0
 offset_top = -36.0
 offset_right = 300.0
 offset_bottom = -1.0
@@ -4084,7 +4072,6 @@ text = " Will Silver"
 [node name="Button" type="TextureRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
 texture_filter = 1
 texture_repeat = 1
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.855
 anchor_top = 0.5
@@ -4247,7 +4234,6 @@ director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
 fit_content_height = true
@@ -4255,7 +4241,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -4263,11 +4248,9 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
 
 [node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
@@ -4275,7 +4258,6 @@ fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_right = 1201.0
 offset_bottom = 150.0
@@ -4283,11 +4265,9 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
 
 [node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
@@ -4296,7 +4276,6 @@ fit_content_height = true
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
 show_behind_parent = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -4305,11 +4284,9 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
 
 [node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
@@ -4321,7 +4298,6 @@ shortcut_keys_enabled = false
 visible = false
 show_behind_parent = true
 clip_contents = true
-layout_mode = 0
 offset_left = 1.0
 offset_top = -3.0
 offset_right = 1201.0
@@ -4363,7 +4339,6 @@ altVoice = NodePath("Alt Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
-layout_mode = 0
 offset_top = -36.0
 offset_right = 300.0
 offset_bottom = -1.0
@@ -4379,7 +4354,6 @@ text = " Will Silver"
 [node name="Button" type="TextureRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
 texture_filter = 1
 texture_repeat = 1
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.855
 anchor_top = 0.5
@@ -4571,7 +4545,7 @@ grow_vertical = 0
 script = ExtResource("38_jetgp")
 
 [node name="Top Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
-layout_mode = 1
+layout_mode = 3
 anchor_top = 0.647
 anchor_bottom = 1.0
 offset_top = 0.23999
@@ -4579,7 +4553,6 @@ offset_right = 1920.0
 script = ExtResource("39_ph5f0")
 
 [node name="Button Hub" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu"]
-layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -4591,7 +4564,6 @@ grow_vertical = 2
 texture = ExtResource("40_ajx3a")
 
 [node name="PartyButton" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub"]
-layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.021
@@ -4603,7 +4575,6 @@ texture = ExtResource("41_y4yok")
 
 [node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub/PartyButton"]
 visible = false
-layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.06
 anchor_right = 1.028
@@ -4615,7 +4586,6 @@ offset_bottom = -0.473137
 texture = ExtResource("42_7vgkb")
 
 [node name="ItemButton" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -4629,7 +4599,6 @@ texture = ExtResource("43_t3lqy")
 
 [node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub/ItemButton"]
 visible = false
-layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.069
 anchor_right = 1.026
@@ -4641,7 +4610,6 @@ offset_bottom = -0.276077
 texture = ExtResource("44_2wqyt")
 
 [node name="AtkButton" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -4655,7 +4623,6 @@ texture = ExtResource("45_lu3nw")
 
 [node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub/AtkButton"]
 visible = false
-layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.022
 anchor_right = 1.027
@@ -4667,7 +4634,6 @@ offset_bottom = -0.0516968
 texture = ExtResource("46_pb5ui")
 
 [node name="SkillButton" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub"]
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02
 anchor_right = 1.0
@@ -4680,7 +4646,6 @@ texture = ExtResource("47_ibt5j")
 
 [node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu/Button Hub/SkillButton"]
 visible = false
-layout_mode = 1
 anchors_preset = -1
 anchor_top = -0.074
 anchor_right = 1.0
@@ -4691,14 +4656,13 @@ texture = ExtResource("48_2j1ax")
 
 [node name="Party Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("49_nfnpm")
 
 [node name="Hub" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu"]
-layout_mode = 0
 offset_left = 320.907
 offset_top = 862.183
 offset_right = 371.907
@@ -4706,7 +4670,6 @@ offset_bottom = 913.183
 texture = ExtResource("50_6d6h6")
 
 [node name="Run!" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub"]
-layout_mode = 0
 offset_left = -164.715
 offset_top = 3.04822
 offset_right = 9.285
@@ -4715,7 +4678,6 @@ texture = ExtResource("51_1hmca")
 
 [node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub/Run!"]
 visible = false
-layout_mode = 0
 offset_left = -3.42136
 offset_top = -3.04822
 offset_right = 176.579
@@ -4723,7 +4685,6 @@ offset_bottom = 47.9518
 texture = ExtResource("52_a7nvj")
 
 [node name="Swap" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub"]
-layout_mode = 0
 offset_left = -35.9748
 offset_top = 42.3809
 offset_right = 93.0252
@@ -4732,7 +4693,6 @@ texture = ExtResource("53_dp4gc")
 
 [node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub/Swap"]
 visible = false
-layout_mode = 0
 offset_left = -3.41245
 offset_top = -2.5639
 offset_right = 131.588
@@ -4740,7 +4700,6 @@ offset_bottom = 93.4361
 texture = ExtResource("54_fjylu")
 
 [node name="Combo" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub"]
-layout_mode = 0
 offset_left = 42.1806
 offset_top = 3.04822
 offset_right = 219.181
@@ -4749,7 +4708,6 @@ texture = ExtResource("55_ib30k")
 
 [node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub/Combo"]
 visible = false
-layout_mode = 0
 offset_left = -2.75
 offset_top = -3.04822
 offset_right = 180.25
@@ -4757,7 +4715,6 @@ offset_bottom = 47.9518
 texture = ExtResource("56_33cm7")
 
 [node name="Ally" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub"]
-layout_mode = 0
 offset_left = -39.3872
 offset_top = -81.0518
 offset_right = 89.6128
@@ -4766,7 +4723,6 @@ texture = ExtResource("57_p50un")
 
 [node name="Highlight" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Party Menu/Hub/Ally"]
 visible = false
-layout_mode = 0
 offset_left = -2.51083
 offset_top = -3.3974
 offset_right = 132.489
@@ -4775,21 +4731,20 @@ texture = ExtResource("58_s58ae")
 
 [node name="Item Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("59_j18ke")
 
 [node name="Item TabBar" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Item Tab 0" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar"]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
 offset_left = 8.63457
 offset_top = 663.0
 offset_right = 521.635
@@ -4798,7 +4753,6 @@ pivot_offset = Vector2(261.773, 37.7793)
 texture = ExtResource("60_0vqrq")
 
 [node name="Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 0"]
-layout_mode = 0
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 429.0
@@ -4807,7 +4761,6 @@ theme = ExtResource("61_lwlk5")
 text = "Item 0"
 
 [node name="Count" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 0"]
-layout_mode = 0
 offset_left = 447.0
 offset_top = 15.0
 offset_right = 504.0
@@ -4816,7 +4769,6 @@ theme = ExtResource("61_lwlk5")
 text = "x00"
 
 [node name="Item Tab 1" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar"]
-layout_mode = 0
 offset_left = 9.0
 offset_top = 748.0
 offset_right = 522.0
@@ -4825,7 +4777,6 @@ pivot_offset = Vector2(261.773, 37.7793)
 texture = ExtResource("60_0vqrq")
 
 [node name="Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 1"]
-layout_mode = 0
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 429.0
@@ -4834,7 +4785,6 @@ theme = ExtResource("61_lwlk5")
 text = "Item 1"
 
 [node name="Count" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 1"]
-layout_mode = 0
 offset_left = 447.0
 offset_top = 15.0
 offset_right = 504.0
@@ -4843,7 +4793,6 @@ theme = ExtResource("61_lwlk5")
 text = "x00"
 
 [node name="Item Tab 2" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar"]
-layout_mode = 0
 offset_left = 9.0
 offset_top = 833.0
 offset_right = 522.0
@@ -4852,7 +4801,6 @@ pivot_offset = Vector2(261.773, 37.7793)
 texture = ExtResource("60_0vqrq")
 
 [node name="Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 2"]
-layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.0306414
 anchor_bottom = 0.0306414
@@ -4864,7 +4812,6 @@ theme = ExtResource("61_lwlk5")
 text = "Item 2"
 
 [node name="Count" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 2"]
-layout_mode = 0
 offset_left = 447.0
 offset_top = 15.0
 offset_right = 504.0
@@ -4873,7 +4820,6 @@ theme = ExtResource("61_lwlk5")
 text = "x00"
 
 [node name="Item Tab 3" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar"]
-layout_mode = 0
 offset_left = 9.0
 offset_top = 917.0
 offset_right = 522.0
@@ -4882,7 +4828,6 @@ pivot_offset = Vector2(261.773, 37.7793)
 texture = ExtResource("60_0vqrq")
 
 [node name="Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 3"]
-layout_mode = 0
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 429.0
@@ -4891,7 +4836,6 @@ theme = ExtResource("61_lwlk5")
 text = "Item 3"
 
 [node name="Count" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 3"]
-layout_mode = 0
 offset_left = 447.0
 offset_top = 15.0
 offset_right = 504.0
@@ -4900,7 +4844,6 @@ theme = ExtResource("61_lwlk5")
 text = "x00"
 
 [node name="Item Tab 4" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar"]
-layout_mode = 0
 offset_left = 9.0
 offset_top = 1002.0
 offset_right = 522.0
@@ -4909,7 +4852,6 @@ pivot_offset = Vector2(261.773, 37.7793)
 texture = ExtResource("60_0vqrq")
 
 [node name="Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 4"]
-layout_mode = 0
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 429.0
@@ -4918,7 +4860,6 @@ theme = ExtResource("61_lwlk5")
 text = "Item 4"
 
 [node name="Count" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu/Item TabBar/Item Tab 4"]
-layout_mode = 0
 offset_left = 447.0
 offset_top = 15.0
 offset_right = 504.0
@@ -4927,7 +4868,6 @@ theme = ExtResource("61_lwlk5")
 text = "x00"
 
 [node name="Item Description" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Item Menu"]
-layout_mode = 0
 offset_left = 540.0
 offset_top = 748.0
 offset_right = 1164.0
@@ -4942,7 +4882,7 @@ libraries = {
 
 [node name="Attack Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchor_top = 0.572
 anchor_bottom = 1.0
 offset_left = -3.0
@@ -4952,7 +4892,6 @@ offset_bottom = -1.0
 script = ExtResource("63_t7q7l")
 
 [node name="Backboard" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu"]
-layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.289
 anchor_bottom = 1.0
@@ -4964,7 +4903,6 @@ texture = ExtResource("64_nl3n6")
 stretch_mode = 2
 
 [node name="ATK Button" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu/Backboard"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -4978,7 +4916,6 @@ texture = ExtResource("45_lu3nw")
 stretch_mode = 2
 
 [node name="Attack Name" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu/Backboard"]
-layout_mode = 0
 offset_left = 15.0
 offset_top = 12.0
 offset_right = 399.0
@@ -4989,7 +4926,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Rules Text" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu/Backboard"]
-layout_mode = 0
 offset_left = 6.0
 offset_top = 84.0
 offset_right = 407.0
@@ -5002,7 +4938,6 @@ Basic Attack Text"
 
 [node name="17847" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu/Backboard/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5012,7 +4947,6 @@ step = 1.0
 
 [node name="16791" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Attack Menu/Backboard/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5021,7 +4955,7 @@ grow_vertical = 2
 step = 1.0
 
 [node name="Skill Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -5034,14 +4968,13 @@ grow_vertical = 0
 script = ExtResource("66_wqwec")
 
 [node name="Card Container" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu"]
-layout_mode = 1
+layout_mode = 3
 anchor_top = 27.0
 anchor_right = 30.3
 anchor_bottom = 27.0
 
 [node name="Card 1" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container"]
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 0
 offset_left = 8.51978
 offset_right = 308.52
 offset_bottom = 339.0
@@ -5051,7 +4984,6 @@ stretch_mode = 2
 script = ExtResource("69_si5nh")
 
 [node name="Name" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
-layout_mode = 0
 offset_left = 17.6326
 offset_top = 54.0
 offset_right = 268.633
@@ -5061,7 +4993,6 @@ text = "[center]Just...Focus"
 
 [node name="17848" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1/Name"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5071,7 +5002,6 @@ step = 1.0
 
 [node name="16792" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1/Name"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5082,7 +5012,6 @@ step = 1.0
 page = 33.0
 
 [node name="Cost" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
-layout_mode = 0
 offset_left = 10.2563
 offset_top = 8.91956
 offset_right = 52.2564
@@ -5092,7 +5021,6 @@ text = "0"
 horizontal_alignment = 1
 
 [node name="Type" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
-layout_mode = 0
 offset_left = 99.0
 offset_top = 139.0
 offset_right = 198.0
@@ -5100,7 +5028,6 @@ offset_bottom = 171.0
 text = "Spell"
 
 [node name="Rules Text" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1"]
-layout_mode = 0
 offset_left = 20.0
 offset_top = 180.0
 offset_right = 273.0
@@ -5112,7 +5039,6 @@ scroll_active = false
 
 [node name="17849" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5122,7 +5048,6 @@ step = 1.0
 
 [node name="16793" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 1/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5139,7 +5064,6 @@ libraries = {
 
 [node name="Card 2" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container"]
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 0
 offset_left = 304.0
 offset_right = 604.0
 offset_bottom = 339.0
@@ -5150,7 +5074,6 @@ stretch_mode = 2
 script = ExtResource("69_si5nh")
 
 [node name="Name" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
-layout_mode = 0
 offset_left = 18.3397
 offset_top = 53.2929
 offset_right = 269.34
@@ -5160,7 +5083,6 @@ text = "[center]Pommel Strike"
 
 [node name="17850" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2/Name"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5170,7 +5092,6 @@ step = 1.0
 
 [node name="16794" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2/Name"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5181,7 +5102,6 @@ step = 1.0
 page = 33.0
 
 [node name="Cost" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
-layout_mode = 0
 offset_left = 10.0
 offset_top = 9.0
 offset_right = 52.0
@@ -5191,7 +5111,6 @@ text = "1"
 horizontal_alignment = 1
 
 [node name="Type" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
-layout_mode = 0
 offset_left = 97.5858
 offset_top = 139.0
 offset_right = 196.586
@@ -5200,7 +5119,6 @@ text = "Attack
 "
 
 [node name="Rules Text" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2"]
-layout_mode = 0
 offset_left = 24.0
 offset_top = 180.0
 offset_right = 269.0
@@ -5212,7 +5130,6 @@ scroll_active = false
 
 [node name="17851" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5222,7 +5139,6 @@ step = 1.0
 
 [node name="16795" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 2/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5239,7 +5155,6 @@ libraries = {
 
 [node name="Card 3" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container"]
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 0
 offset_left = 608.0
 offset_right = 908.0
 offset_bottom = 339.0
@@ -5249,7 +5164,6 @@ stretch_mode = 2
 script = ExtResource("69_si5nh")
 
 [node name="Name" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
-layout_mode = 0
 offset_left = 17.6326
 offset_top = 54.0
 offset_right = 268.633
@@ -5259,7 +5173,6 @@ text = "[center]Super Shot"
 
 [node name="17852" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3/Name"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5269,7 +5182,6 @@ step = 1.0
 
 [node name="16796" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3/Name"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5280,7 +5192,6 @@ step = 1.0
 page = 33.0
 
 [node name="Cost" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
-layout_mode = 0
 offset_left = 10.0
 offset_top = 9.0
 offset_right = 52.0
@@ -5290,7 +5201,6 @@ text = "3"
 horizontal_alignment = 1
 
 [node name="Type" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
-layout_mode = 0
 offset_left = 99.0
 offset_top = 139.0
 offset_right = 198.0
@@ -5298,7 +5208,6 @@ offset_bottom = 171.0
 text = "Tech"
 
 [node name="Rules Text" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3"]
-layout_mode = 0
 offset_left = 24.0
 offset_top = 180.0
 offset_right = 269.0
@@ -5312,7 +5221,6 @@ scroll_active = false
 
 [node name="17853" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5322,7 +5230,6 @@ step = 1.0
 
 [node name="16797" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 3/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5339,7 +5246,6 @@ libraries = {
 
 [node name="Card 4" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container"]
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 0
 offset_left = 912.0
 offset_right = 1212.0
 offset_bottom = 339.0
@@ -5349,7 +5255,6 @@ stretch_mode = 2
 script = ExtResource("69_si5nh")
 
 [node name="Name" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
-layout_mode = 0
 offset_left = 17.6326
 offset_top = 54.0
 offset_right = 268.633
@@ -5359,7 +5264,6 @@ text = "[center]Card Four"
 
 [node name="17854" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4/Name"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5369,7 +5273,6 @@ step = 1.0
 
 [node name="16798" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4/Name"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5380,7 +5283,6 @@ step = 1.0
 page = 33.0
 
 [node name="Cost" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
-layout_mode = 0
 offset_left = 10.0
 offset_top = 9.0
 offset_right = 52.0
@@ -5390,7 +5292,6 @@ text = "0"
 horizontal_alignment = 1
 
 [node name="Type" type="Label" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
-layout_mode = 0
 offset_left = 99.0
 offset_top = 139.0
 offset_right = 198.0
@@ -5398,7 +5299,6 @@ offset_bottom = 171.0
 text = "Attack"
 
 [node name="Rules Text" type="RichTextLabel" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4"]
-layout_mode = 0
 offset_left = 24.0
 offset_top = 180.0
 offset_right = 269.0
@@ -5410,7 +5310,6 @@ scroll_active = false
 
 [node name="17855" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5420,7 +5319,6 @@ step = 1.0
 
 [node name="16799" type="VScrollBar" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container/Card 4/Rules Text"]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -5436,7 +5334,7 @@ libraries = {
 }
 
 [node name="Control" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Skill Menu/Card Container"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_left = 1216.0
 offset_right = 1216.0
@@ -5452,7 +5350,7 @@ stream = ExtResource("75_fdqyg")
 volume_db = 10.0
 
 [node name="Targeting Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_right = 752.0
 script = ExtResource("76_73pp0")
@@ -5462,14 +5360,13 @@ stream = ExtResource("75_fdqyg")
 volume_db = 10.0
 
 [node name="Swap Menu" type="Control" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("77_52351")
 
 [node name="Readouts" type="VBoxContainer" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI"]
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.644
 anchor_top = 0.654

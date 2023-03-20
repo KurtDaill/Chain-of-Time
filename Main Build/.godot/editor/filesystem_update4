@@ -1,5 +1,4 @@
-res://Battle Mode/Player Characters/Will Silver.tscn
-res://Art/3D/DungeonNormalMaterial2.tres
+res://Levels/Challenge Room.tscn
 res://Art/3D/DungeonNormalMaterial.tres
 res://GUI/Themes/Dialogue/Normal Response.tres
 res://GUI/Cutscene Assets/Dialouge Button.tres
@@ -11,13 +10,11 @@ res://GUI/Themes/Skill Card Spell.tres
 res://GUI/Themes/UI Impact.tres
 res://GUI/Themes/Skill Card Tech.tres
 res://GUI/Themes/Skill Card Tech Small.tres
+res://Test Scenes/PresentEnvironmentChallengeRoom.tres
+res://Art/3D/DungeonNormalMaterial2.tres
 res://Test Scenes/Boss Room.tres
-res://Levels/Challenge Room.tscn
 res://Levels/Opening Room Retrofit.tscn
 res://Levels/Boss Room.tscn
-res://ExampleStoryState.tres
 res://Levels/Tutorial Splash.tscn
 res://Battle Mode/BattleModule.tscn
-res://Test Scenes/Past Environment.tres
-res://Test Scenes/Present Environment.tres
-res://Test Scenes/PresentEnvironmentChallengeRoom.tres
+res://Battle Mode/Player Characters/Abilities/SuperShot.tscn
