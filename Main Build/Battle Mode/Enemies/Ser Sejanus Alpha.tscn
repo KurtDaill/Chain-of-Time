@@ -147,17 +147,14 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.79373, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"StartAttackRun"
 }, {
 "args": [],
 "method": &"PlayerDefenseReactionOnline"
-}, {
-"args": [],
-"method": &"DisablePlayerDefense"
 }, {
 "args": [0],
 "method": &"ExecuteEvent"
@@ -201,10 +198,10 @@ tracks/0/path = NodePath("..:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [1, 3, 2, 1]
+"values": [1, 3, 4, 2, 1]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -227,8 +224,8 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.889655, 0.9, 1, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.9, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"StartAttackRun"
@@ -236,14 +233,8 @@ tracks/2/keys = {
 "args": [],
 "method": &"PlayerDefenseReactionOnline"
 }, {
-"args": [],
-"method": &"DisablePlayerDefense"
-}, {
 "args": [0],
 "method": &"ExecuteEvent"
-}, {
-"args": [],
-"method": &"ExpendCharge"
 }, {
 "args": [],
 "method": &"FinishSequence"
@@ -256,7 +247,7 @@ tracks/3/path = NodePath("..:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.6, 0.9, 1),
+"times": PackedFloat32Array(0, 0.7, 0.9, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(2.28, 2.56, 0), Vector3(2.28, 2.56, 0), Vector3(2.52, 2.56, 0), Vector3(2.28, 2.56, 0)]
@@ -385,7 +376,7 @@ pixel_size = 0.008
 shaded = true
 texture = ExtResource("1_w5ot8")
 hframes = 8
-frame = 1
+frame = 3
 script = ExtResource("1_tukar")
 abilitiesByPriority = [NodePath("Great Cleave"), NodePath("Heft Sword"), NodePath("Attack")]
 combatRoles = [6]
@@ -410,7 +401,7 @@ libraries = {
 "": SubResource("AnimationLibrary_3ibgy")
 }
 
-[node name="Heft Sword" type="Node" parent="."]
+[node name="Heft Sword" type="Node3D" parent="."]
 script = ExtResource("3_swi24")
 requirements = [9]
 name = "Heft Sword"
@@ -427,7 +418,7 @@ libraries = {
 [node name="Event" type="Node" parent="Heft Sword"]
 script = ExtResource("4_1cpce")
 
-[node name="Great Cleave" type="Node" parent="."]
+[node name="Great Cleave" type="Node3D" parent="."]
 script = ExtResource("3_swi24")
 requirements = [11]
 name = "Great Cleave"
@@ -447,7 +438,7 @@ libraries = {
 "": SubResource("AnimationLibrary_wx6dv")
 }
 
-[node name="Attack" type="Node" parent="."]
+[node name="Attack" type="Node3D" parent="."]
 script = ExtResource("3_swi24")
 name = "Great Cleave"
 firstAnimation = "Swing"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=3 uid="uid://c008jq0nofhlk"]
+[gd_scene load_steps=154 format=3 uid="uid://c008jq0nofhlk"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_eqru4"]
 [ext_resource type="Script" path="res://ChronoEnviro.cs" id="2_axtem"]
@@ -58,7 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://8iltg8hieg8a" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuRunHighlight.png" id="52_a7nvj"]
 [ext_resource type="Texture2D" uid="uid://k1c0luw6jqjc" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres" id="53_dp4gc"]
 [ext_resource type="Texture2D" uid="uid://nli0mcpokh1x" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuSwapHighlight.png" id="54_fjylu"]
-[ext_resource type="Texture2D" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres" id="55_ib30k"]
+[ext_resource type="Texture2D" uid="uid://yh4kccmuodkm" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres" id="55_ib30k"]
 [ext_resource type="Texture2D" uid="uid://c74qsow25qfbm" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuComboHighlight.png" id="56_33cm7"]
 [ext_resource type="Texture2D" uid="uid://wxj5d30d2p8y" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres" id="57_p50un"]
 [ext_resource type="Texture2D" uid="uid://b6xo1fe2mg5he" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuAllyHighlight.png" id="58_s58ae"]
@@ -571,6 +571,9 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ejq4g"]
 size = Vector3(0.56, 12.48, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xu4f6"]
+size = Vector3(43.5115, 12.48, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_80owu"]
 size = Vector3(9.36, 13.28, 1)
@@ -3544,6 +3547,10 @@ shape = SubResource("BoxShape3D_ejq4g")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.08, 3.36, -2.4)
 shape = SubResource("BoxShape3D_ejq4g")
 
+[node name="Back Wall Collision" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0117, 3.36, -3.06019)
+shape = SubResource("BoxShape3D_xu4f6")
+
 [node name="Pillar Collider10" type="CollisionShape3D" parent="Chrono-Enviro/World Borders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88, 3.36, -2.4)
 shape = SubResource("BoxShape3D_ejq4g")
@@ -3578,7 +3585,7 @@ skeleton = NodePath("")
 [node name="Lights" type="Node3D" parent="Chrono-Enviro/Present"]
 
 [node name="Glass Light 1" type="SpotLight3D" parent="Chrono-Enviro/Present/Lights"]
-transform = Transform3D(-0.144831, -0.924868, 0.351629, 0.0544009, 0.347395, 0.936139, -0.98796, 0.154711, 1.16129e-07, 2.45184, 7.56697, -36.52)
+transform = Transform3D(-0.151698, -0.968717, 0.196407, 0.0303864, 0.194043, 0.980522, -0.98796, 0.154711, 2.40612e-08, 0.992569, 6.03392, -36.2892)
 layers = 1048575
 light_energy = 32.0
 light_indirect_energy = 0.0
@@ -3590,11 +3597,11 @@ shadow_enabled = true
 shadow_blur = 0.05
 spot_range = 13.92
 spot_attenuation = 1.68179
-spot_angle = 9.14
-spot_angle_attenuation = 0.341511
+spot_angle = 8.33
+spot_angle_attenuation = 4.5948
 
 [node name="Glass Light 2" type="SpotLight3D" parent="Chrono-Enviro/Present/Lights"]
-transform = Transform3D(-0.144831, -0.924868, 0.351629, 0.0544009, 0.347395, 0.936139, -0.98796, 0.154711, 1.16129e-07, 2.45184, 7.56697, -30.12)
+transform = Transform3D(-0.151698, -0.968717, 0.196407, 0.0303864, 0.194043, 0.980522, -0.98796, 0.154711, 2.40612e-08, 0.992569, 6.03392, -29.8892)
 layers = 1048575
 light_energy = 32.0
 light_indirect_energy = 0.0
@@ -3606,11 +3613,11 @@ shadow_enabled = true
 shadow_blur = 0.05
 spot_range = 13.92
 spot_attenuation = 1.68179
-spot_angle = 9.14
-spot_angle_attenuation = 0.341511
+spot_angle = 8.33
+spot_angle_attenuation = 4.5948
 
 [node name="Glass Light 3" type="SpotLight3D" parent="Chrono-Enviro/Present/Lights"]
-transform = Transform3D(-0.144831, -0.924868, 0.351629, 0.0544009, 0.347395, 0.936139, -0.98796, 0.154711, 1.16129e-07, 2.45184, 7.56697, -23.64)
+transform = Transform3D(-0.151698, -0.968717, 0.196407, 0.0303864, 0.194043, 0.980522, -0.98796, 0.154711, 2.40612e-08, 0.992569, 6.03392, -23.4092)
 layers = 1048575
 light_energy = 32.0
 light_indirect_energy = 0.0
@@ -3622,11 +3629,11 @@ shadow_enabled = true
 shadow_blur = 0.05
 spot_range = 13.92
 spot_attenuation = 1.68179
-spot_angle = 9.14
-spot_angle_attenuation = 0.341511
+spot_angle = 8.33
+spot_angle_attenuation = 4.5948
 
 [node name="Glass Light 4" type="SpotLight3D" parent="Chrono-Enviro/Present/Lights"]
-transform = Transform3D(-0.144831, -0.924868, 0.351629, 0.0544009, 0.347395, 0.936139, -0.98796, 0.154711, 1.16129e-07, 2.45184, 7.56697, -17.28)
+transform = Transform3D(-0.151698, -0.968717, 0.196407, 0.0303864, 0.194043, 0.980522, -0.98796, 0.154711, 2.40612e-08, 0.992569, 6.03392, -17.0492)
 layers = 1048575
 light_energy = 32.0
 light_indirect_energy = 0.0
@@ -3638,11 +3645,11 @@ shadow_enabled = true
 shadow_blur = 0.05
 spot_range = 13.92
 spot_attenuation = 1.68179
-spot_angle = 9.14
-spot_angle_attenuation = 0.341511
+spot_angle = 8.33
+spot_angle_attenuation = 4.5948
 
 [node name="Glass Light 5" type="SpotLight3D" parent="Chrono-Enviro/Present/Lights"]
-transform = Transform3D(-0.144831, -0.924868, 0.351629, 0.0544009, 0.347395, 0.936139, -0.98796, 0.154711, 1.16129e-07, 2.45184, 7.56697, -10.96)
+transform = Transform3D(-0.151698, -0.968717, 0.196407, 0.0303864, 0.194043, 0.980522, -0.98796, 0.154711, 2.40612e-08, 0.992569, 6.03392, -10.7292)
 layers = 1048575
 light_energy = 32.0
 light_indirect_energy = 0.0
@@ -3654,11 +3661,11 @@ shadow_enabled = true
 shadow_blur = 0.05
 spot_range = 13.92
 spot_attenuation = 1.68179
-spot_angle = 9.14
-spot_angle_attenuation = 0.341511
+spot_angle = 8.33
+spot_angle_attenuation = 4.5948
 
 [node name="Glass Light 6" type="SpotLight3D" parent="Chrono-Enviro/Present/Lights"]
-transform = Transform3D(-0.144831, -0.924868, 0.351629, 0.0544009, 0.347395, 0.936139, -0.98796, 0.154711, 1.16129e-07, 2.45184, 7.56697, -4.4)
+transform = Transform3D(-0.151698, -0.968717, 0.196407, 0.0303864, 0.194043, 0.980522, -0.98796, 0.154711, 2.40612e-08, 0.992569, 6.03392, -4.1692)
 layers = 1048575
 light_energy = 32.0
 light_indirect_energy = 0.0
@@ -3670,11 +3677,11 @@ shadow_enabled = true
 shadow_blur = 0.05
 spot_range = 13.92
 spot_attenuation = 1.68179
-spot_angle = 9.14
-spot_angle_attenuation = 0.341511
+spot_angle = 8.33
+spot_angle_attenuation = 4.5948
 
 [node name="Glass Light 7" type="SpotLight3D" parent="Chrono-Enviro/Present/Lights"]
-transform = Transform3D(-0.16674, -0.750136, 0.639917, -0.402811, 0.644197, 0.650195, -0.899967, -0.149353, -0.409577, 7.21159, 7.5182, 7.2)
+transform = Transform3D(-0.0997487, -0.844021, 0.526952, -0.424393, 0.515094, 0.744694, -0.899967, -0.149353, -0.409576, 4.84541, 6.75169, 7.34972)
 layers = 1048575
 light_energy = 32.0
 light_indirect_energy = 0.0
@@ -3686,8 +3693,8 @@ shadow_enabled = true
 shadow_blur = 0.05
 spot_range = 18.499
 spot_attenuation = 2.07053
-spot_angle = 9.14
-spot_angle_attenuation = 0.341511
+spot_angle = 8.33
+spot_angle_attenuation = 4.5948
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Chrono-Enviro/Present/Lights"]
 transform = Transform3D(1, -2.98023e-08, -3.68255e-09, 2.98023e-08, 1, 2.02011e-09, 3.68255e-09, -2.02011e-09, 1, 2.2, 7.92, -36.48)
@@ -3952,6 +3959,8 @@ director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
+offset_right = 1200.0
+offset_bottom = 75.0
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
 fit_content_height = true
@@ -3966,9 +3975,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
+offset_top = 79.0
+offset_right = 1200.0
+offset_bottom = 89.0
 
 [node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
+offset_top = 93.0
+offset_right = 1200.0
+offset_bottom = 168.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
@@ -3983,9 +3998,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
+offset_top = 172.0
+offset_right = 1200.0
+offset_bottom = 182.0
 
 [node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
+offset_top = 186.0
+offset_right = 1200.0
+offset_bottom = 261.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
@@ -4002,9 +4023,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
+offset_top = 265.0
+offset_right = 1200.0
+offset_bottom = 275.0
 
 [node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/Present/Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
+offset_top = 279.0
+offset_right = 1200.0
+offset_bottom = 354.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
@@ -4234,6 +4261,8 @@ director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
+offset_right = 1200.0
+offset_bottom = 75.0
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
 fit_content_height = true
@@ -4248,9 +4277,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 1" type="TextureRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
+offset_top = 79.0
+offset_right = 1200.0
+offset_bottom = 89.0
 
 [node name="Option 2" type="RichTextLabel" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
+offset_top = 93.0
+offset_right = 1200.0
+offset_bottom = 168.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
@@ -4265,9 +4300,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 2" type="TextureRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
+offset_top = 172.0
+offset_right = 1200.0
+offset_bottom = 182.0
 
 [node name="Option 3" type="RichTextLabel" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
+offset_top = 186.0
+offset_right = 1200.0
+offset_bottom = 261.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
@@ -4284,9 +4325,15 @@ color = Color(1, 1, 1, 0.784314)
 
 [node name="Spacer 3" type="TextureRect" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 10)
+offset_top = 265.0
+offset_right = 1200.0
+offset_bottom = 275.0
 
 [node name="Option 4" type="RichTextLabel" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
+offset_top = 279.0
+offset_right = 1200.0
+offset_bottom = 354.0
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
@@ -4367,12 +4414,12 @@ texture = ExtResource("14_wjl1q")
 
 [node name="Voice" type="AudioStreamPlayer" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
 stream = ExtResource("15_nj642")
-volume_db = -20.0
+volume_db = -15.0
 max_polyphony = 10
 
 [node name="Alt Voice" type="AudioStreamPlayer" parent="Chrono-Enviro/Present/Final Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
 stream = ExtResource("26_jwjw6")
-volume_db = -20.0
+volume_db = -10.0
 pitch_scale = 0.8
 max_polyphony = 10
 
@@ -5380,7 +5427,7 @@ script = ExtResource("78_3xlog")
 [node name="BattleMusic" type="AudioStreamPlayer" parent="Chrono-Enviro/Present/Encounter/Battle Module"]
 unique_name_in_owner = true
 stream = ExtResource("79_tsecd")
-volume_db = -25.0
+volume_db = -5.0
 
 [node name="ExplorePlayer" parent="." node_paths=PackedStringArray("exploreCamera", "timeEnvironment") instance=ExtResource("45_xsi2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.8312, 0.0359998, -0.268001)
@@ -5403,12 +5450,12 @@ personalSpaceRadius = 2.0
 
 [node name="BG Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("83_wwe57")
-volume_db = -20.0
+volume_db = -5.0
 autoplay = true
 
 [node name="Title" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("85_abe3c")
-volume_db = -15.0
+volume_db = -5.0
 
 [node name="NotAnUndertaleReference" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("86_3fykj")

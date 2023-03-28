@@ -24,7 +24,7 @@ public partial class AbilityEventStatusEffect : AbilityEvent {
     }
 
     public PMStatus InstanceStatusEffect(PMCharacter target){
-        var status = statusEffectPS.Instantiate<PMStatus>(PackedScene.GenEditState.Instance);
+        var status = (PMStatus)statusEffectPS.Instantiate();    
         target.AddChild(status);
         status.SetCustom(setCustomDuration, setCustomMagnitude);
         status.Setup(target);

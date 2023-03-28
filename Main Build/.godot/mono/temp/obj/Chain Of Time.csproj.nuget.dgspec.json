@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\Chain Of Time.csproj": {}
+    "C:\\Users\\kdail\\Desktop\\Chain-of-Time\\Main Build\\Chain Of Time.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\Chain Of Time.csproj": {
+    "C:\\Users\\kdail\\Desktop\\Chain-of-Time\\Main Build\\Chain Of Time.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
+        "projectUniqueName": "C:\\Users\\kdail\\Desktop\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
         "projectName": "Chain Of Time",
-        "projectPath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
+        "projectPath": "C:\\Users\\kdail\\Desktop\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
         "packagesPath": "C:\\Users\\kdail\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\.godot\\mono\\temp\\obj\\",
+        "outputPath": "C:\\Users\\kdail\\Desktop\\Chain-of-Time\\Main Build\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Users\\kdail\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder"
@@ -51,10 +51,6 @@
             "GodotSharp": {
               "target": "Package",
               "version": "[4.0.0-beta.10, )"
-            },
-            "GodotSharpEditor": {
-              "target": "Package",
-              "version": "[4.0.0-beta.10, )"
             }
           },
           "imports": [
@@ -68,12 +64,31 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+              "version": "[6.0.15, 6.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.win-x64",
+              "version": "[6.0.15, 6.0.15]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+              "version": "[6.0.15, 6.0.15]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
         }
       }
     }
