@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dob8cjefh634a"
+path="res://.godot/imported/Living World Test.obj-fd45335b11ee01b91ef8bc78923f71e5.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Living World Test.obj-fd45335b11ee01b91ef8bc78923f71e5.mesh"]
+
+source_file="res://Prototyping/Living World Test.obj"
+dest_files=["res://.godot/imported/Living World Test.obj-fd45335b11ee01b91ef8bc78923f71e5.mesh", "res://.godot/imported/Living World Test.obj-fd45335b11ee01b91ef8bc78923f71e5.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

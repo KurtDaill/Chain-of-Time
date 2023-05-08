@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dext2v4l0y14k"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bjypl"]
+load_path = "res://.godot/imported/Living World Test_1.png-af0bdf9dd97ee651922f956d55bb0827.ctex"
+
+[resource]
+resource_name = "1"
+albedo_texture = SubResource("CompressedTexture2D_bjypl")
+metallic = 1.0
+texture_filter = 0

@@ -1,4 +1,7 @@
-res://Levels/Opening Room Retrofit.tscn
+res://Prototyping/living_world_test.tscn
+res://Art/3D/DungeonNormalMaterial.tres
+res://GUI/Themes/Dialogue/Normal Response.tres
+res://GUI/Cutscene Assets/Dialouge Button.tres
 res://Battle Mode/PMBattleNoActAbility.cs
 res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres
 res://GUI/Themes/Skill Card Normal.tres
@@ -7,17 +10,6 @@ res://GUI/Themes/Skill Card Spell.tres
 res://GUI/Themes/UI Impact.tres
 res://GUI/Themes/Skill Card Tech.tres
 res://GUI/Themes/Skill Card Tech Small.tres
-res://Test Scenes/PresentEnvironmentChallengeRoom.tres
-res://Art/3D/DungeonNormalMaterial2.tres
-res://Levels/Challenge Room.tscn
-res://Levels/Tutorial Splash.tscn
-res://Levels/Boss Room.tscn
-res://Battle Mode/Enemies/Skeleton.tscn
-res://Battle Mode/Enemies/Ser Sejanus Alpha.tscn
-res://Art/3D/DungeonNormalMaterial.tres
-res://GUI/Themes/Dialogue/Normal Response.tres
-res://GUI/Cutscene Assets/Dialouge Button.tres
-res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres
-res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres
-res://GUI/Battle Menu Assets/Party Menu/PartyButtonAlly.tres
-res://Test Scenes/Boss Room.tres
+res://Prototyping/RenderingBuildingTest2.tscn
+res://Levels/Opening Room Retrofit.tscn
+res://Prototyping/rendering_buildings_test.tscn

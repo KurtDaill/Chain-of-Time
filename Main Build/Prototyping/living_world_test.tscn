@@ -1,0 +1,209 @@
+[gd_scene load_steps=5 format=3 uid="uid://d32b14g71nevg"]
+
+[ext_resource type="ArrayMesh" uid="uid://dob8cjefh634a" path="res://Prototyping/Living World Test.obj" id="1_v8vej"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ovmro"]
+sky_top_color = Color(0, 0.0235294, 0.231373, 1)
+sky_horizon_color = Color(0.164706, 0.298039, 0.709804, 1)
+sky_curve = 0.0284197
+ground_bottom_color = Color(0.109804, 0.0588235, 0, 1)
+ground_horizon_color = Color(0.164706, 0.164706, 0.168627, 1)
+
+[sub_resource type="Sky" id="Sky_0i7ul"]
+sky_material = SubResource("ProceduralSkyMaterial_ovmro")
+
+[sub_resource type="Environment" id="Environment_vuj7n"]
+background_mode = 2
+sky = SubResource("Sky_0i7ul")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="Living World Test" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.257233, 2.96548, -1.03021)
+mesh = ExtResource("1_v8vej")
+
+[node name="Lights" type="Node3D" parent="MeshInstance3D"]
+
+[node name="Door" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0178832, 2.53304, 13.3323)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 1.7411
+
+[node name="Big Window" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04757, 2.92452, 13.0081)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Big Window2" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97445, 2.92452, 13.0081)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Big Window3" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8964, 2.50169, 7.99415)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Big Window4" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8964, 2.50169, 2.50742)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Big Window5" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8964, 2.50169, -3.01917)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Window6" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8964, 6.99187, -3.01917)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Window7" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8964, 6.99187, 7.97709)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Window8" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8964, 6.99187, 11.0088)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Big Window6" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0043, 2.50169, 7.99415)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Big Window7" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0043, 2.50169, 2.50742)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Big Window8" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0043, 2.50169, -3.01917)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Window9" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0043, 6.99187, -3.01917)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Window10" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0043, 6.99187, 7.97709)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Window11" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0043, 6.99187, 11.0088)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Window" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.46912, 7.03025, 13.0081)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Window2" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.50377, 7.03025, 13.0081)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Window3" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00547823, 7.03025, 13.0081)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Window4" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.49281, 7.03025, 13.0081)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Window5" type="OmniLight3D" parent="MeshInstance3D/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.47209, 7.03025, 13.0081)
+light_color = Color(1, 0.780392, 0.341176, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.456
+omni_attenuation = 0.63728
+
+[node name="Day" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Day"]
+environment = SubResource("Environment_vuj7n")
+
+[node name="Sun" type="DirectionalLight3D" parent="Day"]
+transform = Transform3D(0.640556, -0.0948259, 0.762034, -0.576144, 0.596721, 0.558554, -0.507687, -0.796826, 0.3276, 0, 25.8442, 35.443)
+visible = false
+light_color = Color(1, 0.9625, 0.75, 1)
+light_energy = 2.25
+shadow_enabled = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Day"]
+transform = Transform3D(-0.686086, -0.648941, -0.328878, 0.590068, -0.760789, 0.270221, -0.425565, -0.00866527, 0.904886, 0, 19.2661, 45.1019)
+light_energy = 0.1
+sky_mode = 1
+
+[node name="Moon" type="DirectionalLight3D" parent="Day"]
+transform = Transform3D(0.0585012, 0.601368, 0.796828, 0.413975, -0.740943, 0.528799, 0.908407, 0.298931, -0.292297, 0, 0, 0)
+light_energy = 0.15
+shadow_enabled = true

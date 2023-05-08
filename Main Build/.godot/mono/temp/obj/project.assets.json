@@ -20,24 +20,19 @@
             "related": ".xml"
           }
         }
-      }
-    },
-    "net6.0/win-x64": {
-      "Godot.SourceGenerators/4.0.0-beta.10": {
-        "type": "package",
-        "build": {
-          "build/Godot.SourceGenerators.props": {}
-        }
       },
-      "GodotSharp/4.0.0-beta.10": {
+      "GodotSharpEditor/4.0.0-beta.10": {
         "type": "package",
+        "dependencies": {
+          "GodotSharp": "4.0.0-beta.10"
+        },
         "compile": {
-          "lib/net6.0/GodotSharp.dll": {
+          "lib/net6.0/GodotSharpEditor.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/GodotSharp.dll": {
+          "lib/net6.0/GodotSharpEditor.dll": {
             "related": ".xml"
           }
         }
@@ -68,12 +63,25 @@
         "lib/net6.0/GodotSharp.dll",
         "lib/net6.0/GodotSharp.xml"
       ]
+    },
+    "GodotSharpEditor/4.0.0-beta.10": {
+      "sha512": "QS3BCS2W+6/OR7gH55s4vFh5hCebGDGC5kdfvbRqPr2lDr2x7XErePBMtntHsYrXdIWjjoce6RQuCU5uSuQGkg==",
+      "type": "package",
+      "path": "godotsharpeditor/4.0.0-beta.10",
+      "files": [
+        ".nupkg.metadata",
+        "godotsharpeditor.4.0.0-beta.10.nupkg.sha512",
+        "godotsharpeditor.nuspec",
+        "lib/net6.0/GodotSharpEditor.dll",
+        "lib/net6.0/GodotSharpEditor.xml"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Godot.SourceGenerators >= 4.0.0-beta.10",
-      "GodotSharp >= 4.0.0-beta.10"
+      "GodotSharp >= 4.0.0-beta.10",
+      "GodotSharpEditor >= 4.0.0-beta.10"
     ]
   },
   "packageFolders": {
@@ -83,11 +91,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kdail\\Desktop\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
+      "projectUniqueName": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
       "projectName": "Chain Of Time",
-      "projectPath": "C:\\Users\\kdail\\Desktop\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
+      "projectPath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\Chain Of Time.csproj",
       "packagesPath": "C:\\Users\\kdail\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kdail\\Desktop\\Chain-of-Time\\Main Build\\.godot\\mono\\temp\\obj\\",
+      "outputPath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot\\Chain-of-Time\\Main Build\\.godot\\mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Users\\kdail\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder"
@@ -127,6 +135,10 @@
           "GodotSharp": {
             "target": "Package",
             "version": "[4.0.0-beta.10, )"
+          },
+          "GodotSharpEditor": {
+            "target": "Package",
+            "version": "[4.0.0-beta.10, )"
           }
         },
         "imports": [
@@ -140,31 +152,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-            "version": "[6.0.15, 6.0.15]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Runtime.win-x64",
-            "version": "[6.0.15, 6.0.15]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-            "version": "[6.0.15, 6.0.15]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
-      }
-    },
-    "runtimes": {
-      "win-x64": {
-        "#import": []
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }
