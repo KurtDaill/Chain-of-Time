@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+/*
 public abstract partial class BattleMenu : Control
 {
     public PMBattleGUI parentGUI;
@@ -28,3 +28,4 @@ public abstract partial class BattleMenu : Control
     //Returns a new menu in the scenario we have to switch between menus
     public virtual PMPlayerAbility HandleInput(MenuInput input, PMPlayerCharacter character, PMBattle caller){ return null;}
 }
+*/

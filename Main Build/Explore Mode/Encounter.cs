@@ -3,6 +3,7 @@ using System;
 
 public partial class Encounter : Area3D
 {
+	/*
 	[Export]
 	public bool enabled;
 	[Export]
@@ -41,4 +42,5 @@ public partial class Encounter : Area3D
 			GetNode<CameraManager>("/root/CameraManager").SwitchCamera(triggeringPlayer.exploreCamera);
 		}
 	} 
+	*/
 }

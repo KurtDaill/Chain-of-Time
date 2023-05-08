@@ -33,7 +33,7 @@ public partial class SceneConfig : Node
 				GetNode<CutsceneDirector>(startCustscene).StartCutscene();
 				break;
 			case StartingMode.Battle:
-				GetNode<Encounter>(startBattle).StartEncounter(ePlayer);
+				//GetNode<Encounter>(startBattle).StartEncounter(ePlayer);
 				break;
 		}
 	}

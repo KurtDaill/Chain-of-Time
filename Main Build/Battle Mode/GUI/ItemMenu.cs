@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+/*
 public partial class ItemMenu : BattleMenu
 {
     
@@ -46,6 +46,7 @@ public partial class ItemMenu : BattleMenu
         base.OnOpen(); 
     }
 */
+/*
     public override PMPlayerAbility HandleInput(MenuInput input, PMPlayerCharacter character, PMBattle caller){
         if(input == MenuInput.Back){
             parentGUI.ChangeMenu(0, character, caller);
@@ -53,6 +54,7 @@ public partial class ItemMenu : BattleMenu
         }
         return null;
     }
+*/
 /*
     public void ScrollDown(){
         /*
@@ -100,5 +102,6 @@ public partial class ItemMenu : BattleMenu
             counts[i].Text = "x" + playerInventory[currentFocusItem + (i - focusTab)].Item2;
         }
     }
-    */
 }
+*/
+    

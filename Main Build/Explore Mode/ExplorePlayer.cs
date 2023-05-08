@@ -112,7 +112,7 @@ public partial class ExplorePlayer : CharacterBody3D
 		}
 		if(area.GetGroups().Contains("Encounter")){
 			Encounter en = (Encounter) area;
-			en.StartEncounter(this);
+			//en.StartEncounter(this);
 		}
 		if(area.GetGroups().Contains("NPC")){
 			ExploreNPC npc = (ExploreNPC) area.GetParent();

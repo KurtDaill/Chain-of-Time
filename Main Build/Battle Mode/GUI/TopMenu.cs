@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+/*
 public partial class TopMenu : BattleMenu
 {
     //TODO Highlight Animations
@@ -77,3 +77,4 @@ public partial class TopMenu : BattleMenu
         return null;
     }
 }
+*/

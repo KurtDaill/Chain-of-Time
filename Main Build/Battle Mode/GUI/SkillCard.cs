@@ -1,7 +1,7 @@
 using System;
 using Godot;
-using static PMBattleUtilities;
-
+//using static PMBattleUtilities;
+/*
 public partial class SkillCard : TextureRect{
     private RichTextLabel name, rules;
     private Label abilityType, cost;
@@ -81,3 +81,4 @@ public partial class SkillCard : TextureRect{
         anim.Stop();
     }
 }
+*/

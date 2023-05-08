@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public partial class PlayerCharacterReadout : TextureRect
 {
+	/*
 	Label HP, SP;
 	Label maxHPLabel, maxSPLabel;
 	TextureRect hpIconFull, hpIconHalf, hpIconEmpty, spIconFull, spIconHalf, spIconEmpty, highLight;
@@ -80,4 +81,5 @@ public partial class PlayerCharacterReadout : TextureRect
 	public void DisableHighlight(){
 		highLight.Visible = false;
 	}
+	*/
 }

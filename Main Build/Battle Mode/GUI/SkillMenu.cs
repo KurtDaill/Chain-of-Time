@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+/*
 public partial class SkillMenu : BattleMenu
 {
     
@@ -92,3 +92,5 @@ public partial class SkillMenu : BattleMenu
         return null;
     }
 }
+
+*/

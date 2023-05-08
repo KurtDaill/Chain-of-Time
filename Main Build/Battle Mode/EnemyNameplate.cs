@@ -25,6 +25,7 @@ public partial class EnemyNameplate : Sprite3D
 		currentHP.Text = ""+cHP;
 	}
 
+/*
 	public void UpdateStatus(List<PMStatus> statuses){
 		if(statuses.Count > statusSprites.Count){
 			throw new NotImplementedException(); //TODO Custom Exception
@@ -41,4 +42,5 @@ public partial class EnemyNameplate : Sprite3D
 			statusSprites[i].Texture = statuses[i].GetEnemyTexture();
 		}
 	}
+*/
 }

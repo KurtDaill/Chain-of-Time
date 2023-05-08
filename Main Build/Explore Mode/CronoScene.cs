@@ -30,7 +30,7 @@ public partial class CronoScene : Node3D
 		foreach(Node3D child in childModules){
 			if(child != null) child.Visible = false;
 			if(child is Encounter){
-				((Encounter)child).enabled = false;
+				//((Encounter)child).enabled = false;
 			}
 			if(child is CutsceneDirector){
 				((CutsceneDirector)child).enabled = false;
@@ -48,7 +48,7 @@ public partial class CronoScene : Node3D
 		foreach(Node3D child in childModules){
 			child.Visible = true;
 			if(child is Encounter){
-				((Encounter)child).enabled = true;
+				//((Encounter)child).enabled = true;
 			}
 			if(child is CutsceneDirector){
 				((CutsceneDirector)child).enabled = true;

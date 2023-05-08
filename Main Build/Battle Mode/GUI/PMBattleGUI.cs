@@ -2,7 +2,8 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static BattleMenu;
+//using static BattleMenu;
+/*
 public partial class PMBattleGUI : Control //TODO Migrate a lot of this functionality to PlayerMenuSelection
 {
 
@@ -37,6 +38,7 @@ public partial class PMBattleGUI : Control //TODO Migrate a lot of this function
             this is due to the fact that the number of abilites we've already queued is always the index of the next character who hasn't
             specified what ability they want to use, or equals the length of playersInQuestion when we've gotten every characters action recorded
         */
+        /*
         var temp = currentMenu.HandleInput(input, playersInQuestion[abilitiesQueued.Count], caller);
         if(temp != null){ 
             playersInQuestion[abilitiesQueued.Count].UnselectMe(); //The previous character should exit their excited idle/readout highlight
@@ -139,3 +141,5 @@ public partial class PMBattleGUI : Control //TODO Migrate a lot of this function
         }
     }
 }
+
+*/

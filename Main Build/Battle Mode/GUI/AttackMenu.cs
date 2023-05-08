@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+/*
 public partial class AttackMenu : BattleMenu
 {
     public override void OnOpen(PMPlayerCharacter character, PMBattle caller)
@@ -25,3 +25,4 @@ public partial class AttackMenu : BattleMenu
         return null;
     }
 }
+*/

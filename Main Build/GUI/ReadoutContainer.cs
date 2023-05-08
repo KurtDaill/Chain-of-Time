@@ -1,9 +1,9 @@
 using Godot;
 using System;
-using static PMBattleUtilities;
+//using static PMBattleUtilities;
 public partial class ReadoutContainer : VBoxContainer
 {   
-    
+/*    
     // Declare member variables here. Examples:
     // private int a = 2;
     // private string b = "text";
@@ -44,4 +44,5 @@ public partial class ReadoutContainer : VBoxContainer
             else readouts.Remove(element);
         }
     }
+    */
 }

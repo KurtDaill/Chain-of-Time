@@ -1,20 +1,20 @@
 using Godot;
 using System;
-using static PMCharacterUtilities;
+//using static PMCharacterUtilities;
 
 public partial class StatusEffectParticles : Node3D
 {
 	[Export]
-	private BodyRegions spawnRegion = BodyRegions.Head;
+	//private BodyRegions spawnRegion = BodyRegions.Head;
 	AnimationPlayer animPlay;
 
 	//Unique Identifier used by the core status effect to find and modify this particle effect if needed
 	public override void _Ready(){
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
 	}
-	public BodyRegions GetSpawnRegion(){
-		return spawnRegion;
-	}
+	//public BodyRegions GetSpawnRegion(){
+	//	return spawnRegion;
+	//}
 
 	public void End(){
 		this.QueueFree();

@@ -51,7 +51,7 @@ public partial class CutsceneDirector : Node3D
 		}
 		if(postSceneEncounter != null){
 			postSceneEncounter.Visible = false;
-			postSceneEncounter.enabled = false;
+			//postSceneEncounter.enabled = false;
 		}
 		this.Visible = false;
 	}
@@ -165,9 +165,9 @@ public partial class CutsceneDirector : Node3D
 			temp.SetVisiblity(false);
 		}
 		if(postSceneEncounter != null && doesBattleBegin){
-			postSceneEncounter.enabled = true;
+			//postSceneEncounter.enabled = true;
 			postSceneEncounter.Visible = true;
-			postSceneEncounter.StartEncounter(sceneExplorePlayer);
+			//postSceneEncounter.StartEncounter(sceneExplorePlayer);
 		}else{	
 			GetNode<ExplorePlayer>("/root/Node3D/ExplorePlayer").SetPlayerControl(true);
 			GetNode<ExplorePlayer>("/root/Node3D/ExplorePlayer").Visible = true;

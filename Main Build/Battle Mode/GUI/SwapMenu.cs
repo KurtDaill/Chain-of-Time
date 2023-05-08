@@ -1,6 +1,7 @@
 using System;
 using Godot;
-using static PMBattleUtilities;
+//using static PMBattleUtilities;
+/*
 public partial class SwapMenu : BattleMenu{
     PMCharacter subject, rightTarget, leftTarget;
 
@@ -66,3 +67,4 @@ public partial class SwapMenu : BattleMenu{
         }
     }
 }
+*/

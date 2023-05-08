@@ -41,6 +41,7 @@ public partial class GameMaster : Node
         base._Process(delta);
     }
 
+/*
     public void SavePlayerParty(PMBattleRoster roster){
         var players = roster.GetPlayerCharacters();
         playerData = new PlayerCharacterData[players.Length];
@@ -48,7 +49,7 @@ public partial class GameMaster : Node
             playerData[i] = players[i].ExportData();
         }
     }
-
+*/
     public bool IsPartyDataOnFile(){
         return(playerData != Array.Empty<PlayerCharacterData>());
     }
@@ -57,17 +58,6 @@ public partial class GameMaster : Node
         return playerData;
     }
 
-    public void NextWave(PackedScene newBattle){
-        PMBattle old = GetNode<PMBattle>("/root/Battle");
-        SavePlayerParty(old.roster);
-        PMBattle battle = newBattle.Instantiate<PMBattle>();
-        battle.GetChild<PMBattleRoster>(0).LoadPlayerCharacters(playerData);
-        playerData = Array.Empty<PlayerCharacterData>();
-        GetTree().Root.RemoveChild(old);
-        GetTree().Root.AddChild(battle);
-        old.Free();
-        //GetTree().ChangeSceneToFile(nextBattle);
-    }
     public StoryState GetStoryState(){
         return state;
     }
