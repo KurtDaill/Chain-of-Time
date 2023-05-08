@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://4eguma0es2ue"]
+
+[ext_resource type="Texture2D" uid="uid://bd6xx8k22fsmp" path="res://GUI/Battle Menu Assets/Player Status Effect Posion.png" id="1_jymgx"]
+
+[node name="Posion Long Icon" type="TextureRect"]
+texture = ExtResource("1_jymgx")
+stretch_mode = 2

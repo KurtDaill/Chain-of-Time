@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://daujk4kpwqyo5"]
+
+[ext_resource type="Script" path="res://SceneConfig.cs" id="1_qjtvf"]
+[ext_resource type="PackedScene" uid="uid://dy5wjqinmlghd" path="res://Explore Mode/explore_player.tscn" id="2_43qd0"]
+[ext_resource type="Environment" uid="uid://clyvx48350vys" path="res://Test Scenes/Past Environment.tres" id="3_ijcoe"]
+[ext_resource type="PackedScene" uid="uid://h46luk0df2um" path="res://Explore Mode/SilverFollower.tscn" id="4_p2tck"]
+[ext_resource type="Script" path="res://Explore Mode/PromenadeMap.cs" id="6_1e38j"]
+[ext_resource type="Script" path="res://Explore Mode/Promenade.cs" id="7_pmtaq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0xb5p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t4bmx"]
+size = Vector3(18.16, 1, 8.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_potsg"]
+size = Vector3(14.16, 1, 8.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o4p00"]
+size = Vector3(14.4, 4.56, 8.64)
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("camera", "ePlayer")]
+script = ExtResource("1_qjtvf")
+camera = NodePath("ExplorePlayer/Camera3D")
+ePlayer = NodePath("ExplorePlayer")
+
+[node name="ExplorePlayer" parent="." node_paths=PackedStringArray("exploreCamera") instance=ExtResource("2_43qd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.29987, 0.516, -2.228)
+exploreCamera = NodePath("Camera3D")
+waypointRes = "res://Explore Mode/Waypoint.tscn"
+
+[node name="Camera3D" type="Camera3D" parent="ExplorePlayer"]
+transform = Transform3D(1, 0, 0, 0, 0.999048, 0.0436194, 0, -0.0436194, 0.999048, 0, 2.32, 6.2)
+
+[node name="Body Area" type="Area3D" parent="ExplorePlayer"]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplorePlayer/Body Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04, 0)
+shape = SubResource("CylinderShape3D_0xb5p")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68, 0, -1.16)
+size = Vector3(14.16, 1, 8.48)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4, 0, -1.16)
+size = Vector3(14.16, 1, 8.48)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68, 0, -1.16)
+shape = SubResource("BoxShape3D_t4bmx")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.36, 0, -1.16)
+shape = SubResource("BoxShape3D_potsg")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_ijcoe")
+
+[node name="Silver Follower" parent="." instance=ExtResource("4_p2tck")]
+
+[node name="Promenade Map" type="Node3D" parent="."]
+script = ExtResource("6_1e38j")
+
+[node name="Prom 1" type="Area3D" parent="Promenade Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.56, 0.48, 0)
+script = ExtResource("7_pmtaq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Promenade Map/Prom 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.76, 2.28, -1.2)
+shape = SubResource("BoxShape3D_o4p00")
+
+[node name="Prom 2" type="Area3D" parent="Promenade Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8, 0.48, 0)
+script = ExtResource("7_pmtaq")
+promenadeIndex = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Promenade Map/Prom 2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.76, 2.28, -1.2)
+shape = SubResource("BoxShape3D_o4p00")
+
+[connection signal="area_entered" from="ExplorePlayer/Body Area" to="ExplorePlayer" method="OnBodyAreaEntered"]
+
+[editable path="ExplorePlayer"]

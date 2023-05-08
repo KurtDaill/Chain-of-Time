@@ -1,0 +1,17 @@
+~Start
+	[ANIM(DoorKnockOne)]
+	Sejanus: “Open the gate!”
+	Sejanus: “I am Ser Sejanus, Castellan of the Black Keep. In the name of the Duchess, Open this infernal door!”
+	[ANIM(DoorKnockOne)]
+	Sejanus: “The enemies of the Goddess approach! You will open this door for your commander!”
+	Sejanus: "..."
+	Sejanus: "...damn it all"
+	[ANIM(Kneel)]
+	Sejanus: “To her servants, all doors are open."
+	[SET(CatoKnowsPassword, TRUE)]
+	Sejanus: "To her warriors, all battles are won.”
+	[ANIM(DoorOpens)]
+	[ANIM(CameraTruck)]
+	Cato: "I hope that still works..."[END]
+
+	

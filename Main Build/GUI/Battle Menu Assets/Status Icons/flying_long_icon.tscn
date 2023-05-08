@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2rb72j0puygl"]
+
+[ext_resource type="Texture2D" uid="uid://cnw0gdn2vskaj" path="res://GUI/Battle Menu Assets/Player Status Effect Flying.png" id="1_phc6n"]
+
+[node name="Flying Long Icon" type="TextureRect"]
+texture = ExtResource("1_phc6n")
+stretch_mode = 2

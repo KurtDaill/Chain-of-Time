@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkgcs6t5l2gnr"]
+
+[ext_resource type="PackedScene" uid="uid://cg6ftftqprbhm" path="res://Art/3D/Baths.dae" id="1_1moqu"]
+
+[node name="Baths" instance=ExtResource("1_1moqu")]

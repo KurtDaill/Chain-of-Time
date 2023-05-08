@@ -1,0 +1,5 @@
+~Start
+	Cato: "Hmmm..."
+	Cato: "This one's broken, this one's rotten, this one..."
+	[SET(GotLever, TRUE)]
+	Cato: "Good! Alright, lets get this thing setup."[END]

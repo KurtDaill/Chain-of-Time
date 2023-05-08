@@ -1,4 +1,4 @@
-tool
+@tool
 extends EditorPlugin
 
 # Popup Menu
@@ -17,8 +17,8 @@ func _enter_tree():
     menu_popup.hide_on_state_item_selection = false
     menu_popup.hide_on_checkable_item_selection = false
     menu_popup.add_check_item("Wait for debugger", 1)
-    menu_popup.connect("id_pressed", self, "debugger_menu_id_pressed")
-    menu_button.connect("about_to_show", self, "debugger_menu_about_to_show")
+    menu_popup.connect("id_pressed",Callable(self,"debugger_menu_id_pressed"))
+    menu_button.connect("about_to_popup",Callable(self,"debugger_menu_about_to_show"))
     
     add_control_to_container(CONTAINER_TOOLBAR, menu_button)
     

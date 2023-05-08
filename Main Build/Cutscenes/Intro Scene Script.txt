@@ -1,0 +1,35 @@
+~Start
+	Silver: "Ok...we just bust in these haunted ruins, clear out the living dead..."
+	Silver: "you get to save the village, and I get paid in appropiated ancient swag."
+	Silver: "Sounds like a plan."
+	Cato: "..."
+	Silver: “So...uh...you gonna be ok pal?”
+	{OPT} "No." GOTO: Negative
+	{OPT} "Of Course Not." GOTO: Negative
+	{OPT} "What are you? Crazy?" GOTO: Negative
+	{OPT} "...yes?" GOTO: Positive
+
+~Negative
+	Silver: “Alright, look. This was your idea.”
+	Silver: "There *are* less dumb ways for me to make the scatch to get off this planet,"
+	Silver: "But somebody had a 'save my village from the undead in that castle' problem."
+	Cato: "I...uh...that's fair"
+	Silver: "*sigh*" GOTO: Door?
+
+~Positive
+	Silver: ”...”
+	Silver: “I appreciate the optimism.” GOTO: Door?
+
+~Door?
+	Silver: "So we think this thing is a door?"
+	//Add a "Cato Glances to the Side" animation
+	[ANIM(CatoLooksRight)]
+	Cato: "Looks like it...uh...magical...there's probably a command word."
+	Silver: "Like a password?"
+	[ANIM(CatoLooksForward)]
+	Cato: "A password no ones known since this place was destroyed 20 years ago"
+	Silver: "Wanna see if that time magic you got actually works?"
+	Cato: "...let me see..."
+	[ANIM(CatoLooksAround)]
+	Cato: "I see something, let me try it..." [END]
+

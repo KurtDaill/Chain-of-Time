@@ -1,0 +1,406 @@
+[gd_scene load_steps=23 format=3 uid="uid://cqomwrk3cs03j"]
+
+[ext_resource type="Script" path="res://Battle Mode/PMStatus.cs" id="1_16hqp"]
+[ext_resource type="Texture2D" uid="uid://c03u77cbparmo" path="res://Art/Empowered Particle.png" id="2_4cb81"]
+[ext_resource type="Script" path="res://Battle Mode/StatusEffectParticles.cs" id="2_8wks2"]
+[ext_resource type="Script" path="res://Battle Mode/GUI/StatusNotification.cs" id="4_ipe4j"]
+[ext_resource type="FontFile" uid="uid://bgxlc0fv83uq3" path="res://Fonts/karma future.ttf" id="5_bva6x"]
+
+[sub_resource type="Animation" id="Animation_7kufj"]
+resource_name = "Apply"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Upkeep", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 1, 0.917647, 1), Color(0.65098, 1, 0.972549, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Empowered Particles/OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 2.0, 0.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ParticlesPlayUpkeep"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4buxl"]
+resource_name = "Expire"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"ParticlesPlayExpire"
+}, {
+"args": [],
+"method": &"Finish"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.782623, 1, 0.982903, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p12yy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Empowered Particles/OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_vxixq"]
+resource_name = "Upkeep"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.65098, 1, 0.972549, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jrlhj"]
+_data = {
+"Apply": SubResource("Animation_7kufj"),
+"Expire": SubResource("Animation_4buxl"),
+"RESET": SubResource("Animation_p12yy"),
+"Upkeep": SubResource("Animation_vxixq")
+}
+
+[sub_resource type="Gradient" id="Gradient_4ceok"]
+offsets = PackedFloat32Array(0, 0.089404, 0.831126, 0.996689)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sfdg2"]
+gradient = SubResource("Gradient_4ceok")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qob1l"]
+emission_shape = 3
+emission_box_extents = Vector3(0.75, 0, 0.75)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, -1, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.4
+color_ramp = SubResource("GradientTexture1D_sfdg2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shapt"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_4cb81")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_ptd7r"]
+material = SubResource("StandardMaterial3D_shapt")
+size = Vector2(0.25, 0.25)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_21llg"]
+emission_shape = 3
+emission_box_extents = Vector3(0.75, 0, 0.75)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, -1, 0)
+initial_velocity_min = 1.2
+initial_velocity_max = 1.4
+color_ramp = SubResource("GradientTexture1D_sfdg2")
+
+[sub_resource type="Animation" id="Animation_0wrw5"]
+resource_name = "Expire"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.6, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Constant:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_yl0xi"]
+resource_name = "Start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 2.0, 0.6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Constant:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mguto"]
+resource_name = "Upkeep"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.6, 0.1, 0.6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pw1oy"]
+_data = {
+"Expire": SubResource("Animation_0wrw5"),
+"Start": SubResource("Animation_yl0xi"),
+"Upkeep": SubResource("Animation_mguto")
+}
+
+[sub_resource type="Animation" id="Animation_yvi2q"]
+resource_name = "Notify"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Empowered Label:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Empowered Label:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0, 0.952939, 1.6, -0.1, 0.00810182, 0.3, 0.00810182, 1.4, -0.2, 0.000445366, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1.4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Empowered Label:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Empowered Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.9, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.4704, 0.98, 0.946027, 0.392157), Color(0.611765, 1, 0.972549, 1), Color(0.164706, 0.788235, 0.74902, 1), Color(0.164706, 0.788235, 0.74902, 1), Color(0.168627, 0.8, 0.756863, 0.580392), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Empowered Label:outline_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.392157), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jphi1"]
+_data = {
+"Notify": SubResource("Animation_yvi2q")
+}
+
+[node name="Status Effect - Empowered" type="Node3D" node_paths=PackedStringArray("notification", "particles")]
+script = ExtResource("1_16hqp")
+duration = 1
+magnitude = 1
+statusType = 9
+longIconPath = "res://GUI/Battle Menu Assets/Status Icons/empowered_long_icon.tscn"
+shortIconPath = "res://GUI/Battle Menu Assets/Status Icons/empowered_short_icon.tscn"
+enemyTexturePath = "res://GUI/Battle Menu Assets/Player Status Effect Empowered Short.png"
+notification = NodePath("Notification")
+particles = NodePath("Empowered Particles")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Apply"
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_jrlhj")
+}
+
+[node name="Empowered Particles" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
+script = ExtResource("2_8wks2")
+spawnRegion = 1
+
+[node name="Constant" type="GPUParticles3D" parent="Empowered Particles"]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_qob1l")
+draw_pass_1 = SubResource("QuadMesh_ptd7r")
+
+[node name="Explosion" type="GPUParticles3D" parent="Empowered Particles"]
+emitting = false
+amount = 16
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.75
+process_material = SubResource("ParticleProcessMaterial_21llg")
+draw_pass_1 = SubResource("QuadMesh_ptd7r")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Empowered Particles"]
+light_color = Color(0, 1, 0.917647, 1)
+light_energy = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Empowered Particles"]
+autoplay = "Start"
+libraries = {
+"": SubResource("AnimationLibrary_pw1oy")
+}
+
+[node name="Notification" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28, 0.56, 0)
+script = ExtResource("4_ipe4j")
+
+[node name="Empowered Label" type="Label3D" parent="Notification"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+texture_filter = 0
+modulate = Color(1, 1, 1, 0)
+outline_modulate = Color(0, 0, 0, 0)
+text = "Empowered"
+font = ExtResource("5_bva6x")
+font_size = 128
+outline_size = 32
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Notification"]
+libraries = {
+"": SubResource("AnimationLibrary_jphi1")
+}

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuo2kfswttgcu"]
+
+[ext_resource type="Texture2D" uid="uid://ciu6tve4i0276" path="res://GUI/Battle Menu Assets/Player Status Effect Empowered.png" id="1_eo8jy"]
+
+[node name="Empowered Long Icon" type="TextureRect"]
+offset_right = 201.0
+offset_bottom = 45.0
+texture = ExtResource("1_eo8jy")
+stretch_mode = 2

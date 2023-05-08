@@ -1,0 +1,11 @@
+[gd_resource type="AnimatedTexture" load_steps=3 format=3 uid="uid://k1c0luw6jqjc"]
+
+[ext_resource type="Texture2D" uid="uid://bqnlqplsn3uih" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuSwapOn.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://brxagxaumrus7" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuSwapOff.png" id="2"]
+
+[resource]
+frames = 2
+pause = true
+frame_0/texture = ExtResource("1")
+frame_1/texture = ExtResource("2")
+frame_1/duration = 1.0

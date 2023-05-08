@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbk2k0xyjw04e"]
+
+[ext_resource type="Texture2D" uid="uid://c4x4yd3h7rms1" path="res://GUI/Battle Menu Assets/Player Status Effect Posion Short.png" id="1_0t07e"]
+
+[node name="Poison Short Icon" type="TextureRect"]
+texture = ExtResource("1_0t07e")

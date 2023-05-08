@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cr0eqi86x2ebd"
+path="res://.godot/imported/Night Ambience.wav-1ef2e1f0d5c6e875adab0274c9c4467f.sample"
+
+[deps]
+
+source_file="res://Audio/Night Ambience.wav"
+dest_files=["res://.godot/imported/Night Ambience.wav-1ef2e1f0d5c6e875adab0274c9c4467f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

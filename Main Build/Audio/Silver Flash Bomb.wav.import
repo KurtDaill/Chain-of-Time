@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfbhpxcq4cuyi"
+path="res://.godot/imported/Silver Flash Bomb.wav-e3a500e51c58ced9ff781b27e732d0aa.sample"
+
+[deps]
+
+source_file="res://Audio/Silver Flash Bomb.wav"
+dest_files=["res://.godot/imported/Silver Flash Bomb.wav-e3a500e51c58ced9ff781b27e732d0aa.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,276 @@
+[gd_scene load_steps=19 format=3 uid="uid://c86nvd5i2frn"]
+
+[ext_resource type="Script" path="res://Cutscenes/CutsceneDirector.cs" id="1_hohda"]
+[ext_resource type="Texture2D" uid="uid://beln8ffrnhd44" path="res://Art/Kell Cato Master Sprite-Sheet.png" id="1_sx57d"]
+[ext_resource type="Script" path="res://DialogueBillboard.cs" id="3_lb1a5"]
+[ext_resource type="Texture2D" uid="uid://bng3ra0f1uwx4" path="res://Art/Silver Adventure Sprite Master-Sheet.png" id="4_moptm"]
+[ext_resource type="PackedScene" uid="uid://dgqp0u2i72pyr" path="res://Text Box Containers.tscn" id="5_nkr6d"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0iifg"]
+viewport_path = NodePath("TextBox Containers/Response Container/Response VP")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oh2x5"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_0iifg")
+
+[sub_resource type="QuadMesh" id="QuadMesh_3isku"]
+material = SubResource("StandardMaterial3D_oh2x5")
+size = Vector2(6, 3)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cx2vd"]
+viewport_path = NodePath("Character Ballon/SubViewportContainer/Ballon VP")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhx3f"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_cx2vd")
+
+[sub_resource type="QuadMesh" id="QuadMesh_bg67a"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_jhx3f")
+size = Vector2(6, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8icqx"]
+viewport_path = NodePath("TextBox Containers/LineContainer/Dialogue VP")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5gc4g"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_8icqx")
+texture_filter = 1
+grow = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1qhu8"]
+size = Vector2(10, 5)
+
+[sub_resource type="Animation" id="Animation_aytem"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Silver/Label Plane:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2.28, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Silver/Label Plane:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(3.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Silver/Label Plane:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Silver/Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "position_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Silver")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 1.84, 0, 0)
+
+[sub_resource type="Animation" id="Animation_a2ewm"]
+resource_name = "SilverWalksBack"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Silver/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [60, 61, 62, 63, 64, 65, 0]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Silver")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.44, 0, 0, 1.2, 1, 1.84, 0, 0)
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Silver/Label Plane:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3.04, -0.25, 0, 0.25, 0, 2.28, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Silver/Label Plane:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3.4, -0.25, 0, 0.25, 0, 3.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Silver/Label Plane:position:z")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.2)
+}
+
+[sub_resource type="Animation" id="Animation_2157b"]
+resource_name = "SilverWalksToCato"
+length = 1.2
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Silver")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1.84, 0, 0, 1.2, 1, 0.44, 0, 0)
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Silver/Label Plane:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2.28, -0.25, 0, 0.4, 0.0306759, 3.04, -0.3, -0.378264, 0.25, 0),
+"times": PackedFloat32Array(0, 1.2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Silver/Label Plane:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3.4, -0.25, 0, 0.25, 0, 3.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Silver/Label Plane:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.2)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Silver/Sprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40, 41, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wl61j"]
+_data = {
+"RESET": SubResource("Animation_aytem"),
+"SilverWalksBack": SubResource("Animation_a2ewm"),
+"SilverWalksToCato": SubResource("Animation_2157b")
+}
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("dLabel", "resContainer")]
+script = ExtResource("1_hohda")
+filepath = "res://Example Script.txt"
+dLabel = NodePath("TextBox Containers/LineContainer/Dialogue VP/Dialogue Label")
+dialogueNextAction = "ui_accept"
+resContainer = NodePath("TextBox Containers/Response VPContainer/Response VP/Response Container")
+
+[node name="Cato" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, 0)
+
+[node name="Sprite" type="Sprite3D" parent="Cato"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+pixel_size = 0.008
+texture = ExtResource("1_sx57d")
+hframes = 10
+vframes = 14
+
+[node name="Response Plane" type="MeshInstance3D" parent="Cato" node_paths=PackedStringArray("targetViewPort")]
+transform = Transform3D(0.896575, 0, 0.0716036, 0, 0.9, 0, -0.0784401, 0, 0.818433, -0.84, 2.96, 0.2)
+mesh = SubResource("QuadMesh_3isku")
+script = ExtResource("3_lb1a5")
+targetViewPort = NodePath("../../TextBox Containers/Response VPContainer/Response VP")
+
+[node name="Silver" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84, 0, 0)
+
+[node name="Sprite" type="Sprite3D" parent="Silver"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.28, 0)
+flip_h = true
+pixel_size = 0.008
+texture = ExtResource("4_moptm")
+hframes = 12
+vframes = 6
+
+[node name="Label Plane" type="MeshInstance3D" parent="Silver" node_paths=PackedStringArray("targetViewPort")]
+transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 2.28, 3.4, 0)
+mesh = SubResource("QuadMesh_bg67a")
+surface_material_override/0 = SubResource("StandardMaterial3D_5gc4g")
+script = ExtResource("3_lb1a5")
+targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_1qhu8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wl61j")
+}
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.28, 5.96)
+
+[node name="TextBox Containers" parent="." instance=ExtResource("5_nkr6d")]

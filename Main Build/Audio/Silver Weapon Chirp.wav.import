@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cwyr1g4o23pa"
+path="res://.godot/imported/Silver Weapon Chirp.wav-80f97d71de1741b7156328ffcba76b64.sample"
+
+[deps]
+
+source_file="res://Audio/Silver Weapon Chirp.wav"
+dest_files=["res://.godot/imported/Silver Weapon Chirp.wav-80f97d71de1741b7156328ffcba76b64.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

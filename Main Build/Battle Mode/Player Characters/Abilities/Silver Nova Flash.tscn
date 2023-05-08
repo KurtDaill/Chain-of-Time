@@ -1,0 +1,594 @@
+[gd_scene load_steps=19 format=3 uid="uid://bgsmiqyktjs6c"]
+
+[ext_resource type="Script" path="res://Battle Mode/PMPlayerAbility.cs" id="1_3r5mi"]
+[ext_resource type="Script" path="res://Battle Mode/AbilityEventStatusEffect.cs" id="2_ow57k"]
+[ext_resource type="Texture2D" uid="uid://dii1wqi7vjvxk" path="res://Art/Silver Flash Bomb-Sheet.png" id="3_aleck"]
+[ext_resource type="Texture2D" uid="uid://dcp4kq3wcho1n" path="res://GUI/Battle Ability GUI Assets/Silver Blaster Crosshair Box-Sheet.png" id="4_5hd03"]
+[ext_resource type="Texture2D" uid="uid://k8a8d1neh1ow" path="res://GUI/Battle Ability GUI Assets/Silver Blaster Crosshair-Sheet.png" id="5_e7p6l"]
+[ext_resource type="AudioStream" uid="uid://vxbxk5tupiud" path="res://Audio/Silver Nova Flash.wav" id="6_pxx5k"]
+
+[sub_resource type="Animation" id="Animation_echmn"]
+resource_name = "Fail"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"FinishSequence"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crossshair:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target Box:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Thrown Bomb:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_xco4w"]
+resource_name = "Fire"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Target Box:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crossshair:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Crossshair:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Target Box:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OmniLight3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("OmniLight3D:omni_attenuation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1.77962, -0.25, 0, 0.213587, -1.89418, 9.78927e-05, -0.1, 0.52837, 0.25, 0, 11.1701, -0.1, -1.95678, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.4)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [83, 84, 85, 86]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.3, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0],
+"method": &"ExecuteEvent"
+}, {
+"args": [],
+"method": &"FinishSequence"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Thrown Bomb:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.00569564),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AudioStreamPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_i4vb1"]
+resource_name = "RESET"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand Bomb:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Thrown Bomb:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target Box:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Crossshair:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OmniLight3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hxqa2"]
+resource_name = "Throw"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.7, 0.8, 0.9, 0.95, 1, 1.05, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [72, 73, 74, 75, 76, 77, 80, 81, 82]
+}
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand Bomb")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0.258819, 0.965926, 0.6, 1, 0, 0, -0.258819, 0.965926)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hand Bomb:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Thrown Bomb:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.96, -0.25, 0, 0.1, 1.89427, 6.96, -0.2, -0.316896, 0.1, 0.196331, 7.4, -0.2, -0.00215054, 0, 0.148798, 8.08, -0.2, 0.0122166, 0.25, 0),
+"times": PackedFloat32Array(0.6, 1.2, 1.45, 1.95)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Thrown Bomb:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.64, -0.25, 0, 0, 1.26329, 3, -0.205458, 2.48079, 0.1, -1.22187, -1.56, -0.00139296, 1.16886, 0.0224563, 0.30845, -0.994936, -0.0775437, 0.0103492, 0.122456, -0.120759, -1.56, -0.0775436, 0.263165, 0.222456, 0.0065515),
+"times": PackedFloat32Array(0.6, 1.2, 1.45, 1.75, 1.95)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Thrown Bomb:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.6, 1.2, 1.45, 1.75, 1.95)
+}
+tracks/6/type = "rotation_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Thrown Bomb")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0.6, 1, 0, 0, -0.258819, 0.965926)
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Thrown Bomb:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Hand Bomb:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector3(-1.68, -0.28, 0), Vector3(0.96, 0.64, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Target Box:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Crossshair:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath(".")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1, 1.1, 1.25, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": ["com_atk", "", 0, ""],
+"method": &"StartTimingAttack"
+}, {
+"args": [],
+"method": &"ActivateTimingAttack"
+}, {
+"args": [0, "Fire"],
+"method": &"StartTimingAttackPerfect"
+}, {
+"args": [],
+"method": &"StopTimingAttackPerfect"
+}, {
+"args": [0, "Fail"],
+"method": &"TimingAttackTimeOut"
+}]
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Crossshair:position:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(5.32, -0.25, 0, 0.25, 0, 5.32, -0.25, 0, 0.1, 0.595359, 6.96, -0.2, 0.496204, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8, 1.1)
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Crossshair:position:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1.44, -0.25, 0, 0.25, 0, 1.44, -0.25, 0, 0.1, 0.45339, 2.84, -0.2, 0.333382, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8, 1.1)
+}
+tracks/14/type = "bezier"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Crossshair:position:z")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8, 1.1)
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Target Box:frame")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 1.1, 1.15, 1.2, 1.3, 1.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Crossshair:frame")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 1, 1.05, 1.25, 1.3, 1.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/17/type = "method"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("..")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0.00569564),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"StopAnimation"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uya1l"]
+_data = {
+"Fail": SubResource("Animation_echmn"),
+"Fire": SubResource("Animation_xco4w"),
+"RESET": SubResource("Animation_i4vb1"),
+"Throw": SubResource("Animation_hxqa2")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr28b"]
+atlas = ExtResource("3_aleck")
+region = Rect2(0, 0, 30, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7u34p"]
+atlas = ExtResource("3_aleck")
+region = Rect2(30, 0, 30, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gckia"]
+atlas = ExtResource("3_aleck")
+region = Rect2(60, 0, 30, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8xuh"]
+atlas = ExtResource("3_aleck")
+region = Rect2(90, 0, 30, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yqff"]
+atlas = ExtResource("3_aleck")
+region = Rect2(120, 0, 30, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhl2n"]
+atlas = ExtResource("3_aleck")
+region = Rect2(150, 0, 30, 45)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q1r4w"]
+animations = [{
+"frames": [SubResource("AtlasTexture_lr28b"), SubResource("AtlasTexture_7u34p"), SubResource("AtlasTexture_gckia"), SubResource("AtlasTexture_y8xuh"), SubResource("AtlasTexture_2yqff"), SubResource("AtlasTexture_jhl2n")],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Nova Flash" type="Node3D"]
+script = ExtResource("1_3r5mi")
+rulesText = "[textSize]small[center][Strikes First]
+On Critical Hit: Stun all Enemies for 1 Turn"
+abilityType = "Tech"
+spCost = 3
+name = "Nova Flash"
+firstAnimation = "Throw"
+eventIndex = [NodePath("Stun All")]
+targetingRule = 18
+canTargetFliers = true
+alignment = 2
+usesEmpowered = false
+consumesOvercharged = false
+strikesFirst = true
+
+[node name="Stun All" type="Node" parent="."]
+script = ExtResource("2_ow57k")
+coreStatusEffect = "res://Battle Mode/Status Effects/Status Effect - Stun.tscn"
+setCustomDuration = 1
+alignment = 2
+targeting = 3
+canHitFlyingCharacters = true
+eventType = 2
+defenseFactor = -1
+eventValue = -1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uya1l")
+}
+
+[node name="Hand Bomb" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.866026, 0.5, 0, -0.5, 0.866026, 0, 0, 0, 1, 0.96, 0.64, 0)
+visible = false
+frames = SubResource("SpriteFrames_q1r4w")
+playing = true
+
+[node name="Thrown Bomb" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 6.96, 3, 0)
+visible = false
+frames = SubResource("SpriteFrames_q1r4w")
+playing = true
+
+[node name="Target Box" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.96, 2.84, 0.04)
+modulate = Color(1, 1, 1, 0)
+no_depth_test = true
+texture = ExtResource("4_5hd03")
+hframes = 6
+frame = 4
+
+[node name="Crossshair" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.96, 2.84, 0)
+modulate = Color(1, 1, 1, 0)
+no_depth_test = true
+texture = ExtResource("5_e7p6l")
+hframes = 6
+frame = 3
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(-0.5, -0.866026, 0, 0.866026, -0.5, 0, 0, 0, 1, 6.92, 3, -0.28)
+visible = false
+light_energy = 1000.0
+light_indirect_energy = 100.0
+light_size = 2.0
+light_specular = 10.0
+shadow_enabled = true
+shadow_bias = 3.526
+shadow_transmittance_bias = 0.0
+distance_fade_begin = 30.0
+omni_range = 100.0
+omni_attenuation = 11.1701
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_pxx5k")
+volume_db = -5.0
+pitch_scale = 0.9
