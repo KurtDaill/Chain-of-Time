@@ -56,8 +56,8 @@ public partial class CutsceneDirector : Node3D
 		this.Visible = false;
 	}
 
-    public override void _Process(double delta)
-    {
+	public override void _Process(double delta)
+	{
 		if(waiting || !enabled){
 			return;
 		}else if(Input.IsActionJustPressed(dialogueNextAction)){
@@ -76,7 +76,7 @@ public partial class CutsceneDirector : Node3D
 				DisplayLine(currentLine);
 			}
 		}
-    }
+	}
 
 	public void MoveToNewExchange(int newIndex){
 		if(play.TryGetExchange(newIndex, out Exchange newExchange)){

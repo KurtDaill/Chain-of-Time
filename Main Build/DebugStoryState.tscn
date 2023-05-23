@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://biyhli8px82pu"]
-
-[ext_resource type="Script" path="res://StoryState.cs" id="1_02d5f"]
-
-[node name="Node" type="Node"]
-script = ExtResource("1_02d5f")

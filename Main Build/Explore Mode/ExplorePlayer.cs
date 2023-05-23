@@ -63,14 +63,14 @@ public partial class ExplorePlayer : CharacterBody3D
 
 		// Add the gravity.
 		if (!IsOnFloor())
-			velocity.y -= gravity * (float)delta;
+			velocity.Y -= gravity * (float)delta;
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		direction = (Transform.basis * new Vector3(inputDir.x, 0, inputDir.y)).Normalized();
+		direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
 		direction *= Speed;
-		velocity = new Vector3(direction.x, velocity.y, direction.z);
+		velocity = new Vector3(direction.X, velocity.Y, direction.Z);
 		Velocity = velocity;
 		MoveAndSlide();
 		if(!timeEnvironment.IsInPast()) ManageFollowerWaypoints();
@@ -79,14 +79,14 @@ public partial class ExplorePlayer : CharacterBody3D
     public override void _Process(double delta)
     {
         base._Process(delta);
-		if(direction.x != 0){
-			if(direction.x > 0){
+		if(direction.X != 0){
+			if(direction.X > 0){
 				animPlay.Play("Walk Right");
 			}else{
 				animPlay.Play("Walk Left");
 			}
-		}else if(direction.z != 0){
-			if(direction.z > 0){
+		}else if(direction.Z != 0){
+			if(direction.Z > 0){
 				animPlay.Play("Walk Down");
 			}else{
 				animPlay.Play("Walk Up");

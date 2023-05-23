@@ -1,4 +1,4 @@
-[gd_scene load_steps=287 format=3 uid="uid://di0uvfcwuijik"]
+[gd_scene load_steps=285 format=3 uid="uid://di0uvfcwuijik"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_nwe6j"]
 [ext_resource type="Script" path="res://ChronoEnviro.cs" id="2_x2kdt"]
@@ -50,8 +50,6 @@
 [ext_resource type="PackedScene" uid="uid://h46luk0df2um" path="res://Explore Mode/SilverFollower.tscn" id="46_8joln"]
 [ext_resource type="Texture2D" uid="uid://caeitxxodib2g" path="res://Art/Skeleton Animations Master-Sheet.png" id="46_kxgug"]
 [ext_resource type="Script" path="res://Explore Mode/Promenade.cs" id="47_6fc35"]
-[ext_resource type="Script" path="res://Battle Mode/PMBattle.cs" id="47_e5vrl"]
-[ext_resource type="Script" path="res://Battle Mode/PMBattleRoster.cs" id="48_4vnos"]
 [ext_resource type="AudioStream" uid="uid://mf37gwjc304a" path="res://Audio/mus_dungeon_01.ogg" id="48_yandm"]
 [ext_resource type="PackedScene" uid="uid://bqb21t5xmngp7" path="res://Battle Mode/Player Characters/Cato.tscn" id="49_4dk7r"]
 [ext_resource type="Script" path="res://Explore Mode/LevelTransition.cs" id="49_7mxbn"]
@@ -9317,49 +9315,47 @@ size = Vector3(4.8, 4.08, 7.12)
 [sub_resource type="BoxShape3D" id="BoxShape3D_umn4m"]
 size = Vector3(1, 3.6, 6)
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("camera", "ePlayer", "bgMusic")]
+[node name="Node3D" type="Node3D"]
 script = ExtResource("1_nwe6j")
 startCustscene = NodePath("Chrono-Enviro/Present/Entrance Cutscene")
 startBattle = NodePath("")
-camera = NodePath("ExplorePlayer/Explore Camera")
-ePlayer = NodePath("ExplorePlayer")
 beginIn = 1
-bgMusic = NodePath("BG Music")
 
-[node name="Chrono-Enviro" type="Node3D" parent="." node_paths=PackedStringArray("realEnvironment", "presentCronoScene", "TimeTravelCato", "subtractSphere", "visibleSphere", "pastSun", "presentSun")]
+[node name="Chrono-Enviro" type="Node3D" parent="."]
 script = ExtResource("2_x2kdt")
-presentEnvironmentRes = "res://Test Scenes/PresentEnvironmentChallengeRoom.tres"
-pastEnvironmentRes = "res://Test Scenes/PastEnvironmentChallengeRoom.tres"
-realEnvironment = NodePath("WorldEnvironment")
-presentCronoScene = NodePath("Present")
-TimeTravelCato = NodePath("Time Travel Cato")
-subtractSphere = NodePath("")
-visibleSphere = NodePath("")
-pastSun = NodePath("WorldEnvironment/Past Sun")
-presentSun = NodePath("WorldEnvironment/Present Moon")
-presentAnimationIndex = 13
-pastAnimationIndex = 14
+presentEnvironmentRes = null
+pastEnvironmentRes = null
+realEnvironment = null
+presentCronoScene = null
+environmentTrackIndex = null
+sunTrackIndex = null
+TimeTravelCato = null
+subtractSphere = null
+visibleSphere = null
+pastSun = null
+presentSun = null
+presentAnimationIndex = null
+pastAnimationIndex = null
 
-[node name="Fragment One" parent="Chrono-Enviro" node_paths=PackedStringArray("timeEnvironment", "targetCronoScene", "postTravelCustcene", "targetSun") instance=ExtResource("3_xjs2p")]
+[node name="Fragment One" parent="Chrono-Enviro" instance=ExtResource("3_xjs2p")]
 visible = false
-timeEnvironment = NodePath("..")
-targetCronoScene = NodePath("../20 Years")
+timeEnvironment = null
+targetCronoScene = null
 targetEnvironmentRes = "res://Test Scenes/PastEnvironmentChallengeRoom.tres"
-postTravelCustcene = NodePath("../20 Years/Bridge Cutscene")
-targetSun = NodePath("../WorldEnvironment/Past Sun")
+postTravelCustcene = null
+targetSun = null
 
-[node name="ReturnFragment" parent="Chrono-Enviro" node_paths=PackedStringArray("timeEnvironment", "postTravelCustcene") instance=ExtResource("4_o5aok")]
+[node name="ReturnFragment" parent="Chrono-Enviro" instance=ExtResource("4_o5aok")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.08, -0.92)
 visible = false
-timeEnvironment = NodePath("..")
-postTravelCustcene = NodePath("../Present/Mechanic Cutscene")
 
-[node name="Fragment Two" parent="Chrono-Enviro" node_paths=PackedStringArray("timeEnvironment", "targetCronoScene", "targetSun") instance=ExtResource("3_xjs2p")]
+[node name="Fragment Two" parent="Chrono-Enviro" instance=ExtResource("3_xjs2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.52, 2.08, -2.36)
-timeEnvironment = NodePath("..")
-targetCronoScene = NodePath("../20 Years")
+timeEnvironment = null
+targetCronoScene = null
 targetEnvironmentRes = "res://Test Scenes/PastEnvironmentChallengeRoom.tres"
-targetSun = NodePath("../WorldEnvironment/Past Sun")
+postTravelCustcene = null
+targetSun = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro"]
 root_node = NodePath("../..")
@@ -9589,16 +9585,12 @@ visible = false
 script = ExtResource("9_ommr2")
 childModulePath = [NodePath("Bridge Cutscene"), NodePath("TimeSensitiveCollider"), NodePath("Interaction Point Storage Room"), NodePath("Storage Room Cutscene")]
 
-[node name="Bridge Cutscene" type="Node3D" parent="Chrono-Enviro/20 Years" node_paths=PackedStringArray("dLabel", "resContainer", "sceneExplorePlayer", "cutsceneCamera")]
+[node name="Bridge Cutscene" type="Node3D" parent="Chrono-Enviro/20 Years"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 2.6, -12.16)
 script = ExtResource("10_u3cgx")
 filepath = "res://Cutscenes/Dialogue Files/PastBridgeScene.txt"
-dLabel = NodePath("TextBox Containers/LineContainer/Dialogue VP/Dialogue Label")
 dialogueNextAction = "com_atk"
-resContainer = NodePath("TextBox Containers/Response VPContainer/Response VP/Response Container")
-sceneExplorePlayer = NodePath("../../../ExplorePlayer")
 initAnimation = "Start"
-cutsceneCamera = NodePath("Camera3D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/20 Years/Bridge Cutscene"]
 libraries = {
@@ -9621,21 +9613,19 @@ handle_input_locally = false
 size = Vector2i(1200, 600)
 render_target_update_mode = 4
 
-[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/Response VPContainer/Response VP" node_paths=PackedStringArray("director")]
+[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/Response VPContainer/Response VP"]
 layout_direction = 2
 offset_right = 1200.0
 offset_bottom = 600.0
 scale = Vector2(1e-05, 1)
 theme = ExtResource("11_5xxto")
 script = ExtResource("12_shdv1")
-director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
@@ -9656,7 +9646,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
@@ -9676,7 +9665,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
@@ -9698,7 +9686,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
-fit_content_height = true
 scroll_active = false
 shortcut_keys_enabled = false
 
@@ -9730,7 +9717,7 @@ handle_input_locally = false
 size = Vector2i(1200, 400)
 render_target_update_mode = 4
 
-[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/LineContainer/Dialogue VP" node_paths=PackedStringArray("speakerLabel", "voice")]
+[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/LineContainer/Dialogue VP"]
 clip_contents = false
 offset_left = 20.0
 offset_top = 32.0
@@ -9741,9 +9728,7 @@ theme_override_font_sizes/normal_font_size = 60
 text = "Test text, motherfucker. What's good?
 It's gonna just keep going and going to show you how long it gets!"
 script = ExtResource("13_6ol2s")
-speakerLabel = NodePath("Name Plate")
 charactersPerSecond = 50.0
-voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Bridge Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
@@ -9797,18 +9782,16 @@ hframes = 10
 vframes = 4
 frame = 4
 
-[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Bridge Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Bridge Cutscene/Cato Actor"]
 transform = Transform3D(0.896575, 0, 0.0716036, 0, 0.9, 0, -0.0784401, 0, 0.818433, -1.24, 2.96, 0.2)
 mesh = SubResource("QuadMesh_v3r1c")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/Response VPContainer/Response VP")
 
-[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Bridge Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Bridge Cutscene/Cato Actor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16, 3.28, 0)
 mesh = SubResource("QuadMesh_3gu0j")
 surface_material_override/0 = SubResource("StandardMaterial3D_f3yuv")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
 
 [node name="Sprite3D" type="Sprite3D" parent="Chrono-Enviro/20 Years/Bridge Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.76, 2.12, -2.08)
@@ -9836,12 +9819,11 @@ hframes = 10
 vframes = 3
 frame = 6
 
-[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Bridge Cutscene/Sejanus Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Bridge Cutscene/Sejanus Actor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.173, 3.24, 0)
 mesh = SubResource("QuadMesh_0sug6")
 surface_material_override/0 = SubResource("StandardMaterial3D_engis")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
 
 [node name="Guard Actor" type="Node3D" parent="Chrono-Enviro/20 Years/Bridge Cutscene"]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 11.2988, 3.068, -5.28723)
@@ -9857,13 +9839,12 @@ alpha_cut = 2
 texture = ExtResource("21_lcewb")
 hframes = 3
 
-[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Bridge Cutscene/Guard Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Bridge Cutscene/Guard Actor"]
 process_priority = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.253, 3.161, 2.013)
 mesh = SubResource("QuadMesh_0sug6")
 surface_material_override/0 = SubResource("StandardMaterial3D_engis")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
 
 [node name="Lights" type="Node3D" parent="Chrono-Enviro/20 Years"]
 
@@ -10134,9 +10115,10 @@ script = ExtResource("30_bvxb6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 4.92, -8.74228e-09)
 shape = SubResource("BoxShape3D_r4obp")
 
-[node name="Interaction Point Storage Room" parent="Chrono-Enviro/20 Years" node_paths=PackedStringArray("cutsceneNode") instance=ExtResource("31_hke08")]
+[node name="Interaction Point Storage Room" parent="Chrono-Enviro/20 Years" instance=ExtResource("31_hke08")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.97972e-07, 2.52, 13.68)
-cutsceneNode = NodePath("../Storage Room Cutscene")
+cutsceneNode = null
+interactArea = null
 enabled = false
 
 [node name="Label" parent="Chrono-Enviro/20 Years/Interaction Point Storage Room" index="1"]
@@ -10146,17 +10128,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48, 2.56, 3.6)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0.48)
 shape = SubResource("BoxShape3D_1ox4g")
 
-[node name="Storage Room Cutscene" type="Node3D" parent="Chrono-Enviro/20 Years" node_paths=PackedStringArray("dLabel", "resContainer", "sceneExplorePlayer", "cutsceneCamera")]
+[node name="Storage Room Cutscene" type="Node3D" parent="Chrono-Enviro/20 Years"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.2, 0.08, 11.56)
 script = ExtResource("10_u3cgx")
 enabled = true
 filepath = "res://Cutscenes/Dialogue Files/StorageRooomPastCutscene.txt"
-dLabel = NodePath("TextBox Containers/LineContainer/Dialogue VP/Dialogue Label")
 dialogueNextAction = "com_atk"
-resContainer = NodePath("TextBox Containers/Response VPContainer/Response VP/Response Container")
-sceneExplorePlayer = NodePath("../../../ExplorePlayer")
 initAnimation = "Start"
-cutsceneCamera = NodePath("Camera3D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/20 Years/Storage Room Cutscene"]
 libraries = {
@@ -10179,21 +10157,19 @@ handle_input_locally = false
 size = Vector2i(1200, 600)
 render_target_update_mode = 4
 
-[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP" node_paths=PackedStringArray("director")]
+[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP"]
 layout_direction = 2
 offset_right = 1200.0
 offset_bottom = 600.0
 scale = Vector2(1e-05, 1)
 theme = ExtResource("11_5xxto")
 script = ExtResource("12_shdv1")
-director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
@@ -10214,7 +10190,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
@@ -10234,7 +10209,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
@@ -10256,7 +10230,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
-fit_content_height = true
 scroll_active = false
 shortcut_keys_enabled = false
 
@@ -10288,7 +10261,7 @@ handle_input_locally = false
 size = Vector2i(1200, 400)
 render_target_update_mode = 4
 
-[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/LineContainer/Dialogue VP" node_paths=PackedStringArray("speakerLabel", "voice")]
+[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/LineContainer/Dialogue VP"]
 clip_contents = false
 offset_left = 20.0
 offset_top = 32.0
@@ -10299,9 +10272,7 @@ theme_override_font_sizes/normal_font_size = 60
 text = "Test text, motherfucker. What's good?
 It's gonna just keep going and going to show you how long it gets!"
 script = ExtResource("13_6ol2s")
-speakerLabel = NodePath("Name Plate")
 charactersPerSecond = 50.0
-voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
@@ -10355,19 +10326,17 @@ hframes = 10
 vframes = 10
 frame = 4
 
-[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/Cato Actor"]
 transform = Transform3D(0.896575, 0, 0.0716036, 0, 0.9, 0, -0.0784401, 0, 0.818433, -1.24, 2.96, 0.2)
 visible = false
 mesh = SubResource("QuadMesh_0es08")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/Response VPContainer/Response VP")
 
-[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene/Cato Actor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 5.32, -2.48)
 mesh = SubResource("QuadMesh_881y8")
 surface_material_override/0 = SubResource("StandardMaterial3D_ak6pm")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
 
 [node name="Sprite3D" type="Sprite3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.76, 2.12, -2.08)
@@ -10379,17 +10348,13 @@ texture = ExtResource("19_ictvg")
 [node name="Camera3D" type="Camera3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene"]
 transform = Transform3D(1, 0, -8.47033e-22, 0, 0.999093, 0.0425732, 0, -0.0425732, 0.999093, 1.142, 4.363, -1.545)
 
-[node name="Storage Room Cutscene2" type="Node3D" parent="Chrono-Enviro/20 Years" node_paths=PackedStringArray("dLabel", "resContainer", "sceneExplorePlayer", "cutsceneCamera")]
+[node name="Storage Room Cutscene2" type="Node3D" parent="Chrono-Enviro/20 Years"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.2, 0.08, 11.56)
 script = ExtResource("10_u3cgx")
 enabled = true
 filepath = "res://Cutscenes/Dialogue Files/StorageRooomPastCutscene.txt"
-dLabel = NodePath("TextBox Containers/LineContainer/Dialogue VP/Dialogue Label")
 dialogueNextAction = "com_atk"
-resContainer = NodePath("TextBox Containers/Response VPContainer/Response VP/Response Container")
-sceneExplorePlayer = NodePath("../../../ExplorePlayer")
 initAnimation = "Start"
-cutsceneCamera = NodePath("Camera3D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2"]
 libraries = {
@@ -10412,21 +10377,19 @@ handle_input_locally = false
 size = Vector2i(1200, 600)
 render_target_update_mode = 4
 
-[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP" node_paths=PackedStringArray("director")]
+[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP"]
 layout_direction = 2
 offset_right = 1200.0
 offset_bottom = 600.0
 scale = Vector2(1e-05, 1)
 theme = ExtResource("11_5xxto")
 script = ExtResource("12_shdv1")
-director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
@@ -10447,7 +10410,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
@@ -10467,7 +10429,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
@@ -10489,7 +10450,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
-fit_content_height = true
 scroll_active = false
 shortcut_keys_enabled = false
 
@@ -10521,7 +10481,7 @@ handle_input_locally = false
 size = Vector2i(1200, 400)
 render_target_update_mode = 4
 
-[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/LineContainer/Dialogue VP" node_paths=PackedStringArray("speakerLabel", "voice")]
+[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/LineContainer/Dialogue VP"]
 clip_contents = false
 offset_left = 20.0
 offset_top = 32.0
@@ -10532,9 +10492,7 @@ theme_override_font_sizes/normal_font_size = 60
 text = "Test text, motherfucker. What's good?
 It's gonna just keep going and going to show you how long it gets!"
 script = ExtResource("13_6ol2s")
-speakerLabel = NodePath("Name Plate")
 charactersPerSecond = 50.0
-voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
@@ -10587,19 +10545,17 @@ hframes = 10
 vframes = 10
 frame = 4
 
-[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/Cato Actor"]
 transform = Transform3D(0.896575, 0, 0.0716036, 0, 0.9, 0, -0.0784401, 0, 0.818433, -1.24, 2.96, 0.2)
 visible = false
 mesh = SubResource("QuadMesh_0es08")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/Response VPContainer/Response VP")
 
-[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2/Cato Actor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 5.32, -2.48)
 mesh = SubResource("QuadMesh_881y8")
 surface_material_override/0 = SubResource("StandardMaterial3D_ak6pm")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
 
 [node name="Sprite3D" type="Sprite3D" parent="Chrono-Enviro/20 Years/Storage Room Cutscene2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.76, 2.12, -2.08)
@@ -10982,18 +10938,14 @@ spot_range = 10.0
 spot_attenuation = 3.03143
 spot_angle = 41.43
 
-[node name="Entrance Cutscene" type="Node3D" parent="Chrono-Enviro/Present" node_paths=PackedStringArray("dLabel", "resContainer", "sceneExplorePlayer", "cutsceneCamera")]
+[node name="Entrance Cutscene" type="Node3D" parent="Chrono-Enviro/Present"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.92, 4.52, -14.48)
 visible = false
 script = ExtResource("10_u3cgx")
 enabled = true
 filepath = "res://Cutscenes/Dialogue Files/EnterChallengeRoom.txt"
-dLabel = NodePath("TextBox Containers/LineContainer/Dialogue VP/Dialogue Label")
 dialogueNextAction = "com_atk"
-resContainer = NodePath("TextBox Containers/Response VPContainer/Response VP/Response Container")
-sceneExplorePlayer = NodePath("../../../ExplorePlayer")
 initAnimation = "Walk In"
-cutsceneCamera = NodePath("Camera3D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Entrance Cutscene"]
 libraries = {
@@ -11016,21 +10968,19 @@ handle_input_locally = false
 size = Vector2i(1200, 600)
 render_target_update_mode = 4
 
-[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/Response VPContainer/Response VP" node_paths=PackedStringArray("director")]
+[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/Response VPContainer/Response VP"]
 layout_direction = 2
 offset_right = 1200.0
 offset_bottom = 600.0
 scale = Vector2(1e-05, 1)
 theme = ExtResource("11_5xxto")
 script = ExtResource("12_shdv1")
-director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
@@ -11051,7 +11001,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
@@ -11071,7 +11020,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
@@ -11093,7 +11041,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
-fit_content_height = true
 scroll_active = false
 shortcut_keys_enabled = false
 
@@ -11125,7 +11072,7 @@ handle_input_locally = false
 size = Vector2i(1200, 400)
 render_target_update_mode = 4
 
-[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/LineContainer/Dialogue VP" node_paths=PackedStringArray("speakerLabel", "voice")]
+[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/LineContainer/Dialogue VP"]
 clip_contents = false
 offset_left = 20.0
 offset_top = 32.0
@@ -11136,9 +11083,7 @@ theme_override_font_sizes/normal_font_size = 60
 text = "Test text, motherfucker. What's good?
 It's gonna just keep going and going to show you how long it gets!"
 script = ExtResource("13_6ol2s")
-speakerLabel = NodePath("Name Plate")
 charactersPerSecond = 50.0
-voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Entrance Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
@@ -11190,20 +11135,18 @@ hframes = 10
 vframes = 10
 frame = 52
 
-[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/Present/Entrance Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/Present/Entrance Cutscene/Cato Actor"]
 transform = Transform3D(0.896575, 0, 0.0716036, 0, 0.9, 0, -0.0784401, 0, 0.818433, -1.24, 2.96, 0.2)
 visible = false
 mesh = SubResource("QuadMesh_ql28x")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/Response VPContainer/Response VP")
 
-[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Entrance Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Entrance Cutscene/Cato Actor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16, 3.28, 0)
 visible = false
 mesh = SubResource("QuadMesh_pan7g")
 surface_material_override/0 = SubResource("StandardMaterial3D_nw10b")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
 
 [node name="Silver Actor" type="Node3D" parent="Chrono-Enviro/Present/Entrance Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64, 0.52, -3.2)
@@ -11221,13 +11164,12 @@ vframes = 8
 frame = 19
 region_rect = Rect2(0, 2, 720, 318)
 
-[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Entrance Cutscene/Silver Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Entrance Cutscene/Silver Actor"]
 transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 2.28, 3.4, 0)
 visible = false
 mesh = SubResource("QuadMesh_pan7g")
 surface_material_override/0 = SubResource("StandardMaterial3D_nw10b")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
 
 [node name="Sprite3D" type="Sprite3D" parent="Chrono-Enviro/Present/Entrance Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.76, 2.12, -2.08)
@@ -11239,17 +11181,13 @@ texture = ExtResource("19_ictvg")
 [node name="Camera3D" type="Camera3D" parent="Chrono-Enviro/Present/Entrance Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 0.999093, 0.0425732, 0, -0.0425732, 0.999093, 2.414, 3.499, 4.737)
 
-[node name="Mechanic Cutscene" type="Node3D" parent="Chrono-Enviro/Present" node_paths=PackedStringArray("dLabel", "resContainer", "sceneExplorePlayer", "cutsceneCamera")]
+[node name="Mechanic Cutscene" type="Node3D" parent="Chrono-Enviro/Present"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.92, 4.44, -1.28)
 script = ExtResource("10_u3cgx")
 enabled = true
 filepath = "res://Cutscenes/Dialogue Files/BridgeMechanicCutscene.txt"
-dLabel = NodePath("TextBox Containers/LineContainer/Dialogue VP/Dialogue Label")
 dialogueNextAction = "com_atk"
-resContainer = NodePath("TextBox Containers/Response VPContainer/Response VP/Response Container")
-sceneExplorePlayer = NodePath("../../../ExplorePlayer")
 initAnimation = "Start"
-cutsceneCamera = NodePath("Camera3D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Mechanic Cutscene"]
 libraries = {
@@ -11272,21 +11210,19 @@ handle_input_locally = false
 size = Vector2i(1200, 600)
 render_target_update_mode = 4
 
-[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/Response VPContainer/Response VP" node_paths=PackedStringArray("director")]
+[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/Response VPContainer/Response VP"]
 layout_direction = 2
 offset_right = 1200.0
 offset_bottom = 600.0
 scale = Vector2(1e-05, 1)
 theme = ExtResource("11_5xxto")
 script = ExtResource("12_shdv1")
-director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
@@ -11307,7 +11243,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
@@ -11327,7 +11262,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
@@ -11349,7 +11283,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
-fit_content_height = true
 scroll_active = false
 shortcut_keys_enabled = false
 
@@ -11381,7 +11314,7 @@ handle_input_locally = false
 size = Vector2i(1200, 400)
 render_target_update_mode = 4
 
-[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/LineContainer/Dialogue VP" node_paths=PackedStringArray("speakerLabel", "voice")]
+[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/LineContainer/Dialogue VP"]
 clip_contents = false
 offset_left = 20.0
 offset_top = 32.0
@@ -11392,9 +11325,7 @@ theme_override_font_sizes/normal_font_size = 60
 text = "Test text, motherfucker. What's good?
 It's gonna just keep going and going to show you how long it gets!"
 script = ExtResource("13_6ol2s")
-speakerLabel = NodePath("Name Plate")
 charactersPerSecond = 50.0
-voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Mechanic Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
@@ -11447,19 +11378,17 @@ hframes = 10
 vframes = 8
 frame = 4
 
-[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/Present/Mechanic Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/Present/Mechanic Cutscene/Cato Actor"]
 transform = Transform3D(0.896575, 0, 0.0716036, 0, 0.9, 0, -0.0784401, 0, 0.818433, -1.24, 2.96, 0.2)
 visible = false
 mesh = SubResource("QuadMesh_18sff")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/Response VPContainer/Response VP")
 
-[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Mechanic Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Mechanic Cutscene/Cato Actor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16, 3.505, 0)
 mesh = SubResource("QuadMesh_expfu")
 surface_material_override/0 = SubResource("StandardMaterial3D_cf7qo")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
 
 [node name="Silver Actor" type="Node3D" parent="Chrono-Enviro/Present/Mechanic Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.68, 0.52, -1.12)
@@ -11478,12 +11407,11 @@ vframes = 8
 frame = 72
 region_rect = Rect2(0, 2, 720, 318)
 
-[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Mechanic Cutscene/Silver Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Mechanic Cutscene/Silver Actor"]
 transform = Transform3D(0.996195, 0, 0.0871558, 0, 1, 0, -0.0871558, 0, 0.996195, 6.296, 3.4, 0)
 mesh = SubResource("QuadMesh_expfu")
 surface_material_override/0 = SubResource("StandardMaterial3D_cf7qo")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
 
 [node name="Camera3D" type="Camera3D" parent="Chrono-Enviro/Present/Mechanic Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 0.999093, 0.0425732, 0, -0.0425732, 0.999093, 0, 2.933, 5.171)
@@ -11503,14 +11431,12 @@ shape = SubResource("BoxShape3D_8wwxm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32, 4.24, 9.2)
 shape = SubResource("BoxShape3D_4y318")
 
-[node name="Interaction Point" type="Node3D" parent="Chrono-Enviro/Present" node_paths=PackedStringArray("cutsceneNode", "interactArea")]
+[node name="Interaction Point" type="Node3D" parent="Chrono-Enviro/Present"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.16, 5.52, 1.81839e-07)
 script = ExtResource("42_yw264")
 verb = "Look"
 hasCutscene = true
 cutsceneRepeats = true
-cutsceneNode = NodePath("../Interact Cutscene")
-interactArea = NodePath("Interact Area")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Interaction Point"]
 libraries = {
@@ -11545,18 +11471,14 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1, 9.61651e-08)
 shape = SubResource("BoxShape3D_ts4rb")
 
-[node name="Interact Cutscene" type="Node3D" parent="Chrono-Enviro/Present" node_paths=PackedStringArray("dLabel", "resContainer", "sceneExplorePlayer", "cutsceneCamera")]
+[node name="Interact Cutscene" type="Node3D" parent="Chrono-Enviro/Present"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.32, 5, -0.2)
 visible = false
 script = ExtResource("10_u3cgx")
 enabled = true
 filepath = "res://Cutscenes/Dialogue Files/SecurityRoomInteraction.txt"
-dLabel = NodePath("TextBox Containers/LineContainer/Dialogue VP/Dialogue Label")
 dialogueNextAction = "com_atk"
-resContainer = NodePath("TextBox Containers/Response VPContainer/Response VP/Response Container")
-sceneExplorePlayer = NodePath("../../../ExplorePlayer")
 initAnimation = "Start"
-cutsceneCamera = NodePath("Camera3D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Interact Cutscene"]
 libraries = {
@@ -11579,14 +11501,13 @@ handle_input_locally = false
 size = Vector2i(1200, 600)
 render_target_update_mode = 4
 
-[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/Response VPContainer/Response VP" node_paths=PackedStringArray("director")]
+[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/Response VPContainer/Response VP"]
 layout_direction = 2
 offset_right = 1200.0
 offset_bottom = 600.0
 scale = Vector2(1e-05, 1)
 theme = ExtResource("11_5xxto")
 script = ExtResource("12_shdv1")
-director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
@@ -11594,7 +11515,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " \"This is the first option.\""
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
@@ -11615,7 +11535,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
@@ -11635,7 +11554,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
@@ -11657,7 +11575,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
-fit_content_height = true
 scroll_active = false
 shortcut_keys_enabled = false
 
@@ -11689,7 +11606,7 @@ handle_input_locally = false
 size = Vector2i(1200, 400)
 render_target_update_mode = 4
 
-[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/LineContainer/Dialogue VP" node_paths=PackedStringArray("speakerLabel", "voice")]
+[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/LineContainer/Dialogue VP"]
 clip_contents = false
 offset_left = 20.0
 offset_top = 32.0
@@ -11700,9 +11617,7 @@ theme_override_font_sizes/normal_font_size = 60
 text = "Test text, motherfucker. What's good?
 It's gonna just keep going and going to show you how long it gets!"
 script = ExtResource("13_6ol2s")
-speakerLabel = NodePath("Name Plate")
 charactersPerSecond = 50.0
-voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Interact Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
@@ -11755,20 +11670,18 @@ hframes = 10
 vframes = 4
 frame = 4
 
-[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/Present/Interact Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/Present/Interact Cutscene/Cato Actor"]
 transform = Transform3D(0.896575, 0, 0.0716036, 0, 0.9, 0, -0.0784401, 0, 0.818433, 0.96, 3.68, 1.88)
 visible = false
 mesh = SubResource("QuadMesh_xjrtm")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/Response VPContainer/Response VP")
 
-[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Interact Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Interact Cutscene/Cato Actor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.92, 5.08, 1.68)
 visible = false
 mesh = SubResource("QuadMesh_ppovm")
 surface_material_override/0 = SubResource("StandardMaterial3D_rlfx0")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
 
 [node name="Silver Actor" type="Node3D" parent="Chrono-Enviro/Present/Interact Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.64, 0, 1.12)
@@ -11787,12 +11700,11 @@ vframes = 8
 frame = 72
 region_rect = Rect2(0, 2, 720, 318)
 
-[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Interact Cutscene/Silver Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Interact Cutscene/Silver Actor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.316, -0.383, 2.96)
 mesh = SubResource("QuadMesh_ppovm")
 surface_material_override/0 = SubResource("StandardMaterial3D_rlfx0")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
 
 [node name="Camera3D" type="Camera3D" parent="Chrono-Enviro/Present/Interact Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 0.999093, 0.0425732, 0, -0.0425732, 0.999093, 0.203998, 2.4188, 2.37709)
@@ -11805,24 +11717,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.248, 4.981, 0)
 shape = SubResource("BoxShape3D_baldn")
 disabled = true
 
-[node name="Storage Room Interact" parent="Chrono-Enviro/Present" node_paths=PackedStringArray("cutsceneNode") instance=ExtResource("31_hke08")]
+[node name="Storage Room Interact" parent="Chrono-Enviro/Present" instance=ExtResource("31_hke08")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.800001, 2.36, 14)
-cutsceneNode = NodePath("../Storage Room Cutscene")
+cutsceneNode = null
+interactArea = null
 
 [node name="Label" parent="Chrono-Enviro/Present/Storage Room Interact" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 2.56, 3.04)
 
-[node name="Storage Room Cutscene" type="Node3D" parent="Chrono-Enviro/Present" node_paths=PackedStringArray("dLabel", "resContainer", "sceneExplorePlayer", "cutsceneCamera")]
+[node name="Storage Room Cutscene" type="Node3D" parent="Chrono-Enviro/Present"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.2, 0.08, 11.56)
 script = ExtResource("10_u3cgx")
 enabled = true
 filepath = "res://Cutscenes/Dialogue Files/StorageRoomPresentCutscene.txt"
-dLabel = NodePath("TextBox Containers/LineContainer/Dialogue VP/Dialogue Label")
 dialogueNextAction = "com_atk"
-resContainer = NodePath("TextBox Containers/Response VPContainer/Response VP/Response Container")
-sceneExplorePlayer = NodePath("../../../ExplorePlayer")
 initAnimation = "Start"
-cutsceneCamera = NodePath("Camera3D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Storage Room Cutscene"]
 libraries = {
@@ -11846,21 +11755,19 @@ handle_input_locally = false
 size = Vector2i(1200, 600)
 render_target_update_mode = 4
 
-[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP" node_paths=PackedStringArray("director")]
+[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP"]
 layout_direction = 2
 offset_right = 1200.0
 offset_bottom = 600.0
 scale = Vector2(1e-05, 1)
 theme = ExtResource("11_5xxto")
 script = ExtResource("12_shdv1")
-director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
@@ -11881,7 +11788,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
@@ -11901,7 +11807,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
@@ -11923,7 +11828,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
-fit_content_height = true
 scroll_active = false
 shortcut_keys_enabled = false
 
@@ -11955,7 +11859,7 @@ handle_input_locally = false
 size = Vector2i(1200, 400)
 render_target_update_mode = 4
 
-[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/LineContainer/Dialogue VP" node_paths=PackedStringArray("speakerLabel", "voice")]
+[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/LineContainer/Dialogue VP"]
 clip_contents = false
 offset_left = 20.0
 offset_top = 32.0
@@ -11966,9 +11870,7 @@ theme_override_font_sizes/normal_font_size = 60
 text = "Test text, motherfucker. What's good?
 It's gonna just keep going and going to show you how long it gets!"
 script = ExtResource("13_6ol2s")
-speakerLabel = NodePath("Name Plate")
 charactersPerSecond = 50.0
-voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Storage Room Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
@@ -12022,19 +11924,17 @@ hframes = 10
 vframes = 10
 frame = 4
 
-[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/Present/Storage Room Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/Present/Storage Room Cutscene/Cato Actor"]
 transform = Transform3D(0.896575, 0, 0.0716036, 0, 0.9, 0, -0.0784401, 0, 0.818433, -1.24, 2.96, 0.2)
 visible = false
 mesh = SubResource("QuadMesh_0es08")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/Response VPContainer/Response VP")
 
-[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Storage Room Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Storage Room Cutscene/Cato Actor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.902, 4.805, -1.729)
 mesh = SubResource("QuadMesh_881y8")
 surface_material_override/0 = SubResource("StandardMaterial3D_ak6pm")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
 
 [node name="Sprite3D" type="Sprite3D" parent="Chrono-Enviro/Present/Storage Room Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.76, 2.12, -2.08)
@@ -12046,18 +11946,14 @@ texture = ExtResource("19_ictvg")
 [node name="Camera3D" type="Camera3D" parent="Chrono-Enviro/Present/Storage Room Cutscene"]
 transform = Transform3D(1, 0, -8.47033e-22, 0, 0.999093, 0.0425732, 0, -0.0425732, 0.999093, 1.142, 4.363, -1.545)
 
-[node name="Portcullis Cutscene" type="Node3D" parent="Chrono-Enviro/Present" node_paths=PackedStringArray("dLabel", "resContainer", "sceneExplorePlayer", "cutsceneCamera")]
+[node name="Portcullis Cutscene" type="Node3D" parent="Chrono-Enviro/Present"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.2, 2.6, 13.32)
 visible = false
 script = ExtResource("10_u3cgx")
 enabled = true
 filepath = "res://Cutscenes/Dialogue Files/Portcullis Cutscene.txt"
-dLabel = NodePath("TextBox Containers/LineContainer/Dialogue VP/Dialogue Label")
 dialogueNextAction = "com_atk"
-resContainer = NodePath("TextBox Containers/Response VPContainer/Response VP/Response Container")
-sceneExplorePlayer = NodePath("../../../ExplorePlayer")
 initAnimation = "Start"
-cutsceneCamera = NodePath("Camera3D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro/Present/Portcullis Cutscene"]
 libraries = {
@@ -12080,21 +11976,19 @@ handle_input_locally = false
 size = Vector2i(1200, 600)
 render_target_update_mode = 4
 
-[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP" node_paths=PackedStringArray("director")]
+[node name="Response Container" type="VBoxContainer" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP"]
 layout_direction = 2
 offset_right = 1200.0
 offset_bottom = 600.0
 scale = Vector2(1e-05, 1)
 theme = ExtResource("11_5xxto")
 script = ExtResource("12_shdv1")
-director = NodePath("../../../..")
 
 [node name="Option 1" type="RichTextLabel" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 text = " \"This is the first option.\""
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 1"]
 visible = false
@@ -12115,7 +12009,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [color=#db3939][Lie][/color]\"This is not an option\""
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 2"]
 show_behind_parent = true
@@ -12135,7 +12028,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = "[color=green] [Reputation: Silver][/color] Ok, so are you Italian?"
-fit_content_height = true
 
 [node name="Highlight" type="ColorRect" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/Response VPContainer/Response VP/Response Container/Option 3"]
 visible = false
@@ -12157,7 +12049,6 @@ layout_mode = 2
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 text = " [Shivers] {Meanwhile, in Moonhaven . . .}"
-fit_content_height = true
 scroll_active = false
 shortcut_keys_enabled = false
 
@@ -12189,7 +12080,7 @@ handle_input_locally = false
 size = Vector2i(1200, 400)
 render_target_update_mode = 4
 
-[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/LineContainer/Dialogue VP" node_paths=PackedStringArray("speakerLabel", "voice")]
+[node name="Dialogue Label" type="RichTextLabel" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/LineContainer/Dialogue VP"]
 clip_contents = false
 offset_left = 20.0
 offset_top = 32.0
@@ -12200,9 +12091,7 @@ theme_override_font_sizes/normal_font_size = 60
 text = "Test text, motherfucker. What's good?
 It's gonna just keep going and going to show you how long it gets!"
 script = ExtResource("13_6ol2s")
-speakerLabel = NodePath("Name Plate")
 charactersPerSecond = 50.0
-voice = NodePath("Voice")
 voiceLetterRatio = 2
 
 [node name="Name Plate" type="RichTextLabel" parent="Chrono-Enviro/Present/Portcullis Cutscene/TextBox Containers/LineContainer/Dialogue VP/Dialogue Label"]
@@ -12254,19 +12143,17 @@ hframes = 10
 vframes = 10
 frame = 4
 
-[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/Present/Portcullis Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Response Plane" type="MeshInstance3D" parent="Chrono-Enviro/Present/Portcullis Cutscene/Cato Actor"]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.821559, -2.296, 3.911, -2.103)
 visible = false
 mesh = SubResource("QuadMesh_uudvs")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/Response VPContainer/Response VP")
 
-[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Portcullis Cutscene/Cato Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Portcullis Cutscene/Cato Actor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.906, 4.691, -0.24)
 mesh = SubResource("QuadMesh_38dmj")
 surface_material_override/0 = SubResource("StandardMaterial3D_pb4ou")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
 
 [node name="Silver Actor" type="Node3D" parent="Chrono-Enviro/Present/Portcullis Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.32, 2.4, -4.32)
@@ -12284,12 +12171,11 @@ vframes = 8
 frame = 55
 region_rect = Rect2(0, 2, 720, 318)
 
-[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Portcullis Cutscene/Silver Actor" node_paths=PackedStringArray("targetViewPort")]
+[node name="Dialogue Balloon" type="MeshInstance3D" parent="Chrono-Enviro/Present/Portcullis Cutscene/Silver Actor"]
 transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871558, 0, 0.0871557, 0.996195, -2.072, 3.682, 0)
 mesh = SubResource("QuadMesh_38dmj")
 surface_material_override/0 = SubResource("StandardMaterial3D_pb4ou")
 script = ExtResource("18_otlvb")
-targetViewPort = NodePath("../../TextBox Containers/LineContainer/Dialogue VP")
 
 [node name="Sprite3D" type="Sprite3D" parent="Chrono-Enviro/Present/Portcullis Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.76, 2.12, -2.08)
@@ -12301,9 +12187,10 @@ texture = ExtResource("19_ictvg")
 [node name="Camera3D" type="Camera3D" parent="Chrono-Enviro/Present/Portcullis Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871558, 0, -0.0871558, 0.996195, -0.744, 5.167, 2.312)
 
-[node name="Portcullis Interact" parent="Chrono-Enviro/Present" node_paths=PackedStringArray("cutsceneNode") instance=ExtResource("31_hke08")]
+[node name="Portcullis Interact" parent="Chrono-Enviro/Present" instance=ExtResource("31_hke08")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.4377e-07, 4.64, 12.44)
-cutsceneNode = NodePath("../Portcullis Cutscene")
+cutsceneNode = null
+interactArea = null
 
 [node name="Label" parent="Chrono-Enviro/Present/Portcullis Interact" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24, 2.56, -9.68575e-08)
@@ -12325,15 +12212,13 @@ enabledInTimeScene = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08, 0)
 shape = SubResource("BoxShape3D_e2t3u")
 
-[node name="Encounter" type="Area3D" parent="Chrono-Enviro/Present" node_paths=PackedStringArray("battle", "sprite", "postFightCutscene") groups=["Encounter"]]
+[node name="Encounter" type="Area3D" parent="Chrono-Enviro/Present" groups=["Encounter"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.8, 4.88, 2.04)
+visible = false
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("45_nf8lm")
 enabled = true
-battle = NodePath("Battle Module")
-sprite = NodePath("Sprite3D")
-postFightCutscene = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chrono-Enviro/Present/Encounter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04, 1.2, 1.64)
@@ -12348,19 +12233,12 @@ texture = ExtResource("46_kxgug")
 hframes = 10
 vframes = 3
 
-[node name="Battle Module" type="Node3D" parent="Chrono-Enviro/Present/Encounter" node_paths=PackedStringArray("debugMusic", "battleCamera")]
+[node name="Battle Module" type="Node3D" parent="Chrono-Enviro/Present/Encounter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.48, -2.04)
 visible = false
-script = ExtResource("47_e5vrl")
-battleGUI = NodePath("Camera3D/BattleGUI")
-debugMusic = NodePath("BattleMusic")
-battleCamera = NodePath("Camera3D")
 
 [node name="Battle Roster" type="Node3D" parent="Chrono-Enviro/Present/Encounter/Battle Module"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7875)
-script = ExtResource("48_4vnos")
-debugMode = true
-EnemiesSetInEditor = false
 
 [node name="Hero 3" type="Node3D" parent="Chrono-Enviro/Present/Encounter/Battle Module/Battle Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.1875, 2)
@@ -12372,7 +12250,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1875, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.1875, 4)
 
 [node name="Cato" parent="Chrono-Enviro/Present/Encounter/Battle Module/Battle Roster/Hero 1" instance=ExtResource("49_4dk7r")]
-name = ""
 
 [node name="Enemy 1" type="Node3D" parent="Chrono-Enviro/Present/Encounter/Battle Module/Battle Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.188, 4)
@@ -12415,6 +12292,7 @@ anchor_bottom = 1.0
 offset_top = 0.23999
 offset_right = 1920.0
 script = ExtResource("53_i6fou")
+menuTabs = null
 
 [node name="Button Hub" type="TextureRect" parent="Chrono-Enviro/Present/Encounter/Battle Module/Camera3D/BattleGUI/Top Menu"]
 layout_mode = 1
@@ -13324,13 +13202,12 @@ volume_db = -25.0
 
 [node name="Challenge Room2" parent="Chrono-Enviro/Present" instance=ExtResource("33_cgejv")]
 
-[node name="ExplorePlayer" parent="." node_paths=PackedStringArray("exploreCamera", "timeEnvironment") instance=ExtResource("45_0cq5x")]
+[node name="ExplorePlayer" parent="." instance=ExtResource("45_0cq5x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4495, 4.956, -0.268)
+visible = false
 floor_max_angle = 0.872665
 safe_margin = 0.01
-exploreCamera = NodePath("Explore Camera")
 waypointRes = "res://Explore Mode/Waypoint.tscn"
-timeEnvironment = NodePath("../Chrono-Enviro")
 
 [node name="Sprite3D" parent="ExplorePlayer" index="0"]
 sorting_offset = 1.0
@@ -13389,6 +13266,9 @@ gotoScenePath = "res://Levels/Boss Room.tscn"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 2.4, 1.16)
 shape = SubResource("BoxShape3D_umn4m")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 9.12, 10.28)
 
 [connection signal="animation_finished" from="Chrono-Enviro/20 Years/Bridge Cutscene/AnimationPlayer" to="Chrono-Enviro/20 Years/Bridge Cutscene" method="OnCinematicAnimationEnd" flags=18]
 [connection signal="animation_started" from="Chrono-Enviro/20 Years/Bridge Cutscene/AnimationPlayer" to="Chrono-Enviro/20 Years/Bridge Cutscene" method="OnCinematicAnimationBegin" flags=18]

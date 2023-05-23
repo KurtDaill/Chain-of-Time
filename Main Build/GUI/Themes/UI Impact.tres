@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="1"]
 
 [sub_resource type="FontFile" id="FontFile_hjq4f"]
-fallbacks = [ExtResource("1")]
+fallbacks = Array[Font]([ExtResource("1")])
 face_index = null
 embolden = null
 transform = null

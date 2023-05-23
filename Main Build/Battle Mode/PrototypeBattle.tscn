@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://bftjxb62srdq"]
+
+[ext_resource type="Script" path="res://Battle Mode/Battle.cs" id="1_0eajl"]
+[ext_resource type="Script" path="res://Battle Mode/Roster.cs" id="2_p000p"]
+
+[node name="TopNode" type="Node3D"]
+
+[node name="Battle" type="Node3D" parent="."]
+script = ExtResource("1_0eajl")
+
+[node name="Roster" type="Node3D" parent="Battle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("2_p000p")
+
+[node name="EnemyOne" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+
+[node name="EnemyTwo" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+
+[node name="EnemyThree" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
+
+[node name="PlayerOne" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+
+[node name="PlayerTwo" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+
+[node name="PlayerThree" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 6.72, 13.24)

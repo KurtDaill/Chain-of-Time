@@ -23,9 +23,9 @@ public partial class ChronoEnviro : Node3D
     [Export]
     Node3D TimeTravelCato;
     [Export]
-    CSGPrimitive3D subtractSphere;
+    CsgPrimitive3D subtractSphere;
     [Export]
-    CSGPrimitive3D visibleSphere;
+    CsgPrimitive3D visibleSphere;
     [Export]
     DirectionalLight3D pastSun;
     [Export]
@@ -325,29 +325,29 @@ public partial class ChronoEnviro : Node3D
                     Godot.Vector3 endVector = (Godot.Vector3) endVar;
                     Godot.Vector3 startVector = (Godot.Vector3) startVar;
                     if(endVector != startVector){
-                        SetBezierAnimationTrack(endVector.x, startVector.x, propertyPath + ":" + propertyName + ":x", real, templateIndex, animation);
-                        SetBezierAnimationTrack(endVector.y, startVector.y, propertyPath + ":" + propertyName + ":y", real, templateIndex, animation);
-                        SetBezierAnimationTrack(endVector.z, startVector.z, propertyPath + ":" + propertyName + ":z", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endVector.X, startVector.X, propertyPath + ":" + propertyName + ":x", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endVector.Y, startVector.Y, propertyPath + ":" + propertyName + ":y", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endVector.Z, startVector.Z, propertyPath + ":" + propertyName + ":z", real, templateIndex, animation);
                     }
                     break;
                 case Variant.Type.Quaternion :
                     Godot.Quaternion endQuat = (Godot.Quaternion) endVar;
                     Godot.Quaternion startQuat = (Godot.Quaternion) startVar;
                     if(endQuat != startQuat){
-                        SetBezierAnimationTrack(endQuat.x, startQuat.x, propertyPath + ":" + propertyName + ":x", real, templateIndex, animation);
-                        SetBezierAnimationTrack(endQuat.y, startQuat.y, propertyPath + ":" + propertyName + ":y", real, templateIndex, animation);
-                        SetBezierAnimationTrack(endQuat.z, startQuat.z, propertyPath + ":" + propertyName + ":z", real, templateIndex, animation);
-                        SetBezierAnimationTrack(endQuat.w, startQuat.w, propertyPath + ":" + propertyName + ":z", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endQuat.X, startQuat.X, propertyPath + ":" + propertyName + ":x", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endQuat.Y, startQuat.Y, propertyPath + ":" + propertyName + ":y", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endQuat.Z, startQuat.Z, propertyPath + ":" + propertyName + ":z", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endQuat.W, startQuat.W, propertyPath + ":" + propertyName + ":z", real, templateIndex, animation);
                     }
                     break; 
                 case Variant.Type.Color :
                     Godot.Color endColor = (Godot.Color) endVar;
                     Godot.Color startColor = (Godot.Color) startVar;
                     if(endColor != startColor){
-                        SetBezierAnimationTrack(endColor.r, startColor.r, propertyPath + ":" +  propertyName + ":r", real, templateIndex, animation);
-                        SetBezierAnimationTrack(endColor.g, startColor.g, propertyPath + ":" +  propertyName + ":g", real, templateIndex, animation);
-                        SetBezierAnimationTrack(endColor.b, startColor.b, propertyPath + ":" +  propertyName + ":b", real, templateIndex, animation);
-                        SetBezierAnimationTrack(endColor.a, startColor.a, propertyPath + ":" +  propertyName + ":a", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endColor.R, startColor.R, propertyPath + ":" +  propertyName + ":r", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endColor.G, startColor.G, propertyPath + ":" +  propertyName + ":g", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endColor.B, startColor.B, propertyPath + ":" +  propertyName + ":b", real, templateIndex, animation);
+                        SetBezierAnimationTrack(endColor.A, startColor.A, propertyPath + ":" +  propertyName + ":a", real, templateIndex, animation);
                     }
                     break;
             }

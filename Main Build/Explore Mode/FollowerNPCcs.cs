@@ -40,7 +40,7 @@ public partial class FollowerNPCcs : CharacterBody3D
 
 			
 		if (!IsOnFloor() && followerEnabled)
-			velocity.y -= gravity * (float)delta;
+			velocity.Y -= gravity * (float)delta;
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
@@ -52,11 +52,11 @@ public partial class FollowerNPCcs : CharacterBody3D
 		Mathf.Abs((this.GlobalPosition - player.GlobalPosition).Length()) > personalSpaceRadius         &&
 		waypoint.promenadeIndex == this.currentPromenade ){	
 			Vector3 direction = (waypoint.GlobalPosition - this.GlobalPosition).Normalized();
-				velocity.x = direction.x * Speed;
-				velocity.z = direction.z * Speed;	
+				velocity.X = direction.X * Speed;
+				velocity.Z = direction.Z * Speed;	
 		}else{
-			velocity.x = Mathf.MoveToward(Velocity.x, 0, Speed);
-			velocity.z = Mathf.MoveToward(Velocity.z, 0, Speed);
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
 		}
 		Velocity = velocity;
 		MoveAndSlide();
@@ -66,14 +66,14 @@ public partial class FollowerNPCcs : CharacterBody3D
     {
         base._Process(delta);
 		if(Velocity != Vector3.Zero){
-			if(Mathf.Abs(Velocity.x) > Mathf.Abs(Velocity.z)){
-				if(Velocity.x > 0){
+			if(Mathf.Abs(Velocity.X) > Mathf.Abs(Velocity.Z)){
+				if(Velocity.X > 0){
 					animPlay.Play("Walk Right");
 				}else{
 					animPlay.Play("Walk Left");
 				}
 			}else{
-				if(Velocity.z > 0){
+				if(Velocity.Z > 0){
 					animPlay.Play("Walk Down");
 				}else{
 					animPlay.Play("Walk Up");

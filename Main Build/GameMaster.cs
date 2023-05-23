@@ -33,7 +33,7 @@ public partial class GameMaster : Node
 
     public override void _Ready()
     {
-        state = GD.Load<StoryState>("res://ExampleStoryState.tres");
+        //state = GD.Load<StoryState>("res://ExampleStoryState.tres");
     }
 
     public override void _Process(double delta)
