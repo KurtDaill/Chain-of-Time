@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public partial class Roster : Node
 {
 
-	private List<PlayerCombatant> playerCharacters;
-	private List<EnemyCombatant> enemyCharacters;
+	private PlayerCombatant[] playerCharacters = new PlayerCombatant[3];
+	private EnemyCombatant[] enemyCharacters = new EnemyCombatant[3];
 
 	private Node3D[] playerSpots = new Node3D[3];
 	private Node3D[] enemySpots = new Node3D[3];
@@ -73,8 +73,20 @@ public partial class Roster : Node
 		return playerCharacters[playerIndex];
 	}
 
+	public PlayerCombatant[] GetAllPlayerCombatants(){
+		var result = new PlayerCombatant[3];
+		result.CopyTo(playerCharacters, 0);
+		return result;
+	}
+
 	public EnemyCombatant GetEnemyCombatant(int enemyIndex){
 		return enemyCharacters[enemyIndex];
+	}
+
+	public EnemyCombatant[] GetAllEnemyCombatants(){
+		var result = new EnemyCombatant[3];
+		result.CopyTo(enemyCharacters, 0);
+		return result;
 	}
 }
 	

@@ -15,7 +15,8 @@ public partial class EnemyCombatant : Combatant
 		base._Process(delta);
 	}
 
-	public void DecideAction(Battle parentBattle){
-		
+	//Decides what action to take this round, returning the animation that matches said action
+	public string DecideAction(Battle parentBattle){
+		return "Not yet buddy boy";
 	}
 }

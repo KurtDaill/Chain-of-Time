@@ -141,5 +141,4 @@ public partial class PMBattleGUI : Control //TODO Migrate a lot of this function
         }
     }
 }
-
 */
