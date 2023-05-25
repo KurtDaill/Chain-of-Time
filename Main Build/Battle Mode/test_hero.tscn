@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck78k6iju4ldb"]
+
+[ext_resource type="Script" path="res://Battle Mode/PlayerCombatant.cs" id="1_5lwxp"]
+[ext_resource type="Texture2D" uid="uid://bg7iwb5q2rqi5" path="res://Art/New New New Cato.png" id="2_qm02d"]
+[ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="3_oduca"]
+
+[node name="TestHero" type="Node3D"]
+script = ExtResource("1_5lwxp")
+
+[node name="CatoSprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56, 0, 0)
+centered = false
+shaded = true
+alpha_cut = 2
+texture = ExtResource("2_qm02d")
+
+[node name="Pointer Adjuster" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="Pointer" parent="Pointer Adjuster" instance=ExtResource("3_oduca")]
+texture_filter = 0
+
+[editable path="Pointer Adjuster/Pointer"]

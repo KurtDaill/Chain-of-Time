@@ -1,8 +1,9 @@
 using System;
 using Godot;
 //using static PMBattleUtilities;
-/*
+
 public partial class SwapMenu : BattleMenu{
+    /*
     PMCharacter subject, rightTarget, leftTarget;
 
     private bool rightSelected = false;
@@ -66,5 +67,5 @@ public partial class SwapMenu : BattleMenu{
             throw new NotImplementedException(); //TODO Custom Exception
         }
     }
+    */
 }
-*/

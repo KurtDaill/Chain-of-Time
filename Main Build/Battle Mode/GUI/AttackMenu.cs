@@ -1,15 +1,15 @@
 using Godot;
 using System;
-/*
+
 public partial class AttackMenu : BattleMenu
 {
-    public override void OnOpen(PMPlayerCharacter character, PMBattle caller)
+    public override void OnOpen(PlayerCombatant character, Battle caller)
     {
         base.OnOpen(character, caller);
-        this.GetNode<RichTextLabel>("Backboard/Rules Text").Text = (character.GetBasicAttack().GetRulesText());
+        this.GetNode<RichTextLabel>("Backboard/Rules Text").Text = character.GetBasicAttack().GetRulesText();
     }
 
-    public override PMPlayerAbility HandleInput(MenuInput input, PMPlayerCharacter character, PMBattle caller){
+    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller){
         if(input == MenuInput.Back){
             parentGUI.ChangeMenu(0, character, caller);
             return null;
@@ -25,4 +25,3 @@ public partial class AttackMenu : BattleMenu
         return null;
     }
 }
-*/

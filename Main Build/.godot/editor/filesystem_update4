@@ -1,3 +1,12 @@
 res://Battle Mode/PrototypeBattle.tscn
 res://Art/3D/MODULAR DUNGEON TILES.material
-res://DebugStoryState.tscn
+res://Battle Mode/test_hero.tscn
+res://Battle Mode/BattleGUI.tscn
+res://GUI/Themes/Skill Card Tech.tres
+res://GUI/Themes/UI Impact.tres
+res://GUI/Themes/Skill Card Normal Small.tres
+res://GUI/Themes/Readout Text.tres
+res://GUI/Themes/Skill Card Normal.tres
+res://GUI/Themes/Skill Card Spell.tres
+res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres
+res://Battle Mode/Pointer.tscn

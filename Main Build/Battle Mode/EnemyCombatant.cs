@@ -16,7 +16,8 @@ public partial class EnemyCombatant : Combatant
 	}
 
 	//Decides what action to take this round, returning the animation that matches said action
-	public string DecideAction(Battle parentBattle){
-		return "Not yet buddy boy";
+	public CombatEventData DecideAction(Battle parentBattle){
+		GD.Print("Not yet buddy boy");
+		return null;
 	}
 }

@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using System.Collections.Generic;
+using static BattleUtilities;
 /*
 The ability node is 
 */
@@ -11,6 +12,8 @@ public partial class Ability : Node
     protected Combatant source;
 
     protected Dictionary<double, int> currentDamageChart;
+
+    protected TargetingLogic AbilityTargetingLogic;
 
     //Should be spawned in as a child of proposedSource
     public virtual void Setup(Combatant proposedSource){
@@ -32,6 +35,14 @@ public partial class Ability : Node
     public virtual void SetDamageChart(Dictionary<double, int> proposedDamageChart){
         VerifyDamageChart(proposedDamageChart);
         currentDamageChart = proposedDamageChart;
+    }
+
+    public CombatEventData GetEventData(){
+        return new CombatEventData(name, source);
+    }
+
+    public TargetingLogic GetTargetingLogic(){
+        return AbilityTargetingLogic;
     }
 
     public virtual void Execute(int phase){
@@ -63,6 +74,10 @@ public partial class Ability : Node
             GetTree().Quit();
             throw new DamageChartException("Invalid Damage Chart, probablilities don't total to 1!");
         }
+    }
+
+    public (Combatant, string) GetAnimationInfo(){
+        return (source, name);
     }
 
     protected class BadAbilitySetupException : Exception

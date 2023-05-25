@@ -15,7 +15,7 @@ public partial class CatoBasicAttack : PlayerAbility
 		if(target.Length != 1){
 			throw new BadAbilitySetupException("Incorrect Targets for Ability " + this.name + ". Need exaclty one target, have " + target.Length + " instead.");
 		}
-		if(target[0].GetPosition() != BattlePosition.EnemyFront && source.GetPosition() != BattlePosition.PlayerFront){
+		if(target[0].GetPosition() != BattlePosition.EnemyFront && source.GetPosition() != BattlePosition.HeroFront){
 			//Ability Fails
 			//TODO: Figure out how to handle abilities failing to go off
 		}

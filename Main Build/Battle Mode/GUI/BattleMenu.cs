@@ -1,6 +1,6 @@
 using Godot;
 using System;
-/*
+
 public abstract partial class BattleMenu : Control
 {
     public PMBattleGUI parentGUI;
@@ -20,12 +20,11 @@ public abstract partial class BattleMenu : Control
     }
 
     //Run when this menu is opened, resets values as needed from previous uses
-    public virtual void OnOpen(PMPlayerCharacter character, PMBattle caller){
+    public virtual void OnOpen(PlayerCombatant character, Battle caller){
         this.Visible = true;
     }
 
     //Handles input from the core Menu Command
     //Returns a new menu in the scenario we have to switch between menus
-    public virtual PMPlayerAbility HandleInput(MenuInput input, PMPlayerCharacter character, PMBattle caller){ return null;}
+    public virtual PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller){ return null;}
 }
-*/

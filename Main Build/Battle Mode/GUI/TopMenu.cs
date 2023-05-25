@@ -1,6 +1,5 @@
 using Godot;
 using System;
-/*
 public partial class TopMenu : BattleMenu
 {
     //TODO Highlight Animations
@@ -19,7 +18,7 @@ public partial class TopMenu : BattleMenu
         menuTabs[3] = (TextureRect) GetNode("./Button Hub/SkillButton");
     }
 
-    public override void OnOpen(PMPlayerCharacter character, PMBattle caller){
+    public override void OnOpen(PlayerCombatant character, Battle caller){
         base.OnOpen(character, caller);
         if(highlightedTab != -1)menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = false;
         highlightedTab = -1;
@@ -31,7 +30,7 @@ public partial class TopMenu : BattleMenu
        if(highlightedTab != -1) menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = true;
     }
 
-    public override PMPlayerAbility HandleInput(MenuInput input, PMPlayerCharacter character, PMBattle caller)
+    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller)
     {
         switch(input){
             case MenuInput.Up: 
@@ -54,7 +53,7 @@ public partial class TopMenu : BattleMenu
                 switch(highlightedTab){
                     case 0:
                         //Goes to the Party Menu
-                        parentGUI.ChangeMenu(1,character, caller);
+                        //parentGUI.ChangeMenu(1,character, caller);
                         break;
                     case 1:
                         //Goes to the Item Menu
@@ -66,7 +65,7 @@ public partial class TopMenu : BattleMenu
                         break;
                     case 3:
                         //Goes to the Skill Menu
-                        parentGUI.ChangeMenu(4, character, caller);
+                        //parentGUI.ChangeMenu(4, character, caller);
                         break;
                 }
                 break;
@@ -77,4 +76,3 @@ public partial class TopMenu : BattleMenu
         return null;
     }
 }
-*/

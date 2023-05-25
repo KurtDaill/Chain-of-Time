@@ -1,6 +1,6 @@
 using Godot;
 using System;
-/*
+
 public partial class ItemMenu : BattleMenu
 {
     
@@ -102,6 +102,7 @@ public partial class ItemMenu : BattleMenu
             counts[i].Text = "x" + playerInventory[currentFocusItem + (i - focusTab)].Item2;
         }
     }
+    */
 }
-*/
+
     

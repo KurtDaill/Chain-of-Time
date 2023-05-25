@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtpj2w158ws3m"]
+
+[ext_resource type="Texture2D" uid="uid://bg7iwb5q2rqi5" path="res://Art/New New New Cato.png" id="1_ck767"]
+[ext_resource type="PackedScene" uid="uid://ysgw0mocwq5u" path="res://Art/3D/battle_dungeon.tscn" id="2_5lvj2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_70rbk"]
+
+[sub_resource type="Sky" id="Sky_6qo3q"]
+sky_material = SubResource("ProceduralSkyMaterial_70rbk")
+
+[sub_resource type="Environment" id="Environment_ki8t4"]
+background_mode = 2
+sky = SubResource("Sky_6qo3q")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Shaded Cato" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.32, -0.84)
+modulate = Color(0.842008, 1, 0.862321, 1)
+pixel_size = 0.04
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_ck767")
+
+[node name="Unshaded Cato" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 6.32, -0.84)
+modulate = Color(0.842008, 1, 0.862321, 1)
+pixel_size = 0.04
+texture_filter = 0
+texture = ExtResource("1_ck767")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.76, 5.28, 1.52)
+light_energy = 4.376
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.64, 12)
+
+[node name="BattleDungeon" parent="." instance=ExtResource("2_5lvj2")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
+environment = SubResource("Environment_ki8t4")

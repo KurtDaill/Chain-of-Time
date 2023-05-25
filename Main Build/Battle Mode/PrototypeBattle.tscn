@@ -1,7 +1,52 @@
-[gd_scene load_steps=3 format=3 uid="uid://bftjxb62srdq"]
+[gd_scene load_steps=10 format=3 uid="uid://bftjxb62srdq"]
 
 [ext_resource type="Script" path="res://Battle Mode/Battle.cs" id="1_0eajl"]
 [ext_resource type="Script" path="res://Battle Mode/Roster.cs" id="2_p000p"]
+[ext_resource type="PackedScene" uid="uid://ck78k6iju4ldb" path="res://Battle Mode/test_hero.tscn" id="3_s3how"]
+[ext_resource type="PackedScene" uid="uid://ctkjn6qaseru7" path="res://Battle Mode/BattleGUI.tscn" id="4_noo0e"]
+[ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Art/3D/BattleDungeon.dae" id="5_7bshd"]
+
+[sub_resource type="Animation" id="Animation_u18p7"]
+resource_name = "Flicker"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.7, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.7, -0.25, 0, 0.25, 0, 0.7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 0.7, 1.1, 1.6, 2.2, 2.6, 3)
+}
+
+[sub_resource type="Animation" id="Animation_wi7gm"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uj5ot"]
+_data = {
+"Flicker": SubResource("Animation_u18p7"),
+"RESET": SubResource("Animation_wi7gm")
+}
+
+[sub_resource type="Environment" id="Environment_51ne1"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.380392, 0.376471, 0.431373, 1)
+ambient_light_energy = 0.81
 
 [node name="TopNode" type="Node3D"]
 
@@ -12,23 +57,133 @@ script = ExtResource("1_0eajl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 script = ExtResource("2_p000p")
 
-[node name="EnemyOne" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
-
-[node name="EnemyTwo" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
-
-[node name="EnemyThree" type="Node3D" parent="Battle/Roster"]
+[node name="HeroBack" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
 
-[node name="PlayerOne" type="Node3D" parent="Battle/Roster"]
+[node name="HeroMid" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+
+[node name="HeroFront" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+
+[node name="TestHero" parent="Battle/Roster/HeroFront" instance=ExtResource("3_s3how")]
+
+[node name="EnemyFront" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 
-[node name="PlayerTwo" type="Node3D" parent="Battle/Roster"]
+[node name="EnemyMid" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
 
-[node name="PlayerThree" type="Node3D" parent="Battle/Roster"]
+[node name="EnemyBack" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 6.72, 13.24)
+
+[node name="BattleGUI" parent="Camera3D" instance=ExtResource("4_noo0e")]
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BattleDungeon" parent="." instance=ExtResource("5_7bshd")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="BattleDungeon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.24, 1.74, -0.86)
+light_color = Color(1, 0.729412, 0.231373, 1)
+light_energy = 0.8
+light_size = 0.146
+shadow_enabled = true
+omni_range = 7.0
+omni_attenuation = 0.732043
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleDungeon/OmniLight3D"]
+autoplay = "Flicker"
+libraries = {
+"": SubResource("AnimationLibrary_uj5ot")
+}
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="BattleDungeon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.76, 1.74, -0.86)
+light_color = Color(1, 0.729412, 0.231373, 1)
+light_energy = 0.8
+light_size = 0.146
+shadow_enabled = true
+omni_range = 7.0
+omni_attenuation = 0.732043
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleDungeon/OmniLight3D6"]
+autoplay = "Flicker"
+libraries = {
+"": SubResource("AnimationLibrary_uj5ot")
+}
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="BattleDungeon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26, 1.74, -0.86)
+light_color = Color(1, 0.729412, 0.231373, 1)
+light_energy = 0.8
+light_size = 0.146
+shadow_enabled = true
+omni_range = 7.0
+omni_attenuation = 0.732043
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleDungeon/OmniLight3D3"]
+autoplay = "Flicker"
+libraries = {
+"": SubResource("AnimationLibrary_uj5ot")
+}
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="BattleDungeon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.78, 1.74, -0.86)
+light_color = Color(1, 0.729412, 0.231373, 1)
+light_energy = 0.8
+light_size = 0.146
+shadow_enabled = true
+omni_range = 7.0
+omni_attenuation = 0.732043
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleDungeon/OmniLight3D2"]
+autoplay = "Flicker"
+libraries = {
+"": SubResource("AnimationLibrary_uj5ot")
+}
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="BattleDungeon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24, 1.74, -0.86)
+light_color = Color(1, 0.729412, 0.231373, 1)
+light_energy = 0.8
+light_size = 0.146
+shadow_enabled = true
+omni_range = 7.0
+omni_attenuation = 0.732043
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleDungeon/OmniLight3D4"]
+autoplay = "Flicker"
+libraries = {
+"": SubResource("AnimationLibrary_uj5ot")
+}
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="BattleDungeon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.24, 1.74, -0.86)
+light_color = Color(1, 0.729412, 0.231373, 1)
+light_energy = 0.8
+light_size = 0.146
+shadow_enabled = true
+omni_range = 7.0
+omni_attenuation = 0.732043
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleDungeon/OmniLight3D5"]
+autoplay = "Flicker"
+libraries = {
+"": SubResource("AnimationLibrary_uj5ot")
+}
+
+[node name="SpotLight3D" type="SpotLight3D" parent="BattleDungeon"]
+transform = Transform3D(0.965926, 0.183013, 0.183013, -6.18172e-08, -0.707107, 0.707107, 0.258819, -0.683013, -0.683013, 0, 3.64, -2.16)
+light_energy = 8.564
+shadow_enabled = true
+spot_range = 12.88
+spot_attenuation = 0.00328474
+spot_angle = 20.4822
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_51ne1")

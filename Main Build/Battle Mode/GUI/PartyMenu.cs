@@ -1,7 +1,7 @@
 using System;
 using Godot;
-/*
 public partial class PartyMenu : BattleMenu{
+/*
     //Used to control whether we display the 'enabled' or 'disabled' textures
     
     
@@ -78,6 +78,5 @@ public partial class PartyMenu : BattleMenu{
         optionSelected = select;
         buttonHighlights[optionSelected].Visible = true;
     }
-}
-
 */
+}

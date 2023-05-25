@@ -1,12 +1,13 @@
-AnimationPlayer
 Node3D
-Camera3D
-OmniLight3D
-DirectionalLight3D
+SpotLight3D
 WorldEnvironment
+AnimationPlayer
+OmniLight3D
+Sprite3D
+Camera3D
+DirectionalLight3D
 MeshInstance3D
 CSGMesh3D
-Sprite3D
 Sprite2D
 Camera2D
 CSGBox3D
@@ -14,7 +15,6 @@ CollisionShape3D
 AudioStreamPlayer
 AudioStreamPlayer3D
 Area3D
-SpotLight3D
 StaticBody3D
 CSGCombiner3D
 Node

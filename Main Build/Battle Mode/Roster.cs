@@ -1,10 +1,18 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-
+using static BattleUtilities;
 public partial class Roster : Node
 {
+	private Dictionary<BattlePosition, Combatant> positionData = new Dictionary<BattlePosition, Combatant>{
+		{BattlePosition.EnemyBack, null},
+		{BattlePosition.EnemyMid, null},
+		{BattlePosition.EnemyFront, null},
+		{BattlePosition.HeroFront, null},
+		{BattlePosition.HeroMid, null},
+		{BattlePosition.HeroBack, null}
 
+	};
 	private PlayerCombatant[] playerCharacters = new PlayerCombatant[3];
 	private EnemyCombatant[] enemyCharacters = new EnemyCombatant[3];
 
@@ -14,13 +22,13 @@ public partial class Roster : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		playerSpots[0] = ((Node3D)this.FindChild("PlayerOne"));
-		playerSpots[1] = ((Node3D)this.FindChild("PlayerTwo"));
-		playerSpots[2] = ((Node3D)this.FindChild("PlayerThree"));
+		playerSpots[0] = ((Node3D)this.FindChild("HeroFront"));
+		playerSpots[1] = ((Node3D)this.FindChild("HeroMid"));
+		playerSpots[2] = ((Node3D)this.FindChild("HeroBack"));
 
-		enemySpots[0] = ((Node3D)this.FindChild("EnemyOne"));
-		enemySpots[1] = ((Node3D)this.FindChild("EnemyTwo"));
-		enemySpots[2] = ((Node3D)this.FindChild("EnemyThree")); 	
+		enemySpots[0] = ((Node3D)this.FindChild("EnemyFront"));
+		enemySpots[1] = ((Node3D)this.FindChild("EnemyMid"));
+		enemySpots[2] = ((Node3D)this.FindChild("EnemyBack")); 	
 
 		foreach(Node3D playerSpot in playerSpots){
 			if(playerSpot == null){
@@ -43,34 +51,27 @@ public partial class Roster : Node
 	{
 
 	}
-
-	public void MoveCharacter(Combatant mover, int newSpotIndex){
-
+	public void MoveCharacter(BattlePosition moverPos, BattlePosition newPos){
+		
 	}
 
-	public void MoveCharacter(int moverIndex, int newSpotIndex){
-		if(moverIndex < 3 && moverIndex >= 0){
-			if(enemyCharacters[moverIndex] != null){
-				MoveCharacter(enemyCharacters[moverIndex], newSpotIndex);
-			}else{
-				GetTree().Quit();
-				throw new NoCharacterOccupyingSpotAtIndexException();
-			}
-		}else if (moverIndex < 6){
-			if(enemyCharacters[moverIndex - 3] != null){
-				MoveCharacter(enemyCharacters[moverIndex - 3], newSpotIndex);
-			}else{
-				GetTree().Quit();
-				throw new NoCharacterOccupyingSpotAtIndexException();
-			}
+	public void MoveCharacter(Combatant mover, BattlePosition newPos){
+		MoveCharacter(GetPositionOfCombatant(mover), newPos);
+	}
+
+
+	public BattlePosition GetPositionOfCombatant(Combatant query){
+			foreach(KeyValuePair<BattlePosition, Combatant> pair in positionData){ if(pair.Value == query) return pair.Key; }
+			
+			throw new CombatantNotInRosterException("Combatant " + query.GetName() +  " not found!");
+	}
+
+	public Combatant GetCombatant(BattlePosition queryPos){
+		if(positionData.TryGetValue(queryPos, out var value)){
+			return value;
 		}else{
-			GetTree().Quit();
-			throw new IndexOutOfRangeException();
+			return null;
 		}
-	}
-
-	public PlayerCombatant GetPlayerCombatant(int playerIndex){
-		return playerCharacters[playerIndex];
 	}
 
 	public PlayerCombatant[] GetAllPlayerCombatants(){
@@ -78,14 +79,16 @@ public partial class Roster : Node
 		result.CopyTo(playerCharacters, 0);
 		return result;
 	}
-
-	public EnemyCombatant GetEnemyCombatant(int enemyIndex){
-		return enemyCharacters[enemyIndex];
-	}
-
 	public EnemyCombatant[] GetAllEnemyCombatants(){
 		var result = new EnemyCombatant[3];
 		result.CopyTo(enemyCharacters, 0);
+		return result;
+	}
+
+	public Combatant[] GetAllCombatants(){
+		var result = new Combatant[6];
+		Array.Copy(enemyCharacters, result, enemyCharacters.Length);
+		Array.Copy(playerCharacters, 0, result, enemyCharacters.Length, playerCharacters.Length);
 		return result;
 	}
 }
@@ -102,6 +105,23 @@ public class RosterNotConfiguredException : Exception
     }
 
     public RosterNotConfiguredException(string message, Exception inner)
+        : base(message, inner)
+    {
+    }
+}
+
+public class CombatantNotInRosterException : Exception
+{
+    public CombatantNotInRosterException()
+    {
+    }
+
+    public CombatantNotInRosterException(string message)
+        : base(message)
+    {
+    }
+
+    public CombatantNotInRosterException(string message, Exception inner)
         : base(message, inner)
     {
     }

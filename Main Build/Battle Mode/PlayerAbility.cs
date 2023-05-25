@@ -3,7 +3,9 @@ using System;
 
 public partial class PlayerAbility : Ability
 {
-	protected int spCost = 0;
+	protected int spCost = -1;
+
+	protected string rulesText = "<Default Rules Text> [YOU SHOULDN'T SEE THIS IN THE UI]";
 
 	public override void Setup(Combatant proposedSource){
 		base.Setup(proposedSource);
@@ -11,5 +13,13 @@ public partial class PlayerAbility : Ability
 			GetTree().Quit();
 			throw new BadAbilitySetupException("Player Abilities can only be setup with Player Combatants!");
 		}
+	}
+
+	public int GetSPCost(){
+		return spCost;
+	}
+
+	public string GetRulesText(){
+		return rulesText;
 	}
 }

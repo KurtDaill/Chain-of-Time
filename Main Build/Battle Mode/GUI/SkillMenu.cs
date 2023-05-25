@@ -1,9 +1,9 @@
 using Godot;
 using System;
-/*
+
 public partial class SkillMenu : BattleMenu
 {
-    
+    /*
     public AnimationPlayer menuAnim;
     public AudioStreamPlayer rejectSound;
     public SkillCard[] cards = new SkillCard[4];
@@ -91,6 +91,5 @@ public partial class SkillMenu : BattleMenu
         }
         return null;
     }
-}
-
 */
+}

@@ -4,10 +4,11 @@ using System.Threading.Tasks;
 public partial class Battle : Node
 {
 	private BattlePhase currentPhase = BattlePhase.StartOfTurn;
+	[Export]
+	private PMBattleGUI gui;
+	private CombatEventData[] eventChain;
 
-	private (Combatant, string)[] actionChain;
-
-	//private ActionChain theChain = new ActionChain();
+	//private eventChain theChain = new eventChain();
 
 	//private List<StatusEffect> Effects;
 
@@ -33,49 +34,59 @@ public partial class Battle : Node
 				*/
 			case BattlePhase.StartOfTurn :
 				//Game Executes Location logic for downed characters
-				//Waiting on some guidance on how we're doing status effects
+
+				//Drag all Status Effect Event Data into Action Chain.
+				//await ExecuteCombatEvents(eventChain);
+				currentPhase = BattlePhase.PlayerSelectsCommands;
 				break;
 				
 				//PlayerSelectsCommands - Game hands over funcionality to a GUI object that allows the player to select what abilities/attacks each character will use, it's appended to the Combat Chain
 			case BattlePhase.PlayerSelectsCommands :
+				//Clear Action Chain
+				eventChain = new CombatEventData[3];
 				//GUI.Start Doing your Thing()
-				//await ToSignal(GUI is Done)
+				gui.ResetGUIState();
+				await ToSignal()
 				break;	
 				
 			//PlayerCommandExecute -Game Iterates through player attacks, allowing each to play its animation in sequence
 			case BattlePhase.PlayerCommandExecute :
-				await PlayAnimations(actionChain);
+				await ExecuteCombatEvents(eventChain);
 				break;
 				
 			//TurnOver - Game allows each enemy to calculate what attack it wants to execute, a set ammount of time is forced to pass before enemy attacks
 			case BattlePhase.TurnOver :
 				EnemyCombatant[] enemies = battleRoster.GetAllEnemyCombatants();
-				actionChain = new (Combatant, string)[enemies.Length];
+				eventChain = new CombatEventData[enemies.Length];
 				for(int i = 0; i < enemies.Length; i++){
-					actionChain[i] = (enemies[i], enemies[i].DecideAction(this));
+					eventChain[i] = enemies[i].DecideAction(this);
 				}
 				//Delay to add some time between player and enemy attacks?
 				break;
 
 			//EnemyCommandExecute - Game Iterates through enemy attacks, allowing each to play its animaiton in sequence
 			case BattlePhase.EnemyCommandExecute :
-				await PlayAnimations(actionChain);
+				await ExecuteCombatEvents(eventChain);
 				break;	
 		}		
 	}
 
 	//General solution for phases that are essentially "Stop everything let these animations play in sequence"
-	private async Task PlayAnimations((Combatant, string)[] animations)
+	private async Task ExecuteCombatEvents(CombatEventData[] actions)
 	{
-		for(int i = 0; i < animations.Length; i++){
-			if(animations[i].Item1.HasAnimation(animations[i].Item2)){
-				animations[i].Item1.GetAnimationPlayer().Play(animations[i].Item2);
-				await ToSignal(animations[i].Item1.GetAnimationPlayer(), "animationFinished");
+		for(int i = 0; i < actions.Length; i++){
+			if(actions[i].GetCombatant().HasAnimation(actions[i].GetAnimationName())){
+				actions[i].GetCombatant().GetAnimationPlayer().Play(actions[i].GetAnimationName());
+				await ToSignal(actions[i].GetCombatant().GetAnimationPlayer(), "animationFinished");
 			}else{	
 				GetTree().Quit();
-				throw new BadCombatAnimationException("Listed Animation (" + animations[i].Item2 + ") not found on Combatant (" + animations[i].Item1.GetName() + ")");
+				throw new BadCombatAnimationException("Listed Animation (" + actions[i].GetAnimationName() + ") not found on Combatant (" + actions[i].GetCombatant().GetName() + ")");
 			}
 		}
+	}
+
+	public Roster GetRoster(){
+		return battleRoster;
 	}
 
 	private class BadCombatAnimationException : Exception{
@@ -85,14 +96,48 @@ public partial class Battle : Node
 	}
 }
 
+//The Basic Representation of "A Thing that happens" during combat. This could be the "tick" of a status effect, an ability being used, ect.
+public partial class CombatEventData : Godot.GodotObject
+{
+	private string animationName = "<DefaultAnimationName>";
+	private Combatant source = null;
+
+	public CombatEventData(string name, Combatant src){
+		this.animationName = name;
+		this.source = src;
+	}
+
+	public string GetAnimationName() { return animationName; }
+	public Combatant GetCombatant() { return source; }
+}
+
 public static class BattleUtilities
 {
 	public enum BattlePosition{
 		EnemyBack,
 		EnemyMid,
 		EnemyFront,
+		HeroFront,
+		HeroMid,
+		HeroBack
+	}
+
+	public enum TargetingLogic{
+		None,
+		Self,
+		Melee,
+		Reach,
+		Ranged,
+		AllHeroes,
+		AllEnemies,
+		AnyAlly,
+		All,
+		EnemyBack,
+		EnemyMid,
+		EnemyFront,
 		PlayerFront,
 		PlayerMid,
-		PlayerBack
+		PlayerBack,
+		Battlefield
 	}
 }

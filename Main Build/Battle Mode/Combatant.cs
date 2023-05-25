@@ -67,4 +67,20 @@ public partial class Combatant : Node
 		result.RemoveAll(x => !(x is OnActStatus));
 		return result.ToArray();
 	}
+
+	public BattlePosition GetCurrentPosition(){
+		return currentPosition;
+	}
+
+	//Returns whether or not this character is able to input a command in order to act this turn.
+	public bool IsAbleToAct(){
+		//TODO: Flesh out this function with the game logic of when characters can/can't set a command for their actions this turn;
+		return true;
+	}
+
+	//Used to activate/deactivate all of the effets that indicate the player is targeting this character in the battle menu
+	//TODO Implement this
+	public void SetTargetGUIElements(bool state){
+
+	}
 }
