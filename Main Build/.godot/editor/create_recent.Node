@@ -1,12 +1,13 @@
+Node
 AnimationPlayer
+Sprite3D
+Node3D
 OmniLight3D
 SpotLight3D
 Label3D
 DirectionalLight3D
-Node3D
 CSGBox3D
 WorldEnvironment
-Sprite3D
 Camera3D
 MeshInstance3D
 CSGMesh3D
@@ -18,7 +19,6 @@ AudioStreamPlayer3D
 Area3D
 StaticBody3D
 CSGCombiner3D
-Node
 AnimationTree
 CharacterBody3D
 CSGSphere3D

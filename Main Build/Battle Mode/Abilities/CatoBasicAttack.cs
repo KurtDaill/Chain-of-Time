@@ -11,20 +11,23 @@ public partial class CatoBasicAttack : PlayerAbility
 
 	public CatoBasicAttack(){	
 		name = "CatoBasicAttack";
+		animation = "CatoBasicAttack";
 		currentDamageChart = new System.Collections.Generic.Dictionary<double, int>()
 		{
-			{0.5, 1},
-			{0.5, 2}
+			{0.49, 1},
+			{0.51, 2}
 		};
+
+		rulesText = " [center]Melee \n Cato Deals 1-2 Damage";
 		AbilityTargetingLogic = TargetingLogic.Melee;
 	}
 
-	public override void Execute(int phase){
+	public override void Activate(int phase){
 		if(phase != 0){
 			throw new BadAbilityExecuteCallException("Ability Animation called for Exectuion Phase that isn't defined!");
 		}
 		if(target.Length != 1){
-			throw new BadAbilitySetupException("Incorrect Targets for Ability " + this.name + ". Need exaclty one target, have " + target.Length + " instead.");
+			throw new BadActionSetupException("Incorrect Targets for Ability " + this.name + ". Need exaclty one target, have " + target.Length + " instead.");
 		}
 		if(target[0].GetPosition() != BattlePosition.EnemyFront && source.GetPosition() != BattlePosition.HeroFront){
 			//Ability Fails

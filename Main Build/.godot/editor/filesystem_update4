@@ -1,4 +1,4 @@
-res://Test Scenes/Sprite Testing/In Context Sprite Test.tscn
+res://Battle Mode/PrototypeBattle.tscn
 res://GUI/Themes/Skill Card Tech.tres
 res://GUI/Themes/UI Impact.tres
 res://GUI/Themes/Skill Card Normal Small.tres
@@ -7,7 +7,5 @@ res://GUI/Themes/Skill Card Normal.tres
 res://GUI/Themes/Skill Card Spell.tres
 res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres
 res://Art/3D/MODULAR DUNGEON TILES.material
-res://Test Scenes/Sprite Testing/Environments/Netural Env.tres
-res://Test Scenes/Sprite Testing/Environments/Big Sun Env.tres
-res://Art/Baths Tileset.material
-res://Test Scenes/Sprite Testing/Environments/Night Env.tres
+res://Battle Mode/test_hero.tscn
+res://Battle Mode/BattleGUI.tscn

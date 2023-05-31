@@ -11,7 +11,7 @@ public partial class PlayerAbility : Ability
 		base.Setup(proposedSource);
 		if(!(source is PlayerCombatant)){
 			GetTree().Quit();
-			throw new BadAbilitySetupException("Player Abilities can only be setup with Player Combatants!");
+			throw new BadActionSetupException("Player Abilities can only be setup with Player Combatants!");
 		}
 	}
 

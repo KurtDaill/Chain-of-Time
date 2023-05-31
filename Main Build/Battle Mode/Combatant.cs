@@ -13,11 +13,21 @@ public partial class Combatant : Node3D
 	protected List<StatusEffect> activeStatuses;
 
 	protected string name = "defaultCombatantName";
+
+	protected CombatAction readyAction;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		animPlay = (AnimationPlayer)this.GetNode("AnimationPlayer");
 
+		//TODO Make a Better Version of this
+		foreach(Node child in GetChildren()){
+			if(child is Ability){
+				Ability ab = (Ability)child;
+				ab.Setup(this);
+			}
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,6 +45,7 @@ public partial class Combatant : Node3D
 	}
 
 	public bool HasAnimation(string name){
+		var test = animPlay.GetAnimationList();
 		return animPlay.HasAnimation(name);
 	}
 
@@ -54,6 +65,14 @@ public partial class Combatant : Node3D
 		return activeStatuses.ToArray();
 	}
 
+	public void ReadyAction(CombatAction act){
+		if(this.GetChildren().Contains(act)){
+			readyAction = act;
+		}else{
+			throw new ActionNotFoundException("Action Failed to Ready. Action (" + act.GetName() + ") not found as child of Combatant (" + name + "). Actions must be childed to combatants to be readied or used.");
+		}
+	}
+
 	//Returns all status effects that trigger on the start of turn (the upkeep)
 	public StatusEffect[] GetUpkeepStatusEffects(){
 		var result = new List<StatusEffect>(activeStatuses);
@@ -66,6 +85,10 @@ public partial class Combatant : Node3D
 		var result = new List<StatusEffect>(activeStatuses);
 		result.RemoveAll(x => !(x is OnActStatus));
 		return result.ToArray();
+	}
+
+	public void ActivateReadyAction(int phase){
+
 	}
 
 	public BattlePosition GetCurrentPosition(){
@@ -82,5 +105,12 @@ public partial class Combatant : Node3D
 	//TODO Implement this
 	public void SetTargetGUIElements(bool state){
 
+	}
+
+	public class ActionNotFoundException : Exception
+	{
+		public ActionNotFoundException(){}
+		public ActionNotFoundException(string message): base(message) {}
+		public ActionNotFoundException(string message,Exception inner) : base(message,inner){}
 	}
 }

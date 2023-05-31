@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ck78k6iju4ldb"]
+[gd_scene load_steps=8 format=3 uid="uid://ck78k6iju4ldb"]
 
 [ext_resource type="Script" path="res://Battle Mode/PlayerCombatant.cs" id="1_5lwxp"]
 [ext_resource type="Texture2D" uid="uid://bg7iwb5q2rqi5" path="res://Art/New New New Cato.png" id="2_qm02d"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="3_oduca"]
+[ext_resource type="Script" path="res://Battle Mode/Abilities/CatoBasicAttack.cs" id="4_qgcm6"]
 
 [sub_resource type="Animation" id="Animation_5otli"]
 resource_name = "CatoBasicAttack"
@@ -38,6 +39,20 @@ tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.3, 1)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ngeda"]
@@ -82,8 +97,9 @@ _data = {
 "RESET": SubResource("Animation_ngeda")
 }
 
-[node name="TestHero" type="Node3D"]
+[node name="TestHero" type="Node3D" node_paths=PackedStringArray("basicAttack")]
 script = ExtResource("1_5lwxp")
+basicAttack = NodePath("CatoBasicAttack")
 
 [node name="CatoSprite" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56, 0, 0)
@@ -102,5 +118,8 @@ texture_filter = 0
 libraries = {
 "": SubResource("AnimationLibrary_iaquc")
 }
+
+[node name="CatoBasicAttack" type="Node" parent="."]
+script = ExtResource("4_qgcm6")
 
 [editable path="Pointer Adjuster/Pointer"]

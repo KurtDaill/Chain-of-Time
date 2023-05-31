@@ -40,7 +40,7 @@ public partial class PMBattleGUI : Control
 			base._Process(delta);
 			var returnedAbility = currentMenu.HandleInput(ReadInput(), playersInQuestion[abilitiesQueued.Count(x => x != null)], parentBattle);
 			if(returnedAbility != null){
-				abilitiesQueued[abilitiesQueued.Count(x => x != null)] = returnedAbility.GetEventData();
+				abilitiesQueued[abilitiesQueued.Count(x => x != null)] = returnedAbility.ReadyOnCombatantAndGetData();
 				if(abilitiesQueued.Count(x => x != null) == playersInQuestion.Count){//When we have all of our abilities, we emit the signal
 					EmitSignal(nameof(PlayerFinishedCommandInputEventHandler));
 					this.active = false;

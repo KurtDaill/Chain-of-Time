@@ -8,6 +8,7 @@ public partial class PlayerCombatant : Combatant
 	//Includes a dicitonary of potential damage done by a basic attack (expressed in an int), and the probability of that ammount of damage (expressed in a double)
 	//The doubles should add up to one.
 	protected Dictionary<double, int> basicAttackDamageRange;
+	[Export]
 	protected PlayerAbility basicAttack;
 
 	// Called when the node enters the scene tree for the first time.
