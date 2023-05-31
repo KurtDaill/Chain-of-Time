@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://ctkjn6qaseru7"]
+[gd_scene load_steps=83 format=3 uid="uid://ctkjn6qaseru7"]
 
 [ext_resource type="Theme" uid="uid://crl1yc2vxqufr" path="res://GUI/Themes/Skill Card Tech.tres" id="1"]
 [ext_resource type="Theme" uid="uid://lcud6pbsl6dn" path="res://GUI/Themes/UI Impact.tres" id="2"]
@@ -40,6 +40,7 @@
 [ext_resource type="Script" path="res://Battle Mode/GUI/PMBattleGUI.cs" id="38"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/TargetingMenu.cs" id="39"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/TopMenu.cs" id="40"]
+[ext_resource type="Script" path="res://GUI/ReadoutContainer.cs" id="40_jh205"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/SkillCard.cs" id="41"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/SwapMenu.cs" id="42"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/ItemMenu.cs" id="43"]
@@ -955,6 +956,8 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -1080.0
+grow_horizontal = 2
+grow_vertical = 0
 script = ExtResource("38")
 
 [node name="Top Menu" type="Control" parent="."]
@@ -1362,7 +1365,6 @@ text = " [center][Range]
 Basic Attack Text"
 
 [node name="Skill Menu" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1376,6 +1378,7 @@ offset_right = 1165.0
 offset_bottom = 1248.0
 theme = ExtResource("5")
 texture = ExtResource("24")
+stretch_mode = 2
 script = ExtResource("41")
 
 [node name="Name" type="RichTextLabel" parent="Skill Menu/Card 4"]
@@ -1430,9 +1433,6 @@ theme = ExtResource("1")
 texture = ExtResource("34")
 stretch_mode = 2
 script = ExtResource("41")
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Name" type="RichTextLabel" parent="Skill Menu/Card 3"]
 layout_mode = 0
@@ -1487,9 +1487,6 @@ theme = ExtResource("5")
 texture = ExtResource("24")
 stretch_mode = 2
 script = ExtResource("41")
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Name" type="RichTextLabel" parent="Skill Menu/Card 2"]
 layout_mode = 0
@@ -1597,6 +1594,7 @@ stream = ExtResource("21")
 volume_db = 10.0
 
 [node name="Targeting Menu" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 752.0
 script = ExtResource("39")
@@ -1622,6 +1620,7 @@ offset_left = -752.0
 offset_top = -0.44635
 offset_bottom = -0.126831
 alignment = 1
+script = ExtResource("40_jh205")
 
 [node name="Cato Readout" type="TextureRect" parent="Readouts"]
 layout_mode = 2

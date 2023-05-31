@@ -13,6 +13,12 @@ public partial class Roster : Node
 		{BattlePosition.HeroBack, null}
 
 	};
+
+	[Export]
+	private bool debugMode;
+
+	[Export]
+	private NodePath debugPlayer;
 	private PlayerCombatant[] playerCharacters = new PlayerCombatant[3];
 	private EnemyCombatant[] enemyCharacters = new EnemyCombatant[3];
 
@@ -43,6 +49,10 @@ public partial class Roster : Node
 				GetTree().Quit();
 				throw new RosterNotConfiguredException("Roster missing object defining enemy standing position! You must have Node3D's labeled EnemyOne, EnemyTwo, & EnemyThree as children of this node");
 			} 
+		}
+
+		if(debugMode){
+			playerCharacters[0] = (PlayerCombatant) GetNode(debugPlayer);
 		}
 	}
 
@@ -76,12 +86,12 @@ public partial class Roster : Node
 
 	public PlayerCombatant[] GetAllPlayerCombatants(){
 		var result = new PlayerCombatant[3];
-		result.CopyTo(playerCharacters, 0);
+		playerCharacters.CopyTo(result, 0);
 		return result;
 	}
 	public EnemyCombatant[] GetAllEnemyCombatants(){
 		var result = new EnemyCombatant[3];
-		result.CopyTo(enemyCharacters, 0);
+		enemyCharacters.CopyTo(result, 0);
 		return result;
 	}
 

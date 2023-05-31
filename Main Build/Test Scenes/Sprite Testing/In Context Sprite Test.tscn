@@ -1,0 +1,419 @@
+[gd_scene load_steps=17 format=3 uid="uid://dtpj2w158ws3m"]
+
+[ext_resource type="Environment" uid="uid://cfh7634f0l1lo" path="res://Test Scenes/Sprite Testing/Environments/Dungeon Env.tres" id="1_44kqi"]
+[ext_resource type="Script" path="res://Test Scenes/Sprite Testing/InContextSpriteTest.cs" id="1_c12c6"]
+[ext_resource type="PackedScene" uid="uid://ysgw0mocwq5u" path="res://Art/3D/battle_dungeon.tscn" id="2_5lvj2"]
+[ext_resource type="Environment" uid="uid://bmndayhcft4u3" path="res://Test Scenes/Sprite Testing/Environments/Netural Env.tres" id="2_g8yhf"]
+[ext_resource type="Environment" uid="uid://drj4dcbtsl33g" path="res://Test Scenes/Sprite Testing/Environments/Big Sun Env.tres" id="3_1dywo"]
+[ext_resource type="PackedScene" uid="uid://cg6ftftqprbhm" path="res://Art/3D/Baths.dae" id="3_ef7gi"]
+[ext_resource type="Environment" uid="uid://dru8w3wvm3t86" path="res://Test Scenes/Sprite Testing/Environments/Perfect Dark Env.tres" id="3_rlgqy"]
+[ext_resource type="Environment" uid="uid://jwa7oenbgqy2" path="res://Test Scenes/Sprite Testing/Environments/Night Env.tres" id="4_kw2hb"]
+[ext_resource type="Texture2D" uid="uid://barilgnnr0yyq" path="res://Art/Zeld Cato Idle Test.png" id="7_crhy3"]
+[ext_resource type="Script" path="res://addons/control_camera3d/nodes/control_camera_3d.gd" id="8_lpovc"]
+
+[sub_resource type="Animation" id="Animation_et25c"]
+resource_name = "Idle"
+length = 0.9
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kvqaw"]
+_data = {
+"Idle": SubResource("Animation_et25c")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_woup3"]
+
+[sub_resource type="Animation" id="Animation_prff2"]
+resource_name = "Fire"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.4, 1.8, 2.3, 2.9, 3.4, 4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.666667, -0.25, 0, 0.25, 0, 0.803922, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0, 0.67451, -0.25, 0, 0.25, 0, 0.666667, -0.25, 0, 0.25, 0, 0.803922, -0.25, 0, 0.25, 0, 0.67451, -0.25, 0, 0.25, 0, 0.709804, -0.25, 0, 0.25, 0, 0.666667, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.4, 1.8, 2.3, 2.9, 3.4, 4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.168627, -0.25, 0, 0.25, 0, 0.341176, -0.25, 0, 0.25, 0, 0.270588, -0.25, 0, 0.25, 0, 0.109804, -0.25, 0, 0.25, 0, 0.168627, -0.25, 0, 0.25, 0, 0.341176, -0.25, 0, 0.25, 0, 0.109804, -0.25, 0, 0.25, 0, 0.0313726, -0.25, 0, 0.25, 0, 0.168627, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.4, 1.8, 2.3, 2.9, 3.4, 4)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D:light_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.4, 1.8, 2.3, 2.9, 3.4, 4)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OmniLight3D:omni_range")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(12, -0.25, 0, 0.25, 0, 14, -0.25, 0, 0.25, 0, 12, -0.25, 0, 0.25, 0, 15, -0.25, 0, 0.25, 0, 13, -0.25, 0, 0.25, 0, 14, -0.25, 0, 0.25, 0, 12, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, 12, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.4, 1.8, 2.3, 2.9, 3.4, 4)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("OmniLight3D:light_energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.5, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 1.3, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.4, 1.8, 2.3, 2.9, 3.4, 4)
+}
+
+[sub_resource type="Animation" id="Animation_je3p8"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.666667, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.168627, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D:light_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OmniLight3D:omni_range")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("OmniLight3D:light_energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g68k8"]
+_data = {
+"Fire": SubResource("Animation_prff2"),
+"RESET": SubResource("Animation_je3p8")
+}
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("env")]
+script = ExtResource("1_c12c6")
+enviornments = Array[Environment]([ExtResource("2_g8yhf"), ExtResource("2_g8yhf"), ExtResource("2_g8yhf"), ExtResource("3_rlgqy"), ExtResource("3_rlgqy"), ExtResource("3_1dywo"), ExtResource("1_44kqi")])
+stagesInEditor = [NodePath("Neutral Env Omni Light"), NodePath("Neutral Env Spotlight"), NodePath("Neutral Env Color Light"), NodePath("Silhouette"), NodePath("Campfire"), NodePath("Tropical Env"), NodePath("Dungeon Env")]
+env = NodePath("WorldEnvironment")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_kw2hb")
+
+[node name="Shaded Cato" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4.2, -0.84)
+modulate = Color(0.842008, 1, 0.862321, 1)
+pixel_size = 0.02
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("7_crhy3")
+hframes = 6
+
+[node name="Label3D" type="Label3D" parent="Shaded Cato"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.52652, 0)
+pixel_size = 0.03
+shaded = true
+text = "Shaded"
+font_size = 64
+outline_size = 18
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shaded Cato"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_kvqaw")
+}
+
+[node name="Unshaded Cato" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4.2, -0.84)
+modulate = Color(0.842008, 1, 0.862321, 1)
+pixel_size = 0.02
+texture_filter = 1
+texture = ExtResource("7_crhy3")
+hframes = 6
+
+[node name="Label3D" type="Label3D" parent="Unshaded Cato"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.52652, 0)
+pixel_size = 0.03
+text = "Unshaded"
+font_size = 64
+outline_size = 18
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Unshaded Cato"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_kvqaw")
+}
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.76, 5.28, 1.52)
+visible = false
+light_energy = 4.376
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.962463, 0.271414, 0, -0.271414, 0.962463, 0, 5.64, 20)
+script = ExtResource("8_lpovc")
+translation_speed = 4.0
+zoom_speed = 2.0
+zoom_out = 100.0
+
+[node name="Neutral Env Omni Light" type="Node3D" parent="."]
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Neutral Env Omni Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.56, 0)
+size = Vector3(46.8, 1, 17.6)
+material = SubResource("StandardMaterial3D_woup3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Neutral Env Omni Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.68, 3.92)
+light_energy = 4.5
+omni_range = 10.651
+
+[node name="Neutral Env Spotlight" type="Node3D" parent="."]
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Neutral Env Spotlight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.56, 0)
+size = Vector3(46.8, 1, 17.6)
+material = SubResource("StandardMaterial3D_woup3")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Neutral Env Spotlight"]
+transform = Transform3D(0.707107, 0, 0.707107, -0.353553, 0.866025, 0.353553, -0.612372, -0.5, 0.612372, 17, 10.04, 8.64)
+light_energy = 10.371
+shadow_enabled = true
+spot_range = 37.0
+
+[node name="Neutral Env Color Light" type="Node3D" parent="."]
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Neutral Env Color Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.56, 0)
+size = Vector3(46.8, 1, 17.6)
+material = SubResource("StandardMaterial3D_woup3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Neutral Env Color Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, 3.92)
+light_color = Color(1, 0.568627, 0, 1)
+light_energy = 9.902
+omni_range = 12.8
+
+[node name="Silhouette" type="Node3D" parent="."]
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Silhouette"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.56, 0)
+size = Vector3(46.8, 1, 17.6)
+material = SubResource("StandardMaterial3D_woup3")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Silhouette"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8.2, -16.12)
+layers = 2
+size = Vector3(46.8, 1, 17.6)
+material = SubResource("StandardMaterial3D_woup3")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Silhouette"]
+transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 0, 18.64, -14.72)
+light_energy = 14.519
+shadow_enabled = true
+spot_range = 50.56
+spot_angle = 35.3263
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Silhouette"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.48, 20.6)
+light_energy = 14.519
+light_cull_mask = 4293918722
+spot_range = 50.56
+spot_angle = 56.4787
+
+[node name="Campfire" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Campfire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.56, 0)
+size = Vector3(46.8, 1, 17.6)
+material = SubResource("StandardMaterial3D_woup3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Campfire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, 3.8)
+light_color = Color(1, 0.666667, 0.168627, 1)
+light_energy = 0.0
+omni_range = 0.0
+omni_attenuation = 1.27456
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Campfire"]
+autoplay = "Fire"
+libraries = {
+"": SubResource("AnimationLibrary_g68k8")
+}
+
+[node name="Tropical Env" type="Node3D" parent="."]
+visible = false
+
+[node name="Baths" parent="Tropical Env" instance=ExtResource("3_ef7gi")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -0.32, -7)
+
+[node name="Sun" type="DirectionalLight3D" parent="Tropical Env"]
+transform = Transform3D(-0.707107, -2.49301e-08, 0.707107, 0.183013, 0.965926, 0.183013, -0.683013, 0.258819, -0.683013, 0, 0, 0)
+light_color = Color(1, 0.917647, 0.619608, 1)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Tropical Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 3.96)
+light_color = Color(1, 0.835294, 0.45098, 1)
+light_energy = 1.1
+sky_mode = 1
+
+[node name="Dungeon Env" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12, 0, -3.64)
+visible = false
+
+[node name="BattleDungeon" parent="Dungeon Env" instance=ExtResource("2_5lvj2")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Dungeon Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4, 10.36, -5.48)
+light_color = Color(0.878431, 0.729412, 0.282353, 1)
+light_energy = 8.0
+omni_range = 25.0
+omni_attenuation = 1.36604
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Dungeon Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6, 10.36, -5.48)
+light_color = Color(0.878431, 0.729412, 0.282353, 1)
+light_energy = 8.0
+omni_range = 25.0
+omni_attenuation = 1.36604
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Dungeon Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.36, 10.36, -5.48)
+light_color = Color(0.878431, 0.729412, 0.282353, 1)
+light_energy = 8.0
+omni_range = 25.0
+omni_attenuation = 1.36604
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Dungeon Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6, 10.36, -5.48)
+light_color = Color(0.878431, 0.729412, 0.282353, 1)
+light_energy = 8.0
+omni_range = 25.0
+omni_attenuation = 1.36604
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Dungeon Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.44, 10.36, -5.48)
+light_color = Color(0.878431, 0.729412, 0.282353, 1)
+light_energy = 8.0
+omni_range = 25.0
+omni_attenuation = 1.36604
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Dungeon Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.4, 10.36, -5.48)
+light_color = Color(0.878431, 0.729412, 0.282353, 1)
+light_energy = 8.0
+omni_range = 25.0
+omni_attenuation = 1.36604
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Dungeon Env"]
+transform = Transform3D(0.965926, -0.183013, -0.183013, 0, -0.707107, 0.707107, -0.258819, -0.683013, -0.683013, -1.88, 25.2, -15.4)
+light_energy = 16.0
+shadow_enabled = true
+spot_range = 76.04
+spot_attenuation = 0.659754
+spot_angle = 13.7109
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Dungeon Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 49.36)
+light_color = Color(0.686275, 0.745098, 0.890196, 1)
+light_energy = 0.1
+sky_mode = 1

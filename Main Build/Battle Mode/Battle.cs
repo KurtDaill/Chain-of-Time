@@ -1,12 +1,14 @@
 using Godot;
 using System;
 using System.Threading.Tasks;
-public partial class Battle : Node
+public partial class Battle : Node3D
 {
 	private BattlePhase currentPhase = BattlePhase.StartOfTurn;
 	[Export]
 	private PMBattleGUI gui;
 	private CombatEventData[] eventChain;
+
+	private bool waiting = false;
 
 	//private eventChain theChain = new eventChain();
 
@@ -43,15 +45,24 @@ public partial class Battle : Node
 				//PlayerSelectsCommands - Game hands over funcionality to a GUI object that allows the player to select what abilities/attacks each character will use, it's appended to the Combat Chain
 			case BattlePhase.PlayerSelectsCommands :
 				//Clear Action Chain
-				eventChain = new CombatEventData[3];
+				eventChain = null;
 				//GUI.Start Doing your Thing()
-				gui.ResetGUIState();
-				await ToSignal()
+				if(waiting) return;
+				gui.ResetGUIStateAndStart(battleRoster.GetAllPlayerCombatants(), this);
+				waiting = true;
+				await ToSignal(gui, PMBattleGUI.SignalName.TreeExited);
+				eventChain = gui.PickUpQueuedActions();
+				waiting = false;
+				currentPhase = BattlePhase.PlayerCommandExecute;
 				break;	
 				
 			//PlayerCommandExecute -Game Iterates through player attacks, allowing each to play its animation in sequence
 			case BattlePhase.PlayerCommandExecute :
+				if(waiting) return;
+				waiting = true;
 				await ExecuteCombatEvents(eventChain);
+				waiting = false;
+				currentPhase = BattlePhase.TurnOver;
 				break;
 				
 			//TurnOver - Game allows each enemy to calculate what attack it wants to execute, a set ammount of time is forced to pass before enemy attacks

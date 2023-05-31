@@ -8,6 +8,17 @@ public partial class CatoBasicAttack : PlayerAbility
 		So Animation will need to call a function on its combatant
 		That function will need data from this ability...
 	*/
+
+	public CatoBasicAttack(){	
+		name = "CatoBasicAttack";
+		currentDamageChart = new System.Collections.Generic.Dictionary<double, int>()
+		{
+			{0.5, 1},
+			{0.5, 2}
+		};
+		AbilityTargetingLogic = TargetingLogic.Melee;
+	}
+
 	public override void Execute(int phase){
 		if(phase != 0){
 			throw new BadAbilityExecuteCallException("Ability Animation called for Exectuion Phase that isn't defined!");

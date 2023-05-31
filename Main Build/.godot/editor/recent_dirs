@@ -1,7 +1,11 @@
-res://Battle Mode
-res://Art/3D
+res://Test Scenes/Sprite Testing/Environments
+res://Test Scenes/Sprite Testing
 res://Art
+res://Battle Mode/GUI
+res://GUI
+res://Battle Mode
 res://
+res://Art/3D
 res://Prototyping
 res://Prototyping/Environments
 C:/Users/kdail/Desktop/The Chain of Time
@@ -16,7 +20,3 @@ res://Cutscenes/Dialogue Files
 res://Art/ChainOfTimeDisplay
 res://Explore Mode
 res://Battle Mode/Enemies
-res://Cutscenes
-res://Fonts
-res://GUI
-res://GUI/Cutscene Assets

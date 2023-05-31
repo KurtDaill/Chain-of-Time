@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using static BattleUtilities;
 
-public partial class Combatant : Node
+public partial class Combatant : Node3D
 {
 	protected int HP;
 	protected AnimationPlayer animPlay;

@@ -50,12 +50,16 @@ ambient_light_energy = 0.81
 
 [node name="TopNode" type="Node3D"]
 
-[node name="Battle" type="Node3D" parent="."]
+[node name="Battle" type="Node3D" parent="." node_paths=PackedStringArray("gui", "battleRoster")]
 script = ExtResource("1_0eajl")
+gui = NodePath("Camera3D/BattleGUI")
+battleRoster = NodePath("Roster")
 
 [node name="Roster" type="Node3D" parent="Battle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 script = ExtResource("2_p000p")
+debugMode = true
+debugPlayer = NodePath("HeroFront/TestHero")
 
 [node name="HeroBack" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
@@ -77,12 +81,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
 [node name="EnemyBack" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="Battle"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 6.72, 13.24)
 
-[node name="BattleGUI" parent="Camera3D" instance=ExtResource("4_noo0e")]
-grow_horizontal = 2
-grow_vertical = 0
+[node name="BattleGUI" parent="Battle/Camera3D" instance=ExtResource("4_noo0e")]
 
 [node name="BattleDungeon" parent="." instance=ExtResource("5_7bshd")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
