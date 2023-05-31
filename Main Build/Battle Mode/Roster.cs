@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using static BattleUtilities;
+using System.Linq;
 public partial class Roster : Node
 {
 	private Dictionary<BattlePosition, Combatant> positionData = new Dictionary<BattlePosition, Combatant>{
@@ -18,7 +19,10 @@ public partial class Roster : Node
 	private bool debugMode;
 
 	[Export]
-	private NodePath debugPlayer;
+	private PlayerCombatant debugPlayer;
+	[Export]
+	private EnemyCombatant debugEnemy;
+
 	private PlayerCombatant[] playerCharacters = new PlayerCombatant[3];
 	private EnemyCombatant[] enemyCharacters = new EnemyCombatant[3];
 
@@ -52,7 +56,10 @@ public partial class Roster : Node
 		}
 
 		if(debugMode){
-			playerCharacters[0] = (PlayerCombatant) GetNode(debugPlayer);
+			playerCharacters[0] = debugPlayer;
+			SetPositionNewCharacter(debugPlayer, BattlePosition.HeroFront);
+			enemyCharacters[0] = debugEnemy;
+			SetPositionNewCharacter(debugEnemy, BattlePosition.EnemyFront);
 		}
 	}
 
@@ -67,6 +74,16 @@ public partial class Roster : Node
 
 	public void MoveCharacter(Combatant mover, BattlePosition newPos){
 		MoveCharacter(GetPositionOfCombatant(mover), newPos);
+	}
+
+	public void SetPositionNewCharacter(Combatant cha, BattlePosition newPos){
+		if(positionData.Values.Contains(cha)) throw new RosterNotConfiguredException("Tried Spawning New Character that already exists!");
+		positionData.TryGetValue(newPos, out var atPos);
+		if(atPos != null) throw new RosterSpotTakenException("Tried Spawning New Character at Battle Position Already filled!");
+
+		positionData.Remove(newPos);
+		positionData.Add(newPos, cha);
+		cha.SetPosition(newPos);
 	}
 
 
@@ -85,21 +102,17 @@ public partial class Roster : Node
 	}
 
 	public PlayerCombatant[] GetAllPlayerCombatants(){
-		var result = new PlayerCombatant[3];
-		playerCharacters.CopyTo(result, 0);
-		return result;
+		return playerCharacters.Where(x => x != null).ToArray();
 	}
 	public EnemyCombatant[] GetAllEnemyCombatants(){
-		var result = new EnemyCombatant[3];
-		enemyCharacters.CopyTo(result, 0);
-		return result;
+		return enemyCharacters.Where(x => x != null).ToArray();
 	}
 
 	public Combatant[] GetAllCombatants(){
-		var result = new Combatant[6];
+		var result = new Combatant[playerCharacters.Length + enemyCharacters.Length];
 		Array.Copy(enemyCharacters, result, enemyCharacters.Length);
 		Array.Copy(playerCharacters, 0, result, enemyCharacters.Length, playerCharacters.Length);
-		return result;
+		return result.Where(x => x != null).ToArray();
 	}
 }
 	
@@ -153,5 +166,23 @@ public class NoCharacterOccupyingSpotAtIndexException : Exception
     {
     }
 }
+
+public class RosterSpotTakenException : Exception
+{
+    public RosterSpotTakenException()
+    {
+    }
+
+    public RosterSpotTakenException(string message)
+        : base(message)
+    {
+    }
+
+    public RosterSpotTakenException(string message, Exception inner)
+        : base(message, inner)
+    {
+    }
+}
+
 
 

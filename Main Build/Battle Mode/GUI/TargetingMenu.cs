@@ -33,55 +33,53 @@ public partial class TargetingMenu : BattleMenu {
         plannedTargets = new List<Combatant>();
         //Checks if we have to ask the player for input on who to target:
         //If not, we mark the targets and tell handle input to not worry about it, otherwise we use everything in handle input
-        if((int)workingRule >= 10){//NOTE: Targeting rules less than ten require some choices, Targeting rules above ten are preset
-            decisionRequired = false;
-            if(workingRule == TargetingLogic.Self){
-                    SetPointers(character, caller);
-                    plannedTargets = new List<Combatant>(){character};
-            }else{
                 switch(workingRule){
+                    case TargetingLogic.Self :
+                        SetPointers(character, caller);
+                        plannedTargets = new List<Combatant>(){character};
+                        decisionRequired = false;
+                        break;
                     case TargetingLogic.AllEnemies :
                         SetNewTargets(caller.GetRoster().GetAllEnemyCombatants().ToList<Combatant>(), caller);
+                        decisionRequired = false;
                         break;
                     case TargetingLogic.AllHeroes :
                         SetNewTargets(plannedTargets = caller.GetRoster().GetAllPlayerCombatants().ToList<Combatant>(), caller);
+                        decisionRequired = false;
                         break;
                     case TargetingLogic.All :
                         SetNewTargets(plannedTargets = caller.GetRoster().GetAllCombatants().ToList(), caller);
+                        decisionRequired = false;
                         break;
-                }
-                if(plannedTargets.Count == 0) throw new NotImplementedException(); //TODO write custom targetingError exception, if we've gotten here, there's 
-                //a targeting rule we haven't accounted for
-            }
-        }else{
-            decisionRequired = true;
-            //Set the initial Target for this attack
-            //TODO make the "This attack is super invalid" notification
-            switch(workingRule){
                     case TargetingLogic.Melee : //Only legal if we're in the front slot
-                        if(character.GetCurrentPosition() != BattlePosition.HeroFront){
+                        if(caller.GetRoster().GetPositionOfCombatant(character) != BattlePosition.HeroFront){
                             //Do the "This attack is super invalid" notification
                             RejectSelection();
                         }else{
+                            decisionRequired = false;
                             SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyFront), caller);
                         }
                         break;
                     case TargetingLogic.Reach : //Only legal if we're in the front or middle slot
-                        if(character.GetCurrentPosition() != BattlePosition.HeroFront && character.GetCurrentPosition() != BattlePosition.HeroMid){
+                        if(character.GetPosition() != BattlePosition.HeroFront && character.GetPosition() != BattlePosition.HeroMid){
                             //Do the "This attack is super invalid" notification
                             RejectSelection();
                         }else{
                             SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyFront), caller);
+                            decisionRequired = false;
                         }
                         break;
                     case TargetingLogic.Ranged : //Always legal if there's an enemy targetable (we check for targetability later)
                         SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyFront), caller);
+                        decisionRequired = false;
                         break;
-                    default : //If we've gotten to this point, it's a hero targeting ability, we know we can just set the current chararcter as default
-                        SetNewTargets(character, caller);
+                    case TargetingLogic.AnyAlly :
+                        //Logic for Abilities that target Allies
                         break;
+                    default :   //TODO write custom targetingError exception, if we've gotten here, there's a rule we aren't accounting for...
+                        throw new NotImplementedException();
                 }
-        }
+        
     }
 
     //Handles input from the core Menu Command
@@ -96,18 +94,18 @@ public partial class TargetingMenu : BattleMenu {
                         //Play Nuh-no sound effect
                         break;
                     case TargetingLogic.Reach :
-                        if(caller.GetRoster().GetCombatant(BattlePosition.EnemyMid) != null && plannedTargets[0].GetCurrentPosition() == BattlePosition.EnemyFront 
-                        && input == MenuInput.Right && character.GetCurrentPosition() == BattlePosition.HeroFront){
+                        if(caller.GetRoster().GetCombatant(BattlePosition.EnemyMid) != null && plannedTargets[0].GetPosition() == BattlePosition.EnemyFront 
+                        && input == MenuInput.Right && character.GetPosition() == BattlePosition.HeroFront){
                         //You can only target the enemy in the second rank with a reach attack if you're right on the front (reach only gives you 2 slots of range)
                             SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyMid), caller);
                         }
-                        else if(plannedTargets[0].GetCurrentPosition() == BattlePosition.EnemyMid && input == MenuInput.Left){
+                        else if(plannedTargets[0].GetPosition() == BattlePosition.EnemyMid && input == MenuInput.Left){
                         //We don't check if enemy one exists because they have to in order for there to still be a battle    
                             SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyFront), caller);
                         }
                         break;
                     case TargetingLogic.Ranged :
-                        switch(plannedTargets[0].GetCurrentPosition()){
+                        switch(plannedTargets[0].GetPosition()){
                             case BattlePosition.EnemyFront :
                                 if(input == MenuInput.Right && caller.GetRoster().GetCombatant(BattlePosition.EnemyMid) != null){
                                     SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyMid), caller);
@@ -132,9 +130,8 @@ public partial class TargetingMenu : BattleMenu {
                                 break;
                         }
                         break;
-                    default ://We know that we're looking at a hero targeting ability, and they all behave the same. Developers should set hero abilities intended
-                    //to target heroes to "SingleHeroRanged" for clarity
-                        switch(plannedTargets[0].GetCurrentPosition()){
+                    case TargetingLogic.AnyAlly :
+                        switch(plannedTargets[0].GetPosition()){
                             case BattlePosition.HeroFront :
                                 if(input == MenuInput.Right && caller.GetRoster().GetCombatant(BattlePosition.HeroMid) != null){
                                     SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.HeroMid), caller);

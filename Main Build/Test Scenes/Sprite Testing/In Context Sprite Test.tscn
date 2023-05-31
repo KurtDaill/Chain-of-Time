@@ -184,7 +184,7 @@ _data = {
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("env")]
 script = ExtResource("1_c12c6")
-enviornments = Array[Environment]([ExtResource("2_g8yhf"), ExtResource("2_g8yhf"), ExtResource("2_g8yhf"), ExtResource("3_rlgqy"), ExtResource("3_rlgqy"), ExtResource("3_1dywo"), ExtResource("1_44kqi")])
+enviornments = Array[Environment]([ExtResource("2_g8yhf"), ExtResource("2_g8yhf"), ExtResource("2_g8yhf"), ExtResource("3_rlgqy"), ExtResource("4_kw2hb"), ExtResource("3_1dywo"), ExtResource("1_44kqi")])
 stagesInEditor = [NodePath("Neutral Env Omni Light"), NodePath("Neutral Env Spotlight"), NodePath("Neutral Env Color Light"), NodePath("Silhouette"), NodePath("Campfire"), NodePath("Tropical Env"), NodePath("Dungeon Env")]
 env = NodePath("WorldEnvironment")
 
@@ -242,8 +242,9 @@ visible = false
 light_energy = 4.376
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.962463, 0.271414, 0, -0.271414, 0.962463, 0, 5.64, 20)
+transform = Transform3D(1, 0, 0, 0, 0.962463, 0.271415, 0, -0.271415, 0.962463, 0, 5.64, 20)
 script = ExtResource("8_lpovc")
+rotation_speed = 2.0
 translation_speed = 4.0
 zoom_speed = 2.0
 zoom_out = 100.0

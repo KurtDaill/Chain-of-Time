@@ -97,9 +97,10 @@ _data = {
 "RESET": SubResource("Animation_ngeda")
 }
 
-[node name="TestHero" type="Node3D" node_paths=PackedStringArray("basicAttack")]
+[node name="TestHero" type="Node3D" node_paths=PackedStringArray("basicAttack", "pointer")]
 script = ExtResource("1_5lwxp")
 basicAttack = NodePath("CatoBasicAttack")
+pointer = NodePath("Pointer Adjuster/Pointer")
 
 [node name="CatoSprite" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56, 0, 0)

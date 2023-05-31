@@ -15,6 +15,9 @@ public partial class Combatant : Node3D
 	protected string name = "defaultCombatantName";
 
 	protected CombatAction readyAction;
+
+	[Export]
+	protected Sprite3D pointer;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -28,6 +31,7 @@ public partial class Combatant : Node3D
 				ab.Setup(this);
 			}
 		}
+		pointer.Visible = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -61,6 +65,10 @@ public partial class Combatant : Node3D
 		return currentPosition;
 	}
 
+	public void SetPosition(BattlePosition pos){
+		currentPosition = pos;
+	}
+
 	public StatusEffect[] GetStatusEffects(){
 		return activeStatuses.ToArray();
 	}
@@ -90,11 +98,6 @@ public partial class Combatant : Node3D
 	public void ActivateReadyAction(int phase){
 
 	}
-
-	public BattlePosition GetCurrentPosition(){
-		return currentPosition;
-	}
-
 	//Returns whether or not this character is able to input a command in order to act this turn.
 	public bool IsAbleToAct(){
 		//TODO: Flesh out this function with the game logic of when characters can/can't set a command for their actions this turn;
@@ -104,7 +107,8 @@ public partial class Combatant : Node3D
 	//Used to activate/deactivate all of the effets that indicate the player is targeting this character in the battle menu
 	//TODO Implement this
 	public void SetTargetGUIElements(bool state){
-
+		//Turn the Pointer On/Off
+		pointer.Visible = state;
 	}
 
 	public class ActionNotFoundException : Exception
