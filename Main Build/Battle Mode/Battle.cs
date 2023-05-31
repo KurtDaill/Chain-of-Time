@@ -50,7 +50,7 @@ public partial class Battle : Node3D
 				if(waiting) return;
 				gui.ResetGUIStateAndStart(battleRoster.GetAllPlayerCombatants(), this);
 				waiting = true;
-				await ToSignal(gui, PMBattleGUI.SignalName.TreeExited);
+				await ToSignal(gui, PMBattleGUI.SignalName.PlayerFinishedCommandInput);
 				eventChain = gui.PickUpQueuedActions();
 				waiting = false;
 				currentPhase = BattlePhase.PlayerCommandExecute;

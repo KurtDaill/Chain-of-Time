@@ -42,7 +42,7 @@ public partial class PMBattleGUI : Control
 			if(returnedAbility != null){
 				abilitiesQueued[abilitiesQueued.Count(x => x != null)] = returnedAbility.ReadyOnCombatantAndGetData();
 				if(abilitiesQueued.Count(x => x != null) == playersInQuestion.Count){//When we have all of our abilities, we emit the signal
-					EmitSignal(nameof(PlayerFinishedCommandInputEventHandler));
+					EmitSignal(PMBattleGUI.SignalName.PlayerFinishedCommandInput);
 					this.active = false;
 				}
 			}

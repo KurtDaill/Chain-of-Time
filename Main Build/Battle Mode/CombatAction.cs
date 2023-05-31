@@ -17,7 +17,7 @@ public partial class CombatAction : Node
         }
         if(!source.HasAnimation(animation)){
             GetTree().Quit();
-            throw new BadActionSetupException("Combatant must have an animation with a name the same as this Action's animaiton field!");
+            throw new BadActionSetupException("Combatant must have an animation with a name the same as this Action's animation field!");
         }
     }
 
