@@ -18,8 +18,8 @@ public partial class TopMenu : BattleMenu
         menuTabs[3] = (TextureRect) GetNode("./Button Hub/SkillButton");
     }
 
-    public override void OnOpen(PlayerCombatant character, Battle caller){
-        base.OnOpen(character, caller);
+    public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI){
+        base.OnOpen(character, caller, parentGUI);
         if(highlightedTab != -1)menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = false;
         highlightedTab = -1;
     }
@@ -30,7 +30,7 @@ public partial class TopMenu : BattleMenu
        if(highlightedTab != -1) menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = true;
     }
 
-    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller)
+    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI)
     {
         switch(input){
             case MenuInput.Up: 

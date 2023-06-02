@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Collections.Generic;
 public partial class Battle : Node3D
 {
 	private BattlePhase currentPhase = BattlePhase.StartOfTurn;
@@ -37,9 +38,18 @@ public partial class Battle : Node3D
 				*/
 			case BattlePhase.StartOfTurn :
 				//Game Executes Location logic for downed characters
-
-				//Drag all Status Effect Event Data into Action Chain.
-				//await ExecuteCombatEvents(eventChain);
+				//Drag all Status Effect Event Data into Action Chain. then await ExecuteCombatEvents(eventChain);
+				if(waiting) return;
+				waiting = true;
+				List<CombatEventData> statusCED = new List<CombatEventData>();
+				foreach(Combatant com in battleRoster.GetAllCombatants()){
+					foreach(OnUpkeepStatus up in com.GetUpkeepStatusEffects()){
+						statusCED.Add(up.GetEventData());
+					}
+				}
+				eventChain = statusCED.ToArray();
+				await ExecuteCombatEvents(eventChain);
+				waiting = false;
 				currentPhase = BattlePhase.PlayerSelectsCommands;
 				break;
 				
@@ -93,6 +103,7 @@ public partial class Battle : Node3D
 	{
 		for(int i = 0; i < actions.Length; i++){
 			if(actions[i].GetCombatant().HasAnimation(actions[i].GetAnimationName())){
+				actions[i].GetCombatant().ReadyAction(actions[i].GetAction());
 				actions[i].GetCombatant().GetAnimationPlayer().Play(actions[i].GetAnimationName());
 				await ToSignal(actions[i].GetCombatant().GetAnimationPlayer(), AnimationPlayer.SignalName.AnimationFinished);
 			}else{	
@@ -118,14 +129,18 @@ public partial class CombatEventData : Godot.GodotObject
 {
 	private string animationName = "<DefaultAnimationName>";
 	private Combatant source = null;
+	private CombatAction action = null;
 
-	public CombatEventData(string name, Combatant src){
+	public CombatEventData(string name, Combatant src, CombatAction act){
 		this.animationName = name;
 		this.source = src;
+		this.action = act;
 	}
 
 	public string GetAnimationName() { return animationName; }
 	public Combatant GetCombatant() { return source; }
+
+	public CombatAction GetAction() { return action; }
 }
 
 public static class BattleUtilities

@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class CombatAction : Node
+public abstract partial class CombatAction : Node
 {
     protected string name;
     protected string animation;
@@ -26,7 +26,7 @@ public partial class CombatAction : Node
     }
 
     public CombatEventData GetEventData(){
-        return new CombatEventData(animation, source);
+        return new CombatEventData(animation, source, this);
     }
 
     public CombatEventData ReadyOnCombatantAndGetData(){

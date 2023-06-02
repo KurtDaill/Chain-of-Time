@@ -23,12 +23,17 @@ public partial class Combatant : Node3D
 	public override void _Ready()
 	{
 		animPlay = (AnimationPlayer)this.GetNode("AnimationPlayer");
-
+		activeStatuses = new List<StatusEffect>();
 		//TODO Make a Better Version of this
 		foreach(Node child in GetChildren()){
 			if(child is Ability){
 				Ability ab = (Ability)child;
 				ab.Setup(this);
+			}
+			if(child is StatusEffect){
+				StatusEffect stat = (StatusEffect)child;
+				stat.Setup(this);
+				activeStatuses.Add(stat);
 			}
 		}
 		pointer.Visible = false;
@@ -73,6 +78,10 @@ public partial class Combatant : Node3D
 		return activeStatuses.ToArray();
 	}
 
+	public void LogExpiredStatus(StatusEffect expiringStatus){
+		this.activeStatuses.Remove(expiringStatus);
+	}
+
 	public void ReadyAction(CombatAction act){
 		if(this.GetChildren().Contains(act)){
 			readyAction = act;
@@ -96,7 +105,7 @@ public partial class Combatant : Node3D
 	}
 
 	public void ActivateReadyAction(int phase){
-
+		readyAction.Activate(phase);
 	}
 	//Returns whether or not this character is able to input a command in order to act this turn.
 	public bool IsAbleToAct(){

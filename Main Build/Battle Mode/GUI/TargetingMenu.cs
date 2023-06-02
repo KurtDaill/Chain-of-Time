@@ -12,22 +12,22 @@ public partial class TargetingMenu : BattleMenu {
 	private int spRefund = 0;
 	private bool decisionRequired = true;
 
-	//Because we want to avoid having to add a special case to the parent GUI class for opening this menu, we instead
-	//Have the previous menu call this command on the targeting menu for setting up the current target instead
-	public void SetAbilityForTargeting(PlayerAbility newAbility){
-		abilityInQuestion = newAbility;
-		if(newAbility.GetSPCost() != -1) spRefund = newAbility.GetSPCost();
-	}
-
 	public override void _Ready()
 	{
 		base._Ready();
 		targetingErrorSound = GetNode<AudioStreamPlayer>("SelectError");
 	}
 
+	//Because we want to avoid having to add a special case to the BattleGUI class for opening this menu, we instead
+	//Have the previous menu call this command on the targeting menu for setting up the current target instead
+	public void SetAbilityForTargeting(PlayerAbility newAbility){
+		abilityInQuestion = newAbility;
+		if(newAbility.GetSPCost() != -1) spRefund = newAbility.GetSPCost();
+	}
+
 	//Run when this menu is opened, resets values as needed from previous uses
-	public override void OnOpen(PlayerCombatant character, Battle caller){
-		base.OnOpen(character, caller);
+	public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI){
+		base.OnOpen(character, caller, parentGUI);
 		if(abilityInQuestion == null) throw new NotImplementedException();//TODO write custom targetingError Exception
 		workingRule = abilityInQuestion.GetTargetingLogic();
 		plannedTargets = new List<Combatant>();
@@ -84,7 +84,7 @@ public partial class TargetingMenu : BattleMenu {
 
 	//Handles input from the core Menu Command
 	//Returns a new menu in the scenario we have to switch between menus
-	public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller){ 
+	public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){ 
 		
 		if(decisionRequired){
 			if(input == MenuInput.Right || input == MenuInput.Left){
@@ -159,7 +159,6 @@ public partial class TargetingMenu : BattleMenu {
 				}
 			}
 		}
-
 		
 		if(input == MenuInput.Select){//Need to Double Check if that target is legal!
 				if(CheckTargetLegality(plannedTargets, caller, out var realTargets)){
@@ -181,39 +180,6 @@ public partial class TargetingMenu : BattleMenu {
 		return null;
 	}
 
-	public void RejectSelection(){
-		targetingErrorSound.Play();
-	}
-
-	public void SetNewTargets(List<Combatant> cList, Battle battle){
-		plannedTargets = cList;
-		SetPointers(cList, battle);
-	}
-
-	public void SetNewTargets(Combatant ch, Battle battle){
-		plannedTargets = new List<Combatant>(){ch};
-		SetPointers(ch, battle);
-	}
-
-	public void SetPointers(Combatant character, Battle battle){
-		foreach(Combatant ch in battle.GetRoster().GetAllCombatants()){
-			ch.SetTargetGUIElements(false);
-		}
-		character.SetTargetGUIElements(true);
-	}
-
-	public void SetPointers(List<Combatant> characters, Battle battle){
-		foreach(Combatant ch in battle.GetRoster().GetAllCombatants()){
-			if(characters.Contains(ch)) ch.SetTargetGUIElements(true);
-			else    ch.SetTargetGUIElements(false);
-		}
-	}
-
-	public void HidePointers(Battle battle){
-		var empty = new List<Combatant>();
-		SetPointers(empty, battle);
-	}
-
 	//returns true if there are ANY valid targets
 	public bool CheckTargetLegality(List<Combatant> desiredTargets, Battle battle, out List<Combatant> actualTargets){
 		actualTargets = new List<Combatant>();
@@ -231,6 +197,34 @@ public partial class TargetingMenu : BattleMenu {
 		}
 		if(actualTargets != null) return true;
 		return false;
+	}
+
+	public void RejectSelection(){
+		targetingErrorSound.Play();
+	}
+	public void SetNewTargets(List<Combatant> cList, Battle battle){
+		plannedTargets = cList;
+		SetPointers(cList, battle);
+	}
+	public void SetNewTargets(Combatant ch, Battle battle){
+		plannedTargets = new List<Combatant>(){ch};
+		SetPointers(ch, battle);
+	}
+	public void SetPointers(Combatant character, Battle battle){
+		foreach(Combatant ch in battle.GetRoster().GetAllCombatants()){
+			ch.SetTargetGUIElements(false);
+		}
+		character.SetTargetGUIElements(true);
+	}
+	public void SetPointers(List<Combatant> characters, Battle battle){
+		foreach(Combatant ch in battle.GetRoster().GetAllCombatants()){
+			if(characters.Contains(ch)) ch.SetTargetGUIElements(true);
+			else    ch.SetTargetGUIElements(false);
+		}
+	}
+	public void HidePointers(Battle battle){
+		var empty = new List<Combatant>();
+		SetPointers(empty, battle);
 	}
 }
 

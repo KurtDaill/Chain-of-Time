@@ -36,16 +36,16 @@ public partial class BattleGUI : Control
 	{
 		if(active){
 			base._Process(delta);
-			var returnedAbility = currentMenu.HandleInput(ReadInput(), playersInQuestion[abilitiesQueued.Count(x => x != null)], parentBattle);
+			var returnedAbility = currentMenu.HandleInput(ReadInput(), playersInQuestion[abilitiesQueued.Count(x => x != null)], parentBattle, this);
 			if(returnedAbility != null){
-				abilitiesQueued[abilitiesQueued.Count(x => x != null)] = returnedAbility.ReadyOnCombatantAndGetData();
+				abilitiesQueued[abilitiesQueued.Count(x => x != null)] = returnedAbility.GetEventData();
 				//If Next player isn't able to act, fill in a null in abilities queue then repeat this logic.
 				while(abilitiesQueued.Count(x => x != null) < playersInQuestion.Length){
 					if(playersInQuestion[abilitiesQueued.Count(x => x != null)].IsAbleToAct()){
 						ChangeMenu(0, playersInQuestion[abilitiesQueued.Count(x => x != null)]);
 						return; 
 					}else{
-						abilitiesQueued[abilitiesQueued.Count(x => x != null)] = new CombatEventData("noAction", playersInQuestion[abilitiesQueued.Count(x => x != null)]);
+						abilitiesQueued[abilitiesQueued.Count(x => x != null)] = new CombatEventData("noAction", playersInQuestion[abilitiesQueued.Count(x => x != null)], null);
 					}
 				}
 				//If we've reached this block of code, we have CED for every player, and can send it all back.
@@ -82,7 +82,7 @@ public partial class BattleGUI : Control
 		currentMenu.Visible = false;
 		lastMenu = currentMenu;
 		currentMenu = (BattleMenu) GetNode("Top Menu");
-		currentMenu.OnOpen(playersInQuestion[abilitiesQueued.Count(x => x != null)], parentBattle);
+		currentMenu.OnOpen(playersInQuestion[abilitiesQueued.Count(x => x != null)], parentBattle, this);
 		ShowGUI();
 		active = true;
 		return true;
@@ -99,7 +99,7 @@ public partial class BattleGUI : Control
 			lastMenu = currentMenu;
 			currentMenu = menus[newMenuIndex];
 		}
-		currentMenu.OnOpen(character, parentBattle);
+		currentMenu.OnOpen(character, parentBattle, this);
 	}
 
 	/*

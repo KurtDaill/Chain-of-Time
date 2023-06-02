@@ -3,13 +3,13 @@ using System;
 
 public partial class AttackMenu : BattleMenu
 {
-    public override void OnOpen(PlayerCombatant character, Battle caller)
+    public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI)
     {
-        base.OnOpen(character, caller);
+        base.OnOpen(character, caller, parentGUI);
         this.GetNode<RichTextLabel>("Backboard/Rules Text").Text = character.GetBasicAttack().GetRulesText();
     }
 
-    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller){
+    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         if(input == MenuInput.Back){
             parentGUI.ChangeMenu(0, character);
             return null;
