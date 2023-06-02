@@ -173,7 +173,7 @@ public partial class TargetingMenu : BattleMenu {
 				}
 		}else if(input == MenuInput.Back){
 			abilityInQuestion = null;
-			parentGUI.ChangeMenu(-1, character, caller);
+			parentGUI.ChangeMenu(-1, character);
 			character.GainSP(spRefund);
 			SetPointers(new List<Combatant>(), caller); //Clears all pointers by passing an empty list
 			return null;

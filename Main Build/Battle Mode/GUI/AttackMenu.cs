@@ -11,7 +11,7 @@ public partial class AttackMenu : BattleMenu
 
     public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller){
         if(input == MenuInput.Back){
-            parentGUI.ChangeMenu(0, character, caller);
+            parentGUI.ChangeMenu(0, character);
             return null;
         }else if(input == MenuInput.Select){
             //var ability = character.GetBasicAttack();
@@ -19,7 +19,7 @@ public partial class AttackMenu : BattleMenu
             //return ability;
             TargetingMenu tMenu = (TargetingMenu) parentGUI.menus[5];
             tMenu.SetAbilityForTargeting(character.GetBasicAttack());
-            parentGUI.ChangeMenu(5, character, caller);
+            parentGUI.ChangeMenu(5, character);
             return null;
         }
         return null;

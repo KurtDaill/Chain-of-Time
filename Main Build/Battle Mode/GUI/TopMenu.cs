@@ -61,7 +61,7 @@ public partial class TopMenu : BattleMenu
                         break;
                     case 2:
                         //Goes to the Attack Menu
-                        parentGUI.ChangeMenu(3, character, caller);
+                        parentGUI.ChangeMenu(3, character);
                         break;
                     case 3:
                         //Goes to the Skill Menu
@@ -70,7 +70,7 @@ public partial class TopMenu : BattleMenu
                 }
                 break;
             case MenuInput.Back:
-                parentGUI.GotoPreviousCharacter(caller);
+                parentGUI.GotoPreviousCharacter();
                 break;
         }
         return null;

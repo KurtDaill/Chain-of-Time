@@ -37,7 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://cwrc2tvxawx3w" path="res://GUI/Battle Menu Assets/Top Menu/Item Button Highlight.png" id="35"]
 [ext_resource type="Texture2D" uid="uid://cx12cemchoyfp" path="res://GUI/Battle Menu Assets/Top Menu/Skill Button Controller.png" id="36"]
 [ext_resource type="Texture2D" uid="uid://l6unyyb4maph" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres" id="37"]
-[ext_resource type="Script" path="res://Battle Mode/GUI/PMBattleGUI.cs" id="38"]
+[ext_resource type="Script" path="res://Battle Mode/GUI/BattleGUI.cs" id="38"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/TargetingMenu.cs" id="39"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/TopMenu.cs" id="40"]
 [ext_resource type="Script" path="res://GUI/ReadoutContainer.cs" id="40_jh205"]

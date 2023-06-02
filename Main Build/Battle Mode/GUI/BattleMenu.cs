@@ -3,7 +3,7 @@ using System;
 
 public abstract partial class BattleMenu : Control
 {
-    public PMBattleGUI parentGUI;
+    public BattleGUI parentGUI;
     public enum MenuInput
     {
         Up,
@@ -16,7 +16,7 @@ public abstract partial class BattleMenu : Control
     }
 
     public override void _Ready(){
-        parentGUI = (PMBattleGUI) GetParent();
+        parentGUI = (BattleGUI) GetParent();
     }
 
     //Run when this menu is opened, resets values as needed from previous uses

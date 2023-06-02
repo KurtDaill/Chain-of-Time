@@ -1,11 +1,12 @@
 using Godot;
 using System;
 using System.Threading.Tasks;
+using System.Linq;
 public partial class Battle : Node3D
 {
 	private BattlePhase currentPhase = BattlePhase.StartOfTurn;
 	[Export]
-	private PMBattleGUI gui;
+	private BattleGUI gui;
 	private CombatEventData[] eventChain;
 
 	private bool waiting = false;
@@ -48,9 +49,9 @@ public partial class Battle : Node3D
 				eventChain = null;
 				//GUI.Start Doing your Thing()
 				if(waiting) return;
-				gui.ResetGUIStateAndStart(battleRoster.GetAllPlayerCombatants(), this);
+				gui.ResetGUIStateAndStart(battleRoster.GetAllPlayerCombatants());
 				waiting = true;
-				await ToSignal(gui, PMBattleGUI.SignalName.PlayerFinishedCommandInput);
+				await ToSignal(gui, BattleGUI.SignalName.PlayerFinishedCommandInput);
 				eventChain = gui.PickUpQueuedActions();
 				waiting = false;
 				currentPhase = BattlePhase.PlayerCommandExecute;
@@ -72,12 +73,17 @@ public partial class Battle : Node3D
 				for(int i = 0; i < enemies.Length; i++){
 					eventChain[i] = enemies[i].DecideAction(this);
 				}
+				currentPhase = BattlePhase.EnemyCommandExecute;
 				//Delay to add some time between player and enemy attacks?
 				break;
 
 			//EnemyCommandExecute - Game Iterates through enemy attacks, allowing each to play its animaiton in sequence
 			case BattlePhase.EnemyCommandExecute :
+				if(waiting) return;
+				waiting = true;
 				await ExecuteCombatEvents(eventChain);
+				waiting = false;
+				currentPhase = BattlePhase.StartOfTurn;
 				break;	
 		}		
 	}
@@ -88,7 +94,7 @@ public partial class Battle : Node3D
 		for(int i = 0; i < actions.Length; i++){
 			if(actions[i].GetCombatant().HasAnimation(actions[i].GetAnimationName())){
 				actions[i].GetCombatant().GetAnimationPlayer().Play(actions[i].GetAnimationName());
-				await ToSignal(actions[i].GetCombatant().GetAnimationPlayer(), "animationFinished");
+				await ToSignal(actions[i].GetCombatant().GetAnimationPlayer(), AnimationPlayer.SignalName.AnimationFinished);
 			}else{	
 				GetTree().Quit();
 				throw new BadCombatAnimationException("Listed Animation (" + actions[i].GetAnimationName() + ") not found on Combatant (" + actions[i].GetCombatant().GetName() + ")");

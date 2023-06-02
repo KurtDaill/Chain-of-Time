@@ -55,7 +55,7 @@
 [ext_resource type="Script" path="res://Explore Mode/LevelTransition.cs" id="49_7mxbn"]
 [ext_resource type="PackedScene" uid="uid://ccu5ecaivjphf" path="res://Battle Mode/Enemies/Skeleton.tscn" id="50_lghjy"]
 [ext_resource type="Script" path="res://MovingCamera.cs" id="51_tfyha"]
-[ext_resource type="Script" path="res://Battle Mode/GUI/PMBattleGUI.cs" id="52_swtmd"]
+[ext_resource type="Script" path="res://Battle Mode/GUI/BattleGUI.cs" id="52_swtmd"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/TopMenu.cs" id="53_i6fou"]
 [ext_resource type="Texture2D" uid="uid://d2v174ha8e02a" path="res://GUI/Battle Menu Assets/Top Menu/Button Hub.png" id="54_l10e2"]
 [ext_resource type="Texture2D" uid="uid://c4qop4r4kknep" path="res://GUI/Battle Menu Assets/Top Menu/Party Button Controller.png" id="55_ttotw"]

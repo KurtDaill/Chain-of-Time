@@ -37,7 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://bqb21t5xmngp7" path="res://Battle Mode/Player Characters/Cato.tscn" id="35_obe5x"]
 [ext_resource type="PackedScene" uid="uid://hspnetrnxt5i" path="res://Battle Mode/Enemies/Ser Sejanus Alpha.tscn" id="36_edh1i"]
 [ext_resource type="Script" path="res://MovingCamera.cs" id="37_fcmlj"]
-[ext_resource type="Script" path="res://Battle Mode/GUI/PMBattleGUI.cs" id="38_jetgp"]
+[ext_resource type="Script" path="res://Battle Mode/GUI/BattleGUI.cs" id="38_jetgp"]
 [ext_resource type="Texture2D" uid="uid://53qtx22b63ir" path="res://Art/3D/Projected Glass 6B.png" id="39_8mrvs"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/TopMenu.cs" id="39_ph5f0"]
 [ext_resource type="Texture2D" uid="uid://d2v174ha8e02a" path="res://GUI/Battle Menu Assets/Top Menu/Button Hub.png" id="40_ajx3a"]
