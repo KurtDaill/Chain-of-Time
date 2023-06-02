@@ -1,8 +1,10 @@
+res://Battle Mode/Enemies
+res://Battle Mode/Abilities
+res://Battle Mode/GUI
 res://Battle Mode
 res://Art
 res://Test Scenes/Sprite Testing/Environments
 res://Test Scenes/Sprite Testing
-res://Battle Mode/GUI
 res://GUI
 res://
 res://Art/3D
@@ -18,5 +20,3 @@ res://Test Scenes
 res://Audio
 res://Cutscenes/Dialogue Files
 res://Art/ChainOfTimeDisplay
-res://Explore Mode
-res://Battle Mode/Enemies

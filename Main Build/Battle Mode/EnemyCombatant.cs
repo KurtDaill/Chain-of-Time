@@ -16,8 +16,13 @@ public partial class EnemyCombatant : Combatant
 	}
 
 	//Decides what action to take this round, returning the animation that matches said action
-	public CombatEventData DecideAction(Battle parentBattle){
-		GD.Print("Not yet buddy boy");
-		return null;
+	public virtual CombatEventData DecideAction(Battle parentBattle){
+		//GD.Print("Not yet buddy boy");
+		throw new ActionLogicNotDefinedException("Base EnemyCombatantDecideActionEnemies must all have an override of DecidedAction to define their attacking logic.");
+		//return null;
 	}
+}
+
+public class ActionLogicNotDefinedException : Exception{
+	public ActionLogicNotDefinedException(string message) : base(message){}
 }
