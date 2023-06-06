@@ -21,7 +21,11 @@ public partial class Roster : Node
 	[Export]
 	private PlayerCombatant debugPlayer;
 	[Export]
-	private EnemyCombatant debugEnemy;
+	private EnemyCombatant debugEnemy1;
+	[Export]
+	private EnemyCombatant debugEnemy2;
+	[Export]
+	private EnemyCombatant debugEnemy3;
 
 	private PlayerCombatant[] playerCharacters = new PlayerCombatant[3];
 	private EnemyCombatant[] enemyCharacters = new EnemyCombatant[3];
@@ -58,8 +62,12 @@ public partial class Roster : Node
 		if(debugMode){
 			playerCharacters[0] = debugPlayer;
 			SetPositionNewCharacter(debugPlayer, BattlePosition.HeroFront);
-			enemyCharacters[0] = debugEnemy;
-			SetPositionNewCharacter(debugEnemy, BattlePosition.EnemyFront);
+			enemyCharacters[0] = debugEnemy1;
+			enemyCharacters[1] = debugEnemy2;
+			enemyCharacters[2] = debugEnemy3;
+			SetPositionNewCharacter(debugEnemy1, BattlePosition.EnemyFront);
+			SetPositionNewCharacter(debugEnemy2, BattlePosition.EnemyMid);
+			SetPositionNewCharacter(debugEnemy3, BattlePosition.EnemyBack);
 		}
 	}
 

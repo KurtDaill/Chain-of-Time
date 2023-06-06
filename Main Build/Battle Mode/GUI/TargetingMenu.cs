@@ -66,15 +66,16 @@ public partial class TargetingMenu : BattleMenu {
 							RejectSelection();
 						}else{
 							SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyFront), caller);
-							decisionRequired = false;
+							decisionRequired = true;
 						}
 						break;
 					case TargetingLogic.Ranged : //Always legal if there's an enemy targetable (we check for targetability later)
 						SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyFront), caller);
-						decisionRequired = false;
+						decisionRequired = true;
 						break;
 					case TargetingLogic.AnyAlly :
 						//Logic for Abilities that target Allies
+						decisionRequired = true;
 						break;
 					default :   //TODO write custom targetingError exception, if we've gotten here, there's a rule we aren't accounting for...
 						throw new NotImplementedException();

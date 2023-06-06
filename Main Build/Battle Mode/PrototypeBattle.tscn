@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bftjxb62srdq"]
+[gd_scene load_steps=11 format=3 uid="uid://bftjxb62srdq"]
 
 [ext_resource type="Script" path="res://Battle Mode/Battle.cs" id="1_0eajl"]
 [ext_resource type="Script" path="res://Battle Mode/Roster.cs" id="2_p000p"]
 [ext_resource type="PackedScene" uid="uid://ck78k6iju4ldb" path="res://Battle Mode/test_hero.tscn" id="3_s3how"]
 [ext_resource type="PackedScene" uid="uid://cb5qkdcy4n6ym" path="res://Battle Mode/test_enemy.tscn" id="4_45prd"]
 [ext_resource type="PackedScene" uid="uid://ctkjn6qaseru7" path="res://Battle Mode/BattleGUI.tscn" id="4_noo0e"]
-[ext_resource type="Script" path="res://Battle Mode/Status Effects/TestStatusEffect.cs" id="4_tyyit"]
 [ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Art/3D/BattleDungeon.dae" id="5_7bshd"]
 
 [sub_resource type="Animation" id="Animation_u18p7"]
@@ -57,12 +56,14 @@ script = ExtResource("1_0eajl")
 gui = NodePath("Camera3D/BattleGUI")
 battleRoster = NodePath("Roster")
 
-[node name="Roster" type="Node3D" parent="Battle" node_paths=PackedStringArray("debugPlayer", "debugEnemy")]
+[node name="Roster" type="Node3D" parent="Battle" node_paths=PackedStringArray("debugPlayer", "debugEnemy1", "debugEnemy2", "debugEnemy3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 script = ExtResource("2_p000p")
 debugMode = true
 debugPlayer = NodePath("HeroFront/TestHero")
-debugEnemy = NodePath("EnemyFront/TestEnemy")
+debugEnemy1 = NodePath("EnemyFront/TestEnemy")
+debugEnemy2 = NodePath("EnemyMid/TestEnemy")
+debugEnemy3 = NodePath("EnemyBack/TestEnemy")
 
 [node name="HeroBack" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
@@ -75,9 +76,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
 
 [node name="TestHero" parent="Battle/Roster/HeroFront" instance=ExtResource("3_s3how")]
 
-[node name="Node" type="Node" parent="Battle/Roster/HeroFront/TestHero"]
-script = ExtResource("4_tyyit")
-
 [node name="EnemyFront" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 
@@ -86,8 +84,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 [node name="EnemyMid" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
 
+[node name="TestEnemy" parent="Battle/Roster/EnemyMid" instance=ExtResource("4_45prd")]
+
 [node name="EnemyBack" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
+
+[node name="TestEnemy" parent="Battle/Roster/EnemyBack" instance=ExtResource("4_45prd")]
 
 [node name="Camera3D" type="Camera3D" parent="Battle"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 6.72, 13.24)

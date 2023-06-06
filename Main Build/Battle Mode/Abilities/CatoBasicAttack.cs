@@ -18,8 +18,8 @@ public partial class CatoBasicAttack : PlayerAbility
 			{0.51, 2}
 		};
 
-		rulesText = " [center]Melee \n Cato Deals 1-2 Damage";
-		AbilityTargetingLogic = TargetingLogic.Melee;
+		rulesText = " [center]Ranged \n Cato Deals 1-2 Damage";
+		AbilityTargetingLogic = TargetingLogic.Ranged;
 	}
 
 	public override void Activate(int phase){
@@ -29,10 +29,10 @@ public partial class CatoBasicAttack : PlayerAbility
 		if(target.Length != 1){
 			throw new BadActionSetupException("Incorrect Targets for Ability " + this.name + ". Need exaclty one target, have " + target.Length + " instead.");
 		}
-		if(target[0].GetPosition() != BattlePosition.EnemyFront && source.GetPosition() != BattlePosition.HeroFront){
+		//if(target[0].GetPosition() != BattlePosition.EnemyFront && source.GetPosition() != BattlePosition.HeroFront){
 			//Ability Fails
 			//TODO: Figure out how to handle abilities failing to go off
-		}
+		//}
 		target[0].TakeDamage(GenerateDamageFromChart(currentDamageChart));
 	}
 }
