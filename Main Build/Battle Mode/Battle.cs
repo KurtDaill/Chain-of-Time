@@ -59,8 +59,8 @@ public partial class Battle : Node3D
 				eventChain = null;
 				//GUI.Start Doing your Thing()
 				if(waiting) return;
-				gui.ResetGUIStateAndStart(battleRoster.GetAllPlayerCombatants());
 				waiting = true;
+				gui.ResetGUIStateAndStart(battleRoster.GetAllPlayerCombatants());
 				await ToSignal(gui, BattleGUI.SignalName.PlayerFinishedCommandInput);
 				eventChain = gui.PickUpQueuedActions();
 				waiting = false;
@@ -103,7 +103,7 @@ public partial class Battle : Node3D
 	{
 		for(int i = 0; i < actions.Length; i++){
 			if(actions[i].GetCombatant().HasAnimation(actions[i].GetAnimationName())){
-				actions[i].GetCombatant().ReadyAction(actions[i].GetAction());
+				if(actions[i].GetAnimationName() != "NoAction") actions[i].GetCombatant().ReadyAction(actions[i].GetAction());
 				actions[i].GetCombatant().GetAnimationPlayer().Play(actions[i].GetAnimationName());
 				await ToSignal(actions[i].GetCombatant().GetAnimationPlayer(), AnimationPlayer.SignalName.AnimationFinished);
 			}else{	
