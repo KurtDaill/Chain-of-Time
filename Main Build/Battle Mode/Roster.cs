@@ -105,7 +105,7 @@ public partial class Roster : Node
 		if(comB != null) newSpot.RemoveChild(comB);
 		animPlay.Play("RESET");
 		await ToSignal(animPlay, AnimationPlayer.SignalName.AnimationFinished);
-		
+
 		if(comA != null){
 			newSpot.AddChild(comA);
 			comA.SetPosition(newPos);
@@ -114,6 +114,7 @@ public partial class Roster : Node
 			moverSpot.AddChild(comB);
 			comB.SetPosition(moverPos);
 		}
+		SortCharacters();
 	}
 
 	public void SwapCharacters(Combatant mover, BattlePosition newPos){
@@ -173,6 +174,15 @@ public partial class Roster : Node
 			case BattlePosition.EnemyBack : return enemySpots[2];
 			default : throw new ArgumentException();
 		}
+	}
+
+	public void SortCharacters(){
+		playerCharacters[0] = playerSpots[0].GetChild<PlayerCombatant>(0);
+		playerCharacters[1] = playerSpots[1].GetChild<PlayerCombatant>(0);
+		playerCharacters[2] = playerSpots[2].GetChild<PlayerCombatant>(0);
+		enemyCharacters[0] = enemySpots[0].GetChild<EnemyCombatant>(0);
+		enemyCharacters[1] = enemySpots[1].GetChild<EnemyCombatant>(0);
+		enemyCharacters[2] = enemySpots[2].GetChild<EnemyCombatant>(0);
 	}
 }
 	
