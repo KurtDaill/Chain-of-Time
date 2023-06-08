@@ -30,7 +30,7 @@ public partial class TopMenu : BattleMenu
        if(highlightedTab != -1) menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = true;
     }
 
-    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI)
+    public override Ability HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI)
     {
         switch(input){
             case MenuInput.Up: 
@@ -53,7 +53,7 @@ public partial class TopMenu : BattleMenu
                 switch(highlightedTab){
                     case 0:
                         //Goes to the Party Menu
-                        //parentGUI.ChangeMenu(1,character, caller);
+                        parentGUI.ChangeMenu(1,character);
                         break;
                     case 1:
                         //Goes to the Item Menu

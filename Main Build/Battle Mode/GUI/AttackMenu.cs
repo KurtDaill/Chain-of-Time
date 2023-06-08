@@ -9,7 +9,7 @@ public partial class AttackMenu : BattleMenu
         this.GetNode<RichTextLabel>("Backboard/Rules Text").Text = character.GetBasicAttack().GetRulesText();
     }
 
-    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
+    public override Ability HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         if(input == MenuInput.Back){
             parentGUI.ChangeMenu(0, character);
             return null;

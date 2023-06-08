@@ -1,10 +1,12 @@
 using System;
 using Godot;
+using System.Collections.Generic;
 
 public abstract partial class CombatAction : Node
 {
     protected string name;
     protected string animation;
+    public static readonly List<string> noAnimationAbilities = new List<string>(){"SWAP"};
     protected Combatant[] target;
     protected Combatant source;
 
@@ -16,8 +18,11 @@ public abstract partial class CombatAction : Node
             throw new BadActionSetupException("CombatAction must be child of combatant it is being setup with!");
         }
         if(!source.HasAnimation(animation)){
-            GetTree().Quit();
-            throw new BadActionSetupException("Combatant must have an animation with a name the same as this Action's animation field!");
+            //If this abiltiy isn't on the list of Abilities that don't need an animation on their source
+            if(!noAnimationAbilities.Contains(this.name)){
+                GetTree().Quit();
+                throw new BadActionSetupException("Combatant must have an animation with a name the same as this Action's animation field!");
+            }
         }
     }
 

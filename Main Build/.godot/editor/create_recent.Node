@@ -1,5 +1,7 @@
 Node
 AnimationPlayer
+Label
+Panel
 Sprite3D
 Node3D
 OmniLight3D
@@ -28,5 +30,3 @@ CollisionPolygon3D
 CSGPolygon3D
 CSGCylinder3D
 CSGTorus3D
-Decal
-TextureRect

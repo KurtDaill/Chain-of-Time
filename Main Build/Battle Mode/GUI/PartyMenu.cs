@@ -1,7 +1,6 @@
 using System;
 using Godot;
 public partial class PartyMenu : BattleMenu{
-/*
     //Used to control whether we display the 'enabled' or 'disabled' textures
     
     
@@ -21,9 +20,9 @@ public partial class PartyMenu : BattleMenu{
         this.GetNode<TextureRect>("Hub/Combo/Highlight"), this.GetNode<TextureRect>("Hub/Ally/Highlight")};
     }
 
-    public override void OnOpen(PMPlayerCharacter character, PMBattle caller)
+    public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI)
     {
-        base.OnOpen(character, caller);
+        base.OnOpen(character, caller, parentGUI);
         optionSelected = 1;
         lastFrameSelection = 1;
         buttonsEnabled = new bool[]{false, true, false, false}; //TODO actually tie this to whether an option is permissable using the PMBattle
@@ -37,7 +36,7 @@ public partial class PartyMenu : BattleMenu{
         buttonHighlights[optionSelected].Visible = true;
 
     }
-    public override PMPlayerAbility HandleInput(MenuInput input, PMPlayerCharacter character, PMBattle caller)
+    public override Ability HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI)
     {
         switch(input){
             case MenuInput.Left :
@@ -59,15 +58,15 @@ public partial class PartyMenu : BattleMenu{
             case MenuInput.Select :
                 switch(optionSelected){
                     case 1 :
-                        if(parentGUI.parentBattle.GetPlayerCharacters().Length > 1) //If there's more than one player...
-                            parentGUI.ChangeMenu(6, character, caller); //Go to the Swap Menu
+                        if(caller.GetRoster().GetAllPlayerCombatants().Length > 1) //If there's more than one player...
+                            parentGUI.ChangeMenu(6, character); //Go to the Swap Menu
                         else
                             this.GetNode<AudioStreamPlayer>("SelectError").Play();
                         break;
                 }
                 break;
             case MenuInput.Back :
-                parentGUI.ChangeMenu(0, character, caller); //Goes back to top menu
+                parentGUI.ChangeMenu(0, character); //Goes back to top menu
                 break;
         }
         return null;
@@ -78,5 +77,4 @@ public partial class PartyMenu : BattleMenu{
         optionSelected = select;
         buttonHighlights[optionSelected].Visible = true;
     }
-*/
 }

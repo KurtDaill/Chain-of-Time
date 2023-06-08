@@ -99,16 +99,22 @@ public partial class Battle : Node3D
 	}
 
 	//General solution for phases that are essentially "Stop everything let these animations play in sequence"
-	private async Task ExecuteCombatEvents(CombatEventData[] actions)
+	private async Task ExecuteCombatEvents(CombatEventData[] eventData)
 	{
-		for(int i = 0; i < actions.Length; i++){
-			if(actions[i].GetCombatant().HasAnimation(actions[i].GetAnimationName())){
-				if(actions[i].GetAnimationName() != "NoAction") actions[i].GetCombatant().ReadyAction(actions[i].GetAction());
-				actions[i].GetCombatant().GetAnimationPlayer().Play(actions[i].GetAnimationName());
-				await ToSignal(actions[i].GetCombatant().GetAnimationPlayer(), AnimationPlayer.SignalName.AnimationFinished);
-			}else{	
-				GetTree().Quit();
-				throw new BadCombatAnimationException("Listed Animation (" + actions[i].GetAnimationName() + ") not found on Combatant (" + actions[i].GetCombatant().GetName() + ")");
+		for(int i = 0; i < eventData.Length; i++){
+			if(eventData[i].GetCombatant().HasAnimation(eventData[i].GetAnimationName())){
+				if(eventData[i].GetAnimationName() != "NoAction") eventData[i].GetCombatant().ReadyAction(eventData[i].GetAction());
+				eventData[i].GetCombatant().GetAnimationPlayer().Play(eventData[i].GetAnimationName());
+				await ToSignal(eventData[i].GetCombatant().GetAnimationPlayer(), AnimationPlayer.SignalName.AnimationFinished);
+			}else{
+				if(CombatAction.noAnimationAbilities.Contains(eventData[i].GetAction().GetName())){
+					eventData[i].GetCombatant().ReadyAction(eventData[i].GetAction());
+					eventData[i].GetCombatant().ActivateReadyAction(0);
+					await ToSignal(eventData[i].GetCombatant().GetAnimationPlayer(), AnimationPlayer.SignalName.AnimationFinished);
+				}else{	
+					GetTree().Quit();
+					throw new BadCombatAnimationException("Listed Animation (" + eventData[i].GetAnimationName() + ") not found on Combatant (" + eventData[i].GetCombatant().GetName() + ")");
+				}
 			}
 		}
 	}

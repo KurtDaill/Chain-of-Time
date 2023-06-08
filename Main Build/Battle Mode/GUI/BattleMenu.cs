@@ -26,5 +26,5 @@ public abstract partial class BattleMenu : Control
 
     //Handles input from the core Menu Command
     //Returns a new menu in the scenario we have to switch between menus
-    public virtual PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){ return null;}
+    public virtual Ability HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){ return null;}
 }

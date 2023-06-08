@@ -1,25 +1,20 @@
 using Godot;
 using System;
 using static BattleUtilities;
-public partial class CatoBasicAttack : PlayerAbility
-{
-	/*
-		Animation has to decide when stuff happens
-		So Animation will need to call a function on its combatant
-		That function will need data from this ability...
-	*/
 
-	public CatoBasicAttack(){	
-		name = "CatoBasicAttack";
-		animation = "CatoBasicAttack";
+public partial class SilverBasicAttack : PlayerAbility
+{
+public SilverBasicAttack(){	
+		name = "SilverBasicAttack";
+		animation = "SilverBasicAttack";
 		currentDamageChart = new System.Collections.Generic.Dictionary<double, int>()
 		{
 			{0.49, 1},
 			{0.51, 2}
 		};
 
-		rulesText = " [center]Melee \n Cato Deals 1-2 Damage";
-		AbilityTargetingLogic = TargetingLogic.Melee;
+		rulesText = " [center]Ranged \n Silver Deals 1-2 Damage";
+		AbilityTargetingLogic = TargetingLogic.Ranged;
 	}
 
 	public override void Activate(int phase){
@@ -29,10 +24,10 @@ public partial class CatoBasicAttack : PlayerAbility
 		if(target.Length != 1){
 			throw new BadActionSetupException("Incorrect Targets for Ability " + this.name + ". Need exaclty one target, have " + target.Length + " instead.");
 		}
-		if(target[0].GetPosition() != BattlePosition.EnemyFront && source.GetPosition() != BattlePosition.HeroFront){
+		//if(target[0].GetPosition() != BattlePosition.EnemyFront && source.GetPosition() != BattlePosition.HeroFront){
 			//Ability Fails
 			//TODO: Figure out how to handle abilities failing to go off
-		}
+		//}
 		target[0].TakeDamage(GenerateDamageFromChart(currentDamageChart));
 	}
 }

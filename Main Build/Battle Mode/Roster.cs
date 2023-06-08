@@ -20,12 +20,17 @@ public partial class Roster : Node
 
 	[Export]
 	private PlayerCombatant debugPlayer;
+
+	[Export]
+	private PlayerCombatant debugPlayer2;
 	[Export]
 	private EnemyCombatant debugEnemy1;
 	[Export]
 	private EnemyCombatant debugEnemy2;
 	[Export]
 	private EnemyCombatant debugEnemy3;
+
+	private AnimationPlayer animPlay;
 
 	private PlayerCombatant[] playerCharacters = new PlayerCombatant[3];
 	private EnemyCombatant[] enemyCharacters = new EnemyCombatant[3];
@@ -42,7 +47,9 @@ public partial class Roster : Node
 
 		enemySpots[0] = ((Node3D)this.FindChild("EnemyFront"));
 		enemySpots[1] = ((Node3D)this.FindChild("EnemyMid"));
-		enemySpots[2] = ((Node3D)this.FindChild("EnemyBack")); 	
+		enemySpots[2] = ((Node3D)this.FindChild("EnemyBack"));
+
+		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer"); 	
 
 		foreach(Node3D playerSpot in playerSpots){
 			if(playerSpot == null){
@@ -62,6 +69,8 @@ public partial class Roster : Node
 		if(debugMode){
 			playerCharacters[0] = debugPlayer;
 			SetPositionNewCharacter(debugPlayer, BattlePosition.HeroFront);
+			playerCharacters[1] = debugPlayer2;
+			SetPositionNewCharacter(debugPlayer2, BattlePosition.HeroMid);
 			enemyCharacters[0] = debugEnemy1;
 			enemyCharacters[1] = debugEnemy2;
 			enemyCharacters[2] = debugEnemy3;
@@ -76,12 +85,39 @@ public partial class Roster : Node
 	{
 
 	}
-	public void MoveCharacter(BattlePosition moverPos, BattlePosition newPos){
+	public async void SwapCharacters(BattlePosition moverPos, BattlePosition newPos){
+		List<BattlePosition> positions = new List<BattlePosition>(0){moverPos, newPos};
+		Node3D moverSpot = GetSpotNode(moverPos);
+		Node3D newSpot = GetSpotNode(newPos);
+
+		if(positions.Contains(BattlePosition.HeroFront) && positions.Contains(BattlePosition.HeroMid)) animPlay.Play("SwapHeroFM");
+		else if(positions.Contains(BattlePosition.HeroFront) && positions.Contains(BattlePosition.HeroBack)) animPlay.Play("SwapHeroFB");
+		else if(positions.Contains(BattlePosition.HeroMid) && positions.Contains(BattlePosition.HeroBack)) animPlay.Play("SwapHeroMB");
+		else if(positions.Contains(BattlePosition.EnemyMid) && positions.Contains(BattlePosition.EnemyBack)) animPlay.Play("SwapEnemyMB");
+		else if(positions.Contains(BattlePosition.EnemyFront) && positions.Contains(BattlePosition.EnemyBack)) animPlay.Play("SwapEnemyFB");
+		else if(positions.Contains(BattlePosition.EnemyFront) && positions.Contains(BattlePosition.EnemyMid)) animPlay.Play("SwapEnemyFM");
+		else throw new KeyNotFoundException();
+		await ToSignal(animPlay, AnimationPlayer.SignalName.AnimationFinished);
+
+		Combatant comA = GetCombatant(moverPos);
+		Combatant comB = GetCombatant(newPos);
+		if(comA != null) moverSpot.RemoveChild(comA);
+		if(comB != null) newSpot.RemoveChild(comB);
+		animPlay.Play("RESET");
+		await ToSignal(animPlay, AnimationPlayer.SignalName.AnimationFinished);
 		
+		if(comA != null){
+			newSpot.AddChild(comA);
+			comA.SetPosition(newPos);
+		}
+		if(comB != null){
+			moverSpot.AddChild(comB);
+			comB.SetPosition(moverPos);
+		}
 	}
 
-	public void MoveCharacter(Combatant mover, BattlePosition newPos){
-		MoveCharacter(GetPositionOfCombatant(mover), newPos);
+	public void SwapCharacters(Combatant mover, BattlePosition newPos){
+		SwapCharacters(GetPositionOfCombatant(mover), newPos);
 	}
 
 	public void SetPositionNewCharacter(Combatant cha, BattlePosition newPos){
@@ -121,6 +157,22 @@ public partial class Roster : Node
 		Array.Copy(enemyCharacters, result, enemyCharacters.Length);
 		Array.Copy(playerCharacters, 0, result, enemyCharacters.Length, playerCharacters.Length);
 		return result.Where(x => x != null).ToArray();
+	}
+
+	public AnimationPlayer GetAnimationPlayer(){
+		return animPlay;
+	}
+
+	public Node3D GetSpotNode(BattlePosition pos){
+		switch(pos){
+			case BattlePosition.HeroFront : return playerSpots[0];
+			case BattlePosition.HeroMid : return playerSpots[1];
+			case BattlePosition.HeroBack : return playerSpots[2];
+			case BattlePosition.EnemyFront : return enemySpots[0];
+			case BattlePosition.EnemyMid : return enemySpots[1];
+			case BattlePosition.EnemyBack : return enemySpots[2];
+			default : throw new ArgumentException();
+		}
 	}
 }
 	

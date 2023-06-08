@@ -1,71 +1,75 @@
 using System;
 using Godot;
-//using static PMBattleUtilities;
+using static BattleUtilities;
 
 public partial class SwapMenu : BattleMenu{
-    /*
-    PMCharacter subject, rightTarget, leftTarget;
+    PlayerCombatant subject, rightTarget, leftTarget;
 
     private bool rightSelected = false;
-    public override PMPlayerAbility HandleInput(MenuInput input, PMPlayerCharacter character, PMBattle caller)
+    public override Ability HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI)
     {
         switch(input){
             case MenuInput.Right :
                 if(!rightSelected && rightTarget != null){
                     rightSelected = false;
-                    leftTarget.GetNode<Sprite3D>("Pointer").Visible = true;
-                    rightTarget.GetNode<Sprite3D>("Pointer").Visible = false;
+                    leftTarget.SetTargetGUIElements(true);
+                    rightTarget.SetTargetGUIElements(false);
                 }
                 break;
             case MenuInput.Left :
                 if(rightSelected && leftTarget != null){
                     rightSelected = true;
-                    rightTarget.GetNode<Sprite3D>("Pointer").Visible = true;
-                    leftTarget.GetNode<Sprite3D>("Pointer").Visible = false;
+                    rightTarget.SetTargetGUIElements(true);
+                    leftTarget.SetTargetGUIElements(false);
                 }
                 break;
             case MenuInput.Select :
                 if(rightSelected){
-                    rightTarget.GetNode<Sprite3D>("Pointer").Visible = false;
-                    caller.StartPositionSwap(subject.myPosition, rightTarget.myPosition);
+                    rightTarget.SetTargetGUIElements(false);
+                    //Queue the "SwapPositions" Ability
+                    return subject.SetupAndGetSwap(caller.GetRoster(), rightTarget.GetPosition());
                 }else{
-                    leftTarget.GetNode<Sprite3D>("Pointer").Visible = false;
-                    caller.StartPositionSwap(subject.myPosition, leftTarget.myPosition);
+                    leftTarget.SetTargetGUIElements(false);
+                    return subject.SetupAndGetSwap(caller.GetRoster(), leftTarget.GetPosition());
+                    //caller.GetRoster().SwapCharacters(subject.GetPosition(), leftTarget.GetPosition());
                 }
-                parentGUI.ExitWithoutQueueingAbility(character);
-                break;
+                //parentGUI.ExitWithoutQueueingAbility(character);
+                //break;
             case MenuInput.Back :
-                parentGUI.ChangeMenu(1, character, caller); //Goes to Party Menu
+                if(leftTarget != null) leftTarget.SetTargetGUIElements(false);
+                if(rightTarget != null) rightTarget.SetTargetGUIElements(false);
+                parentGUI.ChangeMenu(1, character); //Goes to Party Menu
                 break;
         }
         return null;
     }
 
-    public override void OnOpen(PMPlayerCharacter character, PMBattle caller){
+    public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         subject = character;
-        switch(character.myPosition){
-            case(BattlePos.HeroOne) :
-                rightTarget = caller.PositionLookup(BattlePos.HeroTwo);
-                leftTarget = caller.PositionLookup(BattlePos.HeroThree);
+        switch(character.GetPosition()){
+            case(BattlePosition.HeroFront) :
+                rightTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattlePosition.HeroMid);
+                leftTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattlePosition.HeroBack);
                 break;
-            case(BattlePos.HeroTwo) :
-                rightTarget = caller.PositionLookup(BattlePos.HeroOne);
-                leftTarget = caller.PositionLookup(BattlePos.HeroThree);
+            case(BattlePosition.HeroMid) :
+                rightTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattlePosition.HeroFront);
+                leftTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattlePosition.HeroBack);
                 break;
-            case(BattlePos.HeroThree) :
-                rightTarget = caller.PositionLookup(BattlePos.HeroOne);
-                leftTarget = caller.PositionLookup(BattlePos.HeroTwo);
+            case(BattlePosition.HeroBack) :
+                rightTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattlePosition.HeroFront);
+                leftTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattlePosition.HeroMid);
                 break;
         }
         if(rightTarget != null){
             rightSelected = true;
-            rightTarget.GetNode<Sprite3D>("Pointer").Visible = true;
+            rightTarget.SetTargetGUIElements(true);
+            //rightTarget.GetNode<Sprite3D>("Pointer").Visible = true;
         }else if(leftTarget != null){
             rightSelected = false;
-            leftTarget.GetNode<Sprite3D>("Pointer").Visible = true;
+            leftTarget.SetTargetGUIElements(true);
+            //leftTarget.GetNode<Sprite3D>("Pointer").Visible = true;
         }else{
             throw new NotImplementedException(); //TODO Custom Exception
         }
     }
-    */
 }

@@ -12,6 +12,9 @@ public partial class Combatant : Node3D
 
 	protected List<StatusEffect> activeStatuses;
 
+	[Export]
+	protected PositionSwap swapAbility;
+
 	protected string name = "defaultCombatantName";
 
 	protected CombatAction readyAction;
@@ -118,6 +121,11 @@ public partial class Combatant : Node3D
 	public void SetTargetGUIElements(bool state){
 		//Turn the Pointer On/Off
 		pointer.Visible = state;
+	}
+
+	public Ability SetupAndGetSwap(Roster ros, BattlePosition pos){
+		swapAbility.SetupSwapDetails(ros, pos);
+		return swapAbility;
 	}
 
 	public class ActionNotFoundException : Exception

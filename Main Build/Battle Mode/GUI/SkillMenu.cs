@@ -52,7 +52,7 @@ public partial class SkillMenu : BattleMenu
         //Check current characters readied skills, setup cards to match that data
     }
 
-    public override PMPlayerAbility HandleInput(MenuInput input, PMPlayerCharacter character, PMBattle caller){       
+    public override PMAbility HandleInput(MenuInput input, PMPlayerCharacter character, PMBattle caller){       
         var oldCard = selectedOption;
         switch(input){
             case MenuInput.Right : 

@@ -15,7 +15,6 @@ public partial class PlayerCombatant : Combatant
 	public override void _Ready()
 	{
 		base._Ready();
-		basicAttack.Setup(this);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
