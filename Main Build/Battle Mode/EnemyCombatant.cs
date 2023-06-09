@@ -31,6 +31,11 @@ public partial class EnemyCombatant : Combatant
 		base.SetTargetGUIElements(state);
 		nameplate.SetNamePlateVisible(state);
 	}
+
+	public override void TakeDamage(int damage){
+		base.TakeDamage(damage);
+		nameplate.UpdateHP(hp, maxHP);
+	}
 }
 
 public class ActionLogicNotDefinedException : Exception{

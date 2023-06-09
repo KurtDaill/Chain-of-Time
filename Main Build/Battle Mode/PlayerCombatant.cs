@@ -49,4 +49,9 @@ public partial class PlayerCombatant : Combatant
 	public PlayerAbility GetBasicAttack(){
 		return basicAttack;
 	}
+	
+	public override void TakeDamage(int damage){
+		base.TakeDamage(damage);
+		readout.UpdateHP(hp, maxHP);
+	}
 }

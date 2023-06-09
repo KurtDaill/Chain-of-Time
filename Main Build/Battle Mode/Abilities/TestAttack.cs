@@ -9,5 +9,6 @@ public partial class TestAttack : EnemyAbility
     }
     public override void Activate(int phase){
         GD.Print("EnemyAbilityHasActivated");
+        target[0].TakeDamage(1);
     }
 }

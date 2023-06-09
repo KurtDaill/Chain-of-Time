@@ -13,6 +13,7 @@ public partial class TestEnemy : EnemyCombatant
     }
 
     public override CombatEventData DecideAction(Battle parentBattle){
+        testAttack.SetTargets(parentBattle.GetRoster().GetAllPlayerCombatants());
         return testAttack.GetEventData();
     }   
 }
