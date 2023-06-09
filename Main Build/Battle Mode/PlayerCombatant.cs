@@ -3,18 +3,26 @@ using System;
 using System.Collections.Generic;
 public partial class PlayerCombatant : Combatant
 {
-	protected int sp, maxSP;
+	[Export]
+	protected int sp;
+	[Export]
+	protected int maxSP;
 
 	//Includes a dicitonary of potential damage done by a basic attack (expressed in an int), and the probability of that ammount of damage (expressed in a double)
 	//The doubles should add up to one.
 	protected Dictionary<double, int> basicAttackDamageRange;
 	[Export]
 	protected PlayerAbility basicAttack;
+	[Export]
+	protected PlayerCharacterReadout readout;
 
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public async override void _Ready()
 	{
 		base._Ready();
+		await ToSignal(readout.GetParent(), ReadoutContainer.SignalName.ReadyToPopulateReadouts);
+		readout.UpdateHP(hp, maxHP);
+		readout.UpdateSP(sp, maxSP);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

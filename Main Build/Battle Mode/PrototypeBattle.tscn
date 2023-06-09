@@ -1154,12 +1154,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
 [node name="HeroMid" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
 
-[node name="TestHero" parent="Battle/Roster/HeroMid" instance=ExtResource("3_cyfrr")]
+[node name="TestHero" parent="Battle/Roster/HeroMid" node_paths=PackedStringArray("readout") instance=ExtResource("3_cyfrr")]
+sp = 4
+maxSP = 4
+readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Silver Readout")
+hp = 6
+maxHP = 6
 
 [node name="HeroFront" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
 
-[node name="TestHero" parent="Battle/Roster/HeroFront" instance=ExtResource("3_s3how")]
+[node name="TestHero" parent="Battle/Roster/HeroFront" node_paths=PackedStringArray("readout") instance=ExtResource("3_s3how")]
+sp = 4
+maxSP = 4
+readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
+hp = 4
+maxHP = 4
 
 [node name="EnemyFront" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
@@ -1289,3 +1299,5 @@ spot_angle = 20.4822
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_51ne1")
+
+[editable path="Battle/Camera3D/BattleGUI"]

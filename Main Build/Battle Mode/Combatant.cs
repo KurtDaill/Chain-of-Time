@@ -5,7 +5,10 @@ using static BattleUtilities;
 
 public partial class Combatant : Node3D
 {
-	protected int HP;
+	[Export]
+	protected int hp;
+	[Export]
+	protected int maxHP;
 	protected AnimationPlayer animPlay;
 
 	protected BattlePosition currentPosition;
@@ -51,7 +54,7 @@ public partial class Combatant : Node3D
 	public virtual void TakeDamage(int damage)
 	{
 		animPlay.Play("HitReact");
-		this.HP -= damage;
+		this.hp -= damage;
 		//Figure how how we're displaying damage numbers
 		//Figure out how we're dealing with death logic
 	}

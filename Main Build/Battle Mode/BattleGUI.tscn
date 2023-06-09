@@ -1610,7 +1610,6 @@ offset_bottom = 40.0
 script = ExtResource("42")
 
 [node name="Readouts" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 0
 anchor_left = 1.0
 anchor_top = 0.654
@@ -1644,6 +1643,7 @@ offset_bottom = 102.126
 texture = ExtResource("15")
 
 [node name="HP Icon Half" type="TextureRect" parent="Readouts/Cato Readout"]
+visible = false
 layout_mode = 0
 offset_left = 438.253
 offset_top = 5.66125
@@ -1652,6 +1652,7 @@ offset_bottom = 101.661
 texture = ExtResource("10")
 
 [node name="HP Icon Empty" type="TextureRect" parent="Readouts/Cato Readout"]
+visible = false
 layout_mode = 0
 offset_left = 438.253
 offset_top = 5.66125
@@ -1660,6 +1661,7 @@ offset_bottom = 101.661
 texture = ExtResource("11")
 
 [node name="SP Icon Full" type="TextureRect" parent="Readouts/Cato Readout"]
+visible = false
 layout_mode = 0
 offset_left = 582.162
 offset_top = 5.66125
@@ -1687,37 +1689,37 @@ texture = ExtResource("13")
 
 [node name="HP" type="Label" parent="Readouts/Cato Readout"]
 layout_mode = 0
-offset_left = 343.863
-offset_top = 56.7581
-offset_right = 385.863
-offset_bottom = 88.7581
+offset_left = 383.0
+offset_top = 55.1263
+offset_right = 425.0
+offset_bottom = 90.1263
 theme = ExtResource("4")
 text = "99"
 
 [node name="Max HP" type="Label" parent="Readouts/Cato Readout"]
 layout_mode = 0
-offset_left = 395.887
-offset_top = 56.7581
-offset_right = 437.887
-offset_bottom = 88.7581
+offset_left = 435.024
+offset_top = 55.1263
+offset_right = 477.024
+offset_bottom = 90.1263
 theme = ExtResource("4")
 text = "99"
 
 [node name="SP" type="Label" parent="Readouts/Cato Readout"]
 layout_mode = 0
-offset_left = 506.452
-offset_top = 56.7581
-offset_right = 548.452
-offset_bottom = 88.7581
+offset_left = 562.0
+offset_top = 56.1263
+offset_right = 604.0
+offset_bottom = 91.1263
 theme = ExtResource("4")
 text = "99"
 
 [node name="Max SP" type="Label" parent="Readouts/Cato Readout"]
 layout_mode = 0
-offset_left = 558.476
-offset_top = 56.7581
-offset_right = 600.476
-offset_bottom = 88.7581
+offset_left = 614.024
+offset_top = 56.1263
+offset_right = 656.024
+offset_bottom = 91.1263
 theme = ExtResource("4")
 text = "99"
 
@@ -1741,6 +1743,7 @@ offset_bottom = 107.768
 texture = ExtResource("9")
 
 [node name="HP Icon Full" type="TextureRect" parent="Readouts/Silver Readout"]
+visible = false
 layout_mode = 0
 offset_left = 438.253
 offset_top = 5.66125
@@ -1767,6 +1770,7 @@ offset_bottom = 101.661
 texture = ExtResource("11")
 
 [node name="SP Icon Full" type="TextureRect" parent="Readouts/Silver Readout"]
+visible = false
 layout_mode = 0
 offset_left = 582.162
 offset_top = 5.66125
@@ -1794,37 +1798,37 @@ texture = ExtResource("13")
 
 [node name="HP" type="Label" parent="Readouts/Silver Readout"]
 layout_mode = 0
-offset_left = 343.863
-offset_top = 56.6681
-offset_right = 385.863
-offset_bottom = 88.6681
+offset_left = 384.0
+offset_top = 56.1264
+offset_right = 426.0
+offset_bottom = 91.1264
 theme = ExtResource("4")
 text = "99"
 
 [node name="Max HP" type="Label" parent="Readouts/Silver Readout"]
 layout_mode = 0
-offset_left = 395.887
-offset_top = 56.6681
-offset_right = 437.887
-offset_bottom = 88.6681
+offset_left = 436.024
+offset_top = 56.1264
+offset_right = 478.024
+offset_bottom = 91.1264
 theme = ExtResource("4")
 text = "99"
 
 [node name="SP" type="Label" parent="Readouts/Silver Readout"]
 layout_mode = 0
-offset_left = 506.452
-offset_top = 56.6681
-offset_right = 548.452
-offset_bottom = 88.6681
+offset_left = 561.0
+offset_top = 55.1264
+offset_right = 603.0
+offset_bottom = 90.1264
 theme = ExtResource("4")
 text = "99"
 
 [node name="Max SP" type="Label" parent="Readouts/Silver Readout"]
 layout_mode = 0
-offset_left = 558.476
-offset_top = 56.6681
-offset_right = 600.476
-offset_bottom = 88.6681
+offset_left = 613.024
+offset_top = 55.1264
+offset_right = 655.024
+offset_bottom = 90.1264
 theme = ExtResource("4")
 text = "99"
 

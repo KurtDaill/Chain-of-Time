@@ -4,13 +4,12 @@ using System.Collections.Generic;
 
 public partial class PlayerCharacterReadout : TextureRect
 {
-	/*
 	Label HP, SP;
 	Label maxHPLabel, maxSPLabel;
 	TextureRect hpIconFull, hpIconHalf, hpIconEmpty, spIconFull, spIconHalf, spIconEmpty, highLight;
 
 	HBoxContainer statusBar;
-	public PMPlayerCharacter character;
+	public PlayerCombatant character;
 
 	public override void _Ready()
 	{
@@ -27,6 +26,7 @@ public partial class PlayerCharacterReadout : TextureRect
 		highLight = this.GetNode<TextureRect>("Highlight");
 		statusBar = this.GetNode<HBoxContainer>("Status Bar");
 	}
+	
 	public void UpdateHP(int newHP, int newMaxHP){
 		HP.Text = "" + newHP;
 		maxHPLabel.Text = "" + newMaxHP;
@@ -34,13 +34,13 @@ public partial class PlayerCharacterReadout : TextureRect
 		hpIconFull.Visible = false;
 		hpIconHalf.Visible = false;
 		hpIconEmpty.Visible = false;
-		if(newHP <= 0){
+		/*if(newHP <= 0){
 			hpIconEmpty.Visible = true;
 		}else if(newHP <= newMaxHP/2){
 			hpIconHalf.Visible = true;
 		}else{
 			hpIconFull.Visible = true;
-		}
+		}*/
 	}
 
 	public void UpdateSP(int newSP, int newMaxSP){
@@ -50,17 +50,17 @@ public partial class PlayerCharacterReadout : TextureRect
 		spIconFull.Visible = false;
 		spIconHalf.Visible = false;
 		spIconEmpty.Visible = false;
-		if(newSP <= 0){
+		/*if(newSP <= 0){
 			spIconEmpty.Visible = true;
 		}else if(newSP <= newMaxSP/2){
 			spIconHalf.Visible = true;
 		}else{
 			spIconFull.Visible = true;
-		}
+		}*/
 	}
 
-	public void UpdateStatus(List<PMStatus> statuses){
-		foreach(TextureRect statusIcon in statusBar.GetChildren()){
+	public void UpdateStatus(List<StatusEffect> statuses){
+		/*foreach(TextureRect statusIcon in statusBar.GetChildren()){
 			statusIcon.Free();
 		}
 		if(statuses.Count > 3){
@@ -71,7 +71,7 @@ public partial class PlayerCharacterReadout : TextureRect
 			foreach(PMStatus status in statuses){
 				statusBar.AddChild(status.GetLongIcon());
 			}
-		}
+		}*/
 	}
 
 	public void EnableHighlight(){
@@ -81,5 +81,4 @@ public partial class PlayerCharacterReadout : TextureRect
 	public void DisableHighlight(){
 		highLight.Visible = false;
 	}
-	*/
 }
