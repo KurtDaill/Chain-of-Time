@@ -7,7 +7,10 @@ public partial class EnemyNameplate : Sprite3D
 	[Export]
 	Godot.Collections.Array<NodePath> statusSpritePath;
 	Godot.Collections.Array<Sprite3D> statusSprites = new Godot.Collections.Array<Sprite3D>();
-
+	[Export]
+	EnemyCombatant parent;
+	[Export]
+	Label3D nameLabel;
 	[Export]
 	Label3D maxHP;
 
@@ -19,10 +22,19 @@ public partial class EnemyNameplate : Sprite3D
 		foreach(NodePath path in statusSpritePath){
 			statusSprites.Add(GetNode<Sprite3D>(path));
 		}
+		nameLabel.Text = parent.GetName();
 	}
 	public void UpdateHP(int cHP, int mHP){
 		maxHP.Text = ""+mHP;
 		currentHP.Text = ""+cHP;
+	}
+
+	public void SetComName(string name){
+		nameLabel.Text = name;
+	}
+
+	public void SetNamePlateVisible(bool toggle){
+		this.Visible = toggle;
 	}
 
 /*

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cake2huf76rgx" path="res://GUI/Battle Menu Assets/Enemy Status Effect Posion Short.png" id="4_nbmev"]
 [ext_resource type="Texture2D" uid="uid://bpbwwn7mc1sd8" path="res://GUI/Battle Menu Assets/Enemy Status Effect Stun Short.png" id="5_1304s"]
 
-[node name="Enemy Nameplate" type="Sprite3D" node_paths=PackedStringArray("maxHP", "currentHP")]
+[node name="Enemy Nameplate" type="Sprite3D" node_paths=PackedStringArray("nameLabel", "maxHP", "currentHP")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12924e-07, 3.72, 0)
 visible = false
 pixel_size = 0.008
@@ -15,6 +15,7 @@ alpha_cut = 2
 texture = ExtResource("1_thvm6")
 script = ExtResource("2_44mbh")
 statusSpritePath = [NodePath("Status 1"), NodePath("Status 2"), NodePath("Status 3"), NodePath("Status 4"), NodePath("Status 5")]
+nameLabel = NodePath("Name")
 maxHP = NodePath("Max HP")
 currentHP = NodePath("Current HP")
 

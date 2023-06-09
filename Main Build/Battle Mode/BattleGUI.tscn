@@ -1694,7 +1694,8 @@ offset_top = 55.1263
 offset_right = 425.0
 offset_bottom = 90.1263
 theme = ExtResource("4")
-text = "99"
+text = "1"
+horizontal_alignment = 1
 
 [node name="Max HP" type="Label" parent="Readouts/Cato Readout"]
 layout_mode = 0
@@ -1703,7 +1704,8 @@ offset_top = 55.1263
 offset_right = 477.024
 offset_bottom = 90.1263
 theme = ExtResource("4")
-text = "99"
+text = "1"
+horizontal_alignment = 1
 
 [node name="SP" type="Label" parent="Readouts/Cato Readout"]
 layout_mode = 0
@@ -1712,7 +1714,8 @@ offset_top = 56.1263
 offset_right = 604.0
 offset_bottom = 91.1263
 theme = ExtResource("4")
-text = "99"
+text = "1"
+horizontal_alignment = 1
 
 [node name="Max SP" type="Label" parent="Readouts/Cato Readout"]
 layout_mode = 0
@@ -1721,7 +1724,9 @@ offset_top = 56.1263
 offset_right = 656.024
 offset_bottom = 91.1263
 theme = ExtResource("4")
-text = "99"
+text = "1
+"
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Readouts/Cato Readout"]
 libraries = {
@@ -1803,7 +1808,9 @@ offset_top = 56.1264
 offset_right = 426.0
 offset_bottom = 91.1264
 theme = ExtResource("4")
-text = "99"
+text = "1
+"
+horizontal_alignment = 1
 
 [node name="Max HP" type="Label" parent="Readouts/Silver Readout"]
 layout_mode = 0
@@ -1812,7 +1819,9 @@ offset_top = 56.1264
 offset_right = 478.024
 offset_bottom = 91.1264
 theme = ExtResource("4")
-text = "99"
+text = "1
+"
+horizontal_alignment = 1
 
 [node name="SP" type="Label" parent="Readouts/Silver Readout"]
 layout_mode = 0
@@ -1821,7 +1830,9 @@ offset_top = 55.1264
 offset_right = 603.0
 offset_bottom = 90.1264
 theme = ExtResource("4")
-text = "99"
+text = "1
+"
+horizontal_alignment = 1
 
 [node name="Max SP" type="Label" parent="Readouts/Silver Readout"]
 layout_mode = 0
@@ -1830,7 +1841,9 @@ offset_top = 55.1264
 offset_right = 655.024
 offset_bottom = 90.1264
 theme = ExtResource("4")
-text = "99"
+text = "1
+"
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Readouts/Silver Readout"]
 libraries = {

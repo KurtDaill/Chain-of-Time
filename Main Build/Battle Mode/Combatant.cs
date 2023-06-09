@@ -121,7 +121,7 @@ public partial class Combatant : Node3D
 
 	//Used to activate/deactivate all of the effets that indicate the player is targeting this character in the battle menu
 	//TODO Implement this
-	public void SetTargetGUIElements(bool state){
+	public virtual void SetTargetGUIElements(bool state){
 		//Turn the Pointer On/Off
 		pointer.Visible = state;
 	}

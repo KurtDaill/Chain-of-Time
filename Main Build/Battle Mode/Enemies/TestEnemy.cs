@@ -7,6 +7,7 @@ public partial class TestEnemy : EnemyCombatant
     public Ability testAttack;
 
     public override void _Ready(){
+        name = "TestEnemy";
         base._Ready();
 		testAttack.Setup(this);
     }

@@ -3,10 +3,15 @@ using System;
 
 public partial class EnemyCombatant : Combatant
 {
+	[Export]
+	EnemyNameplate nameplate;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		base._Ready();
+		nameplate.UpdateHP(hp, maxHP);
+		nameplate.SetComName(name);
+		nameplate.SetNamePlateVisible(false);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,6 +25,11 @@ public partial class EnemyCombatant : Combatant
 		//GD.Print("Not yet buddy boy");
 		throw new ActionLogicNotDefinedException("Base EnemyCombatantDecideActionEnemies must all have an override of DecidedAction to define their attacking logic.");
 		//return null;
+	}
+
+	public override void SetTargetGUIElements(bool state){
+		base.SetTargetGUIElements(state);
+		nameplate.SetNamePlateVisible(state);
 	}
 }
 

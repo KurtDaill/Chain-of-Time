@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cb5qkdcy4n6ym"]
+[gd_scene load_steps=11 format=3 uid="uid://cb5qkdcy4n6ym"]
 
 [ext_resource type="Script" path="res://Battle Mode/Enemies/TestEnemy.cs" id="1_3ff12"]
 [ext_resource type="Texture2D" uid="uid://d2obcal8mur0i" path="res://Art/Polymorphor Master Sprite Sheet.png" id="2_beevs"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="3_1ju56"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/TestAttack.cs" id="4_2mcbi"]
+[ext_resource type="PackedScene" uid="uid://bhh44xrbceu6a" path="res://Battle Mode/GUI/enemy_nameplate.tscn" id="5_g2vvq"]
 
 [sub_resource type="Animation" id="Animation_86r11"]
 resource_name = "HitReact"
@@ -117,9 +118,12 @@ _data = {
 "Wiggle": SubResource("Animation_kxvvg")
 }
 
-[node name="TestEnemy" type="Node3D" node_paths=PackedStringArray("testAttack", "pointer")]
+[node name="TestEnemy" type="Node3D" node_paths=PackedStringArray("testAttack", "nameplate", "pointer")]
 script = ExtResource("1_3ff12")
 testAttack = NodePath("TestAttack")
+nameplate = NodePath("Nameplate Adjuster/Enemy Nameplate")
+hp = 6
+maxHP = 6
 pointer = NodePath("Pointer Adjuster/Pointer")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -143,4 +147,15 @@ texture_filter = 0
 [node name="TestAttack" type="Node" parent="."]
 script = ExtResource("4_2mcbi")
 
+[node name="Nameplate Adjuster" type="Node3D" parent="."]
+
+[node name="Enemy Nameplate" parent="Nameplate Adjuster" node_paths=PackedStringArray("parent") instance=ExtResource("5_g2vvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48, 3.52, 0)
+visible = true
+parent = NodePath("../..")
+
+[node name="Name" parent="Nameplate Adjuster/Enemy Nameplate" index="2"]
+text = "Polymorphor"
+
 [editable path="Pointer Adjuster/Pointer"]
+[editable path="Nameplate Adjuster/Enemy Nameplate"]
