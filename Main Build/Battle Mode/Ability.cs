@@ -16,6 +16,7 @@ public partial class Ability : CombatAction
         target = proposedTarget;
     }
 
+
     public virtual void SetDamageChart(Dictionary<double, int> proposedDamageChart){
         VerifyDamageChart(proposedDamageChart);
         currentDamageChart = proposedDamageChart;
@@ -73,5 +74,7 @@ public partial class Ability : CombatAction
         }
         
     }
+
+
 }
 

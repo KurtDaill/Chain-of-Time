@@ -1200,7 +1200,7 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 offset_right = 1169.0
 
 [node name="Card 1" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="3"]
-offset_right = 1174.72
+offset_right = 1177.12
 
 [node name="BattleDungeon" parent="." instance=ExtResource("5_7bshd")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

@@ -181,11 +181,28 @@ public partial class Roster : Node
 
 	public void SortCharacters(){
 		playerCharacters[0] = playerSpots[0].GetChild<PlayerCombatant>(0);
+		positionData.Remove(BattlePosition.HeroFront);
+		positionData.Add(BattlePosition.HeroFront, playerCharacters[0]);
+
 		playerCharacters[1] = playerSpots[1].GetChild<PlayerCombatant>(0);
+		positionData.Remove(BattlePosition.HeroMid);
+		positionData.Add(BattlePosition.HeroMid, playerCharacters[1]);
+
 		playerCharacters[2] = playerSpots[2].GetChild<PlayerCombatant>(0);
+		positionData.Remove(BattlePosition.HeroBack);
+		positionData.Add(BattlePosition.HeroBack, playerCharacters[1]);
+
 		enemyCharacters[0] = enemySpots[0].GetChild<EnemyCombatant>(0);
+		positionData.Remove(BattlePosition.EnemyFront);
+		positionData.Add(BattlePosition.EnemyFront, enemyCharacters[0]);
+
 		enemyCharacters[1] = enemySpots[1].GetChild<EnemyCombatant>(0);
+		positionData.Remove(BattlePosition.EnemyMid);
+		positionData.Add(BattlePosition.EnemyMid, enemyCharacters[1]);
+
 		enemyCharacters[2] = enemySpots[2].GetChild<EnemyCombatant>(0);
+		positionData.Remove(BattlePosition.EnemyBack);
+		positionData.Add(BattlePosition.EnemyBack, enemyCharacters[2]);
 	}
 }
 	

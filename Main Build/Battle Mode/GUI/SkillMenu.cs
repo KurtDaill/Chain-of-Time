@@ -41,12 +41,12 @@ public partial class SkillMenu : BattleMenu
                 noSkills = true;
         }
         else{
-            for(int i = 0; i < skills.Length; i++){
-                if(skills[i] != null){
+            for(int i = 0; i < 4; i++){
+                if(i < skills.Length){
                     cards[i].SetDisplay(skills[i].GetName(), skills[i].GetRulesText(), skills[i].GetSkilType(), skills[i].GetAbilityAlignment(), skills[i].GetSPCost());
                     availableCards++;
                 }else{
-                    cards[i].Visible= false;
+                    cards[i].Visible = false;
                 }
             }
         }

@@ -13,6 +13,8 @@ public abstract partial class CombatAction : Node
     protected Combatant[] target;
     protected Combatant source;
 
+    protected Battle parentBattle;
+
     //The 0 entry of this array is always reserved for the core animation of this combat action
     protected bool[] flagsRequiredToComplete = new bool[1]{false};
 
@@ -38,6 +40,10 @@ public abstract partial class CombatAction : Node
 
     public CombatEventData GetEventData(){
         return new CombatEventData(animation, source, this);
+    }
+    
+    public void SetBattle(Battle battle){
+        parentBattle = battle;    
     }
 
     public virtual void Run(){

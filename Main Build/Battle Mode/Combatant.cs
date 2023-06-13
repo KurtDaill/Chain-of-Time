@@ -88,9 +88,10 @@ public partial class Combatant : Node3D
 		this.activeStatuses.Remove(expiringStatus);
 	}
 
-	public void ReadyAction(CombatAction act){
+	public void ReadyAction(CombatAction act, Battle battle){
 		if(this.GetChildren().Contains(act)){
 			readyAction = act;
+			act.SetBattle(battle);
 		}else{
 			throw new ActionNotFoundException("Action Failed to Ready. Action (" + act.GetName() + ") not found as child of Combatant (" + name + "). Actions must be childed to combatants to be readied or used.");
 		}

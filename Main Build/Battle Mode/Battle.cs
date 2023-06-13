@@ -103,13 +103,13 @@ public partial class Battle : Node3D
 	{
 		for(int i = 0; i < eventData.Length; i++){
 			if(eventData[i].GetCombatant().HasAnimation(eventData[i].GetAnimationName())){
-				if(eventData[i].GetAnimationName() != "NoAction") eventData[i].GetCombatant().ReadyAction(eventData[i].GetAction());
+				if(eventData[i].GetAnimationName() != "NoAction") eventData[i].GetCombatant().ReadyAction(eventData[i].GetAction(), this);
 				eventData[i].GetCombatant().GetAnimationPlayer().Play(eventData[i].GetAnimationName());
 				eventData[i].GetAction().Run();
 				await ToSignal(eventData[i].GetAction(), CombatAction.SignalName.ActionComplete);
 			}else{
 				if(CombatAction.noAnimationAbilities.Contains(eventData[i].GetAction().GetName())){
-					eventData[i].GetCombatant().ReadyAction(eventData[i].GetAction());
+					eventData[i].GetCombatant().ReadyAction(eventData[i].GetAction(), this);
 					eventData[i].GetCombatant().ActivateReadyAction(0);
 					await ToSignal(eventData[i].GetAction(), CombatAction.SignalName.ActionComplete);
 				}else{	
