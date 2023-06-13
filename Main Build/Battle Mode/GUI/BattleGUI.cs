@@ -112,11 +112,13 @@ public partial class BattleGUI : Control
 	public void GotoPreviousCharacter(){
 		if(abilitiesQueued.Count(x => x != null) > 0){
 			playersInQuestion[abilitiesQueued.Count(x => x != null)].UnselectMe();
-			var resetQueue = abilitiesQueued.ToList<CombatEventData>();
-			resetQueue.Remove(resetQueue.Last<CombatEventData>());
-			abilitiesQueued = resetQueue.ToArray();
+			abilitiesQueued[abilitiesQueued.Count(x => x != null) - 1] = null;
+			//var resetQueue = abilitiesQueued.ToList<CombatEventData>().Where(x => x != null).ToList();
+			//resetQueue.Remove(resetQueue.Last<CombatEventData>());
+			//abilitiesQueued = resetQueue.ToArray();
 			
 			playersInQuestion[abilitiesQueued.Count(x => x != null)].SelectMe();
+			chainGUI.StepBack();
 			ChangeMenu(0, playersInQuestion[abilitiesQueued.Count(x => x != null)]);
 		}
 	}

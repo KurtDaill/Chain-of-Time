@@ -14,3 +14,4 @@ res://Battle Mode/test_hero_two.tscn
 res://Battle Mode/GUI/enemy_nameplate.tscn
 res://GUI/Themes/ActionChain.tres
 res://Battle Mode/Pointer.tscn
+res://Battle Mode/Abilities/TestSkill.cs

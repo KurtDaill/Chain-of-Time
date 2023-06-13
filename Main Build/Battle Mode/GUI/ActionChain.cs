@@ -73,4 +73,11 @@ public partial class ActionChain : Control
 			pointerGraphics[currentLink].Visible = true;
 		}
 	}
+
+	public void StepBack(){
+		pointerGraphics[currentLink].Visible = false;
+		currentLink--;
+		pointerGraphics[currentLink].Visible = true;
+		actions[currentLink].GetNode<Label>("Label").Text = "???";
+	}
 }
