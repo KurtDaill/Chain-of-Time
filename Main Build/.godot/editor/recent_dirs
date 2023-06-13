@@ -1,3 +1,6 @@
+res://GUI
+res://Fonts
+res://GUI/Themes
 res://Battle Mode/Abilities
 res://Battle Mode
 res://Battle Mode/Status Effects
@@ -6,7 +9,6 @@ res://Battle Mode/GUI
 res://Art
 res://Test Scenes/Sprite Testing/Environments
 res://Test Scenes/Sprite Testing
-res://GUI
 res://
 res://Art/3D
 res://Prototyping
@@ -18,5 +20,3 @@ res://GUI/Battle Ability GUI Assets
 C:/Users/kdail/Desktop/ExportChainofTime
 C:/Users/kdail/Desktop
 res://Test Scenes
-res://Audio
-res://Cutscenes/Dialogue Files

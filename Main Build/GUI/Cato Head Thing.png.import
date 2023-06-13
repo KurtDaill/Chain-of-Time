@@ -2,27 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg8taxjjfdpcy"
-path="res://.godot/imported/Character Pointer.png-7837e2db598b063502debec3e2fedecc.ctex"
+uid="uid://buymnk3wkjnd3"
+path="res://.godot/imported/Cato Head Thing.png-51de2dceb90c8abe7733634619f684f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Character Pointer.png"
-dest_files=["res://.godot/imported/Character Pointer.png-7837e2db598b063502debec3e2fedecc.ctex"]
+source_file="res://GUI/Cato Head Thing.png"
+dest_files=["res://.godot/imported/Cato Head Thing.png-51de2dceb90c8abe7733634619f684f0.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_compression=0
+compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=1
-mipmaps/generate=true
-mipmaps/limit=1
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=false

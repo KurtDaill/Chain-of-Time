@@ -105,12 +105,13 @@ public partial class Battle : Node3D
 			if(eventData[i].GetCombatant().HasAnimation(eventData[i].GetAnimationName())){
 				if(eventData[i].GetAnimationName() != "NoAction") eventData[i].GetCombatant().ReadyAction(eventData[i].GetAction());
 				eventData[i].GetCombatant().GetAnimationPlayer().Play(eventData[i].GetAnimationName());
-				await ToSignal(eventData[i].GetCombatant().GetAnimationPlayer(), AnimationPlayer.SignalName.AnimationFinished);
+				eventData[i].GetAction().Run();
+				await ToSignal(eventData[i].GetAction(), CombatAction.SignalName.ActionComplete);
 			}else{
 				if(CombatAction.noAnimationAbilities.Contains(eventData[i].GetAction().GetName())){
 					eventData[i].GetCombatant().ReadyAction(eventData[i].GetAction());
 					eventData[i].GetCombatant().ActivateReadyAction(0);
-					await ToSignal(eventData[i].GetCombatant().GetAnimationPlayer(), AnimationPlayer.SignalName.AnimationFinished);
+					await ToSignal(eventData[i].GetAction(), CombatAction.SignalName.ActionComplete);
 				}else{	
 					GetTree().Quit();
 					throw new BadCombatAnimationException("Listed Animation (" + eventData[i].GetAnimationName() + ") not found on Combatant (" + eventData[i].GetCombatant().GetName() + ")");
@@ -177,5 +178,11 @@ public static class BattleUtilities
 		PlayerMid,
 		PlayerBack,
 		Battlefield
+	}
+
+	public enum AbilityAlignment{
+		Normal,
+		Magic,
+		Tech
 	}
 }

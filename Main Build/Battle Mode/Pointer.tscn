@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://drrypbsjxq7n1"]
 
-[ext_resource type="Texture2D" uid="uid://dg8taxjjfdpcy" path="res://Art/Character Pointer.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bkdgvs1hqa6nu" path="res://GUI/Point-export.png" id="1_ner6l"]
 
 [sub_resource type="Animation" id="77"]
 resource_name = "Point"
@@ -56,7 +56,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0899999, 2.24, 0)
 visible = false
 pixel_size = 0.008
 no_depth_test = true
-texture = ExtResource("1")
+texture = ExtResource("1_ner6l")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Point"

@@ -4,8 +4,12 @@ using System;
 public partial class PlayerAbility : Ability
 {
 	protected int spCost = -1;
+	public int GetSPCost(){
+		return spCost;
+	}
 
-	protected string rulesText = "<Default Rules Text> [YOU SHOULDN'T SEE THIS IN THE UI]";
+
+	protected string rulesText = "{<Default Rules Text> [YOU SHOULDN'T SEE THIS IN THE UI]";
 
 	public override void Setup(Combatant proposedSource){
 		base.Setup(proposedSource);
@@ -15,9 +19,6 @@ public partial class PlayerAbility : Ability
 		}
 	}
 
-	public int GetSPCost(){
-		return spCost;
-	}
 
 	public string GetRulesText(){
 		return rulesText;

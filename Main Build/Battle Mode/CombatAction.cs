@@ -4,11 +4,17 @@ using System.Collections.Generic;
 
 public abstract partial class CombatAction : Node
 {
+    [Signal]
+    public delegate void ActionCompleteEventHandler();
     protected string name;
     protected string animation;
+    protected bool running = false;
     public static readonly List<string> noAnimationAbilities = new List<string>(){"SWAP"};
     protected Combatant[] target;
     protected Combatant source;
+
+    //The 0 entry of this array is always reserved for the core animation of this combat action
+    protected bool[] flagsRequiredToComplete = new bool[1]{false};
 
     //Should be spawned in as a child of proposedSource
     public virtual void Setup(Combatant proposedSource){
@@ -34,13 +40,32 @@ public abstract partial class CombatAction : Node
         return new CombatEventData(animation, source, this);
     }
 
-    public CombatEventData ReadyOnCombatantAndGetData(){
-        source.ReadyAction(this);
-        return GetEventData();
+    public virtual void Run(){
+        for(int i = 0; i < flagsRequiredToComplete.Length; i++){
+            flagsRequiredToComplete[i] = false;
+        }
+        running = true;
+        WaitForOwnAnimation();
     }
 
     public virtual void Activate(int phase){
+        WaitForOwnAnimation();
         //Custom Functionality is added here
+    }
+
+    public override void _Process(double delta){
+        if(!running) return;
+        bool complete = true;
+        foreach(bool flag in flagsRequiredToComplete){
+            if(flag == false){
+                complete = false;
+                break;
+            }
+        }
+        if(complete){
+            EmitSignal(CombatAction.SignalName.ActionComplete);
+            running = false;
+        } 
     }
     
     protected class BadActionSetupException : Exception
@@ -77,5 +102,9 @@ public abstract partial class CombatAction : Node
         }
         
     }
-
+    
+    public virtual async void WaitForOwnAnimation(){
+        await ToSignal(this.source.GetAnimationPlayer(), AnimationPlayer.SignalName.AnimationFinished);
+        flagsRequiredToComplete[0] = true;
+    }
 }

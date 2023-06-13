@@ -24,7 +24,7 @@ public partial class PlayerCharacterReadout : TextureRect
 		spIconHalf = this.GetNode<TextureRect>("SP Icon Half");
 		spIconEmpty = this.GetNode<TextureRect>("SP Icon Empty");
 		highLight = this.GetNode<TextureRect>("Highlight");
-		statusBar = this.GetNode<HBoxContainer>("Status Bar");
+		//statusBar = this.GetNode<HBoxContainer>("Status Bar");
 	}
 	
 	public void UpdateHP(int newHP, int newMaxHP){

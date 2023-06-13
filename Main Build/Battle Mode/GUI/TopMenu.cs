@@ -65,7 +65,7 @@ public partial class TopMenu : BattleMenu
                         break;
                     case 3:
                         //Goes to the Skill Menu
-                        //parentGUI.ChangeMenu(4, character, caller);
+                        parentGUI.ChangeMenu(4, character);
                         break;
                 }
                 break;

@@ -15,6 +15,7 @@ public partial class BattleGUI : Control
 
 	private PlayerCombatant[] playersInQuestion;
 	private CombatEventData[] abilitiesQueued;
+	private ActionChain chainGUI;
 
 	private bool active = false;
 	private ReadoutContainer playerCharacterReadouts;
@@ -30,6 +31,7 @@ public partial class BattleGUI : Control
 		menus[5] = (BattleMenu) GetNode("Targeting Menu");
 		menus[6] = (BattleMenu) GetNode("Swap Menu");
 		playerCharacterReadouts = GetNode<ReadoutContainer>("Readouts");
+		chainGUI = (ActionChain) GetNode("Action Chain");
 	}
 
 	public override void _Process(double delta)
@@ -43,6 +45,7 @@ public partial class BattleGUI : Control
 			var returnedAbility = currentMenu.HandleInput(ReadInput(), playersInQuestion[abilitiesQueued.Count(x => x != null)], parentBattle, this);
 			if(returnedAbility != null){
 				abilitiesQueued[abilitiesQueued.Count(x => x != null)] = returnedAbility.GetEventData();
+				chainGUI.LogAbility(returnedAbility.GetName(), abilitiesQueued.Count(x => x != null) == playersInQuestion.Length);
 				GoToNextCharacter();
 			}
 		}
@@ -59,11 +62,13 @@ public partial class BattleGUI : Control
 	public void ShowGUI(){
 		currentMenu.Visible = true;
 		playerCharacterReadouts.Visible = true;
+		chainGUI.Visible = true;
 	}
 
 	public void HideGUI(bool keepReadouts = true){
 		currentMenu.Visible = false;
 		if(!keepReadouts) playerCharacterReadouts.Visible = false;
+		chainGUI.Visible = false; //TODO: Actually have the Gain GUI stay as long as it's supposed to.
 	}
 	
 	//returns true if we have any characters able to act, false otherwise
@@ -76,6 +81,7 @@ public partial class BattleGUI : Control
 		lastMenu = currentMenu;
 		currentMenu = (BattleMenu) GetNode("Top Menu");
 		currentMenu.OnOpen(playersInQuestion[abilitiesQueued.Count(x => x != null)], parentBattle, this);
+		chainGUI.ResetActionChain(playersInQuestion);
 		ShowGUI();
 		active = true;
 		return true;
@@ -133,6 +139,7 @@ public partial class BattleGUI : Control
 				return; 
 			}else{
 				abilitiesQueued[abilitiesQueued.Count(x => x != null)] = new CombatEventData("NoAction", playersInQuestion[abilitiesQueued.Count(x => x != null)], null);
+				chainGUI.LogAbility("Can't Act", abilitiesQueued.Count(x => x != null) == playersInQuestion.Length);
 			}
 		}
 		//If we've reached this block of code, we have CED for every player, and can send it all back.

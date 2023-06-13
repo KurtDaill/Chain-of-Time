@@ -15,6 +15,9 @@ public partial class Roster : Node
 
 	};
 
+	[Signal]
+	public delegate void SwapCompleteEventHandler();
+
 	[Export]
 	private bool debugMode;
 
@@ -115,6 +118,7 @@ public partial class Roster : Node
 			comB.SetPosition(moverPos);
 		}
 		SortCharacters();
+		EmitSignal(Roster.SignalName.SwapComplete);
 	}
 
 	public void SwapCharacters(Combatant mover, BattlePosition newPos){
@@ -134,7 +138,6 @@ public partial class Roster : Node
 
 	public BattlePosition GetPositionOfCombatant(Combatant query){
 			foreach(KeyValuePair<BattlePosition, Combatant> pair in positionData){ if(pair.Value == query) return pair.Key; }
-			
 			throw new CombatantNotInRosterException("Combatant " + query.GetName() +  " not found!");
 	}
 

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 public partial class PlayerCombatant : Combatant
 {
 	[Export]
@@ -15,11 +16,18 @@ public partial class PlayerCombatant : Combatant
 	protected PlayerAbility basicAttack;
 	[Export]
 	protected PlayerCharacterReadout readout;
+	[Export]
+	protected Texture2D displayPortrait;
+	protected PlayerSkill[] readySkills;
 
 	// Called when the node enters the scene tree for the first time.
 	public async override void _Ready()
 	{
+		readySkills = new PlayerSkill[4];
 		base._Ready();
+		foreach(Node child in GetChildren()){
+			if(child is PlayerSkill) readySkills[readySkills.Count(x => x != null)] = (PlayerSkill) child;
+		}
 		await ToSignal(readout.GetParent(), ReadoutContainer.SignalName.ReadyToPopulateReadouts);
 		readout.UpdateHP(hp, maxHP);
 		readout.UpdateSP(sp, maxSP);
@@ -46,6 +54,12 @@ public partial class PlayerCombatant : Combatant
 		if(sp > maxSP) sp = maxSP;
 	}
 
+	public bool ChargeSP(int cost){
+		if(sp < cost) return false;
+		sp -= cost;
+		return true;
+	}
+
 	public PlayerAbility GetBasicAttack(){
 		return basicAttack;
 	}
@@ -53,5 +67,13 @@ public partial class PlayerCombatant : Combatant
 	public override void TakeDamage(int damage){
 		base.TakeDamage(damage);
 		readout.UpdateHP(hp, maxHP);
+	}
+
+	public PlayerSkill[] GetSkills(){
+		return readySkills.Where(x => x != null).ToArray();
+	}
+
+	public Texture2D GetPortrait(){
+		return displayPortrait;
 	}
 }

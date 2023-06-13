@@ -1,0 +1,37 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b4n4pjmum2aa8"]
+
+[ext_resource type="FontFile" uid="uid://by3oeeep2oy71" path="res://Fonts/lunchtime-doubly-so.regular.ttf" id="1_xv6vr"]
+[ext_resource type="FontFile" uid="uid://cumxcbvw5u56y" path="res://Fonts/m5x7.ttf" id="2_7s85g"]
+
+[resource]
+Button/fonts/font = ExtResource("1_xv6vr")
+CheckBox/fonts/font = null
+CheckButton/fonts/font = null
+CodeEdit/fonts/font = null
+ColorPickerButton/fonts/font = null
+Fonts/fonts/large = null
+Fonts/fonts/normal = null
+GraphNode/fonts/title_font = null
+ItemList/fonts/font = null
+Label/font_sizes/font_size = 48
+Label/fonts/font = ExtResource("2_7s85g")
+LineEdit/fonts/font = null
+LinkButton/fonts/font = null
+MenuBar/fonts/font = null
+MenuButton/fonts/font = null
+OptionButton/fonts/font = null
+PopupMenu/fonts/font = null
+PopupMenu/fonts/font_separator = null
+ProgressBar/fonts/font = null
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/bold_italics_font = null
+RichTextLabel/fonts/italics_font = null
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = null
+TabBar/fonts/font = null
+TabContainer/fonts/font = null
+TextEdit/fonts/font = null
+TooltipLabel/fonts/font = null
+Tree/fonts/font = null
+Tree/fonts/title_button_font = null
+Window/fonts/title_font = null

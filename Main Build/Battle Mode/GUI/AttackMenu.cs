@@ -6,6 +6,7 @@ public partial class AttackMenu : BattleMenu
     public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI)
     {
         base.OnOpen(character, caller, parentGUI);
+        this.GetNode<Label>("Backboard/Attack Name").Text = character.GetBasicAttack().GetName();
         this.GetNode<RichTextLabel>("Backboard/Rules Text").Text = character.GetBasicAttack().GetRulesText();
     }
 

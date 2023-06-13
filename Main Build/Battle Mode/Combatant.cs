@@ -131,6 +131,7 @@ public partial class Combatant : Node3D
 		return swapAbility;
 	}
 
+
 	public class ActionNotFoundException : Exception
 	{
 		public ActionNotFoundException(){}

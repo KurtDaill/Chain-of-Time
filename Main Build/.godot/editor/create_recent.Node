@@ -1,7 +1,9 @@
-Node3D
-Node
-AnimationPlayer
+TextureRect
 Label
+Control
+Node
+Node3D
+AnimationPlayer
 Panel
 Sprite3D
 OmniLight3D
@@ -28,5 +30,3 @@ GPUParticles3D
 RichTextLabel
 CollisionPolygon3D
 CSGPolygon3D
-CSGCylinder3D
-CSGTorus3D

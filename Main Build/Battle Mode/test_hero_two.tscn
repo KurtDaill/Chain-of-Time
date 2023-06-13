@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://234suufiqv8c"]
+[gd_scene load_steps=12 format=3 uid="uid://234suufiqv8c"]
 
 [ext_resource type="Script" path="res://Battle Mode/PlayerCombatant.cs" id="1_b7ivl"]
 [ext_resource type="Texture2D" uid="uid://c7mty0p3g6ud3" path="res://Art/SilverRedesign1-export.png" id="2_4b4i1"]
+[ext_resource type="Texture2D" uid="uid://bsjs8a6imkaqo" path="res://GUI/Silver Portrait.png" id="2_md73s"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="3_8se5d"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/SilverBasicAttack.cs" id="4_h2u7t"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/PositionSwap.cs" id="5_0k0b5"]
@@ -182,6 +183,7 @@ _data = {
 [node name="TestHero" type="Node3D" node_paths=PackedStringArray("basicAttack", "swapAbility", "pointer")]
 script = ExtResource("1_b7ivl")
 basicAttack = NodePath("SilverBasicAttack")
+displayPortrait = ExtResource("2_md73s")
 swapAbility = NodePath("SwapPositions")
 pointer = NodePath("Pointer Adjuster/Pointer")
 
