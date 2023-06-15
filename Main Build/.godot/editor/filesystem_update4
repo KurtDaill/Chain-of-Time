@@ -1,4 +1,4 @@
-res://Battle Mode/Pointer.tscn
+res://Battle Mode/Enemies/Skeleton.tscn
 res://GUI/Themes/Skill Card Tech.tres
 res://GUI/Themes/UI Impact.tres
 res://GUI/Themes/Skill Card Normal Small.tres
@@ -6,8 +6,6 @@ res://GUI/Themes/Readout Text.tres
 res://GUI/Themes/Skill Card Normal.tres
 res://GUI/Themes/Skill Card Spell.tres
 res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres
-res://Battle Mode/Combat Text.tscn
-res://Battle Mode/PrototypeBattle.tscn
-res://Battle Mode/Player Characters/test_hero.tscn
-res://Battle Mode/Enemies/test_enemy.tscn
 res://Battle Mode/Player Characters/test_hero_two.tscn
+res://Battle Mode/Enemies/EnemyTemplate.tscn
+res://Battle Mode/PrototypeBattle.tscn

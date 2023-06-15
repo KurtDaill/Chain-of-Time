@@ -1,12 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://bftjxb62srdq"]
+[gd_scene load_steps=25 format=3 uid="uid://bftjxb62srdq"]
 
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Battle.cs" id="1_4rxw7"]
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="2_1verb"]
 [ext_resource type="PackedScene" uid="uid://234suufiqv8c" path="res://Battle Mode/Player Characters/test_hero_two.tscn" id="3_cyfrr"]
 [ext_resource type="PackedScene" uid="uid://ck78k6iju4ldb" path="res://Battle Mode/Player Characters/test_hero.tscn" id="3_s3how"]
-[ext_resource type="PackedScene" uid="uid://cb5qkdcy4n6ym" path="res://Battle Mode/Enemies/test_enemy.tscn" id="4_45prd"]
+[ext_resource type="PackedScene" uid="uid://cb5qkdcy4n6ym" path="res://Battle Mode/Enemies/EnemyTemplate.tscn" id="4_45prd"]
 [ext_resource type="PackedScene" uid="uid://ctkjn6qaseru7" path="res://Battle Mode/BattleGUI.tscn" id="4_noo0e"]
 [ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Old/Art/3D/BattleDungeon.dae" id="5_7bshd"]
+[ext_resource type="PackedScene" uid="uid://bltlucajwd3c5" path="res://Battle Mode/Enemies/Skeleton.tscn" id="5_m0pg8"]
 
 [sub_resource type="Animation" id="Animation_rgagi"]
 resource_name = "EnemyCrunch"
@@ -1144,7 +1145,7 @@ script = ExtResource("2_1verb")
 debugMode = true
 debugPlayer = NodePath("HeroFront/TestHero")
 debugPlayer2 = NodePath("HeroMid/TestHero")
-debugEnemy1 = NodePath("EnemyFront/TestEnemy")
+debugEnemy1 = NodePath("EnemyFront/Skeleton")
 debugEnemy2 = NodePath("EnemyMid/TestEnemy")
 debugEnemy3 = NodePath("EnemyBack/TestEnemy")
 
@@ -1172,7 +1173,7 @@ maxHP = 4
 [node name="EnemyFront" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 
-[node name="TestEnemy" parent="Battle/Roster/EnemyFront" instance=ExtResource("4_45prd")]
+[node name="Skeleton" parent="Battle/Roster/EnemyFront" instance=ExtResource("5_m0pg8")]
 
 [node name="EnemyMid" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
@@ -1198,7 +1199,7 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 offset_right = 1169.0
 
 [node name="Card 1" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="3"]
-offset_right = 1182.4
+offset_right = 1188.64
 
 [node name="BattleDungeon" parent="." instance=ExtResource("5_7bshd")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
