@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dgo4kxaaj5v27"
+path="res://.godot/imported/Crocotile Export Test.obj-d2db83b91e4aedf2f71a6ae2e6558e52.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Crocotile Export Test.obj-d2db83b91e4aedf2f71a6ae2e6558e52.mesh"]
+
+source_file="res://Old/Art/3D/Crocotile Export Test.obj"
+dest_files=["res://.godot/imported/Crocotile Export Test.obj-d2db83b91e4aedf2f71a6ae2e6558e52.mesh", "res://.godot/imported/Crocotile Export Test.obj-d2db83b91e4aedf2f71a6ae2e6558e52.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

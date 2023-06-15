@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bhh44xrbceu6a"]
 
 [ext_resource type="Texture2D" uid="uid://bqnbjc010le1m" path="res://GUI/Battle Menu Assets/Readouts/Enemy Readout.png" id="1_thvm6"]
-[ext_resource type="Script" path="res://Battle Mode/EnemyNameplate.cs" id="2_44mbh"]
+[ext_resource type="Script" path="res://Battle Mode/Basic Scripts/EnemyNameplate.cs" id="2_44mbh"]
 [ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="3_nrqh3"]
 [ext_resource type="Texture2D" uid="uid://cake2huf76rgx" path="res://GUI/Battle Menu Assets/Enemy Status Effect Posion Short.png" id="4_nbmev"]
 [ext_resource type="Texture2D" uid="uid://bpbwwn7mc1sd8" path="res://GUI/Battle Menu Assets/Enemy Status Effect Stun Short.png" id="5_1304s"]

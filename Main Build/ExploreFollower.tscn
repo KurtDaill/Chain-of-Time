@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_qjtvf"]
 [ext_resource type="PackedScene" uid="uid://dy5wjqinmlghd" path="res://Explore Mode/explore_player.tscn" id="2_43qd0"]
-[ext_resource type="Environment" uid="uid://clyvx48350vys" path="res://Test Scenes/Past Environment.tres" id="3_ijcoe"]
+[ext_resource type="Environment" uid="uid://clyvx48350vys" path="res://Old/Test Scenes/Past Environment.tres" id="3_ijcoe"]
 [ext_resource type="PackedScene" uid="uid://h46luk0df2um" path="res://Explore Mode/SilverFollower.tscn" id="4_p2tck"]
 [ext_resource type="Script" path="res://Explore Mode/PromenadeMap.cs" id="6_1e38j"]
 [ext_resource type="Script" path="res://Explore Mode/Promenade.cs" id="7_pmtaq"]

@@ -29,10 +29,10 @@ public partial class CatoBasicAttack : PlayerAbility
 		if(target.Length != 1){
 			throw new BadActionSetupException("Incorrect Targets for Ability " + this.name + ". Need exaclty one target, have " + target.Length + " instead.");
 		}
-		if(target[0].GetPosition() != BattlePosition.EnemyFront && source.GetPosition() != BattlePosition.HeroFront){
-			//Ability Fails
+		//if(target[0].GetPosition() != BattlePosition.EnemyFront && source.GetPosition() != BattlePosition.HeroFront){
+		//	//Ability Fails
 			//TODO: Figure out how to handle abilities failing to go off
-		}
-		target[0].TakeDamage(GenerateDamageFromChart(currentDamageChart));
+		//}
+		parentBattle.GetRoster().GetCombatant(BattlePosition.EnemyFront).TakeDamage(GenerateDamageFromChart(currentDamageChart));
 	}
 }

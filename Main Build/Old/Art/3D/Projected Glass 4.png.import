@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dncb1s3jnx0cb"
+path="res://.godot/imported/Projected Glass 4.png-e23e22009f900af1b56485d85b582947.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Old/Art/3D/Projected Glass 4.png"
+dest_files=["res://.godot/imported/Projected Glass 4.png-e23e22009f900af1b56485d85b582947.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=false
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

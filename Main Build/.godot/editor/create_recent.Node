@@ -1,14 +1,14 @@
+AnimationPlayer
+Node3D
+Label3D
 TextureRect
 Label
 Control
 Node
-Node3D
-AnimationPlayer
 Panel
 Sprite3D
 OmniLight3D
 SpotLight3D
-Label3D
 DirectionalLight3D
 CSGBox3D
 WorldEnvironment

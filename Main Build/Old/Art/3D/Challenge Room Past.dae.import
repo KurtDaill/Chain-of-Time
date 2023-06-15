@@ -1,0 +1,43 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://x5rq2t7a1cc1"
+path="res://.godot/imported/Challenge Room Past.dae-49bafebb41ffa527a634408859904295.scn"
+
+[deps]
+
+source_file="res://Old/Art/3D/Challenge Room Past.dae"
+dest_files=["res://.godot/imported/Challenge Room Past.dae-49bafebb41ffa527a634408859904295.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"tile_set_2": {
+"use_external/enabled": true,
+"use_external/path": "res://Art/3D/DungeonNormalMaterial2.tres"
+},
+"tile_set_2.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Art/3D/DungeonNormalMaterial2.tres"
+}
+}
+}
+gltf/embedded_image_handling=1
