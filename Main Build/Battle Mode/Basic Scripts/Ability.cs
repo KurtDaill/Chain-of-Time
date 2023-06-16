@@ -11,6 +11,8 @@ public partial class Ability : CombatAction
     protected Dictionary<double, int> currentDamageChart;
 
     protected TargetingLogic AbilityTargetingLogic;
+    [Export(PropertyHint.Enum)]
+    protected Godot.Collections.Array<BattlePosition> enabledPositions;
 
     public virtual void SetTargets(Combatant[] proposedTarget){
         target = proposedTarget;
@@ -51,6 +53,10 @@ public partial class Ability : CombatAction
             GetTree().Quit();
             throw new DamageChartException("Invalid Damage Chart, probablilities don't total to 1!");
         }
+    }
+
+    public Godot.Collections.Array<BattlePosition> GetEnabledPositions(){
+        return enabledPositions;
     }
 
     public (Combatant, string) GetAnimationInfo(){

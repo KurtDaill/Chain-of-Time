@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doe0fcor7214h"
-path="res://.godot/imported/Skill Card.png-eb9ebbd9fd1d88023056cdecf3fdd790.ctex"
+uid="uid://x8jh7q2a2twq"
+path="res://.godot/imported/Silver Portrait.png-fdff5864032defe46eaed1428b5f1eff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GUI/Battle Menu Assets/Skill Menu/Skill Card.png"
-dest_files=["res://.godot/imported/Skill Card.png-eb9ebbd9fd1d88023056cdecf3fdd790.ctex"]
+source_file="res://Art/Silver Portrait.png"
+dest_files=["res://.godot/imported/Silver Portrait.png-fdff5864032defe46eaed1428b5f1eff.ctex"]
 
 [params]
 
@@ -25,10 +25,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

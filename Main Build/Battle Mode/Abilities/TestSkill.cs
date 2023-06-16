@@ -6,8 +6,8 @@ public partial class TestSkill : PlayerSkill{
 		base._Ready();
 		name = "Swap 'Em";
 		animation = "SpellCast";
-		align = BattleUtilities.AbilityAlignment.Magic;
-		skillType = "Spell"; 
+		align = BattleUtilities.AbilityAlignment.Normal;
+		skillType = "Skill"; 
 		rulesText = "Swaps Hero 1 & Hero 2";
 		AbilityTargetingLogic = BattleUtilities.TargetingLogic.Self;
 

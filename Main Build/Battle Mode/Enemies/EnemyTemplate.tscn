@@ -169,20 +169,20 @@ frame = 1
 
 [node name="TestAttack" type="Node" parent="."]
 script = ExtResource("4_s11fq")
+enabledPositions = Array[int]([0, 1, 2, 3, 4, 5])
 
 [node name="Nameplate Adjuster" type="Node3D" parent="."]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1749, 0, 0)
 
 [node name="Enemy Nameplate" parent="Nameplate Adjuster" node_paths=PackedStringArray("parent") instance=ExtResource("5_2d085")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48, 3.52, 0)
-visible = true
 parent = NodePath("../..")
 
 [node name="Name" parent="Nameplate Adjuster/Enemy Nameplate" index="2"]
 text = "Polymorphor"
 
 [node name="Combat Text" parent="." instance=ExtResource("6_8u87f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.295002, 1.10561, -0.0799999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.744998, 1.10561, -0.0799999)
 
 [editable path="Nameplate Adjuster/Enemy Nameplate"]
 [editable path="Combat Text"]

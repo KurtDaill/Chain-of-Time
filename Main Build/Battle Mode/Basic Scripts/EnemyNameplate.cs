@@ -23,6 +23,7 @@ public partial class EnemyNameplate : Sprite3D
 			statusSprites.Add(GetNode<Sprite3D>(path));
 		}
 		nameLabel.Text = parent.GetName();
+		this.Visible = false;
 	}
 	public void UpdateHP(int cHP, int mHP){
 		maxHP.Text = ""+mHP;

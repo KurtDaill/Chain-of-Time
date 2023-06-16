@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://234suufiqv8c"]
 
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/PlayerCombatant.cs" id="1_b7ivl"]
-[ext_resource type="Texture2D" uid="uid://bsjs8a6imkaqo" path="res://GUI/Silver Portrait.png" id="2_md73s"]
+[ext_resource type="Texture2D" uid="uid://x8jh7q2a2twq" path="res://Art/Silver Portrait.png" id="2_7pqaw"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="3_8se5d"]
 [ext_resource type="Texture2D" uid="uid://ws7dmsiqttmw" path="res://Art/Silver.png" id="3_sphhu"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/SilverBasicAttack.cs" id="4_h2u7t"]
@@ -184,7 +184,7 @@ _data = {
 [node name="TestHero" type="Node3D" node_paths=PackedStringArray("basicAttack", "displayText", "swapAbility", "pointer")]
 script = ExtResource("1_b7ivl")
 basicAttack = NodePath("SilverBasicAttack")
-displayPortrait = ExtResource("2_md73s")
+displayPortrait = ExtResource("2_7pqaw")
 displayText = NodePath("Combat Text")
 swapAbility = NodePath("SwapPositions")
 pointer = NodePath("Pointer Adjuster/Pointer")
@@ -209,6 +209,7 @@ libraries = {
 
 [node name="SilverBasicAttack" type="Node" parent="."]
 script = ExtResource("4_h2u7t")
+enabledPositions = Array[int]([3, 4, 5, 0, 1, 2])
 
 [node name="SwapPositions" type="Node" parent="."]
 script = ExtResource("5_0k0b5")

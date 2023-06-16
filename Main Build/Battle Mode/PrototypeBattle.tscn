@@ -1191,15 +1191,23 @@ libraries = {
 }
 
 [node name="Camera3D" type="Camera3D" parent="Battle"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 6.72, 13.24)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 4.2, 10.04)
 
 [node name="BattleGUI" parent="Battle/Camera3D" instance=ExtResource("4_noo0e")]
 
-[node name="Card 4" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="0"]
-offset_right = 1169.0
+[node name="Card 1" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="0"]
+offset_right = 1267.84
+offset_bottom = 4834.0
 
-[node name="Card 1" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="3"]
-offset_right = 1188.64
+[node name="Card 2" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="1"]
+offset_bottom = 4834.0
+
+[node name="Card 3" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="2"]
+offset_bottom = 4834.0
+
+[node name="Card 4" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="3"]
+offset_right = 1241.0
+offset_bottom = 4834.0
 
 [node name="BattleDungeon" parent="." instance=ExtResource("5_7bshd")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -1306,3 +1314,5 @@ spot_angle = 20.4822
 environment = SubResource("Environment_51ne1")
 
 [editable path="Battle/Camera3D/BattleGUI"]
+[editable path="Battle/Camera3D/BattleGUI/Skill Menu/Card 1"]
+[editable path="Battle/Camera3D/BattleGUI/Skill Menu/Card 4"]

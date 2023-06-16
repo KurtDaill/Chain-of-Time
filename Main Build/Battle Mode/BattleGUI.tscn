@@ -1,11 +1,8 @@
-[gd_scene load_steps=78 format=3 uid="uid://ctkjn6qaseru7"]
+[gd_scene load_steps=67 format=3 uid="uid://ctkjn6qaseru7"]
 
-[ext_resource type="Theme" uid="uid://crl1yc2vxqufr" path="res://GUI/Themes/Skill Card Tech.tres" id="1"]
-[ext_resource type="Theme" uid="uid://lcud6pbsl6dn" path="res://GUI/Themes/UI Impact.tres" id="2"]
 [ext_resource type="Theme" uid="uid://d4kx000io04gf" path="res://GUI/Themes/Skill Card Normal Small.tres" id="3"]
 [ext_resource type="Theme" uid="uid://0sj6o2hvmgmt" path="res://GUI/Themes/Readout Text.tres" id="4"]
 [ext_resource type="Theme" uid="uid://dq2wt80l1hcrn" path="res://GUI/Themes/Skill Card Normal.tres" id="5"]
-[ext_resource type="Theme" uid="uid://cj8f3qneuw34e" path="res://GUI/Themes/Skill Card Spell.tres" id="6"]
 [ext_resource type="Texture2D" uid="uid://3h4w6mektumc" path="res://GUI/Battle Menu Assets/Readouts/Silver's Readout.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://di6ya5ja67qot" path="res://GUI/Battle Menu Assets/Readouts/SP Gem Full.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://cuc7tn3snj7md" path="res://GUI/Battle Menu Assets/Readouts/Readout Highlight.png" id="9"]
@@ -23,17 +20,15 @@
 [ext_resource type="AudioStream" uid="uid://vrcv026r88aw" path="res://Audio/UI_No.wav" id="21"]
 [ext_resource type="Texture2D" uid="uid://d145f3ww0wx4r" path="res://GUI/Battle Menu Assets/Item Menu/Item Description Box.png" id="22"]
 [ext_resource type="Texture2D" uid="uid://dr54ux3u6u382" path="res://GUI/Battle Menu Assets/Top Menu/Skill Button Highlight.png" id="23"]
-[ext_resource type="Texture2D" uid="uid://doe0fcor7214h" path="res://GUI/Battle Menu Assets/Skill Menu/Skill Card.png" id="24"]
 [ext_resource type="Texture2D" uid="uid://c74qsow25qfbm" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuComboHighlight.png" id="25"]
 [ext_resource type="Texture2D" uid="uid://b6xo1fe2mg5he" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuAllyHighlight.png" id="26"]
 [ext_resource type="Texture2D" uid="uid://krkh6oeua0eq" path="res://GUI/Battle Menu Assets/Party Menu/Party Menu Hub.png" id="27"]
 [ext_resource type="Texture2D" uid="uid://3xst1bjiasti" path="res://GUI/Battle Menu Assets/Top Menu/Item Button Controller.png" id="28"]
 [ext_resource type="Texture2D" uid="uid://d2v174ha8e02a" path="res://GUI/Battle Menu Assets/Top Menu/Button Hub.png" id="29"]
-[ext_resource type="Texture2D" uid="uid://jfvu1q88havg" path="res://GUI/Battle Menu Assets/Skill Menu/Spell Card.png" id="30"]
+[ext_resource type="PackedScene" uid="uid://6ewe3uubmamc" path="res://GUI/SkillCard.tscn" id="30_x7avc"]
 [ext_resource type="Texture2D" uid="uid://cenqt4ms2eal0" path="res://GUI/Battle Menu Assets/Item Menu/Item Tab.png" id="31"]
 [ext_resource type="Texture2D" uid="uid://nli0mcpokh1x" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuSwapHighlight.png" id="32"]
 [ext_resource type="Texture2D" uid="uid://cm7bwe6xrk4bw" path="res://GUI/Battle Menu Assets/Attack Menu/Attack Menu.png" id="33"]
-[ext_resource type="Texture2D" uid="uid://d08s06xg3bhk1" path="res://GUI/Battle Menu Assets/Skill Menu/Tech Card.png" id="34"]
 [ext_resource type="Texture2D" uid="uid://cwrc2tvxawx3w" path="res://GUI/Battle Menu Assets/Top Menu/Item Button Highlight.png" id="35"]
 [ext_resource type="Texture2D" uid="uid://cx12cemchoyfp" path="res://GUI/Battle Menu Assets/Top Menu/Skill Button Controller.png" id="36"]
 [ext_resource type="Texture2D" uid="uid://l6unyyb4maph" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres" id="37"]
@@ -43,7 +38,6 @@
 [ext_resource type="Script" path="res://GUI/ReadoutContainer.cs" id="40_jh205"]
 [ext_resource type="Texture2D" uid="uid://bkjcvlj2kbhgm" path="res://GUI/Action Chain Link.png" id="40_luqf3"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/ActionChain.cs" id="40_qgk7y"]
-[ext_resource type="Script" path="res://Battle Mode/GUI/SkillCard.cs" id="41"]
 [ext_resource type="Texture2D" uid="uid://buymnk3wkjnd3" path="res://GUI/Cato Head Thing.png" id="41_s2270"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/SwapMenu.cs" id="42"]
 [ext_resource type="Texture2D" uid="uid://b77vj26o6q0wg" path="res://GUI/Point.png" id="42_adj3w"]
@@ -388,115 +382,102 @@ _data = {
 "Scroll Up": SubResource("25")
 }
 
-[sub_resource type="Animation" id="17"]
-length = 0.4
+[sub_resource type="Animation" id="20"]
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(899, -0.25, 0, 0.25, 0, 741, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.4)
-}
-
-[sub_resource type="Animation" id="18"]
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(9, 741), Vector2(9, 746)]
-}
-
-[sub_resource type="Animation" id="19"]
-length = 0.6
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
+tracks/0/path = NodePath("Card 1:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 9, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.6)
+"times": PackedFloat32Array(0, 0.3)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
+tracks/1/path = NodePath("Card 1:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(741, -0.25, 0, 0.25, 0, 899, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.6)
-}
-
-[sub_resource type="Animation" id="Animation_c044n"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(899, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(9, 741)]
+"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 899, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:position:x")
+tracks/2/path = NodePath("Card 2:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 290, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.2, 0.5)
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hwbq1"]
-_data = {
-"Draw": SubResource("17"),
-"RESET": SubResource("Animation_c044n"),
-"Selected": SubResource("18"),
-"Stow": SubResource("19")
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Card 3:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 571, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.4, 0.7)
 }
-
-[sub_resource type="Animation" id="20"]
-step = 0.05
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Card 1/AnimationPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Card 3:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 899, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.4, 0.7)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Card 2:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 899, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.2, 0.5)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Card 4:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 851, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.6, 0.9)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Card 4:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 899, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.6, 0.9)
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Card 1/AnimationPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -504,291 +485,59 @@ tracks/0/keys = {
 "method": &"play"
 }]
 }
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Card 1:position:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 9, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Card 1:position:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 899, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Card 2:position:x")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 290, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.05, 0.55)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Card 2:position:y")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 899, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.05, 0.55)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Card 3:position:x")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 571, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.1, 0.6)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Card 3:position:y")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 899, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.1, 0.6)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Card 4:position:x")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 851, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.15, 0.65)
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Card 4:position:y")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 899, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.15, 0.65)
-}
 
 [sub_resource type="Animation" id="21"]
 length = 0.4
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Card 1:offset_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Card 2:offset_top")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Card 3:offset_top")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Card 4:offset_top")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
 
 [sub_resource type="Animation" id="66"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Card 4:offset_top")
+tracks/0/path = NodePath("Card 1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1086.0]
+"update": 0,
+"values": [Vector2(9, 1086)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Card 3:offset_top")
+tracks/1/path = NodePath("Card 2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1086.0]
+"update": 0,
+"values": [Vector2(9, 1086)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Card 2:offset_top")
+tracks/2/path = NodePath("Card 4:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1086.0]
+"update": 0,
+"values": [Vector2(9, 1086)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Card 1:offset_left")
+tracks/3/path = NodePath("Card 3:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8.51978]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Card 1:offset_top")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1086.0]
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Card 1:position:x")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(8.51978, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Card 1:position:y")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Card 2:position:x")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Card 2:position:y")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/9/type = "bezier"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Card 3:position:x")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/10/type = "bezier"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Card 3:position:y")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/11/type = "bezier"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Card 4:position:x")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/12/type = "bezier"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Card 4:position:y")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"update": 0,
+"values": [Vector2(9, 1086)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e56cr"]
@@ -1335,226 +1084,41 @@ text = " [center][Range]
 [Keywords]
 Basic Attack Text"
 
+[node name="SelectError" type="AudioStreamPlayer" parent="Attack Menu"]
+stream = ExtResource("21")
+volume_db = 10.0
+
 [node name="Skill Menu" type="Control" parent="."]
 visible = false
 anchors_preset = 0
+offset_top = -27.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 13.0
 script = ExtResource("49")
 
-[node name="Card 4" type="TextureRect" parent="Skill Menu"]
+[node name="Card 1" parent="Skill Menu" instance=ExtResource("30_x7avc")]
+visible = false
 layout_mode = 0
-offset_left = 9.0
 offset_top = 1086.0
-offset_right = 291.0
-offset_bottom = 1425.0
-theme = ExtResource("5")
-texture = ExtResource("24")
-stretch_mode = 2
-script = ExtResource("41")
+offset_bottom = 1452.0
 
-[node name="Name" type="RichTextLabel" parent="Skill Menu/Card 4"]
+[node name="Card 2" parent="Skill Menu" instance=ExtResource("30_x7avc")]
+visible = false
 layout_mode = 0
-offset_left = 17.6326
-offset_top = 54.0
-offset_right = 268.633
-offset_bottom = 132.0
-bbcode_enabled = true
-text = "[center]Card Four"
-
-[node name="Cost" type="Label" parent="Skill Menu/Card 4"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 9.0
-offset_right = 52.0
-offset_bottom = 41.0
-theme = ExtResource("2")
-text = "0"
-
-[node name="Type" type="Label" parent="Skill Menu/Card 4"]
-layout_mode = 0
-offset_left = 99.0
-offset_top = 139.0
-offset_right = 198.0
-offset_bottom = 171.0
-text = "Attack"
-
-[node name="Rules Text" type="RichTextLabel" parent="Skill Menu/Card 4"]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 180.0
-offset_right = 269.0
-offset_bottom = 330.0
-bbcode_enabled = true
-text = "
-[center]Default Rules Text"
-scroll_active = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Skill Menu/Card 4"]
-libraries = {
-"": SubResource("AnimationLibrary_hwbq1")
-}
-
-[node name="Card 3" type="TextureRect" parent="Skill Menu"]
-layout_mode = 0
-offset_left = 5.0
 offset_top = 1086.0
-offset_right = 287.0
-offset_bottom = 1425.0
-theme = ExtResource("1")
-texture = ExtResource("34")
-stretch_mode = 2
-script = ExtResource("41")
+offset_bottom = 1452.0
 
-[node name="Name" type="RichTextLabel" parent="Skill Menu/Card 3"]
+[node name="Card 3" parent="Skill Menu" instance=ExtResource("30_x7avc")]
+visible = false
 layout_mode = 0
-offset_left = 17.6326
-offset_top = 54.0
-offset_right = 268.633
-offset_bottom = 132.0
-bbcode_enabled = true
-text = "[center]Card Three"
-
-[node name="Cost" type="Label" parent="Skill Menu/Card 3"]
-layout_mode = 0
-offset_left = 10.2563
-offset_top = 8.91956
-offset_right = 52.2564
-offset_bottom = 40.9196
-theme = ExtResource("2")
-text = "0"
-
-[node name="Type" type="Label" parent="Skill Menu/Card 3"]
-layout_mode = 0
-offset_left = 99.0
-offset_top = 139.0
-offset_right = 198.0
-offset_bottom = 171.0
-text = "Tech"
-
-[node name="Rules Text" type="RichTextLabel" parent="Skill Menu/Card 3"]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 180.0
-offset_right = 269.0
-offset_bottom = 330.0
-bbcode_enabled = true
-text = "
-[center]Default Rules Text"
-scroll_active = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Skill Menu/Card 3"]
-libraries = {
-"": SubResource("AnimationLibrary_hwbq1")
-}
-
-[node name="Card 2" type="TextureRect" parent="Skill Menu"]
-layout_mode = 0
-offset_left = 5.0
 offset_top = 1086.0
-offset_right = 287.0
-offset_bottom = 1425.0
-pivot_offset = Vector2(246.475, 158.516)
-theme = ExtResource("5")
-texture = ExtResource("24")
-stretch_mode = 2
-script = ExtResource("41")
+offset_bottom = 1452.0
 
-[node name="Name" type="RichTextLabel" parent="Skill Menu/Card 2"]
+[node name="Card 4" parent="Skill Menu" instance=ExtResource("30_x7avc")]
+visible = false
 layout_mode = 0
-offset_left = 18.3397
-offset_top = 53.2929
-offset_right = 269.34
-offset_bottom = 132.293
-bbcode_enabled = true
-text = "[center] Card Two"
-
-[node name="Cost" type="Label" parent="Skill Menu/Card 2"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 9.0
-offset_right = 52.0
-offset_bottom = 41.0
-theme = ExtResource("2")
-text = "0"
-
-[node name="Type" type="Label" parent="Skill Menu/Card 2"]
-layout_mode = 0
-offset_left = 97.5858
-offset_top = 139.0
-offset_right = 196.586
-offset_bottom = 171.0
-text = "Skill"
-
-[node name="Rules Text" type="RichTextLabel" parent="Skill Menu/Card 2"]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 180.0
-offset_right = 269.0
-offset_bottom = 330.0
-bbcode_enabled = true
-text = "
-[center]Default Rules Text"
-scroll_active = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Skill Menu/Card 2"]
-libraries = {
-"": SubResource("AnimationLibrary_hwbq1")
-}
-
-[node name="Card 1" type="TextureRect" parent="Skill Menu"]
-layout_mode = 0
-offset_left = 8.51978
 offset_top = 1086.0
-offset_right = 306.847
-offset_bottom = 1425.0
-theme = ExtResource("6")
-texture = ExtResource("30")
-stretch_mode = 2
-script = ExtResource("41")
-
-[node name="Name" type="RichTextLabel" parent="Skill Menu/Card 1"]
-layout_mode = 0
-offset_left = 17.6326
-offset_top = 54.0
-offset_right = 268.633
-offset_bottom = 132.0
-bbcode_enabled = true
-text = "[center]Just...Focus"
-
-[node name="Cost" type="Label" parent="Skill Menu/Card 1"]
-layout_mode = 0
-offset_left = 10.2563
-offset_top = 8.91956
-offset_right = 52.2564
-offset_bottom = 40.9196
-theme = ExtResource("2")
-text = "0"
-
-[node name="Type" type="Label" parent="Skill Menu/Card 1"]
-layout_mode = 0
-offset_left = 99.0
-offset_top = 139.0
-offset_right = 198.0
-offset_bottom = 171.0
-text = "Spell"
-
-[node name="Rules Text" type="RichTextLabel" parent="Skill Menu/Card 1"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 180.0
-offset_right = 273.0
-offset_bottom = 339.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource("6")
-bbcode_enabled = true
-scroll_active = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Skill Menu/Card 1"]
-libraries = {
-"": SubResource("AnimationLibrary_hwbq1")
-}
+offset_bottom = 1452.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skill Menu"]
 libraries = {
@@ -1606,6 +1170,7 @@ offset_top = -18.0
 offset_right = 351.0
 offset_bottom = 42.0
 texture = ExtResource("41_s2270")
+stretch_mode = 2
 
 [node name="Pointer" type="TextureRect" parent="Action Chain/Action Link 1"]
 layout_mode = 0
@@ -1652,6 +1217,7 @@ offset_top = -18.0
 offset_right = 351.0
 offset_bottom = 42.0
 texture = ExtResource("41_s2270")
+stretch_mode = 2
 
 [node name="Pointer" type="TextureRect" parent="Action Chain/Action Link 2"]
 layout_mode = 0
@@ -1698,6 +1264,7 @@ offset_top = -18.0
 offset_right = 351.0
 offset_bottom = 42.0
 texture = ExtResource("41_s2270")
+stretch_mode = 2
 
 [node name="Pointer" type="TextureRect" parent="Action Chain/Action Link 3"]
 layout_mode = 0
@@ -1957,3 +1524,6 @@ horizontal_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_4ixf6")
 }
+
+[editable path="Skill Menu/Card 1"]
+[editable path="Skill Menu/Card 4"]

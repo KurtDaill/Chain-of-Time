@@ -6,19 +6,35 @@ public partial class SkillCard : TextureRect{
     private RichTextLabel name, rules;
     private Label abilityType, cost;
     private AnimationPlayer anim;
+    private TextureRect[] pips;
     public override void _Ready(){
         name = (RichTextLabel)GetNode("Name");
         rules = (RichTextLabel)GetNode("Rules Text");
         cost = (Label)GetNode("Cost");
         abilityType = (Label)GetNode("Type");
         anim = (AnimationPlayer)GetNode("AnimationPlayer");
+        pips = new TextureRect[]{
+            this.GetNode<TextureRect>("Pips/Friend 3"),
+            this.GetNode<TextureRect>("Pips/Friend 2"),
+            this.GetNode<TextureRect>("Pips/Friend 1"),
+            this.GetNode<TextureRect>("Pips/Enemy 1"),
+            this.GetNode<TextureRect>("Pips/Enemy 2"),
+            this.GetNode<TextureRect>("Pips/Enemy 3")
+        };
+        foreach(TextureRect pip in pips){ pip.Visible = false;}
     }
-    public void SetDisplay(string abilityName, string rulesText, string type, AbilityAlignment align, int spCost){
+    public void SetDisplay(string abilityName, string rulesText, string type, AbilityAlignment align, int spCost, Godot.Collections.Array<BattlePosition> positions){
         this.Visible = true;
         name.Text = "[center]" + abilityName;
         cost.Text = "" + spCost;
         abilityType.Text = type;
         
+        pips[0].Visible = positions.Contains(BattlePosition.HeroBack);
+        pips[1].Visible = positions.Contains(BattlePosition.HeroMid);
+        pips[2].Visible = positions.Contains(BattlePosition.HeroFront);
+        pips[3].Visible = positions.Contains(BattlePosition.EnemyFront);
+        pips[4].Visible = positions.Contains(BattlePosition.EnemyMid);
+        pips[5].Visible = positions.Contains(BattlePosition.EnemyBack);
         //Developers can specify the font size for their rules text within the rules text string, this parses that information
         string textSize = "";
         if(rulesText.StartsWith("[textSize]")){

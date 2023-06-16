@@ -194,7 +194,7 @@ libraries = {
 }
 
 [node name="Pointer Adjuster" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36, 0.04, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.04, 0)
 
 [node name="Pointer" parent="Pointer Adjuster" instance=ExtResource("2_j6pg3")]
 texture_filter = 0
@@ -206,6 +206,7 @@ setAnimation = "Attack"
 setName = "Attack"
 damage = PackedInt32Array(1)
 damageProbs = PackedFloat64Array(1)
+enabledPositions = Array[int]([2, 3])
 
 [node name="Nameplate Adjuster" type="Node3D" parent="."]
 

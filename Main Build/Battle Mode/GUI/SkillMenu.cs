@@ -36,14 +36,14 @@ public partial class SkillMenu : BattleMenu
         noSkills = false;
         var skills = character.GetSkills();
         if(skills.Length == 0){ //Handles the special case if there are no skills
-                cards[0].SetDisplay("No Skills", "", "", AbilityAlignment.Normal, 0);
+                cards[0].SetDisplay("No Skills", "", "", AbilityAlignment.Normal, 0, new Godot.Collections.Array<BattlePosition>());
                 availableCards++;
                 noSkills = true;
         }
         else{
             for(int i = 0; i < 4; i++){
                 if(i < skills.Length){
-                    cards[i].SetDisplay(skills[i].GetName(), skills[i].GetRulesText(), skills[i].GetSkilType(), skills[i].GetAbilityAlignment(), skills[i].GetSPCost());
+                    cards[i].SetDisplay(skills[i].GetName(), skills[i].GetRulesText(), skills[i].GetSkilType(), skills[i].GetAbilityAlignment(), skills[i].GetSPCost(), skills[i].GetEnabledPositions());
                     availableCards++;
                 }else{
                     cards[i].Visible = false;
@@ -70,8 +70,8 @@ public partial class SkillMenu : BattleMenu
                     selectedOption = 0;
                 }
                 break;
-            case MenuInput.Select : //TODO: Should go to a "Targeting" menu
-                if(noSkills == false && character.ChargeSP(character.GetSkills()[selectedOption].GetSPCost())){ //Returns false if player can't pay
+            case MenuInput.Select : //TODO: Should go to a "Targeting" menu --- ChargeSP returns false if player can't pay, and MUST BE AT THE END OF THIS CONDITIONAL!!!
+                if(noSkills == false && character.GetSkills()[selectedOption].GetEnabledPositions().Contains(character.GetPosition()) && character.ChargeSP(character.GetSkills()[selectedOption].GetSPCost())){
                     menuAnim.Play("Exit");
                     TargetingMenu tMenu = (TargetingMenu) parentGUI.menus[5];
                     tMenu.SetAbilityForTargeting(character.GetSkills()[selectedOption]);
