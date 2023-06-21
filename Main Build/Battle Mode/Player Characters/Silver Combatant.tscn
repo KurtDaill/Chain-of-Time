@@ -1,0 +1,279 @@
+[gd_scene load_steps=17 format=3 uid="uid://234suufiqv8c"]
+
+[ext_resource type="Script" path="res://Battle Mode/Basic Scripts/PlayerCombatant.cs" id="1_3rxhu"]
+[ext_resource type="Texture2D" uid="uid://x8jh7q2a2twq" path="res://Art/Silver Portrait.png" id="2_kja07"]
+[ext_resource type="Texture2D" uid="uid://d7pbriigo4aj" path="res://Art/Silver Combat Sprite-Sheet.png" id="3_568ne"]
+[ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="4_kc02e"]
+[ext_resource type="Script" path="res://Battle Mode/Abilities/SilverBasicAttack.cs" id="5_ems5m"]
+[ext_resource type="Script" path="res://Battle Mode/Abilities/PositionSwap.cs" id="6_1jtpa"]
+[ext_resource type="PackedScene" uid="uid://boneh1axl0j65" path="res://Battle Mode/Combat Text.tscn" id="7_4stcv"]
+[ext_resource type="Script" path="res://Battle Mode/Abilities/LongShot.cs" id="7_ma1ff"]
+
+[sub_resource type="Animation" id="Animation_6ckd0"]
+resource_name = "GoDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SilverSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.290196)]
+}
+
+[sub_resource type="Animation" id="Animation_8ptpa"]
+resource_name = "NoAction"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SilverSprite:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ngeda"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SilverSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SilverSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SilverSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.21859, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SilverSprite:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5otli"]
+resource_name = "SilverBasicAttack"
+length = 1.6
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SilverSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1, 17]
+}
+
+[sub_resource type="Animation" id="Animation_6bdct"]
+resource_name = "SilverLongShot"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SilverSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1.03526, 1),
+"update": 0,
+"values": [17, 37]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bk5ok"]
+resource_name = "StatusFlinch"
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SilverSprite:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1.56, -0.25, 0, 0, -0.463599, -2.40828, -0.1, 0.0528934, 0.25, 0, -1.56, -0.2, 0.204781, 0, -0.463599),
+"times": PackedFloat32Array(0, 0.15, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SilverSprite:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.15, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SilverSprite:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.15, 1)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mwj43"]
+resource_name = "Idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iaquc"]
+_data = {
+"GoDown": SubResource("Animation_6ckd0"),
+"Idle": SubResource("Animation_mwj43"),
+"NoAction": SubResource("Animation_8ptpa"),
+"RESET": SubResource("Animation_ngeda"),
+"SilverBasicAttack": SubResource("Animation_5otli"),
+"SilverLongShot": SubResource("Animation_6bdct"),
+"StatusFlinch": SubResource("Animation_bk5ok")
+}
+
+[node name="TestHero" type="Node3D" node_paths=PackedStringArray("basicAttack", "displayText", "swapAbility", "pointer")]
+script = ExtResource("1_3rxhu")
+sp = 4
+maxSP = 4
+basicAttack = NodePath("SilverBasicAttack")
+displayPortrait = ExtResource("2_kja07")
+hp = 4
+maxHP = 4
+displayText = NodePath("Combat Text")
+swapAbility = NodePath("SwapPositions")
+pointer = NodePath("Pointer Adjuster/Pointer")
+
+[node name="SilverSprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21859, 0, 0)
+centered = false
+pixel_size = 0.008
+shaded = true
+alpha_cut = 2
+texture = ExtResource("3_568ne")
+hframes = 10
+vframes = 4
+
+[node name="Pointer Adjuster" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16, 0)
+
+[node name="Pointer" parent="Pointer Adjuster" instance=ExtResource("4_kc02e")]
+texture_filter = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iaquc")
+}
+
+[node name="SilverBasicAttack" type="Node" parent="."]
+script = ExtResource("5_ems5m")
+laserFX = "res://Battle Mode/FX/laserBurst.tscn"
+enabledPositions = Array[int]([3, 4, 5, 0, 1, 2])
+
+[node name="SwapPositions" type="Node" parent="."]
+script = ExtResource("6_1jtpa")
+
+[node name="LongShot" type="Node" parent="."]
+script = ExtResource("7_ma1ff")
+enabledPositions = Array[int]([4, 5, 2, 1, 0])
+
+[node name="Combat Text" parent="." instance=ExtResource("7_4stcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.876529, 2.26561, -0.0799999)
+
+[node name="BodyRef" type="Node3D" parent="."]
+
+[node name="Head" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.23832, 0)
+
+[node name="Core" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54509, 0)
+
+[node name="Weapon" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.364486, 1.0428, 0)
+
+[node name="Feet" type="Node3D" parent="BodyRef"]

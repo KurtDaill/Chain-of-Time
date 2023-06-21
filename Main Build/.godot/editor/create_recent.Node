@@ -1,11 +1,14 @@
+AnimationPlayer
+Sprite3D
+AnimatedSprite3D
+Node
+Label3D
+Node3D
+Timer
+OmniLight3D
+ColorRect
 TextureRect
 Control
-Node
-Node3D
-OmniLight3D
-Sprite3D
-AnimationPlayer
-Label3D
 Label
 Panel
 SpotLight3D
@@ -27,6 +30,3 @@ AnimationTree
 CharacterBody3D
 CSGSphere3D
 GPUParticles3D
-RichTextLabel
-CollisionPolygon3D
-CSGPolygon3D

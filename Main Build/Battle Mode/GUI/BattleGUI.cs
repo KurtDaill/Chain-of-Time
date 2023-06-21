@@ -65,10 +65,10 @@ public partial class BattleGUI : Control
 		chainGUI.Visible = true;
 	}
 
-	public void HideGUI(bool keepReadouts = true){
+	public void HideGUI(bool keepReadouts = true, bool keepChain = true){
 		currentMenu.Visible = false;
 		if(!keepReadouts) playerCharacterReadouts.Visible = false;
-		chainGUI.Visible = false; //TODO: Actually have the Gain GUI stay as long as it's supposed to.
+		chainGUI.Visible = keepChain; //TODO: Actually have the Gain GUI stay as long as it's supposed to.
 	}
 	
 	//returns true if we have any characters able to act, false otherwise
@@ -147,6 +147,6 @@ public partial class BattleGUI : Control
 		//If we've reached this block of code, we have CED for every player, and can send it all back.
 		EmitSignal(BattleGUI.SignalName.PlayerFinishedCommandInput);
 		this.active = false;
-		HideGUI();
+		HideGUI(true, true);
 	}   
 }

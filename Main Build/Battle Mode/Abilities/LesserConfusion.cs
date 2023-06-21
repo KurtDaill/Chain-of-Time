@@ -1,15 +1,28 @@
 using Godot;
 using System;
-
-public partial class LesserConfusion : Node
+using static BattleUtilities;
+public partial class LesserConfusion : EnemyAbility
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public override void _Ready(){
+        name = "LesserConfusion";
+        animation = "Spellcast";
+		flagsRequiredToComplete = new bool[]{false, false};
+		AbilityTargetingLogic = BattleUtilities.TargetingLogic.PlayerFront;
+    }
+
+	public override void Begin(){
+		base.Begin();
+		PlayCoreAnimation();
+	}
+    public override void AnimationTrigger(int phase)
 	{
+		base.AnimationTrigger(phase);
+		parentBattle.GetRoster().SwapCharacters(BattlePosition.HeroFront, BattlePosition.HeroMid);
+		WaitForSwap();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+	public async void WaitForSwap(){
+		await ToSignal((Roster)GetParent().GetParent().GetParent(), Roster.SignalName.SwapComplete);
+		flagsRequiredToComplete[1] = true;
 	}
 }

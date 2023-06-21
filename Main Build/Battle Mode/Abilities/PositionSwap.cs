@@ -16,9 +16,14 @@ public partial class PositionSwap : PlayerAbility
     public void SetupSwapDetails(Roster ros, BattlePosition tar){
         this.battleRoster = ros;
         this.targetPos = tar;
-    }   
+    }
 
-    public override async void Activate(int phase){
+    public override void Begin(){
+		base.Begin();
+		PlayCoreAnimation();
+	}   
+
+    public override async void AnimationTrigger(int phase){
         if(phase != 0) throw new ArgumentException("The Swap ability must be activated at phase 0");
         battleRoster.SwapCharacters(source.GetPosition(), targetPos);
         await ToSignal(battleRoster.GetAnimationPlayer(), AnimationPlayer.SignalName.AnimationFinished);

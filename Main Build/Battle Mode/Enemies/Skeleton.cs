@@ -1,10 +1,14 @@
 using Godot;
 using System;
+using static BattleUtilities;
+using System.Linq;
 
 public partial class Skeleton : EnemyCombatant
 {
 	[Export]
 	private EnemyAbility attack;
+	[Export]
+	private EnemyAbility taunt;
 	public override void _Ready()
 	{
         name = "Skeleton";
@@ -12,12 +16,20 @@ public partial class Skeleton : EnemyCombatant
 		attack.Setup(this);
 	}
 
-	public override void _Process(double delta)
-	{
-	}
 
 	public override CombatEventData DecideAction(Battle parentBattle){
+		//if(GetPosition() == BattlePosition.EnemyFront && activeStatuses.Where(x => x is StatusTaunting).Count() == 0){ //If we're not taunting and in the front
+		//	return taunt.GetEventData();
+		//}
         attack.SetTargets(parentBattle.GetRoster().GetAllPlayerCombatants());
         return attack.GetEventData();
     }   
+
+	protected override void OnAnimationComplete(StringName animName){
+		if(activeStatuses.Where(x => x is StatusTaunting).Count() > 0){//if we're taunting
+			animPlay.Play("TauntIdle");
+		}else{
+			animPlay.Play("Idle");
+		}	
+	}
 }

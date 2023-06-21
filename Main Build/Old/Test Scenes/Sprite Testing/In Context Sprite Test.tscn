@@ -2,13 +2,13 @@
 
 [ext_resource type="Environment" uid="uid://cfh7634f0l1lo" path="res://Old/Test Scenes/Sprite Testing/Environments/Dungeon Env.tres" id="1_44kqi"]
 [ext_resource type="Script" path="res://Old/Test Scenes/Sprite Testing/InContextSpriteTest.cs" id="1_c12c6"]
-[ext_resource type="PackedScene" uid="uid://ysgw0mocwq5u" path="res://Art/3D/battle_dungeon.tscn" id="2_5lvj2"]
+[ext_resource type="PackedScene" uid="uid://ysgw0mocwq5u" path="res://Old/Art/3D/battle_dungeon.tscn" id="2_5lvj2"]
 [ext_resource type="Environment" uid="uid://bmndayhcft4u3" path="res://Old/Test Scenes/Sprite Testing/Environments/Netural Env.tres" id="2_g8yhf"]
 [ext_resource type="Environment" uid="uid://drj4dcbtsl33g" path="res://Old/Test Scenes/Sprite Testing/Environments/Big Sun Env.tres" id="3_1dywo"]
-[ext_resource type="PackedScene" uid="uid://cg6ftftqprbhm" path="res://Art/3D/Baths.dae" id="3_ef7gi"]
+[ext_resource type="PackedScene" uid="uid://cg6ftftqprbhm" path="res://Old/Art/3D/Baths.dae" id="3_ef7gi"]
 [ext_resource type="Environment" uid="uid://dru8w3wvm3t86" path="res://Old/Test Scenes/Sprite Testing/Environments/Perfect Dark Env.tres" id="3_rlgqy"]
 [ext_resource type="Environment" uid="uid://jwa7oenbgqy2" path="res://Old/Test Scenes/Sprite Testing/Environments/Night Env.tres" id="4_kw2hb"]
-[ext_resource type="Texture2D" uid="uid://barilgnnr0yyq" path="res://Art/Zeld Cato Idle Test.png" id="7_crhy3"]
+[ext_resource type="Texture2D" uid="uid://dqsu6b5fcy3l1" path="res://Art/CatoIdlePoseTest.png" id="7_18i56"]
 [ext_resource type="Script" path="res://addons/control_camera3d/nodes/control_camera_3d.gd" id="8_lpovc"]
 
 [sub_resource type="Animation" id="Animation_et25c"]
@@ -194,12 +194,11 @@ environment = ExtResource("4_kw2hb")
 [node name="Shaded Cato" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4.2, -0.84)
 modulate = Color(0.842008, 1, 0.862321, 1)
-pixel_size = 0.02
+pixel_size = 0.04
 shaded = true
 alpha_cut = 2
 texture_filter = 1
-texture = ExtResource("7_crhy3")
-hframes = 6
+texture = ExtResource("7_18i56")
 
 [node name="Label3D" type="Label3D" parent="Shaded Cato"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.52652, 0)
@@ -218,10 +217,9 @@ libraries = {
 [node name="Unshaded Cato" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4.2, -0.84)
 modulate = Color(0.842008, 1, 0.862321, 1)
-pixel_size = 0.02
+pixel_size = 0.04
 texture_filter = 1
-texture = ExtResource("7_crhy3")
-hframes = 6
+texture = ExtResource("7_18i56")
 
 [node name="Label3D" type="Label3D" parent="Unshaded Cato"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.52652, 0)

@@ -10,7 +10,7 @@ public partial class CatoBasicAttack : PlayerAbility
 	*/
 
 	public CatoBasicAttack(){	
-		name = "CatoBasicAttack";
+		name = "Basic Atk";
 		animation = "CatoBasicAttack";
 		currentDamageChart = new System.Collections.Generic.Dictionary<double, int>()
 		{
@@ -22,7 +22,7 @@ public partial class CatoBasicAttack : PlayerAbility
 		AbilityTargetingLogic = TargetingLogic.Melee;
 	}
 
-	public override void Activate(int phase){
+	public override void AnimationTrigger(int phase){
 		if(phase != 0){
 			throw new BadAbilityExecuteCallException("Ability Animation called for Exectuion Phase that isn't defined!");
 		}
@@ -34,5 +34,10 @@ public partial class CatoBasicAttack : PlayerAbility
 			//TODO: Figure out how to handle abilities failing to go off
 		//}
 		parentBattle.GetRoster().GetCombatant(BattlePosition.EnemyFront).TakeDamage(GenerateDamageFromChart(currentDamageChart));
+	}
+
+	public override void Begin(){
+		base.Begin();
+		PlayCoreAnimation();
 	}
 }

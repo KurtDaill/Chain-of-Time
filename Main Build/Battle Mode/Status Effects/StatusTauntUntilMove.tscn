@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1f3w26ertese"]
+
+[ext_resource type="Script" path="res://Battle Mode/Status Effects/Scripts/StatusTauntUntilMove.cs" id="1_sm53b"]
+
+[node name="StatusTauntUntilMove" type="Node"]
+script = ExtResource("1_sm53b")
+notificationNodeFilePath = "res://Battle Mode/Status Effects/Notifications/TauntNotification.tscn"

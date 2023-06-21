@@ -1,13 +1,18 @@
+res://Battle Mode/FX
+res://Art/FX
+res://Battle Mode/Status Effects
+res://Battle Mode/Abilities
+res://Battle Mode/Status Effects/Notifications
+res://Battle Mode/Status Effects/Scripts
+res://GUI/Themes
+res://Fonts
 res://Art
+res://Old/Art
 res://GUI/Battle Menu Assets/Skill Menu
 res://GUI
-res://Battle Mode/Abilities
 res://Battle Mode/Enemies
 res://Battle Mode
 res://Old/Art/3D
-res://Fonts
-res://GUI/Themes
-res://Battle Mode/Status Effects
 res://Battle Mode/GUI
 res://
 res://Prototyping
@@ -15,6 +20,5 @@ res://Prototyping/Environments
 C:/Users/kdail/Desktop/The Chain of Time
 res://Levels
 C:/Users/kdail/Desktop/rcedit-master/rcedit-master/Default
-res://GUI/Battle Ability GUI Assets
 C:/Users/kdail/Desktop/ExportChainofTime
 C:/Users/kdail/Desktop

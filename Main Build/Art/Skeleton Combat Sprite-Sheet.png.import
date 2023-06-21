@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7mty0p3g6ud3"
-path="res://.godot/imported/SilverRedesign1-export.png-2c60e6767dd1ff229b25e3ad1caca587.ctex"
+uid="uid://qxueooqq05r1"
+path="res://.godot/imported/Skeleton Combat Sprite-Sheet.png-41bf3e771a3f230a2b66bf4a00abfeec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/SilverRedesign1-export.png"
-dest_files=["res://.godot/imported/SilverRedesign1-export.png-2c60e6767dd1ff229b25e3ad1caca587.ctex"]
+source_file="res://Art/Skeleton Combat Sprite-Sheet.png"
+dest_files=["res://.godot/imported/Skeleton Combat Sprite-Sheet.png-41bf3e771a3f230a2b66bf4a00abfeec.ctex"]
 
 [params]
 

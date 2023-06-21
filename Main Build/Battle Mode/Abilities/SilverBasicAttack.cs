@@ -4,8 +4,12 @@ using static BattleUtilities;
 
 public partial class SilverBasicAttack : PlayerAbility
 {
-public SilverBasicAttack(){	
-		name = "SilverBasicAttack";
+
+	[Export(PropertyHint.File)]
+	string laserFX;
+	PackedScene laserFXScene;
+	public override void _Ready(){
+		name = "Basic Atk";
 		animation = "SilverBasicAttack";
 		currentDamageChart = new System.Collections.Generic.Dictionary<double, int>()
 		{
@@ -15,9 +19,15 @@ public SilverBasicAttack(){
 
 		rulesText = " [center]Ranged \n Silver Deals 1-2 Damage";
 		AbilityTargetingLogic = TargetingLogic.Ranged;
+		laserFXScene = GD.Load<PackedScene>(laserFX);
 	}
 
-	public override void Activate(int phase){
+	public override void Begin(){
+		base.Begin();
+		PlayCoreAnimation();
+	}
+
+	public override void AnimationTrigger(int phase){
 		if(phase != 0){
 			throw new BadAbilityExecuteCallException("Ability Animation called for Exectuion Phase that isn't defined!");
 		}
@@ -29,5 +39,6 @@ public SilverBasicAttack(){
 			//TODO: Figure out how to handle abilities failing to go off
 		//}
 		target[0].TakeDamage(GenerateDamageFromChart(currentDamageChart));
+		SpawnEffectOnTarget(1, laserFXScene, target[0]);
 	}
 }

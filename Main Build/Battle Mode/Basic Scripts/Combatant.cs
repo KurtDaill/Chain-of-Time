@@ -16,13 +16,17 @@ public partial class Combatant : Node3D
 	protected BattlePosition currentPosition;
 
 	protected List<StatusEffect> activeStatuses;
+	protected List<CombatFX> combatVisEffects;
 
 	[Export]
 	protected PositionSwap swapAbility;
-
 	protected string name = "defaultCombatantName";
 
 	protected CombatAction readyAction;
+
+	bool defeated = false;
+
+	protected Node3D[] bodyRef;
 
 	[Export]
 	protected Sprite3D pointer;
@@ -31,6 +35,9 @@ public partial class Combatant : Node3D
 	public override void _Ready()
 	{
 		animPlay = (AnimationPlayer)this.GetNode("AnimationPlayer");
+		animPlay.Play("Idle");
+		animPlay.AnimationFinished += OnAnimationComplete;
+
 		activeStatuses = new List<StatusEffect>();
 		//TODO Make a Better Version of this
 		foreach(Node child in GetChildren()){
@@ -45,12 +52,31 @@ public partial class Combatant : Node3D
 			}
 		}
 		pointer.Visible = false;
+
+		bodyRef = new Node3D[4]{
+			GetNode<Node3D>("BodyRef/Head"),
+			GetNode<Node3D>("BodyRef/Core"),
+			GetNode<Node3D>("BodyRef/Weapon"),
+			GetNode<Node3D>("BodyRef/Feet")
+		};
+		
+		combatVisEffects = new List<CombatFX>();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-
+		/*
+		if(hp < 0 && defeated == false){
+			defeated = true;
+			await ToSignal(animPlay, AnimationPlayer.SignalName.AnimationFinished);
+			animPlay.Play("GoDown");
+		}
+		if(defeated && hp > 0){
+			defeated = false;
+			//Go Back to Idle
+		}
+		*/
 	}
 
 	public virtual void TakeDamage(int damage)
@@ -71,6 +97,10 @@ public partial class Combatant : Node3D
 		return name;
 	}
 
+	public int GetHP(){
+		return hp;
+	}
+
 	public AnimationPlayer GetAnimationPlayer(){
 		return animPlay;
 	}
@@ -81,6 +111,12 @@ public partial class Combatant : Node3D
 
 	public void SetPosition(BattlePosition pos){
 		currentPosition = pos;
+	}
+
+	public void GainStatus(StatusEffect status){
+		this.AddChild(status);
+		status.Setup(this);
+		this.activeStatuses.Add(status);
 	}
 
 	public StatusEffect[] GetStatusEffects(){
@@ -115,7 +151,7 @@ public partial class Combatant : Node3D
 	}
 
 	public void ActivateReadyAction(int phase){
-		readyAction.Activate(phase);
+		readyAction.AnimationTrigger(phase);
 	}
 	//Returns whether or not this character is able to input a command in order to act this turn.
 	public bool IsAbleToAct(){
@@ -135,6 +171,38 @@ public partial class Combatant : Node3D
 		return swapAbility;
 	}
 
+	public virtual void DefeatMe(){
+		animPlay.Play("GoDown");
+		defeated = true;
+	}
+
+	public virtual void ReviveMe(){
+		defeated = false;
+	}
+
+	public bool IsAlreadyDefeated(){
+		return defeated;
+	}
+
+	public Node3D GetBodyRegion(int index){
+		return bodyRef[index];
+	}
+
+	public void AddCombatFX(CombatFX newFX){
+		this.AddChild(newFX);
+		combatVisEffects.Add(newFX);
+		newFX.SetSource(this);
+	}
+
+	public void LogExpiredCombatFX(CombatFX removedFX){
+		combatVisEffects.Remove(removedFX);
+	}
+
+	//Called when an animation is complete, should always lead us back to the current idle.
+	protected virtual void OnAnimationComplete(StringName animName){
+		//TODO: Include Logic for Common Alt Idles: Bloodied, Dead, etc.
+		this.animPlay.Play("Idle");
+	}
 
 	public class ActionNotFoundException : Exception
 	{

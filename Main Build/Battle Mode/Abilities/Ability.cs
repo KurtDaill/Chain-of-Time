@@ -55,12 +55,23 @@ public partial class Ability : CombatAction
         }
     }
 
+    protected void PlayCoreAnimation(){  
+		source.GetAnimationPlayer().Play(animation);
+        ListenForAnimationFinished();
+    }
+
     public Godot.Collections.Array<BattlePosition> GetEnabledPositions(){
         return enabledPositions;
     }
 
     public (Combatant, string) GetAnimationInfo(){
         return (source, name);
+    }
+
+    protected void SpawnEffectOnTarget(int bodyRegion, PackedScene effect, Combatant target){
+        CombatFX fx = effect.Instantiate<CombatFX>();
+        target.AddCombatFX(fx);
+        //target.AddChild(fx);
     }
 
     protected class DamageChartException : Exception{

@@ -4,6 +4,8 @@ using static BattleUtilities;
 
 public partial class PlayerSkill : PlayerAbility
 {
+	[Export]
+	protected int spCost = -1;
     protected string skillType = "Attack";
 	protected AbilityAlignment align = AbilityAlignment.Normal;
 
@@ -13,5 +15,9 @@ public partial class PlayerSkill : PlayerAbility
 	public AbilityAlignment GetAbilityAlignment(){
 		return align;
 	}
+	public int GetSPCost(){
+		return spCost;
+	}
+
 
 } 

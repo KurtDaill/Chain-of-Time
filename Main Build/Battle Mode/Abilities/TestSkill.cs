@@ -16,15 +16,16 @@ public partial class TestSkill : PlayerSkill{
 		flagsRequiredToComplete = new bool[]{false, false};
 	}
 
-	public override void Activate(int phase)
-	{
-		base.Activate(phase);
-		parentBattle.GetRoster().SwapCharacters(BattlePosition.HeroFront, BattlePosition.HeroMid);
-		WaitForSwap();
+	public override void Begin(){
+		base.Begin();
+		PlayCoreAnimation();
 	}
 
-	public override void Run(){
-		base.Run();
+	public override void AnimationTrigger(int phase)
+	{
+		base.AnimationTrigger(phase);
+		parentBattle.GetRoster().SwapCharacters(BattlePosition.HeroFront, BattlePosition.HeroMid);
+		WaitForSwap();
 	}
 
 	public async void WaitForSwap(){

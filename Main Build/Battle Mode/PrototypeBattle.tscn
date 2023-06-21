@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Battle.cs" id="1_4rxw7"]
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="2_1verb"]
-[ext_resource type="PackedScene" uid="uid://234suufiqv8c" path="res://Battle Mode/Player Characters/test_hero_two.tscn" id="3_cyfrr"]
-[ext_resource type="PackedScene" uid="uid://ck78k6iju4ldb" path="res://Battle Mode/Player Characters/test_hero.tscn" id="3_s3how"]
-[ext_resource type="PackedScene" uid="uid://cb5qkdcy4n6ym" path="res://Battle Mode/Enemies/EnemyTemplate.tscn" id="4_45prd"]
+[ext_resource type="PackedScene" uid="uid://234suufiqv8c" path="res://Battle Mode/Player Characters/Silver Combatant.tscn" id="3_p77hq"]
 [ext_resource type="PackedScene" uid="uid://ctkjn6qaseru7" path="res://Battle Mode/BattleGUI.tscn" id="4_noo0e"]
+[ext_resource type="PackedScene" uid="uid://ck78k6iju4ldb" path="res://Battle Mode/Player Characters/Cato Combatant.tscn" id="4_xw6bo"]
 [ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Old/Art/3D/BattleDungeon.dae" id="5_7bshd"]
 [ext_resource type="PackedScene" uid="uid://bltlucajwd3c5" path="res://Battle Mode/Enemies/Skeleton.tscn" id="5_m0pg8"]
+[ext_resource type="PackedScene" uid="uid://qkdx5mb1mcw4" path="res://Battle Mode/Enemies/Ghost Mage.tscn" id="6_tvv4p"]
 
 [sub_resource type="Animation" id="Animation_rgagi"]
 resource_name = "EnemyCrunch"
@@ -1143,11 +1143,11 @@ battleRoster = NodePath("Roster")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 script = ExtResource("2_1verb")
 debugMode = true
-debugPlayer = NodePath("HeroFront/TestHero")
+debugPlayer = NodePath("HeroFront/Cato")
 debugPlayer2 = NodePath("HeroMid/TestHero")
 debugEnemy1 = NodePath("EnemyFront/Skeleton")
-debugEnemy2 = NodePath("EnemyMid/TestEnemy")
-debugEnemy3 = NodePath("EnemyBack/TestEnemy")
+debugEnemy2 = NodePath("EnemyMid/Ghost Mage")
+debugEnemy3 = NodePath("")
 
 [node name="HeroBack" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
@@ -1155,20 +1155,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
 [node name="HeroMid" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
 
-[node name="TestHero" parent="Battle/Roster/HeroMid" node_paths=PackedStringArray("readout") instance=ExtResource("3_cyfrr")]
-sp = 4
-maxSP = 4
+[node name="TestHero" parent="Battle/Roster/HeroMid" node_paths=PackedStringArray("readout") instance=ExtResource("3_p77hq")]
 readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Silver Readout")
-hp = 6
-maxHP = 6
+hp = 2
+maxHP = 2
 
 [node name="HeroFront" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
 
-[node name="TestHero" parent="Battle/Roster/HeroFront" node_paths=PackedStringArray("readout") instance=ExtResource("3_s3how")]
+[node name="Cato" parent="Battle/Roster/HeroFront" node_paths=PackedStringArray("readout") instance=ExtResource("4_xw6bo")]
 readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
-hp = 4
-maxHP = 4
 
 [node name="EnemyFront" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
@@ -1178,12 +1174,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 [node name="EnemyMid" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
 
-[node name="TestEnemy" parent="Battle/Roster/EnemyMid" instance=ExtResource("4_45prd")]
+[node name="Ghost Mage" parent="Battle/Roster/EnemyMid" instance=ExtResource("6_tvv4p")]
 
 [node name="EnemyBack" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
-
-[node name="TestEnemy" parent="Battle/Roster/EnemyBack" instance=ExtResource("4_45prd")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Battle/Roster"]
 libraries = {
@@ -1196,7 +1190,7 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 [node name="BattleGUI" parent="Battle/Camera3D" instance=ExtResource("4_noo0e")]
 
 [node name="Card 1" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="0"]
-offset_right = 1267.84
+offset_right = 1780.84
 offset_bottom = 4834.0
 
 [node name="Card 2" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="1"]
@@ -1206,8 +1200,11 @@ offset_bottom = 4834.0
 offset_bottom = 4834.0
 
 [node name="Card 4" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="3"]
-offset_right = 1241.0
+offset_right = 1754.0
 offset_bottom = 4834.0
+
+[node name="Turnover Timer" type="Timer" parent="Battle"]
+wait_time = 0.4
 
 [node name="BattleDungeon" parent="." instance=ExtResource("5_7bshd")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

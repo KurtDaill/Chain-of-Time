@@ -9,7 +9,7 @@ public partial class SkillMenu : BattleMenu
     public SkillCard[] cards = new SkillCard[4];
     private int selectedOption = -1;
     private int availableCards = 0;
-
+    
     bool noSkills;
     public override void _Ready()
     {
@@ -21,8 +21,6 @@ public partial class SkillMenu : BattleMenu
         cards[1] = (SkillCard)GetNode("Card 2");
         cards[2] = (SkillCard)GetNode("Card 3");
         cards[3] = (SkillCard)GetNode("Card 4");
-
-        
     }
 
     public override void _Process(double delta)

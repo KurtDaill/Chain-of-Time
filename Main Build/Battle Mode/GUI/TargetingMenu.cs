@@ -22,7 +22,10 @@ public partial class TargetingMenu : BattleMenu {
 	//Have the previous menu call this command on the targeting menu for setting up the current target instead
 	public void SetAbilityForTargeting(PlayerAbility newAbility){
 		abilityInQuestion = newAbility;
-		if(newAbility.GetSPCost() != -1) spRefund = newAbility.GetSPCost();
+		if(newAbility is PlayerSkill){
+			PlayerSkill newSkill = (PlayerSkill) newAbility;
+			if(newSkill.GetSPCost() != -1) spRefund = newSkill.GetSPCost();
+		}
 	}
 
 	//Run when this menu is opened, resets values as needed from previous uses

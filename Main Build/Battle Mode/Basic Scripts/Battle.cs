@@ -9,8 +9,8 @@ public partial class Battle : Node3D
 	[Export]
 	private BattleGUI gui;
 	private CombatEventData[] eventChain;
-
 	private bool waiting = false;
+    private Timer turnoverTimer; 
 
 	//private eventChain theChain = new eventChain();
 
@@ -27,6 +27,10 @@ public partial class Battle : Node3D
 		EnemyCommandExecute
 	}
 
+	public override void _Ready(){
+        turnoverTimer = this.GetNode<Timer>("Turnover Timer");
+	}
+
 	public override async void _Process(double delta){
 		switch(currentPhase){
 			/*
@@ -41,6 +45,7 @@ public partial class Battle : Node3D
 				//Drag all Status Effect Event Data into Action Chain. then await ExecuteCombatEvents(eventChain);
 				if(waiting) return;
 				waiting = true;
+				await CharactersGoDown();
 				List<CombatEventData> statusCED = new List<CombatEventData>();
 				foreach(Combatant com in battleRoster.GetAllCombatants()){
 					foreach(OnUpkeepStatus up in com.GetUpkeepStatusEffects()){
@@ -60,7 +65,8 @@ public partial class Battle : Node3D
 				//GUI.Start Doing your Thing()
 				if(waiting) return;
 				waiting = true;
-				gui.ResetGUIStateAndStart(battleRoster.GetAllPlayerCombatants());
+				//Might need better solution for finding characters who are Dead
+				gui.ResetGUIStateAndStart(battleRoster.GetAllPlayerCombatants().Where(x => x.GetHP() > 0).ToArray());
 				await ToSignal(gui, BattleGUI.SignalName.PlayerFinishedCommandInput);
 				eventChain = gui.PickUpQueuedActions();
 				waiting = false;
@@ -74,17 +80,24 @@ public partial class Battle : Node3D
 				await ExecuteCombatEvents(eventChain);
 				waiting = false;
 				currentPhase = BattlePhase.TurnOver;
+				gui.HideGUI(true, false);
 				break;
 				
 			//TurnOver - Game allows each enemy to calculate what attack it wants to execute, a set ammount of time is forced to pass before enemy attacks
 			case BattlePhase.TurnOver :
+				if(waiting) return;
+				waiting = true;
 				EnemyCombatant[] enemies = battleRoster.GetAllEnemyCombatants();
 				eventChain = new CombatEventData[enemies.Length];
 				for(int i = 0; i < enemies.Length; i++){
 					eventChain[i] = enemies[i].DecideAction(this);
 				}
+				await CharactersGoDown();
 				currentPhase = BattlePhase.EnemyCommandExecute;
 				//Delay to add some time between player and enemy attacks?
+				turnoverTimer.Start();
+				await ToSignal(turnoverTimer,  Timer.SignalName.Timeout);
+				waiting = false;
 				break;
 
 			//EnemyCommandExecute - Game Iterates through enemy attacks, allowing each to play its animaiton in sequence
@@ -102,22 +115,33 @@ public partial class Battle : Node3D
 	private async Task ExecuteCombatEvents(CombatEventData[] eventData)
 	{
 		for(int i = 0; i < eventData.Length; i++){
-			if(eventData[i].GetCombatant().HasAnimation(eventData[i].GetAnimationName())){
-				if(eventData[i].GetAnimationName() != "NoAction") eventData[i].GetCombatant().ReadyAction(eventData[i].GetAction(), this);
-				eventData[i].GetCombatant().GetAnimationPlayer().Play(eventData[i].GetAnimationName());
-				eventData[i].GetAction().Run();
+			if(eventData[i].GetAnimationName() == null || eventData[i].GetCombatant().HasAnimation(eventData[i].GetAnimationName())){
+				if(eventData[i].GetAnimationName() != "NoAction") eventData[i].GetCombatant().ReadyAction(eventData[i].GetAction(), this); //Recheck this
+				eventData[i].GetAction().Begin();
 				await ToSignal(eventData[i].GetAction(), CombatAction.SignalName.ActionComplete);
 			}else{
-				if(CombatAction.noAnimationAbilities.Contains(eventData[i].GetAction().GetName())){
-					eventData[i].GetCombatant().ReadyAction(eventData[i].GetAction(), this);
-					eventData[i].GetCombatant().ActivateReadyAction(0);
-					await ToSignal(eventData[i].GetAction(), CombatAction.SignalName.ActionComplete);
-				}else{	
 					GetTree().Quit();
 					throw new BadCombatAnimationException("Listed Animation (" + eventData[i].GetAnimationName() + ") not found on Combatant (" + eventData[i].GetCombatant().GetName() + ")");
-				}
 			}
 		}
+	}
+
+	private async Task CharactersGoDown(){
+		//Every Character who's at 0 or less goes down: plays their animations then despawns or logs that they're down
+		bool anyoneDead = false;
+		foreach(Combatant com in battleRoster.GetAllCombatants()){
+			if(com.GetHP() <= 0 && com.IsAlreadyDefeated() != true){
+				com.DefeatMe();
+				await ToSignal(com.GetAnimationPlayer(), AnimationPlayer.SignalName.AnimationFinished);
+				if(com is EnemyCombatant){
+					com.Free();
+					battleRoster.DelistCharacter(com);
+				}
+				anyoneDead = true;
+			}
+		}
+		//We have roster reshuffle them.
+		if(anyoneDead) battleRoster.ClearDead();
 	}
 
 	public Roster GetRoster(){

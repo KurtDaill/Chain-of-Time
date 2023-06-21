@@ -32,7 +32,7 @@ _subresources={
 "materials": {
 "Baths Tileset": {
 "use_external/enabled": true,
-"use_external/path": "res://Art/Baths Tileset.material"
+"use_external/path": "res://Old/Art/Baths Tileset.material"
 }
 }
 }

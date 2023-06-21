@@ -1,80 +1,59 @@
-[gd_scene load_steps=16 format=3 uid="uid://ck78k6iju4ldb"]
+[gd_scene load_steps=18 format=3 uid="uid://ck78k6iju4ldb"]
 
 [ext_resource type="Script" path="res://Battle Mode/Player Characters/Cato.cs" id="1_a47km"]
-[ext_resource type="Texture2D" uid="uid://bji7p3v80gnme" path="res://Old/Art/CatoIdle-Sheet.png" id="2_ad211"]
 [ext_resource type="Texture2D" uid="uid://buymnk3wkjnd3" path="res://GUI/Cato Head Thing.png" id="2_kpxx0"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="3_oduca"]
+[ext_resource type="Texture2D" uid="uid://d054fqnoqr0oo" path="res://Art/Cato Combat Sprite-Sheet.png" id="3_qd2l3"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/CatoBasicAttack.cs" id="4_qgcm6"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/PositionSwap.cs" id="5_v3stx"]
-[ext_resource type="Script" path="res://Battle Mode/Abilities/TestSkill.cs" id="6_vfw5h"]
 [ext_resource type="PackedScene" uid="uid://boneh1axl0j65" path="res://Battle Mode/Combat Text.tscn" id="8_3o5il"]
+[ext_resource type="Script" path="res://Battle Mode/Abilities/CatoTaunt.cs" id="8_t0u03"]
 
 [sub_resource type="Animation" id="Animation_xplvf"]
 resource_name = "CatoBasicAttack"
-tracks/0/type = "bezier"
+length = 0.9
+step = 0.077
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node3D/CatoSprite:position:z")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node3D/CatoSprite:position:x")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-1.56, -0.25, 0, 0, 0.402062, -0.88, -0.1, 0.342553, 0.1, -0.0416332, -1.56, -0.4, -0.24274, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3, 1)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Node3D/CatoSprite:position:y")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3, 1)
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0.539),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0],
 "method": &"ActivateReadyAction"
 }]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite Adjuster/CatoSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.847),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6, 16]
+}
 
-[sub_resource type="Animation" id="Animation_l3yyt"]
-resource_name = "CatoIdle"
-length = 0.6
-loop_mode = 1
-step = 0.15
+[sub_resource type="Animation" id="Animation_2y8nh"]
+resource_name = "Go Down"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node3D/CatoSprite:frame")
+tracks/0/path = NodePath("Sprite Adjuster/CatoSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.247059)]
 }
 
 [sub_resource type="Animation" id="Animation_1k005"]
@@ -95,121 +74,78 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_3ffbs"]
 length = 0.001
-tracks/0/type = "bezier"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Silver Sprite:position:z")
+tracks/0/path = NodePath("Sprite Adjuster/CatoSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
-tracks/1/type = "bezier"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Silver Sprite:position:x")
+tracks/1/path = NodePath("Sprite Adjuster/CatoSprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-1.56, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.56, 0, 0)]
 }
-tracks/2/type = "bezier"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Silver Sprite:position:y")
+tracks/2/path = NodePath("Sprite Adjuster/CatoSprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Silver Sprite:flip_h")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Node3D/CatoSprite:position:x")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-0.792104, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Node3D/CatoSprite:position:y")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Node3D/CatoSprite:position:z")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_n3ku2"]
 resource_name = "SpellCast"
-length = 0.5
 step = 0.05
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node3D/CatoSprite:position:x")
+tracks/0/path = NodePath("Sprite Adjuster/CatoSprite:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-0.792104, -0.25, 0, 0.25, 0, -0.792104, -0.25, 0, 0.25, 0, -0.792104, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.25, 0.5)
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-0.792104, -0.25, 0, 0.25, 0, -0.792104, -0.25, 0, 0.25, 0, -0.792104, -0.25, 0, 0.25, 0, -0.792104, -0.25, 0, 0.25, 0, -0.792104, -0.25, 0, 0.25, 0, -0.792104, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.55, 0.75, 0.95)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node3D/CatoSprite:position:y")
+tracks/1/path = NodePath("Sprite Adjuster/CatoSprite:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0, 0.301232, 0.56, -0.2, -0.0113894, 0.163368, -0.0423117, 0, -0.0936942, 0.239388, 0.25, 0),
-"times": PackedFloat32Array(0, 0.25, 0.5)
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.0435258, 0.238492, 0.56, -0.2, -0.0113894, 0.163368, -0.0423117, 0, -0.077909, 0.202365, 0.25, 0, 0, -0.25, 0, 0.0833007, 0.199081, 0.56, -0.15, -0.0653355, 0.146632, -0.0489142, 0, -0.0664259, 0.202365, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.55, 0.75, 0.95)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Node3D/CatoSprite:position:z")
+tracks/2/path = NodePath("Sprite Adjuster/CatoSprite:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.25, 0.5)
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.55, 0.75, 0.95)
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -218,7 +154,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.25),
+"times": PackedFloat32Array(0.95),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0],
@@ -232,7 +168,7 @@ step = 0.05
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node3D/CatoSprite:position:x")
+tracks/0/path = NodePath("Sprite Adjuster/CatoSprite:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -243,7 +179,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node3D/CatoSprite:position:y")
+tracks/1/path = NodePath("Sprite Adjuster/CatoSprite:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -254,7 +190,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Node3D/CatoSprite:position:z")
+tracks/2/path = NodePath("Sprite Adjuster/CatoSprite:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -277,36 +213,90 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_l3yyt"]
+resource_name = "Idle"
+length = 0.725
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite Adjuster/CatoSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_uumsx"]
+resource_name = "Taunt"
+length = 2.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite Adjuster/CatoSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [18, 32]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s6heb"]
 _data = {
 "CatoBasicAttack": SubResource("Animation_xplvf"),
-"CatoIdle": SubResource("Animation_l3yyt"),
+"GoDown": SubResource("Animation_2y8nh"),
+"Idle": SubResource("Animation_l3yyt"),
 "NoAction": SubResource("Animation_1k005"),
 "RESET": SubResource("Animation_3ffbs"),
 "SpellCast": SubResource("Animation_n3ku2"),
-"StatusFlinch": SubResource("Animation_7teyi")
+"StatusFlinch": SubResource("Animation_7teyi"),
+"Taunt": SubResource("Animation_uumsx")
 }
 
-[node name="TestHero" type="Node3D" node_paths=PackedStringArray("basicAttack", "displayText", "swapAbility", "pointer")]
+[node name="Cato" type="Node3D" node_paths=PackedStringArray("basicAttack", "displayText", "swapAbility", "pointer")]
 script = ExtResource("1_a47km")
 sp = 4
 maxSP = 4
 basicAttack = NodePath("CatoBasicAttack")
 displayPortrait = ExtResource("2_kpxx0")
+hp = 4
+maxHP = 4
 displayText = NodePath("Combat Text")
 swapAbility = NodePath("SwapPositions")
 pointer = NodePath("Pointer Adjuster/Pointer")
 
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.988707, 0, 0)
+[node name="Sprite Adjuster" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.88, 0, 0)
 
-[node name="CatoSprite" type="Sprite3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.792104, 0, 0)
+[node name="CatoSprite" type="Sprite3D" parent="Sprite Adjuster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56, 0, 0)
 centered = false
+pixel_size = 0.008
 shaded = true
 alpha_cut = 2
-texture = ExtResource("2_ad211")
-hframes = 6
+texture = ExtResource("3_qd2l3")
+hframes = 10
+vframes = 4
 
 [node name="Pointer Adjuster" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
@@ -327,9 +317,25 @@ enabledPositions = Array[int]([3, 2])
 script = ExtResource("5_v3stx")
 enabledPositions = Array[int]([3, 4, 5])
 
-[node name="Test Skill" type="Node" parent="."]
-script = ExtResource("6_vfw5h")
-enabledPositions = Array[int]([3])
-
 [node name="Combat Text" parent="." instance=ExtResource("8_3o5il")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63653, 1.66561, -0.0799999)
+
+[node name="Taunt" type="Node" parent="."]
+script = ExtResource("8_t0u03")
+tauntStatusEffectPath = "res://Battle Mode/Status Effects/StatusTauntUntilMove.tscn"
+spCost = 2
+enabledPositions = Array[int]([3, 2, 1, 0])
+
+[node name="BodyRef" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.892703, 0, 0)
+
+[node name="Head" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11832, 0)
+
+[node name="Core" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56, 0)
+
+[node name="Weapon" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72, 0.16, 0)
+
+[node name="Feet" type="Node3D" parent="BodyRef"]

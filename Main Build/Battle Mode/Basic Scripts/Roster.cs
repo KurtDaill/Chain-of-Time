@@ -35,9 +35,6 @@ public partial class Roster : Node
 
 	private AnimationPlayer animPlay;
 
-	private PlayerCombatant[] playerCharacters = new PlayerCombatant[3];
-	private EnemyCombatant[] enemyCharacters = new EnemyCombatant[3];
-
 	private Node3D[] playerSpots = new Node3D[3];
 	private Node3D[] enemySpots = new Node3D[3];
 
@@ -70,16 +67,21 @@ public partial class Roster : Node
 		}
 
 		if(debugMode){
-			playerCharacters[0] = debugPlayer;
-			SetPositionNewCharacter(debugPlayer, BattlePosition.HeroFront);
-			playerCharacters[1] = debugPlayer2;
-			SetPositionNewCharacter(debugPlayer2, BattlePosition.HeroMid);
-			enemyCharacters[0] = debugEnemy1;
-			enemyCharacters[1] = debugEnemy2;
-			enemyCharacters[2] = debugEnemy3;
-			SetPositionNewCharacter(debugEnemy1, BattlePosition.EnemyFront);
-			SetPositionNewCharacter(debugEnemy2, BattlePosition.EnemyMid);
-			SetPositionNewCharacter(debugEnemy3, BattlePosition.EnemyBack);
+			if(debugPlayer != null){
+				SetPositionNewCharacter(debugPlayer, BattlePosition.HeroFront);
+			}
+			if(debugPlayer2 != null){
+				SetPositionNewCharacter(debugPlayer2, BattlePosition.HeroMid);
+			}
+			if(debugEnemy1 != null){
+				SetPositionNewCharacter(debugEnemy1, BattlePosition.EnemyFront);
+			}
+			if(debugEnemy2 != null){
+				SetPositionNewCharacter(debugEnemy2, BattlePosition.EnemyMid);
+			}
+			if(debugEnemy3 != null){
+				SetPositionNewCharacter(debugEnemy3, BattlePosition.EnemyBack);
+			}
 		}
 	}
 
@@ -135,6 +137,11 @@ public partial class Roster : Node
 		cha.SetPosition(newPos);
 	}
 
+	public void DelistCharacter(Combatant cha){
+		positionData.Remove(cha.GetPosition());
+		positionData.Add(cha.GetPosition(), null);
+	}
+
 
 	public BattlePosition GetPositionOfCombatant(Combatant query){
 			foreach(KeyValuePair<BattlePosition, Combatant> pair in positionData){ if(pair.Value == query) return pair.Key; }
@@ -150,17 +157,32 @@ public partial class Roster : Node
 	}
 
 	public PlayerCombatant[] GetAllPlayerCombatants(){
-		return playerCharacters.Where(x => x != null).ToArray();
+		Combatant[] output = new Combatant[3];
+		positionData.TryGetValue(BattlePosition.HeroFront, out output[0]);
+		positionData.TryGetValue(BattlePosition.HeroMid, out output[1]);
+		positionData.TryGetValue(BattlePosition.HeroBack, out output[2]);
+		PlayerCombatant[] result = new PlayerCombatant[3];
+		for(int i = 0; i < 3; i++) result[i] = (PlayerCombatant) output[i];
+		return result.Where(x => x != null).ToArray();
 	}
 	public EnemyCombatant[] GetAllEnemyCombatants(){
-		return enemyCharacters.Where(x => x != null).ToArray();
+		Combatant[] output = new Combatant[3];
+		positionData.TryGetValue(BattlePosition.EnemyFront, out output[0]);
+		positionData.TryGetValue(BattlePosition.EnemyMid, out output[1]);
+		EnemyCombatant[] result = new EnemyCombatant[3];
+		for(int i = 0; i < 3; i++) result[i] = (EnemyCombatant) output[i];
+		return result.Where(x => x != null).ToArray();
 	}
 
 	public Combatant[] GetAllCombatants(){
-		var result = new Combatant[playerCharacters.Length + enemyCharacters.Length];
-		Array.Copy(enemyCharacters, result, enemyCharacters.Length);
-		Array.Copy(playerCharacters, 0, result, enemyCharacters.Length, playerCharacters.Length);
-		return result.Where(x => x != null).ToArray();
+		Combatant[] output = new Combatant[6];
+		positionData.TryGetValue(BattlePosition.HeroFront, out output[0]);
+		positionData.TryGetValue(BattlePosition.HeroMid, out output[1]);
+		positionData.TryGetValue(BattlePosition.HeroBack, out output[2]);
+		positionData.TryGetValue(BattlePosition.EnemyFront, out output[3]);
+		positionData.TryGetValue(BattlePosition.EnemyMid, out output[4]);
+		positionData.TryGetValue(BattlePosition.EnemyBack, out output[5]); 
+		return output.Where(x => x != null).ToArray();
 	}
 
 	public AnimationPlayer GetAnimationPlayer(){
@@ -180,29 +202,94 @@ public partial class Roster : Node
 	}
 
 	public void SortCharacters(){
-		playerCharacters[0] = playerSpots[0].GetChild<PlayerCombatant>(0);
 		positionData.Remove(BattlePosition.HeroFront);
-		positionData.Add(BattlePosition.HeroFront, playerCharacters[0]);
+		positionData.Add(BattlePosition.HeroFront, playerSpots[0].GetChild<PlayerCombatant>(0));
 
-		playerCharacters[1] = playerSpots[1].GetChild<PlayerCombatant>(0);
 		positionData.Remove(BattlePosition.HeroMid);
-		positionData.Add(BattlePosition.HeroMid, playerCharacters[1]);
+		positionData.Add(BattlePosition.HeroMid, playerSpots[1].GetChild<PlayerCombatant>(0));
 
-		playerCharacters[2] = playerSpots[2].GetChild<PlayerCombatant>(0);
 		positionData.Remove(BattlePosition.HeroBack);
-		positionData.Add(BattlePosition.HeroBack, playerCharacters[1]);
+		positionData.Add(BattlePosition.HeroBack, playerSpots[2].GetChild<PlayerCombatant>(0));
 
-		enemyCharacters[0] = enemySpots[0].GetChild<EnemyCombatant>(0);
 		positionData.Remove(BattlePosition.EnemyFront);
-		positionData.Add(BattlePosition.EnemyFront, enemyCharacters[0]);
+		positionData.Add(BattlePosition.EnemyFront, enemySpots[0].GetChild<EnemyCombatant>(0));
 
-		enemyCharacters[1] = enemySpots[1].GetChild<EnemyCombatant>(0);
 		positionData.Remove(BattlePosition.EnemyMid);
-		positionData.Add(BattlePosition.EnemyMid, enemyCharacters[1]);
+		positionData.Add(BattlePosition.EnemyMid, enemySpots[1].GetChild<EnemyCombatant>(0));
 
-		enemyCharacters[2] = enemySpots[2].GetChild<EnemyCombatant>(0);
 		positionData.Remove(BattlePosition.EnemyBack);
-		positionData.Add(BattlePosition.EnemyBack, enemyCharacters[2]);
+		positionData.Add(BattlePosition.EnemyBack, enemySpots[2].GetChild<EnemyCombatant>(0));
+	}
+
+	public async void ClearDead(){
+		bool[] enemyStates = new bool[3]{
+			GetCombatant(BattlePosition.EnemyFront) != null,
+			GetCombatant(BattlePosition.EnemyMid) != null,
+			GetCombatant(BattlePosition.EnemyBack) != null
+		};
+		if(!enemyStates[0] & !enemyStates[1]){
+			if(!enemyStates[2]) GetTree().Quit();
+			SwapCharacters(BattlePosition.EnemyBack, BattlePosition.EnemyFront);
+			await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
+		}else if(!enemyStates[1]){//There has to be somebody at the front slot to enter this block
+			if(enemyStates[2]){
+				SwapCharacters(BattlePosition.HeroBack, BattlePosition.EnemyMid);
+				await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
+			}
+		}else if(!enemyStates[0]){//There isn't anyone at front, but there is someone at mid
+			SwapCharacters(BattlePosition.EnemyMid, BattlePosition.EnemyFront);
+			await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
+			if(enemyStates[2]){
+				SwapCharacters(BattlePosition.EnemyBack, BattlePosition.EnemyMid);
+				await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
+			}
+
+		} 
+		bool[] playerStates = new bool[3]{
+			GetCombatant(BattlePosition.HeroFront) != null && GetCombatant(BattlePosition.HeroFront).GetHP() > 0,
+			GetCombatant(BattlePosition.HeroMid) != null && GetCombatant(BattlePosition.HeroMid).GetHP() > 0,
+			GetCombatant(BattlePosition.HeroBack) != null && GetCombatant(BattlePosition.HeroBack).GetHP() > 0
+		};
+
+		if(!playerStates[0] & !playerStates[1]){
+			if(!playerStates[2]) GetTree().Quit();
+			SwapCharacters(BattlePosition.HeroBack, BattlePosition.HeroFront);
+			await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
+		}else if(!playerStates[1]){//There has to be somebody at the front slot to enter this block
+			if(playerStates[2]){
+				SwapCharacters(BattlePosition.HeroBack, BattlePosition.HeroMid);
+				await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
+			}
+		}else if(!playerStates[0]){//There isn't anyone at front, but there is someone at mid
+			SwapCharacters(BattlePosition.HeroMid, BattlePosition.HeroFront);
+			await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
+			if(playerStates[2]){
+				SwapCharacters(BattlePosition.HeroBack, BattlePosition.HeroMid);
+				await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
+			}
+		} 
+	}
+
+	public EnemyCombatant[] GetLegalEnemyTargets(bool ignoresTaunt = false){
+		Combatant[] coms = CheckTargetLegality(GetAllPlayerCombatants(), ignoresTaunt);
+		EnemyCombatant[] output = new EnemyCombatant[coms.Length];
+		for(int i = 0; i < output.Length; i++) output[i] = (EnemyCombatant)coms[i];
+		return output;
+	}
+
+	public PlayerCombatant[] GetLegalHeroTargets(bool ignoresTaunt = false){
+		Combatant[] coms = CheckTargetLegality(GetAllPlayerCombatants(), ignoresTaunt);
+		PlayerCombatant[] output = new PlayerCombatant[coms.Length];
+		for(int i = 0; i < output.Length; i++) output[i] = (PlayerCombatant)coms[i];
+		return output;
+	}
+
+	private Combatant[] CheckTargetLegality(Combatant[] check, bool ignoresTaunt){
+		List<Combatant> taunters = new List<Combatant>();
+		//Adds every character with a taunting status effect to the taunters list
+		foreach(Combatant com in check) if(com.GetStatusEffects().Where(x => x is StatusTaunting).Count() != 0) taunters.Add(com);
+		if(!ignoresTaunt && taunters.Count() != 0) return taunters.ToArray();
+		else return check.Where(x => x.GetHP() > 0).ToArray();
 	}
 }
 	

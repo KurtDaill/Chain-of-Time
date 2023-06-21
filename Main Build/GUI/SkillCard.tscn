@@ -140,9 +140,9 @@ offset_left = 24.0
 offset_top = 207.0
 offset_right = 269.0
 offset_bottom = 357.0
+theme = ExtResource("1_yd2l7")
 bbcode_enabled = true
-text = "
-[center]Default Rules Text"
+text = "[textSize]small[center] Cato TAUNTS until he moves, bringing target enemy to the front rank"
 scroll_active = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

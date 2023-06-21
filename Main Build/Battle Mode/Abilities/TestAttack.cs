@@ -7,8 +7,13 @@ public partial class TestAttack : EnemyAbility
         name = "TestAttack";
         animation = "Wiggle";
     }
-    public override void Activate(int phase){
+    public override void AnimationTrigger(int phase){
         GD.Print("EnemyAbilityHasActivated");
         target[0].TakeDamage(1);
     }
+
+    public override void Begin(){
+		base.Begin();
+		PlayCoreAnimation();
+	}
 }

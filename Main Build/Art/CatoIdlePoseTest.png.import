@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckb6bi8xkoxdc"
-path="res://.godot/imported/Skeleton Captain.png-f656614054a75c8ff1782377ae46f379.ctex"
+uid="uid://dqsu6b5fcy3l1"
+path="res://.godot/imported/CatoIdlePoseTest.png-485a05101dfb1c867fcaa0dd558bef93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Skeleton Captain.png"
-dest_files=["res://.godot/imported/Skeleton Captain.png-f656614054a75c8ff1782377ae46f379.ctex"]
+source_file="res://Art/CatoIdlePoseTest.png"
+dest_files=["res://.godot/imported/CatoIdlePoseTest.png-485a05101dfb1c867fcaa0dd558bef93.ctex"]
 
 [params]
 

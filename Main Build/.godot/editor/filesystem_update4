@@ -1,13 +1,13 @@
-res://Battle Mode/PrototypeBattle.tscn
+res://Battle Mode/Player Characters/Cato Combatant.tscn
 res://GUI/Themes/Skill Card Normal Small.tres
 res://GUI/Themes/Readout Text.tres
 res://GUI/Themes/Skill Card Normal.tres
 res://GUI/Themes/UI Impact.tres
 res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres
-res://GUI/SkillCard.tscn
-res://Battle Mode/BattleGUI.tscn
-res://Battle Mode/Player Characters/test_hero_two.tscn
-res://Battle Mode/Enemies/EnemyTemplate.tscn
-res://Battle Mode/Enemies/Skeleton.tscn
-res://Battle Mode/Player Characters/test_hero.tscn
+res://Battle Mode/PrototypeBattle.tscn
+res://Battle Mode/Status Effects/StatusTauntUntilMove.tscn
 res://Battle Mode/Enemies/Ghost Mage.tscn
+res://Battle Mode/Enemies/Skeleton.tscn
+res://Battle Mode/FX/laserBurst.tscn
+res://Battle Mode/Player Characters/Silver Combatant.tscn
+res://Battle Mode/FX/FireballProjectile.tscn

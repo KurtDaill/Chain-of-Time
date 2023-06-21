@@ -26,7 +26,12 @@ public partial class BasicEnemyMelee : EnemyAbility
 		}
 	}
 
-	public override void Activate(int phase){
+	public override void Begin(){
+		base.Begin();
+		PlayCoreAnimation();
+	}
+
+	public override void AnimationTrigger(int phase){
         parentBattle.GetRoster().GetCombatant(BattleUtilities.BattlePosition.HeroFront).TakeDamage(GenerateDamageFromChart(damageChart));
     }
 }

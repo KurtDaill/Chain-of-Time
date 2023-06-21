@@ -1,0 +1,36 @@
+using Godot;
+using System;
+using static BattleUtilities;
+
+public partial class LongShot : PlayerSkill
+{
+	public override void _Ready(){
+		base._Ready();
+		name = "Long Shot";
+		animation = "SilverLongShot";
+		spCost = 2;
+		align = BattleUtilities.AbilityAlignment.Tech;
+		skillType = "Attack"; 
+		rulesText = "[center] Deals DMG Based on Enemy Position \n Front - 4 DMG\nMiddle - 3 DMG\n  Back - 2 DMG";
+		AbilityTargetingLogic = BattleUtilities.TargetingLogic.Ranged;
+	}
+
+	public override void Begin(){
+		base.Begin();
+		PlayCoreAnimation();
+	}
+
+	public override void AnimationTrigger(int phase){	
+		switch(target[0].GetPosition()){
+			case BattlePosition.EnemyFront :
+				target[0].TakeDamage(4);
+				break;
+			case BattlePosition.EnemyMid :
+				target[0].TakeDamage(3);
+				break;
+			case BattlePosition.EnemyBack :
+				target[0].TakeDamage(2);
+				break;
+		}
+	}	
+}
