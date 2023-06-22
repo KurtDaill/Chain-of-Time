@@ -1130,7 +1130,7 @@ _data = {
 background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(0.380392, 0.376471, 0.431373, 1)
-ambient_light_energy = 0.81
+ambient_light_energy = 1.5
 
 [node name="TopNode" type="Node3D"]
 
@@ -1157,8 +1157,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
 
 [node name="TestHero" parent="Battle/Roster/HeroMid" node_paths=PackedStringArray("readout") instance=ExtResource("3_p77hq")]
 readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Silver Readout")
-hp = 2
-maxHP = 2
 
 [node name="HeroFront" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
@@ -1190,7 +1188,7 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 [node name="BattleGUI" parent="Battle/Camera3D" instance=ExtResource("4_noo0e")]
 
 [node name="Card 1" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="0"]
-offset_right = 1780.84
+offset_right = 1870.84
 offset_bottom = 4834.0
 
 [node name="Card 2" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="1"]
@@ -1200,7 +1198,7 @@ offset_bottom = 4834.0
 offset_bottom = 4834.0
 
 [node name="Card 4" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="3"]
-offset_right = 1754.0
+offset_right = 1844.0
 offset_bottom = 4834.0
 
 [node name="Turnover Timer" type="Timer" parent="Battle"]

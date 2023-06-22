@@ -193,14 +193,15 @@ public partial class TargetingMenu : BattleMenu {
 		}
 		bool hitsInvisble = (workingRule == TargetingLogic.All || workingRule == TargetingLogic.AllHeroes || workingRule == TargetingLogic.AllEnemies);
 		//var legaltargets = battle.GetCharacters(abilityInQuestion.CanTargetFliers(), hitsInvisble, false);
-		var legaltargets = battle.GetRoster().GetAllCombatants();
+		Combatant[] legaltargets = battle.GetRoster().GetLegalEnemyTargets();
+		//legaltargets.Add(battle.GetRoster().GetLegalHeroTargets());
 		foreach(Combatant character in desiredTargets){
 			if(legaltargets.Contains(character)){
 				actualTargets.Add(character);
 			}
 		}
-		if(actualTargets != null) return true;
-		return false;
+		if(actualTargets.Count() == 0) return false;
+		return true;
 	}
 
 	public void RejectSelection(){

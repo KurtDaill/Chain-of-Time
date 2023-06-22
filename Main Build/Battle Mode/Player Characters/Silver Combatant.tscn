@@ -1,6 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://234suufiqv8c"]
+[gd_scene load_steps=21 format=3 uid="uid://234suufiqv8c"]
 
-[ext_resource type="Script" path="res://Battle Mode/Basic Scripts/PlayerCombatant.cs" id="1_3rxhu"]
+[ext_resource type="Script" path="res://Battle Mode/Player Characters/SilverCombatant.cs" id="1_vos4e"]
 [ext_resource type="Texture2D" uid="uid://x8jh7q2a2twq" path="res://Art/Silver Portrait.png" id="2_kja07"]
 [ext_resource type="Texture2D" uid="uid://d7pbriigo4aj" path="res://Art/Silver Combat Sprite-Sheet.png" id="3_568ne"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="4_kc02e"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://Battle Mode/Abilities/PositionSwap.cs" id="6_1jtpa"]
 [ext_resource type="PackedScene" uid="uid://boneh1axl0j65" path="res://Battle Mode/Combat Text.tscn" id="7_4stcv"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/LongShot.cs" id="7_ma1ff"]
+[ext_resource type="AudioStream" uid="uid://cfj5vrhlk6arb" path="res://Audio/HitSound.wav" id="9_i2gxv"]
+[ext_resource type="AudioStream" uid="uid://dadx4evqvemrf" path="res://Audio/Silver_Weapon_Fire.wav" id="10_csd2r"]
+[ext_resource type="AudioStream" uid="uid://cwpkqqe1rbdlj" path="res://Audio/SuperShot.wav" id="11_ta5s7"]
 
 [sub_resource type="Animation" id="Animation_6ckd0"]
 resource_name = "GoDown"
@@ -24,6 +27,60 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.290196)]
 }
+
+[sub_resource type="Animation" id="Animation_g5ty1"]
+resource_name = "HitReact"
+length = 0.7
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SilverSprite:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1.21859, -0.25, 0, 0, -0.207174, -2.01859, -0.25, 0, 0.25, 0, -1.21859, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.7)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SilverSprite:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.7)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SilverSprite:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.7)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hit Sound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mwj43"]
+resource_name = "Idle"
 
 [sub_resource type="Animation" id="Animation_8ptpa"]
 resource_name = "NoAction"
@@ -91,6 +148,39 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SilverSprite:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2.01859, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SilverSprite:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SilverSprite:position:z")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_5otli"]
 resource_name = "SilverBasicAttack"
@@ -121,6 +211,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [1, 17]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Laser Fire")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_6bdct"]
 resource_name = "SilverLongShot"
@@ -149,6 +253,20 @@ tracks/1/keys = {
 "values": [{
 "args": [0],
 "method": &"ActivateReadyAction"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Longshot Fire")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
 }]
 }
 
@@ -203,12 +321,10 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_mwj43"]
-resource_name = "Idle"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iaquc"]
 _data = {
 "GoDown": SubResource("Animation_6ckd0"),
+"HitReact": SubResource("Animation_g5ty1"),
 "Idle": SubResource("Animation_mwj43"),
 "NoAction": SubResource("Animation_8ptpa"),
 "RESET": SubResource("Animation_ngeda"),
@@ -217,8 +333,8 @@ _data = {
 "StatusFlinch": SubResource("Animation_bk5ok")
 }
 
-[node name="TestHero" type="Node3D" node_paths=PackedStringArray("basicAttack", "displayText", "swapAbility", "pointer")]
-script = ExtResource("1_3rxhu")
+[node name="Silver" type="Node3D" node_paths=PackedStringArray("basicAttack", "displayText", "swapAbility", "pointer")]
+script = ExtResource("1_vos4e")
 sp = 4
 maxSP = 4
 basicAttack = NodePath("SilverBasicAttack")
@@ -230,7 +346,7 @@ swapAbility = NodePath("SwapPositions")
 pointer = NodePath("Pointer Adjuster/Pointer")
 
 [node name="SilverSprite" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21859, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01859, 0, 0)
 centered = false
 pixel_size = 0.008
 shaded = true
@@ -258,8 +374,9 @@ enabledPositions = Array[int]([3, 4, 5, 0, 1, 2])
 [node name="SwapPositions" type="Node" parent="."]
 script = ExtResource("6_1jtpa")
 
-[node name="LongShot" type="Node" parent="."]
+[node name="LongShot" type="Node" parent="." groups=["PlayerCombatant"]]
 script = ExtResource("7_ma1ff")
+laserFX = "res://Battle Mode/FX/laserBurst.tscn"
 enabledPositions = Array[int]([4, 5, 2, 1, 0])
 
 [node name="Combat Text" parent="." instance=ExtResource("7_4stcv")]
@@ -277,3 +394,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54509, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.364486, 1.0428, 0)
 
 [node name="Feet" type="Node3D" parent="BodyRef"]
+
+[node name="Hit Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_i2gxv")
+
+[node name="Laser Fire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_csd2r")
+
+[node name="Longshot Fire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ta5s7")

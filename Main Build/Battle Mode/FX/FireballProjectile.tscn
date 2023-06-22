@@ -1,11 +1,103 @@
-[gd_scene load_steps=7 format=3 uid="uid://piq68xu3pe34"]
+[gd_scene load_steps=9 format=3 uid="uid://piq68xu3pe34"]
 
 [ext_resource type="Script" path="res://Battle Mode/FX/Projectile.cs" id="1_csonh"]
 [ext_resource type="Texture2D" uid="uid://jp3m1mi7o4o3" path="res://Art/FX/Fireball_65x30.png" id="2_ryh11"]
+[ext_resource type="Texture2D" uid="uid://c6qd1tql0hv3i" path="res://Art/FX/Fireball Hit_82x98.png" id="3_r5d6b"]
 
 [sub_resource type="Animation" id="Animation_bos22"]
 resource_name = "Hit"
-length = 0.001
+length = 0.759
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FireBall:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FireHit:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FireHit:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.759),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 39]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(24, -0.25, 0, 0, 3.45788, 48, -0.25, 0, 0.18, -12.1634, 0, -0.2, 18.361, 0.25, 0),
+"times": PackedFloat32Array(0, 0.22, 0.7)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OmniLight3D:light_color:r")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.7)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("OmniLight3D:light_color:g")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.678431, -0.25, 0, 0.25, 0, 0.678431, -0.25, 0, 0.25, 0, 0.411765, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.7)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("OmniLight3D:light_color:b")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0, 0.2, -0.25, 0, 0.25, 0, 0.2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.7)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("OmniLight3D:light_color:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.7)
+}
 
 [sub_resource type="Animation" id="Animation_vx6xp"]
 resource_name = "Fire"
@@ -18,7 +110,7 @@ step = 0.016
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/path = NodePath("FireBall:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -28,22 +120,123 @@ tracks/0/keys = {
 "values": [0, 59]
 }
 
+[sub_resource type="Animation" id="Animation_i47qp"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FireBall:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FireHit:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(24, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D:light_color:r")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OmniLight3D:light_color:g")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.678431, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("OmniLight3D:light_color:b")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("OmniLight3D:light_color:a")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_crwxx"]
 _data = {
 "Fire": SubResource("Animation_vx6xp"),
 "Hit": SubResource("Animation_bos22"),
-"Loop": SubResource("Animation_ebb8p")
+"Loop": SubResource("Animation_ebb8p"),
+"RESET": SubResource("Animation_i47qp")
 }
 
 [node name="Fireball Projectile" type="Node3D"]
 script = ExtResource("1_csonh")
-topSpeed = 5.0
-acceleration = 2.0
+topSpeed = 20.0
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="FireBall" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
+pixel_size = 0.04
+texture_filter = 0
 texture = ExtResource("2_ryh11")
 hframes = 8
 vframes = 8
+
+[node name="FireHit" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08, 0, 0.08)
+visible = false
+pixel_size = 0.04
+texture = ExtResource("3_r5d6b")
+hframes = 7
+vframes = 7
+frame = 35
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76, 0, 0.08)
+light_color = Color(1, 0.678431, 0.2, 1)
+light_energy = 24.0
+omni_range = 19.035
+omni_attenuation = 1.51572
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

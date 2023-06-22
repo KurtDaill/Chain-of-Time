@@ -27,10 +27,10 @@ public partial class SwapMenu : BattleMenu{
                 if(rightSelected){
                     rightTarget.SetTargetGUIElements(false);
                     //Queue the "SwapPositions" Ability
-                    return subject.SetupAndGetSwap(caller.GetRoster(), rightTarget.GetPosition());
+                    return subject.SetupAndGetSwap(caller.GetRoster(), rightTarget);
                 }else{
                     leftTarget.SetTargetGUIElements(false);
-                    return subject.SetupAndGetSwap(caller.GetRoster(), leftTarget.GetPosition());
+                    return subject.SetupAndGetSwap(caller.GetRoster(), leftTarget);
                     //caller.GetRoster().SwapCharacters(subject.GetPosition(), leftTarget.GetPosition());
                 }
                 //parentGUI.ExitWithoutQueueingAbility(character);

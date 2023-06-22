@@ -38,6 +38,8 @@ public partial class Roster : Node
 	private Node3D[] playerSpots = new Node3D[3];
 	private Node3D[] enemySpots = new Node3D[3];
 
+	Battle parent;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -83,6 +85,8 @@ public partial class Roster : Node
 				SetPositionNewCharacter(debugEnemy3, BattlePosition.EnemyBack);
 			}
 		}
+
+		parent = GetParent<Battle>();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -228,7 +232,7 @@ public partial class Roster : Node
 			GetCombatant(BattlePosition.EnemyBack) != null
 		};
 		if(!enemyStates[0] & !enemyStates[1]){
-			if(!enemyStates[2]) GetTree().Quit();
+			if(!enemyStates[2]) parent.ConcludeBattle(); //GetTree().Quit();
 			SwapCharacters(BattlePosition.EnemyBack, BattlePosition.EnemyFront);
 			await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
 		}else if(!enemyStates[1]){//There has to be somebody at the front slot to enter this block
@@ -252,7 +256,7 @@ public partial class Roster : Node
 		};
 
 		if(!playerStates[0] & !playerStates[1]){
-			if(!playerStates[2]) GetTree().Quit();
+			if(!playerStates[2]) parent.DefeatPlayers();
 			SwapCharacters(BattlePosition.HeroBack, BattlePosition.HeroFront);
 			await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
 		}else if(!playerStates[1]){//There has to be somebody at the front slot to enter this block
@@ -271,7 +275,7 @@ public partial class Roster : Node
 	}
 
 	public EnemyCombatant[] GetLegalEnemyTargets(bool ignoresTaunt = false){
-		Combatant[] coms = CheckTargetLegality(GetAllPlayerCombatants(), ignoresTaunt);
+		Combatant[] coms = CheckTargetLegality(GetAllEnemyCombatants(), ignoresTaunt);
 		EnemyCombatant[] output = new EnemyCombatant[coms.Length];
 		for(int i = 0; i < output.Length; i++) output[i] = (EnemyCombatant)coms[i];
 		return output;

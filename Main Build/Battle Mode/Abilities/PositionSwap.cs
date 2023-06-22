@@ -5,29 +5,22 @@ using static BattleUtilities;
 public partial class PositionSwap : PlayerAbility
 {
     private Roster battleRoster;
-    private BattlePosition targetPos;
+    private Combatant target;
     public PositionSwap(){	
 		name = "SWAP";
-		animation = "SWAP";
 		rulesText = "";
-		AbilityTargetingLogic = TargetingLogic.Self;
+		AbilityTargetingLogic = TargetingLogic.AnyAlly;
 	}
 
-    public void SetupSwapDetails(Roster ros, BattlePosition tar){
+    public void SetupSwapDetails(Roster ros, Combatant tar){
         this.battleRoster = ros;
-        this.targetPos = tar;
+        this.target = tar;
     }
 
-    public override void Begin(){
+    public async override void Begin(){
 		base.Begin();
-		PlayCoreAnimation();
-	}   
-
-    public override async void AnimationTrigger(int phase){
-        if(phase != 0) throw new ArgumentException("The Swap ability must be activated at phase 0");
-        battleRoster.SwapCharacters(source.GetPosition(), targetPos);
+        battleRoster.SwapCharacters(source.GetPosition(), target.GetPosition());
         await ToSignal(battleRoster.GetAnimationPlayer(), AnimationPlayer.SignalName.AnimationFinished);
-        //When we're finished, we emit this signal because it's what Battle is listening for.
-        source.GetAnimationPlayer().EmitSignal(AnimationPlayer.SignalName.AnimationFinished);
+        EmitSignal(CombatAction.SignalName.ActionComplete);
 	}   
 }

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2sequ4x5g6x6"
+path="res://.godot/imported/Cato Taunt.wav-22c795a098471baf0bdb84e655b961bb.sample"
+
+[deps]
+
+source_file="res://Audio/Cato Taunt.wav"
+dest_files=["res://.godot/imported/Cato Taunt.wav-22c795a098471baf0bdb84e655b961bb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

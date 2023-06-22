@@ -1,15 +1,31 @@
 using Godot;
 using System;
 
-public partial class SkeletonTaunt : Node
+public partial class SkeletonTaunt : EnemyAbility
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
+	[Export(PropertyHint.File)]
+    string tauntStatusEffectPath;
+	public override void _Ready(){
+		base._Ready();
+		name = "Taunt";
+		animation = "Taunt";
+		AbilityTargetingLogic = BattleUtilities.TargetingLogic.Self;
+
+		//The 0 entry of this array is always reserved for the core animation of this combat action
+		//The 1 slot is for waiting on the 
+		flagsRequiredToComplete = new bool[]{false};
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+	public override void Begin(){
+		base.Begin();
+		PlayCoreAnimation();
 	}
+	
+	public override void AnimationTrigger(int phase)
+	{
+		base.AnimationTrigger(phase);
+		StatusTauntUntilMove tauntStatus = GD.Load<PackedScene>(tauntStatusEffectPath).Instantiate<StatusTauntUntilMove>();
+		source.GainStatus(tauntStatus);
+		tauntStatus.Begin();
+	}  
 }

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://3jiyxbn0c4gf"]
+[gd_scene load_steps=6 format=3 uid="uid://3jiyxbn0c4gf"]
 
 [ext_resource type="Script" path="res://Battle Mode/FX/CombatFX.cs" id="1_yupao"]
+[ext_resource type="Texture2D" uid="uid://8fd1xskfw6ps" path="res://Art/FX/Laser Burst_73x73.png" id="2_s665t"]
 
 [sub_resource type="Animation" id="Animation_1nccm"]
 resource_name = "Effect"
@@ -14,7 +15,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0.1, -0.25, 0, 0, -0.0503864, 1, -0.151995, 0.0025686, 0.240214, -0.181028, 0, -0.250688, -0.00284271, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2, 0.6)
+"times": PackedFloat32Array(0, 0.1, 0.3)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -25,7 +26,19 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0.5, -0.25, 0, 0.0980524, 0.388913, 1, -0.09, 0, 0.215701, -0.0105455, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2, 0.6)
+"times": PackedFloat32Array(0, 0.1, 0.3)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 32]
 }
 
 [sub_resource type="Animation" id="Animation_2c3rs"]
@@ -71,8 +84,17 @@ libraries = {
 }
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0.36)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 0.36)
 light_color = Color(1, 0, 0, 1)
 light_energy = 0.0
 omni_range = 0.0
 omni_attenuation = 1.56917
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.04, 0, 0)
+pixel_size = 0.04
+texture_filter = 0
+texture = ExtResource("2_s665t")
+hframes = 6
+vframes = 6
+frame = 32

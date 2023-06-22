@@ -10,7 +10,14 @@ public partial class Battle : Node3D
 	private BattleGUI gui;
 	private CombatEventData[] eventChain;
 	private bool waiting = false;
-    private Timer turnoverTimer; 
+    private Timer turnoverTimer;
+	private Timer betweenActionsTimer; 
+	[Export(PropertyHint.File)]
+	private string nextBattlePath;
+	[Export(PropertyHint.File)]
+	private string defeatScreenPath;
+	[Export]
+	bool startingScene = false;
 
 	//private eventChain theChain = new eventChain();
 
@@ -18,6 +25,8 @@ public partial class Battle : Node3D
 
 	[Export]
 	private Roster battleRoster;
+	PackedScene nextBattle;
+	PackedScene defeatScreen;
 
 	public enum BattlePhase{
 		StartOfTurn,
@@ -29,6 +38,13 @@ public partial class Battle : Node3D
 
 	public override void _Ready(){
         turnoverTimer = this.GetNode<Timer>("Turnover Timer");
+		betweenActionsTimer = this.GetNode<Timer>("Between Actions Timer");
+		if(nextBattlePath != null) nextBattle = GD.Load<PackedScene>(nextBattlePath);
+		if(defeatScreenPath != null) defeatScreen = GD.Load<PackedScene>(defeatScreenPath);
+		if(!startingScene){
+			GameMaster GM = GetNode<GameMaster>("/root/GameMaster");
+			GM.LoadPartyData(battleRoster);
+		}
 	}
 
 	public override async void _Process(double delta){
@@ -87,12 +103,12 @@ public partial class Battle : Node3D
 			case BattlePhase.TurnOver :
 				if(waiting) return;
 				waiting = true;
+				await CharactersGoDown();
 				EnemyCombatant[] enemies = battleRoster.GetAllEnemyCombatants();
 				eventChain = new CombatEventData[enemies.Length];
 				for(int i = 0; i < enemies.Length; i++){
 					eventChain[i] = enemies[i].DecideAction(this);
 				}
-				await CharactersGoDown();
 				currentPhase = BattlePhase.EnemyCommandExecute;
 				//Delay to add some time between player and enemy attacks?
 				turnoverTimer.Start();
@@ -119,6 +135,8 @@ public partial class Battle : Node3D
 				if(eventData[i].GetAnimationName() != "NoAction") eventData[i].GetCombatant().ReadyAction(eventData[i].GetAction(), this); //Recheck this
 				eventData[i].GetAction().Begin();
 				await ToSignal(eventData[i].GetAction(), CombatAction.SignalName.ActionComplete);
+				betweenActionsTimer.Start();
+				await ToSignal(betweenActionsTimer, Timer.SignalName.Timeout);
 			}else{
 					GetTree().Quit();
 					throw new BadCombatAnimationException("Listed Animation (" + eventData[i].GetAnimationName() + ") not found on Combatant (" + eventData[i].GetCombatant().GetName() + ")");
@@ -146,6 +164,19 @@ public partial class Battle : Node3D
 
 	public Roster GetRoster(){
 		return battleRoster;
+	}
+
+	public void ConcludeBattle(){
+		if(nextBattlePath != null){
+			GetNode<GameMaster>("/root/GameMaster").SavePlayerParty(battleRoster);
+			GetTree().ChangeSceneToPacked(nextBattle);
+		}else{
+			GetTree().Quit();
+		}
+	}
+
+	public void DefeatPlayers(){
+		GetTree().ChangeSceneToPacked(defeatScreen);
 	}
 
 	private class BadCombatAnimationException : Exception{

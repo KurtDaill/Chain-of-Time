@@ -52,11 +52,13 @@ public partial class PlayerCombatant : Combatant
 	public void GainSP(int gain){
 		sp += gain;
 		if(sp > maxSP) sp = maxSP;
+		readout.UpdateSP(sp, maxSP);
 	}
 
 	public bool ChargeSP(int cost){
 		if(sp < cost) return false;
 		sp -= cost;
+		readout.UpdateSP(sp, maxSP);
 		return true;
 	}
 
@@ -75,5 +77,19 @@ public partial class PlayerCombatant : Combatant
 
 	public Texture2D GetPortrait(){
 		return displayPortrait;
+	}
+
+	public PlayerData GetPlayerData(){
+		return new PlayerData(name, hp, maxHP, sp, maxSP);
+	}
+
+	public void LoadPlayerData(PlayerData load){
+		this.name = load.GetName();
+		this.hp = load.GetHP();
+		this.maxHP = load.GetMaxHP();
+		this.sp = load.GetSP();
+		this.maxSP = load.GetMaxSP();
+		readout.UpdateHP(hp, maxHP);
+		readout.UpdateSP(sp, maxSP);
 	}
 }

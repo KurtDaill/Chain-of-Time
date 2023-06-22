@@ -1,0 +1,1324 @@
+[gd_scene load_steps=26 format=3 uid="uid://p7jgls8mb48j"]
+
+[ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Battle.cs" id="1_yjk1d"]
+[ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="2_jhx87"]
+[ext_resource type="PackedScene" uid="uid://234suufiqv8c" path="res://Battle Mode/Player Characters/Silver Combatant.tscn" id="3_onrcn"]
+[ext_resource type="PackedScene" uid="uid://ck78k6iju4ldb" path="res://Battle Mode/Player Characters/Cato Combatant.tscn" id="4_onvya"]
+[ext_resource type="PackedScene" uid="uid://bltlucajwd3c5" path="res://Battle Mode/Enemies/Skeleton.tscn" id="5_2cix5"]
+[ext_resource type="PackedScene" uid="uid://qkdx5mb1mcw4" path="res://Battle Mode/Enemies/Ghost Mage.tscn" id="6_gkpwe"]
+[ext_resource type="PackedScene" uid="uid://ctkjn6qaseru7" path="res://Battle Mode/BattleGUI.tscn" id="7_rxf41"]
+[ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Old/Art/3D/BattleDungeon.dae" id="8_jr5nl"]
+[ext_resource type="AudioStream" uid="uid://rqh26t4tp12q" path="res://Audio/TCoT_-_Combat_3d(1).mp3" id="9_34u3f"]
+
+[sub_resource type="Animation" id="Animation_rgagi"]
+resource_name = "EnemyCrunch"
+length = 0.6
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyFront:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyFront:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemyFront:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemyMid:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyMid:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EnemyMid:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("EnemyBack:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(6, -0.25, 0, 0.25, 0, 6, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("EnemyBack:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("EnemyBack:position:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+
+[sub_resource type="Animation" id="Animation_bwvdg"]
+resource_name = "EnemyPull"
+length = 0.6
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyBack:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(6, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyBack:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemyBack:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemyMid:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyMid:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EnemyMid:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("EnemyFront:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("EnemyFront:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("EnemyFront:position:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+
+[sub_resource type="Animation" id="Animation_0ax3u"]
+resource_name = "HeroCrunch"
+length = 0.6
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeroBack:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-6, -0.25, 0, 0.25, 0, -6, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HeroBack:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HeroBack:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HeroMid:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-4, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HeroMid:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HeroMid:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HeroFront:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, -6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HeroFront:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HeroFront:position:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+
+[sub_resource type="Animation" id="Animation_traqq"]
+resource_name = "HeroPull"
+length = 0.6
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeroBack:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-6, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HeroBack:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HeroBack:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HeroMid:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-4, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0, -6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HeroMid:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HeroMid:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HeroFront:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HeroFront:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HeroFront:position:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.6)
+}
+
+[sub_resource type="Animation" id="Animation_wcha2"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeroFront:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HeroFront:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HeroFront:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HeroMid:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HeroMid:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HeroMid:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HeroBack:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HeroBack:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HeroBack:position:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("EnemyFront:position:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("EnemyFront:position:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("EnemyFront:position:z")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("EnemyMid:position:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("EnemyMid:position:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/14/type = "bezier"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("EnemyMid:position:z")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/15/type = "bezier"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("EnemyBack:position:x")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/16/type = "bezier"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("EnemyBack:position:y")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/17/type = "bezier"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("EnemyBack:position:z")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_nh56p"]
+resource_name = "SwapEnemyFB"
+length = 0.6
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyFront:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyFront:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemyFront:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemyBack:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(6, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyBack:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EnemyBack:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+
+[sub_resource type="Animation" id="Animation_480pj"]
+resource_name = "SwapEnemyFM"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyFront:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyFront:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemyFront:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemyMid:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyMid:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EnemyMid:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_ml3by"]
+resource_name = "SwapEnemyMB"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyMid:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(4, -0.25, 0, 0.25, 0, 6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyMid:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EnemyMid:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemyBack:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(6, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyBack:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EnemyBack:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_4qwbm"]
+resource_name = "SwapHeroFB"
+length = 0.6
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeroFront:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, -6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HeroFront:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HeroFront:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HeroBack:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-6, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HeroBack:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HeroBack:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HeroMid:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-4, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.6)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HeroMid:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.6)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("HeroMid:position:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.1, 0.0101241, -1.52, -0.1, -0.0950605, 0.1, -0.0865419, -2, -0.1, -0.151728, 0.25, 0, -2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.6)
+}
+
+[sub_resource type="Animation" id="Animation_omfi0"]
+resource_name = "SwapHeroFM"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeroFront:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HeroFront:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HeroFront:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HeroMid:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-4, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HeroMid:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HeroMid:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_wcble"]
+resource_name = "SwapHeroMB"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeroBack:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-6, -0.25, 0, 0.25, 0, -4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HeroBack:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HeroBack:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-3, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HeroMid:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-4, -0.25, 0, 0.25, 0, -6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HeroMid:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HeroMid:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, -3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wt4h5"]
+_data = {
+"EnemyCrunch": SubResource("Animation_rgagi"),
+"EnemyPull": SubResource("Animation_bwvdg"),
+"HeroCrunch": SubResource("Animation_0ax3u"),
+"HeroPull": SubResource("Animation_traqq"),
+"RESET": SubResource("Animation_wcha2"),
+"SwapEnemyFB": SubResource("Animation_nh56p"),
+"SwapEnemyFM": SubResource("Animation_480pj"),
+"SwapEnemyMB": SubResource("Animation_ml3by"),
+"SwapHeroFB": SubResource("Animation_4qwbm"),
+"SwapHeroFM": SubResource("Animation_omfi0"),
+"SwapHeroMB": SubResource("Animation_wcble")
+}
+
+[sub_resource type="Animation" id="Animation_u18p7"]
+resource_name = "Flicker"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.7, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.7, -0.25, 0, 0.25, 0, 0.7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 0.7, 1.1, 1.6, 2.2, 2.6, 3)
+}
+
+[sub_resource type="Animation" id="Animation_wi7gm"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uj5ot"]
+_data = {
+"Flicker": SubResource("Animation_u18p7"),
+"RESET": SubResource("Animation_wi7gm")
+}
+
+[sub_resource type="Environment" id="Environment_51ne1"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.380392, 0.376471, 0.431373, 1)
+ambient_light_energy = 1.5
+
+[node name="TopNode" type="Node3D"]
+
+[node name="Battle" type="Node3D" parent="." node_paths=PackedStringArray("gui", "battleRoster")]
+script = ExtResource("1_yjk1d")
+gui = NodePath("Camera3D/BattleGUI")
+nextBattlePath = "res://Levels/Combat Playtest One/Victory.tscn"
+defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
+battleRoster = NodePath("Roster")
+
+[node name="Roster" type="Node3D" parent="Battle" node_paths=PackedStringArray("debugPlayer", "debugPlayer2", "debugEnemy1", "debugEnemy2", "debugEnemy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("2_jhx87")
+debugMode = true
+debugPlayer = NodePath("HeroFront/Cato")
+debugPlayer2 = NodePath("HeroMid/TestHero")
+debugEnemy1 = NodePath("EnemyFront/Skeleton")
+debugEnemy2 = NodePath("EnemyMid/Ghost Mage")
+debugEnemy3 = NodePath("")
+
+[node name="HeroBack" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
+
+[node name="HeroMid" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+
+[node name="TestHero" parent="Battle/Roster/HeroMid" node_paths=PackedStringArray("readout") instance=ExtResource("3_onrcn")]
+readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Silver Readout")
+
+[node name="HeroFront" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+
+[node name="Cato" parent="Battle/Roster/HeroFront" node_paths=PackedStringArray("readout") instance=ExtResource("4_onvya")]
+readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
+
+[node name="EnemyFront" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+
+[node name="Skeleton" parent="Battle/Roster/EnemyFront" instance=ExtResource("5_2cix5")]
+
+[node name="EnemyMid" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+
+[node name="Ghost Mage" parent="Battle/Roster/EnemyMid" instance=ExtResource("6_gkpwe")]
+
+[node name="EnemyBack" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Battle/Roster"]
+libraries = {
+"": SubResource("AnimationLibrary_wt4h5")
+}
+
+[node name="Camera3D" type="Camera3D" parent="Battle"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 4.2, 10.04)
+
+[node name="BattleGUI" parent="Battle/Camera3D" instance=ExtResource("7_rxf41")]
+
+[node name="Card 1" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="0"]
+offset_right = 1951.84
+offset_bottom = 4834.0
+
+[node name="Card 2" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="1"]
+offset_bottom = 4834.0
+
+[node name="Card 3" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="2"]
+offset_bottom = 4834.0
+
+[node name="Card 4" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="3"]
+offset_right = 1925.0
+offset_bottom = 4834.0
+
+[node name="Turnover Timer" type="Timer" parent="Battle"]
+wait_time = 0.4
+
+[node name="Between Actions Timer" type="Timer" parent="Battle"]
+wait_time = 0.1
+
+[node name="BattleDungeon" parent="." instance=ExtResource("8_jr5nl")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="BattleDungeon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.24, 1.74, -0.86)
+light_color = Color(1, 0.729412, 0.231373, 1)
+light_energy = 0.8
+light_size = 0.146
+shadow_enabled = true
+omni_range = 7.0
+omni_attenuation = 0.732043
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleDungeon/OmniLight3D"]
+autoplay = "Flicker"
+libraries = {
+"": SubResource("AnimationLibrary_uj5ot")
+}
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="BattleDungeon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.76, 1.74, -0.86)
+light_color = Color(1, 0.729412, 0.231373, 1)
+light_energy = 0.8
+light_size = 0.146
+shadow_enabled = true
+omni_range = 7.0
+omni_attenuation = 0.732043
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleDungeon/OmniLight3D6"]
+autoplay = "Flicker"
+libraries = {
+"": SubResource("AnimationLibrary_uj5ot")
+}
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="BattleDungeon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26, 1.74, -0.86)
+light_color = Color(1, 0.729412, 0.231373, 1)
+light_energy = 0.8
+light_size = 0.146
+shadow_enabled = true
+omni_range = 7.0
+omni_attenuation = 0.732043
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleDungeon/OmniLight3D3"]
+autoplay = "Flicker"
+libraries = {
+"": SubResource("AnimationLibrary_uj5ot")
+}
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="BattleDungeon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.78, 1.74, -0.86)
+light_color = Color(1, 0.729412, 0.231373, 1)
+light_energy = 0.8
+light_size = 0.146
+shadow_enabled = true
+omni_range = 7.0
+omni_attenuation = 0.732043
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleDungeon/OmniLight3D2"]
+autoplay = "Flicker"
+libraries = {
+"": SubResource("AnimationLibrary_uj5ot")
+}
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="BattleDungeon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24, 1.74, -0.86)
+light_color = Color(1, 0.729412, 0.231373, 1)
+light_energy = 0.8
+light_size = 0.146
+shadow_enabled = true
+omni_range = 7.0
+omni_attenuation = 0.732043
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleDungeon/OmniLight3D4"]
+autoplay = "Flicker"
+libraries = {
+"": SubResource("AnimationLibrary_uj5ot")
+}
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="BattleDungeon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.24, 1.74, -0.86)
+light_color = Color(1, 0.729412, 0.231373, 1)
+light_energy = 0.8
+light_size = 0.146
+shadow_enabled = true
+omni_range = 7.0
+omni_attenuation = 0.732043
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleDungeon/OmniLight3D5"]
+autoplay = "Flicker"
+libraries = {
+"": SubResource("AnimationLibrary_uj5ot")
+}
+
+[node name="SpotLight3D" type="SpotLight3D" parent="BattleDungeon"]
+transform = Transform3D(0.965926, 0.183013, 0.183013, -6.18172e-08, -0.707107, 0.707107, 0.258819, -0.683013, -0.683013, 0, 3.64, -2.16)
+light_energy = 8.564
+shadow_enabled = true
+spot_range = 12.88
+spot_attenuation = 0.00328474
+spot_angle = 20.4822
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_51ne1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_34u3f")
+volume_db = -25.0
+autoplay = true
+
+[editable path="Battle/Camera3D/BattleGUI"]
+[editable path="Battle/Camera3D/BattleGUI/Skill Menu/Card 1"]
+[editable path="Battle/Camera3D/BattleGUI/Skill Menu/Card 4"]

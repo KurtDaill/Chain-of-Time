@@ -18,9 +18,9 @@ public partial class Skeleton : EnemyCombatant
 
 
 	public override CombatEventData DecideAction(Battle parentBattle){
-		//if(GetPosition() == BattlePosition.EnemyFront && activeStatuses.Where(x => x is StatusTaunting).Count() == 0){ //If we're not taunting and in the front
-		//	return taunt.GetEventData();
-		//}
+		if(taunt.GetEnabledPositions().Contains(this.GetPosition()) && activeStatuses.Where(x => x is StatusTaunting).Count() == 0){ //If we're not taunting and in the front
+			return taunt.GetEventData();
+		}
         attack.SetTargets(parentBattle.GetRoster().GetAllPlayerCombatants());
         return attack.GetEventData();
     }   

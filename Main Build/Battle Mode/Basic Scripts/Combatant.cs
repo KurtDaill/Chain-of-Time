@@ -166,8 +166,8 @@ public partial class Combatant : Node3D
 		pointer.Visible = state;
 	}
 
-	public Ability SetupAndGetSwap(Roster ros, BattlePosition pos){
-		swapAbility.SetupSwapDetails(ros, pos);
+	public Ability SetupAndGetSwap(Roster ros, PlayerCombatant target){
+		swapAbility.SetupSwapDetails(ros, target);
 		return swapAbility;
 	}
 

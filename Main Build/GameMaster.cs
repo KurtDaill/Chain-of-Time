@@ -1,35 +1,15 @@
 using Godot;
 using System;
-
+using System.Linq;
 public partial class GameMaster : Node
 {
     
-    PlayerCharacterData[] playerData = Array.Empty<PlayerCharacterData>(); //TODO: Convert to Resource
-    
     [Export]
     StoryState state = new StoryState();
-    public struct PlayerCharacterData{
-        public PlayerCharacterData(string filePath, int hp, int maxHP, int sp, int maxSP, uint position, 
-        int[] abilitiesKnown, int[] abilitiesPrepared){
-            this.filePath = filePath;
-            this.hp = hp;
-            this.maxHP = maxHP;
-            this.sp = sp;
-            this.maxSP = maxSP;
-            this.position = position;
-            this.abilitiesKnown = abilitiesKnown;
-            this.abilitiesPrepared = abilitiesPrepared;
-        }
 
-        public string filePath {get; set;}
-        public int hp { get; set; }
-        public int sp { get; set; }
-        public int maxHP { get; set; }
-        public int maxSP { get; set; }
-        public uint position {get; set;}
-        public int[] abilitiesKnown {get; set;}
-        public int [] abilitiesPrepared {get; set;}
-    }
+    PlayerData[] partyData = new PlayerData[3];
+
+    PlayerData[] bookmark = new PlayerData[3];
 
     public override void _Ready()
     {
@@ -41,22 +21,39 @@ public partial class GameMaster : Node
         base._Process(delta);
     }
 
-/*
-    public void SavePlayerParty(PMBattleRoster roster){
-        var players = roster.GetPlayerCharacters();
-        playerData = new PlayerCharacterData[players.Length];
-        for(int i = 0; i < players.Length; i++){
-            playerData[i] = players[i].ExportData();
-        }
-    }
-*/
-    public bool IsPartyDataOnFile(){
-        return(playerData != Array.Empty<PlayerCharacterData>());
+
+    public void SavePlayerParty(Roster roster){
+        PlayerCombatant[] currentParty = roster.GetAllPlayerCombatants();
+        for(int i = 0; i < currentParty.Length; i++){partyData[i] = currentParty[i].GetPlayerData();} 
     }
 
-    public PlayerCharacterData[] GetPlayerCharacterData(){
-        return playerData;
+    public void LoadPartyData(Roster roster){
+        PlayerCombatant[] currentParty = roster.GetAllPlayerCombatants();
+        foreach(PlayerCombatant player in currentParty){
+            foreach(PlayerData data in partyData.Where(x => x != null)){
+                if(data.GetName() == player.GetName()){
+                    player.LoadPlayerData(data);
+                }
+            }
+        }
     }
+
+    public void RestorePartyHPAndSP(){
+        foreach(PlayerData data in partyData.Where(x => x != null)){
+            data.RestoreHP();
+            data.RestoreSP();
+        }
+    }
+
+    public void BookmarkCurrentParty(){
+        bookmark = partyData;
+;
+    }
+
+    public void LoadBookmarkSave(){
+        partyData = bookmark;
+    }
+
 
     public StoryState GetStoryState(){
         return state;
@@ -74,4 +71,27 @@ public partial class GameMaster : Node
     public void SetFlagValue(string flag, bool value){
         state.TrySetFlag(flag, value);
     }
+}
+
+public class PlayerData{
+    int hp, maxHP, sp, maxSP;
+    string name;
+    //Abilities Known
+
+    public PlayerData(string name, int hp, int maxHP, int sp, int maxSP){
+        this.name = name;
+        this.hp = hp;
+        this.maxHP = maxHP;
+        this.sp = sp;
+        this.maxSP = maxSP; 
+    }
+
+    public void RestoreHP(){hp = maxHP;}
+    public void RestoreSP(){sp = maxSP;}
+
+    public int GetHP(){return hp;}
+    public int GetMaxHP(){return maxHP;}
+    public int GetSP(){return sp;}
+    public int GetMaxSP(){return maxSP;}
+    public string GetName(){return name;}
 }

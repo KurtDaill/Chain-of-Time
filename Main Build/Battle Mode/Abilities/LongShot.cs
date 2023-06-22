@@ -4,6 +4,10 @@ using static BattleUtilities;
 
 public partial class LongShot : PlayerSkill
 {
+	
+	[Export(PropertyHint.File)]
+	string laserFX;
+	PackedScene laserFXScene;
 	public override void _Ready(){
 		base._Ready();
 		name = "Long Shot";
@@ -13,6 +17,7 @@ public partial class LongShot : PlayerSkill
 		skillType = "Attack"; 
 		rulesText = "[center] Deals DMG Based on Enemy Position \n Front - 4 DMG\nMiddle - 3 DMG\n  Back - 2 DMG";
 		AbilityTargetingLogic = BattleUtilities.TargetingLogic.Ranged;
+		laserFXScene = GD.Load<PackedScene>(laserFX);
 	}
 
 	public override void Begin(){
@@ -32,5 +37,6 @@ public partial class LongShot : PlayerSkill
 				target[0].TakeDamage(2);
 				break;
 		}
+		SpawnEffectOnTarget(1, laserFXScene, target[0]);
 	}	
 }

@@ -9,3 +9,7 @@ export_presets.cfg
 # Mono-specific ignores
 .mono/
 data_*/
+Test Builds/CoT Combat Test 1 Build.zip
+Test Builds/Chain Of Time.exe
+Test Builds/Chain Of Time.console.exe
+Test Builds/Chain Of Time.pck
