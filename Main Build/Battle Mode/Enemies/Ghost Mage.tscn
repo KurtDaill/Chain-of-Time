@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://qkdx5mb1mcw4"]
+[gd_scene load_steps=21 format=3 uid="uid://qkdx5mb1mcw4"]
 
 [ext_resource type="Script" path="res://Battle Mode/Enemies/GhostMage.cs" id="1_pursu"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="2_00j8v"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Battle Mode/Abilities/LesserConfusion.cs" id="10_64igs"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/FireBlast.cs" id="11_qkwyr"]
 [ext_resource type="AudioStream" uid="uid://c5fqfpvpuh51f" path="res://Audio/Ghost Hit.wav" id="12_jqnig"]
+[ext_resource type="PackedScene" uid="uid://yqwlafpgpp3" path="res://Battle Mode/GUI/EnemyHealthBar.tscn" id="13_20svf"]
 
 [sub_resource type="Animation" id="Animation_buh3o"]
 resource_name = "CandleBonk"
@@ -201,6 +202,56 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tms8m"]
+resource_name = "Hit React"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Adjuster/Sprites:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.08, -0.25, 0, 0, 0.0640929, 0.76, -0.25, 0, 0.25, 0, 0.08, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Adjuster/Sprites:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-1.0723, -0.25, 0, 0.25, 0, -1.1523, -0.25, 0, 0.25, 0, -1.0723, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Adjuster/Sprites:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hit Sound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_3g276"]
@@ -583,56 +634,6 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_tms8m"]
-resource_name = "Hit React"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Adjuster/Sprites:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.08, -0.25, 0, 0, 0.0640929, 0.76, -0.25, 0, 0.25, 0, 0.08, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2, 0.6)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Adjuster/Sprites:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-1.0723, -0.25, 0, 0.25, 0, -1.1523, -0.25, 0, 0.25, 0, -1.0723, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2, 0.6)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Adjuster/Sprites:position:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2, 0.6)
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Hit Sound")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4a377"]
 _data = {
 "CandleBonk": SubResource("Animation_buh3o"),
@@ -643,12 +644,13 @@ _data = {
 "Spellcast": SubResource("Animation_0eo5t")
 }
 
-[node name="Ghost Mage" type="Node3D" node_paths=PackedStringArray("attack", "confusion", "fireBlast", "nameplate", "displayText", "pointer")]
+[node name="Ghost Mage" type="Node3D" node_paths=PackedStringArray("attack", "confusion", "fireBlast", "nameplate", "healthBar", "displayText", "pointer")]
 script = ExtResource("1_pursu")
 attack = NodePath("Bonk")
 confusion = NodePath("Lesser Confusion")
 fireBlast = NodePath("Fire Blast")
 nameplate = NodePath("Nameplate Adjuster/Enemy Nameplate")
+healthBar = NodePath("HealthBar")
 hp = 4
 maxHP = 4
 displayText = NodePath("Combat Text")
@@ -774,6 +776,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.253985, 0)
 
 [node name="Hit Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_jqnig")
+
+[node name="HealthBar" parent="." instance=ExtResource("13_20svf")]
 
 [editable path="Nameplate Adjuster/Enemy Nameplate"]
 [editable path="Combat Text"]

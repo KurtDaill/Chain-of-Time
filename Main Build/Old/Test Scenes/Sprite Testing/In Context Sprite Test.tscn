@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dtpj2w158ws3m"]
+[gd_scene load_steps=20 format=3 uid="uid://dtpj2w158ws3m"]
 
 [ext_resource type="Environment" uid="uid://cfh7634f0l1lo" path="res://Old/Test Scenes/Sprite Testing/Environments/Dungeon Env.tres" id="1_44kqi"]
 [ext_resource type="Script" path="res://Old/Test Scenes/Sprite Testing/InContextSpriteTest.cs" id="1_c12c6"]
@@ -10,6 +10,9 @@
 [ext_resource type="Environment" uid="uid://jwa7oenbgqy2" path="res://Old/Test Scenes/Sprite Testing/Environments/Night Env.tres" id="4_kw2hb"]
 [ext_resource type="Texture2D" uid="uid://dqsu6b5fcy3l1" path="res://Art/CatoIdlePoseTest.png" id="7_18i56"]
 [ext_resource type="Script" path="res://addons/control_camera3d/nodes/control_camera_3d.gd" id="8_lpovc"]
+[ext_resource type="PackedScene" uid="uid://cpppfvgn0vw35" path="res://Art/3D/inkpinkJune26.dae" id="11_c0m7f"]
+[ext_resource type="Material" uid="uid://bccd3haju7e8a" path="res://Art/3D/InkPinkMat.tres" id="12_7xg1u"]
+[ext_resource type="Script" path="res://Art/3D/dae.gd" id="12_p8lto"]
 
 [sub_resource type="Animation" id="Animation_et25c"]
 resource_name = "Idle"
@@ -189,7 +192,7 @@ stagesInEditor = [NodePath("Neutral Env Omni Light"), NodePath("Neutral Env Spot
 env = NodePath("WorldEnvironment")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("4_kw2hb")
+environment = ExtResource("3_1dywo")
 
 [node name="Shaded Cato" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4.2, -0.84)
@@ -416,3 +419,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 49.36)
 light_color = Color(0.686275, 0.745098, 0.890196, 1)
 light_energy = 0.1
 sky_mode = 1
+
+[node name="inkpinkJune26" parent="." instance=ExtResource("11_c0m7f")]
+
+[node name="default" parent="inkpinkJune26/NODEID621527215" index="0"]
+surface_material_override/0 = ExtResource("12_7xg1u")
+script = ExtResource("12_p8lto")
+
+[editable path="inkpinkJune26"]

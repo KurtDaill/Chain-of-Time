@@ -9325,25 +9325,14 @@ beginIn = 1
 script = ExtResource("2_x2kdt")
 presentEnvironmentRes = null
 pastEnvironmentRes = null
-realEnvironment = null
-presentCronoScene = null
 environmentTrackIndex = null
 sunTrackIndex = null
-TimeTravelCato = null
-subtractSphere = null
-visibleSphere = null
-pastSun = null
-presentSun = null
 presentAnimationIndex = null
 pastAnimationIndex = null
 
 [node name="Fragment One" parent="Chrono-Enviro" instance=ExtResource("3_xjs2p")]
 visible = false
-timeEnvironment = null
-targetCronoScene = null
 targetEnvironmentRes = "res://Test Scenes/PastEnvironmentChallengeRoom.tres"
-postTravelCustcene = null
-targetSun = null
 
 [node name="ReturnFragment" parent="Chrono-Enviro" instance=ExtResource("4_o5aok")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.08, -0.92)
@@ -9351,11 +9340,7 @@ visible = false
 
 [node name="Fragment Two" parent="Chrono-Enviro" instance=ExtResource("3_xjs2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.52, 2.08, -2.36)
-timeEnvironment = null
-targetCronoScene = null
 targetEnvironmentRes = "res://Test Scenes/PastEnvironmentChallengeRoom.tres"
-postTravelCustcene = null
-targetSun = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Chrono-Enviro"]
 root_node = NodePath("../..")
@@ -10117,8 +10102,6 @@ shape = SubResource("BoxShape3D_r4obp")
 
 [node name="Interaction Point Storage Room" parent="Chrono-Enviro/20 Years" instance=ExtResource("31_hke08")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.97972e-07, 2.52, 13.68)
-cutsceneNode = null
-interactArea = null
 enabled = false
 
 [node name="Label" parent="Chrono-Enviro/20 Years/Interaction Point Storage Room" index="1"]
@@ -11719,8 +11702,6 @@ disabled = true
 
 [node name="Storage Room Interact" parent="Chrono-Enviro/Present" instance=ExtResource("31_hke08")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.800001, 2.36, 14)
-cutsceneNode = null
-interactArea = null
 
 [node name="Label" parent="Chrono-Enviro/Present/Storage Room Interact" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 2.56, 3.04)
@@ -12189,8 +12170,6 @@ transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871558, 0, -0.0871558, 0.996195
 
 [node name="Portcullis Interact" parent="Chrono-Enviro/Present" instance=ExtResource("31_hke08")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.4377e-07, 4.64, 12.44)
-cutsceneNode = null
-interactArea = null
 
 [node name="Label" parent="Chrono-Enviro/Present/Portcullis Interact" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24, 2.56, -9.68575e-08)
@@ -12218,7 +12197,6 @@ visible = false
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("45_nf8lm")
-enabled = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chrono-Enviro/Present/Encounter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04, 1.2, 1.64)
@@ -12760,7 +12738,7 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
 offset_left = 8.51978
 offset_right = 308.52
-offset_bottom = 339.0
+offset_bottom = 432.0
 theme = ExtResource("81_1lim2")
 texture = ExtResource("82_8vnm2")
 stretch_mode = 2
@@ -12857,8 +12835,8 @@ libraries = {
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
 offset_left = 304.0
-offset_right = 604.0
-offset_bottom = 339.0
+offset_right = 640.0
+offset_bottom = 432.0
 pivot_offset = Vector2(246.475, 158.516)
 theme = ExtResource("75_bdgck")
 texture = ExtResource("85_xyey5")
@@ -12957,8 +12935,8 @@ libraries = {
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
 offset_left = 608.0
-offset_right = 908.0
-offset_bottom = 339.0
+offset_right = 944.0
+offset_bottom = 432.0
 theme = ExtResource("86_mn6b1")
 texture = ExtResource("87_16i16")
 stretch_mode = 2
@@ -13057,8 +13035,8 @@ libraries = {
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 0
 offset_left = 912.0
-offset_right = 1212.0
-offset_bottom = 339.0
+offset_right = 1248.0
+offset_bottom = 432.0
 theme = ExtResource("75_bdgck")
 texture = ExtResource("85_xyey5")
 stretch_mode = 2
@@ -13269,6 +13247,7 @@ shape = SubResource("BoxShape3D_umn4m")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 9.12, 10.28)
+fov = 44.8
 
 [connection signal="animation_finished" from="Chrono-Enviro/20 Years/Bridge Cutscene/AnimationPlayer" to="Chrono-Enviro/20 Years/Bridge Cutscene" method="OnCinematicAnimationEnd" flags=18]
 [connection signal="animation_started" from="Chrono-Enviro/20 Years/Bridge Cutscene/AnimationPlayer" to="Chrono-Enviro/20 Years/Bridge Cutscene" method="OnCinematicAnimationBegin" flags=18]

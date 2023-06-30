@@ -9,6 +9,10 @@ public partial class TargetingMenu : BattleMenu {
 	private AudioStreamPlayer targetingErrorSound;
 	private List<Combatant> plannedTargets;
 	private TargetingLogic workingRule;
+	private SkillCard skillCardGUI;
+	private TextureRect attackBackboard;
+	private Label attackName;
+	private RichTextLabel rulesText;
 	private int spRefund = 0;
 	private bool decisionRequired = true;
 
@@ -16,6 +20,11 @@ public partial class TargetingMenu : BattleMenu {
 	{
 		base._Ready();
 		targetingErrorSound = GetNode<AudioStreamPlayer>("SelectError");
+		skillCardGUI = GetNode<SkillCard>("Skill");
+		attackBackboard = GetNode<TextureRect>("Basic Attack");
+		attackName = attackBackboard.GetNode<Label>("Attack Name");
+		rulesText = attackBackboard.GetNode<RichTextLabel>("Rules Text");
+		this.Visible = false;
 	}
 
 	//Because we want to avoid having to add a special case to the BattleGUI class for opening this menu, we instead
@@ -31,6 +40,7 @@ public partial class TargetingMenu : BattleMenu {
 	//Run when this menu is opened, resets values as needed from previous uses
 	public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI){
 		base.OnOpen(character, caller, parentGUI);
+		this.Visible = true;
 		if(abilityInQuestion == null) throw new NotImplementedException();//TODO write custom targetingError Exception
 		workingRule = abilityInQuestion.GetTargetingLogic();
 		plannedTargets = new List<Combatant>();
@@ -83,7 +93,20 @@ public partial class TargetingMenu : BattleMenu {
 					default :   //TODO write custom targetingError exception, if we've gotten here, there's a rule we aren't accounting for...
 						throw new NotImplementedException();
 				}
-		
+			if(abilityInQuestion is PlayerSkill){
+				skillCardGUI.Visible = true;
+				attackBackboard.Visible = false;
+				PlayerSkill skill = (PlayerSkill)abilityInQuestion;
+				if(!skill.GetEnabledPositions().Contains(character.GetPosition())){
+					skillCardGUI.SetDisplay(skill.Name, "Out of Position!", skill.GetSkilType(), skill.GetAbilityAlignment(), skill.GetSPCost(), skill.GetEnabledPositions());
+				}
+				skillCardGUI.SetDisplay(skill.Name, skill.GetRulesText(), skill.GetSkilType(), skill.GetAbilityAlignment(), skill.GetSPCost(), skill.GetEnabledPositions());
+			}else{
+				skillCardGUI.Visible = false;
+				attackBackboard.Visible = true;
+				attackName.Text = abilityInQuestion.GetName();
+				rulesText.Text = abilityInQuestion.GetRulesText();
+			}
 	}
 
 	//Handles input from the core Menu Command
@@ -170,6 +193,7 @@ public partial class TargetingMenu : BattleMenu {
 					var result = abilityInQuestion;
 					abilityInQuestion = null;
 					HidePointers(caller);
+					this.Visible = false;
 					return result;
 				}else{ //Our target isn't legal (Oh noes!)
 					RejectSelection();
@@ -198,6 +222,11 @@ public partial class TargetingMenu : BattleMenu {
 		foreach(Combatant character in desiredTargets){
 			if(legaltargets.Contains(character)){
 				actualTargets.Add(character);
+			}
+		}
+		foreach(EnemyCombatant enemy in battle.GetRoster().GetAllEnemyCombatants()){
+			foreach(StatusTaunting taunt in enemy.GetStatusEffects().Where(x => x is StatusTaunting)){
+				taunt.ShowNotification();
 			}
 		}
 		if(actualTargets.Count() == 0) return false;

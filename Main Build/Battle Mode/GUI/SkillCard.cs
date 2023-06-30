@@ -6,6 +6,7 @@ public partial class SkillCard : TextureRect{
     private RichTextLabel name, rules;
     private Label abilityType, cost;
     private AnimationPlayer anim;
+    AnimationPlayer pipsAnimPlay;
     private TextureRect[] pips;
     public override void _Ready(){
         name = (RichTextLabel)GetNode("Name");
@@ -21,6 +22,7 @@ public partial class SkillCard : TextureRect{
             this.GetNode<TextureRect>("Pips/Enemy 2"),
             this.GetNode<TextureRect>("Pips/Enemy 3")
         };
+        pipsAnimPlay = this.GetNode<AnimationPlayer>("Pips/AnimationPlayer");
         foreach(TextureRect pip in pips){ pip.Visible = false;}
     }
     public void SetDisplay(string abilityName, string rulesText, string type, AbilityAlignment align, int spCost, Godot.Collections.Array<BattlePosition> positions){
@@ -86,7 +88,6 @@ public partial class SkillCard : TextureRect{
     public void Select(){
         anim.Play("Select");
     }
-
     new public void Draw(){
         anim.Play("Draw");
     }
@@ -95,5 +96,9 @@ public partial class SkillCard : TextureRect{
     }
     public void Deselect(){
         anim.Stop();
+    }
+
+    public void FlashFriendlyPips(){
+        pipsAnimPlay.Play("Flash Friendlies");
     }
 }

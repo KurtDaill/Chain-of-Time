@@ -1,12 +1,14 @@
+Sprite3D
+TextureProgressBar
+MeshInstance3D
+AnimationPlayer
 AudioStreamPlayer
 AudioStreamPlayer3D
 Timer
 Camera3D
 Label3D
 Label
-AnimationPlayer
 OmniLight3D
-Sprite3D
 Node3D
 AnimatedSprite3D
 Node
@@ -18,7 +20,6 @@ SpotLight3D
 DirectionalLight3D
 CSGBox3D
 WorldEnvironment
-MeshInstance3D
 CSGMesh3D
 Sprite2D
 Camera2D
@@ -29,4 +30,3 @@ CSGCombiner3D
 AnimationTree
 CharacterBody3D
 CSGSphere3D
-GPUParticles3D

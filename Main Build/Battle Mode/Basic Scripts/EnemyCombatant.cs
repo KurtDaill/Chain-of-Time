@@ -5,6 +5,8 @@ public partial class EnemyCombatant : Combatant
 {
 	[Export]
 	EnemyNameplate nameplate;
+	[Export]
+	EnemyHealthBar healthBar;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -12,6 +14,7 @@ public partial class EnemyCombatant : Combatant
 		nameplate.UpdateHP(hp, maxHP);
 		nameplate.SetComName(name);
 		nameplate.SetNamePlateVisible(false);
+		healthBar.SetDisplay(hp, maxHP);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,6 +38,7 @@ public partial class EnemyCombatant : Combatant
 	public override void TakeDamage(int damage){
 		base.TakeDamage(damage);
 		nameplate.UpdateHP(hp, maxHP);
+		healthBar.SetDisplay(hp, maxHP);
 	}
 }
 

@@ -69,13 +69,16 @@ public partial class SkillMenu : BattleMenu
                 }
                 break;
             case MenuInput.Select : //TODO: Should go to a "Targeting" menu --- ChargeSP returns false if player can't pay, and MUST BE AT THE END OF THIS CONDITIONAL!!!
-                if(noSkills == false && character.GetSkills()[selectedOption].GetEnabledPositions().Contains(character.GetPosition()) && character.ChargeSP(character.GetSkills()[selectedOption].GetSPCost())){
+                if(noSkills == false && character.GetSkills()[selectedOption].GetEnabledPositions().Contains(character.GetPosition()) && character.ChargeSP(character.GetSkills()[selectedOption].GetSPCost())){ 
                     menuAnim.Play("Exit");
                     TargetingMenu tMenu = (TargetingMenu) parentGUI.menus[5];
                     tMenu.SetAbilityForTargeting(character.GetSkills()[selectedOption]);
                     parentGUI.ChangeMenu(5, character);
                     return null;
                 }else{
+                    if(!character.GetSkills()[selectedOption].GetEnabledPositions().Contains(character.GetPosition())){
+                        cards[selectedOption].FlashFriendlyPips();
+                    }
                     rejectSound.Play();
                     return null;
                 }                 

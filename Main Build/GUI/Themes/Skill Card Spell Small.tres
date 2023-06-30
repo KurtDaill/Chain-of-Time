@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://by3oeeep2oy71" path="res://Fonts/lunchtime-doubly-so.regular.ttf" id="1"]
 
 [sub_resource type="FontFile" id="1"]
-fallbacks = [ExtResource("1")]
+fallbacks = Array[Font]([ExtResource("1")])
 face_index = null
 embolden = null
 transform = null

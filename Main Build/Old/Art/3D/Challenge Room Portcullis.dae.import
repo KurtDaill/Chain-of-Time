@@ -32,7 +32,7 @@ _subresources={
 "materials": {
 "tile_set_2": {
 "use_external/enabled": true,
-"use_external/path": "res://Art/3D/DungeonNormalMaterial2.tres"
+"use_external/path": "res://Old/Art/3D/DungeonNormalMaterial2.tres"
 }
 }
 }

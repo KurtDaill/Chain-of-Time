@@ -253,4 +253,5 @@ vframes = 4
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_fam2g")
+volume_db = -35.0
 autoplay = true

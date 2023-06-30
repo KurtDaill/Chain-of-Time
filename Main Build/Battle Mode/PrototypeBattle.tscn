@@ -1137,6 +1137,9 @@ ambient_light_energy = 1.5
 [node name="Battle" type="Node3D" parent="." node_paths=PackedStringArray("gui", "battleRoster")]
 script = ExtResource("1_4rxw7")
 gui = NodePath("Camera3D/BattleGUI")
+nextBattlePath = "res://Levels/Combat Playtest One/Victory.tscn"
+defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
+startingScene = true
 battleRoster = NodePath("Roster")
 
 [node name="Roster" type="Node3D" parent="Battle" node_paths=PackedStringArray("debugPlayer", "debugPlayer2", "debugEnemy1", "debugEnemy2", "debugEnemy3")]
@@ -1187,8 +1190,14 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 
 [node name="BattleGUI" parent="Battle/Camera3D" instance=ExtResource("4_noo0e")]
 
+[node name="Top Menu" parent="Battle/Camera3D/BattleGUI" index="0"]
+visible = true
+
+[node name="Skill Menu" parent="Battle/Camera3D/BattleGUI" index="4"]
+visible = true
+
 [node name="Card 1" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="0"]
-offset_right = 1870.84
+offset_right = 2068.84
 offset_bottom = 4834.0
 
 [node name="Card 2" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="1"]
@@ -1198,11 +1207,14 @@ offset_bottom = 4834.0
 offset_bottom = 4834.0
 
 [node name="Card 4" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="3"]
-offset_right = 1844.0
+offset_right = 2042.0
 offset_bottom = 4834.0
 
 [node name="Turnover Timer" type="Timer" parent="Battle"]
 wait_time = 0.4
+
+[node name="Between Actions Timer" type="Timer" parent="Battle"]
+wait_time = 0.2
 
 [node name="BattleDungeon" parent="." instance=ExtResource("5_7bshd")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -1311,3 +1323,5 @@ environment = SubResource("Environment_51ne1")
 [editable path="Battle/Camera3D/BattleGUI"]
 [editable path="Battle/Camera3D/BattleGUI/Skill Menu/Card 1"]
 [editable path="Battle/Camera3D/BattleGUI/Skill Menu/Card 4"]
+[editable path="Battle/Camera3D/BattleGUI/Action Chain/Action Link 1/Card"]
+[editable path="Battle/Camera3D/BattleGUI/Action Chain/Action Link 2/Card"]

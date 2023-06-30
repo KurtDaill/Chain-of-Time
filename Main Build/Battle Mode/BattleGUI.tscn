@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://ctkjn6qaseru7"]
+[gd_scene load_steps=85 format=3 uid="uid://ctkjn6qaseru7"]
 
 [ext_resource type="Theme" uid="uid://d4kx000io04gf" path="res://GUI/Themes/Skill Card Normal Small.tres" id="3"]
 [ext_resource type="Theme" uid="uid://0sj6o2hvmgmt" path="res://GUI/Themes/Readout Text.tres" id="4"]
@@ -29,14 +29,22 @@
 [ext_resource type="Texture2D" uid="uid://cenqt4ms2eal0" path="res://GUI/Battle Menu Assets/Item Menu/Item Tab.png" id="31"]
 [ext_resource type="Texture2D" uid="uid://nli0mcpokh1x" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuSwapHighlight.png" id="32"]
 [ext_resource type="Texture2D" uid="uid://cm7bwe6xrk4bw" path="res://GUI/Battle Menu Assets/Attack Menu/Attack Menu.png" id="33"]
+[ext_resource type="Texture2D" uid="uid://doe0fcor7214h" path="res://GUI/Battle Menu Assets/Skill Menu/Skill Card.png" id="33_011xl"]
+[ext_resource type="Script" path="res://Battle Mode/GUI/SkillCard.cs" id="34_dir1l"]
 [ext_resource type="Texture2D" uid="uid://cwrc2tvxawx3w" path="res://GUI/Battle Menu Assets/Top Menu/Item Button Highlight.png" id="35"]
+[ext_resource type="Theme" uid="uid://lcud6pbsl6dn" path="res://GUI/Themes/UI Impact.tres" id="35_wu077"]
 [ext_resource type="Texture2D" uid="uid://cx12cemchoyfp" path="res://GUI/Battle Menu Assets/Top Menu/Skill Button Controller.png" id="36"]
+[ext_resource type="Texture2D" uid="uid://diafuti26x647" path="res://GUI/Battle Menu Assets/Skill Menu/FriendlyPip.png" id="36_wc611"]
 [ext_resource type="Texture2D" uid="uid://l6unyyb4maph" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres" id="37"]
+[ext_resource type="Texture2D" uid="uid://cnjhk3wv6wdg" path="res://GUI/Battle Menu Assets/Skill Menu/FriendlyPipFlash.png" id="37_5lsqi"]
+[ext_resource type="Texture2D" uid="uid://ljywc1tefq1h" path="res://GUI/Battle Menu Assets/Skill Menu/EnemyPip.png" id="37_43rqt"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/BattleGUI.cs" id="38"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/TargetingMenu.cs" id="39"]
+[ext_resource type="Texture2D" uid="uid://cnv1fdlpp2vd1" path="res://GUI/Battle Menu Assets/Skill Menu/EnemyPipFlash.png" id="39_vp7at"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/TopMenu.cs" id="40"]
 [ext_resource type="Script" path="res://GUI/ReadoutContainer.cs" id="40_jh205"]
 [ext_resource type="Texture2D" uid="uid://bkjcvlj2kbhgm" path="res://GUI/Action Chain Link.png" id="40_luqf3"]
+[ext_resource type="AudioStream" uid="uid://ciiw36ypj5j34" path="res://Audio/MenuReminderClicker.wav" id="40_oqcwa"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/ActionChain.cs" id="40_qgk7y"]
 [ext_resource type="Texture2D" uid="uid://x8jh7q2a2twq" path="res://Art/Silver Portrait.png" id="40_xqf8w"]
 [ext_resource type="Texture2D" uid="uid://buymnk3wkjnd3" path="res://GUI/Cato Head Thing.png" id="41_s2270"]
@@ -548,6 +556,402 @@ _data = {
 "RESET": SubResource("66")
 }
 
+[sub_resource type="Animation" id="Animation_bed5o"]
+resource_name = "Flash All"
+length = 2.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy 3/Flash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy 2/Flash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Enemy 1/Flash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Friend 2/Flash:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Friend 3/Flash2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Friend 1/Flash:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_0e7l0"]
+resource_name = "Flash Enemies"
+length = 2.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy 3/Flash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy 2/Flash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Enemy 1/Flash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("Friend 2/Flash:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("Friend 3/Flash2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("Friend 1/Flash:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_qapse"]
+resource_name = "Flash Friendlies"
+length = 2.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Enemy 3/Flash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Enemy 2/Flash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Enemy 1/Flash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Friend 2/Flash:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Friend 3/Flash2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Friend 1/Flash:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Clicks")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.4, 1.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0a8v0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy 3/Flash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Enemy 2/Flash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Enemy 1/Flash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Friend 2/Flash:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Friend 3/Flash2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Friend 1/Flash:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6xje5"]
+_data = {
+"Flash All": SubResource("Animation_bed5o"),
+"Flash Enemies": SubResource("Animation_0e7l0"),
+"Flash Friendlies": SubResource("Animation_qapse"),
+"RESET": SubResource("Animation_0a8v0")
+}
+
+[sub_resource type="Animation" id="Animation_e0j6m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action Link 1/Card:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Action Link 1/Card/Name:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Action Link 1/Card/Type:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Action Link 1/Card:size:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(366, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_644jt"]
+resource_name = "ShowCardOne"
+length = 0.3
+
+[sub_resource type="Animation" id="Animation_svcbc"]
+resource_name = "ShowCardTwo"
+length = 0.3
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s03rw"]
+_data = {
+"RESET": SubResource("Animation_e0j6m"),
+"ShowCardOne": SubResource("Animation_644jt"),
+"ShowCardTwo": SubResource("Animation_svcbc")
+}
+
 [sub_resource type="Animation" id="75"]
 length = 0.001
 tracks/0/type = "value"
@@ -681,7 +1085,6 @@ grow_vertical = 0
 script = ExtResource("38")
 
 [node name="Top Menu" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchor_top = 0.647
 anchor_bottom = 1.0
@@ -1101,25 +1504,53 @@ script = ExtResource("49")
 visible = false
 layout_mode = 0
 offset_top = 1086.0
-offset_bottom = 1452.0
+offset_right = 381.0
+offset_bottom = 4215.0
+
+[node name="Flash" parent="Skill Menu/Card 1/Pips/Enemy 2" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="Flash" parent="Skill Menu/Card 1/Pips/Enemy 3" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 24.0
+offset_bottom = 24.0
 
 [node name="Card 2" parent="Skill Menu" instance=ExtResource("30_x7avc")]
 visible = false
 layout_mode = 0
 offset_top = 1086.0
-offset_bottom = 1452.0
+offset_right = 381.0
+offset_bottom = 4215.0
 
 [node name="Card 3" parent="Skill Menu" instance=ExtResource("30_x7avc")]
 visible = false
 layout_mode = 0
 offset_top = 1086.0
-offset_bottom = 1452.0
+offset_right = 381.0
+offset_bottom = 4215.0
 
 [node name="Card 4" parent="Skill Menu" instance=ExtResource("30_x7avc")]
 visible = false
 layout_mode = 0
 offset_top = 1086.0
-offset_bottom = 1452.0
+offset_right = 381.0
+offset_bottom = 4215.0
+
+[node name="Flash" parent="Skill Menu/Card 4/Pips/Enemy 2" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="Flash" parent="Skill Menu/Card 4/Pips/Enemy 3" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 24.0
+offset_bottom = 24.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skill Menu"]
 libraries = {
@@ -1140,6 +1571,215 @@ script = ExtResource("39")
 stream = ExtResource("21")
 volume_db = 10.0
 
+[node name="Basic Attack" type="TextureRect" parent="Targeting Menu"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 63.0
+offset_top = 598.0
+offset_right = 477.0
+offset_bottom = 814.0
+texture = ExtResource("33")
+
+[node name="Attack Name" type="Label" parent="Targeting Menu/Basic Attack"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 12.0
+offset_right = 399.0
+offset_bottom = 58.0
+theme = ExtResource("5")
+text = "Basic Attack Name"
+horizontal_alignment = 1
+
+[node name="Rules Text" type="RichTextLabel" parent="Targeting Menu/Basic Attack"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 84.0
+offset_right = 407.0
+offset_bottom = 190.0
+theme = ExtResource("3")
+bbcode_enabled = true
+text = " [center][Range]
+[Keywords]
+Basic Attack Text"
+
+[node name="Skill" type="TextureRect" parent="Targeting Menu"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 547.0
+offset_right = 477.0
+offset_bottom = 979.0
+pivot_offset = Vector2(246.475, 158.516)
+theme = ExtResource("5")
+texture = ExtResource("33_011xl")
+stretch_mode = 2
+script = ExtResource("34_dir1l")
+
+[node name="Name" type="RichTextLabel" parent="Targeting Menu/Skill"]
+layout_mode = 0
+offset_left = 69.3397
+offset_top = 71.2929
+offset_right = 320.34
+offset_bottom = 150.293
+bbcode_enabled = true
+text = "[center] Card Two"
+
+[node name="Cost" type="Label" parent="Targeting Menu/Skill"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 27.0
+offset_right = 103.0
+offset_bottom = 62.0
+theme = ExtResource("35_wu077")
+text = "0"
+horizontal_alignment = 1
+
+[node name="Type" type="Label" parent="Targeting Menu/Skill"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 160.0
+offset_right = 270.0
+offset_bottom = 195.0
+text = "Skill"
+horizontal_alignment = 1
+
+[node name="Rules Text" type="RichTextLabel" parent="Targeting Menu/Skill"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 225.0
+offset_right = 327.0
+offset_bottom = 423.0
+theme = ExtResource("5")
+bbcode_enabled = true
+text = "[textSize]small[center] Cato TAUNTS until he moves, bringing target enemy to the front rank"
+scroll_active = false
+
+[node name="Pips" type="Control" parent="Targeting Menu/Skill"]
+anchors_preset = 0
+offset_left = 123.0
+offset_top = 195.0
+offset_right = 276.0
+offset_bottom = 213.0
+
+[node name="Friend 3" type="TextureRect" parent="Targeting Menu/Skill/Pips"]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 24.0
+offset_bottom = 18.0
+texture = ExtResource("36_wc611")
+stretch_mode = 2
+
+[node name="Flash2" type="TextureRect" parent="Targeting Menu/Skill/Pips/Friend 3"]
+visible = false
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 21.0
+offset_bottom = 21.0
+texture = ExtResource("37_5lsqi")
+stretch_mode = 2
+
+[node name="Friend 2" type="TextureRect" parent="Targeting Menu/Skill/Pips"]
+layout_mode = 0
+offset_left = 27.0
+offset_right = 45.0
+offset_bottom = 18.0
+texture = ExtResource("36_wc611")
+stretch_mode = 2
+
+[node name="Flash" type="TextureRect" parent="Targeting Menu/Skill/Pips/Friend 2"]
+visible = false
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 21.0
+offset_bottom = 21.0
+texture = ExtResource("37_5lsqi")
+stretch_mode = 2
+
+[node name="Friend 1" type="TextureRect" parent="Targeting Menu/Skill/Pips"]
+layout_mode = 0
+offset_left = 48.0
+offset_right = 66.0
+offset_bottom = 18.0
+texture = ExtResource("36_wc611")
+stretch_mode = 2
+
+[node name="Flash" type="TextureRect" parent="Targeting Menu/Skill/Pips/Friend 1"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 21.0
+offset_bottom = 21.0
+texture = ExtResource("37_5lsqi")
+stretch_mode = 2
+
+[node name="Enemy 1" type="TextureRect" parent="Targeting Menu/Skill/Pips"]
+layout_mode = 0
+offset_left = 87.0
+offset_right = 105.0
+offset_bottom = 18.0
+texture = ExtResource("37_43rqt")
+stretch_mode = 2
+
+[node name="Flash" type="TextureRect" parent="Targeting Menu/Skill/Pips/Enemy 1"]
+visible = false
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 21.0
+offset_bottom = 21.0
+texture = ExtResource("39_vp7at")
+stretch_mode = 2
+
+[node name="Enemy 2" type="TextureRect" parent="Targeting Menu/Skill/Pips"]
+layout_mode = 0
+offset_left = 108.0
+offset_right = 126.0
+offset_bottom = 18.0
+texture = ExtResource("37_43rqt")
+stretch_mode = 2
+
+[node name="Flash" type="TextureRect" parent="Targeting Menu/Skill/Pips/Enemy 2"]
+visible = false
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 21.0
+offset_bottom = 21.0
+texture = ExtResource("39_vp7at")
+stretch_mode = 2
+
+[node name="Enemy 3" type="TextureRect" parent="Targeting Menu/Skill/Pips"]
+visible = false
+layout_mode = 0
+offset_left = 129.0
+offset_right = 147.0
+offset_bottom = 18.0
+texture = ExtResource("37_43rqt")
+stretch_mode = 2
+
+[node name="Flash" type="TextureRect" parent="Targeting Menu/Skill/Pips/Enemy 3"]
+visible = false
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 21.0
+offset_bottom = 21.0
+texture = ExtResource("39_vp7at")
+stretch_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Targeting Menu/Skill/Pips"]
+libraries = {
+"": SubResource("AnimationLibrary_6xje5")
+}
+
+[node name="Clicks" type="AudioStreamPlayer" parent="Targeting Menu/Skill/Pips"]
+stream = ExtResource("40_oqcwa")
+volume_db = -5.0
+max_polyphony = 3
+
 [node name="Swap Menu" type="Control" parent="."]
 visible = false
 anchors_preset = 0
@@ -1148,14 +1788,12 @@ offset_bottom = 40.0
 script = ExtResource("42")
 
 [node name="Action Chain" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("40_qgk7y")
 
 [node name="Action Link 1" type="TextureRect" parent="Action Chain"]
-visible = false
 layout_mode = 0
 offset_left = 66.0
 offset_top = 408.0
@@ -1192,7 +1830,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Chain Graphic 1" type="TextureRect" parent="Action Chain"]
-visible = false
 layout_mode = 0
 offset_left = 188.0
 offset_top = 450.0
@@ -1202,7 +1839,6 @@ texture = ExtResource("44_majum")
 stretch_mode = 2
 
 [node name="Action Link 2" type="TextureRect" parent="Action Chain"]
-visible = false
 layout_mode = 0
 offset_left = 66.0
 offset_top = 504.0
@@ -1284,6 +1920,11 @@ theme = ExtResource("43_yuuia")
 text = "Action Three"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Action Chain"]
+libraries = {
+"": SubResource("AnimationLibrary_s03rw")
+}
 
 [node name="Readouts" type="VBoxContainer" parent="."]
 layout_mode = 0

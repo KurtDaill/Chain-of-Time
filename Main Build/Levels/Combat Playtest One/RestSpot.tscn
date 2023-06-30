@@ -379,4 +379,4 @@ vframes = 4
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_8qyoe")
 volume_db = -10.0
-stream_paused = true
+autoplay = true

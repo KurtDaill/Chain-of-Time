@@ -1,6 +1,17 @@
-res://Audio
-res://Levels/Combat Playtest One
+res://Battle Mode/GUI
+res://GUI/Battle Menu Assets
 res://Art
+res://
+res://Old/Levels
+res://Old/Art/3D
+res://Art/3D
+res://Old/Test Scenes/Sprite Testing
+res://Old/Test Scenes/Sprite Testing/Environments
+res://Levels/Combat Playtest One
+res://Audio
+res://GUI/Battle Menu Assets/Skill Menu
+res://Battle Mode/Enemies
+res://Battle Mode
 res://GUI
 res://Battle Mode/Player Characters
 res://Battle Mode/FX
@@ -9,14 +20,3 @@ C:/Users/kdail/Desktop/Game Dev/Godot/Chain-of-Time/Test Builds
 res://Battle Mode/Status Effects
 res://Battle Mode/Abilities
 res://Battle Mode/Status Effects/Notifications
-res://Battle Mode/Status Effects/Scripts
-res://GUI/Themes
-res://Fonts
-res://Old/Art
-res://GUI/Battle Menu Assets/Skill Menu
-res://Battle Mode/Enemies
-res://Battle Mode
-res://Old/Art/3D
-res://Battle Mode/GUI
-res://
-res://Prototyping
