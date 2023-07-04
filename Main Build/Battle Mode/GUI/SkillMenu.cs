@@ -49,7 +49,7 @@ public partial class SkillMenu : BattleMenu
             }
         }
         base.OnOpen(character, caller, parentGUI);
-        menuAnim.Play("Enter");
+        //menuAnim.Play("Enter");
         //Check current characters readied skills, setup cards to match that data
     }
 
@@ -89,7 +89,7 @@ public partial class SkillMenu : BattleMenu
             cards[selectedOption].Draw();
         }
         if(input == MenuInput.Back){
-            menuAnim.Play("Exit");
+            //menuAnim.Play("Exit");
             parentGUI.ChangeMenu(0, character);
             return null;
         }

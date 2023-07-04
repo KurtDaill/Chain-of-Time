@@ -1,4 +1,11 @@
+res://GUI
+res://GUI/Battle Menu Assets/Skill Menu
+res://GUI/Battle Menu Assets/Readouts
+res://Fonts
+res://GUI/Themes
 res://Battle Mode/GUI
+res://GUI/Battle Menu Assets/Top Menu
+res://Old/Art
 res://GUI/Battle Menu Assets
 res://Art
 res://
@@ -9,14 +16,8 @@ res://Old/Test Scenes/Sprite Testing
 res://Old/Test Scenes/Sprite Testing/Environments
 res://Levels/Combat Playtest One
 res://Audio
-res://GUI/Battle Menu Assets/Skill Menu
 res://Battle Mode/Enemies
 res://Battle Mode
-res://GUI
 res://Battle Mode/Player Characters
 res://Battle Mode/FX
-res://Art/FX
 C:/Users/kdail/Desktop/Game Dev/Godot/Chain-of-Time/Test Builds
-res://Battle Mode/Status Effects
-res://Battle Mode/Abilities
-res://Battle Mode/Status Effects/Notifications

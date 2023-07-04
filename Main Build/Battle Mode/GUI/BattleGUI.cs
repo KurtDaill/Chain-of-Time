@@ -21,17 +21,17 @@ public partial class BattleGUI : Control
 	private ReadoutContainer playerCharacterReadouts;
 	public BattleMenu[] menus = new BattleMenu[7];
 	public override void _Ready(){
-		currentMenu = (BattleMenu) GetNode("Top Menu");
-		parentBattle = (Battle) GetNode("../..");    
-		menus[0] = (BattleMenu) GetNode("Top Menu");
-		menus[1] = (BattleMenu) GetNode("Party Menu");
-		menus[2] = (BattleMenu) GetNode("Item Menu");
-		menus[3] = (BattleMenu) GetNode("Attack Menu");
-		menus[4] = (BattleMenu) GetNode("Skill Menu");
+		parentBattle = (Battle) GetNode("../..");
+		playerCharacterReadouts = GetNode<ReadoutContainer>("Readout Container");    
+		menus[0] = (BattleMenu) playerCharacterReadouts.GetNode("Top Menu");
+		menus[1] = (BattleMenu) GetNode("Attack Menu");
+		menus[2] = (BattleMenu) GetNode("Skill Menu");
+		menus[3] = (BattleMenu) GetNode("Party Menu");
+		menus[4] = (BattleMenu) GetNode("Item Menu");
 		menus[5] = (BattleMenu) GetNode("Targeting Menu");
 		menus[6] = (BattleMenu) GetNode("Swap Menu");
-		playerCharacterReadouts = GetNode<ReadoutContainer>("Readouts");
 		chainGUI = (ActionChain) GetNode("Action Chain");
+		currentMenu = menus[0];
 	}
 
 	public override void _Process(double delta)
@@ -61,13 +61,13 @@ public partial class BattleGUI : Control
 
 	public void ShowGUI(){
 		currentMenu.Visible = true;
-		playerCharacterReadouts.Visible = true;
+		//playerCharacterReadouts.Visible = true;
 		chainGUI.Visible = true;
 	}
 
 	public void HideGUI(bool keepReadouts = true, bool keepChain = true){
 		currentMenu.Visible = false;
-		if(!keepReadouts) playerCharacterReadouts.Visible = false;
+		//if(!keepReadouts) playerCharacterReadouts.Visible = false;
 		chainGUI.Visible = keepChain; //TODO: Actually have the Gain GUI stay as long as it's supposed to.
 	}
 	
@@ -79,7 +79,7 @@ public partial class BattleGUI : Control
 		if(playersInQuestion.Contains(null)) throw new ArgumentException("Cannot Sent a PlayerCombatant[] with null entries swhen Reseting GUI state!");
 		currentMenu.Visible = false;
 		lastMenu = currentMenu;
-		currentMenu = (BattleMenu) GetNode("Top Menu");
+		currentMenu = menus[0];
 		currentMenu.OnOpen(playersInQuestion[abilitiesQueued.Count(x => x != null)], parentBattle, this);
 		chainGUI.ResetActionChain(playersInQuestion);
 		ShowGUI();

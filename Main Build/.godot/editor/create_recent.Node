@@ -1,3 +1,10 @@
+Control
+TextureRect
+VBoxContainer
+HBoxContainer
+Container
+NinePatchRect
+ProgressBar
 Sprite3D
 TextureProgressBar
 MeshInstance3D
@@ -13,8 +20,6 @@ Node3D
 AnimatedSprite3D
 Node
 ColorRect
-TextureRect
-Control
 Panel
 SpotLight3D
 DirectionalLight3D
@@ -25,8 +30,3 @@ Sprite2D
 Camera2D
 CollisionShape3D
 Area3D
-StaticBody3D
-CSGCombiner3D
-AnimationTree
-CharacterBody3D
-CSGSphere3D

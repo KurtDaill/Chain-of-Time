@@ -28,9 +28,9 @@ public partial class PlayerCombatant : Combatant
 		foreach(Node child in GetChildren()){
 			if(child is PlayerSkill) readySkills[readySkills.Count(x => x != null)] = (PlayerSkill) child;
 		}
-		await ToSignal(readout.GetParent(), ReadoutContainer.SignalName.ReadyToPopulateReadouts);
-		readout.UpdateHP(hp, maxHP);
-		readout.UpdateSP(sp, maxSP);
+		//await ToSignal(readout.GetParent(), ReadoutContainer.SignalName.ReadyToPopulateReadouts);
+		//readout.UpdateHP(hp, maxHP);
+		//readout.UpdateSP(sp, maxSP);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

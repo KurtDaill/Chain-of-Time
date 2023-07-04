@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://0sj6o2hvmgmt"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://0sj6o2hvmgmt"]
 
 [ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="1"]
+[ext_resource type="FontFile" uid="uid://b03cias4qwat6" path="res://Fonts/04Font.TTF" id="1_m6psf"]
 
 [resource]
 default_font = ExtResource("1")
@@ -12,6 +13,7 @@ CheckBox/colors/font_hover_color = Color(0, 0, 0, 1)
 CheckBox/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 CheckBox/colors/font_outline_color = Color(0, 0, 0, 1)
 CheckBox/colors/font_pressed_color = Color(0, 0, 0, 1)
+CheckBox/font_sizes/font_size = 8
 CheckButton/colors/font_color = Color(0, 0, 0, 1)
 CheckButton/colors/font_disabled_color = Color(0, 0, 0, 1)
 CheckButton/colors/font_focus_color = Color(0, 0, 0, 1)
@@ -73,6 +75,8 @@ Label/colors/font_shadow_color = Color(0, 0, 0, 0.490196)
 Label/constants/shadow_offset_x = -2
 Label/constants/shadow_offset_y = 2
 Label/constants/shadow_outline_size = 0
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_m6psf")
 LineEdit/colors/caret_color = Color(0, 0, 0, 1)
 LineEdit/colors/clear_button_color = Color(0, 0, 0, 1)
 LineEdit/colors/clear_button_color_pressed = Color(0, 0, 0, 1)
