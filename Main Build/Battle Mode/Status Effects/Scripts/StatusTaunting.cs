@@ -6,8 +6,8 @@ public partial class StatusTaunting : OnUpkeepStatus
     public override void _Ready(){
         name = "Taunt";
         animation = "Taunt";
-        defaultStartingDuration = 3;
-        remainingDuration = defaultStartingDuration;
+        startingDuration = 3;
+        remainingDuration = startingDuration;
         
         /*
             Flags:

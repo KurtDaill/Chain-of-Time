@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using static BattleUtilities;
 
 public partial class Combatant : Node3D
@@ -82,6 +83,14 @@ public partial class Combatant : Node3D
 	public virtual void TakeDamage(int damage)
 	{
 		animPlay.Play("HitReact");
+		//if we have any armor statuses, calculate damage reduction due to armor
+		if(this.GetStatusEffects().Where(x => x is StatusArmor).Count() != 0){
+			List<StatusArmor> armorStatuses = new List<StatusArmor>();
+			foreach(StatusEffect effect in this.GetStatusEffects().Where(x => x is StatusArmor)){armorStatuses.Add((StatusArmor) effect);}
+			int armorValue = 0;
+			foreach(StatusArmor armor in armorStatuses){if(armor.GetArmorValue() > armorValue) armorValue = armor.GetArmorValue();}
+			damage = Math.Max(1, (damage - armorValue));
+		}
 		this.hp -= damage;
 		displayText.ShowDamage(damage);
 		//Figure how how we're displaying damage numbers

@@ -14,7 +14,7 @@ public partial class CatoTaunt : PlayerSkill{
 		AbilityTargetingLogic = BattleUtilities.TargetingLogic.Ranged;
 
 		//The 0 entry of this array is always reserved for the core animation of this combat action
-		//The 1 slot is for waiting on the 
+		//The 1 slot is for waiting for the opponent to be swapped
 		flagsRequiredToComplete = new bool[]{false, false};
 	}
 

@@ -1493,7 +1493,6 @@ stream = ExtResource("21")
 volume_db = 10.0
 
 [node name="Skill Menu" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_top = -27.0
 offset_right = 40.0
@@ -1504,7 +1503,7 @@ script = ExtResource("49")
 visible = false
 layout_mode = 0
 offset_top = 1086.0
-offset_right = 381.0
+offset_right = 399.0
 offset_bottom = 4215.0
 
 [node name="Flash" parent="Skill Menu/Card 1/Pips/Enemy 2" index="0"]
@@ -1523,21 +1522,21 @@ offset_bottom = 24.0
 visible = false
 layout_mode = 0
 offset_top = 1086.0
-offset_right = 381.0
+offset_right = 399.0
 offset_bottom = 4215.0
 
 [node name="Card 3" parent="Skill Menu" instance=ExtResource("30_x7avc")]
 visible = false
 layout_mode = 0
 offset_top = 1086.0
-offset_right = 381.0
+offset_right = 399.0
 offset_bottom = 4215.0
 
 [node name="Card 4" parent="Skill Menu" instance=ExtResource("30_x7avc")]
 visible = false
 layout_mode = 0
 offset_top = 1086.0
-offset_right = 381.0
+offset_right = 399.0
 offset_bottom = 4215.0
 
 [node name="Flash" parent="Skill Menu/Card 4/Pips/Enemy 2" index="0"]

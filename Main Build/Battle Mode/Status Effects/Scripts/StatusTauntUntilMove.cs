@@ -8,7 +8,7 @@ public partial class StatusTauntUntilMove : StatusTaunting
         base._Ready();
         name = "Taunt";
         animation = null;
-        defaultStartingDuration = -1;
+        startingDuration = -1;
     }
 
     public override void _Process(double delta){

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ck78k6iju4ldb"]
+[gd_scene load_steps=23 format=3 uid="uid://ck78k6iju4ldb"]
 
 [ext_resource type="Script" path="res://Battle Mode/Player Characters/CatoCombatant.cs" id="1_r8uo0"]
 [ext_resource type="Texture2D" uid="uid://buymnk3wkjnd3" path="res://GUI/Cato Head Thing.png" id="2_kpxx0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d054fqnoqr0oo" path="res://Art/Cato Combat Sprite-Sheet.png" id="3_qd2l3"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/CatoBasicAttack.cs" id="4_qgcm6"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/PositionSwap.cs" id="5_v3stx"]
+[ext_resource type="Script" path="res://Battle Mode/Abilities/CatoShieldRush.cs" id="7_1v7hy"]
 [ext_resource type="PackedScene" uid="uid://boneh1axl0j65" path="res://Battle Mode/Combat Text.tscn" id="8_3o5il"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/CatoTaunt.cs" id="8_t0u03"]
 [ext_resource type="AudioStream" uid="uid://cfj5vrhlk6arb" path="res://Audio/HitSound.wav" id="9_36gs7"]
@@ -74,6 +75,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_8ixpk"]
 resource_name = "HitReact"
+length = 0.7
+step = 0.05
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -120,6 +123,18 @@ tracks/3/keys = {
 "args": [0.0],
 "method": &"play"
 }]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite Adjuster/CatoSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 37, 0]
 }
 
 [sub_resource type="Animation" id="Animation_l3yyt"]
@@ -360,6 +375,36 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_5q5fj"]
+resource_name = "Shield Rush"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite Adjuster/CatoSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 7, 8, 12, 13, 14]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s6heb"]
 _data = {
 "CatoBasicAttack": SubResource("Animation_xplvf"),
@@ -368,6 +413,7 @@ _data = {
 "Idle": SubResource("Animation_l3yyt"),
 "NoAction": SubResource("Animation_1k005"),
 "RESET": SubResource("Animation_3ffbs"),
+"Shield Rush": SubResource("Animation_5q5fj"),
 "SpellCast": SubResource("Animation_n3ku2"),
 "StatusFlinch": SubResource("Animation_7teyi"),
 "Taunt": SubResource("Animation_uumsx")
@@ -417,14 +463,20 @@ enabledPositions = Array[int]([3, 2])
 script = ExtResource("5_v3stx")
 enabledPositions = Array[int]([3, 4, 5])
 
-[node name="Combat Text" parent="." instance=ExtResource("8_3o5il")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63653, 1.66561, -0.0799999)
+[node name="Shield Rush" type="Node" parent="."]
+script = ExtResource("7_1v7hy")
+armorStatusFilePath = "res://Battle Mode/Status Effects/CatoShieldRushStatus.tscn"
+spCost = 1
+enabledPositions = Array[int]([3, 4, 5])
 
 [node name="Taunt" type="Node" parent="."]
 script = ExtResource("8_t0u03")
 tauntStatusEffectPath = "res://Battle Mode/Status Effects/StatusTauntUntilMove.tscn"
 spCost = 2
 enabledPositions = Array[int]([3, 2, 1, 0])
+
+[node name="Combat Text" parent="." instance=ExtResource("8_3o5il")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63653, 1.66561, -0.0799999)
 
 [node name="BodyRef" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.892703, 0, 0)

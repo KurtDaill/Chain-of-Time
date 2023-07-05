@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://yqwlafpgpp3"]
+[gd_scene load_steps=7 format=3 uid="uid://yqwlafpgpp3"]
 
 [ext_resource type="Texture2D" uid="uid://0wqk0t2suujm" path="res://GUI/Battle Menu Assets/EnemyHPBar-Frame.png" id="1_d60rm"]
 [ext_resource type="Script" path="res://Battle Mode/Enemies/EnemyHealthBar.cs" id="2_6k8jr"]
 [ext_resource type="Texture2D" uid="uid://cx50fvqa6hb8j" path="res://GUI/Battle Menu Assets/EnemyHPBar-HPJuice.png" id="3_cy57i"]
 [ext_resource type="Texture2D" uid="uid://biy6p54jnocu0" path="res://GUI/Battle Menu Assets/EnemyHPBar-Backdrop.png" id="4_5n0fw"]
+[ext_resource type="Texture2D" uid="uid://bs8d8e88i4xf4" path="res://Art/Shield Icon.png" id="5_j8q7y"]
+[ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="6_jqgkv"]
 
 [node name="HealthBar" type="Sprite3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.579544, 0)
 no_depth_test = true
+texture_filter = 1
 texture = ExtResource("1_d60rm")
 script = ExtResource("2_6k8jr")
 juiceFrames = 33
@@ -24,3 +27,21 @@ vframes = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.04)
 no_depth_test = true
 texture = ExtResource("4_5n0fw")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22168, -0.16, 0)
+sorting_offset = 1.0
+no_depth_test = true
+texture_filter = 1
+texture = ExtResource("5_j8q7y")
+
+[node name="Label3D" type="Label3D" parent="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0799999, -2.98023e-08)
+no_depth_test = true
+texture_filter = 1
+render_priority = 2
+outline_render_priority = 1
+text = "1"
+font = ExtResource("6_jqgkv")
+font_size = 96
+outline_size = 16

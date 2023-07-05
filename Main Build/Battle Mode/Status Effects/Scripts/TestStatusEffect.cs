@@ -6,8 +6,8 @@ public partial class TestStatusEffect : OnUpkeepStatus
     public override void _Ready(){
         name = "TestStatusEffect";
         animation = "StatusFlinch";
-        defaultStartingDuration = 3;
-        remainingDuration = defaultStartingDuration;
+        startingDuration = 3;
+        remainingDuration = startingDuration;
         
         /*
             Flags:

@@ -351,7 +351,7 @@ frame = 1
 script = ExtResource("4_7hva4")
 setAnimation = "Attack"
 setName = "Attack"
-damage = PackedInt32Array(1)
+damage = PackedInt32Array(2)
 damageProbs = PackedFloat64Array(1)
 enabledPositions = Array[int]([2, 3])
 

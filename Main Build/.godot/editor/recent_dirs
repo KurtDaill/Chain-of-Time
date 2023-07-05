@@ -1,6 +1,11 @@
+res://Battle Mode/Status Effects
+res://Battle Mode/Abilities
+res://Battle Mode/Status Effects/Notifications
+res://Battle Mode/Status Effects/Scripts
+res://Fonts
+res://Art
 res://Battle Mode/GUI
 res://GUI/Battle Menu Assets
-res://Art
 res://
 res://Old/Levels
 res://Old/Art/3D
@@ -15,8 +20,4 @@ res://Battle Mode
 res://GUI
 res://Battle Mode/Player Characters
 res://Battle Mode/FX
-res://Art/FX
 C:/Users/kdail/Desktop/Game Dev/Godot/Chain-of-Time/Test Builds
-res://Battle Mode/Status Effects
-res://Battle Mode/Abilities
-res://Battle Mode/Status Effects/Notifications

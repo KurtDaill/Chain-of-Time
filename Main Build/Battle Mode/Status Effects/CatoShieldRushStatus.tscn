@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbvgnymfw23sj"]
+
+[ext_resource type="Script" path="res://Battle Mode/Status Effects/Scripts/StatusArmor.cs" id="1_rj2mn"]
+
+[node name="CatoShieldRushStatus" type="Node"]
+script = ExtResource("1_rj2mn")
+notificationNodeFilePath = "res://Battle Mode/Status Effects/Notifications/ArmorNotification.tscn"

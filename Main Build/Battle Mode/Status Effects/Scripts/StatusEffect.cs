@@ -3,7 +3,9 @@ using System;
 
 public partial class StatusEffect : CombatAction
 {
-	protected int defaultStartingDuration, remainingDuration;
+	[Export]
+	protected int startingDuration;
+	protected int remainingDuration;
 	//The status does what it's supposed to, decrements its duration, then returns whether or not it is finished
 
 	[Export(PropertyHint.File)]
@@ -25,9 +27,10 @@ public partial class StatusEffect : CombatAction
 		}
 	}
 
-	public void ShowNotification(){
+	public BattleNotification ShowNotification(){
 		if(notification == null) notification = GD.Load<PackedScene>(notificationNodeFilePath);
 		BattleNotification note = notification.Instantiate<BattleNotification>();
 		source.GetBodyRegion(0).AddChild(note);
+		return note;
 	}
 }

@@ -1,29 +1,20 @@
-res://Old/Levels/Challenge Room.tscn
+res://Battle Mode/Player Characters/Silver Combatant.tscn
 res://GUI/Themes/Skill Card Normal Small.tres
 res://GUI/Themes/Readout Text.tres
 res://GUI/Themes/Skill Card Normal.tres
 res://GUI/Themes/UI Impact.tres
 res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres
-res://Old/Test Scenes/Sprite Testing/Environments/Netural Env.tres
-res://Old/Test Scenes/Sprite Testing/Environments/Big Sun Env.tres
-res://Old/Test Scenes/Sprite Testing/Environments/Night Env.tres
-res://Art/3D/InkPinkMat.tres
 res://Old/Test Scenes/PresentEnvironmentChallengeRoom.tres
-res://GUI/Themes/Dialogue/Normal Response.tres
-res://GUI/Cutscene Assets/Dialouge Button.tres
-res://GUI/Themes/Skill Card Spell.tres
-res://GUI/Themes/Skill Card Tech.tres
-res://GUI/Themes/Skill Card Tech Small.tres
-res://3DEnviroTest.tscn
-res://Battle Mode/Player Characters/Silver Combatant.tscn
 res://Battle Mode/BattleGUI.tscn
 res://Levels/Combat Playtest One/Encounter 1.tscn
-res://Old/Test Scenes/Sprite Testing/In Context Sprite Test.tscn
-res://GUI/SkillCard.tscn
 res://Battle Mode/Enemies/Boss Skeleton.tscn
+res://3DEnviroTest.tscn
 res://Battle Mode/Enemies/Skeleton.tscn
 res://Battle Mode/GUI/EnemyHealthBar.tscn
-res://Levels/Combat Playtest One/Victory.tscn
 res://Battle Mode/Enemies/Ghost Mage.tscn
 res://Levels/Combat Playtest One/Encounter 2.tscn
 res://Battle Mode/GUI/enemy_nameplate.tscn
+res://Battle Mode/PrototypeBattle.tscn
+res://Battle Mode/Player Characters/Cato Combatant.tscn
+res://Battle Mode/Status Effects/Notifications/ArmorNotification.tscn
+res://Battle Mode/Status Effects/CatoShieldRushStatus.tscn

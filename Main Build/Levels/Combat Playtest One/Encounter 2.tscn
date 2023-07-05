@@ -1191,19 +1191,19 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 [node name="BattleGUI" parent="Battle/Camera3D" instance=ExtResource("7_rxf41")]
 
 [node name="Card 1" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="0"]
-offset_right = 1960.84
+offset_right = 1969.84
 offset_bottom = 4834.0
 
 [node name="Card 2" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="1"]
-offset_right = 390.0
+offset_right = 399.0
 offset_bottom = 4834.0
 
 [node name="Card 3" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="2"]
-offset_right = 390.0
+offset_right = 399.0
 offset_bottom = 4834.0
 
 [node name="Card 4" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="3"]
-offset_right = 1934.0
+offset_right = 1943.0
 offset_bottom = 4834.0
 
 [node name="Turnover Timer" type="Timer" parent="Battle"]
