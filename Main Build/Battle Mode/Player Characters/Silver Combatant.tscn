@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://234suufiqv8c"]
+[gd_scene load_steps=24 format=3 uid="uid://234suufiqv8c"]
 
 [ext_resource type="Script" path="res://Battle Mode/Player Characters/SilverCombatant.cs" id="1_vos4e"]
 [ext_resource type="Texture2D" uid="uid://x8jh7q2a2twq" path="res://Art/Silver Portrait.png" id="2_kja07"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Battle Mode/Abilities/PositionSwap.cs" id="6_1jtpa"]
 [ext_resource type="PackedScene" uid="uid://boneh1axl0j65" path="res://Battle Mode/Combat Text.tscn" id="7_4stcv"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/LongShot.cs" id="7_ma1ff"]
+[ext_resource type="Script" path="res://Battle Mode/Abilities/BigBoot.cs" id="8_6y1mq"]
 [ext_resource type="AudioStream" uid="uid://cfj5vrhlk6arb" path="res://Audio/HitSound.wav" id="9_i2gxv"]
 [ext_resource type="AudioStream" uid="uid://dadx4evqvemrf" path="res://Audio/Silver_Weapon_Fire.wav" id="10_csd2r"]
 [ext_resource type="AudioStream" uid="uid://cwpkqqe1rbdlj" path="res://Audio/SuperShot.wav" id="11_ta5s7"]
@@ -348,8 +349,59 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_goue6"]
+resource_name = "Big Boot"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SilverSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 13, 14, 15, 38]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 0.419311),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
+}, {
+"args": [1],
+"method": &"ActivateReadyAction"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7h6vr"]
+resource_name = "Big Boot Recovery"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SilverSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [38, 0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iaquc"]
 _data = {
+"Big Boot": SubResource("Animation_goue6"),
+"Big Boot Recovery": SubResource("Animation_7h6vr"),
 "GoDown": SubResource("Animation_6ckd0"),
 "HitReact": SubResource("Animation_g5ty1"),
 "Idle": SubResource("Animation_mwj43"),
@@ -406,6 +458,11 @@ script = ExtResource("6_1jtpa")
 script = ExtResource("7_ma1ff")
 laserFX = "res://Battle Mode/FX/laserBurst.tscn"
 enabledPositions = Array[int]([4, 5, 2, 1, 0])
+
+[node name="BigBoot" type="Node" parent="."]
+script = ExtResource("8_6y1mq")
+spCost = 3
+enabledPositions = Array[int]([3, 2])
 
 [node name="Combat Text" parent="." instance=ExtResource("7_4stcv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.876529, 2.26561, -0.0799999)

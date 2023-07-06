@@ -30,6 +30,7 @@ texture = ExtResource("4_5n0fw")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22168, -0.16, 0)
+visible = false
 sorting_offset = 1.0
 no_depth_test = true
 texture_filter = 1
