@@ -422,12 +422,12 @@ _data = {
 
 [node name="Cato" type="Node3D" node_paths=PackedStringArray("basicAttack", "displayText", "swapAbility", "pointer") groups=["PlayerCombatant"]]
 script = ExtResource("1_r8uo0")
-sp = 4
-maxSP = 4
+sp = 2
+maxSP = 2
 basicAttack = NodePath("CatoBasicAttack")
 displayPortrait = ExtResource("2_kpxx0")
-hp = 4
-maxHP = 4
+hp = 5
+maxHP = 5
 displayText = NodePath("Combat Text")
 swapAbility = NodePath("SwapPositions")
 pointer = NodePath("Pointer Adjuster/Pointer")

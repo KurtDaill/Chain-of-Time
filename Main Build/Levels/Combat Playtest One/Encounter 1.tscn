@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="2_k6rsk"]
 [ext_resource type="PackedScene" uid="uid://234suufiqv8c" path="res://Battle Mode/Player Characters/Silver Combatant.tscn" id="3_s88a1"]
 [ext_resource type="PackedScene" uid="uid://ck78k6iju4ldb" path="res://Battle Mode/Player Characters/Cato Combatant.tscn" id="4_1xbyg"]
-[ext_resource type="PackedScene" uid="uid://bltlucajwd3c5" path="res://Battle Mode/Enemies/Skeleton.tscn" id="5_5gedo"]
+[ext_resource type="PackedScene" uid="uid://ckh4ejsj04t82" path="res://Battle Mode/Enemies/Skeleton.tscn" id="5_o1ufo"]
 [ext_resource type="PackedScene" uid="uid://ctkjn6qaseru7" path="res://Battle Mode/BattleGUI.tscn" id="6_rfeot"]
 [ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Old/Art/3D/BattleDungeon.dae" id="7_n8h5m"]
 [ext_resource type="AudioStream" uid="uid://rqh26t4tp12q" path="res://Audio/TCoT_-_Combat_3d(1).mp3" id="8_jbsg3"]
@@ -1137,7 +1137,7 @@ ambient_light_energy = 1.5
 [node name="Battle" type="Node3D" parent="." node_paths=PackedStringArray("gui", "battleRoster")]
 script = ExtResource("1_0by1n")
 gui = NodePath("Camera3D/BattleGUI")
-nextBattlePath = "res://Levels/Combat Playtest One/RestSpot.tscn"
+nextBattlePath = "res://Levels/Combat Playtest One/Encounter 2.tscn"
 defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
 startingScene = true
 battleRoster = NodePath("Roster")
@@ -1170,7 +1170,7 @@ readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
 [node name="EnemyFront" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 
-[node name="Skeleton" parent="Battle/Roster/EnemyFront" instance=ExtResource("5_5gedo")]
+[node name="Skeleton" parent="Battle/Roster/EnemyFront" instance=ExtResource("5_o1ufo")]
 
 [node name="EnemyMid" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)

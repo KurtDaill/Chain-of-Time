@@ -6,7 +6,7 @@ public partial class SwapMenu : BattleMenu{
     PlayerCombatant subject, rightTarget, leftTarget;
 
     private bool rightSelected = false;
-    public override Ability HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI)
+    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI)
     {
         switch(input){
             case MenuInput.Right :

@@ -1,3 +1,4 @@
+Node3D
 Node
 Label3D
 Sprite3D
@@ -10,7 +11,6 @@ Timer
 Camera3D
 Label
 OmniLight3D
-Node3D
 AnimatedSprite3D
 ColorRect
 TextureRect

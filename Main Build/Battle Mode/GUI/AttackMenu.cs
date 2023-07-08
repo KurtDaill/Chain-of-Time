@@ -12,7 +12,7 @@ public partial class AttackMenu : BattleMenu
         selectError = GetNode<AudioStreamPlayer>("SelectError");
     }
 
-    public override Ability HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
+    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         if(input == MenuInput.Back){
             parentGUI.ChangeMenu(0, character);
             return null;
@@ -20,12 +20,12 @@ public partial class AttackMenu : BattleMenu
             //var ability = character.GetBasicAttack();
             //ability.SetTargets(new PMCharacter[]{caller.PositionLookup(PMBattleUtilities.BattlePos.EnemyOne)});//TODO make conform with selection functions
             //return ability;
-            if(!character.GetBasicAttack().GetEnabledPositions().Contains(character.GetPosition())){
+            if(!character.GetBasicAttack().GetEnabledPositions().Contains(caller.GetRoster().GetCharacterVirtualPosition(character))){
                 selectError.Play();
                 return null;
             }
             TargetingMenu tMenu = (TargetingMenu) parentGUI.menus[5];
-            tMenu.SetAbilityForTargeting(character.GetBasicAttack());
+            tMenu.SetAbilityForTargeting(character.GetBasicAttack(), parentGUI);
             parentGUI.ChangeMenu(5, character);
             return null;
         }

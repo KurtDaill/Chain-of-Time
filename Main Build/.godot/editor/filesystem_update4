@@ -1,10 +1,19 @@
-res://Battle Mode/Player Characters/Silver Combatant.tscn
+res://Battle Mode/PrototypeBattle.tscn
 res://GUI/Themes/Skill Card Normal Small.tres
 res://GUI/Themes/Readout Text.tres
 res://GUI/Themes/Skill Card Normal.tres
 res://GUI/Themes/UI Impact.tres
 res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres
-res://Battle Mode/PrototypeBattle.tscn
+res://Battle Mode/Player Characters/Silver Combatant.tscn
 res://Battle Mode/Enemies/Ghost Mage.tscn
 res://Battle Mode/BattleGUI.tscn
 res://Battle Mode/Player Characters/Cato Combatant.tscn
+res://Battle Mode/Enemies/SkeletonGuard.tscn
+res://Battle Mode/Enemies/Skeleton.tscn
+res://GUI/SkillCard.tscn
+res://Levels/Combat Playtest One/Encounter 1.tscn
+res://Levels/Combat Playtest One/Encounter 2.tscn
+res://Levels/Combat Playtest One/Encounter 3.tscn
+res://Levels/Combat Playtest One/Encounter 4.tscn
+res://Levels/Combat Playtest One/RestSpot.tscn
+res://Levels/Combat Playtest One/RestSpotFinal.tscn

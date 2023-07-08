@@ -734,6 +734,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20004, 2.0725, 0)
 
 [node name="Enemy Nameplate" parent="Nameplate Adjuster" node_paths=PackedStringArray("parent") instance=ExtResource("4_mefte")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48, 3.52, 0)
+visible = false
 parent = NodePath("../..")
 
 [node name="Name" parent="Nameplate Adjuster/Enemy Nameplate" index="2"]

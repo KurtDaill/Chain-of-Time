@@ -92,4 +92,9 @@ public partial class PlayerCombatant : Combatant
 		readout.UpdateHP(hp, maxHP);
 		readout.UpdateSP(sp, maxSP);
 	}
+
+	public PlayerAbility SetupAndGetSwap(Roster ros, PlayerCombatant target){
+		swapAbility.SetupSwapDetails(ros, target);
+		return swapAbility;
+	}
 }

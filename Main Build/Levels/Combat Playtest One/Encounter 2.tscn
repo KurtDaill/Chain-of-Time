@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="2_jhx87"]
 [ext_resource type="PackedScene" uid="uid://234suufiqv8c" path="res://Battle Mode/Player Characters/Silver Combatant.tscn" id="3_onrcn"]
 [ext_resource type="PackedScene" uid="uid://ck78k6iju4ldb" path="res://Battle Mode/Player Characters/Cato Combatant.tscn" id="4_onvya"]
-[ext_resource type="PackedScene" uid="uid://bltlucajwd3c5" path="res://Battle Mode/Enemies/Skeleton.tscn" id="5_2cix5"]
-[ext_resource type="PackedScene" uid="uid://qkdx5mb1mcw4" path="res://Battle Mode/Enemies/Ghost Mage.tscn" id="6_gkpwe"]
+[ext_resource type="PackedScene" uid="uid://bltlucajwd3c5" path="res://Battle Mode/Enemies/SkeletonGuard.tscn" id="5_2cix5"]
+[ext_resource type="PackedScene" uid="uid://ckh4ejsj04t82" path="res://Battle Mode/Enemies/Skeleton.tscn" id="6_f8igt"]
 [ext_resource type="PackedScene" uid="uid://ctkjn6qaseru7" path="res://Battle Mode/BattleGUI.tscn" id="7_rxf41"]
 [ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Old/Art/3D/BattleDungeon.dae" id="8_jr5nl"]
 [ext_resource type="AudioStream" uid="uid://rqh26t4tp12q" path="res://Audio/TCoT_-_Combat_3d(1).mp3" id="9_34u3f"]
@@ -1138,7 +1138,7 @@ ambient_light_energy = 1.5
 [node name="Battle" type="Node3D" parent="." node_paths=PackedStringArray("gui", "battleRoster")]
 script = ExtResource("1_yjk1d")
 gui = NodePath("Camera3D/BattleGUI")
-nextBattlePath = "res://Levels/Combat Playtest One/Victory.tscn"
+nextBattlePath = "res://Levels/Combat Playtest One/RestSpot.tscn"
 defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
 battleRoster = NodePath("Roster")
 
@@ -1148,8 +1148,8 @@ script = ExtResource("2_jhx87")
 debugMode = true
 debugPlayer = NodePath("HeroFront/Cato")
 debugPlayer2 = NodePath("HeroMid/TestHero")
-debugEnemy1 = NodePath("EnemyFront/Skeleton")
-debugEnemy2 = NodePath("EnemyMid/Ghost Mage")
+debugEnemy1 = NodePath("EnemyFront/Skeleton Guard")
+debugEnemy2 = NodePath("EnemyMid/Skeleton")
 debugEnemy3 = NodePath("")
 
 [node name="HeroBack" type="Node3D" parent="Battle/Roster"]
@@ -1170,12 +1170,12 @@ readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
 [node name="EnemyFront" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 
-[node name="Skeleton" parent="Battle/Roster/EnemyFront" instance=ExtResource("5_2cix5")]
+[node name="Skeleton Guard" parent="Battle/Roster/EnemyFront" instance=ExtResource("5_2cix5")]
 
 [node name="EnemyMid" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
 
-[node name="Ghost Mage" parent="Battle/Roster/EnemyMid" instance=ExtResource("6_gkpwe")]
+[node name="Skeleton" parent="Battle/Roster/EnemyMid" instance=ExtResource("6_f8igt")]
 
 [node name="EnemyBack" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)

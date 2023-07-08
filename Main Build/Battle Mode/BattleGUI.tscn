@@ -411,7 +411,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 899, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 958, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.3)
 }
 tracks/2/type = "bezier"
@@ -444,7 +444,7 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 899, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 958, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0.4, 0.7)
 }
 tracks/5/type = "bezier"
@@ -455,7 +455,7 @@ tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 899, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 958, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0.2, 0.5)
 }
 tracks/6/type = "bezier"
@@ -477,7 +477,7 @@ tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 899, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 958, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0.6, 0.9)
 }
 tracks/8/type = "method"
@@ -1493,18 +1493,22 @@ stream = ExtResource("21")
 volume_db = 10.0
 
 [node name="Skill Menu" type="Control" parent="."]
+visible = false
 anchors_preset = 0
-offset_top = -27.0
+offset_top = -94.0
 offset_right = 40.0
-offset_bottom = 13.0
+offset_bottom = -54.0
 script = ExtResource("49")
 
 [node name="Card 1" parent="Skill Menu" instance=ExtResource("30_x7avc")]
-visible = false
 layout_mode = 0
+offset_left = 9.0
 offset_top = 1086.0
-offset_right = 408.0
-offset_bottom = 4215.0
+offset_right = 444.0
+offset_bottom = 8946.0
+
+[node name="Rules Text" parent="Skill Menu/Card 1" index="3"]
+text = ""
 
 [node name="Flash" parent="Skill Menu/Card 1/Pips/Enemy 2" index="0"]
 offset_left = 0.0
@@ -1519,25 +1523,25 @@ offset_right = 24.0
 offset_bottom = 24.0
 
 [node name="Card 2" parent="Skill Menu" instance=ExtResource("30_x7avc")]
-visible = false
 layout_mode = 0
+offset_left = 9.0
 offset_top = 1086.0
-offset_right = 408.0
-offset_bottom = 4215.0
+offset_right = 435.0
+offset_bottom = 10803.0
 
 [node name="Card 3" parent="Skill Menu" instance=ExtResource("30_x7avc")]
-visible = false
 layout_mode = 0
+offset_left = 9.0
 offset_top = 1086.0
-offset_right = 408.0
-offset_bottom = 4215.0
+offset_right = 435.0
+offset_bottom = 10803.0
 
 [node name="Card 4" parent="Skill Menu" instance=ExtResource("30_x7avc")]
-visible = false
 layout_mode = 0
+offset_left = 9.0
 offset_top = 1086.0
-offset_right = 408.0
-offset_bottom = 4215.0
+offset_right = 435.0
+offset_bottom = 10803.0
 
 [node name="Flash" parent="Skill Menu/Card 4/Pips/Enemy 2" index="0"]
 offset_left = 0.0

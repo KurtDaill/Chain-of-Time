@@ -15,7 +15,7 @@ public partial class LongShot : PlayerSkill
 		spCost = 2;
 		align = BattleUtilities.AbilityAlignment.Tech;
 		skillType = "Attack"; 
-		rulesText = "[center] Deals DMG Based on Enemy Position \n Front - 4 DMG\nMiddle - 3 DMG\n  Back - 2 DMG";
+		rulesText = "[textSize]small[center] Deals DMG Based on Enemy Position \n Front - 4 DMG\nMiddle - 3 DMG\n  Back - 2 DMG";
 		AbilityTargetingLogic = BattleUtilities.TargetingLogic.Ranged;
 		laserFXScene = GD.Load<PackedScene>(laserFX);
 	}

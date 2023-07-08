@@ -53,7 +53,7 @@ public partial class SkillMenu : BattleMenu
         //Check current characters readied skills, setup cards to match that data
     }
 
-    public override Ability HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){       
+    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){       
         var oldCard = selectedOption;
         switch(input){
             case MenuInput.Right : 
@@ -69,10 +69,10 @@ public partial class SkillMenu : BattleMenu
                 }
                 break;
             case MenuInput.Select : //TODO: Should go to a "Targeting" menu --- ChargeSP returns false if player can't pay, and MUST BE AT THE END OF THIS CONDITIONAL!!!
-                if(noSkills == false && character.GetSkills()[selectedOption].GetEnabledPositions().Contains(character.GetPosition()) && character.ChargeSP(character.GetSkills()[selectedOption].GetSPCost())){ 
+                if(noSkills == false && character.GetSkills()[selectedOption].GetEnabledPositions().Contains(caller.GetRoster().GetCharacterVirtualPosition(character)) && character.ChargeSP(character.GetSkills()[selectedOption].GetSPCost())){ 
                     menuAnim.Play("Exit");
                     TargetingMenu tMenu = (TargetingMenu) parentGUI.menus[5];
-                    tMenu.SetAbilityForTargeting(character.GetSkills()[selectedOption]);
+                    tMenu.SetAbilityForTargeting(character.GetSkills()[selectedOption], parentGUI);
                     parentGUI.ChangeMenu(5, character);
                     return null;
                 }else{

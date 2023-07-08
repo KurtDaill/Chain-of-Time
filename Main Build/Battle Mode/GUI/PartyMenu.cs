@@ -36,7 +36,7 @@ public partial class PartyMenu : BattleMenu{
         buttonHighlights[optionSelected].Visible = true;
 
     }
-    public override Ability HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI)
+    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI)
     {
         switch(input){
             case MenuInput.Left :

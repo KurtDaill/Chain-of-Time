@@ -29,11 +29,11 @@ public partial class TargetingMenu : BattleMenu {
 
 	//Because we want to avoid having to add a special case to the BattleGUI class for opening this menu, we instead
 	//Have the previous menu call this command on the targeting menu for setting up the current target instead
-	public void SetAbilityForTargeting(PlayerAbility newAbility){
+	public void SetAbilityForTargeting(PlayerAbility newAbility, BattleGUI parentGUI){
 		abilityInQuestion = newAbility;
 		if(newAbility is PlayerSkill){
 			PlayerSkill newSkill = (PlayerSkill) newAbility;
-			if(newSkill.GetSPCost() != -1) spRefund = newSkill.GetSPCost();
+			if(newSkill.GetSPCost() != -1) parentGUI.spSpentByEachCombatant[parentGUI.GetIndexOfCharacterInQuestion()] = newSkill.GetSPCost();
 		}
 	}
 
@@ -65,7 +65,7 @@ public partial class TargetingMenu : BattleMenu {
 						decisionRequired = false;
 						break;
 					case TargetingLogic.Melee : //Only legal if we're in the front slot
-						if(caller.GetRoster().GetPositionOfCombatant(character) != BattlePosition.HeroFront){
+						if(caller.GetRoster().GetCharacterVirtualPosition(character) != BattlePosition.HeroFront){
 							//Do the "This attack is super invalid" notification
 							RejectSelection();
 						}else{
@@ -120,6 +120,7 @@ public partial class TargetingMenu : BattleMenu {
 						//Melee only has one potential target, therefore you can't switch 'em
 						//Play Nuh-no sound effect
 						break;
+					/* Reach is on the Chopping Block
 					case TargetingLogic.Reach :
 						if(caller.GetRoster().GetCombatant(BattlePosition.EnemyMid) != null && plannedTargets[0].GetPosition() == BattlePosition.EnemyFront 
 						&& input == MenuInput.Right && character.GetPosition() == BattlePosition.HeroFront){
@@ -131,6 +132,7 @@ public partial class TargetingMenu : BattleMenu {
 							SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyFront), caller);
 						}
 						break;
+					*/
 					case TargetingLogic.Ranged :
 						switch(plannedTargets[0].GetPosition()){
 							case BattlePosition.EnemyFront :
@@ -201,7 +203,8 @@ public partial class TargetingMenu : BattleMenu {
 		}else if(input == MenuInput.Back){
 			abilityInQuestion = null;
 			parentGUI.ChangeMenu(-1, character);
-			character.GainSP(spRefund);
+			character.GainSP(parentGUI.spSpentByEachCombatant[parentGUI.GetIndexOfCharacterInQuestion()]);
+			parentGUI.spSpentByEachCombatant[parentGUI.GetIndexOfCharacterInQuestion()] = 0;
 			SetPointers(new List<Combatant>(), caller); //Clears all pointers by passing an empty list
 			return null;
 		}

@@ -1,13 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://bftjxb62srdq"]
+[gd_scene load_steps=27 format=3 uid="uid://cwgryrsbhnqsu"]
 
-[ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Battle.cs" id="1_4rxw7"]
-[ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="2_1verb"]
-[ext_resource type="PackedScene" uid="uid://234suufiqv8c" path="res://Battle Mode/Player Characters/Silver Combatant.tscn" id="3_p77hq"]
-[ext_resource type="PackedScene" uid="uid://ctkjn6qaseru7" path="res://Battle Mode/BattleGUI.tscn" id="4_noo0e"]
-[ext_resource type="PackedScene" uid="uid://ck78k6iju4ldb" path="res://Battle Mode/Player Characters/Cato Combatant.tscn" id="4_xw6bo"]
-[ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Old/Art/3D/BattleDungeon.dae" id="5_7bshd"]
-[ext_resource type="PackedScene" uid="uid://ckh4ejsj04t82" path="res://Battle Mode/Enemies/Skeleton.tscn" id="5_m0pg8"]
-[ext_resource type="PackedScene" uid="uid://bltlucajwd3c5" path="res://Battle Mode/Enemies/SkeletonGuard.tscn" id="5_xmmo0"]
+[ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Battle.cs" id="1_b2c4d"]
+[ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="2_wbr4y"]
+[ext_resource type="PackedScene" uid="uid://234suufiqv8c" path="res://Battle Mode/Player Characters/Silver Combatant.tscn" id="3_coo3x"]
+[ext_resource type="PackedScene" uid="uid://ck78k6iju4ldb" path="res://Battle Mode/Player Characters/Cato Combatant.tscn" id="4_hn7v5"]
+[ext_resource type="PackedScene" uid="uid://bltlucajwd3c5" path="res://Battle Mode/Enemies/SkeletonGuard.tscn" id="5_h25a0"]
+[ext_resource type="PackedScene" uid="uid://ckh4ejsj04t82" path="res://Battle Mode/Enemies/Skeleton.tscn" id="6_1tjur"]
+[ext_resource type="PackedScene" uid="uid://qkdx5mb1mcw4" path="res://Battle Mode/Enemies/Ghost Mage.tscn" id="7_hnyq4"]
+[ext_resource type="PackedScene" uid="uid://ctkjn6qaseru7" path="res://Battle Mode/BattleGUI.tscn" id="7_pd0wm"]
+[ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Old/Art/3D/BattleDungeon.dae" id="8_trso3"]
+[ext_resource type="AudioStream" uid="uid://rqh26t4tp12q" path="res://Audio/TCoT_-_Combat_3d(1).mp3" id="9_a4lrt"]
 
 [sub_resource type="Animation" id="Animation_rgagi"]
 resource_name = "EnemyCrunch"
@@ -1135,22 +1137,21 @@ ambient_light_energy = 1.5
 [node name="TopNode" type="Node3D"]
 
 [node name="Battle" type="Node3D" parent="." node_paths=PackedStringArray("gui", "battleRoster")]
-script = ExtResource("1_4rxw7")
+script = ExtResource("1_b2c4d")
 gui = NodePath("Camera3D/BattleGUI")
 nextBattlePath = "res://Levels/Combat Playtest One/Victory.tscn"
 defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
-startingScene = true
 battleRoster = NodePath("Roster")
 
 [node name="Roster" type="Node3D" parent="Battle" node_paths=PackedStringArray("debugPlayer", "debugPlayer2", "debugEnemy1", "debugEnemy2", "debugEnemy3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-script = ExtResource("2_1verb")
+script = ExtResource("2_wbr4y")
 debugMode = true
 debugPlayer = NodePath("HeroFront/Cato")
 debugPlayer2 = NodePath("HeroMid/TestHero")
 debugEnemy1 = NodePath("EnemyFront/SkeletonGuard")
 debugEnemy2 = NodePath("EnemyMid/Skeleton")
-debugEnemy3 = NodePath("")
+debugEnemy3 = NodePath("EnemyBack/Ghost Mage")
 
 [node name="HeroBack" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
@@ -1158,27 +1159,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
 [node name="HeroMid" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
 
-[node name="TestHero" parent="Battle/Roster/HeroMid" node_paths=PackedStringArray("readout") instance=ExtResource("3_p77hq")]
+[node name="TestHero" parent="Battle/Roster/HeroMid" node_paths=PackedStringArray("readout") instance=ExtResource("3_coo3x")]
 readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Silver Readout")
 
 [node name="HeroFront" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
 
-[node name="Cato" parent="Battle/Roster/HeroFront" node_paths=PackedStringArray("readout") instance=ExtResource("4_xw6bo")]
+[node name="Cato" parent="Battle/Roster/HeroFront" node_paths=PackedStringArray("readout") instance=ExtResource("4_hn7v5")]
 readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
 
 [node name="EnemyFront" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 
-[node name="SkeletonGuard" parent="Battle/Roster/EnemyFront" instance=ExtResource("5_xmmo0")]
+[node name="SkeletonGuard" parent="Battle/Roster/EnemyFront" instance=ExtResource("5_h25a0")]
 
 [node name="EnemyMid" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
 
-[node name="Skeleton" parent="Battle/Roster/EnemyMid" instance=ExtResource("5_m0pg8")]
+[node name="Skeleton" parent="Battle/Roster/EnemyMid" instance=ExtResource("6_1tjur")]
 
 [node name="EnemyBack" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
+
+[node name="Ghost Mage" parent="Battle/Roster/EnemyBack" instance=ExtResource("7_hnyq4")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Battle/Roster"]
 libraries = {
@@ -1188,31 +1191,31 @@ libraries = {
 [node name="Camera3D" type="Camera3D" parent="Battle"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 4.2, 10.04)
 
-[node name="BattleGUI" parent="Battle/Camera3D" instance=ExtResource("4_noo0e")]
+[node name="BattleGUI" parent="Battle/Camera3D" instance=ExtResource("7_pd0wm")]
 
 [node name="Card 1" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="0"]
-offset_right = 2248.84
+offset_right = 1969.84
 offset_bottom = 4834.0
 
 [node name="Card 2" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="1"]
-offset_right = 561.0
-offset_bottom = 5664.0
+offset_right = 399.0
+offset_bottom = 4834.0
 
 [node name="Card 3" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="2"]
-offset_right = 561.0
-offset_bottom = 5664.0
+offset_right = 399.0
+offset_bottom = 4834.0
 
 [node name="Card 4" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="3"]
-offset_right = 2222.0
-offset_bottom = 5664.0
+offset_right = 1943.0
+offset_bottom = 4834.0
 
 [node name="Turnover Timer" type="Timer" parent="Battle"]
 wait_time = 0.4
 
 [node name="Between Actions Timer" type="Timer" parent="Battle"]
-wait_time = 0.2
+wait_time = 0.1
 
-[node name="BattleDungeon" parent="." instance=ExtResource("5_7bshd")]
+[node name="BattleDungeon" parent="." instance=ExtResource("8_trso3")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="BattleDungeon"]
@@ -1315,6 +1318,11 @@ spot_angle = 20.4822
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_51ne1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_a4lrt")
+volume_db = -25.0
+autoplay = true
 
 [editable path="Battle/Camera3D/BattleGUI"]
 [editable path="Battle/Camera3D/BattleGUI/Skill Menu/Card 1"]

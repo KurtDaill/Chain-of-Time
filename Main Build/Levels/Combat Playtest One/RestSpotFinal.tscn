@@ -1,13 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqjyyodt31r84"]
+[gd_scene load_steps=16 format=3 uid="uid://b5apascimncr6"]
 
-[ext_resource type="Script" path="res://Levels/Combat Playtest One/PrototypeSaveRoom.cs" id="1_uio51"]
-[ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Old/Art/3D/BattleDungeon.dae" id="2_y7xt8"]
-[ext_resource type="Texture2D" uid="uid://5j5eo1phcq28" path="res://Art/Save Icon.png" id="3_0uc8y"]
-[ext_resource type="Texture2D" uid="uid://dgidbbh4fpufs" path="res://Art/Heal Icon.png" id="4_uwvgs"]
-[ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="5_xfiev"]
-[ext_resource type="Texture2D" uid="uid://d054fqnoqr0oo" path="res://Art/Cato Combat Sprite-Sheet.png" id="6_0khtn"]
-[ext_resource type="Texture2D" uid="uid://d7pbriigo4aj" path="res://Art/Silver Combat Sprite-Sheet.png" id="7_3on0m"]
-[ext_resource type="AudioStream" uid="uid://mf37gwjc304a" path="res://Audio/mus_dungeon_01.ogg" id="8_8qyoe"]
+[ext_resource type="Script" path="res://Levels/Combat Playtest One/PrototypeSaveRoom.cs" id="1_aalt1"]
+[ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Old/Art/3D/BattleDungeon.dae" id="2_h63i3"]
+[ext_resource type="Texture2D" uid="uid://5j5eo1phcq28" path="res://Art/Save Icon.png" id="3_mtcmv"]
+[ext_resource type="Texture2D" uid="uid://dgidbbh4fpufs" path="res://Art/Heal Icon.png" id="4_xe7hd"]
+[ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="5_2ls03"]
+[ext_resource type="Texture2D" uid="uid://d054fqnoqr0oo" path="res://Art/Cato Combat Sprite-Sheet.png" id="6_j0c5q"]
+[ext_resource type="Texture2D" uid="uid://d7pbriigo4aj" path="res://Art/Silver Combat Sprite-Sheet.png" id="7_g5ixl"]
+[ext_resource type="AudioStream" uid="uid://mf37gwjc304a" path="res://Audio/mus_dungeon_01.ogg" id="8_ukrhf"]
 
 [sub_resource type="Animation" id="Animation_u18p7"]
 resource_name = "Flicker"
@@ -198,10 +198,10 @@ _data = {
 }
 
 [node name="TopNode" type="Node3D"]
-script = ExtResource("1_uio51")
-nextBattlePath = "res://Levels/Combat Playtest One/Encounter 3.tscn"
+script = ExtResource("1_aalt1")
+nextBattlePath = "res://Levels/Combat Playtest One/Encounter 4.tscn"
 
-[node name="BattleDungeon" parent="." instance=ExtResource("2_y7xt8")]
+[node name="BattleDungeon" parent="." instance=ExtResource("2_h63i3")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="BattleDungeon"]
@@ -311,7 +311,7 @@ environment = SubResource("Environment_51ne1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08, 4.04, 0)
 modulate = Color(1, 1, 1, 0.647059)
 texture_filter = 0
-texture = ExtResource("3_0uc8y")
+texture = ExtResource("3_mtcmv")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Icons/Save"]
 light_color = Color(0, 0.282353, 1, 1)
@@ -321,7 +321,7 @@ omni_range = 10.0
 [node name="Heal" type="Sprite3D" parent="Icons"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08, 2.32, 0)
 modulate = Color(1, 1, 1, 0.647059)
-texture = ExtResource("4_uwvgs")
+texture = ExtResource("4_xe7hd")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Icons/Heal"]
 light_color = Color(0.317647, 1, 0, 1)
@@ -342,11 +342,12 @@ no_depth_test = true
 text = "This is a Save Room.
 
 Your Hit Points and Skill Points have been restored.
+Be careful, this is the last time you'll regain SP
  
 If you lose future combats, you'll come back here.
 
 (Press Start to Continue)"
-font = ExtResource("5_xfiev")
+font = ExtResource("5_2ls03")
 font_size = 96
 outline_size = 18
 
@@ -360,7 +361,7 @@ centered = false
 pixel_size = 0.008
 shaded = true
 alpha_cut = 2
-texture = ExtResource("6_0khtn")
+texture = ExtResource("6_j0c5q")
 hframes = 10
 vframes = 4
 
@@ -371,11 +372,11 @@ flip_h = true
 pixel_size = 0.008
 shaded = true
 alpha_cut = 2
-texture = ExtResource("7_3on0m")
+texture = ExtResource("7_g5ixl")
 hframes = 10
 vframes = 6
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_8qyoe")
+stream = ExtResource("8_ukrhf")
 volume_db = -10.0
 autoplay = true

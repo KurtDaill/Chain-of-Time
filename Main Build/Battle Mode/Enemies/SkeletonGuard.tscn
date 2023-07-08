@@ -1,17 +1,18 @@
-[gd_scene load_steps=20 format=3 uid="uid://ckh4ejsj04t82"]
+[gd_scene load_steps=21 format=3 uid="uid://bltlucajwd3c5"]
 
-[ext_resource type="Script" path="res://Battle Mode/Enemies/Skeleton.cs" id="1_lpvwy"]
-[ext_resource type="Texture2D" uid="uid://qxueooqq05r1" path="res://Art/Skeleton Combat Sprite-Sheet.png" id="2_71u0b"]
+[ext_resource type="Script" path="res://Battle Mode/Enemies/SkeletonGuard.cs" id="1_e4wwr"]
+[ext_resource type="Texture2D" uid="uid://dl2nhvu4ncgu0" path="res://Art/Skeleton Guard Combat Sprite-Sheet.png" id="2_0uvn4"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="2_j6pg3"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/BasicEnemyMelee.cs" id="4_7hva4"]
 [ext_resource type="PackedScene" uid="uid://bhh44xrbceu6a" path="res://Battle Mode/GUI/enemy_nameplate.tscn" id="4_7ih3c"]
+[ext_resource type="Script" path="res://Battle Mode/Abilities/SkeletonTaunt.cs" id="5_5wgob"]
 [ext_resource type="PackedScene" uid="uid://boneh1axl0j65" path="res://Battle Mode/Combat Text.tscn" id="5_gcf22"]
 [ext_resource type="AudioStream" uid="uid://cfj5vrhlk6arb" path="res://Audio/HitSound.wav" id="8_ie5su"]
 [ext_resource type="AudioStream" uid="uid://ciouvtx1se17d" path="res://Audio/Skeleton Taunt.wav" id="9_rjd3c"]
 [ext_resource type="AudioStream" uid="uid://uo20buou3jxx" path="res://Audio/Melee Attack.wav" id="10_ktmeo"]
 [ext_resource type="PackedScene" uid="uid://yqwlafpgpp3" path="res://Battle Mode/GUI/EnemyHealthBar.tscn" id="11_6s4m7"]
 
-[sub_resource type="Animation" id="Animation_4fqd5"]
+[sub_resource type="Animation" id="Animation_xalqq"]
 resource_name = "Attack"
 length = 1.1
 tracks/0/type = "method"
@@ -55,7 +56,7 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_otcst"]
+[sub_resource type="Animation" id="Animation_qnqu4"]
 resource_name = "GoDown"
 length = 0.5
 tracks/0/type = "value"
@@ -71,7 +72,7 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_8bfdd"]
+[sub_resource type="Animation" id="Animation_86r11"]
 resource_name = "HitReact"
 length = 0.8
 tracks/0/type = "bezier"
@@ -122,7 +123,7 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_pytuy"]
+[sub_resource type="Animation" id="Animation_2w7wi"]
 resource_name = "Idle"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -137,7 +138,7 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_tow5y"]
+[sub_resource type="Animation" id="Animation_o8lld"]
 resource_name = "RESET"
 length = 0.001
 tracks/0/type = "bezier"
@@ -198,7 +199,7 @@ tracks/4/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_tgpno"]
+[sub_resource type="Animation" id="Animation_4jhju"]
 resource_name = "Taunt"
 length = 1.5
 tracks/0/type = "value"
@@ -242,7 +243,7 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_e7tbg"]
+[sub_resource type="Animation" id="Animation_nhh5t"]
 resource_name = "TauntAttack"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -285,7 +286,7 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_iupia"]
+[sub_resource type="Animation" id="Animation_4cbcn"]
 resource_name = "TauntIdle"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -300,27 +301,28 @@ tracks/0/keys = {
 "values": [36]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1k43h"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q6qau"]
 _data = {
-"Attack": SubResource("Animation_4fqd5"),
-"GoDown": SubResource("Animation_otcst"),
-"HitReact": SubResource("Animation_8bfdd"),
-"Idle": SubResource("Animation_pytuy"),
-"RESET": SubResource("Animation_tow5y"),
-"Taunt": SubResource("Animation_tgpno"),
-"TauntAttack": SubResource("Animation_e7tbg"),
-"TauntIdle": SubResource("Animation_iupia")
+"Attack": SubResource("Animation_xalqq"),
+"GoDown": SubResource("Animation_qnqu4"),
+"HitReact": SubResource("Animation_86r11"),
+"Idle": SubResource("Animation_2w7wi"),
+"RESET": SubResource("Animation_o8lld"),
+"Taunt": SubResource("Animation_4jhju"),
+"TauntAttack": SubResource("Animation_nhh5t"),
+"TauntIdle": SubResource("Animation_4cbcn")
 }
 
-[node name="Skeleton" type="Node3D" node_paths=PackedStringArray("attack", "nameplate", "healthBar", "displayText", "pointer")]
-script = ExtResource("1_lpvwy")
+[node name="SkeletonGuard" type="Node3D" node_paths=PackedStringArray("attack", "taunt", "nameplate", "healthBar", "displayText", "pointer")]
+script = ExtResource("1_e4wwr")
 attack = NodePath("Attack")
-nameplate = NodePath("Sprite3D/Nameplate Adjuster/Enemy Nameplate")
-healthBar = NodePath("Sprite3D/EnemyHealthBar")
-hp = 5
-maxHP = 5
-displayText = NodePath("Sprite3D/Combat Text")
-pointer = NodePath("Sprite3D/Pointer Adjuster/Pointer")
+taunt = NodePath("Taunt")
+nameplate = NodePath("Nameplate Adjuster/Enemy Nameplate")
+healthBar = NodePath("EnemyHealthBar")
+hp = 6
+maxHP = 6
+displayText = NodePath("Combat Text")
+pointer = NodePath("Pointer Adjuster/Pointer")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 0, 0)
@@ -329,53 +331,21 @@ pixel_size = 0.008
 shaded = true
 alpha_cut = 2
 texture_filter = 1
-texture = ExtResource("2_71u0b")
+texture = ExtResource("2_0uvn4")
 hframes = 10
-vframes = 2
-
-[node name="Pointer Adjuster" type="Node3D" parent="Sprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0.04, 0)
-
-[node name="Pointer" parent="Sprite3D/Pointer Adjuster" instance=ExtResource("2_j6pg3")]
-texture_filter = 0
-frame = 1
-
-[node name="Nameplate Adjuster" type="Node3D" parent="Sprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0, 0)
-
-[node name="Enemy Nameplate" parent="Sprite3D/Nameplate Adjuster" node_paths=PackedStringArray("parent") instance=ExtResource("4_7ih3c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48, 3.52, 0)
-visible = false
-parent = NodePath("../../..")
-
-[node name="Name" parent="Sprite3D/Nameplate Adjuster/Enemy Nameplate" index="2"]
-text = "Polymorphor"
-
-[node name="Combat Text" parent="Sprite3D" instance=ExtResource("5_gcf22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.495, 1.10561, -0.0799999)
-
-[node name="BodyRef" type="Node3D" parent="Sprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0, 0)
-
-[node name="Head" type="Node3D" parent="Sprite3D/BodyRef"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.782151, 1.32306, 0)
-
-[node name="Core" type="Node3D" parent="Sprite3D/BodyRef"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76, 0.745088, 0)
-
-[node name="Weapon" type="Node3D" parent="Sprite3D/BodyRef"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.797603, 1.0428, 0)
-
-[node name="Feet" type="Node3D" parent="Sprite3D/BodyRef"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.720737, 0, 0)
-
-[node name="EnemyHealthBar" parent="Sprite3D" instance=ExtResource("11_6s4m7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.53348, -0.579544, 0)
+vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_1k43h")
+"": SubResource("AnimationLibrary_q6qau")
 }
+
+[node name="Pointer Adjuster" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.04, 0)
+
+[node name="Pointer" parent="Pointer Adjuster" instance=ExtResource("2_j6pg3")]
+texture_filter = 0
+frame = 1
 
 [node name="Attack" type="Node" parent="."]
 script = ExtResource("4_7hva4")
@@ -384,6 +354,39 @@ setName = "Attack"
 damage = PackedInt32Array(1, 2)
 damageProbs = PackedFloat64Array(0.49, 0.51)
 enabledPositions = Array[int]([2, 3, 1])
+
+[node name="Taunt" type="Node" parent="."]
+script = ExtResource("5_5wgob")
+tauntStatusEffectPath = "res://Battle Mode/Status Effects/StatusTauntUntilMove.tscn"
+enabledPositions = Array[int]([2])
+
+[node name="Nameplate Adjuster" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="Enemy Nameplate" parent="Nameplate Adjuster" node_paths=PackedStringArray("parent") instance=ExtResource("4_7ih3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48, 3.52, 0)
+visible = false
+parent = NodePath("../..")
+
+[node name="Name" parent="Nameplate Adjuster/Enemy Nameplate" index="2"]
+text = "Polymorphor"
+
+[node name="Combat Text" parent="." instance=ExtResource("5_gcf22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.295002, 1.10561, -0.0799999)
+
+[node name="BodyRef" type="Node3D" parent="."]
+
+[node name="Head" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.782151, 1.32306, 0)
+
+[node name="Core" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76, 0.745088, 0)
+
+[node name="Weapon" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.797603, 1.0428, 0)
+
+[node name="Feet" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.720737, 0, 0)
 
 [node name="Hit Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ie5su")
@@ -394,5 +397,8 @@ stream = ExtResource("9_rjd3c")
 [node name="Sword Swing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_ktmeo")
 
-[editable path="Sprite3D/Nameplate Adjuster/Enemy Nameplate"]
-[editable path="Sprite3D/Combat Text"]
+[node name="EnemyHealthBar" parent="." instance=ExtResource("11_6s4m7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.66652, -0.579544, 0)
+
+[editable path="Nameplate Adjuster/Enemy Nameplate"]
+[editable path="Combat Text"]

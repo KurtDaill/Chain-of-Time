@@ -39,4 +39,8 @@ public partial class BigBoot : PlayerSkill
 		await ToSignal((Roster)GetParent().GetParent().GetParent(), Roster.SignalName.SwapComplete);
 		flagsRequiredToComplete[1] = true;
 	}
+
+	public override (Combatant, BattleUtilities.BattlePosition)[] GetPositionSwaps(){
+		return new (Combatant, BattleUtilities.BattlePosition)[]{(source, BattleUtilities.BattlePosition.HeroMid)};	
+	}
 }

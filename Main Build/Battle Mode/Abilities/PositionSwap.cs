@@ -5,7 +5,6 @@ using static BattleUtilities;
 public partial class PositionSwap : PlayerAbility
 {
     private Roster battleRoster;
-    private Combatant swapTarget;
     public PositionSwap(){	
 		name = "SWAP";
 		rulesText = "";
@@ -13,14 +12,19 @@ public partial class PositionSwap : PlayerAbility
 	}
 
     public void SetupSwapDetails(Roster ros, Combatant tar){
+        target = new Combatant[1];
         this.battleRoster = ros;
-        this.swapTarget = tar;
+        this.target[0] = tar;
     }
 
     public async override void Begin(){
 		base.Begin();
-        battleRoster.SwapCharacters(source.GetPosition(), swapTarget.GetPosition());
+        battleRoster.SwapCharacters(source.GetPosition(), target[0].GetPosition());
         await ToSignal(battleRoster.GetAnimationPlayer(), AnimationPlayer.SignalName.AnimationFinished);
         EmitSignal(CombatAction.SignalName.ActionComplete);
 	}   
+    
+	public override (Combatant, BattleUtilities.BattlePosition)[] GetPositionSwaps(){
+		return new (Combatant, BattleUtilities.BattlePosition)[]{(source, target[0].GetPosition())};
+	}
 }

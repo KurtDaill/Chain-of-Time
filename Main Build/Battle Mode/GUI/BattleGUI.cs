@@ -14,6 +14,7 @@ public partial class BattleGUI : Control
 	private Battle parentBattle;
 
 	private PlayerCombatant[] playersInQuestion;
+	public int[] spSpentByEachCombatant;
 	private CombatEventData[] abilitiesQueued;
 	private ActionChain chainGUI;
 
@@ -46,6 +47,7 @@ public partial class BattleGUI : Control
 			if(returnedAbility != null){
 				abilitiesQueued[abilitiesQueued.Count(x => x != null)] = returnedAbility.GetEventData();
 				chainGUI.LogAbility(returnedAbility.GetName(), abilitiesQueued.Count(x => x != null) == playersInQuestion.Length);
+				if(returnedAbility.GetPositionSwaps() != null) parentBattle.GetRoster().LogVirtualPositionSwap(abilitiesQueued.Count(x => x != null) - 1, returnedAbility.GetPositionSwaps());
 				GoToNextCharacter();
 			}
 		}
@@ -76,6 +78,8 @@ public partial class BattleGUI : Control
 	public bool ResetGUIStateAndStart(PlayerCombatant[] characters){
 		abilitiesQueued = new CombatEventData[3];
 		playersInQuestion = characters;
+		spSpentByEachCombatant = new int[characters.Length];
+		for(int i = 0; i < characters.Length; i++){spSpentByEachCombatant[i] = 0;}
 		if(playersInQuestion.Contains(null)) throw new ArgumentException("Cannot Sent a PlayerCombatant[] with null entries swhen Reseting GUI state!");
 		currentMenu.Visible = false;
 		lastMenu = currentMenu;
@@ -113,11 +117,15 @@ public partial class BattleGUI : Control
 		if(abilitiesQueued.Count(x => x != null) > 0){
 			playersInQuestion[abilitiesQueued.Count(x => x != null)].UnselectMe();
 			abilitiesQueued[abilitiesQueued.Count(x => x != null) - 1] = null;
+			parentBattle.GetRoster().RollBackVirtualPositionSwap(abilitiesQueued.Count(x => x != null));
 			//var resetQueue = abilitiesQueued.ToList<CombatEventData>().Where(x => x != null).ToList();
 			//resetQueue.Remove(resetQueue.Last<CombatEventData>());
 			//abilitiesQueued = resetQueue.ToArray();
 			
 			playersInQuestion[abilitiesQueued.Count(x => x != null)].SelectMe();
+			//Regains SP spent when they selected their ability this turn
+			playersInQuestion[abilitiesQueued.Count(x => x != null)].GainSP(spSpentByEachCombatant[abilitiesQueued.Count(x=> x != null)]);
+			spSpentByEachCombatant[abilitiesQueued.Count(x=> x != null)] = 0;
 			chainGUI.StepBack();
 			ChangeMenu(0, playersInQuestion[abilitiesQueued.Count(x => x != null)]);
 		}
@@ -148,5 +156,10 @@ public partial class BattleGUI : Control
 		EmitSignal(BattleGUI.SignalName.PlayerFinishedCommandInput);
 		this.active = false;
 		HideGUI(true, true);
+	}
+
+	public int GetIndexOfCharacterInQuestion(){
+		//The current character we're dealing with is indexed in a few arrays, by taking "the number of character's who've logged abilities" we get the index of the one who's currently being considered in the GUI
+		return abilitiesQueued.Where(x => x != null).Count();
 	}   
 }

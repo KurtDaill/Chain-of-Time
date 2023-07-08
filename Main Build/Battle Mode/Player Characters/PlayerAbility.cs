@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+using static BattleUtilities;
 public partial class PlayerAbility : Ability
 {
 
@@ -17,5 +17,9 @@ public partial class PlayerAbility : Ability
 
 	public string GetRulesText(){
 		return rulesText;
+	}
+
+	public virtual (Combatant, BattlePosition)[] GetPositionSwaps(){
+		return null;
 	}
 }

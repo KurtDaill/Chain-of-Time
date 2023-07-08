@@ -80,6 +80,7 @@ public partial class Battle : Node3D
 				eventChain = null;
 				//GUI.Start Doing your Thing()
 				if(waiting) return;
+				battleRoster.ClearVirutalPositions();
 				waiting = true;
 				//Might need better solution for finding characters who are Dead
 				gui.ResetGUIStateAndStart(battleRoster.GetAllPlayerCombatants().Where(x => x.GetHP() > 0).ToArray());

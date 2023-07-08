@@ -15,6 +15,9 @@ public partial class Roster : Node
 
 	};
 
+	private VirtualPositionSwap[] virtualSwaps;
+
+
 	[Signal]
 	public delegate void SwapCompleteEventHandler();
 
@@ -51,7 +54,9 @@ public partial class Roster : Node
 		enemySpots[1] = ((Node3D)this.FindChild("EnemyMid"));
 		enemySpots[2] = ((Node3D)this.FindChild("EnemyBack"));
 
-		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer"); 	
+		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer"); 
+
+		virtualSwaps = new VirtualPositionSwap[3];	
 
 		foreach(Node3D playerSpot in playerSpots){
 			if(playerSpot == null){
@@ -89,11 +94,6 @@ public partial class Roster : Node
 		parent = GetParent<Battle>();
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-
-	}
 	public async void SwapCharacters(BattlePosition moverPos, BattlePosition newPos){
 		List<BattlePosition> positions = new List<BattlePosition>(0){moverPos, newPos};
 		Node3D moverSpot = GetSpotNode(moverPos);
@@ -173,6 +173,7 @@ public partial class Roster : Node
 		Combatant[] output = new Combatant[3];
 		positionData.TryGetValue(BattlePosition.EnemyFront, out output[0]);
 		positionData.TryGetValue(BattlePosition.EnemyMid, out output[1]);
+		positionData.TryGetValue(BattlePosition.EnemyBack, out output[2]);
 		EnemyCombatant[] result = new EnemyCombatant[3];
 		for(int i = 0; i < 3; i++) result[i] = (EnemyCombatant) output[i];
 		return result.Where(x => x != null).ToArray();
@@ -294,6 +295,45 @@ public partial class Roster : Node
 		foreach(Combatant com in check) if(com.GetStatusEffects().Where(x => x is StatusTaunting).Count() != 0) taunters.Add(com);
 		if(!ignoresTaunt && taunters.Count() != 0) return taunters.ToArray();
 		else return check.Where(x => x.GetHP() > 0).ToArray();
+	}
+
+	public BattlePosition GetCharacterVirtualPosition(Combatant character){
+		Dictionary<BattlePosition, Combatant> virtualPositions = new Dictionary<BattlePosition, Combatant>(positionData);
+		for(int i = 0; i < 3; i++){
+			if(virtualSwaps[i] is VirtualPositionSwap){
+				foreach((Combatant, BattlePosition) pair in virtualSwaps[i].GetSwapInstructions()){
+					KeyValuePair<BattlePosition, Combatant> source = ((KeyValuePair<BattlePosition, Combatant>)virtualPositions.FirstOrDefault(x => x.Value == pair.Item1));
+					KeyValuePair<BattlePosition, Combatant> destination = ((KeyValuePair<BattlePosition, Combatant>)virtualPositions.FirstOrDefault(x => x.Key == pair.Item2));
+					virtualPositions.Remove(source.Key);
+					virtualPositions.Remove(destination.Key);
+					virtualPositions.Add(source.Key, destination.Value);
+					virtualPositions.Add(destination.Key, source.Value);	
+				}
+			}
+		}
+		return ((KeyValuePair<BattlePosition, Combatant>)virtualPositions.FirstOrDefault(x => x.Value == character)).Key;
+	}
+
+	public void ClearVirutalPositions(){
+		virtualSwaps = new VirtualPositionSwap[3];
+	}
+
+	public void LogVirtualPositionSwap(int index, (Combatant, BattlePosition)[] swaps){
+		virtualSwaps[index] = new VirtualPositionSwap(swaps);
+	}
+	public void RollBackVirtualPositionSwap(int index){
+		virtualSwaps[index] = null;
+	}
+}
+
+public class VirtualPositionSwap{
+	private (Combatant, BattlePosition)[] swaps;
+	public VirtualPositionSwap((Combatant, BattlePosition)[] newSwaps){
+		swaps = newSwaps;
+	}
+
+	public (Combatant, BattlePosition)[] GetSwapInstructions(){
+		return swaps;
 	}
 }
 	

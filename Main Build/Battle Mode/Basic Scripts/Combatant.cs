@@ -175,11 +175,6 @@ public partial class Combatant : Node3D
 		pointer.Visible = state;
 	}
 
-	public Ability SetupAndGetSwap(Roster ros, PlayerCombatant target){
-		swapAbility.SetupSwapDetails(ros, target);
-		return swapAbility;
-	}
-
 	public virtual void DefeatMe(){
 		animPlay.Play("GoDown");
 		defeated = true;

@@ -45,4 +45,9 @@ public partial class CatoTaunt : PlayerSkill{
 		await ToSignal((Roster)GetParent().GetParent().GetParent(), Roster.SignalName.SwapComplete);
 		flagsRequiredToComplete[1] = true;
 	}
+
+	public override (Combatant, BattleUtilities.BattlePosition)[] GetPositionSwaps(){
+		if(target[0].GetPosition() != BattleUtilities.BattlePosition.EnemyFront) return new (Combatant, BattleUtilities.BattlePosition)[]{(target[0], BattleUtilities.BattlePosition.EnemyFront)};
+		return null;
+	}
 }
