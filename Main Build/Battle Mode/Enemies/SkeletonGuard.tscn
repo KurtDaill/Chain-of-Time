@@ -393,6 +393,7 @@ stream = ExtResource("8_ie5su")
 
 [node name="Taunt Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_rjd3c")
+volume_db = -10.0
 
 [node name="Sword Swing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_ktmeo")

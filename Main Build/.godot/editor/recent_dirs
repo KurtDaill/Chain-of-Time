@@ -1,4 +1,4 @@
-C:/Users/kdail/Desktop/Game Dev/Godot/Chain-of-Time/Test Builds/CoT Combat Test 3 Build
+res://Old/Art/3D
 res://Levels/Combat Playtest One
 res://Battle Mode
 res://Battle Mode/Enemies
@@ -12,7 +12,6 @@ res://Battle Mode/GUI
 res://GUI/Battle Menu Assets
 res://
 res://Old/Levels
-res://Old/Art/3D
 res://Art/3D
 res://Old/Test Scenes/Sprite Testing
 res://Old/Test Scenes/Sprite Testing/Environments
@@ -20,4 +19,3 @@ res://Audio
 res://GUI/Battle Menu Assets/Skill Menu
 res://GUI
 res://Battle Mode/Player Characters
-res://Battle Mode/FX

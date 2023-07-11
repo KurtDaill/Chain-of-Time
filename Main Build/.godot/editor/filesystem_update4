@@ -1,19 +1,115 @@
-res://Battle Mode/PrototypeBattle.tscn
+res://Levels/Combat Playtest One/RestSpotFinal.tscn
+res://Levels/Combat Playtest One/RestSpot.tscn
+res://Battle Mode/Abilities/Ability.cs
+res://Battle Mode/Abilities/BasicEnemyMelee.cs
+res://Battle Mode/Abilities/BigBoot.cs
+res://Battle Mode/Abilities/CatoBasicAttack.cs
+res://Battle Mode/Abilities/CatoShieldRush.cs
+res://Battle Mode/Abilities/CatoTaunt.cs
+res://Battle Mode/Abilities/EnemyAbility.cs
+res://Battle Mode/Abilities/FireBlast.cs
+res://Battle Mode/Abilities/LesserConfusion.cs
+res://Battle Mode/Abilities/LongShot.cs
+res://Battle Mode/Abilities/PositionSwap.cs
+res://Battle Mode/Abilities/SilverBasicAttack.cs
+res://Battle Mode/Abilities/SkeletonTaunt.cs
+res://Battle Mode/Abilities/TestAttack.cs
+res://Battle Mode/Abilities/TestSkill.cs
+res://Battle Mode/Basic Scripts/Battle.cs
+res://Battle Mode/Basic Scripts/CombatAction.cs
+res://Battle Mode/Basic Scripts/Combatant.cs
+res://Battle Mode/Basic Scripts/EnemyCombatant.cs
+res://Battle Mode/Basic Scripts/EnemyNameplate.cs
+res://Battle Mode/Basic Scripts/PlayerSkill.cs
+res://Battle Mode/Basic Scripts/Roster.cs
+res://Battle Mode/Basic Scripts/StatusEffectParticles.cs
+res://Battle Mode/CombatText.cs
+res://Battle Mode/Enemies/EnemyHealthBar.cs
+res://Battle Mode/Enemies/GhostMage.cs
+res://Battle Mode/Enemies/Skeleton.cs
+res://Battle Mode/Enemies/SkeletonBoss.cs
+res://Battle Mode/Enemies/SkeletonGuard.cs
+res://Battle Mode/Enemies/TestEnemy.cs
+res://Battle Mode/FX/CombatFX.cs
+res://Battle Mode/FX/Projectile.cs
+res://Battle Mode/GUI/ActionChain.cs
+res://Battle Mode/GUI/AttackMenu.cs
+res://Battle Mode/GUI/BattleGUI.cs
+res://Battle Mode/GUI/BattleMenu.cs
+res://Battle Mode/GUI/ItemMenu.cs
+res://Battle Mode/GUI/PartyMenu.cs
+res://Battle Mode/GUI/SkillCard.cs
+res://Battle Mode/GUI/SkillMenu.cs
+res://Battle Mode/GUI/StatusNotification.cs
+res://Battle Mode/GUI/SwapMenu.cs
+res://Battle Mode/GUI/TargetingMenu.cs
+res://Battle Mode/GUI/TopMenu.cs
+res://Battle Mode/Player Characters/Cato.cs
+res://Battle Mode/Player Characters/CatoCombatant.cs
+res://Battle Mode/Player Characters/PlayerAbility.cs
+res://Battle Mode/Player Characters/PlayerCombatant.cs
+res://Battle Mode/Player Characters/SilverCombatant.cs
+res://Battle Mode/Status Effects/Notifications/BattleNotification.cs
+res://Battle Mode/Status Effects/Scripts/EmpoweredStatus.cs
+res://Battle Mode/Status Effects/Scripts/OnActStatus.cs
+res://Battle Mode/Status Effects/Scripts/OnUpkeepStatus.cs
+res://Battle Mode/Status Effects/Scripts/Poison.cs
+res://Battle Mode/Status Effects/Scripts/StatusArmor.cs
+res://Battle Mode/Status Effects/Scripts/StatusEffect.cs
+res://Battle Mode/Status Effects/Scripts/StatusTaunting.cs
+res://Battle Mode/Status Effects/Scripts/StatusTauntUntilMove.cs
+res://Battle Mode/Status Effects/Scripts/TestStatusEffect.cs
+res://ChronoEnviro.cs
+res://Cutscenes/Actor.cs
+res://Cutscenes/CutsceneDirector.cs
+res://Cutscenes/DialogueLabel.cs
+res://Cutscenes/ResponseContainer.cs
+res://DialogueBillboard.cs
+res://Explore Mode/CronoScene.cs
+res://Explore Mode/DialogueInteractable.cs
+res://Explore Mode/DialoguePrompt.cs
+res://Explore Mode/Encounter.cs
+res://Explore Mode/ExploreNPC.cs
+res://Explore Mode/ExplorePlayer.cs
+res://Explore Mode/FollowerNPCcs.cs
+res://Explore Mode/InteractionPoint.cs
+res://Explore Mode/LevelTransition.cs
+res://Explore Mode/Promenade.cs
+res://Explore Mode/PromenadeMap.cs
+res://Explore Mode/ReturnOnlyFragment.cs
+res://Explore Mode/TimeFragment.cs
+res://Explore Mode/TimeSensitiveCollider.cs
+res://Explore Mode/Waypoint.cs
+res://GameMaster.cs
+res://GameplayModule.cs
+res://GUI/PlayerCharacterReadout.cs
+res://GUI/ReadoutContainer.cs
+res://GUI/TextboxSpawnTest.cs
+res://Levels/Combat Playtest One/DefeatRoom.cs
+res://Levels/Combat Playtest One/PrototypeSaveRoom.cs
+res://Levels/Combat Playtest One/PrototypeWinScreen.cs
+res://MovingCamera.cs
+res://Old/Art/3D Pipeline Testing/Cato_House_Demo.cs
+res://Old/CameraManager.cs
+res://Old/Levels/TutorialSplash.cs
+res://Old/Test Scenes/Sprite Testing/InContextSpriteTest.cs
+res://SceneConfig.cs
+res://StoryState.cs
+res://Temp.cs
 res://GUI/Themes/Skill Card Normal Small.tres
 res://GUI/Themes/Readout Text.tres
 res://GUI/Themes/Skill Card Normal.tres
 res://GUI/Themes/UI Impact.tres
 res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres
-res://Battle Mode/Player Characters/Silver Combatant.tscn
-res://Battle Mode/Enemies/Ghost Mage.tscn
-res://Battle Mode/BattleGUI.tscn
-res://Battle Mode/Player Characters/Cato Combatant.tscn
+res://Old/Test Scenes/Sprite Testing/Environments/Netural Env.tres
+res://Old/Test Scenes/Sprite Testing/Environments/Big Sun Env.tres
+res://Old/Test Scenes/Sprite Testing/Environments/Night Env.tres
+res://Old/Test Scenes/PresentEnvironmentChallengeRoom.tres
+res://Old/Test Scenes/Past Environment.tres
 res://Battle Mode/Enemies/SkeletonGuard.tscn
-res://Battle Mode/Enemies/Skeleton.tscn
-res://GUI/SkillCard.tscn
+res://Battle Mode/Player Characters/Silver Combatant.tscn
 res://Levels/Combat Playtest One/Encounter 1.tscn
 res://Levels/Combat Playtest One/Encounter 2.tscn
 res://Levels/Combat Playtest One/Encounter 3.tscn
 res://Levels/Combat Playtest One/Encounter 4.tscn
-res://Levels/Combat Playtest One/RestSpot.tscn
-res://Levels/Combat Playtest One/RestSpotFinal.tscn
+res://Levels/Combat Playtest One/Victory.tscn

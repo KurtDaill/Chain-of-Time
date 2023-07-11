@@ -1142,7 +1142,7 @@ nextBattlePath = "res://Levels/Combat Playtest One/RestSpotFinal.tscn"
 defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
 battleRoster = NodePath("Roster")
 
-[node name="Roster" type="Node3D" parent="Battle" node_paths=PackedStringArray("debugPlayer", "debugPlayer2", "debugEnemy1", "debugEnemy2", "debugEnemy3")]
+[node name="Roster" type="Node3D" parent="Battle" node_paths=PackedStringArray("debugPlayer", "debugPlayer2", "debugEnemy1", "debugEnemy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 script = ExtResource("2_nquj8")
 debugMode = true
@@ -1150,7 +1150,6 @@ debugPlayer = NodePath("HeroFront/Cato")
 debugPlayer2 = NodePath("HeroMid/TestHero")
 debugEnemy1 = NodePath("EnemyFront/Skeleton")
 debugEnemy2 = NodePath("EnemyMid/Ghost Mage")
-debugEnemy3 = NodePath("")
 
 [node name="HeroBack" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
@@ -1318,7 +1317,7 @@ environment = SubResource("Environment_51ne1")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_xnwdo")
-volume_db = -25.0
+volume_db = -15.0
 autoplay = true
 
 [editable path="Battle/Camera3D/BattleGUI"]
