@@ -2,6 +2,7 @@ using System;
 using Godot;
 using static BattleUtilities;
 public partial class CatoShieldRush : PlayerSkill{
+	/*
     [Export(PropertyHint.File)]
     string armorStatusFilePath;
 
@@ -47,4 +48,5 @@ public partial class CatoShieldRush : PlayerSkill{
 		if(source.GetPosition() != BattleRank.HeroFront) return new (Combatant, BattleUtilities.BattleRank)[]{(source, BattleUtilities.BattleRank.HeroFront)};
 		return null;
 	}
+	*/
 }

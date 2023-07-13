@@ -4,7 +4,7 @@ using static BattleUtilities;
 
 public partial class LongShot : PlayerSkill
 {
-	
+	/*
 	[Export(PropertyHint.File)]
 	string laserFX;
 	PackedScene laserFXScene;
@@ -39,4 +39,5 @@ public partial class LongShot : PlayerSkill
 		}
 		SpawnEffectOnTarget(1, laserFXScene, target[0]);
 	}	
+	*/
 }

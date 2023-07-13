@@ -384,7 +384,7 @@ setAnimation = "Attack"
 setName = "Attack"
 damage = PackedInt32Array(1, 2)
 damageProbs = PackedFloat64Array(0.49, 0.51)
-enabledPositions = Array[int]([2, 3, 1])
+enabledRanks = Array[int]([2, 3, 1])
 
 [node name="Hit Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ie5su")

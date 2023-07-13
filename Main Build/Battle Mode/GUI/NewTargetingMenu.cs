@@ -10,6 +10,8 @@ public partial class NewTargetingMenu : BattleMenu {
     List<Combatant> selectedTargets;
     //Used to track which Rank/Lane the player is targeting
     int positionIndex = -1;
+
+    bool invalid = false;
     public override void _Ready(){
 
     }
@@ -17,14 +19,53 @@ public partial class NewTargetingMenu : BattleMenu {
     public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         
         //Displays the detail of the current attack in some GUI element
-
-        //If the ability cares about lanes/ranks: set positionIndex to a certain value
-        //If not, set positionIndex to -1;
+        
     }
 
     //Because we want to avoid having to add a special case to the BattleGUI class for opening this menu, we instead have the previous menu call this command on the targeting menu for setting up the current target instead
-    public void SetAbilityForTargeting(PlayerAbility newAbility, BattleGUI parentGUI){
+    public void SetAbilityForTargeting(PlayerAbility newAbility, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
+        currentAbility = newAbility;
+        selectedTargets = null;
         //Set all variables/flags related to what ability we're currently targetting.
+        switch(newAbility.GetTargetingLogic()){
+            case TargetingLogic.Self :
+                selectedTargets = new List<Combatant>{character}; break;
+            case TargetingLogic.SinlgeTargetPlayer : 
+                selectedTargets = new List<Combatant>{character}; break;
+            case TargetingLogic.SingleTargetEnemy :
+                foreach(EnemyCombatant enemy in caller.GetRoster().GetAllEnemyCombatants()){ if(GetLegalTargets(new List<Combatant>(){enemy}, caller).Count() != 0) selectedTargets = new List<Combatant>(){enemy}; }
+                break;
+            case TargetingLogic.MyLanePlayers : case TargetingLogic.AnyLaneHitsPlayers :
+                positionIndex = (int)character.GetPosition().GetLane();
+                selectedTargets = caller.GetRoster().GetCombatantsByLane((BattleLane)positionIndex, true, false).ToList();
+                break;
+            case TargetingLogic.MyLaneEnemies :
+                selectedTargets = caller.GetRoster().GetCombatantsByLane(character.GetPosition().GetLane(), false, true).ToList(); break;
+            case TargetingLogic.AnyLaneHitsEnemies :
+                for(int i = 0; i < 3; i++){
+                    if(caller.GetRoster().GetCombatantsByLane((BattleLane)i, false, true).Count() != 0){
+                        positionIndex = i;
+                        selectedTargets = caller.GetRoster().GetCombatantsByLane((BattleLane)positionIndex, false, true).ToList();
+                        break; 
+                    }
+                }
+                break;
+            case TargetingLogic.MyRank : case TargetingLogic.PlayerRank :
+                positionIndex = (int)character.GetPosition().GetRank();
+                selectedTargets = caller.GetRoster().GetCombatantsByRank((BattleRank)positionIndex).ToList();
+                break;
+            
+            case TargetingLogic.EnemyRank :
+                positionIndex = 3; //There has to be SOMEONE at the first enemy Rank.
+                selectedTargets = caller.GetRoster().GetCombatantsByRank((BattleRank)positionIndex).ToList();
+                break;
+            case TargetingLogic.AllEnemies :
+                selectedTargets = caller.GetRoster().GetAllEnemyCombatants().ToList<Combatant>();
+                break;
+            case TargetingLogic.AllPlayers :
+                selectedTargets = caller.GetRoster().GetAllPlayerCombatants().ToList<Combatant>();
+                break;
+        }
     }
 
     public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
@@ -47,13 +88,13 @@ public partial class NewTargetingMenu : BattleMenu {
         */
         switch(currentAbility.GetTargetingLogic()){
             //All of these Targeting Types require no input from the player.
-            case TargetingLogic.Self: case TargetingLogic.MyRank: case TargetingLogic.MyLane: case TargetingLogic.AllAllies: case TargetingLogic.AllEnemies:
+            case TargetingLogic.Self: case TargetingLogic.MyRank: case TargetingLogic.MyLanePlayers : case TargetingLogic.MyLaneEnemies : case TargetingLogic.AllPlayers: case TargetingLogic.AllEnemies:
                 break;
 
-            case TargetingLogic.SingleTargetAlly : case TargetingLogic.SingleTargetEnemy :
+            case TargetingLogic.SinlgeTargetPlayer : case TargetingLogic.SingleTargetEnemy :
                 HandleSelectCharacter(input, character, caller, parentGUI);
                 break;
-            case TargetingLogic.AnyLaneHitsAllies: case TargetingLogic.AnyLaneHitsEnemies :
+            case TargetingLogic.AnyLaneHitsPlayers: case TargetingLogic.AnyLaneHitsEnemies :
                 HandleSelectLane(input, character, caller, parentGUI);
                 break;
             case TargetingLogic.PlayerRank: case TargetingLogic.EnemyRank:
@@ -92,7 +133,7 @@ public partial class NewTargetingMenu : BattleMenu {
             break;
         }
         newSelection = caller.GetRoster().GetCombatant((BattleLane)selectLane, (BattleRank)selectRank);
-        if(currentAbility.GetTargetingLogic() == TargetingLogic.SingleTargetAlly && newSelection is EnemyCombatant){ RejectSelection(); return; }
+        if(currentAbility.GetTargetingLogic() == TargetingLogic.SinlgeTargetPlayer && newSelection is EnemyCombatant){ RejectSelection(); return; }
         if(currentAbility.GetTargetingLogic() == TargetingLogic.SingleTargetEnemy && newSelection is PlayerCombatant){ RejectSelection(); return; }
         selectedTargets = new List<Combatant>(){newSelection};
         SetPointers(caller, selectedTargets);
@@ -109,7 +150,7 @@ public partial class NewTargetingMenu : BattleMenu {
                 positionIndex --;
                 break;
         }
-        selectedTargets = caller.GetRoster().GetCombatantsByLane((BattleLane)positionIndex, (currentAbility.GetTargetingLogic() == TargetingLogic.AnyLaneHitsAllies), (currentAbility.GetTargetingLogic() == TargetingLogic.AnyLaneHitsEnemies)).ToList();
+        selectedTargets = caller.GetRoster().GetCombatantsByLane((BattleLane)positionIndex, (currentAbility.GetTargetingLogic() == TargetingLogic.AnyLaneHitsPlayers), (currentAbility.GetTargetingLogic() == TargetingLogic.AnyLaneHitsEnemies)).ToList();
         SetPointers(caller, selectedTargets);
     }
 
@@ -129,57 +170,64 @@ public partial class NewTargetingMenu : BattleMenu {
         if(checkIndex > 2 && currentAbility.GetTargetingLogic() == TargetingLogic.PlayerRank) {RejectSelection(); return;}
         //Check Index is valid if we've reached this block
         positionIndex = checkIndex;
-        selectedTargets = caller.GetRoster().GetCombatntsByRank((BattleRank)positionIndex).ToList();
+        selectedTargets = caller.GetRoster().GetCombatantsByRank((BattleRank)positionIndex).ToList();
         SetPointers(caller, selectedTargets);
     }   
 
     //We do EVERY check as to whether or not someone is available for targeting: THIS DOES NOT INCLUDE CHECKS ABOUT THE SOURCE CHARACTER
-    //Returns true if there are legal targets
     public List<Combatant> GetLegalTargets(List<Combatant> desiredTargets, Battle battle, int positionIndex = -1){
         List<Combatant> actualTargets = new List<Combatant>();
         foreach(Combatant target in desiredTargets){
             switch(currentAbility.GetTargetingLogic()){
 
-                case TargetingLogic.SingleTargetAlly : case TargetingLogic.SingleTargetEnemy :
-                    //Check Range
-                    if(!currentAbility.GetEnabledPositions().Contains(target.GetPosition().GetRank())) continue;
-                    actualTargets.Add(target);
+                case TargetingLogic.SinlgeTargetPlayer : //Check Range & valid type (Enemy v Player)
+                    if(currentAbility.GetenabledRanks().Contains(target.GetPosition().GetRank()) && target is PlayerCombatant) actualTargets.Add(target);
+                    break;
+                
+                case TargetingLogic.SingleTargetEnemy : //Check Range & valid type (Enemy v Player)
+                    if(currentAbility.GetenabledRanks().Contains(target.GetPosition().GetRank()) && target is EnemyCombatant) actualTargets.Add(target);
                     break;
 
-                case TargetingLogic.MyLane :
-                    //Checks targets are in the correct lane
-                    if(target.GetPosition().GetLane() != source.GetPosition().GetLane()) continue;
-                    actualTargets.Add(target);
+                case TargetingLogic.MyLanePlayers : //Checks targets are in the correct lane & valid type (Enemy v Player)
+                    if(target.GetPosition().GetLane() == source.GetPosition().GetLane() && target is PlayerCombatant) actualTargets.Add(target);
                     break;
 
-                case TargetingLogic.MyRank :
-                    //Checks targets are in the correct rank
+                case TargetingLogic.MyLaneEnemies : //Checks targets are in the correct lane
+                    if(target.GetPosition().GetLane() != source.GetPosition().GetLane() && target is EnemyCombatant) actualTargets.Add(target);
+                    break;
+
+                case TargetingLogic.MyRank : //Checks targets are in the correct rank & valid type (Enemy v Player)
                     if(target.GetPosition().GetRank() != source.GetPosition().GetRank()) continue;
                     actualTargets.Add(target);
                     break;
 
-                case TargetingLogic.AnyLaneHitsAllies : case TargetingLogic.AnyLaneHitsEnemies :
+                case TargetingLogic.AnyLaneHitsPlayers : //Checks targets are in the correct lane & valid type (Enemy v Player)
                     if(positionIndex == -1) throw new ArgumentException("Must define a positionIndex for an AnyLane ability");
-                    //Checks targets are in the correct lane
-                    if((int)target.GetPosition().GetLane() != positionIndex) continue;
-                    actualTargets.Add(target);
+                    if((int)target.GetPosition().GetLane() == positionIndex && target is PlayerCombatant) actualTargets.Add(target);
+                    break; 
+                
+                case TargetingLogic.AnyLaneHitsEnemies : //Checks targets are in the correct lane & valid type (Enemy v Player)
+                    if(positionIndex == -1) throw new ArgumentException("Must define a positionIndex for an AnyLane ability");
+                    if((int)target.GetPosition().GetLane() == positionIndex && target is EnemyCombatant) actualTargets.Add(target);
                     break;
 
-                case TargetingLogic.PlayerRank :
-                case TargetingLogic.EnemyRank :
+                case TargetingLogic.PlayerRank : //Checks targets are in the correct rank & valid type (Enemy v Player)
                     if(positionIndex == -1) throw new ArgumentException("Must define a positionIndex for AnyRank ability");
-                    //Checks targets are in the correct rank
-                    if((int)target.GetPosition().GetLane() != positionIndex) continue;
-                    actualTargets.Add(target);
+                    if((int)target.GetPosition().GetLane() == positionIndex && target is PlayerCombatant) actualTargets.Add(target);
                     break;
 
-                case TargetingLogic.AllEnemies :
+
+                case TargetingLogic.EnemyRank : //Checks targets are in the correct rank & valid type (Enemy v Player)
+                    if(positionIndex == -1) throw new ArgumentException("Must define a positionIndex for AnyRank ability");
+                    if((int)target.GetPosition().GetLane() == positionIndex && target is EnemyCombatant) actualTargets.Add(target);
+                    break;
+
+                case TargetingLogic.AllEnemies : //Make checks for certain taget types. Dunno What Yet.
                     actualTargets = desiredTargets;
-                    //Make checks for certain taget types.
                     return actualTargets;
 
                 case TargetingLogic.Self :
-                case TargetingLogic.AllAllies :
+                case TargetingLogic.AllPlayers :
                     //You can always target your allies or yourself, no check nessicary.
                     return desiredTargets;
             }

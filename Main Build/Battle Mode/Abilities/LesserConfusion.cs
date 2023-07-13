@@ -3,6 +3,7 @@ using System;
 using static BattleUtilities;
 public partial class LesserConfusion : EnemyAbility
 {
+	/*
 	public override void _Ready(){
         name = "LesserConfusion";
         animation = "Spellcast";
@@ -25,4 +26,5 @@ public partial class LesserConfusion : EnemyAbility
 		await ToSignal((Roster)GetParent().GetParent().GetParent(), Roster.SignalName.SwapComplete);
 		flagsRequiredToComplete[1] = true;
 	}
+	*/
 }

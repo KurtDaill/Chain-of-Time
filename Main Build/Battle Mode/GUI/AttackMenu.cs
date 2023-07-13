@@ -20,12 +20,12 @@ public partial class AttackMenu : BattleMenu
             //var ability = character.GetBasicAttack();
             //ability.SetTargets(new PMCharacter[]{caller.PositionLookup(PMBattleUtilities.BattlePos.EnemyOne)});//TODO make conform with selection functions
             //return ability;
-            if(!character.GetBasicAttack().GetEnabledPositions().Contains(caller.GetRoster().GetCharacterVirtualPosition(character).Item2)){
+            if(!character.GetBasicAttack().GetenabledRanks().Contains(caller.GetRoster().GetCharacterVirtualPosition(character).GetRank())){
                 selectError.Play();
                 return null;
             }
-            TargetingMenu tMenu = (TargetingMenu) parentGUI.menus[5];
-            tMenu.SetAbilityForTargeting(character.GetBasicAttack(), parentGUI);
+            NewTargetingMenu tMenu = (NewTargetingMenu) parentGUI.menus[5];
+            tMenu.SetAbilityForTargeting(character.GetBasicAttack(), character, caller, parentGUI);
             parentGUI.ChangeMenu(5, character);
             return null;
         }

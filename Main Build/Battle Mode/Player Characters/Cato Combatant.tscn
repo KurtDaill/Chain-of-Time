@@ -420,7 +420,7 @@ _data = {
 "Taunt": SubResource("Animation_uumsx")
 }
 
-[node name="Cato" type="Node3D" node_paths=PackedStringArray("basicAttack", "displayText", "swapAbility", "pointer") groups=["PlayerCombatant"]]
+[node name="Cato" type="Node3D" node_paths=PackedStringArray("basicAttack", "displayText", "pointer") groups=["PlayerCombatant"]]
 script = ExtResource("1_r8uo0")
 sp = 2
 maxSP = 2
@@ -429,7 +429,6 @@ displayPortrait = ExtResource("2_kpxx0")
 hp = 5
 maxHP = 5
 displayText = NodePath("Combat Text")
-swapAbility = NodePath("SwapPositions")
 pointer = NodePath("Pointer Adjuster/Pointer")
 
 [node name="Sprite Adjuster" type="Node3D" parent="."]
@@ -458,23 +457,18 @@ libraries = {
 
 [node name="CatoBasicAttack" type="Node" parent="."]
 script = ExtResource("4_qgcm6")
-enabledPositions = Array[int]([3, 2])
+enabledRanks = Array[int]([2, 3])
 
 [node name="SwapPositions" type="Node" parent="."]
 script = ExtResource("5_v3stx")
-enabledPositions = Array[int]([3, 4, 5])
 
 [node name="Shield Rush" type="Node" parent="."]
 script = ExtResource("7_1v7hy")
-armorStatusFilePath = "res://Battle Mode/Status Effects/CatoShieldRushStatus.tscn"
 spCost = 1
-enabledPositions = Array[int]([3, 4, 5])
 
 [node name="Taunt" type="Node" parent="."]
 script = ExtResource("8_t0u03")
-tauntStatusEffectPath = "res://Battle Mode/Status Effects/StatusTauntUntilMove.tscn"
 spCost = 2
-enabledPositions = Array[int]([3, 2, 1, 0])
 
 [node name="Combat Text" parent="." instance=ExtResource("8_3o5il")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63653, 1.66561, -0.0799999)

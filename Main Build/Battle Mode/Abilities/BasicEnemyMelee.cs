@@ -28,10 +28,11 @@ public partial class BasicEnemyMelee : EnemyAbility
 
 	public override void Begin(){
 		base.Begin();
+		target[0] = GetMeleeTarget(parentBattle);
 		PlayCoreAnimation();
 	}
 
 	public override void AnimationTrigger(int phase){
-        parentBattle.GetRoster().GetCombatant(BattleUtilities.BattleRank.HeroFront).TakeDamage(GenerateDamageFromChart(damageChart));
+        target[0].TakeDamage(GenerateDamageFromChart(damageChart));
     }
 }

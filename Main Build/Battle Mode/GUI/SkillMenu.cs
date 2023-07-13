@@ -41,7 +41,7 @@ public partial class SkillMenu : BattleMenu
         else{
             for(int i = 0; i < 4; i++){
                 if(i < skills.Length){
-                    cards[i].SetDisplay(skills[i].GetName(), skills[i].GetRulesText(), skills[i].GetSkilType(), skills[i].GetAbilityAlignment(), skills[i].GetSPCost(), skills[i].GetEnabledPositions());
+                    cards[i].SetDisplay(skills[i].GetName(), skills[i].GetRulesText(), skills[i].GetSkilType(), skills[i].GetAbilityAlignment(), skills[i].GetSPCost(), skills[i].GetenabledRanks());
                     availableCards++;
                 }else{
                     cards[i].Visible = false;
@@ -69,14 +69,14 @@ public partial class SkillMenu : BattleMenu
                 }
                 break;
             case MenuInput.Select : //TODO: Should go to a "Targeting" menu --- ChargeSP returns false if player can't pay, and MUST BE AT THE END OF THIS CONDITIONAL!!!
-                if(noSkills == false && character.GetSkills()[selectedOption].GetEnabledPositions().Contains(caller.GetRoster().GetCharacterVirtualPosition(character).Item2) && character.ChargeSP(character.GetSkills()[selectedOption].GetSPCost())){ 
+                if(noSkills == false && character.GetSkills()[selectedOption].GetenabledRanks().Contains(caller.GetRoster().GetCharacterVirtualPosition(character).GetRank()) && character.ChargeSP(character.GetSkills()[selectedOption].GetSPCost())){ 
                     menuAnim.Play("Exit");
                     NewTargetingMenu tMenu = (NewTargetingMenu) parentGUI.menus[5];
-                    tMenu.SetAbilityForTargeting(character.GetSkills()[selectedOption], parentGUI);
+                    tMenu.SetAbilityForTargeting(character.GetSkills()[selectedOption], character, caller, parentGUI);
                     parentGUI.ChangeMenu(5, character);
                     return null;
                 }else{
-                    if(!character.GetSkills()[selectedOption].GetEnabledPositions().Contains(character.GetPosition().Item2)){
+                    if(!character.GetSkills()[selectedOption].GetenabledRanks().Contains(character.GetPosition().GetRank())){
                         cards[selectedOption].FlashFriendlyPips();
                     }
                     rejectSound.Play();

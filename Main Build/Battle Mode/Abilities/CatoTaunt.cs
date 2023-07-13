@@ -2,6 +2,7 @@ using System;
 using Godot;
 using static BattleUtilities;
 public partial class CatoTaunt : PlayerSkill{
+	/*
     [Export(PropertyHint.File)]
     string tauntStatusEffectPath;
 	public override void _Ready(){
@@ -33,7 +34,7 @@ public partial class CatoTaunt : PlayerSkill{
 		StatusTauntUntilMove tauntStatus = GD.Load<PackedScene>(tauntStatusEffectPath).Instantiate<StatusTauntUntilMove>();
 		source.GainStatus(tauntStatus);
 		tauntStatus.Begin();
-		if(target[0].GetPosition() != BattleRank.EnemyFront){
+		if(target[0].GetPosition().GetRank() != BattleRank.EnemyFront){
 			parentBattle.GetRoster().SwapCharacters(target[0].GetPosition(), BattleRank.EnemyFront);
         	WaitForSwap();
 		}else{
@@ -50,4 +51,5 @@ public partial class CatoTaunt : PlayerSkill{
 		if(target[0].GetPosition() != BattleUtilities.BattleRank.EnemyFront) return new (Combatant, BattleUtilities.BattleRank)[]{(target[0], BattleUtilities.BattleRank.EnemyFront)};
 		return null;
 	}
+	*/
 }

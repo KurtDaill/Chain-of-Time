@@ -9,7 +9,8 @@ public partial class CatoBasicAttack : PlayerAbility
 		That function will need data from this ability...
 	*/
 
-	public CatoBasicAttack(){	
+	public override void _Ready(){
+		base._Ready();	
 		name = "Basic Atk";
 		animation = "CatoBasicAttack";
 		currentDamageChart = new System.Collections.Generic.Dictionary<double, int>()
@@ -18,8 +19,9 @@ public partial class CatoBasicAttack : PlayerAbility
 			{0.51, 2}
 		};
 
-		rulesText = " [center]Melee \n Cato Deals 1-2 Damage";
-		AbilityTargetingLogic = TargetingLogic.Melee;
+		rulesText = "[center]Melee \n Cato Deals 1-2 Damage";
+		AbilityTargetingLogic = TargetingLogic.SingleTargetEnemy;
+		enabledRanks = new Godot.Collections.Array<BattleRank>(){BattleRank.HeroFront, BattleRank.EnemyFront};
 	}
 
 	public override void AnimationTrigger(int phase){
@@ -33,7 +35,7 @@ public partial class CatoBasicAttack : PlayerAbility
 		//	//Ability Fails
 			//TODO: Figure out how to handle abilities failing to go off
 		//}
-		parentBattle.GetRoster().GetCombatant(BattleRank.EnemyFront).TakeDamage(GenerateDamageFromChart(currentDamageChart));
+		target[0].TakeDamage(GenerateDamageFromChart(currentDamageChart));
 	}
 
 	public override void Begin(){

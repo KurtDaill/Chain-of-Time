@@ -226,15 +226,16 @@ public static class BattleUtilities
 
 	public enum TargetingLogic{
 		Self,
-		SingleTargetAlly,
+		SinlgeTargetPlayer,
 		SingleTargetEnemy,
 		MyRank,
-		MyLane,
-		AnyLaneHitsAllies,
+		MyLanePlayers,
+		MyLaneEnemies,
+		AnyLaneHitsPlayers,
 		AnyLaneHitsEnemies,
 		PlayerRank,
 		EnemyRank,
-		AllAllies,
+		AllPlayers,
 		AllEnemies
 	}
 

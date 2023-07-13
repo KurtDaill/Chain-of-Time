@@ -3,7 +3,7 @@ using System;
 using static BattleUtilities;
 public partial class BigBoot : PlayerSkill
 {
-
+	/*
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -43,4 +43,5 @@ public partial class BigBoot : PlayerSkill
 	public override (Combatant, (BattleLane, BattleRank))[] GetPositionSwaps(){
 		return new (Combatant, (BattleLane, BattleRank))[]{(source, (source.GetPosition().Item1, BattleUtilities.BattleRank.HeroMid))};	
 	}
+	*/
 }

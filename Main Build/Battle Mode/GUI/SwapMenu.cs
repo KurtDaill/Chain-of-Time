@@ -3,6 +3,7 @@ using Godot;
 using static BattleUtilities;
 
 public partial class SwapMenu : BattleMenu{
+    /*
     PlayerCombatant subject, rightTarget, leftTarget;
 
     private bool rightSelected = false;
@@ -72,4 +73,5 @@ public partial class SwapMenu : BattleMenu{
             throw new NotImplementedException(); //TODO Custom Exception
         }
     }
+    */
 }

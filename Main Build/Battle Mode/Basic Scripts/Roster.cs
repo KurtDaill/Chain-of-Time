@@ -25,31 +25,39 @@ public partial class Roster : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		characterSpots[0, 0] = ((Node3D)this.FindChild("HeroBack1"));
-		characterSpots[0, 1] = ((Node3D)this.FindChild("HeroMid1"));
-		characterSpots[0, 2] = ((Node3D)this.FindChild("HeroFront1"));
-		characterSpots[0, 3] = ((Node3D)this.FindChild("EnemyFront1"));
-		characterSpots[0, 4] = ((Node3D)this.FindChild("EnemyMid1"));
-		characterSpots[0, 5] = ((Node3D)this.FindChild("EnemyBack1"));
+		characterSpots[0, 0] = ((Node3D)this.GetNode("HeroBack0"));
+		characterSpots[0, 1] = ((Node3D)this.GetNode("HeroMid0"));
+		characterSpots[0, 2] = ((Node3D)this.GetNode("HeroFront0"));
+		characterSpots[0, 3] = ((Node3D)this.GetNode("EnemyFront0"));
+		characterSpots[0, 4] = ((Node3D)this.GetNode("EnemyMid0"));
+		characterSpots[0, 5] = ((Node3D)this.GetNode("EnemyBack0"));
 
-		characterSpots[1, 0] = ((Node3D)this.FindChild("HeroBack2"));
-		characterSpots[1, 1] = ((Node3D)this.FindChild("HeroMid2"));
-		characterSpots[1, 2] = ((Node3D)this.FindChild("HeroFront2"));
-		characterSpots[1, 3] = ((Node3D)this.FindChild("EnemyFront2"));
-		characterSpots[1, 4] = ((Node3D)this.FindChild("EnemyMid2"));
-		characterSpots[1, 5] = ((Node3D)this.FindChild("EnemyBack2"));
+		characterSpots[1, 0] = ((Node3D)this.GetNode("HeroBack1"));
+		characterSpots[1, 1] = ((Node3D)this.GetNode("HeroMid1"));
+		characterSpots[1, 2] = ((Node3D)this.GetNode("HeroFront1"));
+		characterSpots[1, 3] = ((Node3D)this.GetNode("EnemyFront1"));
+		characterSpots[1, 4] = ((Node3D)this.GetNode("EnemyMid1"));
+		characterSpots[1, 5] = ((Node3D)this.GetNode("EnemyBack1"));
 
-		characterSpots[2, 0] = ((Node3D)this.FindChild("HeroBack3"));
-		characterSpots[2, 1] = ((Node3D)this.FindChild("HeroMid3"));
-		characterSpots[2, 2] = ((Node3D)this.FindChild("HeroFront3"));
-		characterSpots[2, 3] = ((Node3D)this.FindChild("EnemyFront3"));
-		characterSpots[2, 4] = ((Node3D)this.FindChild("EnemyMid3"));
-		characterSpots[2, 5] = ((Node3D)this.FindChild("EnemyBack3"));
+		characterSpots[2, 0] = ((Node3D)this.GetNode("HeroBack2"));
+		characterSpots[2, 1] = ((Node3D)this.GetNode("HeroMid2"));
+		characterSpots[2, 2] = ((Node3D)this.GetNode("HeroFront2"));
+		characterSpots[2, 3] = ((Node3D)this.GetNode("EnemyFront2"));
+		characterSpots[2, 4] = ((Node3D)this.GetNode("EnemyMid2"));
+		characterSpots[2, 5] = ((Node3D)this.GetNode("EnemyBack"));
 
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer"); 
 
 		virtualSwaps = new VirtualPositionSwap[9];
 		parent = GetParent<Battle>();
+
+		if(debugMode){
+			for(int l = 0; l < 3; l++){
+				for(int r = 0; r < 6; r++){
+					if(characterSpots[l,r].GetChildren().Count() > 0) positionData[l,r] = (Combatant) characterSpots[l,r].GetChild(0);
+				}
+			}
+		}
 	}
 
 	public void SwapCharacters(BattleLane moverLane, BattleRank moverRank, BattleLane newLane, BattleRank newRank){
@@ -146,7 +154,7 @@ public partial class Roster : Node
 		return result.Where(x => x != null).ToArray();
 	}
 
-	public Combatant[] GetCombatntsByRank(BattleRank rank){
+	public Combatant[] GetCombatantsByRank(BattleRank rank){
 		Combatant[] result = new Combatant[3];
 		for(int i = 0; i < 3; i++){
 			result[i] = positionData[i, (int)rank];

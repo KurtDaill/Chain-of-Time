@@ -412,7 +412,7 @@ _data = {
 "StatusFlinch": SubResource("Animation_bk5ok")
 }
 
-[node name="Silver" type="Node3D" node_paths=PackedStringArray("basicAttack", "displayText", "swapAbility", "pointer")]
+[node name="Silver" type="Node3D" node_paths=PackedStringArray("basicAttack", "displayText", "pointer")]
 script = ExtResource("1_vos4e")
 sp = 4
 maxSP = 4
@@ -421,7 +421,6 @@ displayPortrait = ExtResource("2_kja07")
 hp = 6
 maxHP = 6
 displayText = NodePath("Combat Text")
-swapAbility = NodePath("SwapPositions")
 pointer = NodePath("Pointer Adjuster/Pointer")
 
 [node name="SilverSprite" type="Sprite3D" parent="."]
@@ -449,20 +448,17 @@ libraries = {
 [node name="SilverBasicAttack" type="Node" parent="."]
 script = ExtResource("5_ems5m")
 laserFX = "res://Battle Mode/FX/laserBurst.tscn"
-enabledPositions = Array[int]([3, 4, 5, 0, 1, 2])
+enabledRanks = Array[int]([0, 1, 2, 3, 4, 5])
 
 [node name="SwapPositions" type="Node" parent="."]
 script = ExtResource("6_1jtpa")
 
 [node name="LongShot" type="Node" parent="." groups=["PlayerCombatant"]]
 script = ExtResource("7_ma1ff")
-laserFX = "res://Battle Mode/FX/laserBurst.tscn"
-enabledPositions = Array[int]([4, 5, 2, 1, 0])
 
 [node name="BigBoot" type="Node" parent="."]
 script = ExtResource("8_6y1mq")
 spCost = 2
-enabledPositions = Array[int]([3, 2])
 
 [node name="Combat Text" parent="." instance=ExtResource("7_4stcv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.876529, 2.26561, -0.0799999)

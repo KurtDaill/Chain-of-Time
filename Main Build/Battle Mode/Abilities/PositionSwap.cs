@@ -4,6 +4,7 @@ using static BattleUtilities;
 
 public partial class PositionSwap : PlayerAbility
 {
+    /*
     private Roster battleRoster;
     public PositionSwap(){	
 		name = "SWAP";
@@ -27,4 +28,5 @@ public partial class PositionSwap : PlayerAbility
 	public override (Combatant, BattleUtilities.BattleRank)[] GetPositionSwaps(){
 		return new (Combatant, BattleUtilities.BattleRank)[]{(source, target[0].GetPosition())};
 	}
+    */
 }

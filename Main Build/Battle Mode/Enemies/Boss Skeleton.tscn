@@ -242,7 +242,7 @@ setAnimation = "Attack"
 setName = "Attack"
 damage = PackedInt32Array(1)
 damageProbs = PackedFloat64Array(1)
-enabledPositions = Array[int]([2, 3])
+enabledRanks = Array[int]([2, 3])
 
 [node name="Nameplate Adjuster" type="Node3D" parent="."]
 

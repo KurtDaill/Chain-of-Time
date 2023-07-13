@@ -1,8 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://bftjxb62srdq"]
+[gd_scene load_steps=23 format=3 uid="uid://bftjxb62srdq"]
 
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Battle.cs" id="1_4rxw7"]
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="2_1verb"]
-[ext_resource type="PackedScene" uid="uid://234suufiqv8c" path="res://Battle Mode/Player Characters/Silver Combatant.tscn" id="3_p77hq"]
 [ext_resource type="PackedScene" uid="uid://ctkjn6qaseru7" path="res://Battle Mode/BattleGUI.tscn" id="4_noo0e"]
 [ext_resource type="PackedScene" uid="uid://ck78k6iju4ldb" path="res://Battle Mode/Player Characters/Cato Combatant.tscn" id="4_xw6bo"]
 [ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Old/Art/3D/BattleDungeon.dae" id="5_7bshd"]
@@ -1141,12 +1140,10 @@ defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
 startingScene = true
 battleRoster = NodePath("Roster")
 
-[node name="Roster" type="Node3D" parent="Battle" node_paths=PackedStringArray("debugPlayer", "debugPlayer2")]
+[node name="Roster" type="Node3D" parent="Battle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 script = ExtResource("2_1verb")
 debugMode = true
-debugPlayer = NodePath("HeroFront1/Cato")
-debugPlayer2 = NodePath("HeroMid0/TestHero")
 
 [node name="HeroBack0" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.52, 0, 0)
@@ -1160,41 +1157,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48, 0, -2)
 [node name="HeroMid0" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2, 0, 0)
 
-[node name="TestHero" parent="Battle/Roster/HeroMid0" node_paths=PackedStringArray("readout") instance=ExtResource("3_p77hq")]
-visible = false
-readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Silver Readout")
-
 [node name="HeroMid1" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 0, -1)
-
-[node name="TestHero" parent="Battle/Roster/HeroMid1" node_paths=PackedStringArray("basicAttack", "readout", "displayText", "swapAbility", "pointer") instance=ExtResource("3_p77hq")]
-basicAttack = NodePath("../../HeroMid0/TestHero/SilverBasicAttack")
-readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Silver Readout")
-displayText = NodePath("../../HeroMid0/TestHero/Combat Text")
-swapAbility = NodePath("../../HeroMid0/TestHero/SwapPositions")
-pointer = NodePath("../../HeroMid0/TestHero/Pointer Adjuster/Pointer")
 
 [node name="HeroMid2" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08, 0, -2)
 
-[node name="TestHero" parent="Battle/Roster/HeroMid2" node_paths=PackedStringArray("basicAttack", "readout", "displayText", "swapAbility", "pointer") instance=ExtResource("3_p77hq")]
-visible = false
-basicAttack = NodePath("../../HeroMid0/TestHero/SilverBasicAttack")
-readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Silver Readout")
-displayText = NodePath("../../HeroMid0/TestHero/Combat Text")
-swapAbility = NodePath("../../HeroMid0/TestHero/SwapPositions")
-pointer = NodePath("../../HeroMid0/TestHero/Pointer Adjuster/Pointer")
-
 [node name="HeroFront0" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56, 0, 0)
-
-[node name="Cato" parent="Battle/Roster/HeroFront0" node_paths=PackedStringArray("basicAttack", "readout", "displayText", "swapAbility", "pointer") instance=ExtResource("4_xw6bo")]
-visible = false
-basicAttack = NodePath("../../HeroFront1/Cato/CatoBasicAttack")
-readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
-displayText = NodePath("../../HeroFront1/Cato/Combat Text")
-swapAbility = NodePath("../../HeroFront1/Cato/SwapPositions")
-pointer = NodePath("../../HeroFront1/Cato/Pointer Adjuster/Pointer")
 
 [node name="HeroFront1" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1)
@@ -1205,67 +1175,28 @@ readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
 [node name="HeroFront2" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
 
-[node name="Cato" parent="Battle/Roster/HeroFront2" node_paths=PackedStringArray("basicAttack", "readout", "displayText", "swapAbility", "pointer") instance=ExtResource("4_xw6bo")]
-visible = false
-basicAttack = NodePath("../../HeroFront1/Cato/CatoBasicAttack")
-readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
-displayText = NodePath("../../HeroFront1/Cato/Combat Text")
-swapAbility = NodePath("../../HeroFront1/Cato/SwapPositions")
-pointer = NodePath("../../HeroFront1/Cato/Pointer Adjuster/Pointer")
-
 [node name="EnemyFront0" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0, 0)
 
-[node name="Skeleton" parent="Battle/Roster/EnemyFront0" instance=ExtResource("5_fuc8f")]
-
 [node name="EnemyFront1" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 
-[node name="Skeleton" parent="Battle/Roster/EnemyFront1" node_paths=PackedStringArray("attack", "nameplate", "healthBar", "displayText", "pointer") instance=ExtResource("5_fuc8f")]
-attack = NodePath("../../EnemyFront0/Skeleton/Attack")
-nameplate = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Nameplate Adjuster/Enemy Nameplate")
-healthBar = NodePath("../../EnemyFront0/Skeleton/Sprite3D/EnemyHealthBar")
-displayText = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Combat Text")
-pointer = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Pointer Adjuster/Pointer")
+[node name="Skeleton" parent="Battle/Roster/EnemyFront1" instance=ExtResource("5_fuc8f")]
 
 [node name="EnemyFront2" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
-
-[node name="Skeleton" parent="Battle/Roster/EnemyFront2" node_paths=PackedStringArray("attack", "nameplate", "healthBar", "displayText", "pointer") instance=ExtResource("5_fuc8f")]
-attack = NodePath("../../EnemyFront0/Skeleton/Attack")
-nameplate = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Nameplate Adjuster/Enemy Nameplate")
-healthBar = NodePath("../../EnemyFront0/Skeleton/Sprite3D/EnemyHealthBar")
-displayText = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Combat Text")
-pointer = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Pointer Adjuster/Pointer")
 
 [node name="EnemyMid0" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2, 0, 0)
 
 [node name="EnemyMid1" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6, 0, -1)
-
-[node name="Skeleton" parent="Battle/Roster/EnemyMid1" node_paths=PackedStringArray("attack", "nameplate", "healthBar", "displayText", "pointer") instance=ExtResource("5_fuc8f")]
-attack = NodePath("../../EnemyFront0/Skeleton/Attack")
-nameplate = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Nameplate Adjuster/Enemy Nameplate")
-healthBar = NodePath("../../EnemyFront0/Skeleton/Sprite3D/EnemyHealthBar")
-displayText = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Combat Text")
-pointer = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Pointer Adjuster/Pointer")
-
-[node name="EnemyMid2" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.08, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.08, 0, -1)
 
 [node name="EnemyBack0" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.52, 0, 0)
 
 [node name="EnemyBack1" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -1)
-
-[node name="Skeleton" parent="Battle/Roster/EnemyBack1" node_paths=PackedStringArray("attack", "nameplate", "healthBar", "displayText", "pointer") instance=ExtResource("5_fuc8f")]
-attack = NodePath("../../EnemyFront0/Skeleton/Attack")
-nameplate = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Nameplate Adjuster/Enemy Nameplate")
-healthBar = NodePath("../../EnemyFront0/Skeleton/Sprite3D/EnemyHealthBar")
-displayText = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Combat Text")
-pointer = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Pointer Adjuster/Pointer")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
 
 [node name="EnemyBack2" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48, 0, -2)
@@ -1274,10 +1205,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48, 0, -2)
 libraries = {
 "": SubResource("AnimationLibrary_wt4h5")
 }
-
-[node name="Sprite3D" type="Sprite3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52, 0)
-axis = 1
 
 [node name="Camera3D" type="Camera3D" parent="Battle"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -1.53, 5, 12)

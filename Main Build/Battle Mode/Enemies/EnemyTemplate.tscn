@@ -169,7 +169,7 @@ frame = 1
 
 [node name="TestAttack" type="Node" parent="."]
 script = ExtResource("4_s11fq")
-enabledPositions = Array[int]([0, 1, 2, 3, 4, 5])
+enabledRanks = Array[int]([0, 1, 2, 3, 4, 5])
 
 [node name="Nameplate Adjuster" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1749, 0, 0)

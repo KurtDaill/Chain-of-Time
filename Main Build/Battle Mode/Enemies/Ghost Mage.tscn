@@ -753,16 +753,16 @@ setAnimation = "CandleBonk"
 setName = "Attack"
 damage = PackedInt32Array(1)
 damageProbs = PackedFloat64Array(1)
-enabledPositions = Array[int]([2, 3])
+enabledRanks = Array[int]([2, 3])
 
 [node name="Lesser Confusion" type="Node" parent="."]
 script = ExtResource("10_64igs")
-enabledPositions = Array[int]([0, 1, 2, 3, 4, 5])
+enabledRanks = Array[int]([0, 1, 2, 3, 4, 5])
 
 [node name="Fire Blast" type="Node" parent="."]
 script = ExtResource("11_qkwyr")
 fireballFilePath = "res://Battle Mode/FX/FireballProjectile.tscn"
-enabledPositions = Array[int]([0, 1, 2, 3, 4, 5])
+enabledRanks = Array[int]([0, 1, 2, 3, 4, 5])
 
 [node name="BodyRef" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027297, 0.76, 0)

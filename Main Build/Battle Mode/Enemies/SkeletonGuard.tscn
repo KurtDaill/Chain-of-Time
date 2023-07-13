@@ -353,12 +353,10 @@ setAnimation = "Attack"
 setName = "Attack"
 damage = PackedInt32Array(1, 2)
 damageProbs = PackedFloat64Array(0.49, 0.51)
-enabledPositions = Array[int]([2, 3, 1])
 
 [node name="Taunt" type="Node" parent="."]
 script = ExtResource("5_5wgob")
 tauntStatusEffectPath = "res://Battle Mode/Status Effects/StatusTauntUntilMove.tscn"
-enabledPositions = Array[int]([2])
 
 [node name="Nameplate Adjuster" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)

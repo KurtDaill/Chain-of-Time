@@ -3,6 +3,7 @@ using System;
 using static BattleUtilities;
 public partial class FireBlast : EnemyAbility
 {
+	/*
 	[Export(PropertyHint.File)]
 	string fireballFilePath;
 	PackedScene fireballScene;
@@ -34,4 +35,5 @@ public partial class FireBlast : EnemyAbility
 		target[0].TakeDamage(2);
 		flagsRequiredToComplete[1] = true;
 	}
+	*/
 }

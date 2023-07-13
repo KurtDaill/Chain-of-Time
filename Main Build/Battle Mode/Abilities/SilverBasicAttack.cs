@@ -18,7 +18,7 @@ public partial class SilverBasicAttack : PlayerAbility
 		};
 
 		rulesText = " [center]Ranged \n Silver Deals 1-2 Damage";
-		AbilityTargetingLogic = TargetingLogic.Ranged;
+		AbilityTargetingLogic = TargetingLogic.SingleTargetEnemy;
 		laserFXScene = GD.Load<PackedScene>(laserFX);
 	}
 
