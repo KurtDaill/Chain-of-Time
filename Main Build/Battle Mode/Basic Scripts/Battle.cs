@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
+using static BattleUtilities;
 public partial class Battle : Node3D
 {
 	private BattlePhase currentPhase = BattlePhase.StartOfTurn;
@@ -208,37 +209,55 @@ public partial class CombatEventData : Godot.GodotObject
 
 public static class BattleUtilities
 {
-	public enum BattlePosition{
-		EnemyBack,
-		EnemyMid,
-		EnemyFront,
-		HeroFront,
-		HeroMid,
-		HeroBack
+	public enum BattleRank{
+		HeroBack = 0,
+		HeroMid = 1,
+		HeroFront = 2,
+		EnemyFront = 3,
+		EnemyMid = 4,
+		EnemyBack = 5
+	}
+
+	public enum BattleLane{
+		Top = 0,
+		Center = 1,
+		Bottom = 2
 	}
 
 	public enum TargetingLogic{
-		None,
 		Self,
-		Melee,
-		Reach,
-		Ranged,
-		AllHeroes,
-		AllEnemies,
-		AnyAlly,
-		All,
-		EnemyBack,
-		EnemyMid,
-		EnemyFront,
-		PlayerFront,
-		PlayerMid,
-		PlayerBack,
-		Battlefield
+		SingleTargetAlly,
+		SingleTargetEnemy,
+		MyRank,
+		MyLane,
+		AnyLaneHitsAllies,
+		AnyLaneHitsEnemies,
+		PlayerRank,
+		EnemyRank,
+		AllAllies,
+		AllEnemies
 	}
 
 	public enum AbilityAlignment{
 		Normal,
 		Magic,
 		Tech
+	}
+}
+
+public class BattlePosition{
+	BattleLane lane;
+	BattleRank rank;
+
+	public BattlePosition(BattleLane lane, BattleRank rank){
+		this.lane = lane;
+		this.rank = rank;
+	}
+	public BattleLane GetLane(){
+		return lane;
+	}
+
+	public BattleRank GetRank(){
+		return rank;
 	}
 }

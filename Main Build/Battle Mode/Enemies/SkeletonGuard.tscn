@@ -400,6 +400,7 @@ stream = ExtResource("10_ktmeo")
 
 [node name="EnemyHealthBar" parent="." instance=ExtResource("11_6s4m7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.66652, -0.579544, 0)
+visible = false
 
 [editable path="Nameplate Adjuster/Enemy Nameplate"]
 [editable path="Combat Text"]

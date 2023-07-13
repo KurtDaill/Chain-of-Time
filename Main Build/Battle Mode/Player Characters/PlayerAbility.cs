@@ -19,7 +19,7 @@ public partial class PlayerAbility : Ability
 		return rulesText;
 	}
 
-	public virtual (Combatant, BattlePosition)[] GetPositionSwaps(){
+	public virtual (Combatant, (BattleLane, BattleRank))[] GetPositionSwaps(){
 		return null;
 	}
 }

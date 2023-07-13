@@ -27,13 +27,13 @@ public partial class LongShot : PlayerSkill
 
 	public override void AnimationTrigger(int phase){	
 		switch(target[0].GetPosition()){
-			case BattlePosition.EnemyFront :
+			case BattleRank.EnemyFront :
 				target[0].TakeDamage(4);
 				break;
-			case BattlePosition.EnemyMid :
+			case BattleRank.EnemyMid :
 				target[0].TakeDamage(3);
 				break;
-			case BattlePosition.EnemyBack :
+			case BattleRank.EnemyBack :
 				target[0].TakeDamage(2);
 				break;
 		}

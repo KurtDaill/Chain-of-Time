@@ -28,8 +28,8 @@ public partial class CatoShieldRush : PlayerSkill{
     public override void AnimationTrigger(int phase){
 		base.AnimationTrigger(phase);
         
-		if(target[0].GetPosition() != BattlePosition.HeroFront){
-			parentBattle.GetRoster().SwapCharacters(source.GetPosition(), BattlePosition.HeroFront);
+		if(target[0].GetPosition() != BattleRank.HeroFront){
+			parentBattle.GetRoster().SwapCharacters(source.GetPosition(), BattleRank.HeroFront);
         	WaitForSwap();
 		}else{
 			flagsRequiredToComplete[1] = true;
@@ -43,8 +43,8 @@ public partial class CatoShieldRush : PlayerSkill{
 		flagsRequiredToComplete[1] = true;
 	}
 
-	public override (Combatant, BattleUtilities.BattlePosition)[] GetPositionSwaps(){
-		if(source.GetPosition() != BattlePosition.HeroFront) return new (Combatant, BattleUtilities.BattlePosition)[]{(source, BattleUtilities.BattlePosition.HeroFront)};
+	public override (Combatant, BattleUtilities.BattleRank)[] GetPositionSwaps(){
+		if(source.GetPosition() != BattleRank.HeroFront) return new (Combatant, BattleUtilities.BattleRank)[]{(source, BattleUtilities.BattleRank.HeroFront)};
 		return null;
 	}
 }

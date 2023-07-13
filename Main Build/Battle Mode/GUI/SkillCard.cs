@@ -25,18 +25,18 @@ public partial class SkillCard : TextureRect{
         pipsAnimPlay = this.GetNode<AnimationPlayer>("Pips/AnimationPlayer");
         foreach(TextureRect pip in pips){ pip.Visible = false;}
     }
-    public void SetDisplay(string abilityName, string rulesText, string type, AbilityAlignment align, int spCost, Godot.Collections.Array<BattlePosition> positions){
+    public void SetDisplay(string abilityName, string rulesText, string type, AbilityAlignment align, int spCost, Godot.Collections.Array<BattleRank> positions){
         this.Visible = true;
         name.Text = "[center]" + abilityName;
         cost.Text = "" + spCost;
         abilityType.Text = type;
         
-        pips[0].Visible = positions.Contains(BattlePosition.HeroBack);
-        pips[1].Visible = positions.Contains(BattlePosition.HeroMid);
-        pips[2].Visible = positions.Contains(BattlePosition.HeroFront);
-        pips[3].Visible = positions.Contains(BattlePosition.EnemyFront);
-        pips[4].Visible = positions.Contains(BattlePosition.EnemyMid);
-        pips[5].Visible = positions.Contains(BattlePosition.EnemyBack);
+        pips[0].Visible = positions.Contains(BattleRank.HeroBack);
+        pips[1].Visible = positions.Contains(BattleRank.HeroMid);
+        pips[2].Visible = positions.Contains(BattleRank.HeroFront);
+        pips[3].Visible = positions.Contains(BattleRank.EnemyFront);
+        pips[4].Visible = positions.Contains(BattleRank.EnemyMid);
+        pips[5].Visible = positions.Contains(BattleRank.EnemyBack);
         //Developers can specify the font size for their rules text within the rules text string, this parses that information
         string textSize = "";
         if(rulesText.StartsWith("[textSize]")){

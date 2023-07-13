@@ -5,18 +5,10 @@ using static BattleUtilities;
 using System.Linq;
 public partial class Roster : Node
 {
-	private Dictionary<BattlePosition, Combatant> positionData = new Dictionary<BattlePosition, Combatant>{
-		{BattlePosition.EnemyBack, null},
-		{BattlePosition.EnemyMid, null},
-		{BattlePosition.EnemyFront, null},
-		{BattlePosition.HeroFront, null},
-		{BattlePosition.HeroMid, null},
-		{BattlePosition.HeroBack, null}
 
-	};
+	private Combatant[,] positionData = new Combatant[3,6];
 
 	private VirtualPositionSwap[] virtualSwaps;
-
 
 	[Signal]
 	public delegate void SwapCompleteEventHandler();
@@ -24,256 +16,162 @@ public partial class Roster : Node
 	[Export]
 	private bool debugMode;
 
-	[Export]
-	private PlayerCombatant debugPlayer;
-
-	[Export]
-	private PlayerCombatant debugPlayer2;
-	[Export]
-	private EnemyCombatant debugEnemy1;
-	[Export]
-	private EnemyCombatant debugEnemy2;
-	[Export]
-	private EnemyCombatant debugEnemy3;
-
 	private AnimationPlayer animPlay;
 
-	private Node3D[] playerSpots = new Node3D[3];
-	private Node3D[] enemySpots = new Node3D[3];
+	private Node3D[,] characterSpots = new Node3D[3, 6];
 
 	Battle parent;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		playerSpots[0] = ((Node3D)this.FindChild("HeroFront"));
-		playerSpots[1] = ((Node3D)this.FindChild("HeroMid"));
-		playerSpots[2] = ((Node3D)this.FindChild("HeroBack"));
+		characterSpots[0, 0] = ((Node3D)this.FindChild("HeroBack1"));
+		characterSpots[0, 1] = ((Node3D)this.FindChild("HeroMid1"));
+		characterSpots[0, 2] = ((Node3D)this.FindChild("HeroFront1"));
+		characterSpots[0, 3] = ((Node3D)this.FindChild("EnemyFront1"));
+		characterSpots[0, 4] = ((Node3D)this.FindChild("EnemyMid1"));
+		characterSpots[0, 5] = ((Node3D)this.FindChild("EnemyBack1"));
 
-		enemySpots[0] = ((Node3D)this.FindChild("EnemyFront"));
-		enemySpots[1] = ((Node3D)this.FindChild("EnemyMid"));
-		enemySpots[2] = ((Node3D)this.FindChild("EnemyBack"));
+		characterSpots[1, 0] = ((Node3D)this.FindChild("HeroBack2"));
+		characterSpots[1, 1] = ((Node3D)this.FindChild("HeroMid2"));
+		characterSpots[1, 2] = ((Node3D)this.FindChild("HeroFront2"));
+		characterSpots[1, 3] = ((Node3D)this.FindChild("EnemyFront2"));
+		characterSpots[1, 4] = ((Node3D)this.FindChild("EnemyMid2"));
+		characterSpots[1, 5] = ((Node3D)this.FindChild("EnemyBack2"));
+
+		characterSpots[2, 0] = ((Node3D)this.FindChild("HeroBack3"));
+		characterSpots[2, 1] = ((Node3D)this.FindChild("HeroMid3"));
+		characterSpots[2, 2] = ((Node3D)this.FindChild("HeroFront3"));
+		characterSpots[2, 3] = ((Node3D)this.FindChild("EnemyFront3"));
+		characterSpots[2, 4] = ((Node3D)this.FindChild("EnemyMid3"));
+		characterSpots[2, 5] = ((Node3D)this.FindChild("EnemyBack3"));
 
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer"); 
 
-		virtualSwaps = new VirtualPositionSwap[3];	
-
-		foreach(Node3D playerSpot in playerSpots){
-			if(playerSpot == null){
-				GetTree().Quit();
-				throw new RosterNotConfiguredException("Roster missing object defining player standing position! You must have Node3D's labeled PlayerOne, PlayerTwo, & PlayerThree as children of this node");
-			} 
-		}
-
-		foreach(Node3D enemySpot in enemySpots){
-			
-			if(enemySpot == null){
-				GetTree().Quit();
-				throw new RosterNotConfiguredException("Roster missing object defining enemy standing position! You must have Node3D's labeled EnemyOne, EnemyTwo, & EnemyThree as children of this node");
-			} 
-		}
-
-		if(debugMode){
-			if(debugPlayer != null){
-				SetPositionNewCharacter(debugPlayer, BattlePosition.HeroFront);
-			}
-			if(debugPlayer2 != null){
-				SetPositionNewCharacter(debugPlayer2, BattlePosition.HeroMid);
-			}
-			if(debugEnemy1 != null){
-				SetPositionNewCharacter(debugEnemy1, BattlePosition.EnemyFront);
-			}
-			if(debugEnemy2 != null){
-				SetPositionNewCharacter(debugEnemy2, BattlePosition.EnemyMid);
-			}
-			if(debugEnemy3 != null){
-				SetPositionNewCharacter(debugEnemy3, BattlePosition.EnemyBack);
-			}
-		}
-
+		virtualSwaps = new VirtualPositionSwap[9];
 		parent = GetParent<Battle>();
 	}
 
-	public async void SwapCharacters(BattlePosition moverPos, BattlePosition newPos){
-		List<BattlePosition> positions = new List<BattlePosition>(0){moverPos, newPos};
-		Node3D moverSpot = GetSpotNode(moverPos);
-		Node3D newSpot = GetSpotNode(newPos);
+	public void SwapCharacters(BattleLane moverLane, BattleRank moverRank, BattleLane newLane, BattleRank newRank){
+		//Get the Spots that corripsond with the Ranks/Lanes
+		Node3D moverSpot = characterSpots[(int) moverLane, (int)moverRank];
+		Node3D newSpot = characterSpots[(int)newLane, (int)newRank];
 
-		if(positions.Contains(BattlePosition.HeroFront) && positions.Contains(BattlePosition.HeroMid)) animPlay.Play("SwapHeroFM");
-		else if(positions.Contains(BattlePosition.HeroFront) && positions.Contains(BattlePosition.HeroBack)) animPlay.Play("SwapHeroFB");
-		else if(positions.Contains(BattlePosition.HeroMid) && positions.Contains(BattlePosition.HeroBack)) animPlay.Play("SwapHeroMB");
-		else if(positions.Contains(BattlePosition.EnemyMid) && positions.Contains(BattlePosition.EnemyBack)) animPlay.Play("SwapEnemyMB");
-		else if(positions.Contains(BattlePosition.EnemyFront) && positions.Contains(BattlePosition.EnemyBack)) animPlay.Play("SwapEnemyFB");
-		else if(positions.Contains(BattlePosition.EnemyFront) && positions.Contains(BattlePosition.EnemyMid)) animPlay.Play("SwapEnemyFM");
+		//TODO Redesign Character Swap Animation
+
+		/*if(positions.Contains(BattleRank.HeroFront) && positions.Contains(BattleRank.HeroMid)) animPlay.Play("SwapHeroFM");
+		else if(positions.Contains(BattleRank.HeroFront) && positions.Contains(BattleRank.HeroBack)) animPlay.Play("SwapHeroFB");
+		else if(positions.Contains(BattleRank.HeroMid) && positions.Contains(BattleRank.HeroBack)) animPlay.Play("SwapHeroMB");
+		else if(positions.Contains(BattleRank.EnemyMid) && positions.Contains(BattleRank.EnemyBack)) animPlay.Play("SwapEnemyMB");
+		else if(positions.Contains(BattleRank.EnemyFront) && positions.Contains(BattleRank.EnemyBack)) animPlay.Play("SwapEnemyFB");
+		else if(positions.Contains(BattleRank.EnemyFront) && positions.Contains(BattleRank.EnemyMid)) animPlay.Play("SwapEnemyFM");
 		else throw new KeyNotFoundException();
 		await ToSignal(animPlay, AnimationPlayer.SignalName.AnimationFinished);
 
-		Combatant comA = GetCombatant(moverPos);
-		Combatant comB = GetCombatant(newPos);
+		//
+		*/
+		Combatant comA = GetCombatant(moverLane, moverRank);
+		Combatant comB = GetCombatant(newLane, newRank);
 		if(comA != null) moverSpot.RemoveChild(comA);
 		if(comB != null) newSpot.RemoveChild(comB);
-		animPlay.Play("RESET");
-		await ToSignal(animPlay, AnimationPlayer.SignalName.AnimationFinished);
 
 		if(comA != null){
+			comA.GlobalPosition = newSpot.GlobalPosition;
 			newSpot.AddChild(comA);
-			comA.SetPosition(newPos);
+			comA.SetPosition(newLane, newRank);
 		}
 		if(comB != null){
+			comB.GlobalPosition = moverSpot.GlobalPosition;
 			moverSpot.AddChild(comB);
-			comB.SetPosition(moverPos);
+			comB.SetPosition(moverLane, moverRank);
 		}
-		SortCharacters();
 		EmitSignal(Roster.SignalName.SwapComplete);
 	}
 
-	public void SwapCharacters(Combatant mover, BattlePosition newPos){
-		SwapCharacters(GetPositionOfCombatant(mover), newPos);
+	public void SwapCharacters(Combatant mover, BattleLane newLane, BattleRank newRank){
+		SwapCharacters(GetPositionOfCombatant(mover).GetLane(), GetPositionOfCombatant(mover).GetRank(), newLane, newRank);
 	}
 
-	public void SetPositionNewCharacter(Combatant cha, BattlePosition newPos){
-		if(positionData.Values.Contains(cha)) throw new RosterNotConfiguredException("Tried Spawning New Character that already exists!");
-		positionData.TryGetValue(newPos, out var atPos);
-		if(atPos != null) throw new RosterSpotTakenException("Tried Spawning New Character at Battle Position Already filled!");
+	public void SetPositionNewCharacter(Combatant cha, BattleRank rank, BattleLane lane){
+		foreach(Combatant com in positionData){ if(com == cha) throw new RosterNotConfiguredException("Tried Spawning New Character that already exists!"); }
 
-		positionData.Remove(newPos);
-		positionData.Add(newPos, cha);
-		cha.SetPosition(newPos);
+		if(positionData[(int)lane, (int)rank] != null) throw new RosterSpotTakenException("Tried Spawning New Character at Battle Position Already filled!");
+
+		positionData[(int)lane, (int)rank] = cha;
+		cha.SetPosition(lane, rank);
 	}
 
-	public void DelistCharacter(Combatant cha){
-		positionData.Remove(cha.GetPosition());
-		positionData.Add(cha.GetPosition(), null);
-	}
-
+	public void DelistCharacter(Combatant cha){ positionData[(int)cha.GetPosition().GetLane(), (int)cha.GetPosition().GetRank()] = null; }
 
 	public BattlePosition GetPositionOfCombatant(Combatant query){
-			foreach(KeyValuePair<BattlePosition, Combatant> pair in positionData){ if(pair.Value == query) return pair.Key; }
-			throw new CombatantNotInRosterException("Combatant " + query.GetName() +  " not found!");
+		foreach(Combatant com in positionData){ if(com == query) return query.GetPosition(); }
+		throw new ArgumentException("Combatant not found in combat");
 	}
 
-	public Combatant GetCombatant(BattlePosition queryPos){
-		if(positionData.TryGetValue(queryPos, out var value)){
-			return value;
-		}else{
-			return null;
-		}
+	public Combatant GetCombatant(BattleLane queryLane, BattleRank queryRank){
+		return positionData[(int)queryLane, (int)queryRank];
 	}
 
 	public PlayerCombatant[] GetAllPlayerCombatants(){
-		Combatant[] output = new Combatant[3];
-		positionData.TryGetValue(BattlePosition.HeroFront, out output[0]);
-		positionData.TryGetValue(BattlePosition.HeroMid, out output[1]);
-		positionData.TryGetValue(BattlePosition.HeroBack, out output[2]);
-		PlayerCombatant[] result = new PlayerCombatant[3];
-		for(int i = 0; i < 3; i++) result[i] = (PlayerCombatant) output[i];
+		List<PlayerCombatant> result = new List<PlayerCombatant>();
+		for(int i = 0; i < 3; i++){
+			for(int j = 0; j < 3; j++){ result.Add((PlayerCombatant)positionData[i,j]); }
+		}
 		return result.Where(x => x != null).ToArray();
 	}
+	
 	public EnemyCombatant[] GetAllEnemyCombatants(){
-		Combatant[] output = new Combatant[3];
-		positionData.TryGetValue(BattlePosition.EnemyFront, out output[0]);
-		positionData.TryGetValue(BattlePosition.EnemyMid, out output[1]);
-		positionData.TryGetValue(BattlePosition.EnemyBack, out output[2]);
-		EnemyCombatant[] result = new EnemyCombatant[3];
-		for(int i = 0; i < 3; i++) result[i] = (EnemyCombatant) output[i];
+		List<EnemyCombatant> result = new List<EnemyCombatant>();
+		for(int i = 0; i < 3; i++){
+			for(int j = 3; j < 6; j++){ result.Add((EnemyCombatant)positionData[i,j]); }
+		}
+		return result.Where(x => x != null).ToArray();
+	}
+	
+	public Combatant[] GetAllCombatants(){
+		List<Combatant> result = new List<Combatant>();
+		for(int i = 0; i < 3; i++){
+			for(int j = 0; j < 6; j++){ result.Add(positionData[i,j]); }
+		}
 		return result.Where(x => x != null).ToArray();
 	}
 
-	public Combatant[] GetAllCombatants(){
-		Combatant[] output = new Combatant[6];
-		positionData.TryGetValue(BattlePosition.HeroFront, out output[0]);
-		positionData.TryGetValue(BattlePosition.HeroMid, out output[1]);
-		positionData.TryGetValue(BattlePosition.HeroBack, out output[2]);
-		positionData.TryGetValue(BattlePosition.EnemyFront, out output[3]);
-		positionData.TryGetValue(BattlePosition.EnemyMid, out output[4]);
-		positionData.TryGetValue(BattlePosition.EnemyBack, out output[5]); 
-		return output.Where(x => x != null).ToArray();
+	public Combatant[] GetCombatantsByLane(BattleLane lane, bool includePlayers, bool includeEnemies){
+		Combatant[] result = new Combatant[6];
+		for(int i = 0; i < 6; i++){
+			result[i] = positionData[(int)lane, i];
+			if(!includePlayers && result[i] is PlayerCombatant) result[i] = null;
+			if(!includeEnemies && result[i] is EnemyCombatant) result[i] = null;
+		}
+		return result.Where(x => x != null).ToArray();
+	}
+
+	public Combatant[] GetCombatntsByRank(BattleRank rank){
+		Combatant[] result = new Combatant[3];
+		for(int i = 0; i < 3; i++){
+			result[i] = positionData[i, (int)rank];
+		}
+		return result.Where(x => x != null).ToArray();
 	}
 
 	public AnimationPlayer GetAnimationPlayer(){
 		return animPlay;
 	}
 
-	public Node3D GetSpotNode(BattlePosition pos){
-		switch(pos){
-			case BattlePosition.HeroFront : return playerSpots[0];
-			case BattlePosition.HeroMid : return playerSpots[1];
-			case BattlePosition.HeroBack : return playerSpots[2];
-			case BattlePosition.EnemyFront : return enemySpots[0];
-			case BattlePosition.EnemyMid : return enemySpots[1];
-			case BattlePosition.EnemyBack : return enemySpots[2];
-			default : throw new ArgumentException();
+	public void ClearDead(){
+		for(int i = 0; i < 3; i++){
+			bool[] laneState = new bool[3];
+			for(int h = 0; h < 3; h++){if(positionData[i,h] != null && positionData[i,h].GetHP() > 0)laneState[h] = true; else laneState[h] = false;}
+			if(!laneState[2]) SwapCharacters((BattleLane)i, BattleRank.HeroMid, (BattleLane)i, BattleRank.HeroFront);
+			if(!laneState[1]) SwapCharacters((BattleLane)i, BattleRank.HeroBack, (BattleLane)i, BattleRank.HeroMid);
 		}
-	}
-
-	public void SortCharacters(){
-		positionData.Remove(BattlePosition.HeroFront);
-		positionData.Add(BattlePosition.HeroFront, playerSpots[0].GetChild<PlayerCombatant>(0));
-
-		positionData.Remove(BattlePosition.HeroMid);
-		positionData.Add(BattlePosition.HeroMid, playerSpots[1].GetChild<PlayerCombatant>(0));
-
-		positionData.Remove(BattlePosition.HeroBack);
-		positionData.Add(BattlePosition.HeroBack, playerSpots[2].GetChild<PlayerCombatant>(0));
-
-		positionData.Remove(BattlePosition.EnemyFront);
-		positionData.Add(BattlePosition.EnemyFront, enemySpots[0].GetChild<EnemyCombatant>(0));
-
-		positionData.Remove(BattlePosition.EnemyMid);
-		positionData.Add(BattlePosition.EnemyMid, enemySpots[1].GetChild<EnemyCombatant>(0));
-
-		positionData.Remove(BattlePosition.EnemyBack);
-		positionData.Add(BattlePosition.EnemyBack, enemySpots[2].GetChild<EnemyCombatant>(0));
-	}
-
-	public async void ClearDead(){
-		bool[] enemyStates = new bool[3]{
-			GetCombatant(BattlePosition.EnemyFront) != null,
-			GetCombatant(BattlePosition.EnemyMid) != null,
-			GetCombatant(BattlePosition.EnemyBack) != null
-		};
-		if(!enemyStates[0] & !enemyStates[1]){
-			if(!enemyStates[2]) parent.ConcludeBattle(); //GetTree().Quit();
-			SwapCharacters(BattlePosition.EnemyBack, BattlePosition.EnemyFront);
-			await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
-		}else if(!enemyStates[1]){//There has to be somebody at the front slot to enter this block
-			if(enemyStates[2]){
-				SwapCharacters(BattlePosition.HeroBack, BattlePosition.EnemyMid);
-				await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
-			}
-		}else if(!enemyStates[0]){//There isn't anyone at front, but there is someone at mid
-			SwapCharacters(BattlePosition.EnemyMid, BattlePosition.EnemyFront);
-			await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
-			if(enemyStates[2]){
-				SwapCharacters(BattlePosition.EnemyBack, BattlePosition.EnemyMid);
-				await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
-			}
-
-		} 
-		bool[] playerStates = new bool[3]{
-			GetCombatant(BattlePosition.HeroFront) != null && GetCombatant(BattlePosition.HeroFront).GetHP() > 0,
-			GetCombatant(BattlePosition.HeroMid) != null && GetCombatant(BattlePosition.HeroMid).GetHP() > 0,
-			GetCombatant(BattlePosition.HeroBack) != null && GetCombatant(BattlePosition.HeroBack).GetHP() > 0
-		};
-
-		if(!playerStates[0] & !playerStates[1]){
-			if(!playerStates[2]) parent.DefeatPlayers();
-			SwapCharacters(BattlePosition.HeroBack, BattlePosition.HeroFront);
-			await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
-		}else if(!playerStates[1]){//There has to be somebody at the front slot to enter this block
-			if(playerStates[2]){
-				SwapCharacters(BattlePosition.HeroBack, BattlePosition.HeroMid);
-				await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
-			}
-		}else if(!playerStates[0]){//There isn't anyone at front, but there is someone at mid
-			SwapCharacters(BattlePosition.HeroMid, BattlePosition.HeroFront);
-			await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
-			if(playerStates[2]){
-				SwapCharacters(BattlePosition.HeroBack, BattlePosition.HeroMid);
-				await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
-			}
-		} 
-	}
+		for(int i = 0; i < 3; i++){
+			bool[] laneState = new bool[3];
+			for(int e = 3; e < 6; e++){if(positionData[i,e] != null && positionData[i,e].GetHP() > 0)laneState[e - 3] = true; else laneState[e - 3] = false;}
+			if(!laneState[0]) SwapCharacters((BattleLane)i, BattleRank.EnemyMid, (BattleLane)i, BattleRank.EnemyFront);
+			if(!laneState[1]) SwapCharacters((BattleLane)i, BattleRank.EnemyBack, (BattleLane)i, BattleRank.EnemyMid);
+		}
+	}	
 
 	public EnemyCombatant[] GetLegalEnemyTargets(bool ignoresTaunt = false){
 		Combatant[] coms = CheckTargetLegality(GetAllEnemyCombatants(), ignoresTaunt);
@@ -298,20 +196,26 @@ public partial class Roster : Node
 	}
 
 	public BattlePosition GetCharacterVirtualPosition(Combatant character){
-		Dictionary<BattlePosition, Combatant> virtualPositions = new Dictionary<BattlePosition, Combatant>(positionData);
+		Combatant[,] virtualPositions = positionData.Clone() as Combatant[,];
 		for(int i = 0; i < 3; i++){
 			if(virtualSwaps[i] is VirtualPositionSwap){
-				foreach((Combatant, BattlePosition) pair in virtualSwaps[i].GetSwapInstructions()){
-					KeyValuePair<BattlePosition, Combatant> source = ((KeyValuePair<BattlePosition, Combatant>)virtualPositions.FirstOrDefault(x => x.Value == pair.Item1));
-					KeyValuePair<BattlePosition, Combatant> destination = ((KeyValuePair<BattlePosition, Combatant>)virtualPositions.FirstOrDefault(x => x.Key == pair.Item2));
-					virtualPositions.Remove(source.Key);
-					virtualPositions.Remove(destination.Key);
-					virtualPositions.Add(source.Key, destination.Value);
-					virtualPositions.Add(destination.Key, source.Value);	
+				foreach((Combatant, BattlePosition) swap in virtualSwaps[i].GetSwapInstructions()){
+					BattlePosition gridStart = swap.Item1.GetPosition();
+					BattlePosition gridDestination = swap.Item2;
+					Combatant source = swap.Item1;
+					Combatant destination = virtualPositions[(int)swap.Item2.GetLane(), (int)swap.Item2.GetRank()];
+					virtualPositions[(int)gridStart.GetLane(), (int)gridStart.GetRank()] = destination;
+					virtualPositions[(int)gridDestination.GetLane(), (int)gridDestination.GetRank()] = source;
 				}
 			}
 		}
-		return ((KeyValuePair<BattlePosition, Combatant>)virtualPositions.FirstOrDefault(x => x.Value == character)).Key;
+		for(int l  = 0; l < 3; l++){
+			for(int r = 0; r < 6; r++){
+				if(positionData[l,r] == character) return new BattlePosition((BattleLane)l, (BattleRank)r);
+			} 
+		}
+		throw new ArgumentException("Character not found.");
+		//return ((KeyValuePair<BattleRank, Combatant>)virtualPositions.FirstOrDefault(x => x.Value == character)).Key;
 	}
 
 	public void ClearVirutalPositions(){
@@ -321,6 +225,7 @@ public partial class Roster : Node
 	public void LogVirtualPositionSwap(int index, (Combatant, BattlePosition)[] swaps){
 		virtualSwaps[index] = new VirtualPositionSwap(swaps);
 	}
+	
 	public void RollBackVirtualPositionSwap(int index){
 		virtualSwaps[index] = null;
 	}

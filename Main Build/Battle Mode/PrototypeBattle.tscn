@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bftjxb62srdq"]
+[gd_scene load_steps=24 format=3 uid="uid://bftjxb62srdq"]
 
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Battle.cs" id="1_4rxw7"]
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="2_1verb"]
@@ -6,8 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ctkjn6qaseru7" path="res://Battle Mode/BattleGUI.tscn" id="4_noo0e"]
 [ext_resource type="PackedScene" uid="uid://ck78k6iju4ldb" path="res://Battle Mode/Player Characters/Cato Combatant.tscn" id="4_xw6bo"]
 [ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Old/Art/3D/BattleDungeon.dae" id="5_7bshd"]
-[ext_resource type="PackedScene" uid="uid://ckh4ejsj04t82" path="res://Battle Mode/Enemies/Skeleton.tscn" id="5_m0pg8"]
-[ext_resource type="PackedScene" uid="uid://bltlucajwd3c5" path="res://Battle Mode/Enemies/SkeletonGuard.tscn" id="5_xmmo0"]
+[ext_resource type="PackedScene" uid="uid://ckh4ejsj04t82" path="res://Battle Mode/Enemies/Skeleton.tscn" id="5_fuc8f"]
 
 [sub_resource type="Animation" id="Animation_rgagi"]
 resource_name = "EnemyCrunch"
@@ -15,7 +14,7 @@ length = 0.6
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EnemyFront:position:x")
+tracks/0/path = NodePath("EnemyFront1:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("EnemyFront:position:y")
+tracks/1/path = NodePath("EnemyFront1:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -37,7 +36,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("EnemyFront:position:z")
+tracks/2/path = NodePath("EnemyFront1:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -48,7 +47,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("EnemyMid:position:x")
+tracks/3/path = NodePath("EnemyMid1:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -59,7 +58,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("EnemyMid:position:y")
+tracks/4/path = NodePath("EnemyMid1:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -70,7 +69,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("EnemyMid:position:z")
+tracks/5/path = NodePath("EnemyMid1:position:z")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -81,7 +80,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("EnemyBack:position:x")
+tracks/6/path = NodePath("EnemyBack1:position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -92,7 +91,7 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("EnemyBack:position:y")
+tracks/7/path = NodePath("EnemyBack1:position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -103,7 +102,7 @@ tracks/7/keys = {
 tracks/8/type = "bezier"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("EnemyBack:position:z")
+tracks/8/path = NodePath("EnemyBack1:position:z")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -118,7 +117,7 @@ length = 0.6
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EnemyBack:position:x")
+tracks/0/path = NodePath("EnemyBack1:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -129,7 +128,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("EnemyBack:position:y")
+tracks/1/path = NodePath("EnemyBack1:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -140,7 +139,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("EnemyBack:position:z")
+tracks/2/path = NodePath("EnemyBack1:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -151,7 +150,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("EnemyMid:position:x")
+tracks/3/path = NodePath("EnemyMid1:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -162,7 +161,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("EnemyMid:position:y")
+tracks/4/path = NodePath("EnemyMid1:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -173,7 +172,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("EnemyMid:position:z")
+tracks/5/path = NodePath("EnemyMid1:position:z")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -184,7 +183,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("EnemyFront:position:x")
+tracks/6/path = NodePath("EnemyFront1:position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -195,7 +194,7 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("EnemyFront:position:y")
+tracks/7/path = NodePath("EnemyFront1:position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -206,7 +205,7 @@ tracks/7/keys = {
 tracks/8/type = "bezier"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("EnemyFront:position:z")
+tracks/8/path = NodePath("EnemyFront1:position:z")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -221,7 +220,7 @@ length = 0.6
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HeroBack:position:x")
+tracks/0/path = NodePath("HeroBack0:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -232,7 +231,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HeroBack:position:y")
+tracks/1/path = NodePath("HeroBack0:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -243,7 +242,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HeroBack:position:z")
+tracks/2/path = NodePath("HeroBack0:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -254,7 +253,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HeroMid:position:x")
+tracks/3/path = NodePath("HeroMid0:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -265,7 +264,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HeroMid:position:y")
+tracks/4/path = NodePath("HeroMid0:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -276,7 +275,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HeroMid:position:z")
+tracks/5/path = NodePath("HeroMid0:position:z")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -287,7 +286,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HeroFront:position:x")
+tracks/6/path = NodePath("HeroFront1:position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -298,7 +297,7 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HeroFront:position:y")
+tracks/7/path = NodePath("HeroFront1:position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -309,7 +308,7 @@ tracks/7/keys = {
 tracks/8/type = "bezier"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("HeroFront:position:z")
+tracks/8/path = NodePath("HeroFront1:position:z")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -324,7 +323,7 @@ length = 0.6
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HeroBack:position:x")
+tracks/0/path = NodePath("HeroBack0:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -335,7 +334,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HeroBack:position:y")
+tracks/1/path = NodePath("HeroBack0:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -346,7 +345,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HeroBack:position:z")
+tracks/2/path = NodePath("HeroBack0:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -357,7 +356,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HeroMid:position:x")
+tracks/3/path = NodePath("HeroMid0:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -368,7 +367,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HeroMid:position:y")
+tracks/4/path = NodePath("HeroMid0:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -379,7 +378,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HeroMid:position:z")
+tracks/5/path = NodePath("HeroMid0:position:z")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -390,7 +389,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HeroFront:position:x")
+tracks/6/path = NodePath("HeroFront1:position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -401,7 +400,7 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HeroFront:position:y")
+tracks/7/path = NodePath("HeroFront1:position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -412,7 +411,7 @@ tracks/7/keys = {
 tracks/8/type = "bezier"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("HeroFront:position:z")
+tracks/8/path = NodePath("HeroFront1:position:z")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -425,8 +424,8 @@ tracks/8/keys = {
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HeroFront:position:x")
+tracks/0/enabled = false
+tracks/0/path = NodePath("HeroFront1:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -436,8 +435,8 @@ tracks/0/keys = {
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HeroFront:position:y")
+tracks/1/enabled = false
+tracks/1/path = NodePath("HeroFront1:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -447,8 +446,8 @@ tracks/1/keys = {
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HeroFront:position:z")
+tracks/2/enabled = false
+tracks/2/path = NodePath("HeroFront1:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -458,8 +457,8 @@ tracks/2/keys = {
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HeroMid:position:x")
+tracks/3/enabled = false
+tracks/3/path = NodePath("HeroMid0:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -469,8 +468,8 @@ tracks/3/keys = {
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HeroMid:position:y")
+tracks/4/enabled = false
+tracks/4/path = NodePath("HeroMid0:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -480,8 +479,8 @@ tracks/4/keys = {
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("HeroMid:position:z")
+tracks/5/enabled = false
+tracks/5/path = NodePath("HeroMid0:position:z")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -491,8 +490,8 @@ tracks/5/keys = {
 }
 tracks/6/type = "bezier"
 tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("HeroBack:position:x")
+tracks/6/enabled = false
+tracks/6/path = NodePath("HeroBack0:position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -502,8 +501,8 @@ tracks/6/keys = {
 }
 tracks/7/type = "bezier"
 tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("HeroBack:position:y")
+tracks/7/enabled = false
+tracks/7/path = NodePath("HeroBack0:position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -513,8 +512,8 @@ tracks/7/keys = {
 }
 tracks/8/type = "bezier"
 tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("HeroBack:position:z")
+tracks/8/enabled = false
+tracks/8/path = NodePath("HeroBack0:position:z")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -524,8 +523,8 @@ tracks/8/keys = {
 }
 tracks/9/type = "bezier"
 tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("EnemyFront:position:x")
+tracks/9/enabled = false
+tracks/9/path = NodePath("EnemyFront1:position:x")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -535,8 +534,8 @@ tracks/9/keys = {
 }
 tracks/10/type = "bezier"
 tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("EnemyFront:position:y")
+tracks/10/enabled = false
+tracks/10/path = NodePath("EnemyFront1:position:y")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -546,8 +545,8 @@ tracks/10/keys = {
 }
 tracks/11/type = "bezier"
 tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("EnemyFront:position:z")
+tracks/11/enabled = false
+tracks/11/path = NodePath("EnemyFront1:position:z")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -557,8 +556,8 @@ tracks/11/keys = {
 }
 tracks/12/type = "bezier"
 tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("EnemyMid:position:x")
+tracks/12/enabled = false
+tracks/12/path = NodePath("EnemyMid1:position:x")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -568,8 +567,8 @@ tracks/12/keys = {
 }
 tracks/13/type = "bezier"
 tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("EnemyMid:position:y")
+tracks/13/enabled = false
+tracks/13/path = NodePath("EnemyMid1:position:y")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -579,8 +578,8 @@ tracks/13/keys = {
 }
 tracks/14/type = "bezier"
 tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("EnemyMid:position:z")
+tracks/14/enabled = false
+tracks/14/path = NodePath("EnemyMid1:position:z")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -590,8 +589,8 @@ tracks/14/keys = {
 }
 tracks/15/type = "bezier"
 tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("EnemyBack:position:x")
+tracks/15/enabled = false
+tracks/15/path = NodePath("EnemyBack1:position:x")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -601,8 +600,8 @@ tracks/15/keys = {
 }
 tracks/16/type = "bezier"
 tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("EnemyBack:position:y")
+tracks/16/enabled = false
+tracks/16/path = NodePath("EnemyBack1:position:y")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -612,8 +611,8 @@ tracks/16/keys = {
 }
 tracks/17/type = "bezier"
 tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("EnemyBack:position:z")
+tracks/17/enabled = false
+tracks/17/path = NodePath("EnemyBack1:position:z")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -628,7 +627,7 @@ length = 0.6
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EnemyFront:position:x")
+tracks/0/path = NodePath("EnemyFront1:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -639,7 +638,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("EnemyFront:position:y")
+tracks/1/path = NodePath("EnemyFront1:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -650,7 +649,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("EnemyFront:position:z")
+tracks/2/path = NodePath("EnemyFront1:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -661,7 +660,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("EnemyBack:position:x")
+tracks/3/path = NodePath("EnemyBack1:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -672,7 +671,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("EnemyBack:position:y")
+tracks/4/path = NodePath("EnemyBack1:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -683,7 +682,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("EnemyBack:position:z")
+tracks/5/path = NodePath("EnemyBack1:position:z")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -698,7 +697,7 @@ length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EnemyFront:position:x")
+tracks/0/path = NodePath("EnemyFront1:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -709,7 +708,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("EnemyFront:position:y")
+tracks/1/path = NodePath("EnemyFront1:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -720,7 +719,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("EnemyFront:position:z")
+tracks/2/path = NodePath("EnemyFront1:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -731,7 +730,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("EnemyMid:position:x")
+tracks/3/path = NodePath("EnemyMid1:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -742,7 +741,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("EnemyMid:position:y")
+tracks/4/path = NodePath("EnemyMid1:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -753,7 +752,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("EnemyMid:position:z")
+tracks/5/path = NodePath("EnemyMid1:position:z")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -768,7 +767,7 @@ length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EnemyMid:position:x")
+tracks/0/path = NodePath("EnemyMid1:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -779,7 +778,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("EnemyMid:position:y")
+tracks/1/path = NodePath("EnemyMid1:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -790,7 +789,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("EnemyMid:position:z")
+tracks/2/path = NodePath("EnemyMid1:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -801,7 +800,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("EnemyBack:position:x")
+tracks/3/path = NodePath("EnemyBack1:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -812,7 +811,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("EnemyBack:position:y")
+tracks/4/path = NodePath("EnemyBack1:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -823,7 +822,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("EnemyBack:position:z")
+tracks/5/path = NodePath("EnemyBack1:position:z")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -838,7 +837,7 @@ length = 0.6
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HeroFront:position:x")
+tracks/0/path = NodePath("HeroFront1:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -849,7 +848,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HeroFront:position:y")
+tracks/1/path = NodePath("HeroFront1:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -860,7 +859,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HeroFront:position:z")
+tracks/2/path = NodePath("HeroFront1:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -871,7 +870,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HeroBack:position:x")
+tracks/3/path = NodePath("HeroBack0:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -882,7 +881,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HeroBack:position:y")
+tracks/4/path = NodePath("HeroBack0:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -893,7 +892,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HeroBack:position:z")
+tracks/5/path = NodePath("HeroBack0:position:z")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -904,7 +903,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HeroMid:position:x")
+tracks/6/path = NodePath("HeroMid0:position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -915,7 +914,7 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HeroMid:position:y")
+tracks/7/path = NodePath("HeroMid0:position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -926,7 +925,7 @@ tracks/7/keys = {
 tracks/8/type = "bezier"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("HeroMid:position:z")
+tracks/8/path = NodePath("HeroMid0:position:z")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -941,7 +940,7 @@ length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HeroFront:position:x")
+tracks/0/path = NodePath("HeroFront1:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -952,7 +951,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HeroFront:position:y")
+tracks/1/path = NodePath("HeroFront1:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -963,7 +962,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HeroFront:position:z")
+tracks/2/path = NodePath("HeroFront1:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -974,7 +973,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HeroMid:position:x")
+tracks/3/path = NodePath("HeroMid0:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -985,7 +984,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HeroMid:position:y")
+tracks/4/path = NodePath("HeroMid0:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -996,7 +995,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HeroMid:position:z")
+tracks/5/path = NodePath("HeroMid0:position:z")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1011,7 +1010,7 @@ length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HeroBack:position:x")
+tracks/0/path = NodePath("HeroBack0:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1022,7 +1021,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HeroBack:position:y")
+tracks/1/path = NodePath("HeroBack0:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1033,7 +1032,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HeroBack:position:z")
+tracks/2/path = NodePath("HeroBack0:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1044,7 +1043,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HeroMid:position:x")
+tracks/3/path = NodePath("HeroMid0:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1055,7 +1054,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HeroMid:position:y")
+tracks/4/path = NodePath("HeroMid0:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1066,7 +1065,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HeroMid:position:z")
+tracks/5/path = NodePath("HeroMid0:position:z")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1142,51 +1141,147 @@ defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
 startingScene = true
 battleRoster = NodePath("Roster")
 
-[node name="Roster" type="Node3D" parent="Battle" node_paths=PackedStringArray("debugPlayer", "debugPlayer2", "debugEnemy1", "debugEnemy2", "debugEnemy3")]
+[node name="Roster" type="Node3D" parent="Battle" node_paths=PackedStringArray("debugPlayer", "debugPlayer2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 script = ExtResource("2_1verb")
 debugMode = true
-debugPlayer = NodePath("HeroFront/Cato")
-debugPlayer2 = NodePath("HeroMid/TestHero")
-debugEnemy1 = NodePath("EnemyFront/SkeletonGuard")
-debugEnemy2 = NodePath("EnemyMid/Skeleton")
-debugEnemy3 = NodePath("")
+debugPlayer = NodePath("HeroFront1/Cato")
+debugPlayer2 = NodePath("HeroMid0/TestHero")
 
-[node name="HeroBack" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
+[node name="HeroBack0" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.52, 0, 0)
 
-[node name="HeroMid" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+[node name="HeroBack1" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -1)
 
-[node name="TestHero" parent="Battle/Roster/HeroMid" node_paths=PackedStringArray("readout") instance=ExtResource("3_p77hq")]
+[node name="HeroBack2" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48, 0, -2)
+
+[node name="HeroMid0" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2, 0, 0)
+
+[node name="TestHero" parent="Battle/Roster/HeroMid0" node_paths=PackedStringArray("readout") instance=ExtResource("3_p77hq")]
+visible = false
 readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Silver Readout")
 
-[node name="HeroFront" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+[node name="HeroMid1" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 0, -1)
 
-[node name="Cato" parent="Battle/Roster/HeroFront" node_paths=PackedStringArray("readout") instance=ExtResource("4_xw6bo")]
+[node name="TestHero" parent="Battle/Roster/HeroMid1" node_paths=PackedStringArray("basicAttack", "readout", "displayText", "swapAbility", "pointer") instance=ExtResource("3_p77hq")]
+basicAttack = NodePath("../../HeroMid0/TestHero/SilverBasicAttack")
+readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Silver Readout")
+displayText = NodePath("../../HeroMid0/TestHero/Combat Text")
+swapAbility = NodePath("../../HeroMid0/TestHero/SwapPositions")
+pointer = NodePath("../../HeroMid0/TestHero/Pointer Adjuster/Pointer")
+
+[node name="HeroMid2" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08, 0, -2)
+
+[node name="TestHero" parent="Battle/Roster/HeroMid2" node_paths=PackedStringArray("basicAttack", "readout", "displayText", "swapAbility", "pointer") instance=ExtResource("3_p77hq")]
+visible = false
+basicAttack = NodePath("../../HeroMid0/TestHero/SilverBasicAttack")
+readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Silver Readout")
+displayText = NodePath("../../HeroMid0/TestHero/Combat Text")
+swapAbility = NodePath("../../HeroMid0/TestHero/SwapPositions")
+pointer = NodePath("../../HeroMid0/TestHero/Pointer Adjuster/Pointer")
+
+[node name="HeroFront0" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56, 0, 0)
+
+[node name="Cato" parent="Battle/Roster/HeroFront0" node_paths=PackedStringArray("basicAttack", "readout", "displayText", "swapAbility", "pointer") instance=ExtResource("4_xw6bo")]
+visible = false
+basicAttack = NodePath("../../HeroFront1/Cato/CatoBasicAttack")
+readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
+displayText = NodePath("../../HeroFront1/Cato/Combat Text")
+swapAbility = NodePath("../../HeroFront1/Cato/SwapPositions")
+pointer = NodePath("../../HeroFront1/Cato/Pointer Adjuster/Pointer")
+
+[node name="HeroFront1" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1)
+
+[node name="Cato" parent="Battle/Roster/HeroFront1" node_paths=PackedStringArray("readout") instance=ExtResource("4_xw6bo")]
 readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
 
-[node name="EnemyFront" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+[node name="HeroFront2" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
 
-[node name="SkeletonGuard" parent="Battle/Roster/EnemyFront" instance=ExtResource("5_xmmo0")]
+[node name="Cato" parent="Battle/Roster/HeroFront2" node_paths=PackedStringArray("basicAttack", "readout", "displayText", "swapAbility", "pointer") instance=ExtResource("4_xw6bo")]
+visible = false
+basicAttack = NodePath("../../HeroFront1/Cato/CatoBasicAttack")
+readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
+displayText = NodePath("../../HeroFront1/Cato/Combat Text")
+swapAbility = NodePath("../../HeroFront1/Cato/SwapPositions")
+pointer = NodePath("../../HeroFront1/Cato/Pointer Adjuster/Pointer")
 
-[node name="EnemyMid" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+[node name="EnemyFront0" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0, 0)
 
-[node name="Skeleton" parent="Battle/Roster/EnemyMid" instance=ExtResource("5_m0pg8")]
+[node name="Skeleton" parent="Battle/Roster/EnemyFront0" instance=ExtResource("5_fuc8f")]
 
-[node name="EnemyBack" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
+[node name="EnemyFront1" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, -1)
+
+[node name="Skeleton" parent="Battle/Roster/EnemyFront1" node_paths=PackedStringArray("attack", "nameplate", "healthBar", "displayText", "pointer") instance=ExtResource("5_fuc8f")]
+attack = NodePath("../../EnemyFront0/Skeleton/Attack")
+nameplate = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Nameplate Adjuster/Enemy Nameplate")
+healthBar = NodePath("../../EnemyFront0/Skeleton/Sprite3D/EnemyHealthBar")
+displayText = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Combat Text")
+pointer = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Pointer Adjuster/Pointer")
+
+[node name="EnemyFront2" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="Skeleton" parent="Battle/Roster/EnemyFront2" node_paths=PackedStringArray("attack", "nameplate", "healthBar", "displayText", "pointer") instance=ExtResource("5_fuc8f")]
+attack = NodePath("../../EnemyFront0/Skeleton/Attack")
+nameplate = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Nameplate Adjuster/Enemy Nameplate")
+healthBar = NodePath("../../EnemyFront0/Skeleton/Sprite3D/EnemyHealthBar")
+displayText = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Combat Text")
+pointer = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Pointer Adjuster/Pointer")
+
+[node name="EnemyMid0" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2, 0, 0)
+
+[node name="EnemyMid1" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6, 0, -1)
+
+[node name="Skeleton" parent="Battle/Roster/EnemyMid1" node_paths=PackedStringArray("attack", "nameplate", "healthBar", "displayText", "pointer") instance=ExtResource("5_fuc8f")]
+attack = NodePath("../../EnemyFront0/Skeleton/Attack")
+nameplate = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Nameplate Adjuster/Enemy Nameplate")
+healthBar = NodePath("../../EnemyFront0/Skeleton/Sprite3D/EnemyHealthBar")
+displayText = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Combat Text")
+pointer = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Pointer Adjuster/Pointer")
+
+[node name="EnemyMid2" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.08, 0, -2)
+
+[node name="EnemyBack0" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.52, 0, 0)
+
+[node name="EnemyBack1" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -1)
+
+[node name="Skeleton" parent="Battle/Roster/EnemyBack1" node_paths=PackedStringArray("attack", "nameplate", "healthBar", "displayText", "pointer") instance=ExtResource("5_fuc8f")]
+attack = NodePath("../../EnemyFront0/Skeleton/Attack")
+nameplate = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Nameplate Adjuster/Enemy Nameplate")
+healthBar = NodePath("../../EnemyFront0/Skeleton/Sprite3D/EnemyHealthBar")
+displayText = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Combat Text")
+pointer = NodePath("../../EnemyFront0/Skeleton/Sprite3D/Pointer Adjuster/Pointer")
+
+[node name="EnemyBack2" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48, 0, -2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Battle/Roster"]
 libraries = {
 "": SubResource("AnimationLibrary_wt4h5")
 }
 
+[node name="Sprite3D" type="Sprite3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52, 0)
+axis = 1
+
 [node name="Camera3D" type="Camera3D" parent="Battle"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 4.2, 10.04)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -1.53, 5, 12)
+fov = 60.0
 
 [node name="BattleGUI" parent="Battle/Camera3D" instance=ExtResource("4_noo0e")]
 

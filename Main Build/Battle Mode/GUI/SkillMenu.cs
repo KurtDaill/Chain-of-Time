@@ -34,7 +34,7 @@ public partial class SkillMenu : BattleMenu
         noSkills = false;
         var skills = character.GetSkills();
         if(skills.Length == 0){ //Handles the special case if there are no skills
-                cards[0].SetDisplay("No Skills", "", "", AbilityAlignment.Normal, 0, new Godot.Collections.Array<BattlePosition>());
+                cards[0].SetDisplay("No Skills", "", "", AbilityAlignment.Normal, 0, new Godot.Collections.Array<BattleRank>());
                 availableCards++;
                 noSkills = true;
         }
@@ -69,14 +69,14 @@ public partial class SkillMenu : BattleMenu
                 }
                 break;
             case MenuInput.Select : //TODO: Should go to a "Targeting" menu --- ChargeSP returns false if player can't pay, and MUST BE AT THE END OF THIS CONDITIONAL!!!
-                if(noSkills == false && character.GetSkills()[selectedOption].GetEnabledPositions().Contains(caller.GetRoster().GetCharacterVirtualPosition(character)) && character.ChargeSP(character.GetSkills()[selectedOption].GetSPCost())){ 
+                if(noSkills == false && character.GetSkills()[selectedOption].GetEnabledPositions().Contains(caller.GetRoster().GetCharacterVirtualPosition(character).Item2) && character.ChargeSP(character.GetSkills()[selectedOption].GetSPCost())){ 
                     menuAnim.Play("Exit");
-                    TargetingMenu tMenu = (TargetingMenu) parentGUI.menus[5];
+                    NewTargetingMenu tMenu = (NewTargetingMenu) parentGUI.menus[5];
                     tMenu.SetAbilityForTargeting(character.GetSkills()[selectedOption], parentGUI);
                     parentGUI.ChangeMenu(5, character);
                     return null;
                 }else{
-                    if(!character.GetSkills()[selectedOption].GetEnabledPositions().Contains(character.GetPosition())){
+                    if(!character.GetSkills()[selectedOption].GetEnabledPositions().Contains(character.GetPosition().Item2)){
                         cards[selectedOption].FlashFriendlyPips();
                     }
                     rejectSound.Play();

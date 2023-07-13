@@ -28,14 +28,14 @@ public partial class ReadoutContainer : VBoxContainer
         foreach(Node element in readouts){
             if(element != null && element is PlayerCharacterReadout){
                 var read = (PlayerCharacterReadout) element;
-                switch(read.character.GetPosition()){
-                    case BattlePosition.HeroFront :
+                switch(read.character.GetPosition().GetRank()){
+                    case BattleRank.HeroFront :
                         MoveChild(read, 0);
                         break;
-                    case BattlePosition.HeroMid :
+                    case BattleRank.HeroMid :
                         MoveChild(read, 1);
                         break;
-                    case BattlePosition.HeroBack :
+                    case BattleRank.HeroBack :
                         MoveChild(read, 2);
                         break;
                 }

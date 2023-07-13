@@ -12,7 +12,7 @@ public partial class Ability : CombatAction
 
     protected TargetingLogic AbilityTargetingLogic;
     [Export(PropertyHint.Enum)]
-    protected Godot.Collections.Array<BattlePosition> enabledPositions;
+    protected Godot.Collections.Array<BattleRank> enabledPositions;
 
     public virtual void SetTargets(Combatant[] proposedTarget){
         target = proposedTarget;
@@ -60,7 +60,7 @@ public partial class Ability : CombatAction
         ListenForAnimationFinished();
     }
 
-    public Godot.Collections.Array<BattlePosition> GetEnabledPositions(){
+    public Godot.Collections.Array<BattleRank> GetEnabledPositions(){
         return enabledPositions;
     }
 

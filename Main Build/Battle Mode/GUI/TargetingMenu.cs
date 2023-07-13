@@ -5,6 +5,7 @@ using Godot;
 using static BattleUtilities;
 
 public partial class TargetingMenu : BattleMenu {
+	/*
 	private PlayerAbility abilityInQuestion;
 	private AudioStreamPlayer targetingErrorSound;
 	private List<Combatant> plannedTargets;
@@ -65,25 +66,25 @@ public partial class TargetingMenu : BattleMenu {
 						decisionRequired = false;
 						break;
 					case TargetingLogic.Melee : //Only legal if we're in the front slot
-						if(caller.GetRoster().GetCharacterVirtualPosition(character) != BattlePosition.HeroFront){
+						if(caller.GetRoster().GetCharacterVirtualPosition(character).GetRank() != BattleRank.HeroFront){
 							//Do the "This attack is super invalid" notification
 							RejectSelection();
 						}else{
 							decisionRequired = false;
-							SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyFront), caller);
+							SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.EnemyFront), caller);
 						}
 						break;
 					case TargetingLogic.Reach : //Only legal if we're in the front or middle slot
-						if(character.GetPosition() != BattlePosition.HeroFront && character.GetPosition() != BattlePosition.HeroMid){
+						if(character.GetPosition() != BattleRank.HeroFront && character.GetPosition() != BattleRank.HeroMid){
 							//Do the "This attack is super invalid" notification
 							RejectSelection();
 						}else{
-							SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyFront), caller);
+							SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.EnemyFront), caller);
 							decisionRequired = true;
 						}
 						break;
 					case TargetingLogic.Ranged : //Always legal if there's an enemy targetable (we check for targetability later)
-						SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyFront), caller);
+						SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.EnemyFront), caller);
 						decisionRequired = true;
 						break;
 					case TargetingLogic.AnyAlly :
@@ -122,65 +123,66 @@ public partial class TargetingMenu : BattleMenu {
 						break;
 					/* Reach is on the Chopping Block
 					case TargetingLogic.Reach :
-						if(caller.GetRoster().GetCombatant(BattlePosition.EnemyMid) != null && plannedTargets[0].GetPosition() == BattlePosition.EnemyFront 
-						&& input == MenuInput.Right && character.GetPosition() == BattlePosition.HeroFront){
+						if(caller.GetRoster().GetCombatant(BattleRank.EnemyMid) != null && plannedTargets[0].GetPosition() == BattleRank.EnemyFront 
+						&& input == MenuInput.Right && character.GetPosition() == BattleRank.HeroFront){
 						//You can only target the enemy in the second rank with a reach attack if you're right on the front (reach only gives you 2 slots of range)
-							SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyMid), caller);
+							SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.EnemyMid), caller);
 						}
-						else if(plannedTargets[0].GetPosition() == BattlePosition.EnemyMid && input == MenuInput.Left){
+						else if(plannedTargets[0].GetPosition() == BattleRank.EnemyMid && input == MenuInput.Left){
 						//We don't check if enemy one exists because they have to in order for there to still be a battle    
-							SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyFront), caller);
+							SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.EnemyFront), caller);
 						}
 						break;
 					*/
+					/*
 					case TargetingLogic.Ranged :
 						switch(plannedTargets[0].GetPosition()){
-							case BattlePosition.EnemyFront :
-								if(input == MenuInput.Right && caller.GetRoster().GetCombatant(BattlePosition.EnemyMid) != null){
-									SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyMid), caller);
+							case BattleRank.EnemyFront :
+								if(input == MenuInput.Right && caller.GetRoster().GetCombatant(BattleRank.EnemyMid) != null){
+									SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.EnemyMid), caller);
 								}else{
 									RejectSelection(); //We know input == Left and there's no left target or there's no right target at all
 								}
 								break;
-							case BattlePosition.EnemyMid :
-								if(input == MenuInput.Right && caller.GetRoster().GetCombatant(BattlePosition.EnemyBack) != null){
-									SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyBack), caller);
+							case BattleRank.EnemyMid :
+								if(input == MenuInput.Right && caller.GetRoster().GetCombatant(BattleRank.EnemyBack) != null){
+									SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.EnemyBack), caller);
 								}
 								else if(input == MenuInput.Left){//We don't check if there's an enemy one because there must be for battle to be happening
-									SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyFront), caller);
+									SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.EnemyFront), caller);
 								}else{
 									RejectSelection(); //We know input == Left and there's no left target or there's no right target at all
 								}
 								break;
-							case BattlePosition.EnemyBack :
+							case BattleRank.EnemyBack :
 								if(input == MenuInput.Left){//We don't check if there's an enemy two, because there must be if we're targeting enemy three
-									SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.EnemyMid), caller);
+									SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.EnemyMid), caller);
 								}
 								break;
 						}
 						break;
 					case TargetingLogic.AnyAlly :
 						switch(plannedTargets[0].GetPosition()){
-							case BattlePosition.HeroFront :
-								if(input == MenuInput.Right && caller.GetRoster().GetCombatant(BattlePosition.HeroMid) != null){
-									SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.HeroMid), caller);
+							case BattleRank.HeroFront :
+								if(input == MenuInput.Right && caller.GetRoster().GetCombatant(BattleRank.HeroMid) != null){
+									SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.HeroMid), caller);
 								}else{
 									RejectSelection(); //because we know input == Left and there's no left target or there's no right target at all
 								}
 								break;
-							case BattlePosition.HeroMid :
-								if(input == MenuInput.Right && caller.GetRoster().GetCombatant(BattlePosition.HeroBack) != null){
-									SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.HeroBack), caller);
+							case BattleRank.HeroMid :
+								if(input == MenuInput.Right && caller.GetRoster().GetCombatant(BattleRank.HeroBack) != null){
+									SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.HeroBack), caller);
 								}
 								else if(input == MenuInput.Left){//We don't check if there's an Hero one because there must be for battle to be happening
-									SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.HeroFront), caller);
+									SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.HeroFront), caller);
 								}else{
 									RejectSelection();//We know input == Left and there's no left target or there's no right target at all
 								}
 								break;
-							case BattlePosition.HeroBack :
+							case BattleRank.HeroBack :
 								if(input == MenuInput.Left){//We don't check if there's an Hero two, because there must be if we're targeting Hero three
-									SetNewTargets(caller.GetRoster().GetCombatant(BattlePosition.HeroMid), caller);
+									SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.HeroMid), caller);
 								}
 								break;
 						}
@@ -263,5 +265,6 @@ public partial class TargetingMenu : BattleMenu {
 		var empty = new List<Combatant>();
 		SetPointers(empty, battle);
 	}
+*/
 }
 

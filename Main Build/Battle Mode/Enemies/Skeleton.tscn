@@ -371,6 +371,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.720737, 0, 0)
 
 [node name="EnemyHealthBar" parent="Sprite3D" instance=ExtResource("11_6s4m7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.53348, -0.579544, 0)
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

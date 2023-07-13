@@ -24,7 +24,7 @@ public partial class PositionSwap : PlayerAbility
         EmitSignal(CombatAction.SignalName.ActionComplete);
 	}   
     
-	public override (Combatant, BattleUtilities.BattlePosition)[] GetPositionSwaps(){
-		return new (Combatant, BattleUtilities.BattlePosition)[]{(source, target[0].GetPosition())};
+	public override (Combatant, BattleUtilities.BattleRank)[] GetPositionSwaps(){
+		return new (Combatant, BattleUtilities.BattleRank)[]{(source, target[0].GetPosition())};
 	}
 }

@@ -93,8 +93,8 @@ public partial class PlayerCombatant : Combatant
 		readout.UpdateSP(sp, maxSP);
 	}
 
-	public PlayerAbility SetupAndGetSwap(Roster ros, PlayerCombatant target){
-		swapAbility.SetupSwapDetails(ros, target);
-		return swapAbility;
-	}
+	//public PlayerAbility SetupAndGetSwap(Roster ros, PlayerCombatant target){
+		//swapAbility.SetupSwapDetails(ros, target);
+		//return swapAbility;
+	//}
 }

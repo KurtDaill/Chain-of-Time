@@ -23,11 +23,11 @@ public partial class GhostMage : EnemyCombatant
 	}
 
 	public override CombatEventData DecideAction(Battle parentBattle){
-			if(parentBattle.GetRoster().GetCombatant(BattlePosition.HeroFront).GetName() == "Cato" && !hasConfused && parentBattle.GetRoster().GetAllEnemyCombatants().Length >= 2){
+			if(parentBattle.GetRoster().GetCombatant(BattleRank.HeroFront).GetName() == "Cato" && !hasConfused && parentBattle.GetRoster().GetAllEnemyCombatants().Length >= 2){
 				hasConfused = true;
 				return confusion.GetEventData();
 			}
-			else if(this.GetPosition() == BattlePosition.EnemyFront){
+			else if(this.GetPosition().Item2 == BattleRank.EnemyFront){
 				return attack.GetEventData();
 			}else{
 				return fireBlast.GetEventData();

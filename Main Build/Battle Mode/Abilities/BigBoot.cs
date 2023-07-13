@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+using static BattleUtilities;
 public partial class BigBoot : PlayerSkill
 {
 
@@ -24,9 +24,9 @@ public partial class BigBoot : PlayerSkill
 
 	public override void AnimationTrigger(int phase){
 		switch(phase){
-			case 0 : parentBattle.GetRoster().GetCombatant(BattleUtilities.BattlePosition.EnemyFront).TakeDamage(5); break;
+			case 0 : parentBattle.GetRoster().GetCombatant(source.GetPosition().Item1, BattleUtilities.BattleRank.EnemyFront).TakeDamage(5); break;
 			case 1 : 
-				parentBattle.GetRoster().SwapCharacters(source, BattleUtilities.BattlePosition.HeroMid);
+				parentBattle.GetRoster().SwapCharacters(source, source.GetPosition().Item1, BattleUtilities.BattleRank.HeroMid);
 				WaitForSwap();
 				//We shouldn't have triggered the flag for completing the core animation (it should be made long enough to not finish before the swap), so Big Boot Recovery finishing should be what trips that flag.
 				source.GetAnimationPlayer().Play("Big Boot Recovery");
@@ -40,7 +40,7 @@ public partial class BigBoot : PlayerSkill
 		flagsRequiredToComplete[1] = true;
 	}
 
-	public override (Combatant, BattleUtilities.BattlePosition)[] GetPositionSwaps(){
-		return new (Combatant, BattleUtilities.BattlePosition)[]{(source, BattleUtilities.BattlePosition.HeroMid)};	
+	public override (Combatant, (BattleLane, BattleRank))[] GetPositionSwaps(){
+		return new (Combatant, (BattleLane, BattleRank))[]{(source, (source.GetPosition().Item1, BattleUtilities.BattleRank.HeroMid))};	
 	}
 }

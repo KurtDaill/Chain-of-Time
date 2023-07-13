@@ -22,7 +22,7 @@ public partial class FireBlast : EnemyAbility
 	}
 
 	public override void AnimationTrigger(int phase){
-		target[0] = parentBattle.GetRoster().GetCombatant(BattlePosition.HeroFront);
+		target[0] = parentBattle.GetRoster().GetCombatant(BattleRank.HeroFront);
 		//Get Possible Target with the Lowest HP
 		foreach(PlayerCombatant com in parentBattle.GetRoster().GetLegalHeroTargets()){ if(com.GetHP() < target[0].GetHP()) target[0] = com; }
 		Projectile fireball = fireballScene.Instantiate<Projectile>();

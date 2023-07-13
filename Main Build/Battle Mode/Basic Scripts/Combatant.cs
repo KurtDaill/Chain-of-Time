@@ -13,25 +13,15 @@ public partial class Combatant : Node3D
 	[Export]
 	CombatText displayText;
 	protected AnimationPlayer animPlay;
-
 	protected BattlePosition currentPosition;
-
 	protected List<StatusEffect> activeStatuses;
 	protected List<CombatFX> combatVisEffects;
-
-	[Export]
-	protected PositionSwap swapAbility;
 	protected string name = "defaultCombatantName";
-
 	protected CombatAction readyAction;
-
 	bool defeated = false;
-
 	protected Node3D[] bodyRef;
-
 	[Export]
 	protected Sprite3D pointer;
-	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -118,8 +108,8 @@ public partial class Combatant : Node3D
 		return currentPosition;
 	}
 
-	public void SetPosition(BattlePosition pos){
-		currentPosition = pos;
+	public void SetPosition(BattleLane lane, BattleRank rank){
+		currentPosition = new BattlePosition(lane, rank);
 	}
 
 	public void GainStatus(StatusEffect status){

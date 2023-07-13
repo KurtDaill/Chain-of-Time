@@ -33,8 +33,8 @@ public partial class CatoTaunt : PlayerSkill{
 		StatusTauntUntilMove tauntStatus = GD.Load<PackedScene>(tauntStatusEffectPath).Instantiate<StatusTauntUntilMove>();
 		source.GainStatus(tauntStatus);
 		tauntStatus.Begin();
-		if(target[0].GetPosition() != BattlePosition.EnemyFront){
-			parentBattle.GetRoster().SwapCharacters(target[0].GetPosition(), BattlePosition.EnemyFront);
+		if(target[0].GetPosition() != BattleRank.EnemyFront){
+			parentBattle.GetRoster().SwapCharacters(target[0].GetPosition(), BattleRank.EnemyFront);
         	WaitForSwap();
 		}else{
 			flagsRequiredToComplete[1] = true;
@@ -46,8 +46,8 @@ public partial class CatoTaunt : PlayerSkill{
 		flagsRequiredToComplete[1] = true;
 	}
 
-	public override (Combatant, BattleUtilities.BattlePosition)[] GetPositionSwaps(){
-		if(target[0].GetPosition() != BattleUtilities.BattlePosition.EnemyFront) return new (Combatant, BattleUtilities.BattlePosition)[]{(target[0], BattleUtilities.BattlePosition.EnemyFront)};
+	public override (Combatant, BattleUtilities.BattleRank)[] GetPositionSwaps(){
+		if(target[0].GetPosition() != BattleUtilities.BattleRank.EnemyFront) return new (Combatant, BattleUtilities.BattleRank)[]{(target[0], BattleUtilities.BattleRank.EnemyFront)};
 		return null;
 	}
 }

@@ -17,7 +17,7 @@ public partial class LesserConfusion : EnemyAbility
     public override void AnimationTrigger(int phase)
 	{
 		base.AnimationTrigger(phase);
-		parentBattle.GetRoster().SwapCharacters(BattlePosition.HeroFront, BattlePosition.HeroMid);
+		parentBattle.GetRoster().SwapCharacters(BattleRank.HeroFront, BattleRank.HeroMid);
 		WaitForSwap();
 	}
 

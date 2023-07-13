@@ -47,17 +47,17 @@ public partial class SwapMenu : BattleMenu{
     public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         subject = character;
         switch(character.GetPosition()){
-            case(BattlePosition.HeroFront) :
-                rightTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattlePosition.HeroMid);
-                leftTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattlePosition.HeroBack);
+            case(BattleRank.HeroFront) :
+                rightTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattleRank.HeroMid);
+                leftTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattleRank.HeroBack);
                 break;
-            case(BattlePosition.HeroMid) :
-                rightTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattlePosition.HeroFront);
-                leftTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattlePosition.HeroBack);
+            case(BattleRank.HeroMid) :
+                rightTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattleRank.HeroFront);
+                leftTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattleRank.HeroBack);
                 break;
-            case(BattlePosition.HeroBack) :
-                rightTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattlePosition.HeroFront);
-                leftTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattlePosition.HeroMid);
+            case(BattleRank.HeroBack) :
+                rightTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattleRank.HeroFront);
+                leftTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattleRank.HeroMid);
                 break;
         }
         if(rightTarget != null){
