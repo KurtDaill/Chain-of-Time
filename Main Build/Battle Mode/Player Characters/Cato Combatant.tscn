@@ -426,8 +426,8 @@ sp = 2
 maxSP = 2
 basicAttack = NodePath("CatoBasicAttack")
 displayPortrait = ExtResource("2_kpxx0")
-hp = 5
-maxHP = 5
+hp = 10
+maxHP = 10
 displayText = NodePath("Combat Text")
 pointer = NodePath("Pointer Adjuster/Pointer")
 

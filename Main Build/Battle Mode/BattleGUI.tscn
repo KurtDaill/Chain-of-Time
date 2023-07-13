@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://6ewe3uubmamc" path="res://GUI/SkillCard.tscn" id="30_x7avc"]
 [ext_resource type="Texture2D" uid="uid://cenqt4ms2eal0" path="res://GUI/Battle Menu Assets/Item Menu/Item Tab.png" id="31"]
 [ext_resource type="Texture2D" uid="uid://nli0mcpokh1x" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuSwapHighlight.png" id="32"]
+[ext_resource type="Script" path="res://Battle Mode/GUI/NewTargetingMenu.cs" id="32_kewu6"]
 [ext_resource type="Texture2D" uid="uid://cm7bwe6xrk4bw" path="res://GUI/Battle Menu Assets/Attack Menu/Attack Menu.png" id="33"]
 [ext_resource type="Texture2D" uid="uid://doe0fcor7214h" path="res://GUI/Battle Menu Assets/Skill Menu/Skill Card.png" id="33_011xl"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/SkillCard.cs" id="34_dir1l"]
@@ -39,7 +40,6 @@
 [ext_resource type="Texture2D" uid="uid://cnjhk3wv6wdg" path="res://GUI/Battle Menu Assets/Skill Menu/FriendlyPipFlash.png" id="37_5lsqi"]
 [ext_resource type="Texture2D" uid="uid://ljywc1tefq1h" path="res://GUI/Battle Menu Assets/Skill Menu/EnemyPip.png" id="37_43rqt"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/BattleGUI.cs" id="38"]
-[ext_resource type="Script" path="res://Battle Mode/GUI/TargetingMenu.cs" id="39"]
 [ext_resource type="Texture2D" uid="uid://cnv1fdlpp2vd1" path="res://GUI/Battle Menu Assets/Skill Menu/EnemyPipFlash.png" id="39_vp7at"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/TopMenu.cs" id="40"]
 [ext_resource type="Script" path="res://GUI/ReadoutContainer.cs" id="40_jh205"]
@@ -1568,7 +1568,7 @@ volume_db = 10.0
 visible = false
 anchors_preset = 0
 offset_right = 752.0
-script = ExtResource("39")
+script = ExtResource("32_kewu6")
 
 [node name="SelectError" type="AudioStreamPlayer" parent="Targeting Menu"]
 stream = ExtResource("21")

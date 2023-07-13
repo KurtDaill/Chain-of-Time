@@ -418,8 +418,8 @@ sp = 4
 maxSP = 4
 basicAttack = NodePath("SilverBasicAttack")
 displayPortrait = ExtResource("2_kja07")
-hp = 6
-maxHP = 6
+hp = 10
+maxHP = 10
 displayText = NodePath("Combat Text")
 pointer = NodePath("Pointer Adjuster/Pointer")
 

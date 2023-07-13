@@ -86,6 +86,11 @@ public partial class NewTargetingMenu : BattleMenu {
                 Did they press select?
                     Run Check Target Legaltiy
         */
+        
+        if(Input.IsActionJustPressed("ui_back")){
+            parentGUI.ChangeMenu(0, character);
+            return null;
+        }
         switch(currentAbility.GetTargetingLogic()){
             //All of these Targeting Types require no input from the player.
             case TargetingLogic.Self: case TargetingLogic.MyRank: case TargetingLogic.MyLanePlayers : case TargetingLogic.MyLaneEnemies : case TargetingLogic.AllPlayers: case TargetingLogic.AllEnemies:
@@ -105,6 +110,7 @@ public partial class NewTargetingMenu : BattleMenu {
             List<Combatant> legalTargets = GetLegalTargets(selectedTargets, caller, positionIndex);
             if(legalTargets.Count() == 0){ RejectSelection(); return null; }
             currentAbility.SetTargets(legalTargets.ToArray());
+            SetPointers(caller);
             return currentAbility;    
         }
         return null;
@@ -133,6 +139,7 @@ public partial class NewTargetingMenu : BattleMenu {
             break;
         }
         newSelection = caller.GetRoster().GetCombatant((BattleLane)selectLane, (BattleRank)selectRank);
+        if(newSelection == null){ RejectSelection(); return; }
         if(currentAbility.GetTargetingLogic() == TargetingLogic.SinlgeTargetPlayer && newSelection is EnemyCombatant){ RejectSelection(); return; }
         if(currentAbility.GetTargetingLogic() == TargetingLogic.SingleTargetEnemy && newSelection is PlayerCombatant){ RejectSelection(); return; }
         selectedTargets = new List<Combatant>(){newSelection};
@@ -243,6 +250,7 @@ public partial class NewTargetingMenu : BattleMenu {
         SetPointers(battle, new List<Combatant>(){character});
     }
     public void SetPointers(Battle battle, List<Combatant> characters = null){
+        if(characters == null) characters = new List<Combatant>();
         foreach(Combatant cha in battle.GetRoster().GetAllCombatants()){
             if(cha != null) 
                 if(characters.Contains(cha)){

@@ -44,7 +44,7 @@ public partial class Roster : Node
 		characterSpots[2, 2] = ((Node3D)this.GetNode("HeroFront2"));
 		characterSpots[2, 3] = ((Node3D)this.GetNode("EnemyFront2"));
 		characterSpots[2, 4] = ((Node3D)this.GetNode("EnemyMid2"));
-		characterSpots[2, 5] = ((Node3D)this.GetNode("EnemyBack"));
+		characterSpots[2, 5] = ((Node3D)this.GetNode("EnemyBack2"));
 
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer"); 
 
@@ -54,7 +54,10 @@ public partial class Roster : Node
 		if(debugMode){
 			for(int l = 0; l < 3; l++){
 				for(int r = 0; r < 6; r++){
-					if(characterSpots[l,r].GetChildren().Count() > 0) positionData[l,r] = (Combatant) characterSpots[l,r].GetChild(0);
+					if(characterSpots[l,r].GetChildren().Count() > 0){
+						positionData[l,r] = (Combatant) characterSpots[l,r].GetChild(0);
+						positionData[l,r].SetPosition(new BattlePosition((BattleLane) l, (BattleRank) r));
+					}
 				}
 			}
 		}
@@ -123,7 +126,7 @@ public partial class Roster : Node
 	public PlayerCombatant[] GetAllPlayerCombatants(){
 		List<PlayerCombatant> result = new List<PlayerCombatant>();
 		for(int i = 0; i < 3; i++){
-			for(int j = 0; j < 3; j++){ result.Add((PlayerCombatant)positionData[i,j]); }
+			for(int j = 2; j >= 0; j--){ result.Add((PlayerCombatant)positionData[i,j]); }
 		}
 		return result.Where(x => x != null).ToArray();
 	}

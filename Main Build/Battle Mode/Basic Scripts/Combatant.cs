@@ -111,6 +111,9 @@ public partial class Combatant : Node3D
 	public void SetPosition(BattleLane lane, BattleRank rank){
 		currentPosition = new BattlePosition(lane, rank);
 	}
+	public void SetPosition(BattlePosition bp){
+		currentPosition = bp;
+	}
 
 	public void GainStatus(StatusEffect status){
 		this.AddChild(status);
