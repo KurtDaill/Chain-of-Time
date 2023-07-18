@@ -1,3 +1,13 @@
+res://Battle Mode/BattleGUI.tscn
+res://GUI/Themes/Skill Card Normal Small.tres
+res://GUI/Themes/Skill Card Normal.tres
+res://GUI/Themes/UI Impact.tres
+res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres
+res://Battle Mode/PrototypeBattle.tscn
+res://Levels/Combat Playtest One/Victory.tscn
+res://Battle Mode/GUI/EnemyHealthBar.tscn
+res://GUI/SkillCard.tscn
+res://Battle Mode/GUI/PlayerReadout.tscn
 res://Battle Mode/Abilities/Ability.cs
 res://Battle Mode/Abilities/BasicEnemyMelee.cs
 res://Battle Mode/Abilities/BigBoot.cs
@@ -5,10 +15,11 @@ res://Battle Mode/Abilities/CatoBasicAttack.cs
 res://Battle Mode/Abilities/CatoShieldRush.cs
 res://Battle Mode/Abilities/CatoTaunt.cs
 res://Battle Mode/Abilities/EnemyAbility.cs
+res://Battle Mode/Abilities/EnemySwap.cs
 res://Battle Mode/Abilities/FireBlast.cs
 res://Battle Mode/Abilities/LesserConfusion.cs
 res://Battle Mode/Abilities/LongShot.cs
-res://Battle Mode/Abilities/PositionSwap.cs
+res://Battle Mode/Abilities/PlayerSwap.cs
 res://Battle Mode/Abilities/SilverBasicAttack.cs
 res://Battle Mode/Abilities/SkeletonTaunt.cs
 res://Battle Mode/Abilities/TestAttack.cs
@@ -94,15 +105,4 @@ res://Old/Test Scenes/Sprite Testing/InContextSpriteTest.cs
 res://SceneConfig.cs
 res://StoryState.cs
 res://Temp.cs
-res://Battle Mode/PrototypeBattle.tscn
-res://GUI/Themes/Skill Card Normal Small.tres
-res://GUI/Themes/Readout Text.tres
-res://GUI/Themes/Skill Card Normal.tres
-res://GUI/Themes/UI Impact.tres
-res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres
-res://Battle Mode/BattleGUI.tscn
-res://Levels/Combat Playtest One/Victory.tscn
-res://Battle Mode/Player Characters/Silver Combatant.tscn
-res://Battle Mode/Player Characters/Cato Combatant.tscn
 res://Battle Mode/Enemies/Skeleton.tscn
-res://Battle Mode/GUI/EnemyHealthBar.tscn

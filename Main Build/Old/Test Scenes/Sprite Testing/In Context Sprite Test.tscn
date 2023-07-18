@@ -195,9 +195,9 @@ env = NodePath("WorldEnvironment")
 environment = ExtResource("3_1dywo")
 
 [node name="Shaded Cato" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4.2, -0.84)
-modulate = Color(0.842008, 1, 0.862321, 1)
-pixel_size = 0.04
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12452, 2.00414, -0.84)
+modulate = Color(0.843137, 1, 0.862745, 1)
+pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture_filter = 1
@@ -218,9 +218,9 @@ libraries = {
 }
 
 [node name="Unshaded Cato" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4.2, -0.84)
-modulate = Color(0.842008, 1, 0.862321, 1)
-pixel_size = 0.04
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.32, 1.84, -0.84)
+modulate = Color(0.843137, 1, 0.862745, 1)
+pixel_size = 0.0125
 texture_filter = 1
 texture = ExtResource("7_18i56")
 

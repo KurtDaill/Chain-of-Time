@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d7pbriigo4aj" path="res://Art/Silver Combat Sprite-Sheet.png" id="3_568ne"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="4_kc02e"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/SilverBasicAttack.cs" id="5_ems5m"]
-[ext_resource type="Script" path="res://Battle Mode/Abilities/PositionSwap.cs" id="6_1jtpa"]
+[ext_resource type="Script" path="res://Battle Mode/Abilities/PlayerSwap.cs" id="6_rww22"]
 [ext_resource type="PackedScene" uid="uid://boneh1axl0j65" path="res://Battle Mode/Combat Text.tscn" id="7_4stcv"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/LongShot.cs" id="7_ma1ff"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/BigBoot.cs" id="8_6y1mq"]
@@ -412,12 +412,13 @@ _data = {
 "StatusFlinch": SubResource("Animation_bk5ok")
 }
 
-[node name="Silver" type="Node3D" node_paths=PackedStringArray("basicAttack", "displayText", "pointer")]
+[node name="Silver" type="Node3D" node_paths=PackedStringArray("basicAttack", "swapAbility", "displayText", "pointer")]
 script = ExtResource("1_vos4e")
 sp = 4
 maxSP = 4
 basicAttack = NodePath("SilverBasicAttack")
 displayPortrait = ExtResource("2_kja07")
+swapAbility = NodePath("SwapPositions")
 hp = 10
 maxHP = 10
 displayText = NodePath("Combat Text")
@@ -451,7 +452,7 @@ laserFX = "res://Battle Mode/FX/laserBurst.tscn"
 enabledRanks = Array[int]([0, 1, 2, 3, 4, 5])
 
 [node name="SwapPositions" type="Node" parent="."]
-script = ExtResource("6_1jtpa")
+script = ExtResource("6_rww22")
 
 [node name="LongShot" type="Node" parent="." groups=["PlayerCombatant"]]
 script = ExtResource("7_ma1ff")

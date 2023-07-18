@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://m361tvnjb22d"]
+
+[ext_resource type="Texture2D" uid="uid://c14mksckjeov6" path="res://GUI/Battle Menu Assets/Readouts/Cato Readout.png" id="1_mouco"]
+[ext_resource type="Script" path="res://GUI/PlayerCharacterReadout.cs" id="2_1tj86"]
+[ext_resource type="Texture2D" uid="uid://cuc7tn3snj7md" path="res://GUI/Battle Menu Assets/Readouts/Readout Highlight.png" id="2_6y3mk"]
+[ext_resource type="FontFile" uid="uid://bvohklyi2cpmc" path="res://Fonts/04Font.TTF" id="3_4baal"]
+[ext_resource type="Texture2D" uid="uid://bgf5ye7apst7j" path="res://GUI/Battle Menu Assets/Readouts/HP Progress Bar.png" id="4_pj0sm"]
+[ext_resource type="Texture2D" uid="uid://xo0voufhv1qn" path="res://GUI/Battle Menu Assets/Readouts/SP Progress Bar.png" id="5_78hsj"]
+
+[node name="Cato Readout" type="TextureRect"]
+texture_filter = 1
+custom_minimum_size = Vector2(282, 153)
+offset_top = 1.0
+offset_right = 279.0
+offset_bottom = 154.0
+size_flags_vertical = 8
+texture = ExtResource("1_mouco")
+stretch_mode = 2
+script = ExtResource("2_1tj86")
+
+[node name="Highlight" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 276.0
+offset_bottom = 153.0
+texture = ExtResource("2_6y3mk")
+
+[node name="HP" type="Label" parent="."]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 96.0
+offset_right = 219.0
+offset_bottom = 123.0
+theme_override_fonts/font = ExtResource("3_4baal")
+theme_override_font_sizes/font_size = 24
+text = "16
+"
+
+[node name="MaxHP" type="Label" parent="."]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 96.0
+offset_right = 255.0
+offset_bottom = 123.0
+theme_override_fonts/font = ExtResource("3_4baal")
+theme_override_font_sizes/font_size = 24
+text = "16
+"
+
+[node name="SP" type="Label" parent="."]
+layout_mode = 0
+offset_left = 189.0
+offset_top = 120.0
+offset_right = 219.0
+offset_bottom = 147.0
+theme_override_fonts/font = ExtResource("3_4baal")
+theme_override_font_sizes/font_size = 24
+text = "16
+"
+
+[node name="MaxSP" type="Label" parent="."]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 120.0
+offset_right = 255.0
+offset_bottom = 147.0
+theme_override_fonts/font = ExtResource("3_4baal")
+theme_override_font_sizes/font_size = 24
+text = "16
+"
+
+[node name="HPBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 105.0
+offset_right = 168.0
+offset_bottom = 111.0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_progress = ExtResource("4_pj0sm")
+
+[node name="SPBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 129.0
+offset_right = 168.0
+offset_bottom = 135.0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_progress = ExtResource("5_78hsj")

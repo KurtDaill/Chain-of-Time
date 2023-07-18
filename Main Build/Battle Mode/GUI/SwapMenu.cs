@@ -3,75 +3,59 @@ using Godot;
 using static BattleUtilities;
 
 public partial class SwapMenu : BattleMenu{
-    /*
-    PlayerCombatant subject, rightTarget, leftTarget;
+    private int targetLane, targetRank;
+    public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI){
+        targetLane = (int) character.GetPosition().GetLane();
+        targetRank = (int) character.GetPosition().GetRank();
+        if(targetRank < 2) targetRank++;
+        else{
+            targetRank = 0;
+            targetLane = 0;
+        }
+        caller.GetRoster().ShowPointer();
+    }
 
-    private bool rightSelected = false;
-    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI)
-    {
+    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         switch(input){
             case MenuInput.Right :
-                if(!rightSelected && rightTarget != null){
-                    rightSelected = false;
-                    leftTarget.SetTargetGUIElements(true);
-                    rightTarget.SetTargetGUIElements(false);
-                }
+                if(targetRank == 2){ Reject(); return null;}
+                targetRank++;
                 break;
             case MenuInput.Left :
-                if(rightSelected && leftTarget != null){
-                    rightSelected = true;
-                    rightTarget.SetTargetGUIElements(true);
-                    leftTarget.SetTargetGUIElements(false);
-                }
+                if(targetRank == 0){ Reject(); return null;}
+                targetRank--;
+                break;
+            case MenuInput.Up :
+                if(targetLane == 2){ Reject(); return null;}
+                targetLane++;
+                break;
+            case MenuInput.Down :
+                if(targetLane == 0){ Reject(); return null;}
+                targetLane--;
+                break;
+            case MenuInput.Back :
+                caller.GetRoster().HidePointer();
+                parentGUI.ChangeMenu(0, character);
                 break;
             case MenuInput.Select :
-                if(rightSelected){
-                    rightTarget.SetTargetGUIElements(false);
-                    //Queue the "SwapPositions" Ability
-                    return subject.SetupAndGetSwap(caller.GetRoster(), rightTarget);
-                }else{
-                    leftTarget.SetTargetGUIElements(false);
-                    return subject.SetupAndGetSwap(caller.GetRoster(), leftTarget);
-                    //caller.GetRoster().SwapCharacters(subject.GetPosition(), leftTarget.GetPosition());
+                if(caller.GetRoster().GetCombatant(new BattlePosition((BattleLane)targetLane, (BattleRank)targetRank)) == character){ //Checks to make sure the player isn't swapping a character with themselves
+                    Reject();
+                    return null;
                 }
-                //parentGUI.ExitWithoutQueueingAbility(character);
-                //break;
-            case MenuInput.Back :
-                if(leftTarget != null) leftTarget.SetTargetGUIElements(false);
-                if(rightTarget != null) rightTarget.SetTargetGUIElements(false);
-                parentGUI.ChangeMenu(1, character); //Goes to Party Menu
-                break;
+                caller.GetRoster().HidePointer();
+                return character.SetupAndGetSwap(caller.GetRoster(), new BattlePosition((BattleLane)targetLane, (BattleRank)targetRank));
+        }
+        //If there was any input, make sure there's not an empty space in front of our target Rank and we make sure the pointer is in the right place.
+        if(input != MenuInput.None){
+            while(3 - caller.GetRoster().GetCombatantsByLane((BattleLane)targetLane, true, false).Length > targetRank && targetRank < 2){
+                targetRank++;
+            }
+            caller.GetRoster().SetPointerPosition(targetLane, targetRank);
         }
         return null;
     }
 
-    public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI){
-        subject = character;
-        switch(character.GetPosition()){
-            case(BattleRank.HeroFront) :
-                rightTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattleRank.HeroMid);
-                leftTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattleRank.HeroBack);
-                break;
-            case(BattleRank.HeroMid) :
-                rightTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattleRank.HeroFront);
-                leftTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattleRank.HeroBack);
-                break;
-            case(BattleRank.HeroBack) :
-                rightTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattleRank.HeroFront);
-                leftTarget = (PlayerCombatant)caller.GetRoster().GetCombatant(BattleRank.HeroMid);
-                break;
-        }
-        if(rightTarget != null){
-            rightSelected = true;
-            rightTarget.SetTargetGUIElements(true);
-            //rightTarget.GetNode<Sprite3D>("Pointer").Visible = true;
-        }else if(leftTarget != null){
-            rightSelected = false;
-            leftTarget.SetTargetGUIElements(true);
-            //leftTarget.GetNode<Sprite3D>("Pointer").Visible = true;
-        }else{
-            throw new NotImplementedException(); //TODO Custom Exception
-        }
+    private void Reject(){
+
     }
-    */
 }

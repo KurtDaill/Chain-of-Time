@@ -1,14 +1,16 @@
+res://GUI/Battle Menu Assets/Top Menu
+res://GUI/Battle Menu Assets/Readouts
+res://Fonts
+res://Battle Mode/GUI
+res://Battle Mode/Abilities
 res://Battle Mode
 res://Art
 res://Old/Art/3D
 res://Levels/Combat Playtest One
 res://Battle Mode/Enemies
-res://Battle Mode/Abilities
 res://Battle Mode/Status Effects
 res://Battle Mode/Status Effects/Notifications
 res://Battle Mode/Status Effects/Scripts
-res://Fonts
-res://Battle Mode/GUI
 res://GUI/Battle Menu Assets
 res://
 res://Old/Levels
@@ -18,4 +20,3 @@ res://Old/Test Scenes/Sprite Testing/Environments
 res://Audio
 res://GUI/Battle Menu Assets/Skill Menu
 res://GUI
-res://Battle Mode/Player Characters

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuc7tn3snj7md"
-path="res://.godot/imported/Readout Highlight.png-e9ded59d01e38edd8f0ca7393d5b1e7a.ctex"
+uid="uid://dnril3j3lxkhj"
+path="res://.godot/imported/SkillButton.png-058a1b9e003f9e4b4eb966e29fcbad66.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GUI/Battle Menu Assets/Readouts/Readout Highlight.png"
-dest_files=["res://.godot/imported/Readout Highlight.png-e9ded59d01e38edd8f0ca7393d5b1e7a.ctex"]
+source_file="res://GUI/Battle Menu Assets/Top Menu/SkillButton.png"
+dest_files=["res://.godot/imported/SkillButton.png-058a1b9e003f9e4b4eb966e29fcbad66.ctex"]
 
 [params]
 
@@ -25,10 +25,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

@@ -1,30 +1,14 @@
-[gd_scene load_steps=85 format=3 uid="uid://ctkjn6qaseru7"]
+[gd_scene load_steps=52 format=3 uid="uid://ctkjn6qaseru7"]
 
 [ext_resource type="Theme" uid="uid://d4kx000io04gf" path="res://GUI/Themes/Skill Card Normal Small.tres" id="3"]
-[ext_resource type="Theme" uid="uid://0sj6o2hvmgmt" path="res://GUI/Themes/Readout Text.tres" id="4"]
 [ext_resource type="Theme" uid="uid://dq2wt80l1hcrn" path="res://GUI/Themes/Skill Card Normal.tres" id="5"]
-[ext_resource type="Texture2D" uid="uid://3h4w6mektumc" path="res://GUI/Battle Menu Assets/Readouts/Silver's Readout.png" id="7"]
-[ext_resource type="Texture2D" uid="uid://di6ya5ja67qot" path="res://GUI/Battle Menu Assets/Readouts/SP Gem Full.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://cuc7tn3snj7md" path="res://GUI/Battle Menu Assets/Readouts/Readout Highlight.png" id="9"]
-[ext_resource type="Texture2D" uid="uid://dpk6wt2nykmt2" path="res://GUI/Battle Menu Assets/Readouts/HP Candle Half.png" id="10"]
-[ext_resource type="Texture2D" uid="uid://cuqh8yxm1dqtn" path="res://GUI/Battle Menu Assets/Readouts/HP Candle Empty.png" id="11"]
-[ext_resource type="Texture2D" uid="uid://broetx6su77ym" path="res://GUI/Battle Menu Assets/Readouts/SP Gem Half.png" id="12"]
-[ext_resource type="Texture2D" uid="uid://cdlwcpgki6y7o" path="res://GUI/Battle Menu Assets/Readouts/SP Gem Empty.png" id="13"]
-[ext_resource type="Texture2D" uid="uid://d2cqgciwqj4km" path="res://GUI/Battle Menu Assets/Readouts/Cato's Readout.png" id="14"]
-[ext_resource type="Texture2D" uid="uid://b25aln4uhmkhi" path="res://GUI/Battle Menu Assets/Readouts/HP Candle Full.png" id="15"]
-[ext_resource type="Texture2D" uid="uid://mcjyfmluy4vo" path="res://GUI/Battle Menu Assets/Top Menu/Attack Button Highlight.png" id="16"]
-[ext_resource type="Texture2D" uid="uid://c4qop4r4kknep" path="res://GUI/Battle Menu Assets/Top Menu/Party Button Controller.png" id="17"]
-[ext_resource type="Texture2D" uid="uid://d1m7mihmo5vy2" path="res://GUI/Battle Menu Assets/Top Menu/Party Button Highlight.png" id="18"]
 [ext_resource type="Texture2D" uid="uid://byxwcawbevd4q" path="res://GUI/Battle Menu Assets/Top Menu/Attack Button Controller.png" id="19"]
 [ext_resource type="Texture2D" uid="uid://8iltg8hieg8a" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuRunHighlight.png" id="20"]
 [ext_resource type="AudioStream" uid="uid://vrcv026r88aw" path="res://Audio/UI_No.wav" id="21"]
 [ext_resource type="Texture2D" uid="uid://d145f3ww0wx4r" path="res://GUI/Battle Menu Assets/Item Menu/Item Description Box.png" id="22"]
-[ext_resource type="Texture2D" uid="uid://dr54ux3u6u382" path="res://GUI/Battle Menu Assets/Top Menu/Skill Button Highlight.png" id="23"]
 [ext_resource type="Texture2D" uid="uid://c74qsow25qfbm" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuComboHighlight.png" id="25"]
 [ext_resource type="Texture2D" uid="uid://b6xo1fe2mg5he" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuAllyHighlight.png" id="26"]
 [ext_resource type="Texture2D" uid="uid://krkh6oeua0eq" path="res://GUI/Battle Menu Assets/Party Menu/Party Menu Hub.png" id="27"]
-[ext_resource type="Texture2D" uid="uid://3xst1bjiasti" path="res://GUI/Battle Menu Assets/Top Menu/Item Button Controller.png" id="28"]
-[ext_resource type="Texture2D" uid="uid://d2v174ha8e02a" path="res://GUI/Battle Menu Assets/Top Menu/Button Hub.png" id="29"]
 [ext_resource type="PackedScene" uid="uid://6ewe3uubmamc" path="res://GUI/SkillCard.tscn" id="30_x7avc"]
 [ext_resource type="Texture2D" uid="uid://cenqt4ms2eal0" path="res://GUI/Battle Menu Assets/Item Menu/Item Tab.png" id="31"]
 [ext_resource type="Texture2D" uid="uid://nli0mcpokh1x" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuSwapHighlight.png" id="32"]
@@ -32,30 +16,27 @@
 [ext_resource type="Texture2D" uid="uid://cm7bwe6xrk4bw" path="res://GUI/Battle Menu Assets/Attack Menu/Attack Menu.png" id="33"]
 [ext_resource type="Texture2D" uid="uid://doe0fcor7214h" path="res://GUI/Battle Menu Assets/Skill Menu/Skill Card.png" id="33_011xl"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/SkillCard.cs" id="34_dir1l"]
-[ext_resource type="Texture2D" uid="uid://cwrc2tvxawx3w" path="res://GUI/Battle Menu Assets/Top Menu/Item Button Highlight.png" id="35"]
 [ext_resource type="Theme" uid="uid://lcud6pbsl6dn" path="res://GUI/Themes/UI Impact.tres" id="35_wu077"]
-[ext_resource type="Texture2D" uid="uid://cx12cemchoyfp" path="res://GUI/Battle Menu Assets/Top Menu/Skill Button Controller.png" id="36"]
+[ext_resource type="Texture2D" uid="uid://dbuhrp5s28xww" path="res://GUI/Battle Menu Assets/Top Menu/AttackButton.png" id="36_70wny"]
 [ext_resource type="Texture2D" uid="uid://diafuti26x647" path="res://GUI/Battle Menu Assets/Skill Menu/FriendlyPip.png" id="36_wc611"]
 [ext_resource type="Texture2D" uid="uid://l6unyyb4maph" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres" id="37"]
 [ext_resource type="Texture2D" uid="uid://cnjhk3wv6wdg" path="res://GUI/Battle Menu Assets/Skill Menu/FriendlyPipFlash.png" id="37_5lsqi"]
+[ext_resource type="Texture2D" uid="uid://ci4xnt648amuq" path="res://GUI/Battle Menu Assets/Top Menu/TopMenuHighlight.png" id="37_6ma3k"]
 [ext_resource type="Texture2D" uid="uid://ljywc1tefq1h" path="res://GUI/Battle Menu Assets/Skill Menu/EnemyPip.png" id="37_43rqt"]
+[ext_resource type="Texture2D" uid="uid://dnril3j3lxkhj" path="res://GUI/Battle Menu Assets/Top Menu/SkillButton.png" id="37_bkrqm"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/BattleGUI.cs" id="38"]
+[ext_resource type="Texture2D" uid="uid://b530wmgvr41kt" path="res://GUI/Battle Menu Assets/Top Menu/ItemButton.png" id="38_ck2ng"]
+[ext_resource type="Texture2D" uid="uid://dfc81t0otuc2m" path="res://GUI/Battle Menu Assets/Top Menu/PartyButton.png" id="39_bt78k"]
 [ext_resource type="Texture2D" uid="uid://cnv1fdlpp2vd1" path="res://GUI/Battle Menu Assets/Skill Menu/EnemyPipFlash.png" id="39_vp7at"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/TopMenu.cs" id="40"]
 [ext_resource type="Script" path="res://GUI/ReadoutContainer.cs" id="40_jh205"]
-[ext_resource type="Texture2D" uid="uid://bkjcvlj2kbhgm" path="res://GUI/Action Chain Link.png" id="40_luqf3"]
 [ext_resource type="AudioStream" uid="uid://ciiw36ypj5j34" path="res://Audio/MenuReminderClicker.wav" id="40_oqcwa"]
-[ext_resource type="Script" path="res://Battle Mode/GUI/ActionChain.cs" id="40_qgk7y"]
-[ext_resource type="Texture2D" uid="uid://x8jh7q2a2twq" path="res://Art/Silver Portrait.png" id="40_xqf8w"]
-[ext_resource type="Texture2D" uid="uid://buymnk3wkjnd3" path="res://GUI/Cato Head Thing.png" id="41_s2270"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/SwapMenu.cs" id="42"]
-[ext_resource type="Texture2D" uid="uid://b77vj26o6q0wg" path="res://GUI/Point.png" id="42_adj3w"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/ItemMenu.cs" id="43"]
-[ext_resource type="Theme" uid="uid://b4n4pjmum2aa8" path="res://GUI/Themes/ActionChain.tres" id="43_yuuia"]
+[ext_resource type="PackedScene" uid="uid://m361tvnjb22d" path="res://Battle Mode/GUI/PlayerReadout.tscn" id="43_0yoje"]
 [ext_resource type="Texture2D" uid="uid://k1c0luw6jqjc" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres" id="44"]
-[ext_resource type="Texture2D" uid="uid://ccgxpqxddosha" path="res://GUI/Action Chain Chain Graphic.png" id="44_majum"]
+[ext_resource type="Texture2D" uid="uid://11jtdp6q46k4" path="res://GUI/Battle Menu Assets/Readouts/Silver Readout.png" id="44_o5nwl"]
 [ext_resource type="Texture2D" uid="uid://yh4kccmuodkm" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres" id="45"]
-[ext_resource type="Script" path="res://GUI/PlayerCharacterReadout.cs" id="46"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/AttackMenu.cs" id="47"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/PartyMenu.cs" id="48"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/SkillMenu.cs" id="49"]
@@ -391,171 +372,6 @@ _data = {
 "Scroll Up": SubResource("25")
 }
 
-[sub_resource type="Animation" id="20"]
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Card 1:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 9, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Card 1:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 958, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Card 2:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 290, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.2, 0.5)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Card 3:position:x")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 571, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.4, 0.7)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Card 3:position:y")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 958, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.4, 0.7)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Card 2:position:y")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 958, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.2, 0.5)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Card 4:position:x")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(9, -0.25, 0, 0.25, 0, 851, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.6, 0.9)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Card 4:position:y")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1086, -0.25, 0, 0.25, 0, 958, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.6, 0.9)
-}
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Card 1/AnimationPlayer")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["Draw", -1, 1.0, false],
-"method": &"play"
-}]
-}
-
-[sub_resource type="Animation" id="21"]
-length = 0.4
-
-[sub_resource type="Animation" id="66"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Card 1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(9, 1086)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Card 2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(9, 1086)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Card 4:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(9, 1086)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Card 3:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(9, 1086)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_e56cr"]
-_data = {
-"Enter": SubResource("20"),
-"Exit": SubResource("21"),
-"RESET": SubResource("66")
-}
-
 [sub_resource type="Animation" id="Animation_bed5o"]
 resource_name = "Flash All"
 length = 2.4
@@ -887,191 +703,6 @@ _data = {
 "RESET": SubResource("Animation_0a8v0")
 }
 
-[sub_resource type="Animation" id="Animation_e0j6m"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Action Link 1/Card:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Action Link 1/Card/Name:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Action Link 1/Card/Type:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Action Link 1/Card:size:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(366, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_644jt"]
-resource_name = "ShowCardOne"
-length = 0.3
-
-[sub_resource type="Animation" id="Animation_svcbc"]
-resource_name = "ShowCardTwo"
-length = 0.3
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_s03rw"]
-_data = {
-"RESET": SubResource("Animation_e0j6m"),
-"ShowCardOne": SubResource("Animation_644jt"),
-"ShowCardTwo": SubResource("Animation_svcbc")
-}
-
-[sub_resource type="Animation" id="75"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [138.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Highlight:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="76"]
-resource_name = "Select"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [138.0, 135]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Highlight:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_i1ugo"]
-_data = {
-"RESET": SubResource("75"),
-"Select": SubResource("76")
-}
-
-[sub_resource type="Animation" id="85"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [138.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Highlight:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="86"]
-resource_name = "Select"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset_top")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [138.0, 135]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Highlight:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ixf6"]
-_data = {
-"RESET": SubResource("85"),
-"Select": SubResource("86")
-}
-
 [node name="BattleGUI" type="Control"]
 texture_filter = 1
 layout_mode = 3
@@ -1083,111 +714,6 @@ offset_top = -1080.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("38")
-
-[node name="Top Menu" type="Control" parent="."]
-layout_mode = 1
-anchor_top = 0.647
-anchor_bottom = 1.0
-offset_top = 0.23999
-offset_right = 1920.0
-script = ExtResource("40")
-
-[node name="Button Hub" type="TextureRect" parent="Top Menu"]
-layout_mode = 0
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 300.0
-offset_top = -46.0
-offset_right = 94.0
-offset_bottom = 46.5
-texture = ExtResource("29")
-
-[node name="PartyButton" type="TextureRect" parent="Top Menu/Button Hub"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.021
-offset_left = -62.9442
-offset_top = -105.439
-offset_right = 60.0558
-offset_bottom = -92.392
-texture = ExtResource("17")
-
-[node name="Highlight" type="TextureRect" parent="Top Menu/Button Hub/PartyButton"]
-visible = false
-layout_mode = 0
-anchor_top = -0.06
-anchor_right = 1.028
-anchor_bottom = 1.0
-offset_left = -0.0176699
-offset_top = 0.00686359
-offset_right = -0.0336761
-offset_bottom = -0.473137
-texture = ExtResource("18")
-
-[node name="ItemButton" type="TextureRect" parent="Top Menu/Button Hub"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 93.181
-offset_top = 3.92108
-offset_right = 240.181
-offset_bottom = -2.07892
-texture = ExtResource("28")
-
-[node name="Highlight" type="TextureRect" parent="Top Menu/Button Hub/ItemButton"]
-visible = false
-layout_mode = 0
-anchor_top = -0.069
-anchor_right = 1.026
-anchor_bottom = 1.0
-offset_left = -0.0484923
-offset_top = -0.273073
-offset_right = -0.288498
-offset_bottom = -0.276077
-texture = ExtResource("35")
-
-[node name="AtkButton" type="TextureRect" parent="Top Menu/Button Hub"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -63.0503
-offset_top = 90.4484
-offset_right = 59.9497
-offset_bottom = 114.448
-texture = ExtResource("19")
-
-[node name="Highlight" type="TextureRect" parent="Top Menu/Button Hub/AtkButton"]
-visible = false
-layout_mode = 0
-anchor_top = 0.022
-anchor_right = 1.027
-anchor_bottom = 0.997
-offset_left = -0.266647
-offset_top = 0.0233023
-offset_right = -0.0986633
-offset_bottom = -0.0516968
-texture = ExtResource("16")
-
-[node name="SkillButton" type="TextureRect" parent="Top Menu/Button Hub"]
-layout_mode = 0
-anchor_left = 0.02
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -245.307
-offset_top = 3.29266
-offset_right = -90.4475
-offset_bottom = -2.70734
-texture = ExtResource("36")
-
-[node name="Highlight" type="TextureRect" parent="Top Menu/Button Hub/SkillButton"]
-visible = false
-layout_mode = 0
-anchor_top = -0.074
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 0.0297437
-offset_bottom = -0.408257
-texture = ExtResource("23")
 
 [node name="Party Menu" type="Control" parent="."]
 visible = false
@@ -1495,70 +1021,60 @@ volume_db = 10.0
 [node name="Skill Menu" type="Control" parent="."]
 visible = false
 anchors_preset = 0
-offset_top = -94.0
-offset_right = 40.0
-offset_bottom = -54.0
+offset_left = 827.0
+offset_top = 1071.0
+offset_right = 867.0
+offset_bottom = 1111.0
 script = ExtResource("49")
 
-[node name="Card 1" parent="Skill Menu" instance=ExtResource("30_x7avc")]
+[node name="HBoxContainer" type="HBoxContainer" parent="Skill Menu"]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 1086.0
-offset_right = 444.0
-offset_bottom = 8946.0
+offset_top = -433.0
+offset_right = 1356.0
+offset_bottom = 247.0
 
-[node name="Rules Text" parent="Skill Menu/Card 1" index="3"]
+[node name="Card 1" parent="Skill Menu/HBoxContainer" instance=ExtResource("30_x7avc")]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Rules Text" parent="Skill Menu/HBoxContainer/Card 1" index="3"]
 text = ""
 
-[node name="Flash" parent="Skill Menu/Card 1/Pips/Enemy 2" index="0"]
+[node name="Flash" parent="Skill Menu/HBoxContainer/Card 1/Pips/Enemy 2" index="0"]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 24.0
 offset_bottom = 24.0
 
-[node name="Flash" parent="Skill Menu/Card 1/Pips/Enemy 3" index="0"]
+[node name="Flash" parent="Skill Menu/HBoxContainer/Card 1/Pips/Enemy 3" index="0"]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 24.0
 offset_bottom = 24.0
 
-[node name="Card 2" parent="Skill Menu" instance=ExtResource("30_x7avc")]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 1086.0
-offset_right = 435.0
-offset_bottom = 10803.0
+[node name="Card 2" parent="Skill Menu/HBoxContainer" instance=ExtResource("30_x7avc")]
+layout_mode = 2
+size_flags_vertical = 0
 
-[node name="Card 3" parent="Skill Menu" instance=ExtResource("30_x7avc")]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 1086.0
-offset_right = 435.0
-offset_bottom = 10803.0
+[node name="Card 3" parent="Skill Menu/HBoxContainer" instance=ExtResource("30_x7avc")]
+layout_mode = 2
+size_flags_vertical = 8
 
-[node name="Card 4" parent="Skill Menu" instance=ExtResource("30_x7avc")]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 1086.0
-offset_right = 435.0
-offset_bottom = 10803.0
+[node name="Card 4" parent="Skill Menu/HBoxContainer" instance=ExtResource("30_x7avc")]
+visible = false
+layout_mode = 2
 
-[node name="Flash" parent="Skill Menu/Card 4/Pips/Enemy 2" index="0"]
+[node name="Flash" parent="Skill Menu/HBoxContainer/Card 4/Pips/Enemy 2" index="0"]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 24.0
 offset_bottom = 24.0
 
-[node name="Flash" parent="Skill Menu/Card 4/Pips/Enemy 3" index="0"]
+[node name="Flash" parent="Skill Menu/HBoxContainer/Card 4/Pips/Enemy 3" index="0"]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 24.0
 offset_bottom = 24.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Skill Menu"]
-libraries = {
-"": SubResource("AnimationLibrary_e56cr")
-}
 
 [node name="SelectError" type="AudioStreamPlayer" parent="Skill Menu"]
 stream = ExtResource("21")
@@ -1790,385 +1306,96 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("42")
 
-[node name="Action Chain" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("40_qgk7y")
-
-[node name="Action Link 1" type="TextureRect" parent="Action Chain"]
-layout_mode = 0
-offset_left = 66.0
-offset_top = 408.0
-offset_right = 336.0
-offset_bottom = 450.0
-texture = ExtResource("40_luqf3")
-stretch_mode = 2
-
-[node name="Character Portrait" type="TextureRect" parent="Action Chain/Action Link 1"]
-layout_mode = 0
-offset_left = 285.0
-offset_top = -18.0
-offset_right = 351.0
-offset_bottom = 42.0
-texture = ExtResource("41_s2270")
-stretch_mode = 2
-
-[node name="Pointer" type="TextureRect" parent="Action Chain/Action Link 1"]
-layout_mode = 0
-offset_left = -60.0
-offset_right = -6.0
-offset_bottom = 40.0
-texture = ExtResource("42_adj3w")
-
-[node name="Label" type="Label" parent="Action Chain/Action Link 1"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 1.0
-offset_right = 261.0
-offset_bottom = 42.0
-theme = ExtResource("43_yuuia")
-text = "Action One"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Chain Graphic 1" type="TextureRect" parent="Action Chain"]
-layout_mode = 0
-offset_left = 188.0
-offset_top = 450.0
-offset_right = 228.0
-offset_bottom = 504.0
-texture = ExtResource("44_majum")
-stretch_mode = 2
-
-[node name="Action Link 2" type="TextureRect" parent="Action Chain"]
-layout_mode = 0
-offset_left = 66.0
-offset_top = 504.0
-offset_right = 336.0
-offset_bottom = 546.0
-texture = ExtResource("40_luqf3")
-stretch_mode = 2
-
-[node name="Character Portrait" type="TextureRect" parent="Action Chain/Action Link 2"]
-layout_mode = 0
-offset_left = 285.0
-offset_top = -18.0
-offset_right = 351.0
-offset_bottom = 42.0
-texture = ExtResource("40_xqf8w")
-stretch_mode = 2
-
-[node name="Pointer" type="TextureRect" parent="Action Chain/Action Link 2"]
-layout_mode = 0
-offset_left = -60.0
-offset_right = -6.0
-offset_bottom = 40.0
-texture = ExtResource("42_adj3w")
-
-[node name="Label" type="Label" parent="Action Chain/Action Link 2"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 1.0
-offset_right = 260.0
-offset_bottom = 42.0
-theme = ExtResource("43_yuuia")
-text = "Action Two"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Chain Graphic 2" type="TextureRect" parent="Action Chain"]
-visible = false
-layout_mode = 0
-offset_left = 188.0
-offset_top = 546.0
-offset_right = 228.0
-offset_bottom = 600.0
-texture = ExtResource("44_majum")
-stretch_mode = 2
-
-[node name="Action Link 3" type="TextureRect" parent="Action Chain"]
-visible = false
-layout_mode = 0
-offset_left = 66.0
-offset_top = 600.0
-offset_right = 336.0
-offset_bottom = 642.0
-texture = ExtResource("40_luqf3")
-stretch_mode = 2
-
-[node name="Character Portrait" type="TextureRect" parent="Action Chain/Action Link 3"]
-layout_mode = 0
-offset_left = 285.0
-offset_top = -18.0
-offset_right = 351.0
-offset_bottom = 42.0
-texture = ExtResource("41_s2270")
-stretch_mode = 2
-
-[node name="Pointer" type="TextureRect" parent="Action Chain/Action Link 3"]
-layout_mode = 0
-offset_left = -60.0
-offset_right = -6.0
-offset_bottom = 40.0
-texture = ExtResource("42_adj3w")
-
-[node name="Label" type="Label" parent="Action Chain/Action Link 3"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 1.0
-offset_right = 261.0
-offset_bottom = 42.0
-theme = ExtResource("43_yuuia")
-text = "Action Three"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Action Chain"]
-libraries = {
-"": SubResource("AnimationLibrary_s03rw")
-}
-
-[node name="Readouts" type="VBoxContainer" parent="."]
-layout_mode = 0
+[node name="Readouts" type="HBoxContainer" parent="." node_paths=PackedStringArray("readouts")]
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 0.654
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -752.0
-offset_top = -0.44635
-offset_bottom = -0.126831
-alignment = 1
+offset_left = -1914.0
+offset_top = 130.68
+offset_right = -1093.0
+offset_bottom = -9.0
 script = ExtResource("40_jh205")
+readouts = [NodePath("Cato Readout"), NodePath("Silver Readout")]
 
-[node name="Cato Readout" type="TextureRect" parent="Readouts"]
+[node name="Silver Readout" parent="Readouts" instance=ExtResource("43_0yoje")]
 layout_mode = 2
-texture = ExtResource("14")
-script = ExtResource("46")
+texture = ExtResource("44_o5nwl")
 
-[node name="Highlight" type="TextureRect" parent="Readouts/Cato Readout"]
-visible = false
-layout_mode = 0
-offset_right = 684.0
-offset_bottom = 108.0
-texture = ExtResource("9")
-
-[node name="HP Icon Full" type="TextureRect" parent="Readouts/Cato Readout"]
-visible = false
-layout_mode = 0
-offset_left = 486.0
-offset_top = 6.12634
-offset_right = 582.0
-offset_bottom = 102.126
-texture = ExtResource("15")
-
-[node name="HP Icon Half" type="TextureRect" parent="Readouts/Cato Readout"]
-visible = false
-layout_mode = 0
-offset_left = 438.253
-offset_top = 5.66125
-offset_right = 534.253
-offset_bottom = 101.661
-texture = ExtResource("10")
-
-[node name="HP Icon Empty" type="TextureRect" parent="Readouts/Cato Readout"]
-visible = false
-layout_mode = 0
-offset_left = 438.253
-offset_top = 5.66125
-offset_right = 534.253
-offset_bottom = 101.661
-texture = ExtResource("11")
-
-[node name="SP Icon Full" type="TextureRect" parent="Readouts/Cato Readout"]
-visible = false
-layout_mode = 0
-offset_left = 582.162
-offset_top = 5.66125
-offset_right = 678.162
-offset_bottom = 101.661
-texture = ExtResource("8")
-
-[node name="SP Icon Half" type="TextureRect" parent="Readouts/Cato Readout"]
-visible = false
-layout_mode = 0
-offset_left = 582.162
-offset_top = 5.66125
-offset_right = 678.162
-offset_bottom = 101.661
-texture = ExtResource("12")
-
-[node name="SP Icon Empty" type="TextureRect" parent="Readouts/Cato Readout"]
-visible = false
-layout_mode = 0
-offset_left = 582.162
-offset_top = 5.66125
-offset_right = 678.162
-offset_bottom = 101.661
-texture = ExtResource("13")
-
-[node name="HP" type="Label" parent="Readouts/Cato Readout"]
-layout_mode = 0
-offset_left = 383.0
-offset_top = 55.1263
-offset_right = 425.0
-offset_bottom = 90.1263
-theme = ExtResource("4")
-text = "1"
-horizontal_alignment = 1
-
-[node name="Max HP" type="Label" parent="Readouts/Cato Readout"]
-layout_mode = 0
-offset_left = 435.024
-offset_top = 55.1263
-offset_right = 477.024
-offset_bottom = 90.1263
-theme = ExtResource("4")
-text = "1"
-horizontal_alignment = 1
-
-[node name="SP" type="Label" parent="Readouts/Cato Readout"]
-layout_mode = 0
-offset_left = 562.0
-offset_top = 56.1263
-offset_right = 604.0
-offset_bottom = 91.1263
-theme = ExtResource("4")
-text = "1"
-horizontal_alignment = 1
-
-[node name="Max SP" type="Label" parent="Readouts/Cato Readout"]
-layout_mode = 0
-offset_left = 614.024
-offset_top = 56.1263
-offset_right = 656.024
-offset_bottom = 91.1263
-theme = ExtResource("4")
-text = "1
-"
-horizontal_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Readouts/Cato Readout"]
-libraries = {
-"": SubResource("AnimationLibrary_i1ugo")
-}
-
-[node name="Silver Readout" type="TextureRect" parent="Readouts"]
+[node name="Cato Readout" parent="Readouts" instance=ExtResource("43_0yoje")]
 layout_mode = 2
-texture = ExtResource("7")
-script = ExtResource("46")
+size_flags_vertical = 0
 
-[node name="Highlight" type="TextureRect" parent="Readouts/Silver Readout"]
+[node name="Top Menu" type="VBoxContainer" parent="Readouts"]
+visible = false
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+script = ExtResource("40")
+
+[node name="AttackButton" type="TextureRect" parent="Readouts/Top Menu"]
+custom_minimum_size = Vector2(162, 42)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("36_70wny")
+stretch_mode = 2
+
+[node name="Highlight" type="TextureRect" parent="Readouts/Top Menu/AttackButton"]
 visible = false
 layout_mode = 0
-offset_left = -0.479977
-offset_top = -0.231685
-offset_right = 683.52
-offset_bottom = 107.768
-texture = ExtResource("9")
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 159.0
+offset_bottom = 42.0
+texture = ExtResource("37_6ma3k")
 
-[node name="HP Icon Full" type="TextureRect" parent="Readouts/Silver Readout"]
+[node name="SkillButton" type="TextureRect" parent="Readouts/Top Menu"]
+custom_minimum_size = Vector2(162, 42)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("37_bkrqm")
+stretch_mode = 2
+
+[node name="Highlight" type="TextureRect" parent="Readouts/Top Menu/SkillButton"]
 visible = false
 layout_mode = 0
-offset_left = 438.253
-offset_top = 5.66125
-offset_right = 534.253
-offset_bottom = 101.661
-texture = ExtResource("15")
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 159.0
+offset_bottom = 42.0
+texture = ExtResource("37_6ma3k")
 
-[node name="HP Icon Half" type="TextureRect" parent="Readouts/Silver Readout"]
+[node name="ItemButton" type="TextureRect" parent="Readouts/Top Menu"]
+custom_minimum_size = Vector2(162, 42)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("38_ck2ng")
+stretch_mode = 2
+
+[node name="Highlight" type="TextureRect" parent="Readouts/Top Menu/ItemButton"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 159.0
+offset_bottom = 42.0
+texture = ExtResource("37_6ma3k")
+
+[node name="PartyButton" type="TextureRect" parent="Readouts/Top Menu"]
+custom_minimum_size = Vector2(162, 42)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("39_bt78k")
+stretch_mode = 2
+
+[node name="Highlight" type="TextureRect" parent="Readouts/Top Menu/PartyButton"]
 visible = false
 layout_mode = 0
-offset_left = 438.253
-offset_top = 5.66125
-offset_right = 534.253
-offset_bottom = 101.661
-texture = ExtResource("10")
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 159.0
+offset_bottom = 42.0
+texture = ExtResource("37_6ma3k")
 
-[node name="HP Icon Empty" type="TextureRect" parent="Readouts/Silver Readout"]
-visible = false
-layout_mode = 0
-offset_left = 438.253
-offset_top = 5.66125
-offset_right = 534.253
-offset_bottom = 101.661
-texture = ExtResource("11")
-
-[node name="SP Icon Full" type="TextureRect" parent="Readouts/Silver Readout"]
-visible = false
-layout_mode = 0
-offset_left = 582.162
-offset_top = 5.66125
-offset_right = 678.162
-offset_bottom = 101.661
-texture = ExtResource("8")
-
-[node name="SP Icon Half" type="TextureRect" parent="Readouts/Silver Readout"]
-visible = false
-layout_mode = 0
-offset_left = 582.162
-offset_top = 5.66125
-offset_right = 678.162
-offset_bottom = 101.661
-texture = ExtResource("12")
-
-[node name="SP Icon Empty" type="TextureRect" parent="Readouts/Silver Readout"]
-visible = false
-layout_mode = 0
-offset_left = 582.162
-offset_top = 5.66125
-offset_right = 678.162
-offset_bottom = 101.661
-texture = ExtResource("13")
-
-[node name="HP" type="Label" parent="Readouts/Silver Readout"]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 56.1264
-offset_right = 426.0
-offset_bottom = 91.1264
-theme = ExtResource("4")
-text = "1
-"
-horizontal_alignment = 1
-
-[node name="Max HP" type="Label" parent="Readouts/Silver Readout"]
-layout_mode = 0
-offset_left = 436.024
-offset_top = 56.1264
-offset_right = 478.024
-offset_bottom = 91.1264
-theme = ExtResource("4")
-text = "1
-"
-horizontal_alignment = 1
-
-[node name="SP" type="Label" parent="Readouts/Silver Readout"]
-layout_mode = 0
-offset_left = 561.0
-offset_top = 55.1264
-offset_right = 603.0
-offset_bottom = 90.1264
-theme = ExtResource("4")
-text = "1
-"
-horizontal_alignment = 1
-
-[node name="Max SP" type="Label" parent="Readouts/Silver Readout"]
-layout_mode = 0
-offset_left = 613.024
-offset_top = 55.1264
-offset_right = 655.024
-offset_bottom = 90.1264
-theme = ExtResource("4")
-text = "1
-"
-horizontal_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Readouts/Silver Readout"]
-libraries = {
-"": SubResource("AnimationLibrary_4ixf6")
-}
-
-[editable path="Skill Menu/Card 1"]
-[editable path="Skill Menu/Card 4"]
+[editable path="Skill Menu/HBoxContainer/Card 1"]
+[editable path="Skill Menu/HBoxContainer/Card 4"]

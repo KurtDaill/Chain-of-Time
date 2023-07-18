@@ -18,6 +18,9 @@ public partial class Ability : CombatAction
         target = proposedTarget;
     }
 
+    public virtual (Combatant, BattlePosition)[] GetPositionSwaps(){
+		return null;
+	}
 
     public virtual void SetDamageChart(Dictionary<double, int> proposedDamageChart){
         VerifyDamageChart(proposedDamageChart);

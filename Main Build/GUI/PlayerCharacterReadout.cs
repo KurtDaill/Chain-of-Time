@@ -6,57 +6,37 @@ public partial class PlayerCharacterReadout : TextureRect
 {
 	Label HP, SP;
 	Label maxHPLabel, maxSPLabel;
-	TextureRect hpIconFull, hpIconHalf, hpIconEmpty, spIconFull, spIconHalf, spIconEmpty, highLight;
+	TextureProgressBar hpBar, spBar;
 
 	HBoxContainer statusBar;
 	public PlayerCombatant character;
+	TextureRect highlight;
 
 	public override void _Ready()
 	{
 		HP = GetNode<Label>("HP");
 		SP = GetNode<Label>("SP");
-		maxHPLabel = GetNode<Label>("Max HP");
-		maxSPLabel = GetNode<Label>("Max SP");
-		hpIconFull = this.GetNode<TextureRect>("HP Icon Full");
-		hpIconHalf = this.GetNode<TextureRect>("HP Icon Half");
-		hpIconEmpty = this.GetNode<TextureRect>("HP Icon Empty");
-		spIconFull = this.GetNode<TextureRect>("SP Icon Full");
-		spIconHalf = this.GetNode<TextureRect>("SP Icon Half");
-		spIconEmpty = this.GetNode<TextureRect>("SP Icon Empty");
-		highLight = this.GetNode<TextureRect>("Highlight");
-		//statusBar = this.GetNode<HBoxContainer>("Status Bar");
+		maxHPLabel = GetNode<Label>("MaxHP");
+		maxSPLabel = GetNode<Label>("MaxSP");
+		hpBar = GetNode<TextureProgressBar>("HPBar");
+		spBar = GetNode<TextureProgressBar>("SPBar");
+		highlight = GetNode<TextureRect>("Highlight");
+		highlight.Visible = false;
+		Deselect();
 	}
 	
 	public void UpdateHP(int newHP, int newMaxHP){
 		HP.Text = "" + newHP;
 		maxHPLabel.Text = "" + newMaxHP;
-		//Updates the little icon next to the HP number
-		hpIconFull.Visible = false;
-		hpIconHalf.Visible = false;
-		hpIconEmpty.Visible = false;
-		/*if(newHP <= 0){
-			hpIconEmpty.Visible = true;
-		}else if(newHP <= newMaxHP/2){
-			hpIconHalf.Visible = true;
-		}else{
-			hpIconFull.Visible = true;
-		}*/
+		hpBar.MaxValue = newMaxHP;
+		hpBar.Value = newHP;
 	}
 
 	public void UpdateSP(int newSP, int newMaxSP){
 		SP.Text = "" + newSP;
 		maxSPLabel.Text = "" + newMaxSP;
-		//Updates the little icon next to the SP number
-		spIconFull.Visible = false;
-		spIconHalf.Visible = false;
-		spIconEmpty.Visible = false;
-		/*if(newSP <= 0){
-			spIconEmpty.Visible = true;
-		}else if(newSP <= newMaxSP/2){
-			spIconHalf.Visible = true;
-		}else{
-			spIconFull.Visible = true;
-		}*/
+		spBar.MaxValue = newMaxSP;
+		spBar.Value = newSP;
 	}
 
 	public void UpdateStatus(List<StatusEffect> statuses){
@@ -74,11 +54,13 @@ public partial class PlayerCharacterReadout : TextureRect
 		}*/
 	}
 
-	public void EnableHighlight(){
-		highLight.Visible = true;
+	public void Select(){
+		highlight.Visible = true;
+		SizeFlagsVertical = Control.SizeFlags.ShrinkBegin;
 	}
 
-	public void DisableHighlight(){
-		highLight.Visible = false;
+	public void Deselect(){
+		highlight.Visible = false;
+		SizeFlagsVertical = Control.SizeFlags.ShrinkEnd;
 	}
 }

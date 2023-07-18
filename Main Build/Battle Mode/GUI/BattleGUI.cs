@@ -22,17 +22,17 @@ public partial class BattleGUI : Control
 	private ReadoutContainer playerCharacterReadouts;
 	public BattleMenu[] menus = new BattleMenu[7];
 	public override void _Ready(){
-		currentMenu = (BattleMenu) GetNode("Top Menu");
+		currentMenu = (BattleMenu) GetNode("Readouts/Top Menu");
 		parentBattle = (Battle) GetNode("../..");    
-		menus[0] = (BattleMenu) GetNode("Top Menu");
-		menus[1] = (BattleMenu) GetNode("Party Menu");
-		menus[2] = (BattleMenu) GetNode("Item Menu");
-		menus[3] = (BattleMenu) GetNode("Attack Menu");
-		menus[4] = (BattleMenu) GetNode("Skill Menu");
+		menus[0] = (BattleMenu) GetNode("Readouts/Top Menu");
+		menus[1] = (BattleMenu) GetNode("Attack Menu");
+		menus[2] = (BattleMenu) GetNode("Skill Menu");
+		menus[3] = (BattleMenu) GetNode("Item Menu");
+		menus[4] = (BattleMenu) GetNode("Party Menu");
 		menus[5] = (BattleMenu) GetNode("Targeting Menu");
 		menus[6] = (BattleMenu) GetNode("Swap Menu");
 		playerCharacterReadouts = GetNode<ReadoutContainer>("Readouts");
-		chainGUI = (ActionChain) GetNode("Action Chain");
+		//chainGUI = (ActionChain) GetNode("Action Chain");
 	}
 
 	public override void _Process(double delta)
@@ -64,13 +64,14 @@ public partial class BattleGUI : Control
 	public void ShowGUI(){
 		currentMenu.Visible = true;
 		playerCharacterReadouts.Visible = true;
-		chainGUI.Visible = true;
+		//chainGUI.Visible = true;
 	}
 
 	public void HideGUI(bool keepReadouts = true, bool keepChain = true){
 		currentMenu.Visible = false;
 		if(!keepReadouts) playerCharacterReadouts.Visible = false;
-		chainGUI.Visible = keepChain; //TODO: Actually have the Gain GUI stay as long as it's supposed to.
+		//chainGUI.Visible = keepChain; //TODO: Actually have the Gain GUI stay as long as it's supposed to.
+		playerCharacterReadouts.SetSelectedCharacter(-1);
 	}
 	
 	//returns true if we have any characters able to act, false otherwise
@@ -83,10 +84,12 @@ public partial class BattleGUI : Control
 		if(playersInQuestion.Contains(null)) throw new ArgumentException("Cannot Sent a PlayerCombatant[] with null entries swhen Reseting GUI state!");
 		currentMenu.Visible = false;
 		lastMenu = currentMenu;
-		currentMenu = (BattleMenu) GetNode("Top Menu");
+		currentMenu = (BattleMenu) GetNode("Readouts/Top Menu");
 		currentMenu.OnOpen(playersInQuestion[abilitiesQueued.Count(x => x != null)], parentBattle, this);
-		chainGUI.ResetActionChain(playersInQuestion);
+		playerCharacterReadouts.SetSelectedCharacter(0);
+		//chainGUI.ResetActionChain(playersInQuestion);
 		ShowGUI();
+		
 		active = true;
 		return true;
 	}
@@ -126,6 +129,7 @@ public partial class BattleGUI : Control
 			//Regains SP spent when they selected their ability this turn
 			playersInQuestion[abilitiesQueued.Count(x => x != null)].GainSP(spSpentByEachCombatant[abilitiesQueued.Count(x=> x != null)]);
 			spSpentByEachCombatant[abilitiesQueued.Count(x=> x != null)] = 0;
+			playerCharacterReadouts.SetSelectedCharacter(abilitiesQueued.Count(x => x != null));
 			chainGUI.StepBack();
 			ChangeMenu(0, playersInQuestion[abilitiesQueued.Count(x => x != null)]);
 		}
@@ -146,6 +150,7 @@ public partial class BattleGUI : Control
 		while(abilitiesQueued.Count(x => x != null) < playersInQuestion.Length){
 			if(playersInQuestion[abilitiesQueued.Count(x => x != null)].IsAbleToAct()){
 				ChangeMenu(0, playersInQuestion[abilitiesQueued.Count(x => x != null)]);
+				playerCharacterReadouts.SetSelectedCharacter(abilitiesQueued.Count(x => x != null));
 				return; 
 			}else{
 				abilitiesQueued[abilitiesQueued.Count(x => x != null)] = new CombatEventData("NoAction", playersInQuestion[abilitiesQueued.Count(x => x != null)], null);

@@ -19,6 +19,8 @@ public partial class PlayerCombatant : Combatant
 	[Export]
 	protected Texture2D displayPortrait;
 	protected PlayerSkill[] readySkills;
+	[Export]
+	protected PlayerSwap swapAbility;
 
 	// Called when the node enters the scene tree for the first time.
 	public async override void _Ready()
@@ -93,8 +95,8 @@ public partial class PlayerCombatant : Combatant
 		readout.UpdateSP(sp, maxSP);
 	}
 
-	//public PlayerAbility SetupAndGetSwap(Roster ros, PlayerCombatant target){
-		//swapAbility.SetupSwapDetails(ros, target);
-		//return swapAbility;
-	//}
+	public PlayerAbility SetupAndGetSwap(Roster ros, BattlePosition target){
+		swapAbility.SetupSwapDetails(ros, target);
+		return swapAbility;
+	}
 }

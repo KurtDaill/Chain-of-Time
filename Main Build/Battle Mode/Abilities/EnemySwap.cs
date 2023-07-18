@@ -2,14 +2,10 @@ using System;
 using Godot;
 using static BattleUtilities;
 
-public partial class PositionSwap : PlayerAbility
-{
-    /*
+public partial class EnemySwap : EnemyAbility{
     private Roster battleRoster;
-    public PositionSwap(){	
-		name = "SWAP";
-		rulesText = "";
-		AbilityTargetingLogic = TargetingLogic.AnyAlly;
+    public override void _Ready(){	
+		AbilityTargetingLogic = TargetingLogic.Special;
 	}
 
     public void SetupSwapDetails(Roster ros, Combatant tar){
@@ -25,8 +21,7 @@ public partial class PositionSwap : PlayerAbility
         EmitSignal(CombatAction.SignalName.ActionComplete);
 	}   
     
-	public override (Combatant, BattleUtilities.BattleRank)[] GetPositionSwaps(){
-		return new (Combatant, BattleUtilities.BattleRank)[]{(source, target[0].GetPosition())};
+	public override (Combatant, BattlePosition)[] GetPositionSwaps(){
+		return new (Combatant, BattlePosition)[]{(source, target[0].GetPosition())};
 	}
-    */
 }

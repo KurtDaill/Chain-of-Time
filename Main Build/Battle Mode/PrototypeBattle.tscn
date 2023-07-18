@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bftjxb62srdq"]
+[gd_scene load_steps=13 format=3 uid="uid://bftjxb62srdq"]
 
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Battle.cs" id="1_4rxw7"]
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="2_1verb"]
 [ext_resource type="PackedScene" uid="uid://234suufiqv8c" path="res://Battle Mode/Player Characters/Silver Combatant.tscn" id="3_5nfiw"]
+[ext_resource type="Texture2D" uid="uid://bkdgvs1hqa6nu" path="res://GUI/Point-export.png" id="3_w3rfi"]
 [ext_resource type="PackedScene" uid="uid://ctkjn6qaseru7" path="res://Battle Mode/BattleGUI.tscn" id="4_noo0e"]
 [ext_resource type="PackedScene" uid="uid://ck78k6iju4ldb" path="res://Battle Mode/Player Characters/Cato Combatant.tscn" id="4_xw6bo"]
 [ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Old/Art/3D/BattleDungeon.dae" id="5_7bshd"]
@@ -60,10 +61,26 @@ defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
 startingScene = true
 battleRoster = NodePath("Roster")
 
-[node name="Roster" type="Node3D" parent="Battle"]
+[node name="Roster" type="Node3D" parent="Battle" node_paths=PackedStringArray("positionPointer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 script = ExtResource("2_1verb")
+positionPointer = NodePath("Pointer")
 debugMode = true
+
+[node name="Pointer" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1)
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="Battle/Roster/Pointer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.64, 0)
+pixel_size = 0.008
+texture = ExtResource("3_w3rfi")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Battle/Roster/Pointer"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.76, 0)
+light_color = Color(1, 0.984314, 0.701961, 1)
+light_energy = 32.0
+spot_angle = 15.0
 
 [node name="HeroBack0" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.52, 0, 0)
@@ -104,12 +121,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0, 0)
 [node name="Skeleton" parent="Battle/Roster/EnemyFront0" instance=ExtResource("5_fuc8f")]
 
 [node name="EnemyFront1" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, -1)
 
 [node name="Skeleton" parent="Battle/Roster/EnemyFront1" instance=ExtResource("5_fuc8f")]
 
 [node name="EnemyFront2" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="Skeleton" parent="Battle/Roster/EnemyFront2" instance=ExtResource("5_fuc8f")]
 
 [node name="EnemyMid0" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2, 0, 0)
@@ -134,22 +153,6 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 fov = 60.0
 
 [node name="BattleGUI" parent="Battle/Camera3D" instance=ExtResource("4_noo0e")]
-
-[node name="Card 1" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="0"]
-offset_right = 2248.84
-offset_bottom = 4834.0
-
-[node name="Card 2" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="1"]
-offset_right = 561.0
-offset_bottom = 5664.0
-
-[node name="Card 3" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="2"]
-offset_right = 561.0
-offset_bottom = 5664.0
-
-[node name="Card 4" parent="Battle/Camera3D/BattleGUI/Skill Menu" index="3"]
-offset_right = 2222.0
-offset_bottom = 5664.0
 
 [node name="Turnover Timer" type="Timer" parent="Battle"]
 wait_time = 0.4
@@ -262,5 +265,5 @@ spot_angle = 20.4822
 environment = SubResource("Environment_51ne1")
 
 [editable path="Battle/Camera3D/BattleGUI"]
-[editable path="Battle/Camera3D/BattleGUI/Skill Menu/Card 1"]
-[editable path="Battle/Camera3D/BattleGUI/Skill Menu/Card 4"]
+[editable path="Battle/Camera3D/BattleGUI/Skill Menu/HBoxContainer/Card 1"]
+[editable path="Battle/Camera3D/BattleGUI/Skill Menu/HBoxContainer/Card 4"]

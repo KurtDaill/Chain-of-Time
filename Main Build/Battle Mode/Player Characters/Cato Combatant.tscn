@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="3_oduca"]
 [ext_resource type="Texture2D" uid="uid://d054fqnoqr0oo" path="res://Art/Cato Combat Sprite-Sheet.png" id="3_qd2l3"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/CatoBasicAttack.cs" id="4_qgcm6"]
-[ext_resource type="Script" path="res://Battle Mode/Abilities/PositionSwap.cs" id="5_v3stx"]
+[ext_resource type="Script" path="res://Battle Mode/Abilities/PlayerSwap.cs" id="6_o26w0"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/CatoShieldRush.cs" id="7_1v7hy"]
 [ext_resource type="PackedScene" uid="uid://boneh1axl0j65" path="res://Battle Mode/Combat Text.tscn" id="8_3o5il"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/CatoTaunt.cs" id="8_t0u03"]
@@ -420,12 +420,13 @@ _data = {
 "Taunt": SubResource("Animation_uumsx")
 }
 
-[node name="Cato" type="Node3D" node_paths=PackedStringArray("basicAttack", "displayText", "pointer") groups=["PlayerCombatant"]]
+[node name="Cato" type="Node3D" node_paths=PackedStringArray("basicAttack", "swapAbility", "displayText", "pointer") groups=["PlayerCombatant"]]
 script = ExtResource("1_r8uo0")
 sp = 2
 maxSP = 2
 basicAttack = NodePath("CatoBasicAttack")
 displayPortrait = ExtResource("2_kpxx0")
+swapAbility = NodePath("SwapPositions")
 hp = 10
 maxHP = 10
 displayText = NodePath("Combat Text")
@@ -460,7 +461,7 @@ script = ExtResource("4_qgcm6")
 enabledRanks = Array[int]([2, 3])
 
 [node name="SwapPositions" type="Node" parent="."]
-script = ExtResource("5_v3stx")
+script = ExtResource("6_o26w0")
 
 [node name="Shield Rush" type="Node" parent="."]
 script = ExtResource("7_1v7hy")

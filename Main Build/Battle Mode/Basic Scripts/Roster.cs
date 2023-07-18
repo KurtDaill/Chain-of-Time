@@ -10,6 +10,8 @@ public partial class Roster : Node
 
 	private VirtualPositionSwap[] virtualSwaps;
 
+	[Export]
+	private Node3D positionPointer;
 	[Signal]
 	public delegate void SwapCompleteEventHandler();
 
@@ -47,6 +49,7 @@ public partial class Roster : Node
 		characterSpots[2, 5] = ((Node3D)this.GetNode("EnemyBack2"));
 
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer"); 
+		positionPointer.Visible = false;
 
 		virtualSwaps = new VirtualPositionSwap[9];
 		parent = GetParent<Battle>();
@@ -63,10 +66,10 @@ public partial class Roster : Node
 		}
 	}
 
-	public void SwapCharacters(BattleLane moverLane, BattleRank moverRank, BattleLane newLane, BattleRank newRank){
+	public void SwapCharacters(BattlePosition moverPos, BattlePosition destinationPos){
 		//Get the Spots that corripsond with the Ranks/Lanes
-		Node3D moverSpot = characterSpots[(int) moverLane, (int)moverRank];
-		Node3D newSpot = characterSpots[(int)newLane, (int)newRank];
+		Node3D moverSpot = characterSpots[(int) moverPos.GetLane(), (int)moverPos.GetRank()];
+		Node3D newSpot = characterSpots[(int)destinationPos.GetLane(), (int)destinationPos.GetRank()];
 
 		//TODO Redesign Character Swap Animation
 
@@ -81,26 +84,30 @@ public partial class Roster : Node
 
 		//
 		*/
-		Combatant comA = GetCombatant(moverLane, moverRank);
-		Combatant comB = GetCombatant(newLane, newRank);
+		Combatant comA = GetCombatant(moverPos.GetLane(), moverPos.GetRank());
+		Combatant comB = GetCombatant(destinationPos.GetLane(), destinationPos.GetRank());
 		if(comA != null) moverSpot.RemoveChild(comA);
 		if(comB != null) newSpot.RemoveChild(comB);
 
 		if(comA != null){
 			comA.GlobalPosition = newSpot.GlobalPosition;
 			newSpot.AddChild(comA);
-			comA.SetPosition(newLane, newRank);
+			comA.SetPosition(destinationPos.GetLane(), destinationPos.GetRank());
 		}
 		if(comB != null){
 			comB.GlobalPosition = moverSpot.GlobalPosition;
 			moverSpot.AddChild(comB);
-			comB.SetPosition(moverLane, moverRank);
+			comB.SetPosition(moverPos.GetLane(), moverPos.GetRank());
 		}
 		EmitSignal(Roster.SignalName.SwapComplete);
 	}
 
-	public void SwapCharacters(Combatant mover, BattleLane newLane, BattleRank newRank){
-		SwapCharacters(GetPositionOfCombatant(mover).GetLane(), GetPositionOfCombatant(mover).GetRank(), newLane, newRank);
+	public void SwapCharacters(BattleLane moverLane, BattleRank moverRank, BattleLane destinationLane, BattleRank destinationRank){
+		SwapCharacters(new BattlePosition(moverLane, moverRank), new BattlePosition(destinationLane, destinationRank));
+	}
+
+	public void SwapCharacters(Combatant mover, BattlePosition destination){
+		SwapCharacters(mover.GetPosition(), destination);
 	}
 
 	public void SetPositionNewCharacter(Combatant cha, BattleRank rank, BattleLane lane){
@@ -121,6 +128,9 @@ public partial class Roster : Node
 
 	public Combatant GetCombatant(BattleLane queryLane, BattleRank queryRank){
 		return positionData[(int)queryLane, (int)queryRank];
+	}
+	public Combatant GetCombatant(BattlePosition position){
+		return GetCombatant(position.GetLane(), position.GetRank());
 	}
 
 	public PlayerCombatant[] GetAllPlayerCombatants(){
@@ -239,6 +249,15 @@ public partial class Roster : Node
 	
 	public void RollBackVirtualPositionSwap(int index){
 		virtualSwaps[index] = null;
+	}
+	public void HidePointer(){
+        positionPointer.Visible = false;
+    }
+    public void ShowPointer(){
+        positionPointer.Visible = true;
+    }
+	public void SetPointerPosition(int lane, int rank){
+		positionPointer.GlobalPosition = characterSpots[lane,rank].GlobalPosition;
 	}
 }
 

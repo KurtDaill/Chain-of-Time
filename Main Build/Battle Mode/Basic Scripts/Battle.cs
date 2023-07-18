@@ -236,7 +236,8 @@ public static class BattleUtilities
 		PlayerRank,
 		EnemyRank,
 		AllPlayers,
-		AllEnemies
+		AllEnemies,
+		Special
 	}
 
 	public enum AbilityAlignment{
