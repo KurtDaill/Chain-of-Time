@@ -465,11 +465,15 @@ script = ExtResource("6_o26w0")
 
 [node name="Shield Rush" type="Node" parent="."]
 script = ExtResource("7_1v7hy")
+armorStatusFilePath = "res://Battle Mode/Status Effects/CatoShieldRushStatus.tscn"
 spCost = 1
+enabledRanks = Array[int]([0, 1, 2])
 
 [node name="Taunt" type="Node" parent="."]
 script = ExtResource("8_t0u03")
+tauntStatusEffectPath = "res://Battle Mode/Status Effects/StatusTauntUntilMove.tscn"
 spCost = 2
+enabledRanks = Array[int]([2, 3, 4, 5])
 
 [node name="Combat Text" parent="." instance=ExtResource("8_3o5il")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63653, 1.66561, -0.0799999)

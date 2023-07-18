@@ -2,7 +2,6 @@ using System;
 using Godot;
 using static BattleUtilities;
 public partial class CatoTaunt : PlayerSkill{
-	/*
     [Export(PropertyHint.File)]
     string tauntStatusEffectPath;
 	public override void _Ready(){
@@ -12,7 +11,7 @@ public partial class CatoTaunt : PlayerSkill{
 		align = BattleUtilities.AbilityAlignment.Normal;
 		skillType = "Skill"; 
 		rulesText = "[textSize]small[center] Cato TAUNTS until he moves, bringing target enemy to the front rank";
-		AbilityTargetingLogic = BattleUtilities.TargetingLogic.Ranged;
+		AbilityTargetingLogic = BattleUtilities.TargetingLogic.SingleTargetEnemy;
 
 		//The 0 entry of this array is always reserved for the core animation of this combat action
 		//The 1 slot is for waiting for the opponent to be swapped
@@ -35,7 +34,7 @@ public partial class CatoTaunt : PlayerSkill{
 		source.GainStatus(tauntStatus);
 		tauntStatus.Begin();
 		if(target[0].GetPosition().GetRank() != BattleRank.EnemyFront){
-			parentBattle.GetRoster().SwapCharacters(target[0].GetPosition(), BattleRank.EnemyFront);
+			parentBattle.GetRoster().SwapCharacters(target[0].GetPosition(), new BattlePosition(target[0].GetPosition().GetLane(), BattleRank.EnemyFront));
         	WaitForSwap();
 		}else{
 			flagsRequiredToComplete[1] = true;
@@ -47,9 +46,8 @@ public partial class CatoTaunt : PlayerSkill{
 		flagsRequiredToComplete[1] = true;
 	}
 
-	public override (Combatant, BattleUtilities.BattleRank)[] GetPositionSwaps(){
-		if(target[0].GetPosition() != BattleUtilities.BattleRank.EnemyFront) return new (Combatant, BattleUtilities.BattleRank)[]{(target[0], BattleUtilities.BattleRank.EnemyFront)};
+	public override (Combatant, BattlePosition)[] GetPositionSwaps(){
+		if(target[0].GetPosition().GetRank() != BattleUtilities.BattleRank.EnemyFront) return new (Combatant, BattlePosition)[]{(target[0], new BattlePosition(target[0].GetPosition().GetLane(), BattleRank.EnemyFront))};
 		return null;
 	}
-	*/
 }

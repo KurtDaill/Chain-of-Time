@@ -265,5 +265,4 @@ spot_angle = 20.4822
 environment = SubResource("Environment_51ne1")
 
 [editable path="Battle/Camera3D/BattleGUI"]
-[editable path="Battle/Camera3D/BattleGUI/Skill Menu/HBoxContainer/Card 1"]
-[editable path="Battle/Camera3D/BattleGUI/Skill Menu/HBoxContainer/Card 4"]
+[editable path="Battle/Camera3D/BattleGUI/Skill Menu/Card Rack/Card 1"]

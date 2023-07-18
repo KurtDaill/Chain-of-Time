@@ -456,10 +456,13 @@ script = ExtResource("6_rww22")
 
 [node name="LongShot" type="Node" parent="." groups=["PlayerCombatant"]]
 script = ExtResource("7_ma1ff")
+spCost = 2
+enabledRanks = Array[int]([0, 1, 2, 3, 4, 5])
 
 [node name="BigBoot" type="Node" parent="."]
 script = ExtResource("8_6y1mq")
 spCost = 2
+enabledRanks = Array[int]([2, 3])
 
 [node name="Combat Text" parent="." instance=ExtResource("7_4stcv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.876529, 2.26561, -0.0799999)

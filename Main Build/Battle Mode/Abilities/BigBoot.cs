@@ -3,7 +3,6 @@ using System;
 using static BattleUtilities;
 public partial class BigBoot : PlayerSkill
 {
-	/*
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -13,7 +12,7 @@ public partial class BigBoot : PlayerSkill
 		align = BattleUtilities.AbilityAlignment.Normal;
 		skillType = "Attack"; 
 		rulesText = "[center] Deals 5 Damage and sends Silver back one rank";
-		AbilityTargetingLogic = BattleUtilities.TargetingLogic.Melee;
+		AbilityTargetingLogic = BattleUtilities.TargetingLogic.SingleTargetEnemy;
 		flagsRequiredToComplete = new bool[]{false, false};
 	}
 	
@@ -24,9 +23,9 @@ public partial class BigBoot : PlayerSkill
 
 	public override void AnimationTrigger(int phase){
 		switch(phase){
-			case 0 : parentBattle.GetRoster().GetCombatant(source.GetPosition().Item1, BattleUtilities.BattleRank.EnemyFront).TakeDamage(5); break;
+			case 0 : target[0].TakeDamage(5); break;
 			case 1 : 
-				parentBattle.GetRoster().SwapCharacters(source, source.GetPosition().Item1, BattleUtilities.BattleRank.HeroMid);
+				parentBattle.GetRoster().SwapCharacters(source.GetPosition(), new BattlePosition(source.GetPosition().GetLane(), source.GetPosition().GetRank()));
 				WaitForSwap();
 				//We shouldn't have triggered the flag for completing the core animation (it should be made long enough to not finish before the swap), so Big Boot Recovery finishing should be what trips that flag.
 				source.GetAnimationPlayer().Play("Big Boot Recovery");
@@ -40,8 +39,7 @@ public partial class BigBoot : PlayerSkill
 		flagsRequiredToComplete[1] = true;
 	}
 
-	public override (Combatant, (BattleLane, BattleRank))[] GetPositionSwaps(){
-		return new (Combatant, (BattleLane, BattleRank))[]{(source, (source.GetPosition().Item1, BattleUtilities.BattleRank.HeroMid))};	
+	public override (Combatant, BattlePosition)[] GetPositionSwaps(){
+		return new (Combatant, BattlePosition)[]{(source, source.GetPosition())};	
 	}
-	*/
 }

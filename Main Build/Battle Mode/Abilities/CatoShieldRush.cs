@@ -2,7 +2,6 @@ using System;
 using Godot;
 using static BattleUtilities;
 public partial class CatoShieldRush : PlayerSkill{
-	/*
     [Export(PropertyHint.File)]
     string armorStatusFilePath;
 
@@ -29,8 +28,8 @@ public partial class CatoShieldRush : PlayerSkill{
     public override void AnimationTrigger(int phase){
 		base.AnimationTrigger(phase);
         
-		if(target[0].GetPosition() != BattleRank.HeroFront){
-			parentBattle.GetRoster().SwapCharacters(source.GetPosition(), BattleRank.HeroFront);
+		if(target[0].GetPosition().GetRank() != BattleRank.HeroFront){
+			parentBattle.GetRoster().SwapCharacters(source.GetPosition(), new BattlePosition(source.GetPosition().GetLane(), BattleRank.EnemyFront));
         	WaitForSwap();
 		}else{
 			flagsRequiredToComplete[1] = true;
@@ -44,9 +43,8 @@ public partial class CatoShieldRush : PlayerSkill{
 		flagsRequiredToComplete[1] = true;
 	}
 
-	public override (Combatant, BattleUtilities.BattleRank)[] GetPositionSwaps(){
-		if(source.GetPosition() != BattleRank.HeroFront) return new (Combatant, BattleUtilities.BattleRank)[]{(source, BattleUtilities.BattleRank.HeroFront)};
+	public override (Combatant, BattlePosition)[] GetPositionSwaps(){
+		if(source.GetPosition().GetRank() != BattleRank.HeroFront) return new (Combatant, BattlePosition)[]{(source, new BattlePosition(source.GetPosition().GetLane(), BattleRank.HeroFront))};
 		return null;
 	}
-	*/
 }

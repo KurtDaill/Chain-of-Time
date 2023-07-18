@@ -46,7 +46,7 @@ public partial class BattleGUI : Control
 			var returnedAbility = currentMenu.HandleInput(ReadInput(), playersInQuestion[abilitiesQueued.Count(x => x != null)], parentBattle, this);
 			if(returnedAbility != null){
 				abilitiesQueued[abilitiesQueued.Count(x => x != null)] = returnedAbility.GetEventData();
-				chainGUI.LogAbility(returnedAbility.GetName(), abilitiesQueued.Count(x => x != null) == playersInQuestion.Length);
+				//chainGUI.LogAbility(returnedAbility.GetName(), abilitiesQueued.Count(x => x != null) == playersInQuestion.Length);
 				if(returnedAbility.GetPositionSwaps() != null) parentBattle.GetRoster().LogVirtualPositionSwap(abilitiesQueued.Count(x => x != null) - 1, returnedAbility.GetPositionSwaps());
 				GoToNextCharacter();
 			}

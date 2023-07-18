@@ -19,6 +19,7 @@ public partial class TopMenu : BattleMenu
     public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         base.OnOpen(character, caller, parentGUI);
         if(highlightedTab != -1)menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = false;
+        if(highlightedTab != -1)menuTabs[highlightedTab].SizeFlagsHorizontal = SizeFlags.ShrinkEnd;
         highlightedTab = -1;
     }
         
@@ -71,6 +72,8 @@ public partial class TopMenu : BattleMenu
                             parentGUI.ChangeMenu(4, character);
                             break;
                     }
+                    if(highlightedTab != -1) menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = false;
+                    if(highlightedTab != -1) menuTabs[highlightedTab].SizeFlagsHorizontal = SizeFlags.ShrinkEnd;
                     break;
                 case MenuInput.Back:
                     parentGUI.GotoPreviousCharacter();

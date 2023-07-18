@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://d4kx000io04gf" path="res://GUI/Themes/Skill Card Normal Small.tres" id="3"]
 [ext_resource type="Theme" uid="uid://dq2wt80l1hcrn" path="res://GUI/Themes/Skill Card Normal.tres" id="5"]
-[ext_resource type="Texture2D" uid="uid://byxwcawbevd4q" path="res://GUI/Battle Menu Assets/Top Menu/Attack Button Controller.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://bjukb2viqs36y" path="res://GUI/Battle Menu Assets/Attack Menu/Normal Attack.png" id="17_o7fhh"]
 [ext_resource type="Texture2D" uid="uid://8iltg8hieg8a" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuRunHighlight.png" id="20"]
 [ext_resource type="AudioStream" uid="uid://vrcv026r88aw" path="res://Audio/UI_No.wav" id="21"]
 [ext_resource type="Texture2D" uid="uid://d145f3ww0wx4r" path="res://GUI/Battle Menu Assets/Item Menu/Item Description Box.png" id="22"]
@@ -964,53 +964,60 @@ libraries = {
 
 [node name="Attack Menu" type="Control" parent="."]
 visible = false
-anchors_preset = 0
+layout_mode = 1
 anchor_top = 0.572
 anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 0.23999
-offset_right = 1920.0
+offset_left = 512.0
+offset_top = -23.76
+offset_right = 512.0
+offset_bottom = -486.0
 script = ExtResource("47")
 
 [node name="Backboard" type="TextureRect" parent="Attack Menu"]
-layout_mode = 0
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 0.289
 anchor_bottom = 1.0
-offset_left = 144.133
-offset_top = 102.642
-offset_right = 4.69806
-offset_bottom = -143.358
-texture = ExtResource("33")
-
-[node name="ATK Button" type="TextureRect" parent="Attack Menu/Backboard"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 90.481
-offset_top = 210.54
-offset_right = -151.57
-offset_bottom = 106.926
-texture = ExtResource("19")
+offset_left = 145.0
+offset_top = 104.0
+offset_right = 296.62
+offset_bottom = -1.99997
+texture = ExtResource("17_o7fhh")
 
 [node name="Attack Name" type="Label" parent="Attack Menu/Backboard"]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 12.0
-offset_right = 399.0
-offset_bottom = 58.0
+offset_left = 6.0
+offset_top = 15.0
+offset_right = 267.0
+offset_bottom = 90.0
 theme = ExtResource("5")
 text = "Basic Attack Name"
 horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Attack Text" type="Label" parent="Attack Menu/Backboard"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 108.0
+offset_right = 207.0
+offset_bottom = 143.0
+theme = ExtResource("5")
+text = "Attack"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Rules Text" type="RichTextLabel" parent="Attack Menu/Backboard"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 6.0
-offset_top = 84.0
-offset_right = 407.0
-offset_bottom = 190.0
+offset_top = 183.0
+offset_right = 267.0
+offset_bottom = 369.0
 theme = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = " [center][Range]
+text = "[center][Range]
 [Keywords]
 Basic Attack Text"
 
@@ -1027,54 +1034,38 @@ offset_right = 867.0
 offset_bottom = 1111.0
 script = ExtResource("49")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Skill Menu"]
+[node name="Card Rack" type="HBoxContainer" parent="Skill Menu"]
 layout_mode = 0
 offset_top = -433.0
 offset_right = 1356.0
 offset_bottom = 247.0
 
-[node name="Card 1" parent="Skill Menu/HBoxContainer" instance=ExtResource("30_x7avc")]
+[node name="Card 1" parent="Skill Menu/Card Rack" instance=ExtResource("30_x7avc")]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="Rules Text" parent="Skill Menu/HBoxContainer/Card 1" index="3"]
+[node name="Rules Text" parent="Skill Menu/Card Rack/Card 1" index="3"]
 text = ""
 
-[node name="Flash" parent="Skill Menu/HBoxContainer/Card 1/Pips/Enemy 2" index="0"]
+[node name="Flash" parent="Skill Menu/Card Rack/Card 1/Pips/Enemy 2" index="0"]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 24.0
 offset_bottom = 24.0
 
-[node name="Flash" parent="Skill Menu/HBoxContainer/Card 1/Pips/Enemy 3" index="0"]
+[node name="Flash" parent="Skill Menu/Card Rack/Card 1/Pips/Enemy 3" index="0"]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 24.0
 offset_bottom = 24.0
 
-[node name="Card 2" parent="Skill Menu/HBoxContainer" instance=ExtResource("30_x7avc")]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Card 3" parent="Skill Menu/HBoxContainer" instance=ExtResource("30_x7avc")]
+[node name="Card 2" parent="Skill Menu/Card Rack" instance=ExtResource("30_x7avc")]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="Card 4" parent="Skill Menu/HBoxContainer" instance=ExtResource("30_x7avc")]
-visible = false
+[node name="Card 3" parent="Skill Menu/Card Rack" instance=ExtResource("30_x7avc")]
 layout_mode = 2
-
-[node name="Flash" parent="Skill Menu/HBoxContainer/Card 4/Pips/Enemy 2" index="0"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 24.0
-offset_bottom = 24.0
-
-[node name="Flash" parent="Skill Menu/HBoxContainer/Card 4/Pips/Enemy 3" index="0"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 24.0
-offset_bottom = 24.0
+size_flags_vertical = 8
 
 [node name="SelectError" type="AudioStreamPlayer" parent="Skill Menu"]
 stream = ExtResource("21")
@@ -1369,11 +1360,12 @@ texture = ExtResource("37_6ma3k")
 [node name="ItemButton" type="TextureRect" parent="Readouts/Top Menu"]
 custom_minimum_size = Vector2(162, 42)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 8
 texture = ExtResource("38_ck2ng")
 stretch_mode = 2
 
 [node name="Highlight" type="TextureRect" parent="Readouts/Top Menu/ItemButton"]
+visible = false
 layout_mode = 0
 offset_left = -3.0
 offset_top = -3.0
@@ -1397,5 +1389,4 @@ offset_right = 159.0
 offset_bottom = 42.0
 texture = ExtResource("37_6ma3k")
 
-[editable path="Skill Menu/HBoxContainer/Card 1"]
-[editable path="Skill Menu/HBoxContainer/Card 4"]
+[editable path="Skill Menu/Card Rack/Card 1"]

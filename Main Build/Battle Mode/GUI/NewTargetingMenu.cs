@@ -26,6 +26,9 @@ public partial class NewTargetingMenu : BattleMenu {
     public void SetAbilityForTargeting(PlayerAbility newAbility, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         currentAbility = newAbility;
         selectedTargets = null;
+        
+        if(newAbility is PlayerSkill)parentGUI.spSpentByEachCombatant[parentGUI.GetIndexOfCharacterInQuestion()] = ((PlayerSkill)newAbility).GetSPCost();
+        
         //Set all variables/flags related to what ability we're currently targetting.
         switch(newAbility.GetTargetingLogic()){
             case TargetingLogic.Self :
@@ -87,8 +90,11 @@ public partial class NewTargetingMenu : BattleMenu {
                     Run Check Target Legaltiy
         */
         
-        if(Input.IsActionJustPressed("ui_back")){
+        if(input == MenuInput.Back){
+            SetPointers(caller);
             parentGUI.ChangeMenu(0, character);
+			character.GainSP(parentGUI.spSpentByEachCombatant[parentGUI.GetIndexOfCharacterInQuestion()]);
+			parentGUI.spSpentByEachCombatant[parentGUI.GetIndexOfCharacterInQuestion()] = 0;
             return null;
         }
         switch(currentAbility.GetTargetingLogic()){
@@ -106,7 +112,7 @@ public partial class NewTargetingMenu : BattleMenu {
                 HandleSelectRank(input, character, caller, parentGUI);
                 break;
         }
-        if(Input.IsActionJustPressed("ui_accept")){
+        if(input == MenuInput.Select){
             List<Combatant> legalTargets = GetLegalTargets(selectedTargets, caller, positionIndex);
             if(legalTargets.Count() == 0){ RejectSelection(); return null; }
             currentAbility.SetTargets(legalTargets.ToArray());

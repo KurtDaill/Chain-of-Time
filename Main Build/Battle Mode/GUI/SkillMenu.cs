@@ -6,7 +6,7 @@ public partial class SkillMenu : BattleMenu
 {
     public AnimationPlayer menuAnim;
     public AudioStreamPlayer rejectSound;
-    public SkillCard[] cards = new SkillCard[4];
+    public SkillCard[] cards = new SkillCard[3];
     private int selectedOption = -1;
     private int availableCards = 0;
     
@@ -17,10 +17,9 @@ public partial class SkillMenu : BattleMenu
         menuAnim = (AnimationPlayer) GetNode("AnimationPlayer");
         rejectSound = GetNode<AudioStreamPlayer>("SelectError");
 
-        cards[0] = (SkillCard)GetNode("Card 1");
-        cards[1] = (SkillCard)GetNode("Card 2");
-        cards[2] = (SkillCard)GetNode("Card 3");
-        cards[3] = (SkillCard)GetNode("Card 4");
+        cards[0] = (SkillCard)GetNode("Card Rack/Card 1");
+        cards[1] = (SkillCard)GetNode("Card Rack/Card 2");
+        cards[2] = (SkillCard)GetNode("Card Rack/Card 3");
     }
 
     public override void _Process(double delta)
@@ -39,17 +38,19 @@ public partial class SkillMenu : BattleMenu
                 noSkills = true;
         }
         else{
-            for(int i = 0; i < 4; i++){
+            for(int i = 0; i < 3; i++){
                 if(i < skills.Length){
                     cards[i].SetDisplay(skills[i].GetName(), skills[i].GetRulesText(), skills[i].GetSkilType(), skills[i].GetAbilityAlignment(), skills[i].GetSPCost(), skills[i].GetenabledRanks());
                     availableCards++;
+                    if(i == 0) cards[i].Draw();
+                    else cards[i].Stow();
                 }else{
                     cards[i].Visible = false;
                 }
             }
         }
         base.OnOpen(character, caller, parentGUI);
-        menuAnim.Play("Enter");
+        //menuAnim.Play("Enter");
         //Check current characters readied skills, setup cards to match that data
     }
 
@@ -70,7 +71,7 @@ public partial class SkillMenu : BattleMenu
                 break;
             case MenuInput.Select : //TODO: Should go to a "Targeting" menu --- ChargeSP returns false if player can't pay, and MUST BE AT THE END OF THIS CONDITIONAL!!!
                 if(noSkills == false && character.GetSkills()[selectedOption].GetenabledRanks().Contains(caller.GetRoster().GetCharacterVirtualPosition(character).GetRank()) && character.ChargeSP(character.GetSkills()[selectedOption].GetSPCost())){ 
-                    menuAnim.Play("Exit");
+                    //menuAnim.Play("Exit");
                     NewTargetingMenu tMenu = (NewTargetingMenu) parentGUI.menus[5];
                     tMenu.SetAbilityForTargeting(character.GetSkills()[selectedOption], character, caller, parentGUI);
                     parentGUI.ChangeMenu(5, character);
@@ -89,7 +90,7 @@ public partial class SkillMenu : BattleMenu
             cards[selectedOption].Draw();
         }
         if(input == MenuInput.Back){
-            menuAnim.Play("Exit");
+            //menuAnim.Play("Exit");
             parentGUI.ChangeMenu(0, character);
             return null;
         }

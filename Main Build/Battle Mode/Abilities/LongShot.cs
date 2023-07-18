@@ -4,7 +4,6 @@ using static BattleUtilities;
 
 public partial class LongShot : PlayerSkill
 {
-	/*
 	[Export(PropertyHint.File)]
 	string laserFX;
 	PackedScene laserFXScene;
@@ -16,7 +15,7 @@ public partial class LongShot : PlayerSkill
 		align = BattleUtilities.AbilityAlignment.Tech;
 		skillType = "Attack"; 
 		rulesText = "[textSize]small[center] Deals DMG Based on Enemy Position \n Front - 4 DMG\nMiddle - 3 DMG\n  Back - 2 DMG";
-		AbilityTargetingLogic = BattleUtilities.TargetingLogic.Ranged;
+		AbilityTargetingLogic = BattleUtilities.TargetingLogic.SingleTargetEnemy;
 		laserFXScene = GD.Load<PackedScene>(laserFX);
 	}
 
@@ -26,7 +25,7 @@ public partial class LongShot : PlayerSkill
 	}
 
 	public override void AnimationTrigger(int phase){	
-		switch(target[0].GetPosition()){
+		switch(target[0].GetPosition().GetRank()){
 			case BattleRank.EnemyFront :
 				target[0].TakeDamage(4);
 				break;
@@ -39,5 +38,4 @@ public partial class LongShot : PlayerSkill
 		}
 		SpawnEffectOnTarget(1, laserFXScene, target[0]);
 	}	
-	*/
 }

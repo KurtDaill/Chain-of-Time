@@ -1,3 +1,5 @@
+res://Battle Mode/Status Effects
+res://GUI/Battle Menu Assets/Attack Menu
 res://GUI/Battle Menu Assets/Top Menu
 res://GUI/Battle Menu Assets/Readouts
 res://Fonts
@@ -8,7 +10,6 @@ res://Art
 res://Old/Art/3D
 res://Levels/Combat Playtest One
 res://Battle Mode/Enemies
-res://Battle Mode/Status Effects
 res://Battle Mode/Status Effects/Notifications
 res://Battle Mode/Status Effects/Scripts
 res://GUI/Battle Menu Assets
@@ -19,4 +20,3 @@ res://Old/Test Scenes/Sprite Testing
 res://Old/Test Scenes/Sprite Testing/Environments
 res://Audio
 res://GUI/Battle Menu Assets/Skill Menu
-res://GUI

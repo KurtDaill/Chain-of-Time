@@ -85,17 +85,11 @@ public partial class SkillCard : TextureRect{
         }
     }
 
-    public void Select(){
-        anim.Play("Select");
-    }
     new public void Draw(){
-        anim.Play("Draw");
+        this.SizeFlagsVertical = SizeFlags.ShrinkBegin;
     }
     public void Stow(){
-        anim.Play("Stow");
-    }
-    public void Deselect(){
-        anim.Stop();
+        this.SizeFlagsVertical = SizeFlags.ShrinkEnd;
     }
 
     public void FlashFriendlyPips(){
