@@ -43,6 +43,7 @@ public partial class SwapMenu : BattleMenu{
                     return null;
                 }
                 caller.GetRoster().HidePointer();
+                
                 return character.SetupAndGetSwap(caller.GetRoster(), new BattlePosition((BattleLane)targetLane, (BattleRank)targetRank));
         }
         //If there was any input, make sure there's not an empty space in front of our target Rank and we make sure the pointer is in the right place.

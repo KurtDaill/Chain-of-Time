@@ -453,6 +453,7 @@ enabledRanks = Array[int]([0, 1, 2, 3, 4, 5])
 
 [node name="SwapPositions" type="Node" parent="."]
 script = ExtResource("6_rww22")
+enabledRanks = Array[int]([0, 1, 2])
 
 [node name="LongShot" type="Node" parent="." groups=["PlayerCombatant"]]
 script = ExtResource("7_ma1ff")

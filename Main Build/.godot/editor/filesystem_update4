@@ -1,4 +1,4 @@
-res://Battle Mode/BattleGUI.tscn
+res://Battle Mode/PrototypeBattle.tscn
 res://GUI/Themes/Skill Card Normal Small.tres
 res://GUI/Themes/Skill Card Normal.tres
 res://GUI/Themes/UI Impact.tres
@@ -100,10 +100,6 @@ res://Old/Test Scenes/Sprite Testing/InContextSpriteTest.cs
 res://SceneConfig.cs
 res://StoryState.cs
 res://Temp.cs
-res://Battle Mode/Player Characters/Cato Combatant.tscn
 res://Battle Mode/Player Characters/Silver Combatant.tscn
+res://Battle Mode/Player Characters/Cato Combatant.tscn
 res://Levels/Combat Playtest One/Victory.tscn
-res://Battle Mode/PrototypeBattle.tscn
-res://GUI/SkillCard.tscn
-res://Battle Mode/GUI/PlayerReadout.tscn
-res://Battle Mode/Enemies/Skeleton.tscn

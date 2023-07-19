@@ -96,6 +96,7 @@ public partial class PlayerCombatant : Combatant
 	}
 
 	public PlayerAbility SetupAndGetSwap(Roster ros, BattlePosition target){
+		swapAbility.SetTargets(new Combatant[1]{ros.GetCombatant(target)});
 		swapAbility.SetupSwapDetails(ros, target);
 		return swapAbility;
 	}

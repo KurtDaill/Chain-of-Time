@@ -70,33 +70,23 @@ public partial class Roster : Node
 		//Get the Spots that corripsond with the Ranks/Lanes
 		Node3D moverSpot = characterSpots[(int) moverPos.GetLane(), (int)moverPos.GetRank()];
 		Node3D newSpot = characterSpots[(int)destinationPos.GetLane(), (int)destinationPos.GetRank()];
-
-		//TODO Redesign Character Swap Animation
-
-		/*if(positions.Contains(BattleRank.HeroFront) && positions.Contains(BattleRank.HeroMid)) animPlay.Play("SwapHeroFM");
-		else if(positions.Contains(BattleRank.HeroFront) && positions.Contains(BattleRank.HeroBack)) animPlay.Play("SwapHeroFB");
-		else if(positions.Contains(BattleRank.HeroMid) && positions.Contains(BattleRank.HeroBack)) animPlay.Play("SwapHeroMB");
-		else if(positions.Contains(BattleRank.EnemyMid) && positions.Contains(BattleRank.EnemyBack)) animPlay.Play("SwapEnemyMB");
-		else if(positions.Contains(BattleRank.EnemyFront) && positions.Contains(BattleRank.EnemyBack)) animPlay.Play("SwapEnemyFB");
-		else if(positions.Contains(BattleRank.EnemyFront) && positions.Contains(BattleRank.EnemyMid)) animPlay.Play("SwapEnemyFM");
-		else throw new KeyNotFoundException();
-		await ToSignal(animPlay, AnimationPlayer.SignalName.AnimationFinished);
-
-		//
-		*/
 		Combatant comA = GetCombatant(moverPos.GetLane(), moverPos.GetRank());
 		Combatant comB = GetCombatant(destinationPos.GetLane(), destinationPos.GetRank());
+		if(comA == null && comB == null) return;
+
+		//TODO Redesign Character Swap Animation
 		if(comA != null) moverSpot.RemoveChild(comA);
 		if(comB != null) newSpot.RemoveChild(comB);
-
+		positionData[(int) moverPos.GetLane(), (int)moverPos.GetRank()] = comB;
+		positionData[(int)destinationPos.GetLane(), (int)destinationPos.GetRank()] = comA;
 		if(comA != null){
-			comA.GlobalPosition = newSpot.GlobalPosition;
 			newSpot.AddChild(comA);
+			comA.Position = Vector3.Zero;
 			comA.SetPosition(destinationPos.GetLane(), destinationPos.GetRank());
 		}
 		if(comB != null){
-			comB.GlobalPosition = moverSpot.GlobalPosition;
 			moverSpot.AddChild(comB);
+			comB.Position = Vector3.Zero;
 			comB.SetPosition(moverPos.GetLane(), moverPos.GetRank());
 		}
 		EmitSignal(Roster.SignalName.SwapComplete);

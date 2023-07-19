@@ -462,6 +462,7 @@ enabledRanks = Array[int]([2, 3])
 
 [node name="SwapPositions" type="Node" parent="."]
 script = ExtResource("6_o26w0")
+enabledRanks = Array[int]([0, 1, 2])
 
 [node name="Shield Rush" type="Node" parent="."]
 script = ExtResource("7_1v7hy")
