@@ -89,6 +89,7 @@ public partial class Roster : Node
 			comB.Position = Vector3.Zero;
 			comB.SetPosition(moverPos.GetLane(), moverPos.GetRank());
 		}
+		CrushForward();
 		EmitSignal(Roster.SignalName.SwapComplete);
 	}
 
@@ -169,7 +170,7 @@ public partial class Roster : Node
 		return animPlay;
 	}
 
-	public void ClearDead(){
+	public void CrushForward(){
 		for(int i = 0; i < 3; i++){
 			bool[] laneState = new bool[3];
 			for(int h = 0; h < 3; h++){if(positionData[i,h] != null && positionData[i,h].GetHP() > 0)laneState[h] = true; else laneState[h] = false;}

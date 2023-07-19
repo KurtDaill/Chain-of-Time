@@ -161,7 +161,7 @@ public partial class Battle : Node3D
 			}
 		}
 		//We have roster reshuffle them.
-		if(anyoneDead) battleRoster.ClearDead();
+		if(anyoneDead) battleRoster.CrushForward();
 	}
 
 	public Roster GetRoster(){
