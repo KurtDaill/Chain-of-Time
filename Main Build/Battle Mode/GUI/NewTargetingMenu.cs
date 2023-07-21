@@ -114,7 +114,15 @@ public partial class NewTargetingMenu : BattleMenu {
         }
         if(input == MenuInput.Select){
             List<Combatant> legalTargets = GetLegalTargets(selectedTargets, caller, positionIndex);
-            if(legalTargets.Count() == 0){ RejectSelection(); return null; }
+            if(legalTargets.Count() == 0){
+                foreach(EnemyCombatant enemy in caller.GetRoster().GetAllEnemyCombatants()){
+                    foreach(StatusTaunting taunt in enemy.GetStatusEffects().Where(x => x is StatusTaunting)){
+                        taunt.ShowNotification();
+                    }
+                }
+                 RejectSelection(); 
+                 return null; 
+            }
             currentAbility.SetTargets(legalTargets.ToArray());
             SetPointers(caller);
             return currentAbility;    
@@ -245,6 +253,12 @@ public partial class NewTargetingMenu : BattleMenu {
                     return desiredTargets;
             }
         }
+        
+        Combatant[] legalTargets = battle.GetRoster().GetLegalEnemyTargets();
+        for(int i = 0; i < actualTargets.Count(); i++){
+            if(!legalTargets.Contains(actualTargets[i])) actualTargets[i] = null;
+        }
+        actualTargets = actualTargets.Where(x => x != null).ToList(); 
         return actualTargets;
     }
 

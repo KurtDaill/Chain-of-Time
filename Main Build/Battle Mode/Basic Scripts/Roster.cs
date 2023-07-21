@@ -175,13 +175,13 @@ public partial class Roster : Node
 			bool[] laneState = new bool[3];
 			for(int h = 0; h < 3; h++){if(positionData[i,h] != null && positionData[i,h].GetHP() > 0)laneState[h] = true; else laneState[h] = false;}
 			if(!laneState[2]) SwapCharacters((BattleLane)i, BattleRank.HeroMid, (BattleLane)i, BattleRank.HeroFront);
-			if(!laneState[1]) SwapCharacters((BattleLane)i, BattleRank.HeroBack, (BattleLane)i, BattleRank.HeroMid);
+			if(!laneState[1] && laneState[0]) SwapCharacters((BattleLane)i, BattleRank.HeroBack, (BattleLane)i, BattleRank.HeroMid);
 		}
 		for(int i = 0; i < 3; i++){
 			bool[] laneState = new bool[3];
 			for(int e = 3; e < 6; e++){if(positionData[i,e] != null && positionData[i,e].GetHP() > 0)laneState[e - 3] = true; else laneState[e - 3] = false;}
 			if(!laneState[0]) SwapCharacters((BattleLane)i, BattleRank.EnemyMid, (BattleLane)i, BattleRank.EnemyFront);
-			if(!laneState[1]) SwapCharacters((BattleLane)i, BattleRank.EnemyBack, (BattleLane)i, BattleRank.EnemyMid);
+			if(!laneState[1] && laneState[2]) SwapCharacters((BattleLane)i, BattleRank.EnemyBack, (BattleLane)i, BattleRank.EnemyMid);
 		}
 	}	
 

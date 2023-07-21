@@ -7,8 +7,6 @@ public partial class GhostMage : EnemyCombatant
 	[Export]
 	private EnemyAbility attack;
 	[Export]
-	private EnemyAbility confusion;
-	[Export]
 	private EnemyAbility fireBlast;
 
 	bool hasConfused = false;
@@ -18,7 +16,6 @@ public partial class GhostMage : EnemyCombatant
         name = "Ghost Mage";
         base._Ready();
 		attack.Setup(this);
-		confusion.Setup(this);
 		fireBlast.Setup(this);
 	}
 
