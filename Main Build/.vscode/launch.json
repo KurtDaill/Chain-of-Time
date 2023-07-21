@@ -6,7 +6,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "C:/Users/kdail/Desktop/Game Dev/Godot_v4.0.3-stable_mono_win64/Godot_v4.1-stable_mono_win64/Godot_v4.1-stable_mono_win64.exe",
+            "program": "C:/Program Files/Godot/Godot_v4.1.1-stable_mono_win64/Godot_v4.1.1-stable_mono_win64.exe",
             "console": "internalConsole",
             "stopAtEntry": false
         },

@@ -1,8 +1,9 @@
-res://Battle Mode/PrototypeBattle.tscn
+res://Battle Mode/Player Characters/Cato Combatant.tscn
 res://GUI/Themes/Skill Card Normal Small.tres
 res://GUI/Themes/Skill Card Normal.tres
 res://GUI/Themes/UI Impact.tres
 res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres
+res://Battle Mode/Player Characters/CatoCombatant.cs
 res://Battle Mode/Abilities/Ability.cs
 res://Battle Mode/Abilities/BasicEnemyMelee.cs
 res://Battle Mode/Abilities/BigBoot.cs
@@ -49,7 +50,6 @@ res://Battle Mode/GUI/SwapMenu.cs
 res://Battle Mode/GUI/TargetingMenu.cs
 res://Battle Mode/GUI/TopMenu.cs
 res://Battle Mode/Player Characters/Cato.cs
-res://Battle Mode/Player Characters/CatoCombatant.cs
 res://Battle Mode/Player Characters/PlayerAbility.cs
 res://Battle Mode/Player Characters/PlayerCombatant.cs
 res://Battle Mode/Player Characters/SilverCombatant.cs
@@ -100,6 +100,3 @@ res://Old/Test Scenes/Sprite Testing/InContextSpriteTest.cs
 res://SceneConfig.cs
 res://StoryState.cs
 res://Temp.cs
-res://Battle Mode/Player Characters/Silver Combatant.tscn
-res://Battle Mode/Player Characters/Cato Combatant.tscn
-res://Levels/Combat Playtest One/Victory.tscn

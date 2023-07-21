@@ -13,6 +13,6 @@
         "System.SystemException": "always",
         "System.TypeInitializationException": "always"
     },
-    "godot.csharp.executablePath": "C:\\Users\\kdail\\Desktop\\Game Dev\\Godot_v4.0.3-stable_mono_win64\\Godot_v4.0.3-stable_mono_win64\\Godot_v4.0.3-stable_mono_win64.exe",
-    "godot_tools.editor_path": "c:\\Users\\kdail\\Desktop\\Game Dev\\Godot_v4.0.3-stable_mono_win64\\Godot_v4.0.3-stable_mono_win64\\Godot_v4.0.3-stable_mono_win64.exe"
+    "godot.csharp.executablePath": "C:\\Program Files\\Godot\\Godot_v4.1.1-stable_mono_win64\\Godot_v4.1.1-stable_mono_win64.exe",
+    "godot_tools.editor_path": "C:\\Program Files\\Godot\\Godot_v4.1.1-stable_mono_win64\\Godot_v4.1.1-stable_mono_win64.exe"
 }
