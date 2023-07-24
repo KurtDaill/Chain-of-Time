@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://ctkjn6qaseru7"]
+[gd_scene load_steps=53 format=3 uid="uid://ctkjn6qaseru7"]
 
 [ext_resource type="Theme" uid="uid://d4kx000io04gf" path="res://GUI/Themes/Skill Card Normal Small.tres" id="3"]
 [ext_resource type="Theme" uid="uid://dq2wt80l1hcrn" path="res://GUI/Themes/Skill Card Normal.tres" id="5"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://doe0fcor7214h" path="res://GUI/Battle Menu Assets/Skill Menu/Skill Card.png" id="33_011xl"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/SkillCard.cs" id="34_dir1l"]
 [ext_resource type="Theme" uid="uid://lcud6pbsl6dn" path="res://GUI/Themes/UI Impact.tres" id="35_wu077"]
+[ext_resource type="Texture2D" uid="uid://7wtuchgydm3u" path="res://GUI/Battle Menu Assets/Readouts/Lucienne Reaodut.png" id="36_1ny30"]
 [ext_resource type="Texture2D" uid="uid://dbuhrp5s28xww" path="res://GUI/Battle Menu Assets/Top Menu/AttackButton.png" id="36_70wny"]
 [ext_resource type="Texture2D" uid="uid://diafuti26x647" path="res://GUI/Battle Menu Assets/Skill Menu/FriendlyPip.png" id="36_wc611"]
 [ext_resource type="Texture2D" uid="uid://l6unyyb4maph" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres" id="37"]
@@ -963,13 +964,12 @@ libraries = {
 }
 
 [node name="Attack Menu" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchor_top = 0.572
 anchor_bottom = 1.0
-offset_left = 512.0
+offset_left = 715.0
 offset_top = -23.76
-offset_right = 512.0
+offset_right = 715.0
 offset_bottom = -486.0
 script = ExtResource("47")
 
@@ -1043,21 +1043,6 @@ offset_bottom = 247.0
 [node name="Card 1" parent="Skill Menu/Card Rack" instance=ExtResource("30_x7avc")]
 layout_mode = 2
 size_flags_vertical = 8
-
-[node name="Rules Text" parent="Skill Menu/Card Rack/Card 1" index="3"]
-text = ""
-
-[node name="Flash" parent="Skill Menu/Card Rack/Card 1/Pips/Enemy 2" index="0"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 24.0
-offset_bottom = 24.0
-
-[node name="Flash" parent="Skill Menu/Card Rack/Card 1/Pips/Enemy 3" index="0"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 24.0
-offset_bottom = 24.0
 
 [node name="Card 2" parent="Skill Menu/Card Rack" instance=ExtResource("30_x7avc")]
 layout_mode = 2
@@ -1309,11 +1294,15 @@ offset_top = 130.68
 offset_right = -1093.0
 offset_bottom = -9.0
 script = ExtResource("40_jh205")
-readouts = [NodePath("Cato Readout"), NodePath("Silver Readout")]
+readouts = [NodePath("Cato Readout"), NodePath("Silver Readout"), NodePath("Luciene Readout")]
 
 [node name="Silver Readout" parent="Readouts" instance=ExtResource("43_0yoje")]
 layout_mode = 2
 texture = ExtResource("44_o5nwl")
+
+[node name="Luciene Readout" parent="Readouts" instance=ExtResource("43_0yoje")]
+layout_mode = 2
+texture = ExtResource("36_1ny30")
 
 [node name="Cato Readout" parent="Readouts" instance=ExtResource("43_0yoje")]
 layout_mode = 2
@@ -1388,5 +1377,3 @@ offset_top = -3.0
 offset_right = 159.0
 offset_bottom = 42.0
 texture = ExtResource("37_6ma3k")
-
-[editable path="Skill Menu/Card Rack/Card 1"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://6ewe3uubmamc"]
 
 [ext_resource type="Theme" uid="uid://dq2wt80l1hcrn" path="res://GUI/Themes/Skill Card Normal.tres" id="1_yd2l7"]
-[ext_resource type="Texture2D" uid="uid://doe0fcor7214h" path="res://GUI/Battle Menu Assets/Skill Menu/Skill Card.png" id="2_px826"]
+[ext_resource type="Texture2D" uid="uid://jfvu1q88havg" path="res://GUI/Battle Menu Assets/Skill Menu/Spell Card.png" id="2_wxx5v"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/SkillCard.cs" id="3_01mxs"]
 [ext_resource type="Theme" uid="uid://lcud6pbsl6dn" path="res://GUI/Themes/UI Impact.tres" id="4_2aq60"]
 [ext_resource type="Texture2D" uid="uid://diafuti26x647" path="res://GUI/Battle Menu Assets/Skill Menu/FriendlyPip.png" id="5_3ijbr"]
@@ -17,7 +17,7 @@ offset_right = 347.0
 offset_bottom = 1390.0
 pivot_offset = Vector2(246.475, 158.516)
 theme = ExtResource("1_yd2l7")
-texture = ExtResource("2_px826")
+texture = ExtResource("2_wxx5v")
 stretch_mode = 2
 script = ExtResource("3_01mxs")
 
@@ -28,7 +28,7 @@ offset_top = 71.2929
 offset_right = 320.34
 offset_bottom = 150.293
 bbcode_enabled = true
-text = "[center] Default Skill Text"
+text = "[center] Ach Nein!!!"
 
 [node name="Cost" type="Label" parent="."]
 layout_mode = 0
@@ -37,7 +37,7 @@ offset_top = 27.0
 offset_right = 103.0
 offset_bottom = 62.0
 theme = ExtResource("4_2aq60")
-text = "0"
+text = "?"
 horizontal_alignment = 1
 
 [node name="Type" type="Label" parent="."]
@@ -57,7 +57,8 @@ offset_right = 327.0
 offset_bottom = 423.0
 theme = ExtResource("1_yd2l7")
 bbcode_enabled = true
-text = "[center] [BAD]
+text = "[center]
+[BAD]
 You Shouldn't See This Text At All"
 scroll_active = false
 

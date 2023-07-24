@@ -9,7 +9,7 @@ public partial class SilverBasicAttack : PlayerAbility
 	string laserFX;
 	PackedScene laserFXScene;
 	public override void _Ready(){
-		name = "Basic Atk";
+		name = "Basic Attack";
 		animation = "SilverBasicAttack";
 		currentDamageChart = new System.Collections.Generic.Dictionary<double, int>()
 		{
@@ -17,7 +17,7 @@ public partial class SilverBasicAttack : PlayerAbility
 			{0.51, 2}
 		};
 
-		rulesText = " [center]Ranged \n Silver Deals 1-2 Damage";
+		rulesText = " [center]Silver Deals 1-2 Damage";
 		AbilityTargetingLogic = TargetingLogic.SingleTargetEnemy;
 		laserFXScene = GD.Load<PackedScene>(laserFX);
 	}

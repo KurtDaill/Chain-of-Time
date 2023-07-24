@@ -1,7 +1,7 @@
 using Godot;
 using System;
 using static BattleUtilities;
-public partial class CatoBasicAttack : PlayerAbility
+public partial class LucieneBasicAttack : PlayerAbility
 {
 	/*
 		Animation has to decide when stuff happens
@@ -12,16 +12,15 @@ public partial class CatoBasicAttack : PlayerAbility
 	public override void _Ready(){
 		base._Ready();	
 		name = "Basic Attack";
-		animation = "CatoBasicAttack";
+		animation = "LucienneBasicAttack";
 		currentDamageChart = new System.Collections.Generic.Dictionary<double, int>()
 		{
-			{0.49, 1},
-			{0.51, 2}
+			{1, 1}
 		};
 
-		rulesText = "[center]Cato Deals 1-2 Damage";
+		rulesText = "[center]Luciene Deals 2 Damage";
 		AbilityTargetingLogic = TargetingLogic.SingleTargetEnemy;
-		enabledRanks = new Godot.Collections.Array<BattleRank>(){BattleRank.HeroFront, BattleRank.EnemyFront};
+		enabledRanks = new Godot.Collections.Array<BattleRank>(){BattleRank.HeroFront, BattleRank.HeroMid, BattleRank.EnemyFront};
 	}
 
 	public override void AnimationTrigger(int phase){

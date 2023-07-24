@@ -32,7 +32,7 @@ public partial class NewTargetingMenu : BattleMenu {
         //Set all variables/flags related to what ability we're currently targetting.
         switch(newAbility.GetTargetingLogic()){
             case TargetingLogic.Self :
-                selectedTargets = new List<Combatant>{character}; SetPointers(caller, selectedTargets); break;
+                selectedTargets = new List<Combatant>{character};SetPointers(caller, selectedTargets); break;
             case TargetingLogic.SinlgeTargetPlayer : 
                 selectedTargets = new List<Combatant>{character}; break;
             case TargetingLogic.SingleTargetEnemy :
@@ -118,7 +118,8 @@ public partial class NewTargetingMenu : BattleMenu {
         }
         if(input == MenuInput.Select){
             List<Combatant> legalTargets = GetLegalTargets(selectedTargets, caller, positionIndex);
-            if(legalTargets.Count() == 0){
+            if(selectedTargets[0] is EnemyCombatant){
+                if(legalTargets.Count() == 0){
                 foreach(EnemyCombatant enemy in caller.GetRoster().GetAllEnemyCombatants()){
                     foreach(StatusTaunting taunt in enemy.GetStatusEffects().Where(x => x is StatusTaunting)){
                         taunt.ShowNotification();
@@ -126,7 +127,11 @@ public partial class NewTargetingMenu : BattleMenu {
                 }
                  RejectSelection(); 
                  return null; 
+                }
+            }else{ //No Check needed for player targeting abilities, you can always target friendlies
+                legalTargets = selectedTargets;
             }
+            
             currentAbility.SetTargets(legalTargets.ToArray());
             SetPointers(caller);
             return currentAbility;    

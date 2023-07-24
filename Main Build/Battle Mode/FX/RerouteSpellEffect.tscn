@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://drt51udufhpfj"]
+
+[ext_resource type="Script" path="res://Battle Mode/FX/CombatFX.cs" id="1_va7ep"]
+[ext_resource type="Texture2D" uid="uid://ckxkjwrvyyskw" path="res://Art/FX/Luciene Reroute Spell Effect_299x299.png" id="2_dl5cc"]
+
+[sub_resource type="Animation" id="Animation_mag02"]
+resource_name = "Spin"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 120]
+}
+
+[sub_resource type="Animation" id="Animation_y8i3a"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_huhtr"]
+_data = {
+"RESET": SubResource("Animation_y8i3a"),
+"Spin": SubResource("Animation_mag02")
+}
+
+[node name="RerouteSpellEffect" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4375, 3.94544, 0)
+script = ExtResource("1_va7ep")
+oneShot = true
+coreAnimationName = "Spin"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+no_depth_test = true
+texture_filter = 0
+texture = ExtResource("2_dl5cc")
+hframes = 11
+vframes = 11
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_huhtr")
+}

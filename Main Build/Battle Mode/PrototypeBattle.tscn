@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bftjxb62srdq"]
+[gd_scene load_steps=16 format=3 uid="uid://bftjxb62srdq"]
 
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Battle.cs" id="1_4rxw7"]
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="2_1verb"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ck78k6iju4ldb" path="res://Battle Mode/Player Characters/Cato Combatant.tscn" id="4_xw6bo"]
 [ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Old/Art/3D/BattleDungeon.dae" id="5_7bshd"]
 [ext_resource type="PackedScene" uid="uid://ckh4ejsj04t82" path="res://Battle Mode/Enemies/Skeleton.tscn" id="5_fuc8f"]
+[ext_resource type="PackedScene" uid="uid://d23io6jp617dx" path="res://Battle Mode/Player Characters/Lucienne Combatant.tscn" id="5_vfoxv"]
 [ext_resource type="PackedScene" uid="uid://bltlucajwd3c5" path="res://Battle Mode/Enemies/SkeletonGuard.tscn" id="6_lu0qn"]
 [ext_resource type="PackedScene" uid="uid://qkdx5mb1mcw4" path="res://Battle Mode/Enemies/Ghost Mage.tscn" id="7_6xq5y"]
 
@@ -90,6 +91,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.52, 0, 0)
 [node name="HeroBack1" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -1)
 
+[node name="Silver" parent="Battle/Roster/HeroBack1" node_paths=PackedStringArray("readout") instance=ExtResource("3_5nfiw")]
+readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Silver Readout")
+
 [node name="HeroBack2" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48, 0, -2)
 
@@ -99,12 +103,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2, 0, 0)
 [node name="HeroMid1" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 0, -1)
 
-[node name="Silver" parent="Battle/Roster/HeroMid1" node_paths=PackedStringArray("readout") instance=ExtResource("3_5nfiw")]
-sp = 8
-maxSP = 8
-readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Silver Readout")
-hp = 25
-maxHP = 25
+[node name="Luciene" parent="Battle/Roster/HeroMid1" node_paths=PackedStringArray("readout") instance=ExtResource("5_vfoxv")]
+readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Luciene Readout")
 
 [node name="HeroMid2" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08, 0, -2)
@@ -116,6 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1)
 
 [node name="Cato" parent="Battle/Roster/HeroFront1" node_paths=PackedStringArray("readout") instance=ExtResource("4_xw6bo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0270779, 0)
 sp = 6
 maxSP = 5
 readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
