@@ -63,6 +63,8 @@ public partial class Battle : Node3D
 				if(waiting) return;
 				waiting = true;
 				await CharactersGoDown();
+				betweenActionsTimer.Start();
+				await ToSignal(betweenActionsTimer, Timer.SignalName.Timeout);
 				List<CombatEventData> statusCED = new List<CombatEventData>();
 				foreach(Combatant com in battleRoster.GetAllCombatants()){
 					foreach(OnUpkeepStatus up in com.GetUpkeepStatusEffects()){

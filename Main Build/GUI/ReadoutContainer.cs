@@ -27,9 +27,9 @@ public partial class ReadoutContainer : BoxContainer
 //      
 //  }
 	
-	public void SetSelectedCharacter(int index){
+	public void SetSelectedCharacter(PlayerCombatant com){
 		for(int i = 0; i < readouts.Count; i++){
-			if(i == index){
+			if(readouts[i].character == com){
 				readouts[i].Select();
 				PositionTopMenu(i);
 			}else{
@@ -37,24 +37,24 @@ public partial class ReadoutContainer : BoxContainer
 			}
 		}
 	}
-	public void Reorder(){
+	public void Reorder(){ //TODO Actually Make this work with any number of players
 		var readouts = this.GetChildren();
 		foreach(Node element in readouts){
 			if(element != null && element is PlayerCharacterReadout){
 				var read = (PlayerCharacterReadout) element;
 				switch(read.character.GetPosition().GetRank()){
 					case BattleRank.HeroFront :
-						MoveChild(read, 0);
-						break;
-					case BattleRank.HeroMid :
 						MoveChild(read, 1);
 						break;
+					case BattleRank.HeroMid :
+						MoveChild(read, 0);
+						break;
 					case BattleRank.HeroBack :
-						MoveChild(read, 2);
+						MoveChild(read, 0);
 						break;
 				}
 			}
-			else readouts.Remove(element);
+			//else readouts.Remove(element);
 		}
 	}
 

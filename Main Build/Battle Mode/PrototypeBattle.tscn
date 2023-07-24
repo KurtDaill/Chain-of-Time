@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bftjxb62srdq"]
+[gd_scene load_steps=15 format=3 uid="uid://bftjxb62srdq"]
 
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Battle.cs" id="1_4rxw7"]
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="2_1verb"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Old/Art/3D/BattleDungeon.dae" id="5_7bshd"]
 [ext_resource type="PackedScene" uid="uid://ckh4ejsj04t82" path="res://Battle Mode/Enemies/Skeleton.tscn" id="5_fuc8f"]
 [ext_resource type="PackedScene" uid="uid://bltlucajwd3c5" path="res://Battle Mode/Enemies/SkeletonGuard.tscn" id="6_lu0qn"]
+[ext_resource type="PackedScene" uid="uid://qkdx5mb1mcw4" path="res://Battle Mode/Enemies/Ghost Mage.tscn" id="7_6xq5y"]
 
 [sub_resource type="Animation" id="Animation_u18p7"]
 resource_name = "Flicker"
@@ -99,7 +100,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 0, -1)
 
 [node name="Silver" parent="Battle/Roster/HeroMid1" node_paths=PackedStringArray("readout") instance=ExtResource("3_5nfiw")]
+sp = 8
+maxSP = 8
 readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Silver Readout")
+hp = 25
+maxHP = 25
 
 [node name="HeroMid2" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08, 0, -2)
@@ -111,14 +116,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1)
 
 [node name="Cato" parent="Battle/Roster/HeroFront1" node_paths=PackedStringArray("readout") instance=ExtResource("4_xw6bo")]
+sp = 6
+maxSP = 5
 readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
-hp = 2
+hp = 25
+maxHP = 25
 
 [node name="HeroFront2" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
 
 [node name="EnemyFront0" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0, 0)
+
+[node name="SkeletonGuard" parent="Battle/Roster/EnemyFront0" instance=ExtResource("6_lu0qn")]
 
 [node name="EnemyFront1" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, -1)
@@ -128,8 +138,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, -1)
 [node name="EnemyFront2" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
 
+[node name="SkeletonGuard" parent="Battle/Roster/EnemyFront2" instance=ExtResource("6_lu0qn")]
+
 [node name="EnemyMid0" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2, 0, 0)
+
+[node name="Ghost Mage" parent="Battle/Roster/EnemyMid0" instance=ExtResource("7_6xq5y")]
 
 [node name="EnemyMid1" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 0, -1)
@@ -138,6 +152,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 0, -1)
 
 [node name="EnemyMid2" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+
+[node name="Ghost Mage" parent="Battle/Roster/EnemyMid2" instance=ExtResource("7_6xq5y")]
 
 [node name="EnemyBack0" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.52, 0, 0)

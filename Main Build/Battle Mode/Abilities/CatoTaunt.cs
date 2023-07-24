@@ -35,7 +35,8 @@ public partial class CatoTaunt : PlayerSkill{
 		tauntStatus.Begin();
 		if(target[0].GetPosition().GetRank() != BattleRank.EnemyFront){
 			parentBattle.GetRoster().SwapCharacters(target[0].GetPosition(), new BattlePosition(target[0].GetPosition().GetLane(), BattleRank.EnemyFront));
-        	WaitForSwap();
+        	//WaitForSwap(); 
+			flagsRequiredToComplete[1] = true; //TODO Enable WaitForSwap and remove this line once swap animations are back in the game
 		}else{
 			flagsRequiredToComplete[1] = true;
 		}

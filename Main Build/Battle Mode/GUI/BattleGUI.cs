@@ -71,7 +71,7 @@ public partial class BattleGUI : Control
 		currentMenu.Visible = false;
 		if(!keepReadouts) playerCharacterReadouts.Visible = false;
 		//chainGUI.Visible = keepChain; //TODO: Actually have the Gain GUI stay as long as it's supposed to.
-		playerCharacterReadouts.SetSelectedCharacter(-1);
+		playerCharacterReadouts.SetSelectedCharacter(null);
 	}
 	
 	//returns true if we have any characters able to act, false otherwise
@@ -86,10 +86,10 @@ public partial class BattleGUI : Control
 		lastMenu = currentMenu;
 		currentMenu = (BattleMenu) GetNode("Readouts/Top Menu");
 		currentMenu.OnOpen(playersInQuestion[abilitiesQueued.Count(x => x != null)], parentBattle, this);
-		playerCharacterReadouts.SetSelectedCharacter(0);
+		playerCharacterReadouts.SetSelectedCharacter(playersInQuestion[0]);
 		//chainGUI.ResetActionChain(playersInQuestion);
 		ShowGUI();
-		
+		playerCharacterReadouts.Reorder();
 		active = true;
 		return true;
 	}
@@ -129,7 +129,7 @@ public partial class BattleGUI : Control
 			//Regains SP spent when they selected their ability this turn
 			playersInQuestion[abilitiesQueued.Count(x => x != null)].GainSP(spSpentByEachCombatant[abilitiesQueued.Count(x=> x != null)]);
 			spSpentByEachCombatant[abilitiesQueued.Count(x=> x != null)] = 0;
-			playerCharacterReadouts.SetSelectedCharacter(abilitiesQueued.Count(x => x != null));
+			playerCharacterReadouts.SetSelectedCharacter(playersInQuestion[abilitiesQueued.Count(x => x != null)]);
 			chainGUI.StepBack();
 			ChangeMenu(0, playersInQuestion[abilitiesQueued.Count(x => x != null)]);
 		}
@@ -150,7 +150,7 @@ public partial class BattleGUI : Control
 		while(abilitiesQueued.Count(x => x != null) < playersInQuestion.Length){
 			if(playersInQuestion[abilitiesQueued.Count(x => x != null)].IsAbleToAct()){
 				ChangeMenu(0, playersInQuestion[abilitiesQueued.Count(x => x != null)]);
-				playerCharacterReadouts.SetSelectedCharacter(abilitiesQueued.Count(x => x != null));
+				playerCharacterReadouts.SetSelectedCharacter(playersInQuestion[abilitiesQueued.Count(x => x != null)]);
 				return; 
 			}else{
 				abilitiesQueued[abilitiesQueued.Count(x => x != null)] = new CombatEventData("NoAction", playersInQuestion[abilitiesQueued.Count(x => x != null)], null);

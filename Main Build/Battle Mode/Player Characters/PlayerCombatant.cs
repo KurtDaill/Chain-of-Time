@@ -33,6 +33,7 @@ public partial class PlayerCombatant : Combatant
 		await ToSignal(readout.GetParent(), ReadoutContainer.SignalName.ReadyToPopulateReadouts);
 		readout.UpdateHP(hp, maxHP);
 		readout.UpdateSP(sp, maxSP);
+		readout.character = this;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

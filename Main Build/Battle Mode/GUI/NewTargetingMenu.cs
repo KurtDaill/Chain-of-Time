@@ -32,7 +32,7 @@ public partial class NewTargetingMenu : BattleMenu {
         //Set all variables/flags related to what ability we're currently targetting.
         switch(newAbility.GetTargetingLogic()){
             case TargetingLogic.Self :
-                selectedTargets = new List<Combatant>{character}; break;
+                selectedTargets = new List<Combatant>{character}; SetPointers(caller, selectedTargets); break;
             case TargetingLogic.SinlgeTargetPlayer : 
                 selectedTargets = new List<Combatant>{character}; break;
             case TargetingLogic.SingleTargetEnemy :
@@ -56,17 +56,21 @@ public partial class NewTargetingMenu : BattleMenu {
             case TargetingLogic.MyRank : case TargetingLogic.PlayerRank :
                 positionIndex = (int)character.GetPosition().GetRank();
                 selectedTargets = caller.GetRoster().GetCombatantsByRank((BattleRank)positionIndex).ToList();
+                SetPointers(caller, selectedTargets);
                 break;
             
             case TargetingLogic.EnemyRank :
                 positionIndex = 3; //There has to be SOMEONE at the first enemy Rank.
                 selectedTargets = caller.GetRoster().GetCombatantsByRank((BattleRank)positionIndex).ToList();
+                SetPointers(caller, selectedTargets);
                 break;
             case TargetingLogic.AllEnemies :
                 selectedTargets = caller.GetRoster().GetAllEnemyCombatants().ToList<Combatant>();
+                SetPointers(caller, selectedTargets);
                 break;
             case TargetingLogic.AllPlayers :
                 selectedTargets = caller.GetRoster().GetAllPlayerCombatants().ToList<Combatant>();
+                SetPointers(caller, selectedTargets);
                 break;
         }
     }

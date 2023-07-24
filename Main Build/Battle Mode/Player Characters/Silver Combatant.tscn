@@ -457,8 +457,9 @@ enabledRanks = Array[int]([0, 1, 2])
 
 [node name="LongShot" type="Node" parent="." groups=["PlayerCombatant"]]
 script = ExtResource("7_ma1ff")
+laserFX = "res://Battle Mode/FX/laserBurst.tscn"
 spCost = 2
-enabledRanks = Array[int]([0, 1, 2, 3, 4, 5])
+enabledRanks = Array[int]([0, 1, 3, 4, 5])
 
 [node name="BigBoot" type="Node" parent="."]
 script = ExtResource("8_6y1mq")
