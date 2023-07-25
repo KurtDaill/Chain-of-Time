@@ -1,0 +1,23 @@
+<?xml version="1.1" encoding="utf-8"?>
+<screenplay scene_name = "NewScene">
+    <!-- -->
+    <block name = "Start">
+        <line speaker = "Cato">This is a line of dialogue</line>
+        <line speaker = "Cato">This is a line of dialogue with <textEffect effect = "wave">funny text effects!</textEffect></line>
+        <options>
+            <response GOTO = "Cool">"That sounds cool"</response>
+            <response GOTO = "What">"I have <b>No</b> idea what you're talking about</response>
+            <reponse GOTO = "Nope" Require = "StoryFlag, OtherStoryFlag" RequireNot = "ThirdStoryFlag" Threshold = "Gold 13, Reputation 13">"Can't Touch This"</reponse>
+        </options>
+    </block>
+    <block name = "Cool">
+        <line speaker = "Cato">Pretty cool right?</line>
+        <line autoBypass = "true">I'm not gonna wait for you on this line.</line>
+        <end></end>
+    </block>
+    <block name = "What">
+         <anim>LucienneWalksIn</anim>
+         <line speaker = "Lucienne">I would assume you would have difficulty</line>
+         <line withAnimation = "CatoSighs">Yeah...</line>
+    </block>
+</screenplay>   

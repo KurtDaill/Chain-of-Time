@@ -19,7 +19,7 @@ public partial class Incision : PlayerSkill
 		target = SearchForTarget();
 	}
 
-	public override void AnimationTrigger(int phase){	
+	public override void AnimationTrigger(int phase){
 		switch(phase){
 			case 0: //Normal Attack Trigger
 				foreach(EnemyCombatant en in target){

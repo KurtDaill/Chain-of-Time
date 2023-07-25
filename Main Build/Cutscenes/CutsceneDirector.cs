@@ -1,9 +1,9 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-//using DialogueManagerRuntime;
-public partial class CutsceneDirector : Node3D
+public partial class CutsceneDirector : Node
 {
+	/*
 	[Signal]
 	public delegate void CutsceneCompletedEventHandler();
 
@@ -192,5 +192,14 @@ public partial class CutsceneDirector : Node3D
 
 	public void OnCinematicAnimationEnd(string anim_name){
 		waiting = false;
-	}
+	}*/
+}
+
+public static class CutsceneUtils{
+	public enum TextEffectType{
+        Wave,
+        Impact,
+        BigImpact,
+        Shiver
+    }
 }

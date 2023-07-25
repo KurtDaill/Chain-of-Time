@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 public static class ScreenPlayLoader{
+    /*
     public static ScreenPlay Load(string[] rawText){
         List<(string, int)> exchangeDirectory = new List<(string, int)>();
         List<Exchange> exchanges = new List<Exchange>();
@@ -240,4 +241,5 @@ public static class ScreenPlayLoader{
         }
         return responses.ToArray();
     }
+    */
 }

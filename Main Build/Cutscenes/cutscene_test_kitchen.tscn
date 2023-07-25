@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd0cfu3p5p0na"]
+
+[ext_resource type="Script" path="res://Cutscenes/CutsceneDirector.cs" id="1_bk52i"]
+
+[node name="Cutscene Test Kitchen" type="Node3D"]
+
+[node name="Environment" type="CSGCombiner3D" parent="."]
+script = ExtResource("1_bk52i")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment"]
+size = Vector3(3.9924, 0.085019, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58669, -0.469722)
+size = Vector3(3.9924, 1.35567, 0.166905)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.414531, -0.537899)
+operation = 2
+size = Vector3(0.465114, 0.743293, 0.31453)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27385, 0.767774, -0.537899)
+operation = 2
+size = Vector3(0.368505, 0.372472, 0.31453)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25131, 0.620753, -0.537899)
+operation = 2
+size = Vector3(0.368505, 0.372472, 0.31453)
+
+[node name="CutsceneDirector" type="Node" parent="."]

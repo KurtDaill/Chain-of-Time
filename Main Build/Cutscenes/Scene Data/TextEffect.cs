@@ -1,5 +1,5 @@
 using System;
-using static TextEffectUtilities;
+using static CutsceneUtils;
 public class TextEffect{
     private int startIndex, stopIndex;
     TextEffectType type;
@@ -12,10 +12,5 @@ public class TextEffect{
 }
 
 public static class TextEffectUtilities{
-    public enum TextEffectType{
-        Wave,
-        Shake,
-        BigShake,
-        Bounce
-    }
+    
 }
