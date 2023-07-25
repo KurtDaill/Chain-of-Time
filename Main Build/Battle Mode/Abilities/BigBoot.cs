@@ -18,6 +18,7 @@ public partial class BigBoot : PlayerSkill
 	
 	public override void Begin(){
 		base.Begin();
+		target = SearchForTarget();
 		PlayCoreAnimation();
 	}
 

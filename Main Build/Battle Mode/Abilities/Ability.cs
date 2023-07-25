@@ -2,6 +2,7 @@ using System;
 using Godot;
 using System.Collections.Generic;
 using static BattleUtilities;
+using System.Linq;
 /*
 The ability node is 
 */
@@ -16,6 +17,8 @@ public partial class Ability : CombatAction
 
     public virtual void SetTargets(Combatant[] proposedTarget){
         target = proposedTarget;
+        targetPosition = new BattlePosition[proposedTarget.Length];
+        for(int i = 0; i < proposedTarget.Length; i++){targetPosition[i] = target[i].GetPosition();}
     }
 
     public virtual (Combatant, BattlePosition)[] GetPositionSwaps(){
@@ -76,6 +79,9 @@ public partial class Ability : CombatAction
         target.AddCombatFX(fx);
         //target.AddChild(fx);
     }
+
+    
+
 
     protected class DamageChartException : Exception{
         

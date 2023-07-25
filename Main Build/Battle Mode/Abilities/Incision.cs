@@ -16,6 +16,7 @@ public partial class Incision : PlayerSkill
 	public override void Begin(){
 		base.Begin();
 		PlayCoreAnimation();
+		target = SearchForTarget();
 	}
 
 	public override void AnimationTrigger(int phase){	

@@ -40,5 +40,6 @@ public partial class LucieneBasicAttack : PlayerAbility
 	public override void Begin(){
 		base.Begin();
 		PlayCoreAnimation();
+		target = SearchForTarget();
 	}
 }

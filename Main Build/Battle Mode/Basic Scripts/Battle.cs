@@ -139,6 +139,7 @@ public partial class Battle : Node3D
 				if(eventData[i].GetAnimationName() != "NoAction") eventData[i].GetCombatant().ReadyAction(eventData[i].GetAction(), this); //Recheck this
 				eventData[i].GetAction().Begin();
 				await ToSignal(eventData[i].GetAction(), CombatAction.SignalName.ActionComplete);
+				await CharactersGoDown();
 				betweenActionsTimer.Start();
 				await ToSignal(betweenActionsTimer, Timer.SignalName.Timeout);
 			}else{

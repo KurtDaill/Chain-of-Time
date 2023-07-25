@@ -25,6 +25,7 @@ public partial class SilverBasicAttack : PlayerAbility
 	public override void Begin(){
 		base.Begin();
 		PlayCoreAnimation();
+		target = SearchForTarget();
 	}
 
 	public override void AnimationTrigger(int phase){

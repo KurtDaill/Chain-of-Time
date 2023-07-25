@@ -3,21 +3,6 @@
 [ext_resource type="Script" path="res://Battle Mode/FX/CombatFX.cs" id="1_va7ep"]
 [ext_resource type="Texture2D" uid="uid://ckxkjwrvyyskw" path="res://Art/FX/Luciene Reroute Spell Effect_299x299.png" id="2_dl5cc"]
 
-[sub_resource type="Animation" id="Animation_mag02"]
-resource_name = "Spin"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 120]
-}
-
 [sub_resource type="Animation" id="Animation_y8i3a"]
 resource_name = "RESET"
 tracks/0/type = "value"
@@ -31,6 +16,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_mag02"]
+resource_name = "Spin"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 120]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_huhtr"]

@@ -41,5 +41,6 @@ public partial class CatoBasicAttack : PlayerAbility
 	public override void Begin(){
 		base.Begin();
 		PlayCoreAnimation();
+		target = SearchForTarget();
 	}
 }

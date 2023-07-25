@@ -11,6 +11,7 @@ public abstract partial class CombatAction : Node
     protected bool running = false;
     public static readonly List<string> noAnimationAbilities = new List<string>(){"SWAP"};
     protected Combatant[] target;
+    protected BattlePosition[] targetPosition;
     protected Combatant source;
 
     protected Battle parentBattle;
@@ -67,6 +68,44 @@ public abstract partial class CombatAction : Node
     public virtual async void ListenForAnimationFinished(){
         await ToSignal(this.source.GetAnimationPlayer(), AnimationPlayer.SignalName.AnimationFinished);
         flagsRequiredToComplete[0] = true;
+    }
+
+    protected virtual void SearchForTarget(Combatant originalTarget, BattlePosition originalPosition, out Combatant actualTarget){
+        //TODO Fix this incredibly scuffed "Try Catch" block garbage. Subsrcibe to a "On Death" Signal?
+        try{
+            Godot.Collections.Array<StringName> temp = originalTarget.GetGroups(); //If we get past this, the Combatant isn't disposed.
+            actualTarget = originalTarget;
+        }catch(ObjectDisposedException){
+            if(parentBattle.GetRoster().GetCombatant(originalPosition) != null){
+                actualTarget = parentBattle.GetRoster().GetCombatant(originalPosition);
+            }else{
+                actualTarget = null;
+            }
+        }
+        /*if(originalTarget == null){
+            if(parentBattle.GetRoster().GetCombatant(originalPosition) != null){
+                actualTarget = parentBattle.GetRoster().GetCombatant(originalPosition);
+                //return true;
+            }else{
+                actualTarget = null;
+                //return false;
+            }
+        }else{
+            actualTarget = originalTarget;
+            //return true;
+        }*/
+    }
+
+    //Subclasses chose whether or not to call this function, depending on whether or not they want to find a new target when their old one has been defeated
+    //Something like a melee attack wants to search, but an ability that forces a target to the front may not want to find whatever random enemy has chosen to stand in that same spot
+    //The function returns an empty array if it fails to find any targets
+    protected virtual Combatant[] SearchForTarget(){
+        Combatant[] actualTargets = new Combatant[target.Length];
+        Combatant[] originalTargets = new Combatant[target.Length]; Array.Copy(target, originalTargets, target.Length);
+        BattlePosition[] originalPositions = new BattlePosition[targetPosition.Length]; Array.Copy(targetPosition, originalPositions, originalPositions.Length);
+        for(int i = 0; i < originalTargets.Length; i++){ SearchForTarget(originalTargets[i], originalPositions[i], out actualTargets[i]); }
+        actualTargets = actualTargets.Where(x => x != null).ToArray();
+        return actualTargets;
     }
     
     protected class BadActionSetupException : Exception

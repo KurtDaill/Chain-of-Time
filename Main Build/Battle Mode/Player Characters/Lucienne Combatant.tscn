@@ -107,6 +107,51 @@ tracks/0/keys = {
 "values": [0, 19]
 }
 
+[sub_resource type="Animation" id="Animation_vrm5r"]
+resource_name = "Incision"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LucienneSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LucienneSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-2.31683, 0, 0), Vector3(-3.31683, 0, 0), Vector3(-0.00432801, 0, 0), Vector3(-2.31683, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
+}, {
+"args": [1],
+"method": &"ActivateReadyAction"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_5otli"]
 resource_name = "LucienneBasicAttack"
 length = 1.6
@@ -117,9 +162,12 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
+}]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -338,51 +386,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0],
-"method": &"ActivateReadyAction"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_vrm5r"]
-resource_name = "Incision"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LucienneSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LucienneSprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.6, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-2.31683, 0, 0), Vector3(-3.31683, 0, 0), Vector3(-0.00432801, 0, 0), Vector3(-2.31683, 0, 0)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.6, 1.4),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [0],
-"method": &"ActivateReadyAction"
-}, {
-"args": [1],
 "method": &"ActivateReadyAction"
 }]
 }
