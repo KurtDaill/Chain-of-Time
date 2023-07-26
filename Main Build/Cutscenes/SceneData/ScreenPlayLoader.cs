@@ -9,9 +9,14 @@ public static class ScreenPlayLoader{
         
     public static void LoadScript(string filePath){
         XmlDocument scriptXML = new XmlDocument();
-        scriptXML.PreserveWhitespace = true;
+        scriptXML.PreserveWhitespace = false;
         XmlReaderSettings settings = new XmlReaderSettings();
-        scriptXML.Load(ProjectSettings.GlobalizePath(filePath));
+        settings.IgnoreComments = true;
+
+        XmlReader reader = XmlReader.Create(ProjectSettings.GlobalizePath(filePath), settings);
+
+        scriptXML.Load(reader);
         XmlNode root = scriptXML.FirstChild;
+        XmlNode screenPlay = scriptXML.FirstChild.NextSibling.NextSibling;
     }
 }
