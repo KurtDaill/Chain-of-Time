@@ -3,6 +3,9 @@ using System;
 
 public partial class Incision : PlayerSkill
 {
+	[Export(PropertyHint.File)]
+	string swordFX;
+	PackedScene swordFXScene;
 	public override void _Ready(){
 		base._Ready();
 		name = "Incision";
@@ -11,6 +14,7 @@ public partial class Incision : PlayerSkill
 		skillType = "Attack"; 
 		rulesText = "[textSize]small[center]\nDeal 2 DMG to all enemies in Lucienne's Lane. Refunds SP if no enemies remain in her lane.";
 		AbilityTargetingLogic = BattleUtilities.TargetingLogic.MyLaneEnemies;
+		swordFXScene = GD.Load<PackedScene>(swordFX);
 	}
 
 	public override void Begin(){
@@ -25,6 +29,7 @@ public partial class Incision : PlayerSkill
 				foreach(EnemyCombatant en in target){
 					en.TakeDamage(2);
 				}
+				SpawnEffectOnTarget(2, swordFXScene, source);
 				break;
 			case 1: //Flourish that corrisponds with regaining SP
 				bool allDead = true;

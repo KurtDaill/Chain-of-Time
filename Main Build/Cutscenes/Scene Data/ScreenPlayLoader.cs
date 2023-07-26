@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 
 public static class ScreenPlayLoader{
-    /*
     public static ScreenPlay Load(string[] rawText){
         List<(string, int)> exchangeDirectory = new List<(string, int)>();
         List<Exchange> exchanges = new List<Exchange>();
@@ -130,25 +129,25 @@ public static class ScreenPlayLoader{
     private static TextEffect[] ParseLineTextEffects(string lineIn, out string lineOut){
         List<TextEffect>effects = new List<TextEffect>();
         while(lineIn.Contains("[Wave]")){
-            effects.Add(new TextEffect(lineIn.IndexOf("[Wave]"), lineIn.IndexOf("[/Wave]"), TextEffectUtilities.TextEffectType.Wave));
+            effects.Add(new TextEffect(lineIn.IndexOf("[Wave]"), lineIn.IndexOf("[/Wave]"), CutsceneUtils.TextEffectType.Wave));
             lineIn = lineIn.Remove(lineIn.IndexOf("[Wave]"), 6);
             lineIn = lineIn.Remove(lineIn.IndexOf("[/Wave]"), 7);
         }
-        while(lineIn.Contains("[Shake]")){
-            effects.Add(new TextEffect(lineIn.IndexOf("[Shake]"), lineIn.IndexOf("[/Shake]"), TextEffectUtilities.TextEffectType.Shake));
+        /*while(lineIn.Contains("[Shake]")){
+            effects.Add(new TextEffect(lineIn.IndexOf("[Shake]"), lineIn.IndexOf("[/Shake]"), CutsceneUtils.TextEffectType.Shake));
             lineIn = lineIn.Remove(lineIn.IndexOf("[Shake]"), 7);
             lineIn = lineIn.Remove(lineIn.IndexOf("[/Shake]"), 8);
         }
         while(lineIn.Contains("[BigShake]")){
-            effects.Add(new TextEffect(lineIn.IndexOf("[BigShake]"), lineIn.IndexOf("[/BigShake]"), TextEffectUtilities.TextEffectType.BigShake));
+            effects.Add(new TextEffect(lineIn.IndexOf("[BigShake]"), lineIn.IndexOf("[/BigShake]"), CutsceneUtils.TextEffectType.BigShake));
             lineIn = lineIn.Remove(lineIn.IndexOf("[BigShake]"), 10);
             lineIn = lineIn.Remove(lineIn.IndexOf("[/BigShake]"), 11);
         }
         while(lineIn.Contains("[Sparkle]")){
-            effects.Add(new TextEffect(lineIn.IndexOf("[Sparkle]"), lineIn.IndexOf("[/Sparkle]"), TextEffectUtilities.TextEffectType.BigShake));
+            effects.Add(new TextEffect(lineIn.IndexOf("[Sparkle]"), lineIn.IndexOf("[/Sparkle]"), CutsceneUtils.TextEffectType.BigShake));
             lineIn = lineIn.Remove(lineIn.IndexOf("[Sparkle]"), 7);
             lineIn = lineIn.Remove(lineIn.IndexOf("[/Sparkle]"), 8);
-        }
+        }*/
 
         lineOut = lineIn;
         return effects.ToArray();
@@ -241,5 +240,4 @@ public static class ScreenPlayLoader{
         }
         return responses.ToArray();
     }
-    */
 }

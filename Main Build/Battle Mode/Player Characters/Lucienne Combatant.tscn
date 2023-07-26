@@ -117,31 +117,19 @@ tracks/0/path = NodePath("LucienneSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [1]
+"values": [48, 49, 50, 51, 52, 53, 0]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LucienneSprite:position")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.6, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-2.31683, 0, 0), Vector3(-3.31683, 0, 0), Vector3(-0.00432801, 0, 0), Vector3(-2.31683, 0, 0)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.6, 1.4),
+"times": PackedFloat32Array(0.5, 1.4),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [0],
@@ -151,10 +139,22 @@ tracks/2/keys = {
 "method": &"ActivateReadyAction"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodyRef/Weapon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector3(2.25, 0.75, 0), Vector3(0.625, 1.875, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_5otli"]
 resource_name = "LucienneBasicAttack"
-length = 1.6
+length = 0.6
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -162,7 +162,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.4),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0],
@@ -176,10 +176,10 @@ tracks/1/path = NodePath("LucienneSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 1]
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40, 36]
 }
 
 [sub_resource type="Animation" id="Animation_8ptpa"]
@@ -227,42 +227,41 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("LucienneSprite:position")
+tracks/2/path = NodePath("LucienneSprite:flip_h")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.21859, 0, 0)]
+"update": 1,
+"values": [false]
 }
-tracks/3/type = "value"
+tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("LucienneSprite:flip_h")
+tracks/3/path = NodePath("LucienneSprite:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2.01859, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("LucienneSprite:position:x")
+tracks/4/path = NodePath("LucienneSprite:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-2.01859, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("LucienneSprite:position:y")
+tracks/5/path = NodePath("LucienneSprite:position:z")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -270,28 +269,17 @@ tracks/5/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/6/type = "bezier"
+tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("LucienneSprite:position:z")
+tracks/6/path = NodePath("BodyRef/Weapon:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("BodyRef/Weapon:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.75, 1.25, 0)]
+"values": [Vector3(0.625, 1.875, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_a3kkl"]
@@ -422,7 +410,7 @@ shaded = true
 alpha_cut = 2
 texture = ExtResource("3_y6mhs")
 hframes = 10
-vframes = 4
+vframes = 6
 region_rect = Rect2(0, 0, 480, 480)
 
 [node name="Pointer Adjuster" type="Node3D" parent="."]
@@ -454,6 +442,8 @@ enabledRanks = Array[int]([0, 1, 2])
 
 [node name="Incision" type="Node" parent="."]
 script = ExtResource("7_05g3y")
+swordFX = "res://Battle Mode/FX/incisionFXtscn.tscn"
+spCost = 2
 enabledRanks = Array[int]([1, 2, 3, 4, 5])
 
 [node name="Combat Text" parent="." instance=ExtResource("9_mkjul")]
@@ -468,7 +458,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.641715, 1.17503, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550968, 0.634562, 0)
 
 [node name="Weapon" type="Node3D" parent="BodyRef"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 1.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625, 1.875, 0)
 
 [node name="Feet" type="Node3D" parent="BodyRef"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535663, 0, 0)

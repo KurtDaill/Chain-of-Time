@@ -1,9 +1,9 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-public partial class CutsceneDirector : Node
+public partial class CutsceneDirector : Node3D
 {
-	/*
+	
 	[Signal]
 	public delegate void CutsceneCompletedEventHandler();
 
@@ -192,7 +192,7 @@ public partial class CutsceneDirector : Node
 
 	public void OnCinematicAnimationEnd(string anim_name){
 		waiting = false;
-	}*/
+	}
 }
 
 public static class CutsceneUtils{

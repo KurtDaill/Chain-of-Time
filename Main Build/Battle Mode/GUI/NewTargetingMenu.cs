@@ -5,7 +5,6 @@ using Godot;
 using static BattleUtilities;
 
 public partial class NewTargetingMenu : BattleMenu {
-    PlayerCombatant source;
     PlayerAbility currentAbility;
     List<Combatant> selectedTargets;
     //Used to track which Rank/Lane the player is targeting
@@ -17,7 +16,6 @@ public partial class NewTargetingMenu : BattleMenu {
     }
 
     public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI){
-        
         //Displays the detail of the current attack in some GUI element
         
     }
@@ -36,7 +34,7 @@ public partial class NewTargetingMenu : BattleMenu {
             case TargetingLogic.SinlgeTargetPlayer : 
                 selectedTargets = new List<Combatant>{character}; break;
             case TargetingLogic.SingleTargetEnemy :
-                foreach(EnemyCombatant enemy in caller.GetRoster().GetAllEnemyCombatants()){ if(GetLegalTargets(new List<Combatant>(){enemy}, caller).Count() != 0) selectedTargets = new List<Combatant>(){enemy}; }
+                foreach(EnemyCombatant enemy in caller.GetRoster().GetAllEnemyCombatants()){ if(GetLegalTargets(new List<Combatant>(){enemy}, caller, character).Count() != 0) selectedTargets = new List<Combatant>(){enemy}; }
                 break;
             case TargetingLogic.MyLanePlayers : case TargetingLogic.AnyLaneHitsPlayers :
                 positionIndex = (int)character.GetPosition().GetLane();
@@ -117,7 +115,7 @@ public partial class NewTargetingMenu : BattleMenu {
                 break;
         }
         if(input == MenuInput.Select){
-            List<Combatant> legalTargets = GetLegalTargets(selectedTargets, caller, positionIndex);
+            List<Combatant> legalTargets = GetLegalTargets(selectedTargets, caller, character,positionIndex);
             if(selectedTargets[0] is EnemyCombatant){
                 if(legalTargets.Count() == 0){
                 foreach(EnemyCombatant enemy in caller.GetRoster().GetAllEnemyCombatants()){
@@ -205,7 +203,7 @@ public partial class NewTargetingMenu : BattleMenu {
     }   
 
     //We do EVERY check as to whether or not someone is available for targeting: THIS DOES NOT INCLUDE CHECKS ABOUT THE SOURCE CHARACTER
-    public List<Combatant> GetLegalTargets(List<Combatant> desiredTargets, Battle battle, int positionIndex = -1){
+    public List<Combatant> GetLegalTargets(List<Combatant> desiredTargets, Battle battle, Combatant source, int positionIndex = -1){
         List<Combatant> actualTargets = new List<Combatant>();
         foreach(Combatant target in desiredTargets){
             switch(currentAbility.GetTargetingLogic()){
@@ -223,14 +221,12 @@ public partial class NewTargetingMenu : BattleMenu {
                     break;
 
                 case TargetingLogic.MyLaneEnemies : //Checks targets are in the correct lane
-                    if(target.GetPosition().GetLane() != source.GetPosition().GetLane() && target is EnemyCombatant) actualTargets.Add(target);
+                    if(target.GetPosition().GetLane() == source.GetPosition().GetLane() && target is EnemyCombatant) actualTargets.Add(target);
                     break;
 
                 case TargetingLogic.MyRank : //Checks targets are in the correct rank & valid type (Enemy v Player)
-                    if(target.GetPosition().GetRank() != source.GetPosition().GetRank()) continue;
-                    actualTargets.Add(target);
+                    if(target.GetPosition().GetRank() == source.GetPosition().GetRank()) actualTargets.Add(target);
                     break;
-
                 case TargetingLogic.AnyLaneHitsPlayers : //Checks targets are in the correct lane & valid type (Enemy v Player)
                     if(positionIndex == -1) throw new ArgumentException("Must define a positionIndex for an AnyLane ability");
                     if((int)target.GetPosition().GetLane() == positionIndex && target is PlayerCombatant) actualTargets.Add(target);

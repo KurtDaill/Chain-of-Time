@@ -1,0 +1,168 @@
+[gd_scene load_steps=15 format=3 uid="uid://bftjxb62srdq"]
+
+[ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Battle.cs" id="1_4rxw7"]
+[ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="2_1verb"]
+[ext_resource type="PackedScene" uid="uid://234suufiqv8c" path="res://Battle Mode/Player Characters/Silver Combatant.tscn" id="3_5nfiw"]
+[ext_resource type="Texture2D" uid="uid://bkdgvs1hqa6nu" path="res://GUI/Point-export.png" id="3_w3rfi"]
+[ext_resource type="PackedScene" uid="uid://ctkjn6qaseru7" path="res://Battle Mode/BattleGUI.tscn" id="4_noo0e"]
+[ext_resource type="PackedScene" uid="uid://ck78k6iju4ldb" path="res://Battle Mode/Player Characters/Cato Combatant.tscn" id="4_xw6bo"]
+[ext_resource type="PackedScene" uid="uid://d11587qs5tm6g" path="res://Old/Art/3D/BattleDungeon.dae" id="5_7bshd"]
+[ext_resource type="PackedScene" uid="uid://ckh4ejsj04t82" path="res://Battle Mode/Enemies/Skeleton.tscn" id="5_fuc8f"]
+[ext_resource type="PackedScene" uid="uid://d23io6jp617dx" path="res://Battle Mode/Player Characters/Lucienne Combatant.tscn" id="5_vfoxv"]
+[ext_resource type="PackedScene" uid="uid://bltlucajwd3c5" path="res://Battle Mode/Enemies/SkeletonGuard.tscn" id="6_lu0qn"]
+
+[sub_resource type="Animation" id="Animation_u18p7"]
+resource_name = "Flicker"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.7, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.7, -0.25, 0, 0.25, 0, 0.7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 0.7, 1.1, 1.6, 2.2, 2.6, 3)
+}
+
+[sub_resource type="Animation" id="Animation_wi7gm"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uj5ot"]
+_data = {
+"Flicker": SubResource("Animation_u18p7"),
+"RESET": SubResource("Animation_wi7gm")
+}
+
+[sub_resource type="Environment" id="Environment_51ne1"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.380392, 0.376471, 0.431373, 1)
+ambient_light_energy = 1.5
+
+[node name="TopNode" type="Node3D"]
+
+[node name="Battle" type="Node3D" parent="."]
+script = ExtResource("1_4rxw7")
+nextBattlePath = "res://Levels/Combat Playtest One/Victory.tscn"
+defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
+startingScene = true
+gui = Object(Control,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":1,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":3,"anchors_preset":12,"anchor_left":0.0,"anchor_top":1.0,"anchor_right":1.0,"anchor_bottom":1.0,"offset_left":0.0,"offset_top":-1080.0,"offset_right":0.0,"offset_bottom":0.0,"grow_horizontal":2,"grow_vertical":0,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":0,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","script":Resource("res://Battle Mode/GUI/BattleGUI.cs"))
+
+battleRoster = Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("2_1verb"),"debugMode":true,"positionPointer":Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":false,"visibility_parent":NodePath(""),"script":null)
+)
+
+
+[node name="Roster" type="Node3D" parent="Battle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("2_1verb")
+debugMode = true
+positionPointer = Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":false,"visibility_parent":NodePath(""),"script":null)
+
+
+[node name="Pointer" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1)
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="Battle/Roster/Pointer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.64, 0)
+pixel_size = 0.008
+texture = ExtResource("3_w3rfi")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Battle/Roster/Pointer"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.76, 0)
+light_color = Color(1, 0.984314, 0.701961, 1)
+light_energy = 32.0
+spot_angle = 15.0
+
+[node name="HeroBack0" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.52, 0, 0)
+
+[node name="HeroBack1" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -1)
+
+[node name="Silver" parent="Battle/Roster/HeroBack1" instance=ExtResource("3_5nfiw")]
+basicAttack = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Battle Mode/Abilities/SilverBasicAttack.cs"),"laserFX":"res://Battle Mode/FX/laserBurst.tscn","enabledRanks":Array[int]([0, 1, 2, 3, 4, 5]))
+
+swapAbility = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Battle Mode/Abilities/PlayerSwap.cs"),"enabledRanks":Array[int]([0, 1, 2]))
+
+displayText = Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.876529, 2.26561, -0.0799999),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://Battle Mode/CombatText.cs"),"healingLabel":Object(Label3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.196529, 1.10561, -0.0799999),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":0,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":0,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"pixel_size":0.04,"offset":Vector2(0, 0),"billboard":0,"shaded":false,"double_sided":true,"no_depth_test":false,"fixed_size":false,"alpha_cut":0,"alpha_scissor_threshold":0.5,"alpha_hash_scale":1.0,"alpha_antialiasing_mode":0,"alpha_antialiasing_edge":0.0,"texture_filter":0,"render_priority":1,"outline_render_priority":-1,"modulate":Color(0.341176, 0.733333, 0.407843, 0),"outline_modulate":Color(0, 0, 0, 0),"text":"99","font":null,"font_size":32,"outline_size":4,"horizontal_alignment":1,"vertical_alignment":1,"uppercase":false,"line_spacing":0.0,"autowrap_mode":0,"justification_flags":163,"width":500.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+,"damageLabel":Object(Label3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.434785, 0.3, -0.0799999),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":0,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":0,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"pixel_size":0.04,"offset":Vector2(0, 0),"billboard":0,"shaded":false,"double_sided":true,"no_depth_test":false,"fixed_size":false,"alpha_cut":0,"alpha_scissor_threshold":0.5,"alpha_hash_scale":1.0,"alpha_antialiasing_mode":0,"alpha_antialiasing_edge":0.0,"texture_filter":0,"render_priority":0,"outline_render_priority":-1,"modulate":Color(1, 1, 1, 0),"outline_modulate":Color(0.490196, 0.490196, 0.490196, 0),"text":"99","font":null,"font_size":32,"outline_size":4,"horizontal_alignment":1,"vertical_alignment":1,"uppercase":false,"line_spacing":0.0,"autowrap_mode":0,"justification_flags":163,"width":500.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+)
+
+pointer = Object(Sprite3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0899999, 2.24, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":false,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":1,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":1,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"modulate":Color(1, 1, 1, 1),"pixel_size":0.008,"axis":2,"billboard":0,"transparent":true,"shaded":false,"double_sided":true,"no_depth_test":true,"fixed_size":false,"alpha_cut":0,"alpha_scissor_threshold":0.5,"alpha_hash_scale":1.0,"alpha_antialiasing_mode":0,"alpha_antialiasing_edge":0.0,"texture_filter":0,"render_priority":0,"texture":Resource("res://GUI/Point-Sheet.png"),"hframes":16,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"script":null)
+
+readout = Object(TextureRect,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":1,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(282, 153),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":8,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","texture":Resource("res://GUI/Battle Menu Assets/Readouts/Silver Readout.png"),"expand_mode":0,"stretch_mode":2,"flip_h":false,"flip_v":false,"script":Resource("res://GUI/PlayerCharacterReadout.cs"))
+
+
+[node name="HeroBack2" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48, 0, -2)
+
+[node name="HeroMid0" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2, 0, 0)
+
+[node name="HeroMid1" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 0, -1)
+
+[node name="Luciene" parent="Battle/Roster/HeroMid1" instance=ExtResource("5_vfoxv")]
+basicAttack = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Battle Mode/Abilities/LucieneBasicAttack.cs"),"enabledRanks":Array[int]([2, 1, 3]))
+
+swapAbility = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Battle Mode/Abilities/PlayerSwap.cs"),"enabledRanks":Array[int]([0, 1, 2]))
+
+displayText = Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.876529, 2.26561, -0.0799999),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://Battle Mode/CombatText.cs"),"healingLabel":Object(Label3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.196529, 1.10561, -0.0799999),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":0,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":0,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"pixel_size":0.04,"offset":Vector2(0, 0),"billboard":0,"shaded":false,"double_sided":true,"no_depth_test":false,"fixed_size":false,"alpha_cut":0,"alpha_scissor_threshold":0.5,"alpha_hash_scale":1.0,"alpha_antialiasing_mode":0,"alpha_antialiasing_edge":0.0,"texture_filter":0,"render_priority":1,"outline_render_priority":-1,"modulate":Color(0.341176, 0.733333, 0.407843, 0),"outline_modulate":Color(0, 0, 0, 0),"text":"99","font":null,"font_size":32,"outline_size":4,"horizontal_alignment":1,"vertical_alignment":1,"uppercase":false,"line_spacing":0.0,"autowrap_mode":0,"justification_flags":163,"width":500.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+,"damageLabel":Object(Label3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.434785, 0.3, -0.0799999),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":0,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":0,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"pixel_size":0.04,"offset":Vector2(0, 0),"billboard":0,"shaded":false,"double_sided":true,"no_depth_test":false,"fixed_size":false,"alpha_cut":0,"alpha_scissor_threshold":0.5,"alpha_hash_scale":1.0,"alpha_antialiasing_mode":0,"alpha_antialiasing_edge":0.0,"texture_filter":0,"render_priority":0,"outline_render_priority":-1,"modulate":Color(1, 1, 1, 0),"outline_modulate":Color(0.490196, 0.490196, 0.490196, 0),"text":"99","font":null,"font_size":32,"outline_size":4,"horizontal_alignment":1,"vertical_alignment":1,"uppercase":false,"line_spacing":0.0,"autowrap_mode":0,"justification_flags":163,"width":500.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+)
+
+pointer = Object(Sprite3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0899999, 2.24, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":false,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":1,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":1,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"modulate":Color(1, 1, 1, 1),"pixel_size":0.008,"axis":2,"billboard":0,"transparent":true,"shaded":false,"double_sided":true,"no_depth_test":true,"fixed_size":false,"alpha_cut":0,"alpha_scissor_threshold":0.5,"alpha_hash_scale":1.0,"alpha_antialiasing_mode":0,"alpha_antialiasing_edge":0.0,"texture_filter":0,"render_priority":0,"texture":Resource("res://GUI/Point-Sheet.png"),"hframes":16,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"script":null)
+
+readout = Object(TextureRect,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":1,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(282, 153),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":8,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","texture":Resource("res://GUI/Battle Menu Assets/Readouts/Lucienne Reaodut.png"),"expand_mode":0,"stretch_mode":2,"flip_h":false,"flip_v":false,"script":Resource("res://GUI/PlayerCharacterReadout.cs"))
+
+
+[node name="HeroMid2" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08, 0, -2)
+
+[node name="HeroFront0" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56, 0, 0)
+
+[node name="HeroFront1" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1)
+
+[node name="Cato" parent="Battle/Roster/HeroFront1" instance=ExtResource("4_xw6bo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0270779, 0)
+sp = 6
+maxSP = 5
+hp = 25
+maxHP = 25
+basicAttack = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Battle Mode/Abilities/CatoBasicAttack.cs"),"enabledRanks":Array[int]([2, 3]))
+
+swapAbility = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://Battle Mode/Abilities/PlayerSwap.cs"),"enabledRanks":Array[int]([0, 1, 2]))
+
+displayText = Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63653, 1.66561, -0.0799999),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":Resource("res://Battle Mode/CombatText.cs"),"healingLabel":Object(Label3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.196529, 1.10561, -0.0799999),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":0,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":0,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"pixel_size":0.04,"offset":Vector2(0, 0),"billboard":0,"shaded":false,"double_sided":true,"no_depth_test":false,"fixed_size":false,"alpha_cut":0,"alpha_scissor_threshold":0.5,"alpha_hash_scale":1.0,"alpha_antialiasing_mode":0,"alpha_antialiasing_edge":0.0,"texture_filter":0,"render_priority":1,"outline_render_priority":-1,"modulate":Color(0.341176, 0.733333, 0.407843, 0),"outline_modulate":Color(0, 0, 0, 0),"text":"99","font":null,"font_size":32,"outline_size":4,"horizontal_alignment":1,"vertical_alignment":1,"uppercase":false,"line_spacing":0.0,"autowrap_mode":0,"justification_flags":163,"width":500.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+,"damageLabel":Object(Label3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.434785, 0.3, -0.0799999),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":0,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":0,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"pixel_size":0.04,"offset":Vector2(0, 0),"billboard":0,"shaded":false,"double_sided":true,"no_depth_test":false,"fixed_size":false,"alpha_cut":0,"alpha_scissor_threshold":0.5,"alpha_hash_scale":1.0,"alpha_antialiasing_mode":0,"alpha_antialiasing_edge":0.0,"texture_filter":0,"render_priority":0,"outline_render_priority":-1,"modulate":Color(1, 1, 1, 0),"outline_modulate":Color(0.490196, 0.490196, 0.490196, 0),"text":"99","font":null,"font_size":32,"outline_size":4,"horizontal_alignment":1,"vertical_alignment":1,"uppercase":false,"line_spacing":0.0,"autowrap_mode":0,"justification_flags":163,"width":500.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+)
+
+pointer = Object(Sprite3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0899999, 2.24, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":false,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":1,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":1,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"modulate":Color(1, 1, 1, 1),"pixel_size":0.008,"axis":2,"billboard":0,"transparent":true,"shaded":false,"double_sided":true,"no_depth_test":true,"fixed_size":false,"alpha_cut":0,"alpha_scissor_threshold":0.5,"alpha_hash_scale":1.0,"alpha_antialiasing_mode":0,"alpha_antialiasing_edge":0.0,"texture_filter":0,"render_priority":0,"texture":Resource("res://GUI/Point-Sheet.png"),"hframes":16,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"script":null)
+
+readout = Object(TextureRect,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":1,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(282, 153),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":0,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","texture":Resource("res://GUI/Battle Menu Assets/Readouts/Cato Readout.png"),"expand_mode":0,"stretch_mode":2,"flip_h":false,"flip_v":false,"script":Resource("res://GUI/PlayerCharacterReadout.cs"))
+
+
+[node name="HeroFront2" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="EnemyFront0" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0, 0)
+
+[
