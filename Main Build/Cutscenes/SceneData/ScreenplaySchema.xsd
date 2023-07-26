@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="screenplay">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="block" type="block"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="block">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element minOccurs="0" name="beat" type="xs:decimal"/>
+            <xs:element minOccurs="1" maxOccurs="unbounded" name="line" type="line"/>
+            <xs:element minOccurs="0" name="animation" type="xs:string"/>
+            <xs:element minOccurs="0" name="beginAsyncAnimation" type="xs:string"/>
+            <xs:element minOccurs="0" name="stopAsyncAnimation" type="xs:string"/>
+            <xs:element minOccurs="0" name="setIdle" type="setCharacterIdle"></xs:element>
+            <xs:element minOccurs="1" maxOccurs="1" name='END' type="endBlock"/>
+        </xs:choice>
+        <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="line" mixed="true">
+        <xs:sequence>
+            <xs:element name="speaker" type="xs:string"/>
+            <xs:element name="text" type="annotatedText"/>
+            <xs:element minOccurs="0" name="modValue" type="storyValueModifier"/>
+        </xs:sequence>
+        <xs:attribute name="concurrentAnimation" type="xs:string" default="NONE"/>
+        <xs:attribute name="autoProceed" type="xs:boolean" default="false"/>
+    </xs:complexType>
+
+
+    <xs:complexType name="annotatedText" mixed="true">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element minOccurs="0" name="b" type="xs:string"/>
+            <xs:element minOccurs="0" name="i" type="xs:string"/>
+            <xs:element minOccurs="0" name="u" type="xs:string"/>
+            <xs:element minOccurs="0" name="wave" type="xs:string"/>
+            <xs:element minOccurs="0" name="impact" type="xs:string"/>
+            <xs:element minOccurs="0" name="bigImpact" type="xs:string"/>
+            <xs:element minOccurs="0" name="shiver" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="endBlock">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="opt" type="dialogueOption"></xs:element>
+            <xs:element minOccurs="0" name="GOTO" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="dialogueOption">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="GOTO" type="xs:string"></xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="storyValueModifier">
+        <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="modifier" type="xs:integer"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="setCharacterIdle">
+        <xs:sequence>
+            <xs:element name="character" type="xs:string"/>
+            <xs:element name="animation" type="xs:string"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

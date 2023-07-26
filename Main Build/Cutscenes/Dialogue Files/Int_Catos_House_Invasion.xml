@@ -1,0 +1,13 @@
+<?xml version="1.1" encoding="utf-8"?>
+<?xml-model href="../SceneData/ScreenplaySchema.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<screenplay>
+    <!--[We’re back at Cato’s house. It’s just past sunset outside, the lights glow golden light, 
+        Cato’s packing his bags while Cera is putting some last things away inside the house.] -->
+    <block name="Start">
+        <setIdle><character>Cera</character><animation>WorkingIdle</animation></setIdle>
+        <setIdle><character>Cato</character><animation>PackBackPack</animation></setIdle>
+        <beat>3</beat>
+        <animation>CatoStopsPacking</animation>
+        <line><speaker>Cato</speaker><text>Oh..mom, I almost forgot something.</text></line>
+    </block>
+</screenplay>

@@ -7,7 +7,7 @@ public abstract partial class DialogueInteractable : Node3D{
 	[Export]
 	public bool cutsceneRepeats;
 	[Export]
-	public Node3D cutsceneNode;
+	public Node cutsceneNode;
 	protected CutsceneDirector cutscene;
 	[Export]
 	public Area3D interactArea;
