@@ -116,7 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1)
 
 [node name="Cato" parent="Battle/Roster/HeroFront1" node_paths=PackedStringArray("readout") instance=ExtResource("4_xw6bo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0270779, 0)
-sp = 6
+sp = 5
 maxSP = 5
 readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
 hp = 25
@@ -132,7 +132,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, -1)
 
 [node name="SkeletonGuard" parent="Battle/Roster/EnemyFront1" instance=ExtResource("6_lu0qn")]
-hp = 2
 
 [node name="EnemyFront2" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)

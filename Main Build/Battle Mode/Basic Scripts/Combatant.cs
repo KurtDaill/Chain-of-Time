@@ -11,7 +11,7 @@ public partial class Combatant : Node3D
 	[Export]
 	protected int maxHP;
 	[Export]
-	CombatText displayText;
+	protected CombatText displayText;
 	protected AnimationPlayer animPlay;
 	protected BattlePosition currentPosition;
 	protected List<StatusEffect> activeStatuses;
@@ -189,6 +189,11 @@ public partial class Combatant : Node3D
 		this.AddChild(newFX);
 		combatVisEffects.Add(newFX);
 		newFX.SetSource(this);
+	}
+	
+	public void AddCombatFX(CombatFX newFX, int bodyRegion){
+		AddCombatFX(newFX);
+		newFX.Position = this.GetBodyRegion(bodyRegion).Position;
 	}
 
 	public void LogExpiredCombatFX(CombatFX removedFX){

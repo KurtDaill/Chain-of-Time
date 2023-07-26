@@ -76,7 +76,7 @@ public partial class Ability : CombatAction
 
     protected void SpawnEffectOnTarget(int bodyRegion, PackedScene effect, Combatant target){
         CombatFX fx = effect.Instantiate<CombatFX>();
-        target.AddCombatFX(fx);
+        target.AddCombatFX(fx, bodyRegion);
         //target.AddChild(fx);
     }
 

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bpbwwn7mc1sd8" path="res://GUI/Battle Menu Assets/Enemy Status Effect Stun Short.png" id="5_1304s"]
 
 [node name="Enemy Nameplate" type="Sprite3D" node_paths=PackedStringArray("nameLabel", "maxHP", "currentHP")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12924e-07, 3.72, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.12924e-07, 3.72, 0)
 pixel_size = 0.008
 double_sided = false
 no_depth_test = true

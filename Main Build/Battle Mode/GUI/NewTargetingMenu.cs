@@ -41,7 +41,9 @@ public partial class NewTargetingMenu : BattleMenu {
                 selectedTargets = caller.GetRoster().GetCombatantsByLane((BattleLane)positionIndex, true, false).ToList();
                 break;
             case TargetingLogic.MyLaneEnemies :
-                selectedTargets = caller.GetRoster().GetCombatantsByLane(character.GetPosition().GetLane(), false, true).ToList(); break;
+                selectedTargets = caller.GetRoster().GetCombatantsByLane(character.GetPosition().GetLane(), false, true).ToList(); 
+                SetPointers(caller, selectedTargets);
+                break;
             case TargetingLogic.AnyLaneHitsEnemies :
                 for(int i = 0; i < 3; i++){
                     if(caller.GetRoster().GetCombatantsByLane((BattleLane)i, false, true).Count() != 0){
@@ -95,7 +97,7 @@ public partial class NewTargetingMenu : BattleMenu {
         if(input == MenuInput.Back){
             SetPointers(caller);
             parentGUI.ChangeMenu(0, character);
-			character.GainSP(parentGUI.spSpentByEachCombatant[parentGUI.GetIndexOfCharacterInQuestion()]);
+			character.GainSP(parentGUI.spSpentByEachCombatant[parentGUI.GetIndexOfCharacterInQuestion()], false);
 			parentGUI.spSpentByEachCombatant[parentGUI.GetIndexOfCharacterInQuestion()] = 0;
             return null;
         }
@@ -258,8 +260,8 @@ public partial class NewTargetingMenu : BattleMenu {
                     return desiredTargets;
             }
         }
-        
-        Combatant[] legalTargets = battle.GetRoster().GetLegalEnemyTargets();
+        bool ignoresTaunt = (currentAbility.GetTargetingLogic()  != TargetingLogic.SingleTargetEnemy);
+        Combatant[] legalTargets = battle.GetRoster().GetLegalEnemyTargets(ignoresTaunt);
         for(int i = 0; i < actualTargets.Count(); i++){
             if(!legalTargets.Contains(actualTargets[i])) actualTargets[i] = null;
         }

@@ -9,6 +9,8 @@ public partial class CombatText : Node3D
 	private Label3D healingLabel;
 	[Export]
 	private Label3D damageLabel;
+	[Export]
+	private Label3D spLabel;
 
 	public override void _Ready(){
 		animPlay = GetNode<AnimationPlayer>("AnimationPlayer");
@@ -27,6 +29,14 @@ public partial class CombatText : Node3D
 		}
 		damageLabel.Text = "" + value;
 		animPlay.Play("Damage");
+	}
+
+	public async void ShowSP(int value){
+		if(animPlay.IsPlaying()){
+			await ResetTextAnimation();
+		}
+		spLabel.Text = "" + value;
+		animPlay.Play("GainSP");
 	}
 
 	public async Task ResetTextAnimation(){

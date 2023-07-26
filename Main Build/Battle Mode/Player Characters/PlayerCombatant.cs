@@ -52,10 +52,11 @@ public partial class PlayerCombatant : Combatant
 
 	}
 
-	public void GainSP(int gain){
+	public void GainSP(int gain, bool showInUI = true){
 		sp += gain;
 		if(sp > maxSP) sp = maxSP;
 		readout.UpdateSP(sp, maxSP);
+		if(showInUI) displayText.ShowSP(gain);
 	}
 
 	public bool ChargeSP(int cost){
