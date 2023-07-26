@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <?xml-model href="../SceneData/ScreenplaySchema.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <screenplay>
     <!-- -->
@@ -13,10 +13,7 @@
             <modValue><name>CoolFactor</name><modifier>+100</modifier></modValue>
         </line>
         <END>
-            <opt GOTO="next">This is an option</opt>
+            <opt GOTO="EXIT">Ok, guess that's it then</opt>
         </END>
-    </block>
-    <block name="next">
-        
     </block>
 </screenplay>   

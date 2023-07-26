@@ -30,7 +30,7 @@ public partial class DialogueLabel : RichTextLabel
 		displayTime = 1/charactersPerSecond;
 		button = this.GetNode<TextureRect>("Button");
 		button.Visible = false;
-		ClearLine();
+		//ClearLine();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -64,7 +64,7 @@ public partial class DialogueLabel : RichTextLabel
 		}
 	}
 
-	public void DisplayNewLine(Line newLine){
+	/*public void DisplayNewLine(Line newLine){
 		this.Text = newLine.GetText();
 		this.VisibleCharacters = 0;
 		this.speakerLabel.Text = " " + newLine.GetSpeaker(); //Added a space to fit the text box better
@@ -84,5 +84,5 @@ public partial class DialogueLabel : RichTextLabel
 
 	public void DisplayAll(){
 		this.VisibleCharacters = this.Text.Length;
-	}
+	}*/
 }
