@@ -8,7 +8,7 @@ using static CutsceneUtils;
 
 public static class ScreenPlayLoader{
         
-    public static void LoadScript(string filePath){
+    public static ScreenPlay LoadScript(string filePath){
         XmlDocument scriptXML = new XmlDocument();
         scriptXML.PreserveWhitespace = false;
         XmlReaderSettings settings = new XmlReaderSettings();
@@ -20,13 +20,14 @@ public static class ScreenPlayLoader{
 
         XmlNode screenPlay = scriptXML.FirstChild.NextSibling.NextSibling;
         XmlNode currentBlock = screenPlay.FirstChild;
-        List<CutsceneBlock> blocks;
+        List<CutsceneBlock> blocks = new List<CutsceneBlock>();
         while(true){ //Reads Blocks
             string name = currentBlock.Attributes.GetNamedItem("name").Value;
             //Get all of the blocks actions into a list
             XmlNode currentAction = currentBlock.FirstChild;
             List<CutsceneAction> actions = new List<CutsceneAction>();
-            while(true){
+            bool endBlock = false;
+            while(endBlock == false){
                 switch(currentAction.Name){
                     case "line":
                         string speaker = currentAction.FirstChild.InnerText;
@@ -68,11 +69,36 @@ public static class ScreenPlayLoader{
                         bool flagSet = Convert.ToBoolean(currentAction.FirstChild.InnerText);
                         actions.Add(new CutsceneSetStoryFlag(flagName, flagSet));
                         break;
+                    
+                    case "END":
+                        List<CutsceneDialogueResponse> responses = new List<CutsceneDialogueResponse>();
+                        foreach(XmlNode node in currentAction.ChildNodes){ //Iterates through all of the dialgoue options
+                            bool finished = false;
+                            switch(node.Name){
+                                case "GOTO": //If we have a GOTO block, that takes precedence over any opts in the same block, so we bypass them using finsihed
+                                    responses = null;
+                                    actions.Add(new CutsceneEndBlock(new CutsceneGoToBlock(node.FirstChild.InnerText)));
+                                    finished = true;
+                                    break;
+                                case "opt": //This is a text effect, we pull out which kind it is from the XML name and save it.
+                                    responses.Add(new CutsceneDialogueResponse(node.FirstChild.InnerText, node.Attributes.GetNamedItem("GOTO").Value));
+                                    break;
+                                default:
+                                    throw new NotImplementedException(); //TODO custom exception for broken end blocks
+                            }
+                            if(finished) break;
+                        }
+                        if(responses != null && responses.Count() > 0) actions.Add(new CutsceneEndBlock(responses.ToArray()));
+                        endBlock = true;
+                        break;
                 }
+                if(endBlock) break;
                 if(currentAction.NextSibling == null) throw new NotImplementedException(); //We should have an end block, and only reach here if we dont. TODO: Custom Exception.
                 currentAction = currentAction.NextSibling;
             }
+            blocks.Add(new CutsceneBlock(currentBlock.Attributes.GetNamedItem("name").Value, actions.ToArray()));
             if(currentBlock.NextSibling == null) break;
-        }   
+        }
+        return new ScreenPlay(blocks);
     }
 }

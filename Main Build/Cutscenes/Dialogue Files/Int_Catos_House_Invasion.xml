@@ -4,10 +4,10 @@
     <!--[We’re back at Cato’s house. It’s just past sunset outside, the lights glow golden light, 
         Cato’s packing his bags while Cera is putting some last things away inside the house.] -->
     <block name="Start">
-        <setIdle><character>Cera</character><animation>WorkingIdle</animation></setIdle>
-        <setIdle><character>Cato</character><animation>PackBackPack</animation></setIdle>
+        <setCharacterAnimation><character>Cera</character><animation>WorkingIdle</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Cato</character><animation>PackBackpack</animation></setCharacterAnimation>
         <beat>3</beat>
-        <animation>CatoStopsPacking</animation>
+        <setCharacterAnimation><character>Cato</character><animation>StopPacking</animation></setCharacterAnimation>
         <line><speaker>Cato</speaker><text>Oh..mom, I almost forgot something.</text></line>
     </block>
 </screenplay>

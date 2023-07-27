@@ -6,6 +6,15 @@ public class CutsceneBlock{
     CutsceneAction[] actions;
     Queue<CutsceneAction>actionQueue;
 
+    public CutsceneBlock(string name, CutsceneAction[] actions){
+        this.name = name;
+        this.actions = actions;
+    }
+
+    public string GetName(){
+        return name;
+    }
+
     public CutsceneAction StartBlockAndPeekFirstAction(){
         actionQueue = new Queue<CutsceneAction>(actions);
         return actionQueue.Peek();

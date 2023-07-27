@@ -61,3 +61,33 @@ public class CutsceneSetStoryFlag : CutsceneAction{
         this.value = value;
     }
 }
+
+public class CutsceneEndBlock : CutsceneAction{
+    CutsceneDialogueResponse[] options;
+    CutsceneGoToBlock gotoBlockStatement;
+
+    public CutsceneEndBlock(CutsceneDialogueResponse[] options){
+        this.options = options;
+        gotoBlockStatement = null;
+    }
+    public CutsceneEndBlock(CutsceneGoToBlock gotoBlockStatement){
+        this.options = null;
+        this.gotoBlockStatement = gotoBlockStatement;
+    }
+}
+
+public class CutsceneGoToBlock : CutsceneAction{
+    protected string targetBlock = "INVALID";
+    public CutsceneGoToBlock(string target){
+        targetBlock = target;
+    }
+    public CutsceneGoToBlock(){}
+}
+
+public class CutsceneDialogueResponse : CutsceneGoToBlock{
+    string text;
+    public CutsceneDialogueResponse(string text, string target){
+        this.text = text;
+        this.targetBlock = target;
+    }
+}

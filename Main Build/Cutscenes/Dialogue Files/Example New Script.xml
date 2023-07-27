@@ -13,10 +13,11 @@
         <modValue name="Cool Factor"><modifier>+100</modifier></modValue>
         <line>
             <speaker>Cato</speaker>
-            <text>This is <bigImpact>really</bigImpact><impact>Neat</impact></text>
+            <text>This is <bigImpact>really </bigImpact><impact>Neat!</impact></text>
         </line>
         <END>
             <opt GOTO="EXIT">Ok, guess that's it then</opt>
+            <GOTO>EXIT</GOTO>
         </END>
     </block>
 </screenplay>   

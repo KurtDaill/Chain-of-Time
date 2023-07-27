@@ -1,22 +1,30 @@
 using System;
-/*
+using System.Collections.Generic;
 public class ScreenPlay{
-    Exchange[] exchanges;
+    Dictionary<string, CutsceneBlock> blocks;
 
-    public ScreenPlay(Exchange[] exchanges){
-        this.exchanges = exchanges;
-    }
-
-    public Exchange Start(){
-        return exchanges[0];
-    }
-
-    public bool TryGetExchange(int index, out Exchange newExchange){
-        if(exchanges.Length > index){
-            newExchange = exchanges[index];
-            return true;
+    public ScreenPlay(List<CutsceneBlock> blocks){
+        foreach(CutsceneBlock block in blocks){
+            this.blocks.Add(block.GetName(), block);
         }
-        newExchange = null;
-        return false;
+        if(!this.blocks.ContainsKey("start")) throw new ArgumentException("Blocks must contain a block labeled 'Start'");
     }
-}*/
+
+    public CutsceneBlock Start(){
+        if(blocks.TryGetValue("start", out CutsceneBlock startBlock)){
+            return startBlock;
+        }else{
+            throw new ArgumentException(); //TODO custom exception
+        }
+    }
+
+    public bool TryGetBlock(string name, out CutsceneBlock newBlock){
+        if(blocks.ContainsKey(name)){
+            newBlock = blocks.GetValueOrDefault(name);
+            return true;
+        }else{
+            newBlock = null;
+            return false;
+        }
+    }
+}
