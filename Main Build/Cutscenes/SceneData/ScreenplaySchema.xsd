@@ -12,10 +12,11 @@
         <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element minOccurs="0" name="beat" type="xs:decimal"/>
             <xs:element minOccurs="1" maxOccurs="unbounded" name="line" type="line"/>
-            <xs:element minOccurs="0" name="animation" type="xs:string"/>
             <xs:element minOccurs="0" name="beginAsyncAnimation" type="xs:string"/>
             <xs:element minOccurs="0" name="stopAsyncAnimation" type="xs:string"/>
-            <xs:element minOccurs="0" name="setIdle" type="setCharacterIdle"></xs:element>
+            <xs:element minOccurs="0" name="setCharacterAnimation" type="setCharacterAnimation"></xs:element>
+            <xs:element minOccurs="0" name="setFlag" type="setStoryFlag"/>
+            <xs:element minOccurs="0" name="modValue" type="storyValueModifier"/>
             <xs:element minOccurs="1" maxOccurs="1" name='END' type="endBlock"/>
         </xs:choice>
         <xs:attribute name="name" type="xs:string"/>
@@ -25,9 +26,7 @@
         <xs:sequence>
             <xs:element name="speaker" type="xs:string"/>
             <xs:element name="text" type="annotatedText"/>
-            <xs:element minOccurs="0" name="modValue" type="storyValueModifier"/>
         </xs:sequence>
-        <xs:attribute name="concurrentAnimation" type="xs:string" default="NONE"/>
         <xs:attribute name="autoProceed" type="xs:boolean" default="false"/>
     </xs:complexType>
 
@@ -58,15 +57,18 @@
         </xs:simpleContent>
     </xs:complexType>
     <xs:complexType name="storyValueModifier">
-        <xs:sequence minOccurs="1" maxOccurs="1">
-            <xs:element name="name" type="xs:string"/>
-            <xs:element name="modifier" type="xs:integer"></xs:element>
-        </xs:sequence>
+        <xs:sequence minOccurs="1" maxOccurs="1"><xs:element name="modifier" type="xs:integer"></xs:element></xs:sequence>
+        <xs:attribute name="name" type="xs:string"/>
     </xs:complexType>
-    <xs:complexType name="setCharacterIdle">
+    <xs:complexType name="setStoryFlag">
+        <xs:sequence minOccurs="1" maxOccurs="1"><xs:element name="state" type="xs:boolean"></xs:element></xs:sequence>
+        <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="setCharacterAnimation">
         <xs:sequence>
             <xs:element name="character" type="xs:string"/>
             <xs:element name="animation" type="xs:string"></xs:element>
         </xs:sequence>
+        <xs:attribute name="concurent" type="xs:boolean" default="false"/>
     </xs:complexType>
 </xs:schema>

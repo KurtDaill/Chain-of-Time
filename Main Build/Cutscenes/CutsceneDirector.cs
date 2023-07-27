@@ -11,6 +11,9 @@ public partial class CutsceneDirector : Node3D
 
 public static class CutsceneUtils{
 	public enum TextEffectType{
+        Bold,
+        Italics,
+        Underline,
         Wave,
         Impact,
         BigImpact,

@@ -7,10 +7,13 @@
             <speaker>Cato</speaker>
             <text>Alright, <b>what's good?!</b></text>
         </line>
-        <line concurrentAnimation="CatoBigGesture">
+        <beat>3.3</beat>
+        <setCharacterAnimation concurent="true"><character>Cato</character><animation>BigGesture</animation></setCharacterAnimation>
+        <setFlag name="Is Cato a Cool Dude"><state>true</state></setFlag>
+        <modValue name="Cool Factor"><modifier>+100</modifier></modValue>
+        <line>
             <speaker>Cato</speaker>
             <text>This is <bigImpact>really</bigImpact><impact>Neat</impact></text>
-            <modValue><name>CoolFactor</name><modifier>+100</modifier></modValue>
         </line>
         <END>
             <opt GOTO="EXIT">Ok, guess that's it then</opt>
