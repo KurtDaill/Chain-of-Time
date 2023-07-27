@@ -1,21 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd0cfu3p5p0na"]
+[gd_scene load_steps=7 format=3 uid="uid://cd0cfu3p5p0na"]
 
 [ext_resource type="Script" path="res://Cutscenes/CutsceneDirector.cs" id="1_bk52i"]
 [ext_resource type="Script" path="res://Cutscenes/CutsceneDummy.cs" id="1_t3mmx"]
+[ext_resource type="Texture2D" uid="uid://d054fqnoqr0oo" path="res://Art/Cato Combat Sprite-Sheet.png" id="3_6faom"]
+[ext_resource type="Script" path="res://addons/CoT Cutscene Editor/Actor.cs" id="3_ik6y2"]
+[ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="4_c8j3g"]
+[ext_resource type="Script" path="res://Cutscenes/SpeechBubble.cs" id="5_x5tqh"]
 
 [node name="Cutscene Test Kitchen" type="Node3D"]
 script = ExtResource("1_t3mmx")
 scriptXML = "res://Cutscenes/Dialogue Files/Example New Script.xml"
 
 [node name="Environment" type="CSGCombiner3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 script = ExtResource("1_bk52i")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Environment"]
-size = Vector3(3.9924, 0.085019, 1)
+size = Vector3(12, 0.085019, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.484375, 0.453125)
+size = Vector3(12, 0.085019, 1)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58669, -0.469722)
-size = Vector3(3.9924, 1.35567, 0.166905)
+size = Vector3(12, 1.35567, 0.166905)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.414531, -0.537899)
@@ -32,4 +41,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25131, 0.620753, -0.537899
 operation = 2
 size = Vector3(0.368505, 0.372472, 0.31453)
 
-[node name="CutsceneDirector" type="Node" parent="."]
+[node name="Cutscene Director" type="Node3D" parent="."]
+script = ExtResource("1_bk52i")
+
+[node name="Camera3D" type="Camera3D" parent="Cutscene Director"]
+transform = Transform3D(1, 0, 0, 0, 0.975886, 0.21828, 0, -0.21828, 0.975886, 0, 4.83687, 10.2091)
+
+[node name="Cato Actor" type="Node3D" parent="Cutscene Director"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -2.74647, 0.1875, -0.229757)
+script = ExtResource("3_ik6y2")
+
+[node name="Sprite3D" type="Sprite3D" parent="Cutscene Director/Cato Actor"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0.121472, 4, 0.229757)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("3_6faom")
+hframes = 10
+vframes = 4
+
+[node name="Speech Bubble" type="Node3D" parent="Cutscene Director/Cato Actor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07881, 0)
+script = ExtResource("5_x5tqh")
+
+[node name="Label3D" type="Label3D" parent="Cutscene Director/Cato Actor/Speech Bubble"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -4.5, 4.063, -1.19209e-07)
+pixel_size = 0.002
+no_depth_test = true
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 1.0
+texture_filter = 5
+text = "Welly Welly Well...This is additional text to ponder and I say three lines is good."
+font = ExtResource("4_c8j3g")
+font_size = 256
+outline_size = 96
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 3
+width = 5200.0
+
+[node name="Label3D2" type="Label3D" parent="Cutscene Director/Cato Actor/Speech Bubble"]
+transform = Transform3D(0.7, 0, -1.49012e-08, 0, 0.7, 0, 1.49012e-08, 0, 0.7, -4.6, 4.438, 0.4)
+pixel_size = 0.003
+no_depth_test = true
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 1.0
+texture_filter = 5
+text = "Cato"
+font = ExtResource("4_c8j3g")
+font_size = 256
+outline_size = 96
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene Director/Cato Actor"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Cutscene Director"]
+transform = Transform3D(1, 0, 0, 0, 0.735542, 0.67748, 0, -0.67748, 0.735542, -3.125, 8.0625, 8.3125)
+light_energy = 7.0
+shadow_enabled = true
+spot_range = 24.25
+spot_angle = 23.8331
