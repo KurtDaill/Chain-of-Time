@@ -51,7 +51,7 @@ public partial class ExploreNPC : DialogueInteractable
 	public override async void PlayCutscene(){
 		if(enabled && armed){
 			if(storyFlagRequiredForCutscene != "" && !GetNode<GameMaster>("/root/GameMaster").GetFlagValue(storyFlagRequiredForCutscene)) return;
-				cutscene.StartCutscene();
+				//cutscene.StartCutscene();
 				dialoguePrompt.Visible = false;
 				await ToSignal(cutscene, "CutsceneCompleted");
 				dialoguePrompt.Visible = true;

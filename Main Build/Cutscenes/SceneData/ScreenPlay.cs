@@ -4,6 +4,7 @@ public class ScreenPlay{
     Dictionary<string, CutsceneBlock> blocks;
 
     public ScreenPlay(List<CutsceneBlock> blocks){
+        this.blocks = new Dictionary<string, CutsceneBlock>();
         foreach(CutsceneBlock block in blocks){
             this.blocks.Add(block.GetName(), block);
         }

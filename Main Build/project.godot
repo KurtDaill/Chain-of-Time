@@ -35,7 +35,7 @@ project/assembly_name="Chain Of Time"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/CoT Cutscene Editor/plugin.cfg", "res://addons/MonoDebuggerQM-1.0.2/MonoDebuggerQM-1.0.2/plugin.cfg")
+enabled=PackedStringArray("res://addons/MonoDebuggerQM-1.0.2/MonoDebuggerQM-1.0.2/plugin.cfg", "res://addons/cot_cutscene_editor/plugin.cfg")
 
 [gdnative]
 
