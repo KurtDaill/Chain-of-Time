@@ -3,8 +3,6 @@ using System;
 
 public partial class CutsceneDummy : Node3D
 {
-	[Export(PropertyHint.File)]
-	string scriptXML;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

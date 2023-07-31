@@ -12,8 +12,6 @@ public partial class CutsceneDialogueBox : Node3D
 	[Export]
 	double textDisplaySpeed;
 	double timeElapsed;
-	int textCharactersDisplayed;
-	string currentText;
 	int[] textEffectStarts;
 	int[] textEffectEnds;
 	CutsceneTextEffect[] effects;
@@ -36,39 +34,35 @@ public partial class CutsceneDialogueBox : Node3D
 	{
 		if(printingOut){
 			timeElapsed += delta;
-			textCharactersDisplayed = (int)Mathf.Round(timeElapsed * textDisplaySpeed);
-			if(textCharactersDisplayed > currentText.Length){
-				textCharactersDisplayed = currentText.Length;
+			dialogueLabel.VisibleCharacters = (int)Mathf.Round(timeElapsed * textDisplaySpeed);
+			if(dialogueLabel.VisibleCharacters >= dialogueLabel.Text.Length){
 				printingOut = false;
 				EmitSignal(CutsceneDialogueBox.SignalName.DisplayFinished);
 			}
-			dialogueLabel.Text = currentText.Substring(0, textCharactersDisplayed);
 		}
 	}
 
 	public void BeginDialogue(CutsceneLine line){
-		textCharactersDisplayed = 0;
+		dialogueLabel.VisibleCharacters = 0;
 		timeElapsed = 0;
 		printingOut = true;
 		this.Visible = true;
 
-		currentText = line.GetText();
+		dialogueLabel.Text = line.GetText();
 		effects = line.GetTextEffects();
 		textEffectStarts = line.GetEffectStarts();
 		textEffectEnds = line.GetEfffectEnds();
 	}
 
 	public void RushDialogue(){
-		textCharactersDisplayed = currentText.Length;
+		dialogueLabel.VisibleCharacters = -1;
 		printingOut = false;
 		EmitSignal(CutsceneDialogueBox.SignalName.DisplayFinished);
-		dialogueLabel.Text = currentText.Substring(0, textCharactersDisplayed);
 	}
 
 	public void CloseDialogue(){
 		this.Visible = false;
 		dialogueLabel.Text = "";
-		currentText = "";
 	}
 
 	public bool IsDisplayingDialogue(){

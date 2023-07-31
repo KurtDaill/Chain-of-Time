@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="../SceneData/ScreenplaySchema.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<screenplay>
+    <!-- -->
+    <block name="start">
+        <line>
+            <speaker>Cato</speaker>
+            <text>Alright, <b>what's [wave amp=100, freq=5]good?![/wave]</b></text>
+        </line>
+        <beat>1</beat>
+        <line><speaker>Cato</speaker><text>This is some [shake]test text. . .[/shake]</text></line>
+        <setFlag name="Is Cato a Cool Dude"><state>true</state></setFlag>
+        <modValue name="Cool Factor"><modifier>+100</modifier></modValue>
+        <setCharacterAnimation concurent="true"><character>Cato</character><animation>Big Gesture</animation></setCharacterAnimation>
+        <line>
+            <speaker>Cato</speaker>
+            <text>This is <bigImpact>really </bigImpact><impact>Neat!</impact></text>
+        </line>
+        <END>
+            <opt GOTO="EXIT">Ok, guess that's it then</opt>
+            <GOTO>EXIT</GOTO>
+        </END>
+    </block>
+</screenplay>   

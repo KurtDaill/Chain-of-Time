@@ -88,7 +88,6 @@ _data = {
 
 [node name="Cutscene Test Kitchen" type="Node3D"]
 script = ExtResource("1_t3mmx")
-scriptXML = "res://Cutscenes/Dialogue Files/Example New Script.xml"
 
 [node name="Environment" type="CSGCombiner3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
@@ -121,7 +120,7 @@ size = Vector3(0.368505, 0.372472, 0.31453)
 
 [node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter")]
 script = ExtResource("2_bwgb7")
-screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Example New Script.xml"
+screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Example New Script 2.xml"
 playerCharacter = NodePath("Cato Actor")
 
 [node name="Camera3D" type="Camera3D" parent="Cutscene"]
