@@ -4,8 +4,10 @@ using System;
 [Tool]
 public partial class CutsceneDialogueBox : Node3D
 {
-	Label3D characterNameLabel;
-	Label3D dialogueLabel;
+	[Export]
+	Label characterNameLabel;
+	[Export]
+	RichTextLabel dialogueLabel;
 	Actor speaker;
 	[Export]
 	double textDisplaySpeed;
@@ -22,8 +24,8 @@ public partial class CutsceneDialogueBox : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		characterNameLabel = GetNode<Label3D>("Character Name Label");
-		dialogueLabel = GetNode<Label3D>("Dialogue Label");
+		//characterNameLabel = GetNode<Label3D>("Character Name Label");
+		//dialogueLabel = GetNode<Label3D>("Dialogue Label");
 		try{speaker = this.GetParent<Actor>();}
 		catch(InvalidCastException){throw new UnexpectedParentException("Dialogue Boxes have to be direct children of their actors!");}
 		characterNameLabel.Text = speaker.GetActorName();
@@ -65,6 +67,8 @@ public partial class CutsceneDialogueBox : Node3D
 
 	public void CloseDialogue(){
 		this.Visible = false;
+		dialogueLabel.Text = "";
+		currentText = "";
 	}
 
 	public bool IsDisplayingDialogue(){

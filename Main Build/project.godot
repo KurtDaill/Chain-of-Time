@@ -24,6 +24,7 @@ CameraManager="res://Old/CameraManager.cs"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=1
 window/size/always_on_top=true
 window/stretch/mode="viewport"
 window/size/width=1920

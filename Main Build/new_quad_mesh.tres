@@ -1,0 +1,15 @@
+[gd_resource type="QuadMesh" load_steps=3 format=3 uid="uid://cie2oa0lbjl6e"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_24lnm"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ym1g5"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_24lnm")
+
+[resource]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ym1g5")
+size = Vector2(8, 4)

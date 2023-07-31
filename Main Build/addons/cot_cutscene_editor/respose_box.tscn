@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0573oq65m3ps"]
+
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/CutsceneResponseBox.cs" id="1_lhqn3"]
+[ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="2_pk88s"]
+
+[node name="Respose Box" type="Node3D" node_paths=PackedStringArray("responses")]
+transform = Transform3D(0.999999, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 0.999999, 0, 0, 0)
+script = ExtResource("1_lhqn3")
+responses = [NodePath("Response1"), NodePath("Response2"), NodePath("Response3"), NodePath("Response4")]
+
+[node name="Response1" type="Label3D" parent="."]
+transform = Transform3D(0.999999, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 0.999999, -4.5, 7.563, 8.34465e-07)
+pixel_size = 0.002
+no_depth_test = true
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 1.0
+texture_filter = 5
+render_priority = 1
+outline_render_priority = 0
+text = "Response 1"
+font = ExtResource("2_pk88s")
+font_size = 256
+outline_size = 96
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 3
+width = 5200.0
+
+[node name="Response2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -5.5, 6.3755, 8.49366e-07)
+pixel_size = 0.002
+no_depth_test = true
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 1.0
+texture_filter = 5
+render_priority = 1
+outline_render_priority = 0
+text = "Response 2 is different"
+font = ExtResource("2_pk88s")
+font_size = 256
+outline_size = 96
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 3
+width = 5200.0
+
+[node name="Response3" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -4.5, 5.2505, 5.96046e-07)
+pixel_size = 0.002
+no_depth_test = true
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 1.0
+texture_filter = 5
+render_priority = 1
+outline_render_priority = 0
+text = "Response 3 is then longer still"
+font = ExtResource("2_pk88s")
+font_size = 256
+outline_size = 96
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 3
+width = 5200.0
+
+[node name="Response4" type="Label3D" parent="."]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -4.5, 4.063, 1.49012e-08)
+pixel_size = 0.002
+no_depth_test = true
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 1.0
+texture_filter = 5
+render_priority = 1
+outline_render_priority = 0
+text = "Response 4 Goes Here And then Some More Text Appears"
+font = ExtResource("2_pk88s")
+font_size = 256
+outline_size = 96
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 3
+width = 5200.0

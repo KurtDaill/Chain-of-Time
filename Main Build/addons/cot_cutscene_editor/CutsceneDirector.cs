@@ -16,6 +16,9 @@ public partial class CutsceneDirector : Node3D
     Timer beatTimer;
     [Export(PropertyHint.File)]
     string screenPlayXMLFilePath;
+    [Export]
+    Actor playerCharacter;
+    string playerCharacterName;
 
     StoryState storyState;
 
@@ -31,6 +34,7 @@ public partial class CutsceneDirector : Node3D
         beatTimer = this.GetNode<Timer>("BeatTimer");
         beatTimer.Timeout += AdvanceToNextAction;
         storyState = GetTree().Root.GetNode<GameMaster>("GameMaster").GetStoryState();
+        playerCharacterName = playerCharacter.GetActorName();
     }
 
     public override void _Process(double delta){
