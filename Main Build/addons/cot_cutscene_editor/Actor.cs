@@ -11,7 +11,8 @@ public partial class Actor : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		dialogueBox = this.GetNode<CutsceneDialogueBox>("Dialogue Box");	
+		dialogueBox = this.GetNode<CutsceneDialogueBox>("Dialogue Box");
+		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");	
 	}
 
 	public string GetActorName(){

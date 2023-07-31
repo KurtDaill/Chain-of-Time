@@ -1,10 +1,89 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd0cfu3p5p0na"]
+[gd_scene load_steps=9 format=3 uid="uid://cd0cfu3p5p0na"]
 
 [ext_resource type="Script" path="res://Cutscenes/CutsceneDummy.cs" id="1_t3mmx"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/CutsceneDirector.cs" id="2_bwgb7"]
 [ext_resource type="Texture2D" uid="uid://d054fqnoqr0oo" path="res://Art/Cato Combat Sprite-Sheet.png" id="3_6faom"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/Actor.cs" id="3_75ynk"]
 [ext_resource type="PackedScene" uid="uid://h6cqvq3f60sa" path="res://addons/cot_cutscene_editor/dialogue_box.tscn" id="5_ql0ou"]
+
+[sub_resource type="Animation" id="Animation_y7tsh"]
+resource_name = "Big Gesture"
+length = 0.6
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-2.74647, -0.25, 0, 0.25, 0, -2.74647, -0.25, 0, 0.25, 0, -2.74647, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.1875, -0.25, 0, 0.25, 0, 0.6875, -0.25, 0, 0.25, 0, 0.1875, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.229757, -0.25, 0, 0.25, 0, -0.229757, -0.25, 0, 0.25, 0, -0.229757, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6)
+}
+
+[sub_resource type="Animation" id="Animation_twp48"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2.74647, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.1875, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.229757, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5fvfv"]
+_data = {
+"Big Gesture": SubResource("Animation_y7tsh"),
+"RESET": SubResource("Animation_twp48")
+}
 
 [node name="Cutscene Test Kitchen" type="Node3D"]
 script = ExtResource("1_t3mmx")
@@ -64,6 +143,9 @@ vframes = 4
 [node name="Dialogue Box" parent="Cutscene/Cato Actor" instance=ExtResource("5_ql0ou")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Cato Actor"]
+libraries = {
+"": SubResource("AnimationLibrary_5fvfv")
+}
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 0.735542, 0.67748, 0, -0.67748, 0.735542, -3.125, 8.0625, 8.3125)
@@ -71,3 +153,6 @@ light_energy = 7.0
 shadow_enabled = true
 spot_range = 24.25
 spot_angle = 23.8331
+
+[node name="BeatTimer" type="Timer" parent="Cutscene"]
+one_shot = true

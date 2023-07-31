@@ -17,6 +17,7 @@
             <xs:element minOccurs="0" name="setCharacterAnimation" type="setCharacterAnimation"></xs:element>
             <xs:element minOccurs="0" name="setFlag" type="setStoryFlag"/>
             <xs:element minOccurs="0" name="modValue" type="storyValueModifier"/>
+            <xs:element minOccurs="0" name="setValue" type="storyValueSet"/>
             <xs:element minOccurs="0" name="characterMove" type="characterMove"/>
             <xs:element minOccurs="0" name="cameraMove" type="cameraMove"/>
             <xs:element minOccurs="1" maxOccurs="1" name='END' type="endBlock"/>
@@ -59,6 +60,10 @@
         </xs:simpleContent>
     </xs:complexType>
     <xs:complexType name="storyValueModifier">
+        <xs:sequence minOccurs="1" maxOccurs="1"><xs:element name="modifier" type="xs:integer"></xs:element></xs:sequence>
+        <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="storyValueSet">
         <xs:sequence minOccurs="1" maxOccurs="1"><xs:element name="modifier" type="xs:integer"></xs:element></xs:sequence>
         <xs:attribute name="name" type="xs:string"/>
     </xs:complexType>

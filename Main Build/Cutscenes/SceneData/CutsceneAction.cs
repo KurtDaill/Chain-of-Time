@@ -10,9 +10,9 @@ public class CutsceneLine : CutsceneAction{
     int[] effectStartIndexes;
     int[] effectEndIndexes;
     bool hasConcurrentAnimation;
-    StringName concurrentAnimationName;
+    CutsceneCharacterAnimation concurrentAnimation;
 
-    public CutsceneLine(string speaker, string text, CutsceneTextEffect[] effects, bool hasAnim = false, StringName concurrentAnim = null){
+    public CutsceneLine(string speaker, string text, CutsceneTextEffect[] effects, bool hasAnim = false, CutsceneCharacterAnimation concurrentAnim = null){
         this.speaker = speaker;
         this.text = text;
         this.effects = effects;
@@ -24,7 +24,7 @@ public class CutsceneLine : CutsceneAction{
             effectEndIndexes[i] = effects[i].getEnd();
         }
         hasConcurrentAnimation = hasAnim;
-        concurrentAnimationName = concurrentAnim;
+        concurrentAnimation = concurrentAnim;
     }
 
     public string GetText(){return text;}
@@ -33,7 +33,7 @@ public class CutsceneLine : CutsceneAction{
     public int[] GetEfffectEnds(){return effectEndIndexes;}
     public CutsceneTextEffect[] GetTextEffects(){return effects;}
     public bool HasConcurrentAnimation(){return hasConcurrentAnimation;}
-    public StringName GetConcurrentAnimationName(){return concurrentAnimationName;}
+    public CutsceneCharacterAnimation GetConcurrentAnimation(){return concurrentAnimation;}
 }
 
 public class CutsceneAsyncAnimation : CutsceneAction{
@@ -72,6 +72,30 @@ public class CutsceneSetStoryFlag : CutsceneAction{
         this.name = name;
         this.value = value;
     }
+    public string GetFlagName(){return name;}
+    public bool GetFlagValue(){return value;}
+}
+
+public class CutsceneModStoryValue : CutsceneAction{
+    string name;
+    int modifier;
+    public CutsceneModStoryValue(string name, int modifier){
+        this.name = name;
+        this.modifier = modifier;
+    }
+    public string GetValueName(){return name;}
+    public int GetValueMod(){return modifier;}
+}
+
+public class CutsceneSetStoryValue : CutsceneAction{
+    string name;
+    int set;
+    public CutsceneSetStoryValue(string name, int set){
+        this.name = name;
+        this.set = set;
+    }
+    public string GetValueName(){return name;}
+    public int GetValueSet(){return set;}
 }
 
 public class CutsceneEndBlock : CutsceneAction{

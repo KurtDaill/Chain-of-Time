@@ -13,8 +13,11 @@ public partial class CutsceneDirector : Node3D
     ScreenPlay play;
     CutsceneBlock block;
     CutsceneAction currentAction;
+    Timer beatTimer;
     [Export(PropertyHint.File)]
     string screenPlayXMLFilePath;
+
+    StoryState storyState;
 
     public override void _Ready()
     {
@@ -25,6 +28,9 @@ public partial class CutsceneDirector : Node3D
             if(node is Actor) cast.Add(((Actor)node).GetActorName(), (Actor)node);
         }
         play = ScreenPlayLoader.LoadScript(screenPlayXMLFilePath);
+        beatTimer = this.GetNode<Timer>("BeatTimer");
+        beatTimer.Timeout += AdvanceToNextAction;
+        storyState = GetTree().Root.GetNode<GameMaster>("GameMaster").GetStoryState();
     }
 
     public override void _Process(double delta){
@@ -32,7 +38,7 @@ public partial class CutsceneDirector : Node3D
     }
 
     private void HandleInput(){
-        if(Input.IsActionJustPressed("ui_select")){
+        if(Input.IsActionJustPressed("ui_accept")){
             switch(currentAction.GetType().Name){
                 case "CutsceneLine" :
                     /* If no concurrent Animation : 
@@ -42,17 +48,22 @@ public partial class CutsceneDirector : Node3D
                             Wait until the animation is done, after that run the above logic
                     */
                     CutsceneLine line = (CutsceneLine) currentAction;
+                    cast.TryGetValue(((CutsceneLine)currentAction).GetSpeaker(), out Actor actor);
                     if(line.HasConcurrentAnimation() && waitingOnAnimation){
                         return;
                     }else{
-                        if(waitingOnTextDisplay){
-                            cast.TryGetValue(((CutsceneLine)currentAction).GetSpeaker(), out Actor actor);
+                        if(actor.GetDialogueBox().IsDisplayingDialogue()){
                             actor.GetDialogueBox().RushDialogue();
                         }else{
-                            //Go to the next dialogue
+                            actor.GetDialogueBox().CloseDialogue();
+                            AdvanceToNextAction();
                         }
                     }
                     break;
+                case "Beat" : //The beat delay is handled via signal
+                    return;
+                case "CutsceneAnimation" : //The animation is handled via signal
+                    return;
             }
         }
     }
@@ -60,8 +71,9 @@ public partial class CutsceneDirector : Node3D
     public void PlayCutscene(){
         block = play.Start();
         waitingOnAnimation = false;
-        StartAction(block.StartBlockAndPeekFirstAction());
-        currentAction = block.GetNextAction(); //Should Get the first action loaded
+        currentAction = block.StartBlockAndGetFirstAction();
+        StartAction(currentAction);
+        //currentAction = block.GetNextAction(); //Should Get the first action loaded
     }
 
     public void AdvanceToNextAction(){
@@ -70,25 +82,50 @@ public partial class CutsceneDirector : Node3D
     }
 
     public void EndBlock(){
-        
+
     }
 
     public void StartAction(CutsceneAction act){
         switch(act.GetType().Name){
             case "CutsceneLine" :
-                CutsceneLine line = (CutsceneLine) block.GetNextAction();
-                cast.TryGetValue(line.GetSpeaker(), out Actor currentActor);
-                cast.TryGetValue(line.GetSpeaker(), out Actor actor);
-                if(actor == null) throw new ArgumentException("No actor found that maches speaker: " + line.GetSpeaker() + " for dialogue line: " + line.GetText());
-                
-                currentActor.GetDialogueBox().DisplayFinished += OnTextDisplayComplete;
+                CutsceneLine line = (CutsceneLine) act;
+                cast.TryGetValue(line.GetSpeaker(), out Actor lineActor);
+                if(lineActor == null) throw new ArgumentException("No actor found that maches speaker: " + line.GetSpeaker() + " for dialogue line: " + line.GetText());
 
                 if(line.HasConcurrentAnimation()){
-                    currentActor.GetAnimationPlayer().AnimationFinished += OnCutsceneAnimationComplete;
-                    watchedAnimations.Add(line.GetConcurrentAnimationName(), currentActor);
+                    lineActor.GetAnimationPlayer().AnimationFinished += OnCutsceneAnimationComplete;
+                    watchedAnimations.Add(line.GetConcurrentAnimation().GetAnimation(), lineActor);
+                    if(!lineActor.GetAnimationPlayer().HasAnimation(line.GetConcurrentAnimation().GetAnimation()))
+                        throw new NotImplementedException("Animation: " + line.GetConcurrentAnimation().GetAnimation() + " not found on Actor: " + lineActor.GetActorName());
+                    lineActor.GetAnimationPlayer().Play(line.GetConcurrentAnimation().GetAnimation());
                 }
-                
-                actor.SpeakLine(line);
+                lineActor.SpeakLine(line);
+                break;
+            case "CutsceneCharacterAnimation":
+                CutsceneCharacterAnimation anim = (CutsceneCharacterAnimation) act;
+                cast.TryGetValue(anim.GetCharacter(), out Actor animActor);
+                watchedAnimations.Add(anim.GetAnimation(), animActor);
+                animActor.GetAnimationPlayer().Play(anim.GetAnimation());
+                break;
+            case "CutsceneBeat" :
+                CutsceneBeat beat = (CutsceneBeat) act;
+                beatTimer.WaitTime = beat.GetDelay();
+                beatTimer.Start();
+                break;
+            case "CutsceneSetStoryFlag" :
+                CutsceneSetStoryFlag flag = (CutsceneSetStoryFlag) act;
+                storyState.TrySetFlag(flag.GetFlagName(), flag.GetFlagValue());
+                AdvanceToNextAction();
+                break;
+            case "CutsceneSetStoryValue" :
+                CutsceneSetStoryValue set = (CutsceneSetStoryValue) act;
+                storyState.TryModValue(set.GetValueName(), set.GetValueSet());
+                AdvanceToNextAction();
+                break;
+            case "CutsceneModStoryValue" :
+                CutsceneModStoryValue mod = (CutsceneModStoryValue) act;
+                storyState.TryModValue(mod.GetValueName(), mod.GetValueMod());
+                AdvanceToNextAction();
                 break;
         }
 
@@ -98,12 +135,6 @@ public partial class CutsceneDirector : Node3D
         waitingOnAnimation = false;
         watchedAnimations.TryGetValue(animation, out Actor actor);
         actor.GetAnimationPlayer().AnimationFinished -= OnCutsceneAnimationComplete;
-    }
-
-    public void OnTextDisplayComplete(){
-        waitingOnTextDisplay = false;
-        cast.TryGetValue(((CutsceneLine)currentAction).GetSpeaker(), out Actor actor);
-        actor.GetDialogueBox().DisplayFinished -= OnTextDisplayComplete;
     }
 }
 

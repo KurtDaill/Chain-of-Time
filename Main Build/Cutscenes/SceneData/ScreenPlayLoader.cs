@@ -30,27 +30,7 @@ public static class ScreenPlayLoader{
             while(endBlock == false){
                 switch(currentAction.Name){
                     case "line":
-                        string speaker = currentAction.FirstChild.InnerText;
-                        string text = currentAction.FirstChild.NextSibling.InnerText;
-
-                        List<CutsceneTextEffect> effects = new List<CutsceneTextEffect>();
-                        //Index is used track where in the bigger line we are. We pass this data to the Text Effects so they know where to start/stop
-                        int index = -1;
-
-                        //The only children Line nodes should have are text effects and text fragments, so this iterates through those.
-                        foreach(XmlNode node in currentAction.FirstChild.NextSibling.ChildNodes){ 
-                            switch(node.Name){ //If we find a text fragement, we just note it's length for indexing.
-                                case "#text":
-                                    index += node.InnerText.Length;
-                                    break;
-                                default: //This is a text effect, we pull out which kind it is from the XML name and save it.
-                                    int start = index;
-                                    int end = index + node.InnerText.Length;
-                                    effects.Add(new CutsceneTextEffect(start, end, node.Name));
-                                    break;
-                            }
-                        }
-                        actions.Add(new CutsceneLine(speaker, text, effects.ToArray()));
+                        actions.Add(GenerateLine(currentAction));
                         break;
 
                     case "beat":
@@ -61,13 +41,31 @@ public static class ScreenPlayLoader{
                         string character = currentAction.FirstChild.InnerText;
                         string animation = currentAction.FirstChild.NextSibling.InnerText;
                         bool concurency = Convert.ToBoolean(currentAction.Attributes.GetNamedItem("concurent").Value);
-                        actions.Add(new CutsceneCharacterAnimation(character, animation, concurency));
+                        if(concurency){
+                            if(currentAction.NextSibling.Name != "line") throw new ArgumentException();
+                            actions.Add(GenerateLine(currentAction.NextSibling, new CutsceneCharacterAnimation(character, animation, concurency)));
+                            currentAction = currentAction.NextSibling; //We just inputted the next line into the block, so we need to manually skip past it here
+                        }else{
+                            actions.Add(new CutsceneCharacterAnimation(character, animation, concurency));
+                        }
                         break;
 
                     case "setFlag":
                         string flagName = currentAction.Attributes.GetNamedItem("name").Value;
                         bool flagSet = Convert.ToBoolean(currentAction.FirstChild.InnerText);
                         actions.Add(new CutsceneSetStoryFlag(flagName, flagSet));
+                        break;
+                    
+                    case "modValue" :
+                        string modName = currentAction.Attributes.GetNamedItem("name").Value;
+                        int valueMod = Convert.ToInt32(currentAction.FirstChild.InnerText);
+                        actions.Add(new CutsceneModStoryValue(modName, valueMod));
+                        break;
+                    
+                    case "setValue" :
+                        string setName = currentAction.Attributes.GetNamedItem("name").Value;
+                        int valueSet = Convert.ToInt32(currentAction.FirstChild.InnerText);
+                        actions.Add(new CutsceneSetStoryValue(setName, valueSet));
                         break;
                     
                     case "END":
@@ -100,5 +98,30 @@ public static class ScreenPlayLoader{
             if(currentBlock.NextSibling == null) break;
         }
         return new ScreenPlay(blocks);
+    }
+
+    private static CutsceneLine GenerateLine(XmlNode lineNode, CutsceneCharacterAnimation anim = null){
+        if(lineNode.Name != "line") throw new ArgumentException(); 
+        string speaker = lineNode.FirstChild.InnerText;
+        string text = lineNode.FirstChild.NextSibling.InnerText;
+        List<CutsceneTextEffect> effects = new List<CutsceneTextEffect>();
+        //Index is used track where in the bigger line we are. We pass this data to the Text Effects so they know where to start/stop
+        int index = -1;
+
+        //The only children Line nodes should have are text effects and text fragments, so this iterates through those.
+        foreach(XmlNode node in lineNode.FirstChild.NextSibling.ChildNodes){ 
+            switch(node.Name){ //If we find a text fragement, we just note it's length for indexing.
+                case "#text":
+                    index += node.InnerText.Length;
+                    break;
+                default: //This is a text effect, we pull out which kind it is from the XML name and save it.
+                    int start = index;
+                    int end = index + node.InnerText.Length;
+                    effects.Add(new CutsceneTextEffect(start, end, node.Name));
+                    break;
+            }
+        }
+        bool hasAnim = (anim != null);
+        return new CutsceneLine(speaker, text, effects.ToArray(), hasAnim, anim);
     }
 }

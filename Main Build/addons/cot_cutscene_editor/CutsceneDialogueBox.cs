@@ -58,9 +58,16 @@ public partial class CutsceneDialogueBox : Node3D
 
 	public void RushDialogue(){
 		textCharactersDisplayed = currentText.Length;
+		printingOut = false;
+		EmitSignal(CutsceneDialogueBox.SignalName.DisplayFinished);
+		dialogueLabel.Text = currentText.Substring(0, textCharactersDisplayed);
 	}
 
 	public void CloseDialogue(){
+		this.Visible = false;
+	}
 
+	public bool IsDisplayingDialogue(){
+		return printingOut;
 	}
 }

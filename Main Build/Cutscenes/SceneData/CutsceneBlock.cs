@@ -20,6 +20,11 @@ public class CutsceneBlock{
         return actionQueue.Peek();
     }
 
+    public CutsceneAction StartBlockAndGetFirstAction(){
+        actionQueue = new Queue<CutsceneAction>(actions);
+        return actionQueue.Dequeue();
+    }
+
     public CutsceneAction GetNextAction(){
         return actionQueue.Dequeue();
     }
