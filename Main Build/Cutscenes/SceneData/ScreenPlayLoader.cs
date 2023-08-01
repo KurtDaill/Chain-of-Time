@@ -75,6 +75,11 @@ public static class ScreenPlayLoader{
                         else transitionLength = Convert.ToDouble(currentAction.Attributes.GetNamedItem("transitionLengthInSeconds").Value);
                         actions.Add(new CutsceneCameraMove(targetShot, transitionType, transitionLength));
                         break;
+                    case "characterMove" :
+                        string characterName = currentAction.Attributes.GetNamedItem("character").Value;
+                        string blockingMarkerName = currentAction.InnerText;
+                        actions.Add(new CutsceneCharacterMove(characterName, blockingMarkerName));
+                        break;
                     case "END":
                         List<CutsceneDialogueResponse> responses = new List<CutsceneDialogueResponse>();
                         foreach(XmlNode node in currentAction.ChildNodes){ //Iterates through all of the dialgoue options

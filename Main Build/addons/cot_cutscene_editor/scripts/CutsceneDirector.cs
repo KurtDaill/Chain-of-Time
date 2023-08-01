@@ -8,8 +8,10 @@ public partial class CutsceneDirector : Node3D
     public bool enabled = true;
     bool waitingOnAnimation = false;
     bool waitingOnTextDisplay = false;
+    bool waitingOnBlockingMove = false;
     Dictionary<string, Actor> cast;
     Dictionary<StringName, Actor> watchedAnimations;
+    Dictionary<string, Actor> watchedBlockingMoves;
     ScreenPlay play;
     CutsceneBlock block;
     CutsceneAction currentAction;
@@ -21,6 +23,7 @@ public partial class CutsceneDirector : Node3D
     [Export]
     string initialShotName;
     Dictionary<string, CutsceneShot> shotList;
+    Dictionary<string, Marker3D> blockingMarks;
     string playerCharacterName;
 
     StoryState storyState;
@@ -31,6 +34,7 @@ public partial class CutsceneDirector : Node3D
         base._Ready();
         cast = new Dictionary<string, Actor>();
         watchedAnimations = new Dictionary<StringName, Actor>();
+        watchedBlockingMoves = new Dictionary<string, Actor>();
         foreach(Node node in this.GetChildren()){
             if(node is Actor) cast.Add(((Actor)node).GetActorName(), (Actor)node);
         }
@@ -39,10 +43,17 @@ public partial class CutsceneDirector : Node3D
         beatTimer.Timeout += AdvanceToNextAction;
         storyState = GetTree().Root.GetNode<GameMaster>("GameMaster").GetStoryState();
         playerCharacterName = playerCharacter.GetActorName();
+
         shotList = new Dictionary<string, CutsceneShot>();
         foreach(CutsceneShot shot in this.GetNode("Shot List").GetChildren()){
             shotList.Add(shot.Name, shot);
         }
+
+        blockingMarks = new Dictionary<string, Marker3D>();
+        foreach(Marker3D blockingMark in this.GetNode<Node3D>("Blocking Marks").GetChildren()){
+            blockingMarks.Add(blockingMark.Name, blockingMark);
+        }
+
         mainCutsceneCamera = this.GetNode<CutsceneCamera>("Cutscene Camera");
         //Set initial camera position;
         if(shotList.TryGetValue(initialShotName, out CutsceneShot initialShotObject))mainCutsceneCamera.StartTransition(initialShotObject.GetShotDetails(), "cut");
@@ -150,12 +161,27 @@ public partial class CutsceneDirector : Node3D
                 if(shotList.TryGetValue(move.GetTargetShot(), out CutsceneShot newShot)){
                     if(mainCutsceneCamera.StartTransition(newShot.GetShotDetails(), move.GetTransitionType(), move.GetTransitionLength())){
                         mainCutsceneCamera.ShotTransitionComplete += OnCutsceneCameraMoveComplete;
+                        waitingOnBlockingMove = true;
                     }else{
                         AdvanceToNextAction();
                     }
                 }else{
                     new ArgumentException("Initial shot: " + move.GetTargetShot() + " not found in this cutscene");
                 }
+                break;
+            case "CutsceneCharacterMove" :
+                CutsceneCharacterMove characterMove = (CutsceneCharacterMove) act;
+                if(cast.TryGetValue(characterMove.GetCharacterName(), out Actor characterMoving)){
+                    if(blockingMarks.TryGetValue(characterMove.GetBlockingMarkerName(), out Marker3D mark)){
+                        characterMoving.StartBlockingMovement(mark.GlobalPosition, characterMove.GetBlockingMarkerName());
+                        watchedBlockingMoves.Add(characterMove.GetBlockingMarkerName(), characterMoving);
+                    }else{
+                        throw new ArgumentException("Character: " + characterMove.GetBlockingMarkerName() + " not found in this cutscene!");
+                    }
+                }else{
+                    throw new ArgumentException("Character: " + characterMove.GetCharacterName() + " not found in this cutscene!");
+                }
+                characterMoving.CompletedBlockingMovement += OnCharacterCompleteBlockingMovement;
                 break;
         }
 
@@ -165,10 +191,18 @@ public partial class CutsceneDirector : Node3D
         waitingOnAnimation = false;
         watchedAnimations.TryGetValue(animation, out Actor actor);
         actor.GetAnimationPlayer().AnimationFinished -= OnCutsceneAnimationComplete;
+        AdvanceToNextAction();
     }
 
     public void OnCutsceneCameraMoveComplete(){
         mainCutsceneCamera.ShotTransitionComplete -= OnCutsceneCameraMoveComplete;
+        AdvanceToNextAction();
+    }
+
+    public void OnCharacterCompleteBlockingMovement(string markerName){
+        waitingOnBlockingMove = false;
+        watchedBlockingMoves.TryGetValue(markerName, out Actor actor);
+        actor.CompletedBlockingMovement -= OnCharacterCompleteBlockingMovement;
         AdvanceToNextAction();
     }
 }

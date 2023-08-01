@@ -7,6 +7,7 @@
             <speaker>Cato</speaker>
             <text>Alright, <b>what's [wave amp=100, freq=5]good?![/wave]</b></text>
         </line>
+        <characterMove character="Cato">Cato Stand Two</characterMove>
         <beat>1</beat>
         <cameraMove transition="cut">Cato Close Up</cameraMove>
         <line><speaker>Cato</speaker><text>This is some [shake]test text. . .[/shake]</text></line>

@@ -90,5 +90,7 @@
             </xs:simpleType>
         </xs:attribute>
     </xs:complexType>
-    <xs:complexType name="characterMove"></xs:complexType>
+    <xs:complexType name="characterMove" mixed="true">
+        <xs:attribute name ="character" type="xs:string"/>
+    </xs:complexType>
 </xs:schema>

@@ -142,3 +142,14 @@ public class CutsceneCameraMove : CutsceneAction{
     public string GetTransitionType(){return transitionType;}
     public double GetTransitionLength(){return transitionLength;}
 }
+
+public class CutsceneCharacterMove : CutsceneAction{
+    string characterName;
+    string blockingMarkerName;
+    public CutsceneCharacterMove(string characterName, string blockingMarkerName){
+        this.characterName = characterName;
+        this.blockingMarkerName = blockingMarkerName;
+    }
+    public string GetCharacterName(){return characterName;}
+    public string GetBlockingMarkerName(){return blockingMarkerName;}
+}
