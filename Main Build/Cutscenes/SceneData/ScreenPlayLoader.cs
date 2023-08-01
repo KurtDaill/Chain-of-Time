@@ -67,7 +67,14 @@ public static class ScreenPlayLoader{
                         int valueSet = Convert.ToInt32(currentAction.FirstChild.InnerText);
                         actions.Add(new CutsceneSetStoryValue(setName, valueSet));
                         break;
-                    
+                    case "cameraMove" :
+                        string targetShot = currentAction.InnerText;
+                        string transitionType = currentAction.Attributes.GetNamedItem("transition").Value;
+                        double transitionLength;
+                        if(currentAction.Attributes.GetNamedItem("transitionLengthInSeconds") == null) transitionLength = 1; //TODO firgure out how to properly iteract with XML default values
+                        else transitionLength = Convert.ToDouble(currentAction.Attributes.GetNamedItem("transitionLengthInSeconds").Value);
+                        actions.Add(new CutsceneCameraMove(targetShot, transitionType, transitionLength));
+                        break;
                     case "END":
                         List<CutsceneDialogueResponse> responses = new List<CutsceneDialogueResponse>();
                         foreach(XmlNode node in currentAction.ChildNodes){ //Iterates through all of the dialgoue options

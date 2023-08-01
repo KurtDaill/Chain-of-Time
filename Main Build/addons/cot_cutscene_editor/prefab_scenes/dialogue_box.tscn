@@ -1,8 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://h6cqvq3f60sa"]
+[gd_scene load_steps=7 format=3 uid="uid://h6cqvq3f60sa"]
 
-[ext_resource type="Script" path="res://addons/cot_cutscene_editor/CutsceneDialogueBox.cs" id="1_ogdsl"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDialogueBox.cs" id="1_ogdsl"]
 [ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="2_xt8rr"]
-[ext_resource type="QuadMesh" uid="uid://cie2oa0lbjl6e" path="res://new_quad_mesh.tres" id="3_bd538"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_24lnm"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ym1g5"]
+resource_local_to_scene = true
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_24lnm")
+
+[sub_resource type="QuadMesh" id="QuadMesh_rg16h"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ym1g5")
+size = Vector2(8, 4)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_le35q"]
 
@@ -45,7 +59,7 @@ width = 5200.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
-mesh = ExtResource("3_bd538")
+mesh = SubResource("QuadMesh_rg16h")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true

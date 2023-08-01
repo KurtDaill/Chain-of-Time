@@ -79,7 +79,16 @@
         <xs:attribute name="concurent" type="xs:boolean" default="false"/>
     </xs:complexType>
 
-    <xs:complexType name="cameraMove"></xs:complexType>
-
+    <xs:complexType name="cameraMove" mixed="true">
+        <xs:attribute name="transitionLengthInSeconds" type="xs:decimal" default="1"/>
+        <xs:attribute name="transition" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="cut"/>
+                    <xs:enumeration value="linear"></xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
     <xs:complexType name="characterMove"></xs:complexType>
 </xs:schema>

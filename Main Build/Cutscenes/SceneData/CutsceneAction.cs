@@ -127,3 +127,18 @@ public class CutsceneDialogueResponse : CutsceneGoToBlock{
         this.targetBlock = target;
     }
 }
+
+public class CutsceneCameraMove : CutsceneAction{
+    string targetShot;
+    string transitionType;
+    double transitionLength;
+    public CutsceneCameraMove(string targetShot, string transitionType, double transitionLength){
+        this.targetShot = targetShot;
+        this.transitionType = transitionType;
+        this.transitionLength = transitionLength;
+    }
+
+    public string GetTargetShot(){return targetShot;}
+    public string GetTransitionType(){return transitionType;}
+    public double GetTransitionLength(){return transitionLength;}
+}

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0573oq65m3ps"]
 
-[ext_resource type="Script" path="res://addons/cot_cutscene_editor/CutsceneResponseBox.cs" id="1_lhqn3"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneResponseBox.cs" id="1_lhqn3"]
 [ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="2_pk88s"]
 
 [node name="Respose Box" type="Node3D" node_paths=PackedStringArray("responses")]

@@ -18,9 +18,13 @@ public partial class CutsceneDirector : Node3D
     string screenPlayXMLFilePath;
     [Export]
     Actor playerCharacter;
+    [Export]
+    string initialShotName;
+    Dictionary<string, CutsceneShot> shotList;
     string playerCharacterName;
 
     StoryState storyState;
+    CutsceneCamera mainCutsceneCamera;
 
     public override void _Ready()
     {
@@ -35,6 +39,14 @@ public partial class CutsceneDirector : Node3D
         beatTimer.Timeout += AdvanceToNextAction;
         storyState = GetTree().Root.GetNode<GameMaster>("GameMaster").GetStoryState();
         playerCharacterName = playerCharacter.GetActorName();
+        shotList = new Dictionary<string, CutsceneShot>();
+        foreach(CutsceneShot shot in this.GetNode("Shot List").GetChildren()){
+            shotList.Add(shot.Name, shot);
+        }
+        mainCutsceneCamera = this.GetNode<CutsceneCamera>("Cutscene Camera");
+        //Set initial camera position;
+        if(shotList.TryGetValue(initialShotName, out CutsceneShot initialShotObject))mainCutsceneCamera.StartTransition(initialShotObject.GetShotDetails(), "cut");
+        else throw new ArgumentException("Initial shot: " + initialShotName + " not found in this cutscene");
     }
 
     public override void _Process(double delta){
@@ -67,6 +79,8 @@ public partial class CutsceneDirector : Node3D
                 case "Beat" : //The beat delay is handled via signal
                     return;
                 case "CutsceneAnimation" : //The animation is handled via signal
+                    return;
+                case "CutsceneCameraMove" : //Camera move completion is handled via signal
                     return;
             }
         }
@@ -131,6 +145,18 @@ public partial class CutsceneDirector : Node3D
                 storyState.TryModValue(mod.GetValueName(), mod.GetValueMod());
                 AdvanceToNextAction();
                 break;
+            case "CutsceneCameraMove" :
+                CutsceneCameraMove move = (CutsceneCameraMove) act;
+                if(shotList.TryGetValue(move.GetTargetShot(), out CutsceneShot newShot)){
+                    if(mainCutsceneCamera.StartTransition(newShot.GetShotDetails(), move.GetTransitionType(), move.GetTransitionLength())){
+                        mainCutsceneCamera.ShotTransitionComplete += OnCutsceneCameraMoveComplete;
+                    }else{
+                        AdvanceToNextAction();
+                    }
+                }else{
+                    new ArgumentException("Initial shot: " + move.GetTargetShot() + " not found in this cutscene");
+                }
+                break;
         }
 
     }
@@ -139,6 +165,11 @@ public partial class CutsceneDirector : Node3D
         waitingOnAnimation = false;
         watchedAnimations.TryGetValue(animation, out Actor actor);
         actor.GetAnimationPlayer().AnimationFinished -= OnCutsceneAnimationComplete;
+    }
+
+    public void OnCutsceneCameraMoveComplete(){
+        mainCutsceneCamera.ShotTransitionComplete -= OnCutsceneCameraMoveComplete;
+        AdvanceToNextAction();
     }
 }
 

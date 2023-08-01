@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cd0cfu3p5p0na"]
+[gd_scene load_steps=12 format=3 uid="uid://cd0cfu3p5p0na"]
 
 [ext_resource type="Script" path="res://Cutscenes/CutsceneDummy.cs" id="1_t3mmx"]
-[ext_resource type="Script" path="res://addons/cot_cutscene_editor/CutsceneDirector.cs" id="2_bwgb7"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDirector.cs" id="2_cp1kj"]
 [ext_resource type="Texture2D" uid="uid://d054fqnoqr0oo" path="res://Art/Cato Combat Sprite-Sheet.png" id="3_6faom"]
-[ext_resource type="Script" path="res://addons/cot_cutscene_editor/Actor.cs" id="3_75ynk"]
-[ext_resource type="PackedScene" uid="uid://h6cqvq3f60sa" path="res://addons/cot_cutscene_editor/dialogue_box.tscn" id="5_ql0ou"]
-[ext_resource type="PackedScene" uid="uid://c0573oq65m3ps" path="res://addons/cot_cutscene_editor/respose_box.tscn" id="6_q5kyj"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneShot.cs" id="3_ixp7a"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/Actor.cs" id="3_nmasf"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneCamera.cs" id="4_be5r3"]
+[ext_resource type="PackedScene" uid="uid://h6cqvq3f60sa" path="res://addons/cot_cutscene_editor/prefab_scenes/dialogue_box.tscn" id="5_ql0ou"]
+[ext_resource type="PackedScene" uid="uid://c0573oq65m3ps" path="res://addons/cot_cutscene_editor/prefab_scenes/respose_box.tscn" id="6_q5kyj"]
 
 [sub_resource type="Animation" id="Animation_y7tsh"]
 resource_name = "Big Gesture"
@@ -119,16 +121,31 @@ operation = 2
 size = Vector3(0.368505, 0.372472, 0.31453)
 
 [node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter")]
-script = ExtResource("2_bwgb7")
+script = ExtResource("2_cp1kj")
 screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Example New Script 2.xml"
 playerCharacter = NodePath("Cato Actor")
+initialShotName = "Cato Wide Shot"
 
-[node name="Camera3D" type="Camera3D" parent="Cutscene"]
+[node name="Shot List" type="Node3D" parent="Cutscene"]
+
+[node name="Cato Close Up" type="Camera3D" parent="Cutscene/Shot List"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 2.1875, 5.9375)
+fov = 60.0
+script = ExtResource("3_ixp7a")
+
+[node name="Cato Wide Shot" type="Camera3D" parent="Cutscene/Shot List"]
+transform = Transform3D(1, 0, 0, 0, 0.994769, 0.10215, 0, -0.10215, 0.994769, -1.67314, 4.24357, 10.0779)
+fov = 85.0
+script = ExtResource("3_ixp7a")
+
+[node name="Cutscene Camera" type="Camera3D" parent="Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 0.907642, 0.419744, 0, -0.419744, 0.907642, 0, 4.83687, 10.4591)
+current = true
+script = ExtResource("4_be5r3")
 
 [node name="Cato Actor" type="Node3D" parent="Cutscene"]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -2.74647, 0.1875, -0.229757)
-script = ExtResource("3_75ynk")
+script = ExtResource("3_nmasf")
 actorName = "Cato"
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cato Actor"]
@@ -150,7 +167,10 @@ libraries = {
 }
 
 [node name="Dialogue Box" parent="Cutscene/Cato Actor" instance=ExtResource("5_ql0ou")]
-transform = Transform3D(0.965925, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965925, -1.20991, 0.39131, -0.0863332)
+transform = Transform3D(1.44889, 0, -0.38823, 0, 1.5, 0, 0.38823, 0, 1.44889, -0.23494, -1.48369, 0.17491)
+
+[node name="BeatTimer" type="Timer" parent="Cutscene"]
+one_shot = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 0.735542, 0.67748, 0, -0.67748, 0.735542, -3.125, 8.0625, 8.3125)
@@ -158,6 +178,3 @@ light_energy = 7.0
 shadow_enabled = true
 spot_range = 24.25
 spot_angle = 23.8331
-
-[node name="BeatTimer" type="Timer" parent="Cutscene"]
-one_shot = true

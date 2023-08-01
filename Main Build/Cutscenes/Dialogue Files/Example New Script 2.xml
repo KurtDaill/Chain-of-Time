@@ -8,9 +8,11 @@
             <text>Alright, <b>what's [wave amp=100, freq=5]good?![/wave]</b></text>
         </line>
         <beat>1</beat>
+        <cameraMove transition="cut">Cato Close Up</cameraMove>
         <line><speaker>Cato</speaker><text>This is some [shake]test text. . .[/shake]</text></line>
         <setFlag name="Is Cato a Cool Dude"><state>true</state></setFlag>
         <modValue name="Cool Factor"><modifier>+100</modifier></modValue>
+        <cameraMove transition="linear">Cato Wide Shot</cameraMove>
         <setCharacterAnimation concurent="true"><character>Cato</character><animation>Big Gesture</animation></setCharacterAnimation>
         <line>
             <speaker>Cato</speaker>
