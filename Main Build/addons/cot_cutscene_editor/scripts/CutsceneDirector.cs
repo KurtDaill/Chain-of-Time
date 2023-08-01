@@ -28,6 +28,7 @@ public partial class CutsceneDirector : Node3D
 
     StoryState storyState;
     CutsceneCamera mainCutsceneCamera;
+    CutsceneResponseBox playerCharacterResponseBox;
 
     public override void _Ready()
     {
@@ -93,6 +94,23 @@ public partial class CutsceneDirector : Node3D
                     return;
                 case "CutsceneCameraMove" : //Camera move completion is handled via signal
                     return;
+                case "CutsceneEndBlock" : //act Has to be the response block loaded into playerCharacterResponseBox for us to reach this block of code
+                    GotoNextBlock(playerCharacterResponseBox.GetFinalDestination());
+                    break;
+            }
+        }
+        else if(Input.IsActionJustPressed("ui_down")){
+            switch(currentAction.GetType().Name){
+                case "CutsceneEndBlock" :
+                    playerCharacterResponseBox.GoDownList();
+                    break;
+            }
+        }
+        else if(Input.IsActionJustPressed("ui_up")){
+            switch(currentAction.GetType().Name){
+                case "CutsceneEndBlock" :
+                    playerCharacterResponseBox.GoUpList();
+                    break;
             }
         }
     }
@@ -110,10 +128,6 @@ public partial class CutsceneDirector : Node3D
         StartAction(currentAction);
     }
 
-    public void EndBlock(){
-
-    }
-
     public void StartAction(CutsceneAction act){
         switch(act.GetType().Name){
             case "CutsceneLine" :
@@ -127,6 +141,7 @@ public partial class CutsceneDirector : Node3D
                     if(!lineActor.GetAnimationPlayer().HasAnimation(line.GetConcurrentAnimation().GetAnimation()))
                         throw new NotImplementedException("Animation: " + line.GetConcurrentAnimation().GetAnimation() + " not found on Actor: " + lineActor.GetActorName());
                     lineActor.GetAnimationPlayer().Play(line.GetConcurrentAnimation().GetAnimation());
+                    waitingOnAnimation = true;
                 }
                 lineActor.SpeakLine(line);
                 break;
@@ -183,15 +198,41 @@ public partial class CutsceneDirector : Node3D
                 }
                 characterMoving.CompletedBlockingMovement += OnCharacterCompleteBlockingMovement;
                 break;
+            case "CutsceneEndBlock":
+                CutsceneEndBlock endBlock = (CutsceneEndBlock) act;
+                if(endBlock.IsResponseBlock()){
+                    playerCharacterResponseBox = playerCharacter.GetNode<CutsceneResponseBox>("Response Box");
+                    playerCharacterResponseBox.PopulateResponsesAndShow(endBlock.GetDialogueOptions());
+                }else{
+                    GotoNextBlock(endBlock.GetGotoBlockTarget());
+                }
+                break;
         }
 
+    }
+
+    public void GotoNextBlock(string targetBlock){
+        if(targetBlock == null || targetBlock == "INVALID") throw new ArgumentException();
+        if(targetBlock == "EXIT"){
+            //TODO handle quitting cutscenes
+            GD.Print("So long, Gay Bowser!");
+        }else{
+            if(play.TryGetBlock(targetBlock, out CutsceneBlock newLoadedBlock)){
+                block = newLoadedBlock;
+                currentAction = block.StartBlockAndGetFirstAction();
+                StartAction(currentAction);
+            }else{
+                throw new ArgumentException("Listed Block: " + targetBlock + " not found in screenplay! Check your XML script file!");
+            }
+        }
     }
 
     public void OnCutsceneAnimationComplete(StringName animation){
         waitingOnAnimation = false;
         watchedAnimations.TryGetValue(animation, out Actor actor);
         actor.GetAnimationPlayer().AnimationFinished -= OnCutsceneAnimationComplete;
-        AdvanceToNextAction();
+        if(currentAction.GetType().Name == "CutsceneCharacterAnimation") AdvanceToNextAction(); //We only progress to the next block if this animation is the thing holding up the show
+        watchedAnimations.Remove(animation);
     }
 
     public void OnCutsceneCameraMoveComplete(){
@@ -203,6 +244,7 @@ public partial class CutsceneDirector : Node3D
         waitingOnBlockingMove = false;
         watchedBlockingMoves.TryGetValue(markerName, out Actor actor);
         actor.CompletedBlockingMovement -= OnCharacterCompleteBlockingMovement;
+        watchedBlockingMoves.Remove(markerName);
         AdvanceToNextAction();
     }
 }

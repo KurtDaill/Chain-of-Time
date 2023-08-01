@@ -17,11 +17,13 @@
         <setCharacterAnimation concurent="true"><character>Cato</character><animation>Big Gesture</animation></setCharacterAnimation>
         <line>
             <speaker>Cato</speaker>
-            <text>This is <bigImpact>really </bigImpact><impact>Neat!</impact></text>
+            <text>This is [rainbow freq=1 sat=1 val=1]really Neat![/rainbow]</text>
         </line>
         <END>
             <opt GOTO="EXIT">Ok, guess that's it then</opt>
-            <GOTO>EXIT</GOTO>
+            <opt GOTO="EXIT">Cat</opt>
+            <opt GOTO="EXIT">Dog</opt>
+            <opt GOTO="start">Huh?</opt>
         </END>
     </block>
 </screenplay>   

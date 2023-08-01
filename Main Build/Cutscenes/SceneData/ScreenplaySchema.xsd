@@ -47,10 +47,10 @@
     </xs:complexType>
 
     <xs:complexType name="endBlock">
-        <xs:sequence>
-            <xs:element minOccurs="0" name="opt" type="dialogueOption"></xs:element>
+        <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element minOccurs="0" name="opt" type="dialogueOption"/>
             <xs:element minOccurs="0" name="GOTO" type="xs:string"/>
-        </xs:sequence>
+        </xs:choice>
     </xs:complexType>
     <xs:complexType name="dialogueOption">
         <xs:simpleContent>

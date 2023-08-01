@@ -6,80 +6,77 @@
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/Actor.cs" id="3_nmasf"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneCamera.cs" id="4_be5r3"]
 [ext_resource type="PackedScene" uid="uid://h6cqvq3f60sa" path="res://addons/cot_cutscene_editor/prefab_scenes/dialogue_box.tscn" id="5_ql0ou"]
-[ext_resource type="PackedScene" uid="uid://c0573oq65m3ps" path="res://addons/cot_cutscene_editor/prefab_scenes/respose_box.tscn" id="6_q5kyj"]
+[ext_resource type="PackedScene" uid="uid://c0573oq65m3ps" path="res://addons/cot_cutscene_editor/prefab_scenes/response_box.tscn" id="6_q5kyj"]
 [ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Adventure Cato Sprite-Sheet.png" id="6_tibvp"]
 
 [sub_resource type="Animation" id="Animation_y7tsh"]
 resource_name = "Big Gesture"
-length = 1.5
+length = 1.8
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
+tracks/0/path = NodePath("Sprite3D:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
 "points": PackedFloat32Array(-2.74647, -0.25, 0, 0.25, 0, -2.74647, -0.25, 0, 0.25, 0, -2.74647, -0.25, 0, 0.25, 0, -2.74647, -0.25, 0, 0.25, 0, -2.74647, -0.25, 0, 0.25, 0, -2.74647, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.8, 1.1, 1.4)
+"times": PackedFloat32Array(0, 0.3, 0.7, 1, 1.3, 1.7)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
+tracks/1/path = NodePath("Sprite3D:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0.0625, -0.25, 0, 0.25, 0, 0.6875, -0.2, -0.00700474, 0.1, -0.00118649, 0.0625, -0.25, 0, 0.25, 0, 0.0625, -0.25, 0, 0.25, 0, 0.6875, -0.2, -0.00700474, 0.1, -0.00118649, 0.0625, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.8, 1.1, 1.4)
+"points": PackedFloat32Array(4.13571, -0.25, 0, 0, 0.150156, 4.63571, -0.25, 0, 0.2, 0.00383854, 4.13571, -0.1, 0.0349121, 0.25, 0, 4.13571, -0.25, 0, 0, 0.150156, 4.63571, -0.25, 0, 0.2, 0.00383854, 4.13571, -0.1, 0.0349121, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.7, 1, 1.3, 1.7)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:position:z")
+tracks/2/path = NodePath("Sprite3D:position:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
 "points": PackedFloat32Array(-0.229757, -0.25, 0, 0.25, 0, -0.229757, -0.25, 0, 0.25, 0, -0.229757, -0.25, 0, 0.25, 0, -0.229757, -0.25, 0, 0.25, 0, -0.229757, -0.25, 0, 0.25, 0, -0.229757, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.8, 1.1, 1.4)
+"times": PackedFloat32Array(0, 0.3, 0.7, 1, 1.3, 1.7)
 }
-
-[sub_resource type="Animation" id="Animation_twp48"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-2.74647, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Dialogue Box:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-0.23494, -0.25, 0, 0.25, 0, -0.23494, -0.25, 0, 0.25, 0, -0.23494, -0.25, 0, 0.25, 0, -0.23494, -0.25, 0, 0.25, 0, -0.23494, -0.25, 0, 0.25, 0, -0.23494, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.7, 1, 1.3, 1.7)
 }
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.0625, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Dialogue Box:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-0.92119, -0.25, 0, 0, 0.0744123, -0.73369, -0.25, 0, 0.25, 0, -0.92119, 0, 0.0658938, 0.25, 0, -0.92119, -0.25, 0, 0, 0.0744123, -0.73369, -0.25, 0, 0.25, 0, -0.92119, 0, 0.0658938, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.7, 1, 1.3, 1.7)
 }
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-0.229757, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Dialogue Box:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.17491, -0.25, 0, 0.25, 0, 0.17491, -0.25, 0, 0.25, 0, 0.17491, -0.25, 0, 0.25, 0, 0.17491, -0.25, 0, 0.25, 0, 0.17491, -0.25, 0, 0.25, 0, 0.17491, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.7, 1, 1.3, 1.7)
 }
 
 [sub_resource type="Animation" id="Animation_k5hok"]
@@ -96,6 +93,75 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_twp48"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dialogue Box:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.23494, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dialogue Box:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.92119, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dialogue Box:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.17491, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite3D:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2.74647, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite3D:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(4.13571, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite3D:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.229757, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_x0h0o"]
@@ -162,9 +228,10 @@ playerCharacter = NodePath("Cato Actor")
 initialShotName = "Cato Wide Shot"
 
 [node name="Shot List" type="Node3D" parent="Cutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
 
 [node name="Cato Close Up" type="Camera3D" parent="Cutscene/Shot List"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.225, 2.188, 5.938)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 2.438, 5.938)
 fov = 60.0
 script = ExtResource("3_ixp7a")
 
@@ -189,7 +256,7 @@ script = ExtResource("3_nmasf")
 actorName = "Cato"
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cato Actor"]
-transform = Transform3D(0.999999, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 0.999999, 0.121472, 4.125, 0.229757)
+transform = Transform3D(0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, -2.74647, 4.13571, -0.229757)
 pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
@@ -198,9 +265,6 @@ texture = ExtResource("6_tibvp")
 hframes = 10
 vframes = 2
 
-[node name="Respose Box" parent="Cutscene/Cato Actor" instance=ExtResource("6_q5kyj")]
-visible = false
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Cato Actor"]
 autoplay = "Idle"
 libraries = {
@@ -208,7 +272,11 @@ libraries = {
 }
 
 [node name="Dialogue Box" parent="Cutscene/Cato Actor" instance=ExtResource("5_ql0ou")]
-transform = Transform3D(1.44889, 0, -0.38823, 0, 1.5, 0, 0.38823, 0, 1.44889, -0.23494, -1.48369, 0.17491)
+transform = Transform3D(1.44889, 0, -0.38823, 0, 1.5, 0, 0.38823, 0, 1.44889, -0.23494, -0.92119, 0.17491)
+visible = false
+
+[node name="Response Box" parent="Cutscene/Cato Actor" instance=ExtResource("6_q5kyj")]
+visible = false
 
 [node name="BeatTimer" type="Timer" parent="Cutscene"]
 one_shot = true

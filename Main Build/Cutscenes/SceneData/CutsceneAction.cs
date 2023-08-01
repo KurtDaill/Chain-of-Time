@@ -110,6 +110,15 @@ public class CutsceneEndBlock : CutsceneAction{
         this.options = null;
         this.gotoBlockStatement = gotoBlockStatement;
     }
+    public bool IsResponseBlock(){
+        return gotoBlockStatement == null;
+    }
+    public string GetGotoBlockTarget(){
+        return gotoBlockStatement.GetTargetBlock();
+    }
+    public CutsceneDialogueResponse[] GetDialogueOptions(){
+        return options;
+    }
 }
 
 public class CutsceneGoToBlock : CutsceneAction{
@@ -118,6 +127,9 @@ public class CutsceneGoToBlock : CutsceneAction{
         targetBlock = target;
     }
     public CutsceneGoToBlock(){}
+    public string GetTargetBlock(){
+        return targetBlock;
+    }
 }
 
 public class CutsceneDialogueResponse : CutsceneGoToBlock{
@@ -125,6 +137,9 @@ public class CutsceneDialogueResponse : CutsceneGoToBlock{
     public CutsceneDialogueResponse(string text, string target){
         this.text = text;
         this.targetBlock = target;
+    }
+    public string GetResponseText(){
+        return text;
     }
 }
 

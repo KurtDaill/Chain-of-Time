@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://6ewe3uubmamc"]
 
-[ext_resource type="Theme" uid="uid://dq2wt80l1hcrn" path="res://GUI/Themes/Skill Card Normal.tres" id="1_yd2l7"]
+[ext_resource type="Theme" uid="uid://dq2wt80l1hcrn" path="res://GUI/Themes/Battle Menu Themes/Skill Card Normal.tres" id="1_yd2l7"]
 [ext_resource type="Texture2D" uid="uid://jfvu1q88havg" path="res://GUI/Battle Menu Assets/Skill Menu/Spell Card.png" id="2_wxx5v"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/SkillCard.cs" id="3_01mxs"]
-[ext_resource type="Theme" uid="uid://lcud6pbsl6dn" path="res://GUI/Themes/UI Impact.tres" id="4_2aq60"]
+[ext_resource type="Theme" uid="uid://lcud6pbsl6dn" path="res://GUI/Themes/Battle Menu Themes/UI Impact.tres" id="4_2aq60"]
 [ext_resource type="Texture2D" uid="uid://diafuti26x647" path="res://GUI/Battle Menu Assets/Skill Menu/FriendlyPip.png" id="5_3ijbr"]
 [ext_resource type="Texture2D" uid="uid://cnjhk3wv6wdg" path="res://GUI/Battle Menu Assets/Skill Menu/FriendlyPipFlash.png" id="6_2f2r5"]
 [ext_resource type="Texture2D" uid="uid://ljywc1tefq1h" path="res://GUI/Battle Menu Assets/Skill Menu/EnemyPip.png" id="6_2x1xr"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://h6cqvq3f60sa"]
+[gd_scene load_steps=8 format=3 uid="uid://h6cqvq3f60sa"]
 
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDialogueBox.cs" id="1_ogdsl"]
 [ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="2_xt8rr"]
+[ext_resource type="Theme" uid="uid://c3w8cbrksjko5" path="res://GUI/Themes/Cutscene Themes/NormalDialogueText.tres" id="3_cemq0"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_24lnm"]
 viewport_path = NodePath("SubViewport")
@@ -88,19 +89,19 @@ offset_top = -0.200012
 offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("2_xt8rr")
-theme_override_font_sizes/normal_font_size = 48
+theme = ExtResource("3_cemq0")
 bbcode_enabled = true
 text = "Welly Welly Well. . .This is additional text and I say three lines is good."
 
 [node name="Label" type="Label" parent="SubViewport/Control"]
 layout_mode = 2
+anchor_top = 0.014
 anchor_right = 0.818
-anchor_bottom = 0.047
+anchor_bottom = 0.067
+offset_top = -0.120001
 offset_right = -10.5601
-offset_bottom = 0.239998
-theme_override_fonts/font = ExtResource("2_xt8rr")
-theme_override_font_sizes/font_size = 48
+offset_bottom = 1.64
+theme = ExtResource("3_cemq0")
 text = "Cato"
 vertical_alignment = 2
 

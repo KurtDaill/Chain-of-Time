@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://ca3skshssqtt1"]
 
-[ext_resource type="Theme" uid="uid://0sj6o2hvmgmt" path="res://GUI/Themes/Readout Text.tres" id="1_t2aa8"]
+[ext_resource type="Theme" uid="uid://0sj6o2hvmgmt" path="res://GUI/Themes/Battle Menu Themes/Readout Text.tres" id="1_t2aa8"]
 [ext_resource type="Texture2D" uid="uid://3h4w6mektumc" path="res://GUI/Battle Menu Assets/Readouts/Silver's Readout.png" id="2_gpjko"]
 [ext_resource type="Script" path="res://GUI/PlayerCharacterReadout.cs" id="3_bx4x2"]
 [ext_resource type="Texture2D" uid="uid://cuc7tn3snj7md" path="res://GUI/Battle Menu Assets/Readouts/Readout Highlight.png" id="4_kuyuw"]
