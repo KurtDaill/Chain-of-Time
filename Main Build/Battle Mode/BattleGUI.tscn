@@ -1,7 +1,7 @@
 [gd_scene load_steps=53 format=3 uid="uid://ctkjn6qaseru7"]
 
-[ext_resource type="Theme" uid="uid://d4kx000io04gf" path="res://GUI/Themes/Skill Card Normal Small.tres" id="3"]
-[ext_resource type="Theme" uid="uid://dq2wt80l1hcrn" path="res://GUI/Themes/Skill Card Normal.tres" id="5"]
+[ext_resource type="Theme" uid="uid://d4kx000io04gf" path="res://GUI/Themes/Battle Menu Themes/Skill Card Normal Small.tres" id="3"]
+[ext_resource type="Theme" uid="uid://dq2wt80l1hcrn" path="res://GUI/Themes/Battle Menu Themes/Skill Card Normal.tres" id="5"]
 [ext_resource type="Texture2D" uid="uid://bjukb2viqs36y" path="res://GUI/Battle Menu Assets/Attack Menu/Normal Attack.png" id="17_o7fhh"]
 [ext_resource type="Texture2D" uid="uid://8iltg8hieg8a" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuRunHighlight.png" id="20"]
 [ext_resource type="AudioStream" uid="uid://vrcv026r88aw" path="res://Audio/UI_No.wav" id="21"]
@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cm7bwe6xrk4bw" path="res://GUI/Battle Menu Assets/Attack Menu/Attack Menu.png" id="33"]
 [ext_resource type="Texture2D" uid="uid://doe0fcor7214h" path="res://GUI/Battle Menu Assets/Skill Menu/Skill Card.png" id="33_011xl"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/SkillCard.cs" id="34_dir1l"]
-[ext_resource type="Theme" uid="uid://lcud6pbsl6dn" path="res://GUI/Themes/UI Impact.tres" id="35_wu077"]
+[ext_resource type="Theme" uid="uid://lcud6pbsl6dn" path="res://GUI/Themes/Battle Menu Themes/UI Impact.tres" id="35_wu077"]
 [ext_resource type="Texture2D" uid="uid://7wtuchgydm3u" path="res://GUI/Battle Menu Assets/Readouts/Lucienne Reaodut.png" id="36_1ny30"]
 [ext_resource type="Texture2D" uid="uid://dbuhrp5s28xww" path="res://GUI/Battle Menu Assets/Top Menu/AttackButton.png" id="36_70wny"]
 [ext_resource type="Texture2D" uid="uid://diafuti26x647" path="res://GUI/Battle Menu Assets/Skill Menu/FriendlyPip.png" id="36_wc611"]

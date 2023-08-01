@@ -134,8 +134,8 @@ public partial class ExplorePlayer : CharacterBody3D
 			promenade = ((Promenade)area).GetPromenadeIndex();
 		}
 		if(area.GetGroups().Contains("Temp")){
-			Temp temporarySolution = (Temp) area;
-			temporarySolution.OnAreaEntered();
+			//Temp temporarySolution = (Temp) area;
+			//temporarySolution.OnAreaEntered();
 		}
 		if(area.GetGroups().Contains("Transition")){
 			LevelTransition trans = (LevelTransition) area;

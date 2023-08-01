@@ -5,20 +5,25 @@
     <block name="start">
         <line>
             <speaker>Cato</speaker>
-            <text>Alright, <b>what's good?!</b></text>
+            <text>Alright, <b>what's [wave amp=100, freq=5]good?![/wave]</b></text>
         </line>
+        <characterMove character="Cato">Cato Stand Two</characterMove>
         <beat>1</beat>
-        <line><speaker>Cato</speaker><text>This is some test text...</text></line>
+        <cameraMove transition="cut">Cato Close Up</cameraMove>
+        <line><speaker>Cato</speaker><text>This is some [shake]test text. . .[/shake]</text></line>
         <setFlag name="Is Cato a Cool Dude"><state>true</state></setFlag>
         <modValue name="Cool Factor"><modifier>+100</modifier></modValue>
+        <cameraMove transition="linear">Cato Wide Shot</cameraMove>
         <setCharacterAnimation concurent="true"><character>Cato</character><animation>Big Gesture</animation></setCharacterAnimation>
         <line>
             <speaker>Cato</speaker>
-            <text>This is <bigImpact>really </bigImpact><impact>Neat!</impact></text>
+            <text>This is [rainbow freq=1 sat=1 val=1]really Neat![/rainbow]</text>
         </line>
         <END>
             <opt GOTO="EXIT">Ok, guess that's it then</opt>
-            <GOTO>EXIT</GOTO>
+            <opt GOTO="EXIT">Cat</opt>
+            <opt GOTO="EXIT">Dog</opt>
+            <opt GOTO="start">Huh?</opt>
         </END>
     </block>
 </screenplay>   

@@ -38,7 +38,7 @@ public partial class InteractionPoint : DialogueInteractable
 		if(enabled && armed){
 			if(storyFlagRequiredForCutscene != "" && !GetNode<GameMaster>("/root/GameMaster").GetFlagValue(storyFlagRequiredForCutscene)) return;
 			
-			cutscene.StartCutscene();
+			//cutscene.StartCutscene();
 			animPlay.Play("HidePrompt");
 			await ToSignal(cutscene, "CutsceneCompleted");
 			animPlay.Play("ShowPrompt");

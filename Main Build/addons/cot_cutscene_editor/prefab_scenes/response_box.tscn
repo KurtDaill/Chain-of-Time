@@ -1,0 +1,179 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0573oq65m3ps"]
+
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneResponseBox.cs" id="1_lhqn3"]
+[ext_resource type="Theme" uid="uid://c3w8cbrksjko5" path="res://GUI/Themes/Cutscene Themes/NormalDialogueText.tres" id="2_p1avh"]
+[ext_resource type="Theme" uid="uid://dd8uuwn5tc0cs" path="res://GUI/Themes/Cutscene Themes/ResponseHighlightPanel.tres" id="3_koseq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2f7ka"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_542ps"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dwk71"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fst3"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_dwk71")
+
+[sub_resource type="QuadMesh" id="QuadMesh_gstxq"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_0fst3")
+size = Vector2(12, 6)
+
+[node name="Response Box" type="Node3D" node_paths=PackedStringArray("responseLabels")]
+transform = Transform3D(0.999999, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 0.999999, -1.87148, 5.37627, -0.501462)
+script = ExtResource("1_lhqn3")
+responseLabels = [NodePath("SubViewport/Control/VBoxContainer/Response One"), NodePath("SubViewport/Control/VBoxContainer/Response Two"), NodePath("SubViewport/Control/VBoxContainer/Response Three"), NodePath("SubViewport/Control/VBoxContainer/Response Four")]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1440, 810)
+
+[node name="Control" type="Panel" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2f7ka")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.029
+anchor_top = 0.037
+anchor_right = 0.954
+anchor_bottom = 1.002
+offset_left = -0.68
+offset_top = 0.0400009
+offset_right = 0.319946
+offset_bottom = -0.160156
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="PanelFirst" type="Panel" parent="SubViewport/Control/VBoxContainer"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_542ps")
+
+[node name="Response One" type="RichTextLabel" parent="SubViewport/Control/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("2_p1avh")
+bbcode_enabled = true
+text = "This is Response One
+It is two lines for testing purposes"
+fit_content = true
+
+[node name="Highlight Panel" type="Panel" parent="SubViewport/Control/VBoxContainer/Response One"]
+visible = false
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.014
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.878
+offset_top = -8.0
+offset_right = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_koseq")
+
+[node name="Panel" type="Panel" parent="SubViewport/Control/VBoxContainer"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_542ps")
+
+[node name="Response Two" type="RichTextLabel" parent="SubViewport/Control/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("2_p1avh")
+bbcode_enabled = true
+text = "This is Response Two
+It's long too"
+fit_content = true
+
+[node name="Highlight Panel" type="Panel" parent="SubViewport/Control/VBoxContainer/Response Two"]
+visible = false
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.014
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.878
+offset_top = -8.0
+offset_right = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_koseq")
+
+[node name="Panel2" type="Panel" parent="SubViewport/Control/VBoxContainer"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_542ps")
+
+[node name="Response Three" type="RichTextLabel" parent="SubViewport/Control/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("2_p1avh")
+bbcode_enabled = true
+text = "This is Response Three
+I'm running out of clever things to say"
+fit_content = true
+
+[node name="Highlight Panel" type="Panel" parent="SubViewport/Control/VBoxContainer/Response Three"]
+visible = false
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.014
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.878
+offset_top = -8.0
+offset_right = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_koseq")
+
+[node name="Panel3" type="Panel" parent="SubViewport/Control/VBoxContainer"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_542ps")
+
+[node name="Response Four" type="RichTextLabel" parent="SubViewport/Control/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("2_p1avh")
+bbcode_enabled = true
+text = "This is Response Four
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+fit_content = true
+
+[node name="Highlight Panel" type="Panel" parent="SubViewport/Control/VBoxContainer/Response Four"]
+visible = false
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.014
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.878
+offset_top = -8.0
+offset_right = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_koseq")
+
+[node name="Panel4" type="Panel" parent="SubViewport/Control/VBoxContainer"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_542ps")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_gstxq")

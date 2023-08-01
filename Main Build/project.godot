@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Chain Of Time"
-run/main_scene="res://Battle Mode/PrototypeBattle.tscn"
+run/main_scene="res://Cutscenes/cutscene_test_kitchen.tscn"
 config/features=PackedStringArray("4.1", "C#")
 config/icon="res://icon.png"
 
@@ -24,6 +24,7 @@ CameraManager="res://Old/CameraManager.cs"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=1
 window/size/always_on_top=true
 window/stretch/mode="viewport"
 window/size/width=1920
@@ -35,7 +36,7 @@ project/assembly_name="Chain Of Time"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/MonoDebuggerQM-1.0.2/MonoDebuggerQM-1.0.2/plugin.cfg")
+enabled=PackedStringArray("res://addons/MonoDebuggerQM-1.0.2/MonoDebuggerQM-1.0.2/plugin.cfg", "res://addons/cot_cutscene_editor/plugin.cfg")
 
 [gdnative]
 

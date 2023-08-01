@@ -1,0 +1,113 @@
+[gd_scene load_steps=8 format=3 uid="uid://h6cqvq3f60sa"]
+
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDialogueBox.cs" id="1_ogdsl"]
+[ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="2_xt8rr"]
+[ext_resource type="Theme" uid="uid://c3w8cbrksjko5" path="res://GUI/Themes/Cutscene Themes/NormalDialogueText.tres" id="3_cemq0"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_24lnm"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ym1g5"]
+resource_local_to_scene = true
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_24lnm")
+
+[sub_resource type="QuadMesh" id="QuadMesh_rg16h"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ym1g5")
+size = Vector2(8, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_le35q"]
+
+[node name="Dialogue Box" type="Node3D" node_paths=PackedStringArray("characterNameLabel", "dialogueLabel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07881, 0)
+script = ExtResource("1_ogdsl")
+characterNameLabel = NodePath("SubViewport/Control/Label")
+dialogueLabel = NodePath("SubViewport/Control/RichTextLabel")
+textDisplaySpeed = 10.0
+
+[node name="Character Name Label" type="Label3D" parent="."]
+transform = Transform3D(0.7, 0, -1.49012e-08, 0, 0.7, 0, 1.49012e-08, 0, 0.7, -4.6, 4.438, 0.4)
+visible = false
+pixel_size = 0.003
+no_depth_test = true
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 1.0
+texture_filter = 5
+text = "Cato"
+font = ExtResource("2_xt8rr")
+font_size = 256
+outline_size = 96
+
+[node name="Dialogue Label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -4.5, 4.063, -1.19209e-07)
+visible = false
+pixel_size = 0.002
+no_depth_test = true
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 1.0
+texture_filter = 5
+text = "Welly Welly Well...This is additional text to ponder and I say three lines is good."
+font = ExtResource("2_xt8rr")
+font_size = 256
+outline_size = 96
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 3
+width = 5200.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("QuadMesh_rg16h")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(960, 540)
+render_target_update_mode = 4
+
+[node name="Control" type="Panel" parent="SubViewport"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_le35q")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewport/Control"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.049
+anchor_top = 0.165
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.919998
+offset_top = -0.200012
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_cemq0")
+bbcode_enabled = true
+text = "Welly Welly Well. . .This is additional text and I say three lines is good."
+
+[node name="Label" type="Label" parent="SubViewport/Control"]
+layout_mode = 2
+anchor_top = 0.014
+anchor_right = 0.818
+anchor_bottom = 0.067
+offset_top = -0.120001
+offset_right = -10.5601
+offset_bottom = 1.64
+theme = ExtResource("3_cemq0")
+text = "Cato"
+vertical_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport/Control"]
+visible = false
+layout_mode = 2
+offset_right = 1000.0
+offset_bottom = 1000.0
+color = Color(0, 0.882353, 0.858824, 1)

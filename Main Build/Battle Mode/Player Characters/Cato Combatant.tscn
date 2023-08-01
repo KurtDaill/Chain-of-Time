@@ -134,7 +134,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 37, 0]
+"values": [0, 55, 0]
 }
 
 [sub_resource type="Animation" id="Animation_l3yyt"]
@@ -245,7 +245,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_5q5fj"]
 resource_name = "Shield Rush"
-length = 0.5
+length = 1.4
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -254,10 +254,10 @@ tracks/0/path = NodePath("Sprite Adjuster/CatoSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 11, 14]
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [56, 68]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -378,7 +378,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_uumsx"]
 resource_name = "Taunt"
-length = 2.3
+length = 3.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -386,10 +386,10 @@ tracks/0/path = NodePath("Sprite Adjuster/CatoSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.5, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [18, 32]
+"values": [18, 32, 53]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -443,7 +443,7 @@ shaded = true
 alpha_cut = 2
 texture = ExtResource("3_qd2l3")
 hframes = 10
-vframes = 4
+vframes = 7
 
 [node name="Pointer Adjuster" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)

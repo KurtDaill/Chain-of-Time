@@ -33,7 +33,7 @@ public partial class StoryState : Resource
     }
 
 
-    public bool HandleModifier(ScreenplayModifier mod){
+    /*public bool HandleModifier(ScreenplayModifier mod){
         if(mod.IsInt()){
             if(mod.IsSetter()){
                 return TrySetValue(mod.GetKey(), mod.GetValue());
@@ -41,7 +41,7 @@ public partial class StoryState : Resource
             return TryModValue(mod.GetKey(), mod.GetValue());
         }
         return TrySetFlag(mod.GetKey(), mod.GetValue() == 1);
-    }
+    }*/
     
     public bool TrySetFlag(string flag, bool set){
         if(flags.ContainsKey(flag)){

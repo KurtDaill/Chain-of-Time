@@ -100,6 +100,6 @@ public partial class TimeFragment : Area3D
 
 	public void PlayCutscene(){
 		cutsceneAlreadyPlayed = true;
-		postTravelCustcene.StartCutscene();
+		//postTravelCustcene.StartCutscene();
 	}
 }

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 public partial class ResponseContainer : VBoxContainer
-{
+{/*
 	List<RichTextLabel> responseLabels;
 	Response[] responseObjects;
 
@@ -98,4 +98,4 @@ public partial class ResponseContainer : VBoxContainer
 		}
 		this.Scale = new Vector2(0,1); //Resets the scale such that the open animation doesn't stutter
 	}
-}
+*/}

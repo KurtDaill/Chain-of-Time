@@ -7,7 +7,7 @@ public abstract partial class DialogueInteractable : Node3D{
 	[Export]
 	public bool cutsceneRepeats;
 	[Export]
-	public Node3D cutsceneNode;
+	public Node cutsceneNode;
 	protected CutsceneDirector cutscene;
 	[Export]
 	public Area3D interactArea;
@@ -38,7 +38,7 @@ public abstract partial class DialogueInteractable : Node3D{
     public virtual async void PlayCutscene(){
 		if(enabled){
 			if(storyFlagRequiredForCutscene != "" && !GetNode<GameMaster>("/root/GameMaster").GetFlagValue(storyFlagRequiredForCutscene)) return;
-				cutscene.StartCutscene();
+				//cutscene.StartCutscene();
 				await ToSignal(cutscene, "CutsceneCompleted");
 			if(!cutsceneRepeats) hasCutscene = false;
 				this.DisarmCutscene();
