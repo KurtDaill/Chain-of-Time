@@ -1,7 +1,8 @@
 using System;
 using Godot;
 using System.Collections.Generic;
-public class CutsceneAction{
+
+public abstract class CutsceneAction{
 
 }
 

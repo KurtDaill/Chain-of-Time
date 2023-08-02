@@ -29,6 +29,7 @@ public partial class CutsceneDirector : Node3D
     StoryState storyState;
     CutsceneCamera mainCutsceneCamera;
     CutsceneResponseBox playerCharacterResponseBox;
+    AnimationPlayer animPlay;
 
     public override void _Ready()
     {
@@ -59,6 +60,7 @@ public partial class CutsceneDirector : Node3D
         //Set initial camera position;
         if(shotList.TryGetValue(initialShotName, out CutsceneShot initialShotObject))mainCutsceneCamera.StartTransition(initialShotObject.GetShotDetails(), "cut");
         else throw new ArgumentException("Initial shot: " + initialShotName + " not found in this cutscene");
+        animPlay = this.GetNode<AnimationPlayer>("Animation Player");
     }
 
     public override void _Process(double delta){
@@ -128,7 +130,7 @@ public partial class CutsceneDirector : Node3D
         StartAction(currentAction);
     }
 
-    public void StartAction(CutsceneAction act){
+    public async void StartAction(CutsceneAction act){
         switch(act.GetType().Name){
             case "CutsceneLine" :
                 CutsceneLine line = (CutsceneLine) act;
@@ -198,6 +200,12 @@ public partial class CutsceneDirector : Node3D
                 }
                 characterMoving.CompletedBlockingMovement += OnCharacterCompleteBlockingMovement;
                 break;
+            case "CutsceneEnvironmentAnimation":
+                CutsceneEnvironmentAnimation envAnimation = (CutsceneEnvironmentAnimation) act;
+                this.animPlay.Play(envAnimation.GetAnimation());
+                await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
+                AdvanceToNextAction();
+                return;
             case "CutsceneSmashCut":
                 CutsceneSmashCut smashCut = (CutsceneSmashCut) act;
                 foreach(CutsceneCharacterMove smashCutMove in smashCut.GetCharacterMoves()){
