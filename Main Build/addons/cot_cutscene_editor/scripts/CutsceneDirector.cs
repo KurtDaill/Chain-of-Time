@@ -198,6 +198,25 @@ public partial class CutsceneDirector : Node3D
                 }
                 characterMoving.CompletedBlockingMovement += OnCharacterCompleteBlockingMovement;
                 break;
+            case "CutsceneSmashCut":
+                CutsceneSmashCut smashCut = (CutsceneSmashCut) act;
+                foreach(CutsceneCharacterMove smashCutMove in smashCut.GetCharacterMoves()){
+                    cast.TryGetValue(smashCutMove.GetCharacterName(), out Actor actor);
+                    blockingMarks.TryGetValue(smashCutMove.GetBlockingMarkerName(), out Marker3D marker);
+                    actor.GlobalPosition = marker.GlobalPosition;
+                }
+                foreach(CutsceneCharacterAnimation smashCutSetAnimation in smashCut.GetCharacterAnimations()){
+                    cast.TryGetValue(smashCutSetAnimation.GetCharacter(), out Actor actor);
+                    watchedAnimations.Add(smashCutSetAnimation.GetAnimation(), actor);
+                    actor.GetAnimationPlayer().Play(smashCutSetAnimation.GetAnimation());
+                }
+                foreach(string nodeName in smashCut.GetNodesToBeHidden()){
+                    ((Node3D)this.FindChild(nodeName, true, true)).Visible = false;
+                }
+                foreach(string nodeName in smashCut.GetNodesToBeShown()){
+                    ((Node3D)this.FindChild(nodeName, true, true)).Visible = true;
+                }
+                break;
             case "CutsceneEndBlock":
                 CutsceneEndBlock endBlock = (CutsceneEndBlock) act;
                 if(endBlock.IsResponseBlock()){

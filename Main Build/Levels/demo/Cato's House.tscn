@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c84k7o4rrne8o"]
+[gd_scene load_steps=22 format=3 uid="uid://c84k7o4rrne8o"]
 
 [ext_resource type="PackedScene" uid="uid://cg0lh548glsxq" path="res://Art/3D/Cato's House Rough Render.dae" id="1_7ca1c"]
 [ext_resource type="PackedScene" uid="uid://bah8s50p18c0s" path="res://Art/3D/ChairOne.dae" id="2_jgjfe"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Adventure Cato Sprite-Sheet.png" id="7_rghw2"]
 [ext_resource type="PackedScene" uid="uid://h6cqvq3f60sa" path="res://addons/cot_cutscene_editor/prefab_scenes/dialogue_box.tscn" id="8_r7quh"]
 [ext_resource type="PackedScene" uid="uid://c0573oq65m3ps" path="res://addons/cot_cutscene_editor/prefab_scenes/response_box.tscn" id="9_xqtkw"]
+[ext_resource type="Texture2D" uid="uid://rrkkuukcn2sf" path="res://Art/Cera Cinematic Sprite-Sheet.png" id="10_fb1d8"]
 
 [sub_resource type="Environment" id="Environment_5clu4"]
 background_mode = 1
@@ -196,6 +197,109 @@ _data = {
 "Walk": SubResource("Animation_x0h0o")
 }
 
+[sub_resource type="Animation" id="Animation_ilrrp"]
+resource_name = "Big Gesture"
+length = 1.8
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-2.74647, -0.25, 0, 0.25, 0, -2.74647, -0.25, 0, 0.25, 0, -2.74647, -0.25, 0, 0.25, 0, -2.74647, -0.25, 0, 0.25, 0, -2.74647, -0.25, 0, 0.25, 0, -2.74647, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.7, 1, 1.3, 1.7)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(4.13571, -0.25, 0, 0, 0.150156, 4.63571, -0.25, 0, 0.2, 0.00383854, 4.13571, -0.1, 0.0349121, 0.25, 0, 4.13571, -0.25, 0, 0, 0.150156, 4.63571, -0.25, 0, 0.2, 0.00383854, 4.13571, -0.1, 0.0349121, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.7, 1, 1.3, 1.7)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-0.229757, -0.25, 0, 0.25, 0, -0.229757, -0.25, 0, 0.25, 0, -0.229757, -0.25, 0, 0.25, 0, -0.229757, -0.25, 0, 0.25, 0, -0.229757, -0.25, 0, 0.25, 0, -0.229757, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.7, 1, 1.3, 1.7)
+}
+
+[sub_resource type="Animation" id="Animation_4cbi2"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_huynt"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2.74647, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.229757, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_n5q5v"]
+resource_name = "Walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yu46o"]
+_data = {
+"Big Gesture": SubResource("Animation_ilrrp"),
+"Idle": SubResource("Animation_4cbi2"),
+"RESET": SubResource("Animation_huynt"),
+"Walk": SubResource("Animation_n5q5v")
+}
+
 [node name="Node3D" type="Node3D"]
 
 [node name="House Scene" type="Node3D" parent="."]
@@ -254,20 +358,12 @@ initialShotName = "Cato Wide Shot"
 [node name="Shot List" type="Node3D" parent="Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
 
-[node name="Cato Close Up" type="Camera3D" parent="Cutscene/Shot List"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 2.438, 5.938)
-fov = 60.0
-script = ExtResource("4_ks7pd")
-
-[node name="Cato Wide Shot" type="Camera3D" parent="Cutscene/Shot List"]
-transform = Transform3D(1, 0, 0, 0, 0.994769, 0.10215, 0, -0.10215, 0.994769, -1.67314, 4.24357, 10.0779)
-fov = 85.0
+[node name="MainShot" type="Camera3D" parent="Cutscene/Shot List"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.663432, 3.625, 12.913)
+fov = 50.0
 script = ExtResource("4_ks7pd")
 
 [node name="Blocking Marks" type="Node3D" parent="Cutscene"]
-
-[node name="Cato Stand Two" type="Marker3D" parent="Cutscene/Blocking Marks"]
-gizmo_extents = 0.5
 
 [node name="Cutscene Camera" type="Camera3D" parent="Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 0.907642, 0.419744, 0, -0.419744, 0.907642, 0, 4.83687, 10.4591)
@@ -275,7 +371,7 @@ current = true
 script = ExtResource("5_i600j")
 
 [node name="Cato Actor" type="Node3D" parent="Cutscene"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -0.93397, 0.0625, -0.229757)
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -0.93397, -0.125, -0.229757)
 script = ExtResource("6_kbbwb")
 actorName = "Cato"
 
@@ -302,6 +398,29 @@ visible = false
 [node name="Response Box" parent="Cutscene/Cato Actor" node_paths=PackedStringArray("responseLabels") instance=ExtResource("9_xqtkw")]
 visible = false
 responseLabels = [null, null, null, null]
+
+[node name="Cera Actor" type="Node3D" parent="Cutscene"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 5.69103, 0, -0.229757)
+script = ExtResource("6_kbbwb")
+actorName = "Cato"
+
+[node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cera Actor"]
+transform = Transform3D(0.965923, 0, -0.258818, 0, 1, 0, 0.258818, 0, 0.965923, -2.74647, 1.51071, -0.229757)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("10_fb1d8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Cera Actor"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_yu46o")
+}
+
+[node name="Dialogue Box" parent="Cutscene/Cera Actor" instance=ExtResource("8_r7quh")]
+transform = Transform3D(0.965924, 0, -0.258818, 0, 1, 0, 0.258818, 0, 0.965924, -2.31458, 0.14131, -0.296667)
+visible = false
 
 [node name="BeatTimer" type="Timer" parent="Cutscene"]
 one_shot = true

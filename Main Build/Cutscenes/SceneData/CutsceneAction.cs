@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using System.Collections.Generic;
 public class CutsceneAction{
 
 }
@@ -167,4 +168,29 @@ public class CutsceneCharacterMove : CutsceneAction{
     }
     public string GetCharacterName(){return characterName;}
     public string GetBlockingMarkerName(){return blockingMarkerName;}
+}
+
+public class CutsceneEnvironmentAnimation : CutsceneAction{
+    string animation;
+    public CutsceneEnvironmentAnimation(string animation){
+        this.animation = animation;
+    }
+    public string GetAnimation(){return animation;}
+}
+
+public class CutsceneSmashCut : CutsceneAction{
+    List<CutsceneCharacterMove> characterMoves;
+    List<CutsceneCharacterAnimation> characterAnimations;
+    List<string> nodesToBeShown;
+    List<string> nodesToBeHidden;
+    public CutsceneSmashCut(List<CutsceneCharacterMove> characterMoves, List<CutsceneCharacterAnimation> characterAnimations, List<string> nodesToBeShown, List<string> nodesToBeHidden){
+        this.characterMoves = characterMoves;
+        this.characterAnimations = characterAnimations;
+        this.nodesToBeShown = nodesToBeShown;
+        this.nodesToBeHidden = nodesToBeHidden;    
+    }
+    public List<CutsceneCharacterMove> GetCharacterMoves(){return characterMoves;}
+    public List<CutsceneCharacterAnimation> GetCharacterAnimations(){return characterAnimations;}
+    public List<string> GetNodesToBeShown(){return nodesToBeShown;}
+    public List<string> GetNodesToBeHidden(){return nodesToBeHidden;}
 }

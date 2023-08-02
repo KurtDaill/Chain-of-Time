@@ -38,16 +38,11 @@ public static class ScreenPlayLoader{
                         break;
 
                     case "setCharacterAnimation":
-                        string character = currentAction.FirstChild.InnerText;
-                        string animation = currentAction.FirstChild.NextSibling.InnerText;
-                        bool concurency = Convert.ToBoolean(currentAction.Attributes.GetNamedItem("concurent").Value);
-                        if(concurency){
-                            if(currentAction.NextSibling.Name != "line") throw new ArgumentException();
-                            actions.Add(GenerateLine(currentAction.NextSibling, new CutsceneCharacterAnimation(character, animation, concurency)));
-                            currentAction = currentAction.NextSibling; //We just inputted the next line into the block, so we need to manually skip past it here
-                        }else{
-                            actions.Add(new CutsceneCharacterAnimation(character, animation, concurency));
+                        //If this function returns a line object...
+                        if(GenerateCharacterAnimationOrLineWithAnimation(currentAction, out CutsceneAction returnedAction)){
+                            currentAction = currentAction.NextSibling; //we just inputted the next line into the block, so we need to manually skip past it here
                         }
+                        actions.Add(returnedAction);
                         break;
 
                     case "setFlag":
@@ -79,6 +74,37 @@ public static class ScreenPlayLoader{
                         string characterName = currentAction.Attributes.GetNamedItem("character").Value;
                         string blockingMarkerName = currentAction.InnerText;
                         actions.Add(new CutsceneCharacterMove(characterName, blockingMarkerName));
+                        break;
+                    case "envAnimation" :
+                        string environmentAnimationName = currentAction.InnerText;
+                        actions.Add(new CutsceneEnvironmentAnimation(environmentAnimationName));
+                        break;
+                    case "smashCut" :
+                        XmlNode smashCutElementHead = currentAction.FirstChild;
+                        List<CutsceneCharacterMove> characterTeleports = new List<CutsceneCharacterMove>();
+                        List<CutsceneCharacterAnimation> animationChanges = new List<CutsceneCharacterAnimation>();
+                        List<string> showMeNodes = new List<string>();
+                        List<string> hideMeNodes = new List<string>();
+                        while(smashCutElementHead != null){
+                            switch(smashCutElementHead.Name){
+                                case "characterAnimation" : 
+                                    if(GenerateCharacterAnimationOrLineWithAnimation(smashCutElementHead, out CutsceneAction generatedAnimation)){
+                                        throw new ArgumentException("Cannot place animations concurrent with lines in a smash cut!");
+                                    }
+                                    animationChanges.Add((CutsceneCharacterAnimation)generatedAnimation);
+                                    break;
+                                case "characterMove" :
+                                    string smashCutMoveCharacterName = smashCutElementHead.Attributes.GetNamedItem("character").Value;
+                                    string smashCutMoveBlockingMarkerName = smashCutElementHead.InnerText;
+                                    characterTeleports.Add(new CutsceneCharacterMove(smashCutMoveBlockingMarkerName, smashCutMoveBlockingMarkerName));
+                                    break;
+                                case "showNode" :
+                                    showMeNodes.Add(smashCutElementHead.InnerText); break;
+                                case "hideNode" :
+                                    showMeNodes.Add(smashCutElementHead.InnerText); break;
+                            }
+                            smashCutElementHead = smashCutElementHead.NextSibling;
+                        }
                         break;
                     case "END":
                         List<CutsceneDialogueResponse> responses = new List<CutsceneDialogueResponse>();
@@ -135,5 +161,20 @@ public static class ScreenPlayLoader{
         }
         bool hasAnim = (anim != null);
         return new CutsceneLine(speaker, text, effects.ToArray(), hasAnim, anim);
+    }
+
+    //returns whether or not it returned a line
+    private static bool GenerateCharacterAnimationOrLineWithAnimation(XmlNode animationNode, out CutsceneAction resultingAction){
+        string character = animationNode.FirstChild.InnerText;
+        string animation = animationNode.FirstChild.NextSibling.InnerText;
+        bool concurency = Convert.ToBoolean(animationNode.Attributes.GetNamedItem("concurent").Value);
+        if(concurency){
+            if(animationNode.NextSibling.Name != "line") throw new ArgumentException();
+            resultingAction =  GenerateLine(animationNode.NextSibling, new CutsceneCharacterAnimation(character, animation, concurency));
+            return true;
+        }else{
+            resultingAction = new CutsceneCharacterAnimation(character, animation, concurency);
+            return false;
+        }
     }
 }

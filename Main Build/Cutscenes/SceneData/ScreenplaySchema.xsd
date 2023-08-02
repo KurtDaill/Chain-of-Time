@@ -14,13 +14,15 @@
             <xs:element minOccurs="1" maxOccurs="unbounded" name="line" type="line"/>
             <xs:element minOccurs="0" name="beginAsyncAnimation" type="xs:string"/>
             <xs:element minOccurs="0" name="stopAsyncAnimation" type="xs:string"/>
-            <xs:element minOccurs="0" name="setCharacterAnimation" type="setCharacterAnimation"></xs:element>
+            <xs:element minOccurs="0" name="setCharacterAnimation" type="setCharacterAnimation"/>
+            <xs:element minOccurs="0" name="playAudio" type="xs:string"/>
             <xs:element minOccurs="0" name="setFlag" type="setStoryFlag"/>
             <xs:element minOccurs="0" name="modValue" type="storyValueModifier"/>
             <xs:element minOccurs="0" name="setValue" type="storyValueSet"/>
             <xs:element minOccurs="0" name="characterMove" type="characterMove"/>
             <xs:element minOccurs="0" name="cameraMove" type="cameraMove"/>
             <xs:element minOccurs="0" name="envAnimation" type="environmentAnimation"/>
+            <xs:element minOccurs="0" name="smashCut" type="smashCut"/>
             <xs:element minOccurs="1" maxOccurs="1" name='END' type="endBlock"/>
         </xs:choice>
         <xs:attribute name="name" type="xs:string"/>
@@ -95,5 +97,14 @@
     </xs:complexType>
     <xs:complexType name="environmentAnimation" mixed="true">
         <xs:attribute name="concurent" type="xs:boolean" default="false"/>
+    </xs:complexType>
+    <xs:complexType name="smashCut">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element maxOccurs="1" name="cameraCut" type="cameraMove"/>
+            <xs:element name="characterTeleport" type="characterMove"></xs:element>
+            <xs:element name="characterAnimationChange" type="setCharacterAnimation"></xs:element>
+            <xs:element name="hideNode" type="xs:string"/>
+            <xs:element name="showNode" type="xs:string"/>
+        </xs:choice>
     </xs:complexType>
 </xs:schema>

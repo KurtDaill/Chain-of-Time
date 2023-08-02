@@ -22,6 +22,17 @@
         <line><speaker>Cera</speaker>Cato: watch the house.</line>
         <characterMove character="Cera">Door By Coat Rack</characterMove>
         <setCharacterAnimation><character>Cera</character><animation>Grab Spear</animation></setCharacterAnimation>
-        
+        <setCharacterAnimation><character>Cato</character><animation>Stand Up and Draw Sword</animation></setCharacterAnimation>
+        <line><speaker>Cera</speaker>I'm going to find whatever that is...</line>
+        <setCharacterAnimation><character>Cato</character><animation>Nod</animation></setCharacterAnimation>
+        <beat>1</beat>
+        <setCharacterAnimation><character>Cato</character><animation>Look Around</animation></setCharacterAnimation>
+        <smashCut>
+            <cameraCut transition="cut">Cato Anxiety Shot</cameraCut>
+            <characterAnimationChange><character>Cato</character><animation>Anxious Pacing</animation></characterAnimationChange>
+            <characterTeleport character="Cato">Pacing Blocking Mark</characterTeleport>
+            <!-- Need to add in some node enables/disables for lighting-->
+        </smashCut>
+        <END><GOTO>EXIT</GOTO></END>
     </block>
 </screenplay>
