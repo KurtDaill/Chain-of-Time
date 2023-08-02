@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="../../SceneData/ScreenplaySchema.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<screenplay>
+    <block name="start">
+        <!-- [We’re back at Cato’s house. It’s just past sunset outside, the lights glow golden light, 
+            Cato’s packing his bags while Cera is putting some last things away inside the house.]-->
+        <setCharacterAnimation><character>Cato</character><animation>Pack Bags</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Cera</character><animation>Background Fiddle</animation></setCharacterAnimation>
+        <beat>3</beat>
+        <setCharacterAnimation concurent="true"><character>Cato</character><animation>Stop Packing</animation></setCharacterAnimation>
+        <line><speaker>Cato</speaker>Oh, mom, I almost forgot something.</line>
+        <setCharacterAnimation><character>Cera</character><animation>Looks Over Shoulder</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Cato</character><animation>Pull Out Letter</animation></setCharacterAnimation>
+        <line><speaker>Cato</speaker>We got a letter. Someone actually flagged me down and gave it to me when I was leaving the Post Office...</line>
+        <characterMove character="Cera">Beside Cato</characterMove>
+        <setCharacterAnimation><character>Cera</character><animation>Take Letter</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Cato</character><animation>Lose Letter</animation></setCharacterAnimation>
+        <line autoProceed="true"><speaker>Cera</speaker>Wonder what was so-</line>
+        <envAnimation>Distant Boom</envAnimation>
+        <setCharacterAnimation><character>Cato</character><animation>Freeze</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Cera</character><animation>Ready for Battle</animation></setCharacterAnimation>
+        <line><speaker>Cera</speaker>Cato: watch the house.</line>
+        <characterMove character="Cera">Door By Coat Rack</characterMove>
+        <setCharacterAnimation><character>Cera</character><animation>Grab Spear</animation></setCharacterAnimation>
+        
+    </block>
+</screenplay>

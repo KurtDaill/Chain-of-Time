@@ -127,7 +127,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
 [node name="EnemyFront0" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0, 0)
 
-[node name="SkeletonGuard" parent="Battle/Roster/EnemyFront0" instance=ExtResource("6_lu0qn")]
+[node name="Skeleton" parent="Battle/Roster/EnemyFront0" instance=ExtResource("5_fuc8f")]
 
 [node name="EnemyFront1" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, -1)

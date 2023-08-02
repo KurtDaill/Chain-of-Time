@@ -201,10 +201,28 @@ public partial class Roster : Node
 
 	private Combatant[] CheckTargetLegality(Combatant[] check, bool ignoresTaunt){
 		List<Combatant> taunters = new List<Combatant>();
+		bool bottomLaneHasTaunters = false;
+		bool centerLaneHasTaunters = false;
+		bool topLaneHasTaunters = false;
 		//Adds every character with a taunting status effect to the taunters list
-		foreach(Combatant com in check) if(com.GetStatusEffects().Where(x => x is StatusTaunting).Count() != 0) taunters.Add(com);
-		if(!ignoresTaunt && taunters.Count() != 0) return taunters.ToArray();
-		else return check.Where(x => x.GetHP() > 0).ToArray();
+
+		foreach(Combatant com in check) if(com.GetStatusEffects().Where(x => x is StatusTaunting).Count() != 0){
+			taunters.Add(com);
+			switch(com.GetPosition().GetLane()){
+				case BattleLane.Bottom : bottomLaneHasTaunters = true; break;
+				case BattleLane.Center : centerLaneHasTaunters = true; break;
+				case BattleLane.Top : topLaneHasTaunters = true; break;
+			}
+		}
+		if(taunters.Count() == 0) return check.Where(x => x.GetHP() > 0).ToArray();
+		else{
+			List<Combatant> targetsValidAfterTauntCheck = new List<Combatant>();
+			if(!bottomLaneHasTaunters) targetsValidAfterTauntCheck.AddRange(check.Where(x => x.GetPosition().GetLane() == BattleLane.Bottom));
+			if(!centerLaneHasTaunters) targetsValidAfterTauntCheck.AddRange(check.Where(x => x.GetPosition().GetLane() == BattleLane.Center));
+			if(!topLaneHasTaunters) targetsValidAfterTauntCheck.AddRange(check.Where(x => x.GetPosition().GetLane() == BattleLane.Top));
+			targetsValidAfterTauntCheck.AddRange(taunters);
+			return targetsValidAfterTauntCheck.ToArray();
+		}
 	}
 
 	public BattlePosition GetCharacterVirtualPosition(Combatant character){

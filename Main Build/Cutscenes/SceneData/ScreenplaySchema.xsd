@@ -20,6 +20,7 @@
             <xs:element minOccurs="0" name="setValue" type="storyValueSet"/>
             <xs:element minOccurs="0" name="characterMove" type="characterMove"/>
             <xs:element minOccurs="0" name="cameraMove" type="cameraMove"/>
+            <xs:element minOccurs="0" name="envAnimation" type="environmentAnimation"/>
             <xs:element minOccurs="1" maxOccurs="1" name='END' type="endBlock"/>
         </xs:choice>
         <xs:attribute name="name" type="xs:string"/>
@@ -28,7 +29,6 @@
     <xs:complexType name="line" mixed="true">
         <xs:sequence>
             <xs:element name="speaker" type="xs:string"/>
-            <xs:element name="text" type="annotatedText"/>
         </xs:sequence>
         <xs:attribute name="autoProceed" type="xs:boolean" default="false"/>
     </xs:complexType>
@@ -92,5 +92,8 @@
     </xs:complexType>
     <xs:complexType name="characterMove" mixed="true">
         <xs:attribute name ="character" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="environmentAnimation" mixed="true">
+        <xs:attribute name="concurent" type="xs:boolean" default="false"/>
     </xs:complexType>
 </xs:schema>

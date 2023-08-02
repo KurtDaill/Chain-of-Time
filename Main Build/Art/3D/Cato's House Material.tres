@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dqtiw45qbnss8"]
+
+[ext_resource type="Texture2D" uid="uid://ds3qv5e4ry3jj" path="res://Art/3D/Oldtown Texture.png" id="1_ap3vf"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_ap3vf")
+texture_filter = 0

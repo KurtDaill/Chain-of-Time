@@ -4,21 +4,17 @@
     <!-- -->
     <block name="start">
         <line>
-            <speaker>Cato</speaker>
-            <text>Alright, <b>what's [wave amp=100, freq=5]good?![/wave]</b></text>
+            <speaker>Cato</speaker>Alright, what's [wave amp=100, freq=5]good?![/wave]
         </line>
         <characterMove character="Cato">Cato Stand Two</characterMove>
         <beat>1</beat>
         <cameraMove transition="cut">Cato Close Up</cameraMove>
-        <line><speaker>Cato</speaker><text>This is some [shake]test text. . .[/shake]</text></line>
+        <line><speaker>Cato</speaker>This is some [shake]test text. . .[/shake]</line>
         <setFlag name="Is Cato a Cool Dude"><state>true</state></setFlag>
         <modValue name="Cool Factor"><modifier>+100</modifier></modValue>
         <cameraMove transition="linear">Cato Wide Shot</cameraMove>
         <setCharacterAnimation concurent="true"><character>Cato</character><animation>Big Gesture</animation></setCharacterAnimation>
-        <line>
-            <speaker>Cato</speaker>
-            <text>This is [rainbow freq=1 sat=1 val=1]really Neat![/rainbow]</text>
-        </line>
+        <line><speaker>Cato</speaker>This is [rainbow freq=1 sat=1 val=1]really Neat![/rainbow]</line>
         <END>
             <opt GOTO="EXIT">Ok, guess that's it then</opt>
             <opt GOTO="EXIT">Cat</opt>
