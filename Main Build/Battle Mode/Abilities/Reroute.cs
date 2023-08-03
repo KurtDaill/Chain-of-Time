@@ -54,7 +54,7 @@ public partial class Reroute : PlayerSkill
 
 	public override (Combatant, BattlePosition)[] GetPositionSwaps(){
 		if(target[0].GetPosition().GetRank() == BattleRank.HeroBack){
-			return new (Combatant, BattlePosition)[2]{(target[0], new BattlePosition(target[0].GetPosition().GetLane(), BattleRank.HeroMid)), (target[0], new BattlePosition(target[0].GetPosition().GetLane(), BattleRank.HeroMid))};
+			return new (Combatant, BattlePosition)[2]{(target[0], new BattlePosition(target[0].GetPosition().GetLane(), BattleRank.HeroMid)), (target[0], new BattlePosition(target[0].GetPosition().GetLane(), BattleRank.HeroFront))};
 		}	
 		return new (Combatant, BattlePosition)[1]{(target[0], new BattlePosition(target[0].GetPosition().GetLane(), BattleRank.HeroFront))};
 	}

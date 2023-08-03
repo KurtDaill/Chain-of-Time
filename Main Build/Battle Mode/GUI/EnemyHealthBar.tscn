@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="6_jqgkv"]
 
 [node name="HealthBar" type="Sprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.579544, 0)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.579544, 0)
 no_depth_test = true
 texture_filter = 1
 texture = ExtResource("1_d60rm")

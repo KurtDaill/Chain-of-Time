@@ -205,7 +205,7 @@ public partial class Roster : Node
 		bool centerLaneHasTaunters = false;
 		bool topLaneHasTaunters = false;
 		//Adds every character with a taunting status effect to the taunters list
-
+		if(ignoresTaunt) return check;
 		foreach(Combatant com in check) if(com.GetStatusEffects().Where(x => x is StatusTaunting).Count() != 0){
 			taunters.Add(com);
 			switch(com.GetPosition().GetLane()){
@@ -230,7 +230,12 @@ public partial class Roster : Node
 		for(int i = 0; i < 3; i++){
 			if(virtualSwaps[i] is VirtualPositionSwap){
 				foreach((Combatant, BattlePosition) swap in virtualSwaps[i].GetSwapInstructions()){
-					BattlePosition gridStart = swap.Item1.GetPosition();
+					BattlePosition gridStart = null;
+					//Sweep through all of the virtual positions to find the target we're looking for
+					for(int r = 0; r < 6; r++){for(int l = 0; l < 3; l++){
+						if(virtualPositions[l,r] == swap.Item1) gridStart = new BattlePosition((BattleLane)l, (BattleRank)r);
+					}}
+					if(gridStart == null) throw new NotImplementedException(); //TODO: Custom exception for invalid combatant data.
 					BattlePosition gridDestination = swap.Item2;
 					Combatant source = swap.Item1;
 					Combatant destination = virtualPositions[(int)swap.Item2.GetLane(), (int)swap.Item2.GetRank()];
@@ -241,7 +246,7 @@ public partial class Roster : Node
 		}
 		for(int l  = 0; l < 3; l++){
 			for(int r = 0; r < 6; r++){
-				if(positionData[l,r] == character) return new BattlePosition((BattleLane)l, (BattleRank)r);
+				if(virtualPositions[l,r] == character) return new BattlePosition((BattleLane)l, (BattleRank)r);
 			} 
 		}
 		throw new ArgumentException("Character not found.");

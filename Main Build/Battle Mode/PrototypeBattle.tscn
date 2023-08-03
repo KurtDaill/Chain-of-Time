@@ -86,16 +86,16 @@ light_energy = 32.0
 spot_angle = 15.0
 
 [node name="HeroBack0" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.52, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.52, 0, -0.0625)
 
 [node name="HeroBack1" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -1.0625)
 
 [node name="Silver" parent="Battle/Roster/HeroBack1" node_paths=PackedStringArray("readout") instance=ExtResource("3_5nfiw")]
 readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Silver Readout")
 
 [node name="HeroBack2" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48, 0, -2.0625)
 
 [node name="HeroMid0" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2, 0, 0)
@@ -110,10 +110,10 @@ readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Luciene Readout")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08, 0, -2)
 
 [node name="HeroFront0" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56, 0, 0.0625)
 
 [node name="HeroFront1" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -0.9375)
 
 [node name="Cato" parent="Battle/Roster/HeroFront1" node_paths=PackedStringArray("readout") instance=ExtResource("4_xw6bo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0270779, 0)
@@ -122,20 +122,20 @@ maxSP = 5
 readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
 
 [node name="HeroFront2" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1.9375)
 
 [node name="EnemyFront0" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0, 0.0625)
 
 [node name="Skeleton" parent="Battle/Roster/EnemyFront0" instance=ExtResource("5_fuc8f")]
 
 [node name="EnemyFront1" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, -0.9375)
 
 [node name="SkeletonGuard" parent="Battle/Roster/EnemyFront1" instance=ExtResource("6_lu0qn")]
 
 [node name="EnemyFront2" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1.9375)
 
 [node name="EnemyMid0" type="Node3D" parent="Battle/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2, 0, 0)
@@ -151,13 +151,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 0, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
 
 [node name="EnemyBack0" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.52, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.52, 0, -0.0625)
 
 [node name="EnemyBack1" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -3.0625)
 
 [node name="EnemyBack2" type="Node3D" parent="Battle/Roster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48, 0, -2.0625)
 
 [node name="Camera3D" type="Camera3D" parent="Battle"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -1.53, 5, 12)

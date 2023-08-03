@@ -4,11 +4,41 @@ using System;
 public partial class AttackMenu : BattleMenu
 {
     private AudioStreamPlayer selectError;
+    [Export(PropertyHint.File)]
+    string catoCardTexture;
+    [Export(PropertyHint.File)]
+    string silverCardTexture;
+    [Export(PropertyHint.File)]
+    string lucieneCardTexture;
+    [Export(PropertyHint.File)]
+    string catoCardTheme;
+    [Export(PropertyHint.File)]
+    string lucieneCardTheme;
+    [Export(PropertyHint.File)]
+    string silverCardTheme;
     public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI)
     {
         base.OnOpen(character, caller, parentGUI);
         this.GetNode<Label>("Backboard/Attack Name").Text = character.GetBasicAttack().GetName();
         this.GetNode<RichTextLabel>("Backboard/Rules Text").Text = character.GetBasicAttack().GetRulesText();
+        Texture2D attackBackboardTexture = null;
+        Theme attackMenuTheme = null;
+        switch(character.Name){
+            case "Cato" :
+                attackBackboardTexture = GD.Load<Texture2D>(catoCardTexture); 
+                attackMenuTheme = GD.Load<Theme>(catoCardTheme);
+                break;
+            case "Silver" : 
+                attackBackboardTexture = GD.Load<Texture2D>(silverCardTexture);
+                attackMenuTheme = GD.Load<Theme>(silverCardTheme); 
+                break;
+            case "Luciene" :
+                attackBackboardTexture = GD.Load<Texture2D>(lucieneCardTexture); 
+                attackMenuTheme = GD.Load<Theme>(lucieneCardTheme); 
+                break;
+        }
+        this.GetNode<TextureRect>("Backboard").Texture = attackBackboardTexture;
+        this.GetNode<TextureRect>("Backboard").Theme = attackMenuTheme;
         selectError = GetNode<AudioStreamPlayer>("SelectError");
         parentGUI.menus[5].OnOpen(character, caller, parentGUI);
         ((NewTargetingMenu)parentGUI.menus[5]).SetAbilityForTargeting(character.GetBasicAttack(), character, caller, parentGUI);

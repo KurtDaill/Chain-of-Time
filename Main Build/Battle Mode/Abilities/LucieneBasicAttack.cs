@@ -15,7 +15,7 @@ public partial class LucieneBasicAttack : PlayerAbility
 		animation = "LucienneBasicAttack";
 		currentDamageChart = new System.Collections.Generic.Dictionary<double, int>()
 		{
-			{1, 1}
+			{1, 2}
 		};
 
 		rulesText = "[center]Luciene Deals 2 Damage";

@@ -52,10 +52,10 @@ double_sided = false
 no_depth_test = true
 render_priority = 2
 outline_render_priority = 1
-text = "[Enemy Name]
+text = "Skeleton
 "
 font = ExtResource("3_nrqh3")
-font_size = 60
+font_size = 48
 outline_size = 0
 
 [node name="Status 1" type="Sprite3D" parent="."]

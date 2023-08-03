@@ -55,29 +55,29 @@ public partial class SkillCard : TextureRect{
         switch(align){ //Assigns the card's graphic and text theme to match it's alignment
             case AbilityAlignment.Normal :
                 Texture = (Texture2D) GD.Load("res://GUI/Battle Menu Assets/Skill Menu/Skill Card.png");
-                Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Normal.tres");
+                Theme = (Theme) GD.Load("res://GUI/Themes/Battle Menu Themes/Skill Card Normal.tres");
                 if(textSize == "small"){
-                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Normal Small.tres");
+                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Battle Menu Themes/Skill Card Normal Small.tres");
                 }else if(textSize == "smallest"){
-                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Normal Smallest.tres");
+                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Battle Menu Themes/Skill Card Normal Smallest.tres");
                 } 
                 break;
             case AbilityAlignment.Magic :
                 Texture = (Texture2D) GD.Load("res://GUI/Battle Menu Assets/Skill Menu/Spell Card.png");
-                Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Spell.tres");
+                Theme = (Theme) GD.Load("res://GUI/Themes/Battle Menu Themes/Skill Card Spell.tres");
                 if(textSize == "small"){
-                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Spell Small.tres");
+                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Battle Menu Themes/Skill Card Spell Small.tres");
                 }else if(textSize == "smallest"){
-                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Spell Smallest.tres");
+                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Battle Menu Themes/Skill Card Spell Smallest.tres");
                 } 
                 break;
             case AbilityAlignment.Tech :
                 Texture = (Texture2D) GD.Load("res://GUI/Battle Menu Assets/Skill Menu/Tech Card.png");
-                Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Tech.tres");
+                Theme = (Theme) GD.Load("res://GUI/Themes/Battle Menu Themes/Skill Card Tech.tres");
                 if(textSize == "small"){
-                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Tech Small.tres");
+                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Battle Menu Themes/Skill Card Tech Small.tres");
                 }else if(textSize == "smallest"){
-                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/Skill Card Tech Smallest.tres");
+                    rules.Theme = (Theme) GD.Load("res://GUI/Themes/SBattle Menu Themes/kill Card Tech Smallest.tres");
                 }
                 break;
             default :
@@ -94,5 +94,9 @@ public partial class SkillCard : TextureRect{
 
     public void FlashFriendlyPips(){
         pipsAnimPlay.Play("Flash Friendlies");
+    }
+
+    public void FlashEnemyPips(){
+        pipsAnimPlay.Play("Flash Enemies");
     }
 }

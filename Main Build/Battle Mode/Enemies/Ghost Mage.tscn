@@ -644,10 +644,9 @@ _data = {
 "Spellcast": SubResource("Animation_0eo5t")
 }
 
-[node name="Ghost Mage" type="Node3D" node_paths=PackedStringArray("attack", "confusion", "fireBlast", "nameplate", "healthBar", "displayText", "pointer")]
+[node name="Ghost Mage" type="Node3D" node_paths=PackedStringArray("attack", "fireBlast", "nameplate", "healthBar", "displayText", "pointer")]
 script = ExtResource("1_pursu")
 attack = NodePath("Bonk")
-confusion = NodePath("Lesser Confusion")
 fireBlast = NodePath("Fire Blast")
 nameplate = NodePath("Nameplate Adjuster/Enemy Nameplate")
 healthBar = NodePath("HealthBar")
@@ -727,18 +726,17 @@ libraries = {
 }
 
 [node name="Pointer Adjuster" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04161, 1.95197, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.91661, 1.45197, 0)
 
 [node name="Pointer" parent="Pointer Adjuster" instance=ExtResource("2_00j8v")]
 texture_filter = 0
 frame = 1
 
 [node name="Nameplate Adjuster" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20004, 2.0725, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20004, 2.8225, 0)
 
 [node name="Enemy Nameplate" parent="Nameplate Adjuster" node_paths=PackedStringArray("parent") instance=ExtResource("4_mefte")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48, 3.52, 0)
-visible = false
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.4575, 1.9575, 0)
 parent = NodePath("../..")
 
 [node name="Name" parent="Nameplate Adjuster/Enemy Nameplate" index="2"]
@@ -783,7 +781,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.253985, 0)
 stream = ExtResource("12_jqnig")
 
 [node name="HealthBar" parent="." instance=ExtResource("13_20svf")]
-visible = false
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -0.6875, -0.579544, 0)
 
 [editable path="Nameplate Adjuster/Enemy Nameplate"]
 [editable path="Combat Text"]

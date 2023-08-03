@@ -38,7 +38,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-2.01859, -0.25, 0, 0, -0.778239, -2.95609, -0.0774345, 0.0252645, 0.25, 0, -2.01859, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(-2.58109, -0.25, 0, 0.25, 0, -2.95609, -0.0774345, 0.0252645, 0.25, 0, -2.58109, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.2, 0.7)
 }
 tracks/1/type = "bezier"
@@ -244,7 +244,7 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-2.01859, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(-2.58109, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/4/type = "bezier"
@@ -403,7 +403,7 @@ displayText = NodePath("Combat Text")
 pointer = NodePath("Pointer Adjuster/Pointer")
 
 [node name="LucienneSprite" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01859, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58109, 0, 0)
 centered = false
 pixel_size = 0.008
 shaded = true
