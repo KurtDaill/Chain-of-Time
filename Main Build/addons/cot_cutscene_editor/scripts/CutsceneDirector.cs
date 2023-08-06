@@ -30,36 +30,45 @@ public partial class CutsceneDirector : Node3D
     CutsceneCamera mainCutsceneCamera;
     CutsceneResponseBox playerCharacterResponseBox;
     AnimationPlayer animPlay;
+    //Implements the momento pattern
+    Stack<PackedScene> cutsceneStateHistory;
 
     public override void _Ready()
     {
+        ConfigureChildNodes();
         base._Ready();
-        cast = new Dictionary<string, Actor>();
         watchedAnimations = new Dictionary<StringName, Actor>();
         watchedBlockingMoves = new Dictionary<string, Actor>();
-        foreach(Node node in this.GetChildren()){
-            if(node is Actor) cast.Add(((Actor)node).GetActorName(), (Actor)node);
-        }
         play = ScreenPlayLoader.LoadScript(screenPlayXMLFilePath);
-        beatTimer = this.GetNode<Timer>("BeatTimer");
-        beatTimer.Timeout += AdvanceToNextAction;
         storyState = GetTree().Root.GetNode<GameMaster>("GameMaster").GetStoryState();
         playerCharacterName = playerCharacter.GetActorName();
 
+
+        //Set initial camera position;
+        if(shotList.TryGetValue(initialShotName, out CutsceneShot initialShotObject))mainCutsceneCamera.StartTransition(initialShotObject.GetShotDetails(), "cut");
+        else throw new ArgumentException("Initial shot: " + initialShotName + " not found in this cutscene");
+        
+        cutsceneStateHistory = new Stack<PackedScene>();
+    }
+
+    //Because we deleted and reload our children during editing, we want to have this set as its own function to be called then instead of just in ready
+    private void ConfigureChildNodes(){
+        cast = new Dictionary<string, Actor>();
+        this.GetChildren();
+        beatTimer = this.GetNode<Timer>("BeatTimer");
+        beatTimer.Timeout += AdvanceToNextAction;
+        foreach(Node node in this.GetChildren()){
+            if(node is Actor) cast.Add(((Actor)node).GetActorName(), (Actor)node);
+        }
         shotList = new Dictionary<string, CutsceneShot>();
         foreach(CutsceneShot shot in this.GetNode("Shot List").GetChildren()){
             shotList.Add(shot.Name, shot);
         }
-
-        blockingMarks = new Dictionary<string, Marker3D>();
+        blockingMarks = new Dictionary<string, Marker3D>(); 
         foreach(Marker3D blockingMark in this.GetNode<Node3D>("Blocking Marks").GetChildren()){
             blockingMarks.Add(blockingMark.Name, blockingMark);
         }
-
         mainCutsceneCamera = this.GetNode<CutsceneCamera>("Cutscene Camera");
-        //Set initial camera position;
-        if(shotList.TryGetValue(initialShotName, out CutsceneShot initialShotObject))mainCutsceneCamera.StartTransition(initialShotObject.GetShotDetails(), "cut");
-        else throw new ArgumentException("Initial shot: " + initialShotName + " not found in this cutscene");
         animPlay = this.GetNode<AnimationPlayer>("Animation Player");
     }
 
@@ -115,6 +124,10 @@ public partial class CutsceneDirector : Node3D
                     break;
             }
         }
+        /*
+        if(Input.IsActionJustPressed("debug_4")){
+            LoadLiveState(0);
+        }*/
     }
 
     public void PlayCutscene(){
@@ -122,6 +135,7 @@ public partial class CutsceneDirector : Node3D
         waitingOnAnimation = false;
         currentAction = block.StartBlockAndGetFirstAction();
         StartAction(currentAction);
+        //SaveLiveState();
         //currentAction = block.GetNextAction(); //Should Get the first action loaded
     }
 
@@ -131,6 +145,7 @@ public partial class CutsceneDirector : Node3D
     }
 
     public async void StartAction(CutsceneAction act){
+        //SaveLiveState();
         switch(act.GetType().Name){
             case "CutsceneLine" :
                 CutsceneLine line = (CutsceneLine) act;
@@ -150,8 +165,12 @@ public partial class CutsceneDirector : Node3D
             case "CutsceneCharacterAnimation":
                 CutsceneCharacterAnimation anim = (CutsceneCharacterAnimation) act;
                 cast.TryGetValue(anim.GetCharacter(), out Actor animActor);
-                watchedAnimations.Add(anim.GetAnimation(), animActor);
                 animActor.GetAnimationPlayer().Play(anim.GetAnimation());
+                if(!anim.IsIdleLoop()){
+                    watchedAnimations.Add(anim.GetAnimation(), animActor);
+                }else{
+                    AdvanceToNextAction();
+                }
                 break;
             case "CutsceneBeat" :
                 CutsceneBeat beat = (CutsceneBeat) act;
@@ -274,6 +293,35 @@ public partial class CutsceneDirector : Node3D
         watchedBlockingMoves.Remove(markerName);
         AdvanceToNextAction();
     }
+    /*
+    //Implements the "Save State" section of the momento pattern using packed scenes
+    public void SaveLiveState(){
+        PackedScene momento = new PackedScene();
+        momento.Pack(this);
+        cutsceneStateHistory.Push(momento);
+    }
+
+    //Implements the "Restore State" sectino of the moment pattern using packed scenes;
+    public async void LoadLiveState(int depth){
+        for(int i = 0; i < depth; i++){
+            cutsceneStateHistory.Pop();
+        }
+        PackedScene previousCutscenePacked = cutsceneStateHistory.Pop();
+        CutsceneDirector previousCutscene = previousCutscenePacked.Instantiate<CutsceneDirector>();
+        Godot.Collections.Array<Node> myChildren = this.GetChildren();
+        for(int i = 0; i < previousCutscene.GetChildren().Count; i++){
+            myChildren[i].Free();
+            this.AddChild(previousCutscene.GetChild(i));
+        }
+        //await ToSignal(this.GetChild(0), Node.SignalName.Ready);
+        this.currentAction = block.GoBackwardsInBlock(depth);
+        ConfigureChildNodes();
+        StartAction(currentAction);
+        //this.GetParent().AddChild(previousCutscene);
+        //this.GetParent().GetChild<CutsceneDirector>(2).GetNode<CutsceneCamera>("Cutscene Camera").Current = true;
+        //this.Free();
+    }
+    */   
 }
 
 public static class CutsceneUtils{

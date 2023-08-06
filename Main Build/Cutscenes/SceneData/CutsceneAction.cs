@@ -50,13 +50,16 @@ public class CutsceneCharacterAnimation : CutsceneAction{
     string character;
     string animation;
     bool concurent;
-    public CutsceneCharacterAnimation(string character, string animation, bool concurent){
+    bool idleLoop;
+    public CutsceneCharacterAnimation(string character, string animation, bool concurent, bool idleLoop){
         this.character = character;
         this.animation = animation;
         this.concurent = concurent;
+        this.idleLoop = idleLoop;
     }
     public string GetAnimation(){return animation;}
     public string GetCharacter(){return character;}
+    public bool IsIdleLoop(){return idleLoop;}
 }
 
 public class CutsceneBeat : CutsceneAction{

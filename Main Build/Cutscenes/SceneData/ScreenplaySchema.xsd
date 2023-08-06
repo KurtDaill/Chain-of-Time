@@ -79,6 +79,7 @@
             <xs:element name="animation" type="xs:string"></xs:element>
         </xs:sequence>
         <xs:attribute name="concurent" type="xs:boolean" default="false"/>
+        <xs:attribute name="idleLoop" type="xs:boolean" default="false"/>
     </xs:complexType>
 
     <xs:complexType name="cameraMove" mixed="true">

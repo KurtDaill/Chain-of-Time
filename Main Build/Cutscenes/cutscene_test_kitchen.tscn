@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd0cfu3p5p0na"]
+[gd_scene load_steps=4 format=3 uid="uid://cd0cfu3p5p0na"]
 
 [ext_resource type="Script" path="res://Cutscenes/CutsceneDummy.cs" id="1_t3mmx"]
 [ext_resource type="PackedScene" uid="uid://ceiaxmch6u54b" path="res://addons/cot_cutscene_editor/cutscene_template.tscn" id="2_cibaa"]
+[ext_resource type="PackedScene" uid="uid://xbj56bsiywiu" path="res://Art/3D/townscenegltf.gltf" id="2_gi7nl"]
 
 [node name="Cutscene Test Kitchen" type="Node3D"]
 script = ExtResource("1_t3mmx")
+
+[node name="townscenegltf" parent="." instance=ExtResource("2_gi7nl")]
+visible = false
 
 [node name="Environment" type="CSGCombiner3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

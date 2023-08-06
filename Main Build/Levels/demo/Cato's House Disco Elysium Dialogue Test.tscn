@@ -1,19 +1,19 @@
-[gd_scene load_steps=29 format=3 uid="uid://c84k7o4rrne8o"]
+[gd_scene load_steps=29 format=3 uid="uid://dqsd1clxfi03q"]
 
-[ext_resource type="PackedScene" uid="uid://cg0lh548glsxq" path="res://Art/3D/Cato's House Rough Render.dae" id="1_7ca1c"]
-[ext_resource type="Script" path="res://Cutscenes/CutsceneDummy.cs" id="1_qis1h"]
-[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDirector.cs" id="3_n2lre"]
-[ext_resource type="PackedScene" uid="uid://2cr1truuphau" path="res://Art/3D/Scaled_Table.gltf" id="3_p22dl"]
-[ext_resource type="PackedScene" uid="uid://dj3hdxl03mnbi" path="res://Art/3D/Scaled_Chair.gltf" id="4_2nkm1"]
-[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneShot.cs" id="4_ks7pd"]
-[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneCamera.cs" id="5_i600j"]
-[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/Actor.cs" id="6_kbbwb"]
-[ext_resource type="Texture2D" uid="uid://bxpwsf3thk4fo" path="res://Art/CatoCinematicAnimation-Sheet.png" id="7_5ja67"]
-[ext_resource type="PackedScene" uid="uid://h6cqvq3f60sa" path="res://addons/cot_cutscene_editor/prefab_scenes/dialogue_box.tscn" id="8_r7quh"]
-[ext_resource type="PackedScene" uid="uid://c0573oq65m3ps" path="res://addons/cot_cutscene_editor/prefab_scenes/response_box.tscn" id="9_xqtkw"]
-[ext_resource type="Texture2D" uid="uid://rrkkuukcn2sf" path="res://Art/Cera Cinematic Sprite-Sheet.png" id="10_fb1d8"]
-[ext_resource type="Texture2D" uid="uid://b43sxpud60he4" path="res://Art/Letter.png" id="11_o71i8"]
-[ext_resource type="Texture2D" uid="uid://bht4u51q4dk24" path="res://Art/Cato Backpack.png" id="12_7evmr"]
+[ext_resource type="Script" path="res://Cutscenes/CutsceneDummy.cs" id="1_6xmoj"]
+[ext_resource type="PackedScene" uid="uid://cg0lh548glsxq" path="res://Art/3D/Cato's House Rough Render.dae" id="2_4rnw5"]
+[ext_resource type="PackedScene" uid="uid://2cr1truuphau" path="res://Art/3D/Scaled_Table.gltf" id="3_bsqoa"]
+[ext_resource type="PackedScene" uid="uid://dj3hdxl03mnbi" path="res://Art/3D/Scaled_Chair.gltf" id="4_xbcb4"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDirector.cs" id="5_pb04e"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneShot.cs" id="6_l4re2"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneCamera.cs" id="7_egwab"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/Actor.cs" id="8_52v0l"]
+[ext_resource type="Texture2D" uid="uid://bxpwsf3thk4fo" path="res://Art/CatoCinematicAnimation-Sheet.png" id="9_1s5sk"]
+[ext_resource type="PackedScene" uid="uid://h6cqvq3f60sa" path="res://addons/cot_cutscene_editor/prefab_scenes/dialogue_box.tscn" id="10_bt6dq"]
+[ext_resource type="PackedScene" uid="uid://c0573oq65m3ps" path="res://addons/cot_cutscene_editor/prefab_scenes/response_box.tscn" id="11_h7pa5"]
+[ext_resource type="Texture2D" uid="uid://b43sxpud60he4" path="res://Art/Letter.png" id="12_utw4k"]
+[ext_resource type="Texture2D" uid="uid://rrkkuukcn2sf" path="res://Art/Cera Cinematic Sprite-Sheet.png" id="13_56s11"]
+[ext_resource type="Texture2D" uid="uid://bht4u51q4dk24" path="res://Art/Cato Backpack.png" id="14_mcask"]
 
 [sub_resource type="Environment" id="Environment_5clu4"]
 background_mode = 1
@@ -293,11 +293,11 @@ _data = {
 }
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_qis1h")
+script = ExtResource("1_6xmoj")
 
 [node name="House Scene" type="Node3D" parent="."]
 
-[node name="Cato\'s House Rough Render" parent="House Scene" instance=ExtResource("1_7ca1c")]
+[node name="Cato\'s House Rough Render" parent="House Scene" instance=ExtResource("2_4rnw5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, -1.0625, 0.0625)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="House Scene"]
@@ -334,13 +334,13 @@ light_energy = 25.0
 spot_range = 19.875
 spot_angle_attenuation = 3.13834
 
-[node name="Scaled_Table" parent="House Scene" instance=ExtResource("3_p22dl")]
+[node name="Scaled_Table" parent="House Scene" instance=ExtResource("3_bsqoa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6875, 0.8125, 1.6875)
 
-[node name="Scaled_Chair" parent="House Scene" instance=ExtResource("4_2nkm1")]
+[node name="Scaled_Chair" parent="House Scene" instance=ExtResource("4_xbcb4")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.3125, 0, 0)
 
-[node name="Scaled_Chair2" parent="House Scene" instance=ExtResource("4_2nkm1")]
+[node name="Scaled_Chair2" parent="House Scene" instance=ExtResource("4_xbcb4")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 1.875, 0, 0.8125)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -351,7 +351,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36, 3.625, 12.913)
 fov = 50.0
 
 [node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter")]
-script = ExtResource("3_n2lre")
+script = ExtResource("5_pb04e")
 screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Int Cato House Before Invasion.xml"
 playerCharacter = NodePath("Cato Actor")
 initialShotName = "MainShot"
@@ -362,7 +362,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
 [node name="MainShot" type="Camera3D" parent="Cutscene/Shot List"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -0.628, 10.14, 29.748)
 fov = 50.0
-script = ExtResource("4_ks7pd")
+script = ExtResource("6_l4re2")
 
 [node name="Blocking Marks" type="Node3D" parent="Cutscene"]
 
@@ -372,11 +372,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.37853, 0, -1.85476)
 [node name="Cutscene Camera" type="Camera3D" parent="Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 0.907642, 0.419744, 0, -0.419744, 0.907642, 0, 4.83687, 10.4591)
 current = true
-script = ExtResource("5_i600j")
+script = ExtResource("7_egwab")
 
 [node name="Cato Actor" type="Node3D" parent="Cutscene"]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -0.93397, -0.125, -0.229757)
-script = ExtResource("6_kbbwb")
+script = ExtResource("8_52v0l")
 actorName = "Cato"
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cato Actor"]
@@ -385,7 +385,7 @@ pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture_filter = 1
-texture = ExtResource("7_5ja67")
+texture = ExtResource("9_1s5sk")
 hframes = 8
 frame = 4
 
@@ -395,11 +395,11 @@ libraries = {
 "": SubResource("AnimationLibrary_5fvfv")
 }
 
-[node name="Dialogue Box" parent="Cutscene/Cato Actor" instance=ExtResource("8_r7quh")]
+[node name="Dialogue Box" parent="Cutscene/Cato Actor" instance=ExtResource("10_bt6dq")]
 transform = Transform3D(1.44889, 0, -0.38823, 0, 1.5, 0, 0.38823, 0, 1.44889, -0.23494, -0.92119, 0.17491)
 visible = false
 
-[node name="Response Box" parent="Cutscene/Cato Actor" node_paths=PackedStringArray("responseLabels") instance=ExtResource("9_xqtkw")]
+[node name="Response Box" parent="Cutscene/Cato Actor" node_paths=PackedStringArray("responseLabels") instance=ExtResource("11_h7pa5")]
 visible = false
 responseLabels = [null, null, null, null]
 
@@ -408,11 +408,11 @@ transform = Transform3D(0.933011, -0.25, -0.258819, 0.258819, 0.965926, 0, 0.25,
 visible = false
 pixel_size = 0.0125
 shaded = true
-texture = ExtResource("11_o71i8")
+texture = ExtResource("12_utw4k")
 
 [node name="Cera Actor" type="Node3D" parent="Cutscene"]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -3.18397, 0, -1.29226)
-script = ExtResource("6_kbbwb")
+script = ExtResource("8_52v0l")
 actorName = "Cera"
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cera Actor"]
@@ -421,7 +421,7 @@ pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture_filter = 1
-texture = ExtResource("10_fb1d8")
+texture = ExtResource("13_56s11")
 hframes = 10
 vframes = 2
 frame = 1
@@ -432,7 +432,7 @@ libraries = {
 "": SubResource("AnimationLibrary_yu46o")
 }
 
-[node name="Dialogue Box" parent="Cutscene/Cera Actor" instance=ExtResource("8_r7quh")]
+[node name="Dialogue Box" parent="Cutscene/Cera Actor" instance=ExtResource("10_bt6dq")]
 transform = Transform3D(0.965924, 0, -0.258818, 0, 1, 0, 0.258818, 0, 0.965924, -2.31458, 0.14131, -0.296667)
 visible = false
 
@@ -450,4 +450,4 @@ spot_angle = 23.8331
 [node name="Backpack" type="Sprite3D" parent="Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, 1.3125, 0.1875)
 pixel_size = 0.0125
-texture = ExtResource("12_7evmr")
+texture = ExtResource("14_mcask")

@@ -167,13 +167,16 @@ public static class ScreenPlayLoader{
     private static bool GenerateCharacterAnimationOrLineWithAnimation(XmlNode animationNode, out CutsceneAction resultingAction){
         string character = animationNode.FirstChild.InnerText;
         string animation = animationNode.FirstChild.NextSibling.InnerText;
-        bool concurency = Convert.ToBoolean(animationNode.Attributes.GetNamedItem("concurent").Value);
+        bool concurency = false;
+        if(animationNode.Attributes.GetNamedItem("concurent") != null)concurency = Convert.ToBoolean(animationNode.Attributes.GetNamedItem("concurent").Value);
+        bool idleLoop = false;
+        if(animationNode.Attributes.GetNamedItem("idleLoop") != null)idleLoop = Convert.ToBoolean(animationNode.Attributes.GetNamedItem("idleLoop").Value);
         if(concurency){
             if(animationNode.NextSibling.Name != "line") throw new ArgumentException();
-            resultingAction =  GenerateLine(animationNode.NextSibling, new CutsceneCharacterAnimation(character, animation, concurency));
+            resultingAction =  GenerateLine(animationNode.NextSibling, new CutsceneCharacterAnimation(character, animation, concurency, idleLoop));
             return true;
         }else{
-            resultingAction = new CutsceneCharacterAnimation(character, animation, concurency);
+            resultingAction = new CutsceneCharacterAnimation(character, animation, concurency, idleLoop);
             return false;
         }
     }
