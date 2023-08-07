@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://d1am1pgmtlyii"]
 
 [ext_resource type="Script" path="res://Battle Mode/Enemies/SkeletonBoss.cs" id="1_ncb1r"]
-[ext_resource type="Texture2D" uid="uid://cbu5vrrxat5b" path="res://Art/BossSkeleton-Sheet.png" id="2_pvrqu"]
+[ext_resource type="Texture2D" uid="uid://cbu5vrrxat5b" path="res://Art/Prod Sprite Sheets/BossSkeleton-Sheet.png" id="2_pvrqu"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="3_xpof2"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/BasicEnemyMelee.cs" id="4_acn80"]
 [ext_resource type="PackedScene" uid="uid://bhh44xrbceu6a" path="res://Battle Mode/GUI/enemy_nameplate.tscn" id="6_wcfui"]

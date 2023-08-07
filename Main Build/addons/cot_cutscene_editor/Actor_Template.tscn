@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bxgvvmc8u27mt"]
 
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/Actor.cs" id="1_sc8lp"]
-[ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Adventure Cato Sprite-Sheet.png" id="2_iunjf"]
+[ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Prod Sprite Sheets/Adventure Cato Sprite-Sheet.png" id="2_iunjf"]
 [ext_resource type="PackedScene" uid="uid://h6cqvq3f60sa" path="res://addons/cot_cutscene_editor/prefab_scenes/dialogue_box.tscn" id="3_5urq5"]
 [ext_resource type="PackedScene" uid="uid://c0573oq65m3ps" path="res://addons/cot_cutscene_editor/prefab_scenes/response_box.tscn" id="4_vuj1j"]
 

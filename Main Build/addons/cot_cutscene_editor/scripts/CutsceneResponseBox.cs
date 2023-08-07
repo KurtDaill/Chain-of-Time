@@ -1,10 +1,10 @@
 using System;
 using Godot;
 
-public partial class CutsceneResponseBox : Node3D{
+public partial class CutsceneResponseBox : VBoxContainer{
     [Export]
     private RichTextLabel[] responseLabels;
-    private CutsceneDialogueResponse[] responseObjects;
+    private CutsceneDialogueResponse[] responseObjects; 
     int selectedResponse;
     int numberOfValidResponses;
 
@@ -42,7 +42,7 @@ public partial class CutsceneResponseBox : Node3D{
     private void SetResponseGUI(){
         for(int i = 0; i < 4; i++){
             if(i >= numberOfValidResponses){responseLabels[i].Visible = false;} //Hide response labels we aren't using
-            responseLabels[i].GetNode<Panel>("Highlight Panel").Visible = i == selectedResponse; //If the response is the one that's selected, show the highlight, otherwise hide the highlight
+            responseLabels[i].GetNode<Panel>("Highlight").Visible = i == selectedResponse; //If the response is the one that's selected, show the highlight, otherwise hide the highlight
         }
     }
 }

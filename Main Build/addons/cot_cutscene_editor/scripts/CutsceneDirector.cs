@@ -22,9 +22,15 @@ public partial class CutsceneDirector : Node3D
     Actor playerCharacter;
     [Export]
     string initialShotName;
+    [Export]
+    CutsceneDialogueBox subtitleStyleBox;
+    [Export]
+    SidebarStyleDialogueBox sidebarStyleBox;    
     Dictionary<string, CutsceneShot> shotList;
     Dictionary<string, Marker3D> blockingMarks;
     string playerCharacterName;
+
+    bool usingDiscoBox = false;
 
     StoryState storyState;
     CutsceneCamera mainCutsceneCamera;
@@ -91,10 +97,10 @@ public partial class CutsceneDirector : Node3D
                     if(line.HasConcurrentAnimation() && waitingOnAnimation){
                         return;
                     }else{
-                        if(actor.GetDialogueBox().IsDisplayingDialogue()){
-                            actor.GetDialogueBox().RushDialogue();
+                        if(subtitleStyleBox.IsDisplayingDialogue()){
+                            subtitleStyleBox.RushDialogue();
                         }else{
-                            actor.GetDialogueBox().CloseDialogue();
+                            subtitleStyleBox.CloseDialogue();
                             AdvanceToNextAction();
                         }
                     }
@@ -124,6 +130,9 @@ public partial class CutsceneDirector : Node3D
                     break;
             }
         }
+        if(Input.IsActionJustPressed("debug_5")) usingDiscoBox = !usingDiscoBox;
+        sidebarStyleBox.Visible = usingDiscoBox;
+        subtitleStyleBox.Visible = !usingDiscoBox;
         /*
         if(Input.IsActionJustPressed("debug_4")){
             LoadLiveState(0);
@@ -160,7 +169,10 @@ public partial class CutsceneDirector : Node3D
                     lineActor.GetAnimationPlayer().Play(line.GetConcurrentAnimation().GetAnimation());
                     waitingOnAnimation = true;
                 }
-                lineActor.SpeakLine(line);
+                //lineActor.SpeakLine(line);
+                subtitleStyleBox.BeginDialogue(line);
+                sidebarStyleBox.BeginDialogue(line);
+
                 break;
             case "CutsceneCharacterAnimation":
                 CutsceneCharacterAnimation anim = (CutsceneCharacterAnimation) act;
@@ -247,8 +259,8 @@ public partial class CutsceneDirector : Node3D
             case "CutsceneEndBlock":
                 CutsceneEndBlock endBlock = (CutsceneEndBlock) act;
                 if(endBlock.IsResponseBlock()){
-                    playerCharacterResponseBox = playerCharacter.GetNode<CutsceneResponseBox>("Response Box");
-                    playerCharacterResponseBox.PopulateResponsesAndShow(endBlock.GetDialogueOptions());
+                    //playerCharacterResponseBox = subtitleStyleBox.StartDialogueResponse(endBlock.GetDialogueOptions());
+                    playerCharacterResponseBox = sidebarStyleBox.StartDialogueResponse(endBlock.GetDialogueOptions());
                 }else{
                     GotoNextBlock(endBlock.GetGotoBlockTarget());
                 }

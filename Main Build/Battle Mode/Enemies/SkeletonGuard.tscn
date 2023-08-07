@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://bltlucajwd3c5"]
 
 [ext_resource type="Script" path="res://Battle Mode/Enemies/SkeletonGuard.cs" id="1_e4wwr"]
-[ext_resource type="Texture2D" uid="uid://dl2nhvu4ncgu0" path="res://Art/Skeleton Guard Combat Sprite-Sheet.png" id="2_0uvn4"]
+[ext_resource type="Texture2D" uid="uid://dl2nhvu4ncgu0" path="res://Art/Prod Sprite Sheets/Skeleton Guard Combat Sprite-Sheet.png" id="2_0uvn4"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="2_j6pg3"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/BasicEnemyMelee.cs" id="4_7hva4"]
 [ext_resource type="PackedScene" uid="uid://bhh44xrbceu6a" path="res://Battle Mode/GUI/enemy_nameplate.tscn" id="4_7ih3c"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl2nhvu4ncgu0"
-path="res://.godot/imported/Skeleton Guard Combat Sprite-Sheet.png-ebd8d1499f44ed777ffaa2846790255c.ctex"
+uid="uid://rrkkuukcn2sf"
+path="res://.godot/imported/Cera Cinematic Sprite-Sheet.png-3397017d3872798aa4f89554d38efca1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Skeleton Guard Combat Sprite-Sheet.png"
-dest_files=["res://.godot/imported/Skeleton Guard Combat Sprite-Sheet.png-ebd8d1499f44ed777ffaa2846790255c.ctex"]
+source_file="res://Art/Prod Sprite Sheets/Cera Cinematic Sprite-Sheet.png"
+dest_files=["res://.godot/imported/Cera Cinematic Sprite-Sheet.png-3397017d3872798aa4f89554d38efca1.ctex"]
 
 [params]
 

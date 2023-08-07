@@ -8,12 +8,12 @@
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneShot.cs" id="4_ks7pd"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneCamera.cs" id="5_i600j"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/Actor.cs" id="6_kbbwb"]
-[ext_resource type="Texture2D" uid="uid://bxpwsf3thk4fo" path="res://Art/CatoCinematicAnimation-Sheet.png" id="7_5ja67"]
 [ext_resource type="PackedScene" uid="uid://h6cqvq3f60sa" path="res://addons/cot_cutscene_editor/prefab_scenes/dialogue_box.tscn" id="8_r7quh"]
+[ext_resource type="Texture2D" uid="uid://bxpwsf3thk4fo" path="res://Art/Prod Sprite Sheets/CatoCinematicAnimation-Sheet.png" id="9_w7qxu"]
 [ext_resource type="PackedScene" uid="uid://c0573oq65m3ps" path="res://addons/cot_cutscene_editor/prefab_scenes/response_box.tscn" id="9_xqtkw"]
-[ext_resource type="Texture2D" uid="uid://rrkkuukcn2sf" path="res://Art/Cera Cinematic Sprite-Sheet.png" id="10_fb1d8"]
 [ext_resource type="Texture2D" uid="uid://b43sxpud60he4" path="res://Art/Letter.png" id="11_o71i8"]
 [ext_resource type="Texture2D" uid="uid://bht4u51q4dk24" path="res://Art/Cato Backpack.png" id="12_7evmr"]
+[ext_resource type="Texture2D" uid="uid://rrkkuukcn2sf" path="res://Art/Prod Sprite Sheets/Cera Cinematic Sprite-Sheet.png" id="13_keaul"]
 
 [sub_resource type="Environment" id="Environment_5clu4"]
 background_mode = 1
@@ -385,7 +385,7 @@ pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture_filter = 1
-texture = ExtResource("7_5ja67")
+texture = ExtResource("9_w7qxu")
 hframes = 8
 frame = 4
 
@@ -396,8 +396,7 @@ libraries = {
 }
 
 [node name="Dialogue Box" parent="Cutscene/Cato Actor" instance=ExtResource("8_r7quh")]
-transform = Transform3D(1.44889, 0, -0.38823, 0, 1.5, 0, 0.38823, 0, 1.44889, -0.23494, -0.92119, 0.17491)
-visible = false
+transform = Transform3D(1.73205, 0, -1, 0, 2, 0, 1, 0, 1.73205, -0.23494, -0.92119, 0.17491)
 
 [node name="Response Box" parent="Cutscene/Cato Actor" node_paths=PackedStringArray("responseLabels") instance=ExtResource("9_xqtkw")]
 visible = false
@@ -421,7 +420,7 @@ pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture_filter = 1
-texture = ExtResource("10_fb1d8")
+texture = ExtResource("13_keaul")
 hframes = 10
 vframes = 2
 frame = 1

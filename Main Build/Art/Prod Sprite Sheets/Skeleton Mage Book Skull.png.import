@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccgn55o0b1jo6"
-path="res://.godot/imported/Adventure Cato Sprite-Sheet.png-580636d02cf751c8bf160efcc1aea1bd.ctex"
+uid="uid://ceh4rokgy86"
+path="res://.godot/imported/Skeleton Mage Book Skull.png-52c72b34f03f2cf124612cbfe0ab4a29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Adventure Cato Sprite-Sheet.png"
-dest_files=["res://.godot/imported/Adventure Cato Sprite-Sheet.png-580636d02cf751c8bf160efcc1aea1bd.ctex"]
+source_file="res://Art/Prod Sprite Sheets/Skeleton Mage Book Skull.png"
+dest_files=["res://.godot/imported/Skeleton Mage Book Skull.png-52c72b34f03f2cf124612cbfe0ab4a29.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Battle Mode/Player Characters/CatoCombatant.cs" id="1_r8uo0"]
 [ext_resource type="Texture2D" uid="uid://buymnk3wkjnd3" path="res://GUI/Cato Head Thing.png" id="2_kpxx0"]
+[ext_resource type="Texture2D" uid="uid://d054fqnoqr0oo" path="res://Art/Prod Sprite Sheets/Cato Combat Sprite-Sheet.png" id="3_ft434"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="3_oduca"]
-[ext_resource type="Texture2D" uid="uid://d054fqnoqr0oo" path="res://Art/Cato Combat Sprite-Sheet.png" id="3_qd2l3"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/CatoBasicAttack.cs" id="4_qgcm6"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/PlayerSwap.cs" id="6_o26w0"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/CatoShieldRush.cs" id="7_1v7hy"]
@@ -441,7 +441,7 @@ centered = false
 pixel_size = 0.008
 shaded = true
 alpha_cut = 2
-texture = ExtResource("3_qd2l3")
+texture = ExtResource("3_ft434")
 hframes = 10
 vframes = 7
 

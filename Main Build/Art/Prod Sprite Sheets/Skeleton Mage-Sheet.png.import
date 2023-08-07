@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbu5vrrxat5b"
-path="res://.godot/imported/BossSkeleton-Sheet.png-c20b06dcf834a76b979c2fbebf1b4e74.ctex"
+uid="uid://da55y67ia03hm"
+path="res://.godot/imported/Skeleton Mage-Sheet.png-4023e6177fd6fc7c60a9dc729f5b497e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/BossSkeleton-Sheet.png"
-dest_files=["res://.godot/imported/BossSkeleton-Sheet.png-c20b06dcf834a76b979c2fbebf1b4e74.ctex"]
+source_file="res://Art/Prod Sprite Sheets/Skeleton Mage-Sheet.png"
+dest_files=["res://.godot/imported/Skeleton Mage-Sheet.png-4023e6177fd6fc7c60a9dc729f5b497e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da55y67ia03hm"
-path="res://.godot/imported/Skeleton Mage-Sheet.png-cabfa918348b0e7a00527abc1a9f2984.ctex"
+uid="uid://bxpwsf3thk4fo"
+path="res://.godot/imported/CatoCinematicAnimation-Sheet.png-3e9dc117f51623495e7eec5c494ce3d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Skeleton Mage-Sheet.png"
-dest_files=["res://.godot/imported/Skeleton Mage-Sheet.png-cabfa918348b0e7a00527abc1a9f2984.ctex"]
+source_file="res://Art/Prod Sprite Sheets/CatoCinematicAnimation-Sheet.png"
+dest_files=["res://.godot/imported/CatoCinematicAnimation-Sheet.png-3e9dc117f51623495e7eec5c494ce3d7.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ceh4rokgy86"
-path="res://.godot/imported/Skeleton Mage Book Skull.png-2d50af633cd572451b6940f40315aa5f.ctex"
+uid="uid://d7pbriigo4aj"
+path="res://.godot/imported/Silver Combat Sprite-Sheet.png-23a324214d8a6a3255fb59b6f32115ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Skeleton Mage Book Skull.png"
-dest_files=["res://.godot/imported/Skeleton Mage Book Skull.png-2d50af633cd572451b6940f40315aa5f.ctex"]
+source_file="res://Art/Prod Sprite Sheets/Silver Combat Sprite-Sheet.png"
+dest_files=["res://.godot/imported/Silver Combat Sprite-Sheet.png-23a324214d8a6a3255fb59b6f32115ae.ctex"]
 
 [params]
 

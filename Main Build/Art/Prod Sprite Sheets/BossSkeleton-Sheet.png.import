@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv0i4a26g7yvv"
-path="res://.godot/imported/Skeleton Mage Scroll Skull.png-bb7599b8ee39ad7641a4bc825206498d.ctex"
+uid="uid://cbu5vrrxat5b"
+path="res://.godot/imported/BossSkeleton-Sheet.png-9835e757173a9b1337b99e5514e5654d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Skeleton Mage Scroll Skull.png"
-dest_files=["res://.godot/imported/Skeleton Mage Scroll Skull.png-bb7599b8ee39ad7641a4bc825206498d.ctex"]
+source_file="res://Art/Prod Sprite Sheets/BossSkeleton-Sheet.png"
+dest_files=["res://.godot/imported/BossSkeleton-Sheet.png-9835e757173a9b1337b99e5514e5654d.ctex"]
 
 [params]
 

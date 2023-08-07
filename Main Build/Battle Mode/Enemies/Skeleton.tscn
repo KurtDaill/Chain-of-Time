@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://ckh4ejsj04t82"]
 
 [ext_resource type="Script" path="res://Battle Mode/Enemies/Skeleton.cs" id="1_lpvwy"]
-[ext_resource type="Texture2D" uid="uid://qxueooqq05r1" path="res://Art/Skeleton Combat Sprite-Sheet.png" id="2_71u0b"]
+[ext_resource type="Texture2D" uid="uid://qxueooqq05r1" path="res://Art/Prod Sprite Sheets/Skeleton Combat Sprite-Sheet.png" id="2_71u0b"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="2_j6pg3"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/BasicEnemyMelee.cs" id="4_7hva4"]
 [ext_resource type="PackedScene" uid="uid://bhh44xrbceu6a" path="res://Battle Mode/GUI/enemy_nameplate.tscn" id="4_7ih3c"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg01bl2hxx48n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ehsf8"]
+
+[node name="Dialogue Spacer" type="Panel"]
+custom_minimum_size = Vector2(0, 30)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ehsf8")

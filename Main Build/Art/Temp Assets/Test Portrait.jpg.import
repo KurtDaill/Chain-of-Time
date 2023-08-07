@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxpwsf3thk4fo"
-path="res://.godot/imported/CatoCinematicAnimation-Sheet.png-31641d997a67166c091bcd2f6998ff67.ctex"
+uid="uid://blu0qodtfvkra"
+path="res://.godot/imported/Test Portrait.jpg-70541cdfba058c7a346e2f6361eee9fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/CatoCinematicAnimation-Sheet.png"
-dest_files=["res://.godot/imported/CatoCinematicAnimation-Sheet.png-31641d997a67166c091bcd2f6998ff67.ctex"]
+source_file="res://Art/Temp Assets/Test Portrait.jpg"
+dest_files=["res://.godot/imported/Test Portrait.jpg-70541cdfba058c7a346e2f6361eee9fe.ctex"]
 
 [params]
 

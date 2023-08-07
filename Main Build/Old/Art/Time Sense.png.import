@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x1yud8b06i32"
-path="res://.godot/imported/Skeleton Mage.png-8cef4366d247f53095ba939538b34e59.ctex"
+uid="uid://c8t5jtkr41833"
+path="res://.godot/imported/Time Sense.png-3b8c609a280e0b330c4598f815307bdd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Skeleton Mage.png"
-dest_files=["res://.godot/imported/Skeleton Mage.png-8cef4366d247f53095ba939538b34e59.ctex"]
+source_file="res://Old/Art/Time Sense.png"
+dest_files=["res://.godot/imported/Time Sense.png-3b8c609a280e0b330c4598f815307bdd.ctex"]
 
 [params]
 

@@ -13,9 +13,15 @@
         <beat>0.3</beat>
         <setCharacterAnimation concurent="true"><character>Cato</character><animation>Show Object Sit</animation></setCharacterAnimation>
         <line><speaker>Cato</speaker>We got a letter. Someone actually flagged me down and gave it to me when I was leaving the Post Office...</line>
-        <characterMove character="Cera">Beside Cato</characterMove>
+        <END>
+            <opt GOTO="EXIT">Ok, guess that's it then</opt>
+            <opt GOTO="EXIT">Cat</opt>
+            <opt GOTO="EXIT">Dog</opt>
+            <opt GOTO="start">Huh?</opt>
+        </END>
+       <!-- <characterMove character="Cera">Beside Cato</characterMove>
         <setCharacterAnimation idleLoop="true"><character>Cera</character><animation>Idle Left</animation></setCharacterAnimation>
-        <!--<setCharacterAnimation><character>Cera</character><animation>Take Letter</animation></setCharacterAnimation>-->
+        <setCharacterAnimation><character>Cera</character><animation>Take Letter</animation></setCharacterAnimation>
         <setCharacterAnimation idleLoop="true"><character>Cato</character><animation>Idle Sit</animation></setCharacterAnimation>
         <line autoProceed="true"><speaker>Cera</speaker>Wonder what was so-</line>
         <envAnimation>Distant Boom</envAnimation>
@@ -33,8 +39,9 @@
             <cameraCut transition="cut">Cato Anxiety Shot</cameraCut>
             <characterAnimationChange><character>Cato</character><animation>Anxious Pacing</animation></characterAnimationChange>
             <characterTeleport character="Cato">Pacing Blocking Mark</characterTeleport>
-            <!-- Need to add in some node enables/disables for lighting-->
+            Need to add in some node enables/disables for lighting
         </smashCut>
         <END><GOTO>EXIT</GOTO></END>
+    -->
     </block>
 </screenplay>

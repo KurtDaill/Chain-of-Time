@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://d23io6jp617dx"]
 
 [ext_resource type="Script" path="res://Battle Mode/Player Characters/SilverCombatant.cs" id="1_bdure"]
-[ext_resource type="Texture2D" uid="uid://bfn61ql3ubmtc" path="res://Art/Luciene Combat Sprite-Sheet.png" id="3_y6mhs"]
+[ext_resource type="Texture2D" uid="uid://bfn61ql3ubmtc" path="res://Art/Prod Sprite Sheets/Luciene Combat Sprite-Sheet.png" id="3_y6mhs"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="4_iqlup"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/LucieneBasicAttack.cs" id="5_aql7x"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/Reroute.cs" id="6_3mye5"]

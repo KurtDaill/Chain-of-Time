@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfn61ql3ubmtc"
-path="res://.godot/imported/Luciene Combat Sprite-Sheet.png-d4a2e7cb4ed7b73b6f416f91b84e00c9.ctex"
+uid="uid://qxueooqq05r1"
+path="res://.godot/imported/Skeleton Combat Sprite-Sheet.png-29fa92dab8b240bd50bd8ed945b1aa0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Luciene Combat Sprite-Sheet.png"
-dest_files=["res://.godot/imported/Luciene Combat Sprite-Sheet.png-d4a2e7cb4ed7b73b6f416f91b84e00c9.ctex"]
+source_file="res://Art/Prod Sprite Sheets/Skeleton Combat Sprite-Sheet.png"
+dest_files=["res://.godot/imported/Skeleton Combat Sprite-Sheet.png-29fa92dab8b240bd50bd8ed945b1aa0f.ctex"]
 
 [params]
 

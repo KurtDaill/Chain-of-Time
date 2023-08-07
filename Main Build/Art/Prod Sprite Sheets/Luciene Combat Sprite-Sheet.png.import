@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d054fqnoqr0oo"
-path="res://.godot/imported/Cato Combat Sprite-Sheet.png-e25ecb8c4fc5e15c36fa706a181c06ea.ctex"
+uid="uid://bfn61ql3ubmtc"
+path="res://.godot/imported/Luciene Combat Sprite-Sheet.png-2facb70b4a489ebe5ecc2021970892e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Cato Combat Sprite-Sheet.png"
-dest_files=["res://.godot/imported/Cato Combat Sprite-Sheet.png-e25ecb8c4fc5e15c36fa706a181c06ea.ctex"]
+source_file="res://Art/Prod Sprite Sheets/Luciene Combat Sprite-Sheet.png"
+dest_files=["res://.godot/imported/Luciene Combat Sprite-Sheet.png-2facb70b4a489ebe5ecc2021970892e8.ctex"]
 
 [params]
 

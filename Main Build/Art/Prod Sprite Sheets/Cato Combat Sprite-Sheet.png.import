@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d7pbriigo4aj"
-path="res://.godot/imported/Silver Combat Sprite-Sheet.png-7917d40363be70eca1c1766a63eb6c53.ctex"
+uid="uid://d054fqnoqr0oo"
+path="res://.godot/imported/Cato Combat Sprite-Sheet.png-7210abd6a3840f13b2ee8da181508101.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Silver Combat Sprite-Sheet.png"
-dest_files=["res://.godot/imported/Silver Combat Sprite-Sheet.png-7917d40363be70eca1c1766a63eb6c53.ctex"]
+source_file="res://Art/Prod Sprite Sheets/Cato Combat Sprite-Sheet.png"
+dest_files=["res://.godot/imported/Cato Combat Sprite-Sheet.png-7210abd6a3840f13b2ee8da181508101.ctex"]
 
 [params]
 

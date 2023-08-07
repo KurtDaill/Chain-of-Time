@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rrkkuukcn2sf"
-path="res://.godot/imported/Cera Cinematic Sprite-Sheet.png-9ab4aad456c05715d3752d96f0431be8.ctex"
+uid="uid://bv0i4a26g7yvv"
+path="res://.godot/imported/Skeleton Mage Scroll Skull.png-e126ef92caca9f1267a078d1414b99de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Cera Cinematic Sprite-Sheet.png"
-dest_files=["res://.godot/imported/Cera Cinematic Sprite-Sheet.png-9ab4aad456c05715d3752d96f0431be8.ctex"]
+source_file="res://Art/Prod Sprite Sheets/Skeleton Mage Scroll Skull.png"
+dest_files=["res://.godot/imported/Skeleton Mage Scroll Skull.png-e126ef92caca9f1267a078d1414b99de.ctex"]
 
 [params]
 

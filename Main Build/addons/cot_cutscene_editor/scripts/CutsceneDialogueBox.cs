@@ -2,19 +2,18 @@ using Godot;
 using System;
 
 [Tool]
-public partial class CutsceneDialogueBox : Node3D
+public partial class CutsceneDialogueBox : Control
 {
 	[Export]
-	Label characterNameLabel;
-	[Export]
 	RichTextLabel dialogueLabel;
-	Actor speaker;
+	[Export]
+	Control myResponseBox;
+	CutsceneResponseBox responses;
+
+	//Actor speaker;
 	[Export]
 	double textDisplaySpeed;
 	double timeElapsed;
-	int[] textEffectStarts;
-	int[] textEffectEnds;
-	CutsceneTextEffect[] effects;
 	bool printingOut = false;
 
 	[Signal]
@@ -24,9 +23,11 @@ public partial class CutsceneDialogueBox : Node3D
 	{
 		//characterNameLabel = GetNode<Label3D>("Character Name Label");
 		//dialogueLabel = GetNode<Label3D>("Dialogue Label");
-		try{speaker = this.GetParent<Actor>();}
-		catch(InvalidCastException){throw new UnexpectedParentException("Dialogue Boxes have to be direct children of their actors!");}
-		characterNameLabel.Text = speaker.GetActorName();
+		responses = (CutsceneResponseBox) myResponseBox;
+		//try{speaker = this.GetParent<Actor>();}
+		//catch(InvalidCastException){throw new UnexpectedParentException("Dialogue Boxes have to be direct children of their actors!");}
+		dialogueLabel.Text = "";
+		//responses.Visible = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,10 +49,7 @@ public partial class CutsceneDialogueBox : Node3D
 		printingOut = true;
 		this.Visible = true;
 
-		dialogueLabel.Text = line.GetText();
-		effects = line.GetTextEffects();
-		textEffectStarts = line.GetEffectStarts();
-		textEffectEnds = line.GetEfffectEnds();
+		dialogueLabel.Text = "[b]" + line.GetSpeaker() + "- [/b] " + line.GetText();
 	}
 
 	public void RushDialogue(){
@@ -62,10 +60,16 @@ public partial class CutsceneDialogueBox : Node3D
 
 	public void CloseDialogue(){
 		this.Visible = false;
-		dialogueLabel.Text = "";
+		//dialogueLabel.Text = "";
 	}
 
 	public bool IsDisplayingDialogue(){
 		return printingOut;
+	}
+
+	public CutsceneResponseBox StartDialogueResponse(CutsceneDialogueResponse[] responseObjects){
+		this.Visible = true;
+    	responses.PopulateResponsesAndShow(responseObjects);
+		return responses;
 	}
 }

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://va7cxyagbsc0"]
+
+[ext_resource type="Theme" uid="uid://c3w8cbrksjko5" path="res://GUI/Themes/Cutscene Themes/NormalDialogueText.tres" id="1_1bvij"]
+
+[node name="RichTextLabel" type="RichTextLabel"]
+clip_contents = false
+theme = ExtResource("1_1bvij")
+bbcode_enabled = true
+text = "[b]Cato[/b] - This is some test text. I'm not 100% Sure About what's going to live here."
+fit_content = true
