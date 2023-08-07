@@ -13,11 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://b43sxpud60he4" path="res://Art/Letter.png" id="12_utw4k"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/SidebarStyleDialogueBox.cs" id="13_3bm2k"]
 [ext_resource type="Theme" uid="uid://c3w8cbrksjko5" path="res://GUI/Themes/Cutscene Themes/NormalDialogueText.tres" id="13_07ttf"]
-[ext_resource type="Texture2D" uid="uid://bc5cvecx1cei7" path="res://Art/Time Sense.png" id="13_r55g3"]
+[ext_resource type="Texture2D" path="res://Art/Time Sense.png" id="13_r55g3"]
 [ext_resource type="Texture2D" uid="uid://bht4u51q4dk24" path="res://Art/Cato Backpack.png" id="14_mcask"]
-[ext_resource type="Theme" uid="uid://c6hjkq2or80ln" path="res://GUI/Themes/Cutscene Themes/Dialogue Responses.tres" id="15_aaxw0"]
-[ext_resource type="PackedScene" uid="uid://dg01bl2hxx48n" path="res://addons/cot_cutscene_editor/prefab_scenes/DiscoStyleSpacer.tscn" id="15_fqf58"]
-[ext_resource type="PackedScene" uid="uid://va7cxyagbsc0" path="res://addons/cot_cutscene_editor/prefab_scenes/DiscoStyleLabel.tscn" id="16_ed0f7"]
+[ext_resource type="Theme" path="res://GUI/Themes/Cutscene Themes/Dialogue Responses.tres" id="15_aaxw0"]
+[ext_resource type="PackedScene" path="res://addons/cot_cutscene_editor/prefab_scenes/DiscoStyleSpacer.tscn" id="15_fqf58"]
+[ext_resource type="PackedScene" path="res://addons/cot_cutscene_editor/prefab_scenes/DiscoStyleLabel.tscn" id="16_ed0f7"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDialogueBox.cs" id="17_wiag7"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneResponseBox.cs" id="18_3cvye"]
 
@@ -342,7 +342,7 @@ sidebarStyleBox = NodePath("Disco Style")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
 
 [node name="MainShot" type="Camera3D" parent="Cutscene/Shot List"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -0.628, 7.81, 20.478)
+transform = Transform3D(0.939693, -0.0885213, 0.330366, 0, 0.965926, 0.258819, -0.34202, -0.24321, 0.907673, 7.142, 9.415, 21.028)
 fov = 50.0
 script = ExtResource("6_l4re2")
 

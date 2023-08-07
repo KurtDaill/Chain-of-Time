@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://mf37gwjc304a" path="res://Audio/mus_dungeon_01.ogg" id="4_far4g"]
 [ext_resource type="Script" path="res://Explore Mode/LevelTransition.cs" id="5_4ft62"]
 [ext_resource type="Script" path="res://Explore Mode/ExplorePlayer.cs" id="6_mwo70"]
-[ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Adventure Cato Sprite-Sheet.png" id="7_uo16o"]
+[ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Prod Sprite Sheets/Adventure Cato Sprite-Sheet.png" id="7_uo16o"]
 [ext_resource type="Script" path="res://Explore Mode/CronoScene.cs" id="8_qur3f"]
 [ext_resource type="PackedScene" uid="uid://clfe838wqi3e" path="res://Old/Art/3D/Challenge Room Portcullis.dae" id="9_hcog0"]
 [ext_resource type="PackedScene" uid="uid://7nuwa7vspu4p" path="res://Old/Art/3D/Challenge Room Bridge Piece.dae" id="10_efnf7"]

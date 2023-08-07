@@ -1,0 +1,216 @@
+[gd_scene load_steps=19 format=3 uid="uid://te5ep1basxpw"]
+
+[ext_resource type="PackedScene" uid="uid://b1a6y576weqqa" path="res://Art/3D/OldTownTestScenegltf.gltf" id="1_u4nnp"]
+[ext_resource type="Script" path="res://Explore Mode/ExplorePlayer.cs" id="2_3mqdx"]
+[ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Prod Sprite Sheets/Adventure Cato Sprite-Sheet.png" id="3_luqsg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ciu8q"]
+radius = 0.52
+
+[sub_resource type="Animation" id="Animation_ojxl6"]
+resource_name = "Idle"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_27shk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [137]
+}
+
+[sub_resource type="Animation" id="Animation_08ja1"]
+resource_name = "Time Walk"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 3, 3.3, 3.6, 4.1, 4.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 33, 34, 35, 36, 30, 0]
+}
+
+[sub_resource type="Animation" id="Animation_sjxoi"]
+resource_name = "Walk Down"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1, 8]
+}
+
+[sub_resource type="Animation" id="Animation_wwo8u"]
+resource_name = "Walk Left"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [9, 16]
+}
+
+[sub_resource type="Animation" id="Animation_q18n5"]
+resource_name = "Walk Right"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1, 8]
+}
+
+[sub_resource type="Animation" id="Animation_ypg7j"]
+resource_name = "Walk Up"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d2xct"]
+_data = {
+"Idle": SubResource("Animation_ojxl6"),
+"RESET": SubResource("Animation_27shk"),
+"Time Walk": SubResource("Animation_08ja1"),
+"Walk Down": SubResource("Animation_sjxoi"),
+"Walk Left": SubResource("Animation_wwo8u"),
+"Walk Right": SubResource("Animation_q18n5"),
+"Walk Up": SubResource("Animation_ypg7j")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1t8gf"]
+radius = 0.64
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2iyp6"]
+radius = 0.36
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2g0qk"]
+size = Vector3(293.438, 0.001, 145.25)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iw8je"]
+
+[sub_resource type="Sky" id="Sky_h12ok"]
+sky_material = SubResource("ProceduralSkyMaterial_iw8je")
+
+[sub_resource type="Environment" id="Environment_e6auc"]
+background_mode = 2
+sky = SubResource("Sky_h12ok")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="OldTownTestScenegltf" parent="." instance=ExtResource("1_u4nnp")]
+
+[node name="ExplorePlayer" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4495, 0.456, -0.268)
+floor_max_angle = 0.872665
+safe_margin = 0.01
+script = ExtResource("2_3mqdx")
+waypointRes = "res://Explore Mode/Waypoint.tscn"
+
+[node name="Sprite3D" type="Sprite3D" parent="ExplorePlayer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37249, 2.6, 0)
+sorting_offset = 1.0
+pixel_size = 0.008
+shaded = true
+alpha_cut = 2
+texture = ExtResource("3_luqsg")
+hframes = 10
+vframes = 2
+frame = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplorePlayer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 1.04, 0)
+shape = SubResource("CylinderShape3D_ciu8q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ExplorePlayer"]
+root_node = NodePath("../Sprite3D")
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_d2xct")
+}
+
+[node name="Interaction Radius" type="Area3D" parent="ExplorePlayer"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplorePlayer/Interaction Radius"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 1.04, 0)
+shape = SubResource("CylinderShape3D_1t8gf")
+
+[node name="BodyArea" type="Area3D" parent="ExplorePlayer"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplorePlayer/BodyArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04, 0)
+shape = SubResource("CylinderShape3D_2iyp6")
+
+[node name="Explore Camera" type="Camera3D" parent="ExplorePlayer"]
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0.238175, 3.524, 8.028)
+current = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_2g0qk")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e6auc")
+
+[connection signal="area_entered" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaEntered" flags=18]
+[connection signal="area_exited" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaExited" flags=18]
+[connection signal="area_entered" from="ExplorePlayer/BodyArea" to="ExplorePlayer" method="OnBodyAreaEntered" flags=18]
