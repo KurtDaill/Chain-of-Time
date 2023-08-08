@@ -38,6 +38,7 @@ public partial class CutsceneDialogueBox : Control
 			dialogueLabel.VisibleCharacters = (int)Mathf.Round(timeElapsed * textDisplaySpeed);
 			if(dialogueLabel.VisibleCharacters >= dialogueLabel.Text.Length){
 				printingOut = false;
+				// @ts-ignore
 				EmitSignal(CutsceneDialogueBox.SignalName.DisplayFinished);
 			}
 		}

@@ -23,14 +23,10 @@ public partial class CutsceneDirector : Node3D
     [Export]
     string initialShotName;
     [Export]
-    CutsceneDialogueBox subtitleStyleBox;
-    [Export]
-    SidebarStyleDialogueBox sidebarStyleBox;    
+    CutsceneDialogueBox dialogueBox;
     Dictionary<string, CutsceneShot> shotList;
     Dictionary<string, Marker3D> blockingMarks;
     string playerCharacterName;
-
-    bool usingDiscoBox = false;
 
     StoryState storyState;
     CutsceneCamera mainCutsceneCamera;
@@ -97,10 +93,10 @@ public partial class CutsceneDirector : Node3D
                     if(line.HasConcurrentAnimation() && waitingOnAnimation){
                         return;
                     }else{
-                        if(subtitleStyleBox.IsDisplayingDialogue()){
-                            subtitleStyleBox.RushDialogue();
+                        if(dialogueBox.IsDisplayingDialogue()){
+                            dialogueBox.RushDialogue();
                         }else{
-                            subtitleStyleBox.CloseDialogue();
+                            dialogueBox.CloseDialogue();
                             AdvanceToNextAction();
                         }
                     }
@@ -130,9 +126,6 @@ public partial class CutsceneDirector : Node3D
                     break;
             }
         }
-        if(Input.IsActionJustPressed("debug_5")) usingDiscoBox = !usingDiscoBox;
-        sidebarStyleBox.Visible = usingDiscoBox;
-        subtitleStyleBox.Visible = !usingDiscoBox;
         /*
         if(Input.IsActionJustPressed("debug_4")){
             LoadLiveState(0);
@@ -170,8 +163,7 @@ public partial class CutsceneDirector : Node3D
                     waitingOnAnimation = true;
                 }
                 //lineActor.SpeakLine(line);
-                subtitleStyleBox.BeginDialogue(line);
-                sidebarStyleBox.BeginDialogue(line);
+                dialogueBox.BeginDialogue(line);
 
                 break;
             case "CutsceneCharacterAnimation":
@@ -259,8 +251,7 @@ public partial class CutsceneDirector : Node3D
             case "CutsceneEndBlock":
                 CutsceneEndBlock endBlock = (CutsceneEndBlock) act;
                 if(endBlock.IsResponseBlock()){
-                    //playerCharacterResponseBox = subtitleStyleBox.StartDialogueResponse(endBlock.GetDialogueOptions());
-                    playerCharacterResponseBox = sidebarStyleBox.StartDialogueResponse(endBlock.GetDialogueOptions());
+                    playerCharacterResponseBox = dialogueBox.StartDialogueResponse(endBlock.GetDialogueOptions());
                 }else{
                     GotoNextBlock(endBlock.GetGotoBlockTarget());
                 }
@@ -305,6 +296,7 @@ public partial class CutsceneDirector : Node3D
         watchedBlockingMoves.Remove(markerName);
         AdvanceToNextAction();
     }
+    
     /*
     //Implements the "Save State" section of the momento pattern using packed scenes
     public void SaveLiveState(){
