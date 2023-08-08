@@ -1,15 +1,298 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2523wst7m8sf"]
+[gd_scene load_steps=23 format=3 uid="uid://d2523wst7m8sf"]
 
 [ext_resource type="Script" path="res://Prototyping/TimeTraveler.cs" id="1_4yl0v"]
 [ext_resource type="Texture2D" uid="uid://d054fqnoqr0oo" path="res://Art/Prod Sprite Sheets/Cato Combat Sprite-Sheet.png" id="2_3aqkb"]
+[ext_resource type="Texture2D" uid="uid://d7pbriigo4aj" path="res://Art/Prod Sprite Sheets/Silver Combat Sprite-Sheet.png" id="3_6ru7e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moeyf"]
+albedo_color = Color(1, 0, 0.0156863, 1)
+
+[sub_resource type="Animation" id="Animation_7dc30"]
+resource_name = "Bounce"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(3.0991, -0.25, 0, 0.25, 0, 3.0991, -0.25, 0, 0.25, 0, 3.0991, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.7, 1.4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.91528, -0.25, 0, 0, 2.27116, 5.41528, -0.2, -0.0224624, 0.2, -0.0224624, 0.16528, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.7, 1.4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-2.73741, -0.25, 0, 0.25, 0, -2.73741, -0.25, 0, 0.25, 0, -2.73741, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.7, 1.4)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.7, 1.2, 1.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0, 0.509467, 2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.2, -0.0938561, 0.5, 0, 0.143863, 0.3, 0.108097),
+"times": PackedFloat32Array(0, 0.3, 0.7, 1.2, 1.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:scale:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.7, 1.2, 1.5)
+}
+
+[sub_resource type="Animation" id="Animation_k8ofh"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(3.0991, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.91528, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2.73741, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:scale:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_52l05"]
+_data = {
+"Bounce": SubResource("Animation_7dc30"),
+"RESET": SubResource("Animation_k8ofh")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vyl0v"]
+albedo_color = Color(0, 0.301961, 0.176471, 1)
+
+[sub_resource type="Animation" id="Animation_jisq4"]
+resource_name = "Idle"
+length = 4.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [39, 60]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0pgg4"]
+_data = {
+"Idle": SubResource("Animation_jisq4")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gcplg"]
+albedo_color = Color(0.270588, 0.270588, 0.270588, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eek08"]
+albedo_color = Color(0.584314, 0, 0.0156863, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5boq"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
 shading_mode = 0
-albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="QuadMesh" id="QuadMesh_n1pjj"]
 material = SubResource("StandardMaterial3D_s5boq")
 size = Vector2(1.92, 1.08)
+
+[sub_resource type="Animation" id="Animation_rru1a"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:mesh:material:albedo_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mesh:material:albedo_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:mesh:material:albedo_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:mesh:material:albedo_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_d1xig"]
+resource_name = "FadeIn"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:mesh:material:albedo_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.0156863, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mesh:material:albedo_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:mesh:material:albedo_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:mesh:material:albedo_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gk8ml"]
+_data = {
+"FadeIn": SubResource("Animation_d1xig"),
+"RESET": SubResource("Animation_rru1a")
+}
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0fe2d"]
 
@@ -19,12 +302,6 @@ sky_material = SubResource("ProceduralSkyMaterial_0fe2d")
 [sub_resource type="Environment" id="Environment_yj3kw"]
 background_mode = 2
 sky = SubResource("Sky_yb0rf")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moeyf"]
-albedo_color = Color(1, 0, 0.0156863, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vyl0v"]
-albedo_color = Color(0, 0.501961, 1, 1)
 
 [sub_resource type="Animation" id="Animation_1wprq"]
 resource_name = "Loop"
@@ -50,12 +327,73 @@ _data = {
 
 [node name="Node3D" type="Node3D"]
 
-[node name="TimeTraveler" type="Node" parent="." node_paths=PackedStringArray("renderedScenePlane")]
-script = ExtResource("1_4yl0v")
-renderedScenePlane = NodePath("../Camera3D/MeshInstance3D2")
+[node name="Present" type="Node3D" parent="."]
+visible = false
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="CSGBox3D" type="CSGBox3D" parent="Present"]
 size = Vector3(12.25, 0.189336, 8.375)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Present"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0991, 0.91528, -2.73741)
+radius = 1.0
+material = SubResource("StandardMaterial3D_moeyf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Present/CSGSphere3D" groups=["AnimationPlayer"]]
+autoplay = "Bounce"
+libraries = {
+"": SubResource("AnimationLibrary_52l05")
+}
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Present"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.26103, 1.75132, 0.613498)
+radius = 1.125
+height = 4.0
+material = SubResource("StandardMaterial3D_vyl0v")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Present"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.375, 3.0625, -0.9375)
+pixel_size = 0.0125
+texture = ExtResource("3_6ru7e")
+hframes = 10
+vframes = 10
+frame = 43
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Present/Sprite3D2" groups=["AnimationPlayer"]]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_0pgg4")
+}
+
+[node name="Past" type="Node3D" parent="."]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Past"]
+size = Vector3(12.25, 0.189336, 8.375)
+material = SubResource("StandardMaterial3D_gcplg")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Past"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0991, 0.91528, -2.73741)
+radius = 1.0
+material = SubResource("StandardMaterial3D_eek08")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Past/CSGSphere3D2"]
+autoplay = "Bounce"
+libraries = {
+"": SubResource("AnimationLibrary_52l05")
+}
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Past"]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 4.05147, 1.12632, 1.2385)
+radius = 1.125
+height = 4.0
+material = SubResource("StandardMaterial3D_vyl0v")
+
+[node name="TimeTraveler" type="Node" parent="." node_paths=PackedStringArray("CatoSprite", "renderedScenePlane", "present", "past")]
+script = ExtResource("1_4yl0v")
+slowDownTimeInSeconds = 2.0
+CatoSprite = NodePath("../Cato")
+renderedScenePlane = NodePath("../Camera3D/MeshInstance3D2")
+present = NodePath("../Present")
+past = NodePath("../Past")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.988573, 0.150743, 0, -0.150743, 0.988573, 0, 3.33937, 8.59417)
@@ -63,34 +401,26 @@ current = true
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-visible = false
 mesh = SubResource("QuadMesh_n1pjj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D/MeshInstance3D2"]
+libraries = {
+"": SubResource("AnimationLibrary_gk8ml")
+}
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yj3kw")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0991, 0.91528, -2.73741)
-radius = 1.0
-material = SubResource("StandardMaterial3D_moeyf")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.26103, 1.75132, 0.613498)
-radius = 1.125
-height = 4.0
-material = SubResource("StandardMaterial3D_vyl0v")
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Cato" type="Sprite3D" parent="." groups=["Cato"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.09497, 0)
 pixel_size = 0.0125
-no_depth_test = true
 alpha_cut = 2
 texture = ExtResource("2_3aqkb")
 hframes = 10
 vframes = 7
-frame = 5
+frame = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite3D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cato" groups=["AnimationPlayer", "Cato"]]
 autoplay = "Loop"
 libraries = {
 "": SubResource("AnimationLibrary_eec5r")
