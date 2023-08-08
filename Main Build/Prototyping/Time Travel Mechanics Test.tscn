@@ -1,0 +1,97 @@
+[gd_scene load_steps=12 format=3 uid="uid://d2523wst7m8sf"]
+
+[ext_resource type="Script" path="res://Prototyping/TimeTraveler.cs" id="1_4yl0v"]
+[ext_resource type="Texture2D" uid="uid://d054fqnoqr0oo" path="res://Art/Prod Sprite Sheets/Cato Combat Sprite-Sheet.png" id="2_3aqkb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5boq"]
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_n1pjj"]
+material = SubResource("StandardMaterial3D_s5boq")
+size = Vector2(1.92, 1.08)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0fe2d"]
+
+[sub_resource type="Sky" id="Sky_yb0rf"]
+sky_material = SubResource("ProceduralSkyMaterial_0fe2d")
+
+[sub_resource type="Environment" id="Environment_yj3kw"]
+background_mode = 2
+sky = SubResource("Sky_yb0rf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moeyf"]
+albedo_color = Color(1, 0, 0.0156863, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vyl0v"]
+albedo_color = Color(0, 0.501961, 1, 1)
+
+[sub_resource type="Animation" id="Animation_1wprq"]
+resource_name = "Loop"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eec5r"]
+_data = {
+"Loop": SubResource("Animation_1wprq")
+}
+
+[node name="Node3D" type="Node3D"]
+
+[node name="TimeTraveler" type="Node" parent="." node_paths=PackedStringArray("renderedScenePlane")]
+script = ExtResource("1_4yl0v")
+renderedScenePlane = NodePath("../Camera3D/MeshInstance3D2")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(12.25, 0.189336, 8.375)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.988573, 0.150743, 0, -0.150743, 0.988573, 0, 3.33937, 8.59417)
+current = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+visible = false
+mesh = SubResource("QuadMesh_n1pjj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yj3kw")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0991, 0.91528, -2.73741)
+radius = 1.0
+material = SubResource("StandardMaterial3D_moeyf")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.26103, 1.75132, 0.613498)
+radius = 1.125
+height = 4.0
+material = SubResource("StandardMaterial3D_vyl0v")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.09497, 0)
+pixel_size = 0.0125
+no_depth_test = true
+alpha_cut = 2
+texture = ExtResource("2_3aqkb")
+hframes = 10
+vframes = 7
+frame = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite3D"]
+autoplay = "Loop"
+libraries = {
+"": SubResource("AnimationLibrary_eec5r")
+}

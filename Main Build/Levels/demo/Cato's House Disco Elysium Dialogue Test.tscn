@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dqsd1clxfi03q"]
+[gd_scene load_steps=35 format=3 uid="uid://dqsd1clxfi03q"]
 
 [ext_resource type="Script" path="res://Cutscenes/CutsceneDummy.cs" id="1_6xmoj"]
 [ext_resource type="PackedScene" uid="uid://cg0lh548glsxq" path="res://Art/3D/Cato's House Rough Render.dae" id="2_4rnw5"]
@@ -11,13 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://bxpwsf3thk4fo" path="res://Art/Prod Sprite Sheets/CatoCinematicAnimation-Sheet.png" id="9_flla6"]
 [ext_resource type="Texture2D" uid="uid://rrkkuukcn2sf" path="res://Art/Prod Sprite Sheets/Cera Cinematic Sprite-Sheet.png" id="11_t3o7g"]
 [ext_resource type="Texture2D" uid="uid://b43sxpud60he4" path="res://Art/Letter.png" id="12_utw4k"]
-[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/SidebarStyleDialogueBox.cs" id="13_3bm2k"]
 [ext_resource type="Theme" uid="uid://c3w8cbrksjko5" path="res://GUI/Themes/Cutscene Themes/NormalDialogueText.tres" id="13_07ttf"]
-[ext_resource type="Texture2D" path="res://Art/Time Sense.png" id="13_r55g3"]
+[ext_resource type="Texture2D" uid="uid://bc5cvecx1cei7" path="res://Art/Time Sense.png" id="13_r55g3"]
 [ext_resource type="Texture2D" uid="uid://bht4u51q4dk24" path="res://Art/Cato Backpack.png" id="14_mcask"]
-[ext_resource type="Theme" path="res://GUI/Themes/Cutscene Themes/Dialogue Responses.tres" id="15_aaxw0"]
-[ext_resource type="PackedScene" path="res://addons/cot_cutscene_editor/prefab_scenes/DiscoStyleSpacer.tscn" id="15_fqf58"]
-[ext_resource type="PackedScene" path="res://addons/cot_cutscene_editor/prefab_scenes/DiscoStyleLabel.tscn" id="16_ed0f7"]
+[ext_resource type="Theme" uid="uid://c6hjkq2or80ln" path="res://GUI/Themes/Cutscene Themes/Dialogue Responses.tres" id="15_aaxw0"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDialogueBox.cs" id="17_wiag7"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneResponseBox.cs" id="18_3cvye"]
 
@@ -330,13 +327,12 @@ environment = SubResource("Environment_5clu4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36, 3.625, 12.913)
 fov = 50.0
 
-[node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "subtitleStyleBox", "sidebarStyleBox")]
+[node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox")]
 script = ExtResource("5_pb04e")
 screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Int Cato House Before Invasion.xml"
 playerCharacter = NodePath("Cato Actor")
 initialShotName = "MainShot"
-subtitleStyleBox = NodePath("Subtitle Style")
-sidebarStyleBox = NodePath("Disco Style")
+dialogueBox = NodePath("Subtitle Style")
 
 [node name="Shot List" type="Node3D" parent="Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
@@ -421,174 +417,6 @@ spot_angle = 23.8331
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, 1.3125, 0.1875)
 pixel_size = 0.0125
 texture = ExtResource("14_mcask")
-
-[node name="Disco Style" type="Control" parent="Cutscene" node_paths=PackedStringArray("myResponseBox")]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("13_3bm2k")
-TextLabelPrefab = "res://addons/cot_cutscene_editor/prefab_scenes/DiscoStyleLabel.tscn"
-SpacerPrefab = "res://addons/cot_cutscene_editor/prefab_scenes/DiscoStyleSpacer.tscn"
-myResponseBox = NodePath("Responses")
-
-[node name="Background Panel" type="Panel" parent="Cutscene/Disco Style"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.734
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -0.280029
-offset_right = -5.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_sc4s5")
-
-[node name="Portrait" type="TextureRect" parent="Cutscene/Disco Style"]
-visible = false
-layout_mode = 2
-offset_left = 1244.0
-offset_top = 590.0
-offset_right = 1404.0
-offset_bottom = 750.0
-texture = ExtResource("13_r55g3")
-stretch_mode = 2
-
-[node name="Scrolling Dialogue" type="VBoxContainer" parent="Cutscene/Disco Style"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.734
-anchor_right = 1.0
-anchor_bottom = 0.682
-offset_left = -0.280029
-offset_right = -5.0
-offset_bottom = 0.439941
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 2
-
-[node name="Dialogue Spacer" parent="Cutscene/Disco Style/Scrolling Dialogue" instance=ExtResource("15_fqf58")]
-layout_mode = 2
-
-[node name="RichTextLabel" parent="Cutscene/Disco Style/Scrolling Dialogue" instance=ExtResource("16_ed0f7")]
-layout_mode = 2
-
-[node name="Dialogue Spacer2" type="Panel" parent="Cutscene/Disco Style/Scrolling Dialogue"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_ehsf8")
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="Cutscene/Disco Style/Scrolling Dialogue"]
-clip_contents = false
-layout_mode = 2
-theme = ExtResource("13_07ttf")
-theme_override_colors/default_color = Color(0, 0.705882, 0.941176, 0.784314)
-theme_override_colors/font_outline_color = Color(0.341176, 0.341176, 0.341176, 1)
-bbcode_enabled = true
-text = "	[wave freq=3]This is [TIME SENSE] text that's no one's dialogue![/wave]"
-fit_content = true
-
-[node name="Responses" type="VBoxContainer" parent="Cutscene/Disco Style" node_paths=PackedStringArray("responseLabels")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.734
-anchor_top = 0.727
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -0.280029
-offset_top = -0.160034
-offset_right = -5.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("18_3cvye")
-responseLabels = [NodePath("VBoxContainer/RichTextLabel"), NodePath("VBoxContainer/RichTextLabel2"), NodePath("VBoxContainer/RichTextLabel3"), NodePath("VBoxContainer/RichTextLabel4")]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Cutscene/Disco Style/Responses"]
-layout_mode = 2
-theme = ExtResource("15_aaxw0")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Cutscene/Disco Style/Responses/VBoxContainer"]
-layout_mode = 2
-text = "This is no longer the selected Response."
-fit_content = true
-
-[node name="Highlight" type="Panel" parent="Cutscene/Disco Style/Responses/VBoxContainer/RichTextLabel"]
-z_index = -1
-layout_mode = 0
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 506.0
-offset_bottom = 54.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_bbdq8")
-
-[node name="Response Spacer" type="Panel" parent="Cutscene/Disco Style/Responses/VBoxContainer"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_ehsf8")
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="Cutscene/Disco Style/Responses/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
-text = "This is Response Two, which is also longer"
-fit_content = true
-
-[node name="Highlight" type="Panel" parent="Cutscene/Disco Style/Responses/VBoxContainer/RichTextLabel2"]
-visible = false
-z_index = -1
-layout_mode = 0
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 506.0
-offset_bottom = 54.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_bbdq8")
-
-[node name="Response Spacer2" type="Panel" parent="Cutscene/Disco Style/Responses/VBoxContainer"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_ehsf8")
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="Cutscene/Disco Style/Responses/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
-text = "This is Response Three, There is no Meme"
-fit_content = true
-
-[node name="Highlight" type="Panel" parent="Cutscene/Disco Style/Responses/VBoxContainer/RichTextLabel3"]
-visible = false
-z_index = -1
-layout_mode = 0
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 506.0
-offset_bottom = 54.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_bbdq8")
-
-[node name="Response Spacer3" type="Panel" parent="Cutscene/Disco Style/Responses/VBoxContainer"]
-custom_minimum_size = Vector2(0, 10)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_ehsf8")
-
-[node name="RichTextLabel4" type="RichTextLabel" parent="Cutscene/Disco Style/Responses/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
-text = "This is Response Four, All Hail Response Four"
-fit_content = true
-
-[node name="Highlight" type="Panel" parent="Cutscene/Disco Style/Responses/VBoxContainer/RichTextLabel4"]
-visible = false
-z_index = -1
-layout_mode = 0
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 506.0
-offset_bottom = 54.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_bbdq8")
 
 [node name="Subtitle Style" type="Control" parent="Cutscene" node_paths=PackedStringArray("dialogueLabel", "myResponseBox")]
 layout_mode = 3
