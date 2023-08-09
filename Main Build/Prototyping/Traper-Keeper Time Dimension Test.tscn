@@ -1,0 +1,220 @@
+[gd_scene load_steps=18 format=3 uid="uid://cdp5epgxddrar"]
+
+[ext_resource type="Shader" path="res://Art/Shaders/clouds.gdshader" id="1_lsxk6"]
+[ext_resource type="Texture2D" uid="uid://2pjmwq12tsye" path="res://Art/Shaders/weather.bmp" id="2_jsf0f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nixts"]
+shader = ExtResource("1_lsxk6")
+shader_parameter/_density = 0.05
+shader_parameter/cloud_coverage = 0.25
+shader_parameter/_time_scale = 1.0
+shader_parameter/_time_offset = 0.0
+shader_parameter/rayleigh = 2.0
+shader_parameter/rayleigh_color = Color(0.26, 0.41, 0.58, 1)
+shader_parameter/mie = 0.005
+shader_parameter/mie_eccentricity = 0.8
+shader_parameter/mie_color = Color(0.63, 0.77, 0.92, 1)
+shader_parameter/turbidity = 2.0
+shader_parameter/sun_disk_scale = 5.0
+shader_parameter/ground_color = Color(1, 1, 1, 1)
+shader_parameter/exposure = 0.08
+shader_parameter/weathermap = ExtResource("2_jsf0f")
+
+[sub_resource type="Sky" id="Sky_wmhvs"]
+sky_material = SubResource("ShaderMaterial_nixts")
+
+[sub_resource type="Environment" id="Environment_tsqja"]
+background_mode = 2
+sky = SubResource("Sky_wmhvs")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Shader" id="Shader_gubko"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,depth_prepass_alpha;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform sampler2D texture_normal : hint_roughness_normal,filter_linear_mipmap,repeat_enable;
+uniform float normal_scale : hint_range(-16,16);
+uniform sampler2D texture_heightmap : hint_default_black,filter_linear_mipmap,repeat_enable;
+uniform float heightmap_scale;
+uniform int heightmap_min_layers;
+uniform int heightmap_max_layers;
+uniform vec2 heightmap_flip;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	{
+		vec3 view_dir = normalize(normalize(-VERTEX + EYE_OFFSET) * mat3(TANGENT * heightmap_flip.x, -BINORMAL * heightmap_flip.y, NORMAL));
+		float depth = 1.0 - texture(texture_heightmap, base_uv).r;
+		vec2 ofs = base_uv - view_dir.xy * depth * heightmap_scale * 0.01;
+		base_uv=ofs;
+	}
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	NORMAL_MAP = texture(texture_normal,vec2(base_uv.x + TIME*0.02, base_uv.y)).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
+	ALPHA *= albedo.a * albedo_tex.a;
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c5faa"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4qqh6"]
+seamless = true
+as_normal_map = true
+bump_strength = 9.0
+normalize = false
+noise = SubResource("FastNoiseLite_c5faa")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r5jtw"]
+render_priority = 0
+shader = SubResource("Shader_gubko")
+shader_parameter/albedo = Color(0.521569, 0.823529, 0.901961, 0.862745)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.05
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.2
+shader_parameter/normal_scale = 0.350001
+shader_parameter/heightmap_scale = 16.0
+shader_parameter/heightmap_min_layers = 8
+shader_parameter/heightmap_max_layers = 32
+shader_parameter/heightmap_flip = Vector2(1, 1)
+shader_parameter/uv1_scale = Vector3(50, 50, 50)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_4qqh6")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o6u2k"]
+material = SubResource("ShaderMaterial_r5jtw")
+size = Vector2(2000, 2000)
+subdivide_width = 20
+subdivide_depth = 30
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ue4d"]
+albedo_color = Color(0.423529, 0.870588, 0.356863, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uplfg"]
+material = SubResource("StandardMaterial3D_4ue4d")
+top_radius = 20.0
+bottom_radius = 0.0
+height = 60.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_scch7"]
+albedo_color = Color(0.960784, 0.521569, 1, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_t418d"]
+material = SubResource("StandardMaterial3D_scch7")
+size = Vector3(30, 30, 60)
+
+[sub_resource type="Animation" id="Animation_s04vr"]
+resource_name = "Day Night"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.0331613, -2.07694, 3.11018), Vector3(-3.08923, -0.872665, 3.11018)]
+}
+
+[sub_resource type="Animation" id="Animation_v6hyy"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6c4i2"]
+_data = {
+"Day Night": SubResource("Animation_s04vr"),
+"RESET": SubResource("Animation_v6hyy")
+}
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tsqja")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.9935, -0.0183048, 0.112351, 0.018216, 0.948701, 0.315649, -0.112365, 0.315644, -0.942201, 0, 6.1875, 0)
+light_color = Color(1, 0.984314, 0.811765, 1)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.688, 14.625, 18.18)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5625, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(20, 1.375, 14.375)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+visible = false
+operation = 2
+radius = 9.0625
+radial_segments = 36
+
+[node name="Water" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+layers = 2
+mesh = SubResource("PlaneMesh_o6u2k")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0366437, 0.393677, -0.918518, 0, 0.919135, 0.393942, 0.999328, -0.0144355, 0.0336805, 90.1567, 47.6832, -84.9144)
+mesh = SubResource("CylinderMesh_uplfg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.327625, -0.747364, -0.578021, -0.318099, 0.663324, -0.677358, 0.889648, -0.0380518, -0.455058, -79.065, 43.122, -117.094)
+mesh = SubResource("PrismMesh_t418d")
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.8534, 17.3302, -13.0738)
+visible = false
+size = Vector3(2561.94, 961.938, 2849.48)
+origin_offset = Vector3(-52.215, -6.735, 30.36)
+box_projection = true
+
+[node name="ReflectionProbe2" type="ReflectionProbe" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.688, 14.625, 18.18)
+size = Vector3(2089.94, 215.044, 2057.97)
+enable_shadows = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6c4i2")
+}

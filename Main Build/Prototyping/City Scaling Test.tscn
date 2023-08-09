@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://te5ep1basxpw"]
+[gd_scene load_steps=20 format=3 uid="uid://te5ep1basxpw"]
 
+[ext_resource type="PackedScene" uid="uid://cj7260eer0ta5" path="res://Art/3D/TestOldTownHouse1gltf.gltf" id="1_n60bx"]
 [ext_resource type="PackedScene" uid="uid://b1a6y576weqqa" path="res://Art/3D/OldTownTestScenegltf.gltf" id="1_u4nnp"]
 [ext_resource type="Script" path="res://Explore Mode/ExplorePlayer.cs" id="2_3mqdx"]
 [ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Prod Sprite Sheets/Adventure Cato Sprite-Sheet.png" id="3_luqsg"]
@@ -154,19 +155,23 @@ sky = SubResource("Sky_h12ok")
 
 [node name="Node3D" type="Node3D"]
 
+[node name="TestOldTownHouse1gltf" parent="." instance=ExtResource("1_n60bx")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 32.625, 0, -15.3125)
+
 [node name="OldTownTestScenegltf" parent="." instance=ExtResource("1_u4nnp")]
 
 [node name="ExplorePlayer" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4495, 0.456, -0.268)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2108, 0.456, -0.268)
 floor_max_angle = 0.872665
 safe_margin = 0.01
 script = ExtResource("2_3mqdx")
+Speed = 8.0
 waypointRes = "res://Explore Mode/Waypoint.tscn"
 
 [node name="Sprite3D" type="Sprite3D" parent="ExplorePlayer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37249, 2.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37249, 3.85, 0)
 sorting_offset = 1.0
-pixel_size = 0.008
+pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture = ExtResource("3_luqsg")
@@ -200,7 +205,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04, 0)
 shape = SubResource("CylinderShape3D_2iyp6")
 
 [node name="Explore Camera" type="Camera3D" parent="ExplorePlayer"]
-transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0.238175, 3.524, 8.028)
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 3.524, 11.118)
 current = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -210,6 +215,12 @@ shape = SubResource("BoxShape3D_2g0qk")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_e6auc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, 0, 0, 0)
+light_color = Color(1, 0.917647, 0.741176, 1)
+light_energy = 0.6
+shadow_enabled = true
 
 [connection signal="area_entered" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaEntered" flags=18]
 [connection signal="area_exited" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaExited" flags=18]

@@ -70,8 +70,8 @@ public partial class CutsceneDirector : Node3D
         foreach(Marker3D blockingMark in this.GetNode<Node3D>("Blocking Marks").GetChildren()){
             blockingMarks.Add(blockingMark.Name, blockingMark);
         }
-        mainCutsceneCamera = this.GetNode<CutsceneCamera>("Cutscene Camera");
-        animPlay = this.GetNode<AnimationPlayer>("Animation Player");
+        mainCutsceneCamera = this.GetNode<CutsceneCamera>("CameraModifierHandle/Cutscene Camera");
+        animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
     }
 
     public override void _Process(double delta){
@@ -169,8 +169,10 @@ public partial class CutsceneDirector : Node3D
             case "CutsceneCharacterAnimation":
                 CutsceneCharacterAnimation anim = (CutsceneCharacterAnimation) act;
                 cast.TryGetValue(anim.GetCharacter(), out Actor animActor);
+                if(!animActor.GetAnimationPlayer().HasAnimation(anim.GetAnimation())) throw new NotImplementedException(); //TODO: Custom Exception
                 animActor.GetAnimationPlayer().Play(anim.GetAnimation());
                 if(!anim.IsIdleLoop()){
+                    animActor.GetAnimationPlayer().AnimationFinished += OnCutsceneAnimationComplete;
                     watchedAnimations.Add(anim.GetAnimation(), animActor);
                 }else{
                     AdvanceToNextAction();
