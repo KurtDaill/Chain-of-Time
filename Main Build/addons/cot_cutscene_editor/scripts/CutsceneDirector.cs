@@ -152,14 +152,18 @@ public partial class CutsceneDirector : Node3D
             case "CutsceneLine" :
                 CutsceneLine line = (CutsceneLine) act;
                 cast.TryGetValue(line.GetSpeaker(), out Actor lineActor);
-                if(lineActor == null) throw new ArgumentException("No actor found that maches speaker: " + line.GetSpeaker() + " for dialogue line: " + line.GetText());
-
+                if(lineActor == null && line.GetSpeaker() != "???") throw new ArgumentException("No actor found that maches speaker: " + line.GetSpeaker() + " for dialogue line: " + line.GetText());
+                //TODO Handle Unknown (???) speakers better
                 if(line.HasConcurrentAnimation()){
-                    lineActor.GetAnimationPlayer().AnimationFinished += OnCutsceneAnimationComplete;
-                    watchedAnimations.Add(line.GetConcurrentAnimation().GetAnimation(), lineActor);
-                    if(!lineActor.GetAnimationPlayer().HasAnimation(line.GetConcurrentAnimation().GetAnimation()))
-                        throw new NotImplementedException("Animation: " + line.GetConcurrentAnimation().GetAnimation() + " not found on Actor: " + lineActor.GetActorName());
-                    lineActor.GetAnimationPlayer().Play(line.GetConcurrentAnimation().GetAnimation());
+                    if(cast.TryGetValue(line.GetConcurrentAnimation().GetCharacter(), out Actor concurrentAnimationCharacter)){
+                        concurrentAnimationCharacter.GetAnimationPlayer().AnimationFinished += OnCutsceneAnimationComplete;
+                        watchedAnimations.Add(line.GetConcurrentAnimation().GetAnimation(), concurrentAnimationCharacter);
+                    }else{
+                        throw new NotImplementedException(); //TODO Custom Exception
+                    }
+                    if(!concurrentAnimationCharacter.GetAnimationPlayer().HasAnimation(line.GetConcurrentAnimation().GetAnimation()))
+                        throw new NotImplementedException("Animation: " + line.GetConcurrentAnimation().GetAnimation() + " not found on Actor: " + concurrentAnimationCharacter.GetActorName());
+                    concurrentAnimationCharacter.GetAnimationPlayer().Play(line.GetConcurrentAnimation().GetAnimation());
                     waitingOnAnimation = true;
                 }
                 //lineActor.SpeakLine(line);
@@ -290,7 +294,8 @@ public partial class CutsceneDirector : Node3D
         waitingOnAnimation = false;
         watchedAnimations.TryGetValue(animation, out Actor actor);
         actor.GetAnimationPlayer().AnimationFinished -= OnCutsceneAnimationComplete;
-        if(currentAction.GetType().Name == "CutsceneCharacterAnimation") AdvanceToNextAction(); //We only progress to the next block if this animation is the thing holding up the show
+        //TODO Figure out a better way of determining whether or not this animaiton is the hold up
+        if(currentAction.GetType().Name == "CutsceneCharacterAnimation" || currentAction.GetType().Name == "CutsceneSmashCut") AdvanceToNextAction(); //We only progress to the next block if this animation is the thing holding up the show
         watchedAnimations.Remove(animation);
     }
 

@@ -1,15 +1,16 @@
-[gd_scene load_steps=24 format=3 uid="uid://te5ep1basxpw"]
+[gd_scene load_steps=21 format=3 uid="uid://dcfqq3obyalxk"]
 
-[ext_resource type="PackedScene" uid="uid://cytargscn0fni" path="res://Art/3D/AllDaHousesgltf.gltf" id="1_57jld"]
-[ext_resource type="PackedScene" uid="uid://cj7260eer0ta5" path="res://Art/3D/TestOldTownHouse1gltf.gltf" id="1_n60bx"]
-[ext_resource type="PackedScene" uid="uid://b1a6y576weqqa" path="res://Art/3D/OldTownTestScenegltf.gltf" id="1_u4nnp"]
-[ext_resource type="PackedScene" uid="uid://663as0b6h32w" path="res://Art/3D/OldTownBlocks/OldTown_Roof1_gltf.gltf" id="2_03j8v"]
-[ext_resource type="Script" path="res://Explore Mode/ExplorePlayer.cs" id="2_3mqdx"]
-[ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Prod Sprite Sheets/Adventure Cato Sprite-Sheet.png" id="3_luqsg"]
-[ext_resource type="PackedScene" uid="uid://744jase51iw4" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody1_gltf.gltf" id="6_p36kq"]
-[ext_resource type="PackedScene" uid="uid://cjrdgly6ew04o" path="res://Art/3D/OldTownBlocks/OldTown_Roof2_gltf.gltf" id="8_k1vvv"]
+[ext_resource type="PackedScene" uid="uid://744jase51iw4" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody1_gltf.gltf" id="1_oc5u1"]
+[ext_resource type="PackedScene" uid="uid://663as0b6h32w" path="res://Art/3D/OldTownBlocks/OldTown_Roof1_gltf.gltf" id="2_gh5fm"]
+[ext_resource type="PackedScene" uid="uid://c7jx0chv8iiqc" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody2_gltf.gltf" id="3_11fjg"]
+[ext_resource type="PackedScene" uid="uid://dvsfko0dk77di" path="res://Art/3D/OldTownBlocks/OldTown_Roof3_gltf.gltf" id="3_ywvp3"]
+[ext_resource type="PackedScene" uid="uid://vog8ct3qc5w8" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody3_gltf.gltf" id="4_iojoj"]
+[ext_resource type="PackedScene" uid="uid://cjrdgly6ew04o" path="res://Art/3D/OldTownBlocks/OldTown_Roof2_gltf.gltf" id="6_gl8wa"]
+[ext_resource type="PackedScene" uid="uid://cmspx3xel8pa2" path="res://Art/3D/OldTownBlocks/Balcony Piece.tscn" id="7_cgk76"]
+[ext_resource type="Script" path="res://Explore Mode/ExplorePlayer.cs" id="8_c7q64"]
+[ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Prod Sprite Sheets/Adventure Cato Sprite-Sheet.png" id="9_gnj3t"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ciu8q"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qy8mf"]
 radius = 0.52
 
 [sub_resource type="Animation" id="Animation_ojxl6"]
@@ -139,45 +140,68 @@ _data = {
 "Walk Up": SubResource("Animation_ypg7j")
 }
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1t8gf"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nu3mh"]
 radius = 0.64
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_2iyp6"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yqham"]
 radius = 0.36
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_2g0qk"]
-size = Vector3(293.438, 0.001, 145.25)
-
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_ila2x"]
-rayleigh_color = Color(0.301961, 0.403922, 0.6, 1)
-mie_coefficient = 0.02
-mie_eccentricity = 0.9
-sun_disk_scale = 10.0
-
-[sub_resource type="Sky" id="Sky_h12ok"]
-sky_material = SubResource("PhysicalSkyMaterial_ila2x")
-
-[sub_resource type="Environment" id="Environment_e6auc"]
-background_mode = 2
-sky = SubResource("Sky_h12ok")
 
 [node name="Node3D" type="Node3D"]
 
-[node name="AllDaHousesgltf" parent="." instance=ExtResource("1_57jld")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45.125, 0, -12.8125)
+[node name="Tall Boy" type="Node3D" parent="."]
 
-[node name="TestOldTownHouse1gltf" parent="." instance=ExtResource("1_n60bx")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 32.625, 0, -15.3125)
+[node name="OldTown_HouseBody1_gltf" parent="Tall Boy" instance=ExtResource("1_oc5u1")]
+
+[node name="OldTown_HouseBody1_gltf2" parent="Tall Boy" instance=ExtResource("1_oc5u1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.96161, 0)
+
+[node name="OldTown_Roof1_gltf" parent="Tall Boy" instance=ExtResource("2_gh5fm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07896, 0.305976)
+
+[node name="Wide One" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="OldTown_Roof3_gltf" parent="Wide One" instance=ExtResource("3_ywvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
+
+[node name="OldTown_HouseBody3_gltf" parent="Wide One" instance=ExtResource("4_iojoj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
+
+[node name="OldTown_HouseBody2_gltf" parent="Wide One" instance=ExtResource("3_11fjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="Wide One" instance=ExtResource("3_11fjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
 visible = false
 
-[node name="OldTownTestScenegltf" parent="." instance=ExtResource("1_u4nnp")]
-visible = false
+[node name="OldTown_HouseBody3_gltf2" parent="Wide One" instance=ExtResource("4_iojoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
+
+[node name="OldTown_Roof2_gltf" parent="Wide One" instance=ExtResource("6_gl8wa")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
+
+[node name="Tall Boy 2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.5625)
+
+[node name="AllDaHousesgltf" parent="Tall Boy 2" instance=ExtResource("7_cgk76")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="Tall Boy 2" instance=ExtResource("3_11fjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="OldTown_HouseBody2_gltf3" parent="Tall Boy 2" instance=ExtResource("3_11fjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="OldTown_HouseBody2_gltf" parent="Tall Boy 2" instance=ExtResource("3_11fjg")]
+
+[node name="OldTown_Roof3_gltf" parent="Tall Boy 2" instance=ExtResource("3_ywvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
 
 [node name="ExplorePlayer" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2108, 0.456, -0.268)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.3983, 0.456, -0.268)
 floor_max_angle = 0.872665
 safe_margin = 0.01
-script = ExtResource("2_3mqdx")
+script = ExtResource("8_c7q64")
 Speed = 8.0
 waypointRes = "res://Explore Mode/Waypoint.tscn"
 
@@ -187,14 +211,14 @@ sorting_offset = 1.0
 pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
-texture = ExtResource("3_luqsg")
+texture = ExtResource("9_gnj3t")
 hframes = 10
 vframes = 2
 frame = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExplorePlayer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0400009, 1.04, 0)
-shape = SubResource("CylinderShape3D_ciu8q")
+shape = SubResource("CylinderShape3D_qy8mf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ExplorePlayer"]
 root_node = NodePath("../Sprite3D")
@@ -209,39 +233,17 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExplorePlayer/Interaction Radius"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 1.04, 0)
-shape = SubResource("CylinderShape3D_1t8gf")
+shape = SubResource("CylinderShape3D_nu3mh")
 
 [node name="BodyArea" type="Area3D" parent="ExplorePlayer"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExplorePlayer/BodyArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04, 0)
-shape = SubResource("CylinderShape3D_2iyp6")
+shape = SubResource("CylinderShape3D_yqham")
 
 [node name="Explore Camera" type="Camera3D" parent="ExplorePlayer"]
-transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 3.524, 11.118)
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, -2.98023e-08, 3.524, 11.118)
 current = true
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_2g0qk")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_e6auc")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.636544, -0.232364, -0.735404, 0.730733, -0.123252, 0.671445, -0.24666, -0.964788, 0.0913405, 0, 0, 0)
-light_color = Color(1, 0.964706, 0.701961, 1)
-shadow_enabled = true
-
-[node name="OldTown_HouseBody1_gltf" parent="." instance=ExtResource("6_p36kq")]
-
-[node name="OldTown_Roof1_gltf" parent="OldTown_HouseBody1_gltf" instance=ExtResource("2_03j8v")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.375, 0, 0.4375)
-
-[node name="OldTown_Roof2_gltf" parent="OldTown_HouseBody1_gltf" instance=ExtResource("8_k1vvv")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.750002)
-visible = false
 
 [connection signal="area_entered" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaEntered" flags=18]
 [connection signal="area_exited" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaExited" flags=18]

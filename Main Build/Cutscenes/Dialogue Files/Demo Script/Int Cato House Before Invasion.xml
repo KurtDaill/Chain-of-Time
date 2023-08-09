@@ -35,6 +35,13 @@
             <characterTeleport character="Cato">Pacing Blocking Mark</characterTeleport>
             <!--Need to add in some node enables/disables for lighting-->
         </smashCut>
+        <setCharacterAnimation concurent="true"><character>Cato</character><animation>Surprise</animation></setCharacterAnimation>
+        <line><speaker>???</speaker>Somebody! Help!</line>
+        <setCharacterAnimation><character>Cato</character><animation>Hesitate</animation></setCharacterAnimation>
+        <line><speaker>Cato</speaker>Little Gods damn it all. . .</line>
+        <setCharacterAnimation><character>Cato</character><animation>Look Up</animation></setCharacterAnimation>
+        <cameraMove transition="linear" transitionLengthInSeconds="0.5">Hero Shot</cameraMove>
+        <setCharacterAnimation><character>Cato</character><animation>Run Out</animation></setCharacterAnimation>
         <END><GOTO>EXIT</GOTO></END>
     </block>
 </screenplay>

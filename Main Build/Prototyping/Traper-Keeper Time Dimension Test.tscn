@@ -10,7 +10,7 @@ shader_parameter/cloud_coverage = 0.25
 shader_parameter/_time_scale = 1.0
 shader_parameter/_time_offset = 0.0
 shader_parameter/rayleigh = 2.0
-shader_parameter/rayleigh_color = Color(0.26, 0.41, 0.58, 1)
+shader_parameter/rayleigh_color = Color(0.12549, 0.411765, 0.580392, 1)
 shader_parameter/mie = 0.005
 shader_parameter/mie_eccentricity = 0.8
 shader_parameter/mie_color = Color(0.63, 0.77, 0.92, 1)
@@ -81,7 +81,7 @@ void fragment() {
 	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
 	ROUGHNESS = roughness_tex * roughness;
 	SPECULAR = specular;
-	NORMAL_MAP = texture(texture_normal,vec2(base_uv.x + TIME*0.02, base_uv.y)).rgb;
+	NORMAL_MAP = texture(texture_normal,vec2(base_uv.x + TIME*0.02, base_uv.y - TIME * 0.01)).rgb;
 	NORMAL_MAP_DEPTH = normal_scale;
 	ALPHA *= albedo.a * albedo_tex.a;
 }
@@ -170,7 +170,7 @@ _data = {
 environment = SubResource("Environment_tsqja")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.9935, -0.0183048, 0.112351, 0.018216, 0.948701, 0.315649, -0.112365, 0.315644, -0.942201, 0, 6.1875, 0)
+transform = Transform3D(-0.999816, 0.0191975, -8.48259e-08, 0.0186272, 0.970117, 0.241922, 0.00464437, 0.241877, -0.970296, 0, 6.1875, 0)
 light_color = Color(1, 0.984314, 0.811765, 1)
 
 [node name="Camera3D" type="Camera3D" parent="."]

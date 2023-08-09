@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dqsd1clxfi03q"]
+[gd_scene load_steps=51 format=3 uid="uid://dqsd1clxfi03q"]
 
 [ext_resource type="Script" path="res://Cutscenes/CutsceneDummy.cs" id="1_6xmoj"]
 [ext_resource type="PackedScene" uid="uid://cg0lh548glsxq" path="res://Art/3D/Cato's House Rough Render.dae" id="2_4rnw5"]
@@ -27,7 +27,7 @@ ambient_light_energy = 0.4
 
 [sub_resource type="Animation" id="Animation_6hej5"]
 resource_name = "Anxious Pacing"
-length = 8.0
+length = 8.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -35,10 +35,10 @@ tracks/0/path = NodePath("Sprite3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 2.5, 4, 5, 6.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.5, 2.5, 4, 5, 6.5, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.935359, 1.57321, 0.255529), Vector3(2, 1.573, 0.256), Vector3(2, 1.573, 0.256), Vector3(-1, 1.573, 0.256), Vector3(-1, 1.573, 0.256), Vector3(2, 1.573, 0.256)]
+"values": [Vector3(-0.935359, 1.57321, 0.255529), Vector3(2, 1.573, 0.256), Vector3(2, 1.573, 0.256), Vector3(-1, 1.573, 0.256), Vector3(-1, 1.573, 0.256), Vector3(2, 1.573, 0.256), Vector3(-0.935359, 1.57321, 0.255529)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -47,10 +47,34 @@ tracks/1/path = NodePath("Sprite3D:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.5, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 2.5, 5, 6.5, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, true, false]
+"values": [false, true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.261799, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite3D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
 }
 
 [sub_resource type="Animation" id="Animation_djswq"]
@@ -236,6 +260,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.309, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.309, -0.125, 1.245)]
+}
 
 [sub_resource type="Animation" id="Animation_n87r2"]
 resource_name = "Show Object Sit"
@@ -273,7 +321,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector3(0.337377, 1.375, 0.672742)]
+"values": [Vector3(-0.75107, 1.375, -0.563895)]
 }
 
 [sub_resource type="Animation" id="Animation_2yxe0"]
@@ -321,19 +369,111 @@ tracks/0/keys = {
 "values": [1, 8]
 }
 
+[sub_resource type="Animation" id="Animation_wsujy"]
+resource_name = "Hesitate"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 13, 15, 14]
+}
+
+[sub_resource type="Animation" id="Animation_2ykfq"]
+resource_name = "Surprise"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_ugn4u"]
+resource_name = "Look Up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [14, 13]
+}
+
+[sub_resource type="Animation" id="Animation_x7neo"]
+resource_name = "Run Out"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(5.941, -0.125, -0.505), Vector3(10.1285, -0.125, 0.4325)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.309, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [18, 25]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5fvfv"]
 _data = {
 "Anxious Pacing": SubResource("Animation_6hej5"),
 "Fiddle with Object Sit": SubResource("Animation_djswq"),
 "Freeze": SubResource("Animation_4is1e"),
+"Hesitate": SubResource("Animation_wsujy"),
 "Idle": SubResource("Animation_k5hok"),
 "Idle Sit": SubResource("Animation_huiq3"),
 "Look Around": SubResource("Animation_t2pps"),
 "Look Behind Sit": SubResource("Animation_2jbuj"),
+"Look Up": SubResource("Animation_ugn4u"),
 "Nod": SubResource("Animation_qjyji"),
 "RESET": SubResource("Animation_twp48"),
+"Run Out": SubResource("Animation_x7neo"),
 "Show Object Sit": SubResource("Animation_n87r2"),
 "Stand Up and Draw Sword": SubResource("Animation_2yxe0"),
+"Surprise": SubResource("Animation_2ykfq"),
 "Walk": SubResource("Animation_x0h0o")
 }
 
@@ -476,6 +616,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 3, 4, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Prop_Letter:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_1joe1"]
@@ -686,6 +838,11 @@ transform = Transform3D(0.573577, 0.0713938, -0.816035, 0, 0.996195, 0.0871557, 
 fov = 50.0
 script = ExtResource("6_l4re2")
 
+[node name="Hero Shot" type="Camera3D" parent="Cutscene/Shot List"]
+transform = Transform3D(0.965926, 0.0225576, -0.257834, 0, 0.996195, 0.0871557, 0.258819, -0.084186, 0.96225, 2.532, 3.34, 4.908)
+fov = 50.0
+script = ExtResource("6_l4re2")
+
 [node name="Blocking Marks" type="Node3D" parent="Cutscene"]
 
 [node name="Beside Cato" type="Marker3D" parent="Cutscene/Blocking Marks"]
@@ -708,7 +865,7 @@ current = true
 script = ExtResource("7_egwab")
 
 [node name="Cato Actor" type="Node3D" parent="Cutscene"]
-transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -1.87147, -0.125, 1.20774)
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -1.309, -0.125, 1.245)
 script = ExtResource("8_52v0l")
 actorName = "Cato"
 
@@ -720,8 +877,8 @@ alpha_cut = 2
 texture_filter = 1
 texture = ExtResource("9_flla6")
 hframes = 10
-vframes = 2
-frame = 13
+vframes = 3
+frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Cato Actor"]
 autoplay = "Idle"
@@ -730,7 +887,7 @@ libraries = {
 }
 
 [node name="Prop_Letter" type="Sprite3D" parent="Cutscene/Cato Actor"]
-transform = Transform3D(0.93301, -0.25, -0.258819, 0.258819, 0.965926, 0, 0.25, -0.0669873, 0.965925, -0.145586, 1.3125, 0.543333)
+transform = Transform3D(0.25, -0.0669873, 0.965925, 0.258819, 0.965926, -1.10534e-08, -0.933009, 0.25, 0.258819, -0.145586, 1.3125, 0.543333)
 visible = false
 pixel_size = 0.0125
 shaded = true
