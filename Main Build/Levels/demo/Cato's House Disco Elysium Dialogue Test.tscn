@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dqsd1clxfi03q"]
+[gd_scene load_steps=47 format=3 uid="uid://dqsd1clxfi03q"]
 
 [ext_resource type="Script" path="res://Cutscenes/CutsceneDummy.cs" id="1_6xmoj"]
 [ext_resource type="PackedScene" uid="uid://cg0lh548glsxq" path="res://Art/3D/Cato's House Rough Render.dae" id="2_4rnw5"]
@@ -24,6 +24,34 @@ background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(0.560784, 0.709804, 0.815686, 1)
 ambient_light_energy = 0.4
+
+[sub_resource type="Animation" id="Animation_6hej5"]
+resource_name = "Anxious Pacing"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.5, 4, 5, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.935359, 1.57321, 0.255529), Vector3(2, 1.573, 0.256), Vector3(2, 1.573, 0.256), Vector3(-1, 1.573, 0.256), Vector3(-1, 1.573, 0.256), Vector3(2, 1.573, 0.256)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_djswq"]
 resource_name = "Fiddle with Object Sit"
@@ -70,7 +98,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [7]
 }
 
 [sub_resource type="Animation" id="Animation_huiq3"]
@@ -102,7 +130,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_t2pps"]
 resource_name = "Look Around"
-length = 3.0
+length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -110,10 +138,10 @@ tracks/0/path = NodePath("Sprite3D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.4, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [13, 15, 13, 15, 13]
+"values": [13, 15, 13, 15, 13, 14]
 }
 
 [sub_resource type="Animation" id="Animation_2jbuj"]
@@ -191,6 +219,18 @@ tracks/3/path = NodePath("Prop_Letter:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite3D:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -283,6 +323,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5fvfv"]
 _data = {
+"Anxious Pacing": SubResource("Animation_6hej5"),
 "Fiddle with Object Sit": SubResource("Animation_djswq"),
 "Freeze": SubResource("Animation_4is1e"),
 "Idle": SubResource("Animation_k5hok"),
@@ -640,6 +681,11 @@ transform = Transform3D(0.996195, 0.0225576, -0.0841859, 0, 0.965926, 0.258819, 
 fov = 50.0
 script = ExtResource("6_l4re2")
 
+[node name="Cato Anxiety Shot" type="Camera3D" parent="Cutscene/Shot List"]
+transform = Transform3D(0.573577, 0.0713938, -0.816035, 0, 0.996195, 0.0871557, 0.819152, -0.0499905, 0.571394, -4.708, 3.34, 4.908)
+fov = 50.0
+script = ExtResource("6_l4re2")
+
 [node name="Blocking Marks" type="Node3D" parent="Cutscene"]
 
 [node name="Beside Cato" type="Marker3D" parent="Cutscene/Blocking Marks"]
@@ -651,6 +697,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.94103, 0, -0.85476)
 [node name="Out The Door" type="Marker3D" parent="Cutscene/Blocking Marks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.31603, 0, 0.14524)
 
+[node name="Pacing Blocking Mark" type="Marker3D" parent="Cutscene/Blocking Marks"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 5.94103, -0.125, 0.145243)
+
 [node name="CameraModifierHandle" type="Node3D" parent="Cutscene"]
 
 [node name="Cutscene Camera" type="Camera3D" parent="Cutscene/CameraModifierHandle"]
@@ -659,12 +708,12 @@ current = true
 script = ExtResource("7_egwab")
 
 [node name="Cato Actor" type="Node3D" parent="Cutscene"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -1.37147, -0.125, 0.145243)
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -1.87147, -0.125, 1.20774)
 script = ExtResource("8_52v0l")
 actorName = "Cato"
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cato Actor"]
-transform = Transform3D(0.965923, 0, -0.258818, 0, 1, 0, 0.258818, 0, 0.965923, -0.935359, 1.57321, 0.255529)
+transform = Transform3D(0.258818, 0, 0.965923, 0, 1, 0, -0.965923, 0, 0.258818, -0.935359, 1.57321, 0.255529)
 pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
@@ -672,7 +721,7 @@ texture_filter = 1
 texture = ExtResource("9_flla6")
 hframes = 10
 vframes = 2
-frame = 2
+frame = 13
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Cato Actor"]
 autoplay = "Idle"

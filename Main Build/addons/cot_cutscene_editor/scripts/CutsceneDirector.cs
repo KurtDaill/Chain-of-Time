@@ -231,7 +231,7 @@ public partial class CutsceneDirector : Node3D
                 await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
                 AdvanceToNextAction();
                 return;
-            case "CutsceneSmashCut":
+            case "CutsceneSmashCut": //TODO Add in some kind of system to track whether we're waiting on anything or should advance to the next
                 CutsceneSmashCut smashCut = (CutsceneSmashCut) act;
                 foreach(CutsceneCharacterMove smashCutMove in smashCut.GetCharacterMoves()){
                     cast.TryGetValue(smashCutMove.GetCharacterName(), out Actor actor);
@@ -240,7 +240,11 @@ public partial class CutsceneDirector : Node3D
                 }
                 foreach(CutsceneCharacterAnimation smashCutSetAnimation in smashCut.GetCharacterAnimations()){
                     cast.TryGetValue(smashCutSetAnimation.GetCharacter(), out Actor actor);
-                    watchedAnimations.Add(smashCutSetAnimation.GetAnimation(), actor);
+                    if(!actor.GetAnimationPlayer().HasAnimation(smashCutSetAnimation.GetAnimation())) throw new NotImplementedException();
+                    if(!smashCutSetAnimation.IsIdleLoop()){
+                        actor.GetAnimationPlayer().AnimationFinished += OnCutsceneAnimationComplete;
+                        watchedAnimations.Add(smashCutSetAnimation.GetAnimation(), actor);
+                    }
                     actor.GetAnimationPlayer().Play(smashCutSetAnimation.GetAnimation());
                 }
                 foreach(string nodeName in smashCut.GetNodesToBeHidden()){
@@ -249,6 +253,9 @@ public partial class CutsceneDirector : Node3D
                 foreach(string nodeName in smashCut.GetNodesToBeShown()){
                     ((Node3D)this.FindChild(nodeName, true, true)).Visible = true;
                 }
+                if(shotList.TryGetValue(smashCut.GetMyCameraMove().GetTargetShot(), out CutsceneShot smashShot)){
+                    mainCutsceneCamera.StartTransition(smashShot.GetShotDetails(), smashCut.GetMyCameraMove().GetTransitionType(), smashCut.GetMyCameraMove().GetTransitionLength());
+                }else throw new NotImplementedException(); //TODO Write Custom Exception
                 break;
             case "CutsceneEndBlock":
                 CutsceneEndBlock endBlock = (CutsceneEndBlock) act;
@@ -257,6 +264,7 @@ public partial class CutsceneDirector : Node3D
                 }else{
                     GotoNextBlock(endBlock.GetGotoBlockTarget());
                 }
+                
                 break;
         }
 

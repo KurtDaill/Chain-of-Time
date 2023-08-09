@@ -85,26 +85,30 @@ public static class ScreenPlayLoader{
                         List<CutsceneCharacterAnimation> animationChanges = new List<CutsceneCharacterAnimation>();
                         List<string> showMeNodes = new List<string>();
                         List<string> hideMeNodes = new List<string>();
+                        CutsceneCameraMove cameraMove = null;
                         while(smashCutElementHead != null){
                             switch(smashCutElementHead.Name){
-                                case "characterAnimation" : 
+                                case "characterAnimationChange" : 
                                     if(GenerateCharacterAnimationOrLineWithAnimation(smashCutElementHead, out CutsceneAction generatedAnimation)){
                                         throw new ArgumentException("Cannot place animations concurrent with lines in a smash cut!");
                                     }
                                     animationChanges.Add((CutsceneCharacterAnimation)generatedAnimation);
                                     break;
-                                case "characterMove" :
+                                case "characterTeleport" :
                                     string smashCutMoveCharacterName = smashCutElementHead.Attributes.GetNamedItem("character").Value;
                                     string smashCutMoveBlockingMarkerName = smashCutElementHead.InnerText;
-                                    characterTeleports.Add(new CutsceneCharacterMove(smashCutMoveBlockingMarkerName, smashCutMoveBlockingMarkerName));
+                                    characterTeleports.Add(new CutsceneCharacterMove(smashCutMoveCharacterName, smashCutMoveBlockingMarkerName));
                                     break;
                                 case "showNode" :
                                     showMeNodes.Add(smashCutElementHead.InnerText); break;
                                 case "hideNode" :
-                                    showMeNodes.Add(smashCutElementHead.InnerText); break;
+                                    hideMeNodes.Add(smashCutElementHead.InnerText); break;
+                                case "cameraCut" :
+                                    cameraMove = new CutsceneCameraMove(smashCutElementHead.InnerText, "cut", 0); break;
                             }
                             smashCutElementHead = smashCutElementHead.NextSibling;
                         }
+                        actions.Add(new CutsceneSmashCut(cameraMove, characterTeleports, animationChanges, showMeNodes, hideMeNodes));
                         break;
                     case "END":
                         List<CutsceneDialogueResponse> responses = new List<CutsceneDialogueResponse>();

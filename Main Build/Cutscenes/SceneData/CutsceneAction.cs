@@ -187,14 +187,17 @@ public class CutsceneSmashCut : CutsceneAction{
     List<CutsceneCharacterAnimation> characterAnimations;
     List<string> nodesToBeShown;
     List<string> nodesToBeHidden;
-    public CutsceneSmashCut(List<CutsceneCharacterMove> characterMoves, List<CutsceneCharacterAnimation> characterAnimations, List<string> nodesToBeShown, List<string> nodesToBeHidden){
+    CutsceneCameraMove cameraMove;
+    public CutsceneSmashCut(CutsceneCameraMove cameraMove, List<CutsceneCharacterMove> characterMoves, List<CutsceneCharacterAnimation> characterAnimations, List<string> nodesToBeShown, List<string> nodesToBeHidden){
         this.characterMoves = characterMoves;
         this.characterAnimations = characterAnimations;
         this.nodesToBeShown = nodesToBeShown;
-        this.nodesToBeHidden = nodesToBeHidden;    
+        this.nodesToBeHidden = nodesToBeHidden;
+        this.cameraMove = cameraMove;    
     }
     public List<CutsceneCharacterMove> GetCharacterMoves(){return characterMoves;}
     public List<CutsceneCharacterAnimation> GetCharacterAnimations(){return characterAnimations;}
     public List<string> GetNodesToBeShown(){return nodesToBeShown;}
     public List<string> GetNodesToBeHidden(){return nodesToBeHidden;}
+    public CutsceneCameraMove GetMyCameraMove(){return cameraMove;}
 }
