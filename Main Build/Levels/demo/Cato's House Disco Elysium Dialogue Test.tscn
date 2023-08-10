@@ -109,6 +109,22 @@ tracks/0/keys = {
 "values": [6, 2]
 }
 
+[sub_resource type="Animation" id="Animation_wsujy"]
+resource_name = "Hesitate"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 13, 15, 14]
+}
+
 [sub_resource type="Animation" id="Animation_k5hok"]
 resource_name = "Idle"
 loop_mode = 1
@@ -181,6 +197,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_ugn4u"]
+resource_name = "Look Up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [14, 13]
 }
 
 [sub_resource type="Animation" id="Animation_qjyji"]
@@ -285,6 +317,46 @@ tracks/6/keys = {
 "values": [Vector3(-1.309, -0.125, 1.245)]
 }
 
+[sub_resource type="Animation" id="Animation_x7neo"]
+resource_name = "Run Out"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(5.941, -0.125, -0.505), Vector3(10.1285, -0.125, 0.4325)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.309, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [18, 25]
+}
+
 [sub_resource type="Animation" id="Animation_n87r2"]
 resource_name = "Show Object Sit"
 tracks/0/type = "value"
@@ -352,39 +424,6 @@ tracks/1/keys = {
 "values": [Vector3(-1.37147, -0.125, -0.229757), Vector3(-1.37147, -0.125, -0.042257), Vector3(-1.37147, -0.125, 0.145243)]
 }
 
-[sub_resource type="Animation" id="Animation_x0h0o"]
-resource_name = "Walk"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1, 8]
-}
-
-[sub_resource type="Animation" id="Animation_wsujy"]
-resource_name = "Hesitate"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.8, 2.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [16, 13, 15, 14]
-}
-
 [sub_resource type="Animation" id="Animation_2ykfq"]
 resource_name = "Surprise"
 length = 2.0
@@ -401,60 +440,21 @@ tracks/0/keys = {
 "values": [16, 17]
 }
 
-[sub_resource type="Animation" id="Animation_ugn4u"]
-resource_name = "Look Up"
-length = 0.5
+[sub_resource type="Animation" id="Animation_x0h0o"]
+resource_name = "Walk"
+length = 0.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite3D:frame")
 tracks/0/interp = 1
-tracks/0/loop_wrap = true
+tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [14, 13]
-}
-
-[sub_resource type="Animation" id="Animation_x7neo"]
-resource_name = "Run Out"
-length = 1.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.2),
+"times": PackedFloat32Array(0, 0.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(5.941, -0.125, -0.505), Vector3(10.1285, -0.125, 0.4325)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.309, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite3D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [18, 25]
+"values": [1, 8]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5fvfv"]
@@ -734,26 +734,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/2/type = "animation"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Cato Actor/AnimationPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": PackedStringArray("Freeze"),
-"times": PackedFloat32Array(1)
-}
-tracks/3/type = "animation"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Cera Actor/AnimationPlayer")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"clips": PackedStringArray("Surprise"),
-"times": PackedFloat32Array(1)
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_38b4b"]
 _data = {
@@ -870,7 +850,7 @@ script = ExtResource("8_52v0l")
 actorName = "Cato"
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cato Actor"]
-transform = Transform3D(0.258818, 0, 0.965923, 0, 1, 0, -0.965923, 0, 0.258818, -0.935359, 1.57321, 0.255529)
+transform = Transform3D(0.258815, 0, 0.965924, 0, 1, 0, -0.965924, 0, 0.258815, -0.935359, 1.57321, 0.255529)
 pixel_size = 0.0125
 shaded = true
 alpha_cut = 2

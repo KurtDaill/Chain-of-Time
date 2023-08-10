@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="../../SceneData/ScreenplaySchema.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<screenplay>
+    <!-- Cato runs out into the cobbled streets of the City’s old town, right outside his own house. 
+        The skyline of the city is turning orange as more and more of the city is beginning to burn. 
+        The camera immediately trucks to the right, showing an orc kid, maybe 10 years old, 
+        stumbling away from a skeleton steadily marching after him.-->
+    <block name="start">
+        <setCharacterAnimation idleLoop="true"><character>Orc Kid</character><animation>Cower</animation></setCharacterAnimation>
+        <characterMove character="Cato">Run In</characterMove>
+        <cameraMove transition="linear">Kids in Trouble</cameraMove>
+        <setCharacterAnimation><character>Skeleton</character><animation>Menace</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Cato</character><animation>Draw Sword</animation></setCharacterAnimation>
+        <setCharacterAnimation concurent="true"><character>Skeleton</character><animation>Surprise</animation></setCharacterAnimation>
+        <line><speaker>Cato</speaker>[shake]HEY![/shake]</line>
+        <characterMove character="Cato">Defend the Kid</characterMove>
+        <setCharacterAnimation><character>Cato</character><animation>Taunt</animation></setCharacterAnimation>
+        <setCharacterAnimation concurent="true"><character>Orc Kid</character><animation>Look Up</animation></setCharacterAnimation>
+        <line><speaker>Cato</speaker>It's gonna be alright, kid. I can take him.</line>
+        <setCharacterAnimation><character>Orc Kid</character><animation>Nod</animation></setCharacterAnimation>
+        <END><GOTO>EXIT</GOTO></END>
+    </block>
+</screenplay>

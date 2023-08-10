@@ -24,6 +24,8 @@ public partial class CutsceneDirector : Node3D
     string initialShotName;
     [Export]
     CutsceneDialogueBox dialogueBox;
+    [Export]
+    bool autoPlay;
     Dictionary<string, CutsceneShot> shotList;
     Dictionary<string, Marker3D> blockingMarks;
     string playerCharacterName;
@@ -50,7 +52,9 @@ public partial class CutsceneDirector : Node3D
         if(shotList.TryGetValue(initialShotName, out CutsceneShot initialShotObject))mainCutsceneCamera.StartTransition(initialShotObject.GetShotDetails(), "cut");
         else throw new ArgumentException("Initial shot: " + initialShotName + " not found in this cutscene");
         
+
         cutsceneStateHistory = new Stack<PackedScene>();
+        if(autoPlay)PlayCutscene();
     }
 
     //Because we deleted and reload our children during editing, we want to have this set as its own function to be called then instead of just in ready

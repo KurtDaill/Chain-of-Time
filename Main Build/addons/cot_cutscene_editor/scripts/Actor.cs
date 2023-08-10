@@ -35,7 +35,7 @@ public partial class Actor : Node3D
 		if(moving){
 			blockingTimeElapsed += delta;
 			if(blockingTimeElapsed > blockingTimeTotal){
-				this.Position = blockingTargetGlobalPosition;
+				this.GlobalPosition = blockingTargetGlobalPosition;
 				moving = false;
 				animPlay.Play("Idle");
 				EmitSignal(Actor.SignalName.CompletedBlockingMovement, destinationBlockingMarkerName);

@@ -41,7 +41,8 @@ public partial class ReadoutContainer : BoxContainer
 		var readouts = this.GetChildren();
 		foreach(Node element in readouts){
 			if(element != null && element is PlayerCharacterReadout){
-				var read = (PlayerCharacterReadout) element;
+				var read = (PlayerCharacterReadout) element; //TODO Better handling of...all of this...
+				if(read.character == null) continue;
 				switch(read.character.GetPosition().GetRank()){
 					case BattleRank.HeroFront :
 						MoveChild(read, 1);
