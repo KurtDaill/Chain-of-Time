@@ -92,8 +92,6 @@ void fragment() {
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4qqh6"]
 seamless = true
 as_normal_map = true
-bump_strength = 9.0
-normalize = false
 noise = SubResource("FastNoiseLite_c5faa")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r5jtw"]

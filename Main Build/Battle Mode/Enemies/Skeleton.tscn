@@ -385,7 +385,7 @@ parent = NodePath("../..")
 text = "Polymorphor"
 
 [node name="Combat Text" parent="." instance=ExtResource("5_gcf22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.295, 1.10561, -0.0799999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3575, 1.41811, -0.0799999)
 
 [node name="BodyRef" type="Node3D" parent="."]
 
