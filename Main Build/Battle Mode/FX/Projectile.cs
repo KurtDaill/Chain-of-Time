@@ -52,7 +52,7 @@ public partial class Projectile : Node3D
 			}	
 		}
 		Vector3 vectorToTaget = (target.GlobalPosition - this.GlobalPosition).Normalized();
-		this.Position += vectorToTaget * ((float)speed * (float)delta);
+		this.GlobalPosition += vectorToTaget * ((float)speed * (float)delta);
 		if((target.GlobalPosition - this.GlobalPosition).Length() < contactTolerance){
 			this.animPlay.Play("Hit");
 			EmitSignal(Projectile.SignalName.TargetHit);

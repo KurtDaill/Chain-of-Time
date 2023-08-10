@@ -85,8 +85,8 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-1.56, -0.25, 0, 0, -0.321661, -2.4, -0.25, 0, 0.25, 0, -1.56, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2, 0.7)
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.3125, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -97,7 +97,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2, 0.7)
+"times": PackedFloat32Array(0, 0.2, 0.6)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -108,7 +108,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2, 0.7)
+"times": PackedFloat32Array(0, 0.2, 0.6)
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -195,7 +195,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.56, 0, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -217,7 +217,7 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-1.56, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/4/type = "bezier"
@@ -280,43 +280,21 @@ step = 0.05
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite Adjuster/CatoSprite:position:x")
+tracks/0/path = NodePath("Sprite Adjuster/CatoSprite:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(-0.792104, -0.25, 0, 0.25, 0, -0.792104, -0.25, 0, 0.25, 0, -0.792104, -0.25, 0, 0.25, 0, -0.792104, -0.25, 0, 0.25, 0, -0.792104, -0.25, 0, 0.25, 0, -0.792104, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.55, 0.75, 0.95)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite Adjuster/CatoSprite:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.0435258, 0.238492, 0.56, -0.2, -0.0113894, 0.163368, -0.0423117, 0, -0.077909, 0.202365, 0.25, 0, 0, -0.25, 0, 0.0833007, 0.199081, 0.56, -0.15, -0.0653355, 0.146632, -0.0489142, 0, -0.0664259, 0.202365, 0.25, 0),
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.55, 0.75, 0.95)
 }
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite Adjuster/CatoSprite:position:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.55, 0.75, 0.95)
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0.95),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -433,12 +411,10 @@ displayText = NodePath("Combat Text")
 pointer = NodePath("Pointer Adjuster/Pointer")
 
 [node name="Sprite Adjuster" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.88, 0, 0)
 
 [node name="CatoSprite" type="Sprite3D" parent="Sprite Adjuster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56, 0, 0)
-centered = false
-pixel_size = 0.008
+offset = Vector2(0, 240)
+pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture = ExtResource("3_ft434")

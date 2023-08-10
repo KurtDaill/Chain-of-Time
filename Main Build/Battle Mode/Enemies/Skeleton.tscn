@@ -82,8 +82,8 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-3.2, -0.25, 0, 0.25, 0, -2.28, -0.25, 0, 0.25, 0, -3.2, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3, 0.8)
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.6875, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -94,7 +94,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3, 0.8)
+"times": PackedFloat32Array(0, 0.2, 0.6)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -105,7 +105,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3, 0.8)
+"times": PackedFloat32Array(0, 0.2, 0.6)
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -160,7 +160,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-3.2, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/1/type = "bezier"
@@ -327,62 +327,22 @@ _data = {
 [node name="Skeleton" type="Node3D" node_paths=PackedStringArray("attack", "nameplate", "healthBar", "displayText", "pointer")]
 script = ExtResource("1_lpvwy")
 attack = NodePath("Attack")
-nameplate = NodePath("Sprite3D/Nameplate Adjuster/Enemy Nameplate")
-healthBar = NodePath("Sprite3D/EnemyHealthBar")
+nameplate = NodePath("Nameplate Adjuster/Enemy Nameplate")
+healthBar = NodePath("EnemyHealthBar")
 hp = 5
 maxHP = 5
-displayText = NodePath("Sprite3D/Combat Text")
-pointer = NodePath("Sprite3D/Pointer Adjuster/Pointer")
+displayText = NodePath("Combat Text")
+pointer = NodePath("Pointer Adjuster/Pointer")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 0, 0)
-centered = false
-pixel_size = 0.008
+offset = Vector2(-60, 110)
+pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture_filter = 1
 texture = ExtResource("2_71u0b")
 hframes = 10
 vframes = 2
-
-[node name="Pointer Adjuster" type="Node3D" parent="Sprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0.04, 0)
-
-[node name="Pointer" parent="Sprite3D/Pointer Adjuster" instance=ExtResource("2_j6pg3")]
-texture_filter = 0
-frame = 1
-
-[node name="Nameplate Adjuster" type="Node3D" parent="Sprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0, 0)
-
-[node name="Enemy Nameplate" parent="Sprite3D/Nameplate Adjuster" node_paths=PackedStringArray("parent") instance=ExtResource("4_7ih3c")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.48, 3.52, 0)
-visible = false
-parent = NodePath("../../..")
-
-[node name="Name" parent="Sprite3D/Nameplate Adjuster/Enemy Nameplate" index="2"]
-text = "Polymorphor"
-
-[node name="Combat Text" parent="Sprite3D" instance=ExtResource("5_gcf22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.495, 1.10561, -0.0799999)
-
-[node name="BodyRef" type="Node3D" parent="Sprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2, 0, 0)
-
-[node name="Head" type="Node3D" parent="Sprite3D/BodyRef"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.782151, 1.32306, 0)
-
-[node name="Core" type="Node3D" parent="Sprite3D/BodyRef"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76, 0.745088, 0)
-
-[node name="Weapon" type="Node3D" parent="Sprite3D/BodyRef"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.797603, 1.0428, 0)
-
-[node name="Feet" type="Node3D" parent="Sprite3D/BodyRef"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.720737, 0, 0)
-
-[node name="EnemyHealthBar" parent="Sprite3D" instance=ExtResource("11_6s4m7")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 1.73746, -0.322067, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -406,5 +366,43 @@ stream = ExtResource("9_rjd3c")
 [node name="Sword Swing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_ktmeo")
 
-[editable path="Sprite3D/Nameplate Adjuster/Enemy Nameplate"]
-[editable path="Sprite3D/Combat Text"]
+[node name="Pointer Adjuster" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, 0.29, 0)
+
+[node name="Pointer" parent="Pointer Adjuster" instance=ExtResource("2_j6pg3")]
+texture_filter = 0
+frame = 1
+
+[node name="Nameplate Adjuster" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.446726, -0.337487, 0)
+
+[node name="Enemy Nameplate" parent="Nameplate Adjuster" node_paths=PackedStringArray("parent") instance=ExtResource("4_7ih3c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48, 4.395, 0)
+visible = false
+parent = NodePath("../..")
+
+[node name="Name" parent="Nameplate Adjuster/Enemy Nameplate" index="2"]
+text = "Polymorphor"
+
+[node name="Combat Text" parent="." instance=ExtResource("5_gcf22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.295, 1.10561, -0.0799999)
+
+[node name="BodyRef" type="Node3D" parent="."]
+
+[node name="Head" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.782151, 1.32306, 0)
+
+[node name="Core" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76, 0.745088, 0)
+
+[node name="Weapon" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.797603, 1.0428, 0)
+
+[node name="Feet" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.720737, 0, 0)
+
+[node name="EnemyHealthBar" parent="." instance=ExtResource("11_6s4m7")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.322, 0)
+
+[editable path="Nameplate Adjuster/Enemy Nameplate"]
+[editable path="Combat Text"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Battle Mode/Player Characters/SilverCombatant.cs" id="1_vos4e"]
 [ext_resource type="Texture2D" uid="uid://x8jh7q2a2twq" path="res://Art/Silver Portrait.png" id="2_kja07"]
-[ext_resource type="Texture2D" uid="uid://d7pbriigo4aj" path="res://Art/Silver Combat Sprite-Sheet.png" id="3_568ne"]
+[ext_resource type="Texture2D" uid="uid://d7pbriigo4aj" path="res://Art/Prod Sprite Sheets/Silver Combat Sprite-Sheet.png" id="3_568ne"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="4_kc02e"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/SilverBasicAttack.cs" id="5_ems5m"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/PlayerSwap.cs" id="6_rww22"]
@@ -89,8 +89,8 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-1.21859, -0.25, 0, 0, -0.207174, -2.01859, -0.25, 0, 0.25, 0, -1.21859, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2, 0.7)
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.8125, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -101,7 +101,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2, 0.7)
+"times": PackedFloat32Array(0, 0.2, 0.6)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -112,7 +112,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2, 0.7)
+"times": PackedFloat32Array(0, 0.2, 0.6)
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -210,7 +210,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.21859, 0, 0)]
+"values": [Vector3(-0.01859, 0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -232,7 +232,7 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-2.01859, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(-0.01859, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/5/type = "bezier"
@@ -424,9 +424,9 @@ displayText = NodePath("Combat Text")
 pointer = NodePath("Pointer Adjuster/Pointer")
 
 [node name="SilverSprite" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01859, 0, 0)
-centered = false
-pixel_size = 0.008
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01859, 0, 0)
+offset = Vector2(0, 240)
+pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture = ExtResource("3_568ne")
