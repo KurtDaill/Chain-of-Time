@@ -1,0 +1,1284 @@
+[gd_scene load_steps=66 format=3 uid="uid://blu6o5crpecbn"]
+
+[ext_resource type="PackedScene" uid="uid://cj7260eer0ta5" path="res://Art/3D/TestOldTownHouse1gltf.gltf" id="1_405el"]
+[ext_resource type="PackedScene" uid="uid://744jase51iw4" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody1_gltf.gltf" id="2_klvog"]
+[ext_resource type="PackedScene" uid="uid://663as0b6h32w" path="res://Art/3D/OldTownBlocks/OldTown_Roof1_gltf.gltf" id="3_lwsou"]
+[ext_resource type="PackedScene" uid="uid://dvsfko0dk77di" path="res://Art/3D/OldTownBlocks/OldTown_Roof3_gltf.gltf" id="4_vo1uk"]
+[ext_resource type="PackedScene" uid="uid://vog8ct3qc5w8" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody3_gltf.gltf" id="5_eht6o"]
+[ext_resource type="PackedScene" uid="uid://c7jx0chv8iiqc" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody2_gltf.gltf" id="6_6xpr1"]
+[ext_resource type="PackedScene" uid="uid://cjrdgly6ew04o" path="res://Art/3D/OldTownBlocks/OldTown_Roof2_gltf.gltf" id="7_fxpmu"]
+[ext_resource type="PackedScene" uid="uid://cmspx3xel8pa2" path="res://Art/3D/OldTownBlocks/Balcony Piece.tscn" id="8_iuujr"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDirector.cs" id="9_b1c4g"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneShot.cs" id="10_ak3n8"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneCamera.cs" id="11_4vjyc"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDialogueBox.cs" id="12_rws1b"]
+[ext_resource type="Texture2D" uid="uid://bc5cvecx1cei7" path="res://Art/Time Sense.png" id="13_q5ug7"]
+[ext_resource type="Theme" uid="uid://c3w8cbrksjko5" path="res://GUI/Themes/Cutscene Themes/NormalDialogueText.tres" id="14_rql7b"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneResponseBox.cs" id="15_1edlu"]
+[ext_resource type="Theme" uid="uid://c6hjkq2or80ln" path="res://GUI/Themes/Cutscene Themes/Dialogue Responses.tres" id="16_gvvwh"]
+[ext_resource type="AudioStream" uid="uid://ckxbt64hf7jpw" path="res://Audio/Distant Boom.wav" id="17_uilbi"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/Actor.cs" id="18_o7usb"]
+[ext_resource type="Texture2D" uid="uid://bxpwsf3thk4fo" path="res://Art/Prod Sprite Sheets/CatoCinematicAnimation-Sheet.png" id="19_bm543"]
+[ext_resource type="Texture2D" uid="uid://wy4a13eqgfmx" path="res://Art/Prod Sprite Sheets/Luciene Cinematic Sprite-Sheet.png" id="21_2mp4l"]
+[ext_resource type="Texture2D" uid="uid://c6d5hexnmg817" path="res://Art/Prod Sprite Sheets/Silver Cinematic Animation-Sheet.png" id="22_s7x7i"]
+[ext_resource type="Texture2D" uid="uid://dtej42sowyqpt" path="res://Art/Prod Sprite Sheets/Necromancer Cinematic Animation-Sheet.png" id="23_f8j42"]
+[ext_resource type="Texture2D" uid="uid://rrkkuukcn2sf" path="res://Art/Prod Sprite Sheets/Cera Cinematic Sprite-Sheet.png" id="24_6ouli"]
+[ext_resource type="Texture2D" uid="uid://dl2nhvu4ncgu0" path="res://Art/Prod Sprite Sheets/Skeleton Guard Combat Sprite-Sheet.png" id="24_g00vn"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o4fkr"]
+load_path = "res://.godot/imported/AllDaHousesgltf_1.png-641c98bdb8cf566a8417dbe937812620.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkrq7"]
+resource_name = "material_1"
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.686275, 0.686275, 0.686275, 1)
+albedo_texture = SubResource("CompressedTexture2D_o4fkr")
+texture_filter = 0
+texture_repeat = false
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_twsxp"]
+_surfaces = [{
+"aabb": AABB(-13.3125, -0.50625, -4.53125, 18.125, 0.50001, 9.06251),
+"format": 4097,
+"index_count": 36,
+"index_data": PackedByteArray(2, 0, 1, 0, 0, 0, 2, 0, 3, 0, 1, 0, 6, 0, 5, 0, 4, 0, 6, 0, 7, 0, 5, 0, 4, 0, 2, 0, 0, 0, 4, 0, 5, 0, 2, 0, 3, 0, 6, 0, 1, 0, 3, 0, 7, 0, 6, 0, 1, 0, 4, 0, 0, 0, 1, 0, 6, 0, 4, 0, 5, 0, 3, 0, 2, 0, 5, 0, 7, 0, 3, 0),
+"name": "material_1",
+"primitive": 3,
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 64, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 64, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 192, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 192, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 64, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 192, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 64, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 192)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3roxb"]
+resource_name = "blockbench_export_mesh2"
+_surfaces = [{
+"aabb": AABB(-13.3125, -0.50625, -4.53125, 18.125, 0.50001, 9.06251),
+"attribute_data": PackedByteArray(0, 0, 136, 62, 0, 0, 0, 0, 0, 0, 136, 62, 0, 0, 128, 60, 0, 128, 7, 63, 0, 0, 0, 0, 0, 128, 7, 63, 0, 0, 128, 60, 0, 128, 7, 63, 0, 0, 144, 60, 0, 0, 136, 62, 0, 0, 144, 60, 0, 128, 7, 63, 0, 0, 8, 61, 0, 0, 136, 62, 0, 0, 8, 61, 0, 0, 135, 62, 0, 0, 135, 62, 0, 0, 135, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 135, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 135, 62, 0, 0, 136, 62, 0, 0, 0, 0, 0, 0, 136, 62, 0, 0, 135, 62, 0, 128, 7, 63, 0, 0, 0, 0, 0, 128, 7, 63, 0, 128, 7, 63, 0, 0, 16, 61, 0, 0, 136, 62, 0, 0, 16, 61, 0, 128, 7, 63, 0, 0, 80, 61, 0, 0, 136, 62, 0, 0, 80, 61, 0, 0, 136, 62, 0, 0, 88, 61, 0, 0, 136, 62, 0, 0, 140, 61, 0, 128, 7, 63, 0, 0, 88, 61, 0, 128, 7, 63, 0, 0, 140, 61),
+"format": 4119,
+"index_count": 36,
+"index_data": PackedByteArray(2, 0, 1, 0, 0, 0, 2, 0, 3, 0, 1, 0, 6, 0, 5, 0, 4, 0, 6, 0, 7, 0, 5, 0, 10, 0, 9, 0, 8, 0, 10, 0, 11, 0, 9, 0, 14, 0, 13, 0, 12, 0, 14, 0, 15, 0, 13, 0, 18, 0, 17, 0, 16, 0, 18, 0, 19, 0, 17, 0, 22, 0, 21, 0, 20, 0, 22, 0, 23, 0, 21, 0),
+"material": SubResource("StandardMaterial3D_dkrq7"),
+"name": "material_1",
+"primitive": 3,
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 64, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 64, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 192, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 192, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 64, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 192, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 64, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 192, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 64, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 192, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 64, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 192, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 64, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 64, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 192, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 192, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 64, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 64, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 64, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 64, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 192, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 192, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 192, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 192, 255, 255, 255, 255, 0, 0, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_twsxp")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y1wly"]
+load_path = "res://.godot/imported/AllDaHousesgltf_1.png-641c98bdb8cf566a8417dbe937812620.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5jeg"]
+resource_name = "material_1"
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_y1wly")
+texture_filter = 0
+texture_repeat = false
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_r24kl"]
+_surfaces = [{
+"aabb": AABB(-13.3125, -0.50625, -4.53125, 18.125, 0.50001, 9.06251),
+"format": 4097,
+"index_count": 36,
+"index_data": PackedByteArray(2, 0, 1, 0, 0, 0, 2, 0, 3, 0, 1, 0, 6, 0, 5, 0, 4, 0, 6, 0, 7, 0, 5, 0, 4, 0, 2, 0, 0, 0, 4, 0, 5, 0, 2, 0, 3, 0, 6, 0, 1, 0, 3, 0, 7, 0, 6, 0, 1, 0, 4, 0, 0, 0, 1, 0, 6, 0, 4, 0, 5, 0, 3, 0, 2, 0, 5, 0, 7, 0, 3, 0),
+"name": "material_1",
+"primitive": 3,
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 64, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 64, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 192, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 192, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 64, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 192, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 64, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 192)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_r53go"]
+resource_name = "blockbench_export_mesh2"
+_surfaces = [{
+"aabb": AABB(-13.3125, -0.50625, -4.53125, 18.125, 0.50001, 9.06251),
+"attribute_data": PackedByteArray(0, 0, 136, 62, 0, 0, 0, 0, 0, 0, 136, 62, 0, 0, 128, 60, 0, 128, 7, 63, 0, 0, 0, 0, 0, 128, 7, 63, 0, 0, 128, 60, 0, 128, 7, 63, 0, 0, 144, 60, 0, 0, 136, 62, 0, 0, 144, 60, 0, 128, 7, 63, 0, 0, 8, 61, 0, 0, 136, 62, 0, 0, 8, 61, 0, 0, 135, 62, 0, 0, 135, 62, 0, 0, 135, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 135, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 135, 62, 0, 0, 136, 62, 0, 0, 0, 0, 0, 0, 136, 62, 0, 0, 135, 62, 0, 128, 7, 63, 0, 0, 0, 0, 0, 128, 7, 63, 0, 128, 7, 63, 0, 0, 16, 61, 0, 0, 136, 62, 0, 0, 16, 61, 0, 128, 7, 63, 0, 0, 80, 61, 0, 0, 136, 62, 0, 0, 80, 61, 0, 0, 136, 62, 0, 0, 88, 61, 0, 0, 136, 62, 0, 0, 140, 61, 0, 128, 7, 63, 0, 0, 88, 61, 0, 128, 7, 63, 0, 0, 140, 61),
+"format": 4119,
+"index_count": 36,
+"index_data": PackedByteArray(2, 0, 1, 0, 0, 0, 2, 0, 3, 0, 1, 0, 6, 0, 5, 0, 4, 0, 6, 0, 7, 0, 5, 0, 10, 0, 9, 0, 8, 0, 10, 0, 11, 0, 9, 0, 14, 0, 13, 0, 12, 0, 14, 0, 15, 0, 13, 0, 18, 0, 17, 0, 16, 0, 18, 0, 19, 0, 17, 0, 22, 0, 21, 0, 20, 0, 22, 0, 23, 0, 21, 0),
+"material": SubResource("StandardMaterial3D_e5jeg"),
+"name": "material_1",
+"primitive": 3,
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 64, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 64, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 192, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 192, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 64, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 192, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 64, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 192, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 64, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 192, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 64, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 192, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 64, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 64, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 192, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 192, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 64, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 64, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 64, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 64, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 192, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 192, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 192, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 192, 255, 255, 255, 255, 0, 0, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_r24kl")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4tp0"]
+size = Vector3(19.125, 0.001, 102.563)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sjehb"]
+size = Vector3(6.5625, 1, 66)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fmaww"]
+sky_top_color = Color(0.117647, 0.0901961, 0.301961, 1)
+sky_horizon_color = Color(0.62, 0.329013, 0.0744, 1)
+sky_curve = 0.0609192
+ground_bottom_color = Color(0.0431373, 0.0313726, 0.0196078, 1)
+ground_horizon_color = Color(0.247059, 0.25098, 0.262745, 1)
+sun_angle_max = 15.32
+sun_curve = 0.0522061
+
+[sub_resource type="Sky" id="Sky_sk73x"]
+sky_material = SubResource("ProceduralSkyMaterial_fmaww")
+
+[sub_resource type="Environment" id="Environment_v12p8"]
+background_mode = 2
+sky = SubResource("Sky_sk73x")
+ambient_light_source = 2
+ambient_light_color = Color(0.709804, 0.772549, 1, 1)
+ambient_light_energy = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwdu1"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_vcpyo"]
+material = SubResource("StandardMaterial3D_bwdu1")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iw0w"]
+bg_color = Color(0.623529, 0.686275, 0.741176, 0.337255)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y51iu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncocj"]
+bg_color = Color(0.447059, 0.737255, 0.929412, 0.67451)
+
+[sub_resource type="Animation" id="Animation_w8oyy"]
+resource_name = "DeathSaveCatoFadeOut"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraModifierHandle/Cutscene Camera/MeshInstance3D:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.166667), Color(0, 0, 0, 0.0823529), Color(0, 0, 0, 0.454902), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraModifierHandle/Cutscene Camera:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [60.0, 55.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cera Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Necromancer Actor/Sprite3D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Necromancer Actor/Sprite3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector3(-0.31036, 4.41453, 0.255529), Vector3(-0.87286, 3.97703, 0.255529)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cera Sprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [23, 24]
+}
+
+[sub_resource type="Animation" id="Animation_eaydr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cera Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Necromancer Actor/Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.87286, 3.97703, 0.255529)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cera Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [23]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CameraModifierHandle/Cutscene Camera/MeshInstance3D:mesh:material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vwrn"]
+_data = {
+"DeathSaveCatoFadeOut": SubResource("Animation_w8oyy"),
+"RESET": SubResource("Animation_eaydr")
+}
+
+[sub_resource type="Animation" id="Animation_t6wj4"]
+resource_name = "Defeat"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [42]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 0.9, 1.5, 1.7, 1.9, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(-0.935359, 1.97703, 0.255529), Vector3(-0.975, 1.977, 0.256), Vector3(-0.935359, 1.97703, 0.255529), Vector3(-0.975, 1.977, 0.256), Vector3(-0.935359, 1.97703, 0.255529), Vector3(-0.975, 1.977, 0.256), Vector3(-0.935359, 1.97703, 0.255529), Vector3(-0.975, 1.977, 0.256), Vector3(-0.935359, 1.97703, 0.255529)]
+}
+
+[sub_resource type="Animation" id="Animation_bhqjj"]
+resource_name = "Look Up"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [43]
+}
+
+[sub_resource type="Animation" id="Animation_pgljf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.06036, 1.97703, 0.255529)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xr58c"]
+_data = {
+"CatoDefeat": SubResource("Animation_t6wj4"),
+"Look Up": SubResource("Animation_bhqjj"),
+"RESET": SubResource("Animation_pgljf")
+}
+
+[sub_resource type="Animation" id="Animation_palsx"]
+resource_name = "LucieneDefeat"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_eecs0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mjk4x"]
+_data = {
+"LucieneDefeat": SubResource("Animation_palsx"),
+"RESET": SubResource("Animation_eecs0")
+}
+
+[sub_resource type="Animation" id="Animation_xl6wc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_bxanb"]
+resource_name = "SilverDefeat"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ep7w0"]
+_data = {
+"RESET": SubResource("Animation_xl6wc"),
+"SilverDefeat": SubResource("Animation_bxanb")
+}
+
+[sub_resource type="Animation" id="Animation_1ta3l"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_n22e4"]
+resource_name = "Laugh"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5, 0.6, 0.7, 0.8, 1, 1.1, 1.2, 1.3, 1.5, 1.6, 1.7, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(-0.935359, 3.97703, 0.255529), Vector3(-0.81036, 4.03953, 0.255529), Vector3(-0.68536, 4.10203, 0.255529), Vector3(-0.935359, 3.97703, 0.255529), Vector3(-0.935359, 3.97703, 0.255529), Vector3(-0.81036, 4.03953, 0.255529), Vector3(-0.68536, 4.10203, 0.255529), Vector3(-0.935359, 3.97703, 0.255529), Vector3(-0.935359, 3.97703, 0.255529), Vector3(-0.81036, 4.03953, 0.255529), Vector3(-0.68536, 4.10203, 0.255529), Vector3(-0.935359, 3.97703, 0.255529), Vector3(-0.935359, 3.97703, 0.255529), Vector3(-0.81036, 4.03953, 0.255529), Vector3(-0.68536, 4.10203, 0.255529), Vector3(-0.935359, 3.97703, 0.255529)]
+}
+
+[sub_resource type="Animation" id="Animation_7nwc2"]
+resource_name = "Look Down"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_b8tqh"]
+resource_name = "Look Up"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_nh0wg"]
+resource_name = "Point"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_grrhq"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.68536, 4.10203, 0.255529)]
+}
+
+[sub_resource type="Animation" id="Animation_8ntug"]
+resource_name = "Raise Weapon"
+length = 0.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector3(-0.68536, 4.10203, 0.255529), Vector3(-0.31036, 4.41453, 0.255529)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1uicd"]
+_data = {
+"Idle": SubResource("Animation_1ta3l"),
+"Laugh": SubResource("Animation_n22e4"),
+"Look Down": SubResource("Animation_7nwc2"),
+"Look Up": SubResource("Animation_b8tqh"),
+"Point": SubResource("Animation_nh0wg"),
+"RESET": SubResource("Animation_grrhq"),
+"Raise Weapon": SubResource("Animation_8ntug")
+}
+
+[sub_resource type="Animation" id="Animation_2qnhg"]
+resource_name = "RESET"
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u6xvg"]
+_data = {
+"RESET": SubResource("Animation_2qnhg")
+}
+
+[node name="Node3D" type="Node3D"]
+
+[node name="TestOldTownHouse1gltf" parent="." instance=ExtResource("1_405el")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26)
+
+[node name="Tall Boy" type="Node3D" parent="."]
+
+[node name="OldTown_HouseBody1_gltf" parent="Tall Boy" instance=ExtResource("2_klvog")]
+
+[node name="OldTown_HouseBody1_gltf2" parent="Tall Boy" instance=ExtResource("2_klvog")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.96161, 0)
+
+[node name="OldTown_Roof1_gltf" parent="Tall Boy" instance=ExtResource("3_lwsou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07896, 0.305976)
+
+[node name="Wide One" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="OldTown_Roof3_gltf" parent="Wide One" instance=ExtResource("4_vo1uk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
+
+[node name="OldTown_HouseBody3_gltf" parent="Wide One" instance=ExtResource("5_eht6o")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
+
+[node name="OldTown_HouseBody2_gltf" parent="Wide One" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="Wide One" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
+visible = false
+
+[node name="OldTown_HouseBody3_gltf2" parent="Wide One" instance=ExtResource("5_eht6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
+
+[node name="OldTown_Roof2_gltf" parent="Wide One" instance=ExtResource("7_fxpmu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
+
+[node name="Tall Boy 2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.5625)
+
+[node name="AllDaHousesgltf" parent="Tall Boy 2" instance=ExtResource("8_iuujr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="Tall Boy 2" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="OldTown_HouseBody2_gltf3" parent="Tall Boy 2" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="OldTown_HouseBody2_gltf" parent="Tall Boy 2" instance=ExtResource("6_6xpr1")]
+
+[node name="OldTown_Roof3_gltf" parent="Tall Boy 2" instance=ExtResource("4_vo1uk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
+
+[node name="BasePlate" type="Node3D" parent="."]
+
+[node name="Path" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.3125, -0.5625, 0.625)
+mesh = SubResource("ArrayMesh_3roxb")
+skeleton = NodePath("")
+
+[node name="Path3" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.3125, -0.5625, -17.5)
+mesh = SubResource("ArrayMesh_3roxb")
+skeleton = NodePath("")
+
+[node name="Path4" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.3125, -0.5625, -35.625)
+mesh = SubResource("ArrayMesh_3roxb")
+skeleton = NodePath("")
+
+[node name="Path2" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.3125, -0.5625, 18.75)
+mesh = SubResource("ArrayMesh_3roxb")
+skeleton = NodePath("")
+
+[node name="Path5" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.375, -0.5625, 0.625)
+mesh = SubResource("ArrayMesh_3roxb")
+skeleton = NodePath("")
+
+[node name="Path6" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.375, -0.5625, -17.5)
+mesh = SubResource("ArrayMesh_3roxb")
+skeleton = NodePath("")
+
+[node name="Path7" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.375, -0.5625, -35.625)
+mesh = SubResource("ArrayMesh_3roxb")
+skeleton = NodePath("")
+
+[node name="Path8" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.375, -0.5625, 18.75)
+mesh = SubResource("ArrayMesh_3roxb")
+skeleton = NodePath("")
+
+[node name="housebase" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3125)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase2" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.75)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase5" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.8125)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase6" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26.875)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase7" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -35.9375)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase8" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase3" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.875)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase4" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.4375)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase4" type="MeshInstance3D" parent="BasePlate/housebase4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.0625)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase5" type="MeshInstance3D" parent="BasePlate/housebase4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.125)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase9" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0.3125)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase10" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -8.75)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase11" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -17.8125)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase12" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -26.875)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase13" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -35.9375)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase14" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -45)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase15" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 8.875)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase16" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 17.4375)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase4" type="MeshInstance3D" parent="BasePlate/housebase16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.0625)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase5" type="MeshInstance3D" parent="BasePlate/housebase16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.125)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="Big Building" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.875, 0, -27.875)
+
+[node name="OldTown_HouseBody2_gltf" parent="Big Building" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf2" parent="Big Building" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf3" parent="Big Building" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf4" parent="Big Building" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf5" parent="Big Building" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
+
+[node name="OldTown_HouseBody2_gltf6" parent="Big Building" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
+
+[node name="OldTown_Roof2_gltf" parent="Big Building" instance=ExtResource("7_fxpmu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
+
+[node name="OldTown_Roof2_gltf2" parent="Big Building" instance=ExtResource("7_fxpmu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
+
+[node name="OldTown_Roof2_gltf3" parent="Big Building" instance=ExtResource("7_fxpmu")]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
+
+[node name="Deep Copy" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8125, 0, -14.9375)
+
+[node name="TestOldTownHouse1gltf" parent="Deep Copy" instance=ExtResource("1_405el")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -26.9, 0, -30.4125)
+
+[node name="Tall Boy" type="Node3D" parent="Deep Copy"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -26.9, 0, -4.4125)
+
+[node name="OldTown_HouseBody1_gltf" parent="Deep Copy/Tall Boy" instance=ExtResource("2_klvog")]
+
+[node name="OldTown_HouseBody1_gltf2" parent="Deep Copy/Tall Boy" instance=ExtResource("2_klvog")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.96161, 0)
+
+[node name="OldTown_Roof1_gltf" parent="Deep Copy/Tall Boy" instance=ExtResource("3_lwsou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07896, 0.305976)
+
+[node name="Wide One" type="Node3D" parent="Deep Copy"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -26.9, 0, -3.4125)
+
+[node name="OldTown_Roof3_gltf" parent="Deep Copy/Wide One" instance=ExtResource("4_vo1uk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
+
+[node name="OldTown_HouseBody3_gltf" parent="Deep Copy/Wide One" instance=ExtResource("5_eht6o")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
+
+[node name="OldTown_HouseBody2_gltf" parent="Deep Copy/Wide One" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="Deep Copy/Wide One" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
+visible = false
+
+[node name="OldTown_HouseBody3_gltf2" parent="Deep Copy/Wide One" instance=ExtResource("5_eht6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
+
+[node name="OldTown_Roof2_gltf" parent="Deep Copy/Wide One" instance=ExtResource("7_fxpmu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
+
+[node name="Tall Boy 2" type="Node3D" parent="Deep Copy"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -26.9, 0, -17.975)
+
+[node name="AllDaHousesgltf" parent="Deep Copy/Tall Boy 2" instance=ExtResource("8_iuujr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="Deep Copy/Tall Boy 2" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="OldTown_HouseBody2_gltf3" parent="Deep Copy/Tall Boy 2" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="OldTown_HouseBody2_gltf" parent="Deep Copy/Tall Boy 2" instance=ExtResource("6_6xpr1")]
+
+[node name="OldTown_Roof3_gltf" parent="Deep Copy/Tall Boy 2" instance=ExtResource("4_vo1uk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
+
+[node name="Big Building" type="Node3D" parent="Deep Copy"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.025, 0, 23.4625)
+
+[node name="OldTown_HouseBody2_gltf" parent="Deep Copy/Big Building" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf2" parent="Deep Copy/Big Building" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf3" parent="Deep Copy/Big Building" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf4" parent="Deep Copy/Big Building" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf5" parent="Deep Copy/Big Building" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
+
+[node name="OldTown_HouseBody2_gltf6" parent="Deep Copy/Big Building" instance=ExtResource("6_6xpr1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
+
+[node name="OldTown_Roof2_gltf" parent="Deep Copy/Big Building" instance=ExtResource("7_fxpmu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
+
+[node name="OldTown_Roof2_gltf2" parent="Deep Copy/Big Building" instance=ExtResource("7_fxpmu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
+
+[node name="OldTown_Roof2_gltf3" parent="Deep Copy/Big Building" instance=ExtResource("7_fxpmu")]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 0, 0)
+shape = SubResource("BoxShape3D_g4tp0")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5625, -1.0625, 0)
+shape = SubResource("BoxShape3D_sjehb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.965926, 0.224144, 0.12941, -0.258819, 0.836516, 0.482963, 0, -0.5, 0.866025, 0, 0, 0)
+light_energy = 0.2
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v12p8")
+
+[node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.6875, 0, 0)
+script = ExtResource("9_b1c4g")
+screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Ext The First Defeat"
+playerCharacter = NodePath("Cato Actor")
+initialShotName = "Initial Shot"
+dialogueBox = NodePath("Subtitle Style")
+autoPlay = true
+
+[node name="Shot List" type="Node3D" parent="Cutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
+
+[node name="Initial Shot" type="Camera3D" parent="Cutscene/Shot List"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, 4)
+script = ExtResource("10_ak3n8")
+
+[node name="Zoom" type="Camera3D" parent="Cutscene/Shot List"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 3)
+fov = 60.0
+script = ExtResource("10_ak3n8")
+
+[node name="Blocking Marks" type="Node3D" parent="Cutscene"]
+
+[node name="CameraModifierHandle" type="Node3D" parent="Cutscene"]
+
+[node name="Cutscene Camera" type="Camera3D" parent="Cutscene/CameraModifierHandle"]
+transform = Transform3D(1, 0, 0, 0, 0.907642, 0.419744, 0, -0.419744, 0.907642, 0, 4.83687, 10.4591)
+current = true
+fov = 55.0
+script = ExtResource("11_4vjyc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cutscene/CameraModifierHandle/Cutscene Camera"]
+transform = Transform3D(1, 2.4869e-14, 0, 0, 1, -7.27929e-16, 0, -7.27928e-16, 1, 8.19665e-09, -0.0347524, -0.222651)
+mesh = SubResource("QuadMesh_vcpyo")
+
+[node name="BeatTimer" type="Timer" parent="Cutscene"]
+one_shot = true
+
+[node name="Subtitle Style" type="Control" parent="Cutscene" node_paths=PackedStringArray("dialogueLabel", "myResponseBox")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_rws1b")
+dialogueLabel = NodePath("Subtitle Bar/RichTextLabel")
+myResponseBox = NodePath("Responses")
+textDisplaySpeed = 20.0
+
+[node name="Background Panel" type="Panel" parent="Cutscene/Subtitle Style"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.734
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.280029
+offset_right = -5.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8iw0w")
+
+[node name="Portrait" type="TextureRect" parent="Cutscene/Subtitle Style"]
+layout_mode = 2
+anchor_top = 0.839
+anchor_right = 0.091
+anchor_bottom = 0.987
+offset_left = 14.0
+offset_top = -0.120056
+offset_right = -0.720016
+offset_bottom = 0.039917
+texture = ExtResource("13_q5ug7")
+stretch_mode = 2
+
+[node name="Subtitle Bar" type="VBoxContainer" parent="Cutscene/Subtitle Style"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.097
+anchor_top = 0.86
+anchor_right = 0.66
+anchor_bottom = 1.0
+offset_left = -0.240005
+offset_top = -31.8
+offset_right = 0.799927
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dialogue Spacer" type="Panel" parent="Cutscene/Subtitle Style/Subtitle Bar"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Cutscene/Subtitle Style/Subtitle Bar"]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("14_rql7b")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[b]Cato[/b] - This is some test text. I'm not 100% Sure About what's going to live here."
+fit_content = true
+
+[node name="Responses" type="VBoxContainer" parent="Cutscene/Subtitle Style" node_paths=PackedStringArray("responseLabels")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.66
+anchor_top = 0.531
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.799927
+offset_top = 0.519958
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("15_1edlu")
+responseLabels = [NodePath("VBoxContainer/RichTextLabel"), NodePath("VBoxContainer/RichTextLabel2"), NodePath("VBoxContainer/RichTextLabel3"), NodePath("VBoxContainer/RichTextLabel4")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Cutscene/Subtitle Style/Responses"]
+layout_mode = 2
+theme = ExtResource("16_gvvwh")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "This is no longer the selected Response.
+"
+fit_content = true
+
+[node name="Highlight" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer/RichTextLabel"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 713.0
+offset_bottom = 97.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+
+[node name="Response Spacer" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "This is Response Two, which is also longer"
+fit_content = true
+
+[node name="Highlight" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer/RichTextLabel2"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 768.0
+offset_bottom = 85.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+
+[node name="Response Spacer2" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "This is Response Three, There is no Meme"
+fit_content = true
+
+[node name="Highlight" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer/RichTextLabel3"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 884.0
+offset_bottom = 102.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+
+[node name="Response Spacer3" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "This is Response Four, All Hail Response Four"
+fit_content = true
+
+[node name="Highlight" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer/RichTextLabel4"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 772.0
+offset_bottom = 102.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene"]
+libraries = {
+"": SubResource("AnimationLibrary_5vwrn")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene"]
+stream = ExtResource("17_uilbi")
+
+[node name="Cato Actor" type="Node3D" parent="Cutscene"]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 5.50214, -0.537474, -4.11947)
+script = ExtResource("18_o7usb")
+actorName = "Cato"
+walkingSpeedUnitsPerSecond = 4.0
+
+[node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cato Actor"]
+transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -1.06036, 1.97703, 0.255529)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("19_bm543")
+hframes = 10
+vframes = 5
+frame = 43
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Cato Actor"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_xr58c")
+}
+
+[node name="Luciene Actor" type="Node3D" parent="Cutscene"]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, -0.749998, -0.5, -6.25)
+script = ExtResource("18_o7usb")
+actorName = "Luciene"
+walkingSpeedUnitsPerSecond = 4.0
+
+[node name="Sprite3D" type="Sprite3D" parent="Cutscene/Luciene Actor"]
+transform = Transform3D(-0.999997, 0, -4.75845e-07, 0, 1, 0, 4.75845e-07, 0, -0.999997, 0.502141, 3.97703, 0.255529)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("21_2mp4l")
+hframes = 8
+frame = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Luciene Actor"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_mjk4x")
+}
+
+[node name="Silver Actor" type="Node3D" parent="Cutscene"]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, -3.49999, -0.5, -6.25)
+script = ExtResource("18_o7usb")
+actorName = "Silver"
+walkingSpeedUnitsPerSecond = 4.0
+
+[node name="Sprite3D" type="Sprite3D" parent="Cutscene/Silver Actor"]
+transform = Transform3D(0.965923, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965923, -0.622859, 3.97703, 3.31803)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("22_s7x7i")
+hframes = 7
+frame = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Silver Actor"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_ep7w0")
+}
+
+[node name="Necromancer Actor" type="Node3D" parent="Cutscene"]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 11.1875, -0.5, -4)
+script = ExtResource("18_o7usb")
+actorName = "Necromancer"
+walkingSpeedUnitsPerSecond = 4.0
+
+[node name="Sprite3D" type="Sprite3D" parent="Cutscene/Necromancer Actor"]
+transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -0.68536, 4.10203, 0.255529)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("23_f8j42")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Necromancer Actor"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_1uicd")
+}
+
+[node name="Necromancer Minions" type="Node3D" parent="Cutscene"]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 4.5, -0.5, -6.25)
+script = ExtResource("18_o7usb")
+actorName = "Necromancer Minions"
+walkingSpeedUnitsPerSecond = 4.0
+
+[node name="SkeletonA" type="Sprite3D" parent="Cutscene/Necromancer Minions"]
+transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -1.87286, 2.22703, -0.865426)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("24_g00vn")
+hframes = 10
+vframes = 4
+
+[node name="SkeletonA2" type="Sprite3D" parent="Cutscene/Necromancer Minions"]
+transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -6.18536, 2.22703, 5.38457)
+visible = false
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("24_g00vn")
+hframes = 10
+vframes = 4
+
+[node name="SkeletonA3" type="Sprite3D" parent="Cutscene/Necromancer Minions"]
+transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -8.63, 2.227, 2.697)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("24_g00vn")
+hframes = 10
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Necromancer Minions"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_u6xvg")
+}
+
+[node name="Cera Sprite" type="Sprite3D" parent="Cutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5625, -0.3125, -4.875)
+visible = false
+pixel_size = 0.0125
+texture = ExtResource("24_6ouli")
+hframes = 10
+vframes = 3
+frame = 23

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="../../SceneData/ScreenplaySchema.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<screenplay>
+    <block name="start">
+        <setCharacterAnimation idleLoop="true"><character>Cato</character><animation>CatoDefeat</animation></setCharacterAnimation>
+        <setCharacterAnimation idleLoop="true"><character>Luciene</character><animation>LucieneDefeat</animation></setCharacterAnimation>
+        <setCharacterAnimation idleLoop="true"><character>Silver</character><animation>SilverDefeat</animation></setCharacterAnimation>
+        <beat>1</beat>
+        <cameraMove transition="linear" transitionLengthInSeconds="1.5">Zoom</cameraMove>
+        <line><speaker>Necromancer</speaker>That was. . .[shake]almost[/shake] brave,</line>
+        <line><speaker>Necromancer</speaker>at least by the standards of once-born Kell scum.</line>
+        <setCharacterAnimation><character>Cato</character><animation>Look Up</animation></setCharacterAnimation>
+        <line><speaker>Necromancer</speaker>I think we'll even raise your corpse as a warrior. . .</line>
+        <setCharacterAnimation><character>Necromancer</character><animation>Raise Weapon</animation></setCharacterAnimation>
+        <line><speaker>Necromancer</speaker>Perhaps you'll have better luck then.</line>
+        <envAnimation>DeathSaveCatoFadeOut</envAnimation>
+        <END><GOTO>EXIT</GOTO></END>
+    </block>
+</screenplay>

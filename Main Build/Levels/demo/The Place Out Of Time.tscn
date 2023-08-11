@@ -1,10 +1,16 @@
-[gd_scene load_steps=39 format=3 uid="uid://ljqcnms5jk5k"]
+[gd_scene load_steps=49 format=3 uid="uid://ljqcnms5jk5k"]
 
 [ext_resource type="Shader" path="res://Art/Shaders/clouds.gdshader" id="1_42faa"]
+[ext_resource type="PackedScene" uid="uid://c5ssdf1rt2h53" path="res://Art/3D/Past Bridge.gltf" id="1_mvxce"]
 [ext_resource type="Texture2D" uid="uid://2pjmwq12tsye" path="res://Art/Shaders/weather.bmp" id="2_prbpj"]
-[ext_resource type="PackedScene" uid="uid://260xh5n1gq06" path="res://Art/3D/placeoutoftimetestscene1.gltf" id="3_m4euf"]
 [ext_resource type="Script" path="res://Explore Mode/ExplorePlayer.cs" id="4_47dq0"]
+[ext_resource type="PackedScene" uid="uid://jvvcf5sg2cyk" path="res://Art/3D/placeoutoftimetestscene.gltf" id="4_hvrt6"]
 [ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Prod Sprite Sheets/Adventure Cato Sprite-Sheet.png" id="5_rv8v0"]
+[ext_resource type="PackedScene" uid="uid://jpdbei7pul1n" path="res://Art/3D/Present Bridge.gltf" id="7_8ao1p"]
+[ext_resource type="Texture2D" uid="uid://b7goj1p72oxbf" path="res://Art/Prod Sprite Sheets/CatoCinematicAnimation-Sheet-Sheet.png" id="8_7bqyy"]
+[ext_resource type="Texture2D" uid="uid://cqv1vos7ba7yq" path="res://Old/Art/Time Gate.png" id="9_74a1y"]
+[ext_resource type="Texture2D" uid="uid://btk1yctj4dwbu" path="res://Old/Art/Time Gate Portal.png" id="10_m2n1j"]
+[ext_resource type="Texture2D" uid="uid://cg73nhfqlomom" path="res://Old/Art/Time Gate Hour Glass.png" id="11_bs4s6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nixts"]
 shader = ExtResource("1_42faa")
@@ -111,7 +117,7 @@ shader_parameter/heightmap_scale = 16.0
 shader_parameter/heightmap_min_layers = 8
 shader_parameter/heightmap_max_layers = 32
 shader_parameter/heightmap_flip = Vector2(1, 1)
-shader_parameter/uv1_scale = Vector3(50, 50, 50)
+shader_parameter/uv1_scale = Vector3(20, 20, 50)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
@@ -119,7 +125,7 @@ shader_parameter/texture_normal = SubResource("NoiseTexture2D_62yrh")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cglte"]
 material = SubResource("ShaderMaterial_jrpm5")
-size = Vector2(3000, 3000)
+size = Vector2(4000, 4000)
 subdivide_width = 20
 subdivide_depth = 30
 
@@ -230,6 +236,92 @@ albedo_color = Color(0.960784, 0.521569, 1, 1)
 material = SubResource("StandardMaterial3D_scch7")
 size = Vector3(30, 30, 60)
 
+[sub_resource type="Animation" id="Animation_61u7b"]
+resource_name = "Camera Travel"
+length = 17.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera Pivot/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6.1, 13),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.688, 60, 275.787), Vector3(0.688, 60, 275.787), Vector3(-52.672, -0.315, 17.635)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera Pivot:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 2.8, -0.00623085, -6.28319, -0.3, 0.24825, 0.6, -0.553795, -12.5664, -2.6, 0.489363, 0.25, 0),
+"times": PackedFloat32Array(0, 6.1, 13)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera Pivot/Camera3D/MeshInstance3D:mesh:material:albedo_color:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cato Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(11.4, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [44, 45]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ExplorePlayer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(16.6, 17),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ExplorePlayer/Explore Camera:current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(16.7, 17),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cato Sprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(16.9, 17),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_s04vr"]
 resource_name = "Day Night"
 length = 4.0
@@ -237,31 +329,190 @@ loop_mode = 1
 
 [sub_resource type="Animation" id="Animation_v6hyy"]
 length = 0.001
-
-[sub_resource type="Animation" id="Animation_61u7b"]
-resource_name = "Camera Travel"
-tracks/0/type = "value"
+tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
+tracks/0/path = NodePath("Camera Pivot:rotation:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera Pivot/Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.688, 180.969, 275.787)]
+"values": [Vector3(0.688, 60, 275.787)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera Pivot/Camera3D/MeshInstance3D:mesh:material:albedo_color:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cato Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [44]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ExplorePlayer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ExplorePlayer/Explore Camera:current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cato Sprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_uhqxq"]
+resource_name = "Fast Start"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera Pivot/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-52.672, -0.315, 17.635)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera Pivot:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-12.5664, -2.6, 0.489363, 0.25, 0),
+"times": PackedFloat32Array(0.2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera Pivot/Camera3D/MeshInstance3D:mesh:material:albedo_color:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cato Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ExplorePlayer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ExplorePlayer/Explore Camera:current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cato Sprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6c4i2"]
 _data = {
 "Camera Travel": SubResource("Animation_61u7b"),
 "Day Night": SubResource("Animation_s04vr"),
+"Fast Start": SubResource("Animation_uhqxq"),
 "RESET": SubResource("Animation_v6hyy")
 }
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_4lvas"]
-radius = 81.875
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mc1vo"]
+height = 7.625
+radius = 35.9375
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yuvkw"]
+height = 4.625
+radius = 70.0625
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_s5mth"]
 radius = 0.52
@@ -399,31 +650,29 @@ radius = 0.64
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3tska"]
 radius = 0.36
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hu555"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_xmjxt"]
+material = SubResource("StandardMaterial3D_hu555")
+
 [node name="Node3D" type="Node3D"]
+
+[node name="Past Bridge" parent="." instance=ExtResource("1_mvxce")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 110.938, 32.1875)
+visible = false
+
+[node name="Past Bridge" parent="Past Bridge" instance=ExtResource("1_mvxce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tsqja")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.384295, -0.92321, -6.69397e-08, -0.896944, 0.373362, 0.236838, -0.218651, 0.0910158, -0.971549, 0, 6.1875, 0)
+transform = Transform3D(-0.384295, -0.92321, -9.55047e-08, -0.896944, 0.373362, 0.236838, -0.218651, 0.0910157, -0.971549, 6.75, -2.75, -12.5)
 light_color = Color(1, 0.984314, 0.811765, 1)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0.688, 180.969, 275.787)
-current = true
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.5625, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-size = Vector3(20, 1.375, 14.375)
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-visible = false
-operation = 2
-radius = 9.0625
-radial_segments = 36
+shadow_enabled = true
 
 [node name="Water" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
@@ -445,34 +694,33 @@ transform = Transform3D(-0.327625, -0.747364, -0.578021, -0.318099, 0.663324, -0
 visible = false
 mesh = SubResource("PrismMesh_t418d")
 
-[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.8534, 17.3302, -13.0738)
-visible = false
-size = Vector3(2561.94, 961.938, 2849.48)
-origin_offset = Vector3(-52.215, -6.735, 30.36)
-box_projection = true
-
 [node name="ReflectionProbe2" type="ReflectionProbe" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.688, 14.625, 18.18)
 size = Vector3(2089.94, 215.044, 2057.97)
 enable_shadows = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Fast Start"
 libraries = {
 "": SubResource("AnimationLibrary_6c4i2")
 }
 
-[node name="placeoutoftimetestscene1" parent="." instance=ExtResource("3_m4euf")]
+[node name="placeoutoftimetestscene" parent="." instance=ExtResource("4_hvrt6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 111.43, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="placeoutoftimetestscene1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="placeoutoftimetestscene"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="placeoutoftimetestscene1/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.0625, 0)
-shape = SubResource("CylinderShape3D_4lvas")
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="placeoutoftimetestscene/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.3125, 0)
+shape = SubResource("CylinderShape3D_mc1vo")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="placeoutoftimetestscene/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.3125, 0)
+shape = SubResource("CylinderShape3D_yuvkw")
 
 [node name="ExplorePlayer" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -53.245, 107.649, 6.08793)
+visible = false
 floor_max_angle = 0.872665
 safe_margin = 0.01
 script = ExtResource("4_47dq0")
@@ -488,7 +736,6 @@ alpha_cut = 2
 texture = ExtResource("5_rv8v0")
 hframes = 10
 vframes = 2
-frame = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExplorePlayer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0400009, 1.04, 0)
@@ -517,7 +764,55 @@ shape = SubResource("CylinderShape3D_3tska")
 
 [node name="Explore Camera" type="Camera3D" parent="ExplorePlayer"]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 6.22, 16.951)
+
+[node name="Present Bridge" parent="." instance=ExtResource("7_8ao1p")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 9.125, 111.063, 31.8125)
+
+[node name="Present Bridge2" parent="." instance=ExtResource("7_8ao1p")]
+transform = Transform3D(-1, -2.26267e-08, -8.44439e-08, -4.37114e-08, 0.965926, 0.258819, 7.57103e-08, 0.258819, -0.965926, -9, 110.688, 33.125)
+
+[node name="Camera Pivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 112.875, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Camera Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0.688, 60, 275.787)
 current = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera Pivot/Camera3D"]
+transform = Transform3D(1, 2.4869e-14, 0, 0, 1, -7.27929e-16, 0, -7.27928e-16, 1, 8.19665e-09, -0.0347524, -0.222651)
+mesh = SubResource("QuadMesh_xmjxt")
+
+[node name="Cato Sprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 109.046, 5.3125)
+texture = ExtResource("8_7bqyy")
+hframes = 10
+vframes = 5
+frame = 44
+
+[node name="ToPastGate" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.78125, 109.438, 44.5)
+
+[node name="Sprite3D" type="Sprite3D" parent="ToPastGate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+pixel_size = 0.0125
+texture = ExtResource("9_74a1y")
+
+[node name="Sprite3D2" type="Sprite3D" parent="ToPastGate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.0625)
+modulate = Color(1, 1, 1, 0.490196)
+pixel_size = 0.0125
+texture = ExtResource("10_m2n1j")
+
+[node name="Sprite3D3" type="Sprite3D" parent="ToPastGate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+pixel_size = 0.0125
+texture = ExtResource("11_bs4s6")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ToPastGate"]
+light_color = Color(0.541176, 0.768627, 1, 1)
+shadow_enabled = true
+omni_range = 14.0
+omni_attenuation = 0.31864
 
 [connection signal="area_entered" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaEntered" flags=18]
 [connection signal="area_exited" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaExited" flags=18]
