@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="../../SceneData/ScreenplaySchema.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<screenplay>
+    <block name = "start">
+        <setCharacterAnimation idleLoop="true"><character>Necromancer</character><animation>Look Up</animation></setCharacterAnimation>
+        <beat>0.5</beat>
+        <setCharacterAnimation><character>Luciene</character><animation>Turn</animation></setCharacterAnimation>
+        <line><speaker>Luciene</speaker>Mr Silver: Time?</line>
+        <setCharacterAnimation idleLoop="true"><character>Cato</character><animation>Sword Idle Invert</animation></setCharacterAnimation>
+        <setCharacterAnimation concurent="true"><character>Silver</character><animation>Look Around</animation></setCharacterAnimation>
+        <line><speaker>Silver</speaker>I reckon we have a moment Boss.</line>
+        <setCharacterAnimation><character>Luciene</character><animation>Turn Back</animation></setCharacterAnimation>
+        <line><speaker>Luciene</speaker>Mr. Argent: Where is Cera?</line>
+        <setCharacterAnimation concurent="true"><character>Cato</character><animation>Suspicious</animation></setCharacterAnimation>
+        <line><speaker>Cato</speaker>What?</line>
+        <line><speaker>Luciene</speaker>Her safety is of the utmost importance.</line>
+        <line><speaker>Cato</speaker>. . .I don't. . .She went off to find whatever was causing this.</line>
+        <line><speaker>Cato</speaker>She's the best fighter I know. She can take care of herself.</line>
+        <line autoProceed="true"><speaker>Luciene</speaker>I am afraid I that is a risk I cannot-</line>
+        <setCharacterAnimation concurent="true"><character>Silver</character><animation>Ready Up</animation></setCharacterAnimation>
+        <line><speaker>Silver</speaker>Contact. Dead Ahead. . .emphasis on [wave]dead[/wave].</line>
+        <setCharacterAnimation idleLoop="true"><character>Cato</character><animation>Sword Idle</animation></setCharacterAnimation>
+        <characterMove character="Necromancer Minions">Enter the Minions</characterMove>
+        <characterMove character="Necromancer">Enter the Necromancer</characterMove>
+        <line><speaker>Luciene</speaker>[i]Goddess damn it all[/i]</line>
+        <setCharacterAnimation concurent="true"><character>Necromancer</character><animation>Look Down</animation></setCharacterAnimation>
+        <line><speaker>Necromancer</speaker>Hm. Finally someone civilized.</line>
+        <setCharacterAnimation concurent="true"><character>Necromancer</character><animation>Point</animation></setCharacterAnimation>
+        <line><speaker>Necromancer</speaker>You. [shake]Girl[/shake]. . . I presume you represent some court or another.</line>
+        <characterMove character="Luciene">Stand Up to the Necromancer</characterMove>
+        <line><speaker>Luciene</speaker>I do.</line>
+        <line><speaker>Necromancer</speaker>Good. You will carry word to the Queen in Moonhaven. The Duchess of Aglora has returned, and reclaimed her rights.</line>
+        <line><speaker>Luciene</speaker>. . .</line>
+        <line autoProceed="true"><speaker>Luciene</speaker>My Lady, I must-</line>
+        <setCharacterAnimation concurent="true"><character>Cato</character><animation>Charge Ahead</animation></setCharacterAnimation>
+        <line><speaker>Cato</speaker>[shake]You[/shake] attacked us?!</line>
+        <setCharacterAnimation><character>Necromancer</character><animation>Look Down</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Necromancer</character><animation>Look Up</animation></setCharacterAnimation>
+        <line><speaker>Necromancer</speaker>Do control your [shake]pet[/shake], girl.</line>
+        <line><speaker>Cato</speaker>This is my home!</line>
+        <line autoProceed="true"><speaker>Luciene</speaker>[i]Mr. Argent, if you would just-[/i]</line>
+        <setCharacterAnimation concurent="true"><character>Cato</character><animation>Impotent Rage</animation></setCharacterAnimation>
+        <line><speaker>Cato</speaker>. . .and. . . and. .</line>
+        <setCharacterAnimation concurent="true"><character>Cato</character><animation>Taunt</animation></setCharacterAnimation>
+        <line><speaker>Cato</speaker>I'm going to stop you!</line>
+        <beat>2</beat>
+        <setCharacterAnimation><character>Necromancer</character><animation>Laugh</animation></setCharacterAnimation>
+        <line><speaker>Necromancer</speaker>Only a moment back in power, and already having to contain the rabble. . .</line>
+        <line><speaker>Necromancer</speaker>Some things never change.</line>
+        <setCharacterAnimation><character>Necromancer</character><animation>Point</animation></setCharacterAnimation>
+        <line><speaker>Necromancer</speaker>I suggest you pick a side, girl.</line>
+        <beat>1</beat>
+        <setCharacterAnimation><character>Luciene</character><animation>Tense Sigh</animation></setCharacterAnimation>
+        <setCharacterAnimation idleLoop="true"><character>Luciene</character><animation>Idle</animation></setCharacterAnimation>
+        <line><speaker>Luciene</speaker>I am afraid I will have to concur with Mr. Argent.</line>
+        <setCharacterAnimation concurent="true"><character>Silver</character><animation>Tip Hat</animation></setCharacterAnimation>
+        <line><speaker>Silver</speaker>Right behind you, Boss.</line>
+        <beat>1</beat>
+        <setCharacterAnimation><character>Necromancer</character><animation>Point</animation></setCharacterAnimation>
+        <line><speaker>Necromancer</speaker>Kill them all, except the Greenskin. I want to give him...our [shake]Utmost hospitality.[/shake]</line>
+        <END><GOTO>EXIT</GOTO></END>
+    </block>
+</screenplay>

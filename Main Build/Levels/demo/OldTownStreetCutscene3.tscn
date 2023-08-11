@@ -1,29 +1,29 @@
-[gd_scene load_steps=76 format=3 uid="uid://cuylajsr0x7ss"]
+[gd_scene load_steps=92 format=3 uid="uid://b7tnyob5w0pfp"]
 
-[ext_resource type="PackedScene" uid="uid://cj7260eer0ta5" path="res://Art/3D/TestOldTownHouse1gltf.gltf" id="1_e5yh2"]
-[ext_resource type="PackedScene" uid="uid://744jase51iw4" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody1_gltf.gltf" id="2_bpf68"]
-[ext_resource type="PackedScene" uid="uid://663as0b6h32w" path="res://Art/3D/OldTownBlocks/OldTown_Roof1_gltf.gltf" id="3_gby25"]
-[ext_resource type="PackedScene" uid="uid://dvsfko0dk77di" path="res://Art/3D/OldTownBlocks/OldTown_Roof3_gltf.gltf" id="4_tcy1s"]
-[ext_resource type="PackedScene" uid="uid://vog8ct3qc5w8" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody3_gltf.gltf" id="5_w010v"]
-[ext_resource type="PackedScene" uid="uid://c7jx0chv8iiqc" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody2_gltf.gltf" id="6_ca721"]
-[ext_resource type="PackedScene" uid="uid://cjrdgly6ew04o" path="res://Art/3D/OldTownBlocks/OldTown_Roof2_gltf.gltf" id="7_ymcwd"]
-[ext_resource type="PackedScene" uid="uid://cmspx3xel8pa2" path="res://Art/3D/OldTownBlocks/Balcony Piece.tscn" id="8_q7paf"]
-[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDirector.cs" id="9_h8s6p"]
-[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneShot.cs" id="10_buxyv"]
-[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneCamera.cs" id="11_6ddnu"]
-[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDialogueBox.cs" id="12_dyih6"]
-[ext_resource type="Texture2D" uid="uid://bc5cvecx1cei7" path="res://Art/Time Sense.png" id="13_fnyf6"]
-[ext_resource type="Theme" uid="uid://c3w8cbrksjko5" path="res://GUI/Themes/Cutscene Themes/NormalDialogueText.tres" id="14_wai1p"]
-[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneResponseBox.cs" id="15_4kd2p"]
-[ext_resource type="Theme" uid="uid://c6hjkq2or80ln" path="res://GUI/Themes/Cutscene Themes/Dialogue Responses.tres" id="16_32vbr"]
-[ext_resource type="AudioStream" uid="uid://ckxbt64hf7jpw" path="res://Audio/Distant Boom.wav" id="17_d5our"]
-[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/Actor.cs" id="18_u6po5"]
-[ext_resource type="Texture2D" uid="uid://bxpwsf3thk4fo" path="res://Art/Prod Sprite Sheets/CatoCinematicAnimation-Sheet.png" id="19_5n0q6"]
-[ext_resource type="Texture2D" uid="uid://b43sxpud60he4" path="res://Art/Letter.png" id="20_boelg"]
-[ext_resource type="Texture2D" uid="uid://dl2nhvu4ncgu0" path="res://Art/Prod Sprite Sheets/Skeleton Guard Combat Sprite-Sheet.png" id="20_vq01j"]
-[ext_resource type="Texture2D" uid="uid://wy4a13eqgfmx" path="res://Art/Prod Sprite Sheets/Luciene Cinematic Sprite-Sheet.png" id="21_am7rb"]
-[ext_resource type="Texture2D" uid="uid://c6d5hexnmg817" path="res://Art/Prod Sprite Sheets/Silver Cinematic Animation-Sheet.png" id="22_1ukqg"]
-[ext_resource type="Texture2D" uid="uid://qxueooqq05r1" path="res://Art/Prod Sprite Sheets/Skeleton Combat Sprite-Sheet.png" id="22_ucrtf"]
+[ext_resource type="PackedScene" uid="uid://cj7260eer0ta5" path="res://Art/3D/TestOldTownHouse1gltf.gltf" id="1_14u34"]
+[ext_resource type="PackedScene" uid="uid://744jase51iw4" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody1_gltf.gltf" id="2_tpvas"]
+[ext_resource type="PackedScene" uid="uid://663as0b6h32w" path="res://Art/3D/OldTownBlocks/OldTown_Roof1_gltf.gltf" id="3_gk7ew"]
+[ext_resource type="PackedScene" uid="uid://dvsfko0dk77di" path="res://Art/3D/OldTownBlocks/OldTown_Roof3_gltf.gltf" id="4_fkugh"]
+[ext_resource type="PackedScene" uid="uid://vog8ct3qc5w8" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody3_gltf.gltf" id="5_4xpmk"]
+[ext_resource type="PackedScene" uid="uid://c7jx0chv8iiqc" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody2_gltf.gltf" id="6_nemw3"]
+[ext_resource type="PackedScene" uid="uid://cjrdgly6ew04o" path="res://Art/3D/OldTownBlocks/OldTown_Roof2_gltf.gltf" id="7_shtbq"]
+[ext_resource type="PackedScene" uid="uid://cmspx3xel8pa2" path="res://Art/3D/OldTownBlocks/Balcony Piece.tscn" id="8_drxuy"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDirector.cs" id="9_b88p1"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneShot.cs" id="10_18dmc"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneCamera.cs" id="11_nbwg5"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDialogueBox.cs" id="12_cgqtd"]
+[ext_resource type="Texture2D" uid="uid://bc5cvecx1cei7" path="res://Art/Time Sense.png" id="13_44535"]
+[ext_resource type="Theme" uid="uid://c3w8cbrksjko5" path="res://GUI/Themes/Cutscene Themes/NormalDialogueText.tres" id="14_gene4"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneResponseBox.cs" id="15_owalv"]
+[ext_resource type="Theme" uid="uid://c6hjkq2or80ln" path="res://GUI/Themes/Cutscene Themes/Dialogue Responses.tres" id="16_lue08"]
+[ext_resource type="AudioStream" uid="uid://ckxbt64hf7jpw" path="res://Audio/Distant Boom.wav" id="17_dlnft"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/Actor.cs" id="18_0abwi"]
+[ext_resource type="Texture2D" uid="uid://bxpwsf3thk4fo" path="res://Art/Prod Sprite Sheets/CatoCinematicAnimation-Sheet.png" id="19_2kwth"]
+[ext_resource type="Texture2D" uid="uid://b43sxpud60he4" path="res://Art/Letter.png" id="20_0oumj"]
+[ext_resource type="Texture2D" uid="uid://wy4a13eqgfmx" path="res://Art/Prod Sprite Sheets/Luciene Cinematic Sprite-Sheet.png" id="21_h75cp"]
+[ext_resource type="Texture2D" uid="uid://c6d5hexnmg817" path="res://Art/Prod Sprite Sheets/Silver Cinematic Animation-Sheet.png" id="22_old0r"]
+[ext_resource type="Texture2D" uid="uid://dtej42sowyqpt" path="res://Art/Prod Sprite Sheets/Necromancer Cinematic Animation-Sheet.png" id="23_1rh6o"]
+[ext_resource type="Texture2D" uid="uid://dl2nhvu4ncgu0" path="res://Art/Prod Sprite Sheets/Skeleton Guard Combat Sprite-Sheet.png" id="24_aypdr"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o4fkr"]
 load_path = "res://.godot/imported/AllDaHousesgltf_1.png-641c98bdb8cf566a8417dbe937812620.ctex"
@@ -342,12 +342,12 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Skeleton:frame")
+tracks/0/path = NodePath("Sprite3D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1.03526),
 "update": 1,
 "values": [7]
 }
@@ -454,6 +454,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite3D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [37]
 }
 
 [sub_resource type="Animation" id="Animation_4c2mm"]
@@ -617,9 +629,123 @@ tracks/0/keys = {
 "values": [21, 28]
 }
 
+[sub_resource type="Animation" id="Animation_j17xg"]
+resource_name = "Sword Idle Invert"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [37]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7iowy"]
+resource_name = "Suspicious"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [39, 37]
+}
+
+[sub_resource type="Animation" id="Animation_7v6oe"]
+resource_name = "Charge Ahead"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [37, 40]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(4.68964, -0.537474, -5.61947), Vector3(6.19, -0.537, -5.619)]
+}
+
+[sub_resource type="Animation" id="Animation_eaqww"]
+resource_name = "Impotent Rage"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [40, 41]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(6.19, -0.537, -5.619), Vector3(6.09, -0.537, -5.619), Vector3(6.29, -0.537, -5.619), Vector3(6.09, -0.537, -5.619), Vector3(6.29, -0.537, -5.619), Vector3(6.09, -0.537, -5.619), Vector3(6.29, -0.537, -5.619), Vector3(6.09, -0.537, -5.619), Vector3(6.29, -0.537, -5.619), Vector3(6.09, -0.537, -5.619), Vector3(6.29, -0.537, -5.619), Vector3(6.09, -0.537, -5.619), Vector3(6.29, -0.537, -5.619), Vector3(6.14, -0.537, -5.619), Vector3(6.24, -0.537, -5.619), Vector3(6.19, -0.537, -5.619)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k6i78"]
 _data = {
 "Anxious Pacing": SubResource("Animation_i3lke"),
+"Charge Ahead": SubResource("Animation_7v6oe"),
 "Draw Sword": SubResource("Animation_fachi"),
 "Fiddle with Object Sit": SubResource("Animation_hbyni"),
 "Flip Around Surprise": SubResource("Animation_i5c4x"),
@@ -627,6 +753,7 @@ _data = {
 "Hesitate": SubResource("Animation_ergnw"),
 "Idle": SubResource("Animation_bkc5n"),
 "Idle Sit": SubResource("Animation_xwaf0"),
+"Impotent Rage": SubResource("Animation_eaqww"),
 "Look Around": SubResource("Animation_0plmh"),
 "Look Behind Sit": SubResource("Animation_m6h2j"),
 "Look Up": SubResource("Animation_ukiyq"),
@@ -636,7 +763,9 @@ _data = {
 "Show Object Sit": SubResource("Animation_5fwyo"),
 "Stand Up and Draw Sword": SubResource("Animation_jlj8p"),
 "Surprise": SubResource("Animation_i57d2"),
+"Suspicious": SubResource("Animation_7iowy"),
 "Sword Idle": SubResource("Animation_3jhkc"),
+"Sword Idle Invert": SubResource("Animation_j17xg"),
 "Taunt": SubResource("Animation_wag5e"),
 "Walk": SubResource("Animation_i5yur")
 }
@@ -696,11 +825,24 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-8.5, -0.5, -6.25)]
+"values": [Vector3(0.500002, -0.5, -6.25)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_rff84"]
 resource_name = "Slide In"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -714,12 +856,68 @@ tracks/0/keys = {
 "values": [Vector3(-8.5, -0.5, -6.25), Vector3(0.500002, -0.5, -6.25)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1q83x"]
+[sub_resource type="Animation" id="Animation_gnptp"]
+resource_name = "Turn Back"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_va7ge"]
+resource_name = "Walk"
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_6udmb"]
+resource_name = "Tense Sigh"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1.5, 1.7, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 5, 6, 6, 5, 0]
+}
+
+[sub_resource type="Animation" id="Animation_jy4uk"]
+resource_name = "Turn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fr5w8"]
 _data = {
 "Draw Sword": SubResource("Animation_blkjg"),
 "Idle": SubResource("Animation_p87uk"),
 "RESET": SubResource("Animation_8g5yt"),
-"Slide In": SubResource("Animation_rff84")
+"Slide In": SubResource("Animation_rff84"),
+"Tense Sigh": SubResource("Animation_6udmb"),
+"Turn": SubResource("Animation_jy4uk"),
+"Turn Back": SubResource("Animation_gnptp"),
+"Walk": SubResource("Animation_va7ge")
 }
 
 [sub_resource type="Animation" id="Animation_uvfpu"]
@@ -734,7 +932,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-11.5, -0.5, -6.25)]
+"values": [Vector3(-3.49999, -0.5, -6.25)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -751,6 +949,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_q5ldx"]
 resource_name = "Slide In2"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -779,149 +978,260 @@ tracks/0/keys = {
 "values": [0, 1, 2, 1, 0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqfi8"]
+[sub_resource type="Animation" id="Animation_ottyg"]
+resource_name = "Look Around"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 1.8, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 3, 4, 3, 0]
+}
+
+[sub_resource type="Animation" id="Animation_bh7v0"]
+resource_name = "Ready Up"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 5, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l0xe2"]
 _data = {
+"Look Around": SubResource("Animation_ottyg"),
 "RESET": SubResource("Animation_uvfpu"),
+"Ready Up": SubResource("Animation_bh7v0"),
 "Slide In2": SubResource("Animation_q5ldx"),
 "Tip Hat": SubResource("Animation_qnd11")
 }
 
-[sub_resource type="Animation" id="Animation_e11os"]
-resource_name = "Arrive"
+[sub_resource type="Animation" id="Animation_1ta3l"]
+resource_name = "Idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Skeleton:position")
+tracks/0/path = NodePath("Sprite3D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.935359, 1.57321, 0.255529), Vector3(-12.9354, 1.57321, 0.255529)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_grrhq"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Skeleton Two:position")
+tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.4, 0.9),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(2.94, 1.29, 1.881), Vector3(-9.06, 1.29, 1.881)]
+"values": [Vector3(24.0625, -0.5, -6.25)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Skeleton Guard:position")
+tracks/2/path = NodePath("Sprite3D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.2, 0.7),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.002141, 2.16453, 1.88053), Vector3(-11.9979, 2.16453, 1.88053)]
+"values": [Vector3(-0.68536, 4.10203, 0.255529)]
 }
 
-[sub_resource type="Animation" id="Animation_xy7wg"]
+[sub_resource type="Animation" id="Animation_b8tqh"]
+resource_name = "Look Up"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_7nwc2"]
+resource_name = "Look Down"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nh0wg"]
+resource_name = "Point"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_n22e4"]
+resource_name = "Laugh"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5, 0.6, 0.7, 0.8, 1, 1.1, 1.2, 1.3, 1.5, 1.6, 1.7, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(-0.935359, 3.97703, 0.255529), Vector3(-0.81036, 4.03953, 0.255529), Vector3(-0.68536, 4.10203, 0.255529), Vector3(-0.935359, 3.97703, 0.255529), Vector3(-0.935359, 3.97703, 0.255529), Vector3(-0.81036, 4.03953, 0.255529), Vector3(-0.68536, 4.10203, 0.255529), Vector3(-0.935359, 3.97703, 0.255529), Vector3(-0.935359, 3.97703, 0.255529), Vector3(-0.81036, 4.03953, 0.255529), Vector3(-0.68536, 4.10203, 0.255529), Vector3(-0.935359, 3.97703, 0.255529), Vector3(-0.935359, 3.97703, 0.255529), Vector3(-0.81036, 4.03953, 0.255529), Vector3(-0.68536, 4.10203, 0.255529), Vector3(-0.935359, 3.97703, 0.255529)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1uicd"]
+_data = {
+"Idle": SubResource("Animation_1ta3l"),
+"Laugh": SubResource("Animation_n22e4"),
+"Look Down": SubResource("Animation_7nwc2"),
+"Look Up": SubResource("Animation_b8tqh"),
+"Point": SubResource("Animation_nh0wg"),
+"RESET": SubResource("Animation_grrhq")
+}
+
+[sub_resource type="Animation" id="Animation_2qnhg"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Skeleton:position")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.935359, 1.57321, 0.255529)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Skeleton Two:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(2.94, 1.29, 1.881)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Skeleton Guard:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.002141, 2.16453, 1.88053)]
+"values": [Vector3(22.25, -0.5, -6.25)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ihqec"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u6xvg"]
 _data = {
-"Arrive": SubResource("Animation_e11os"),
-"RESET": SubResource("Animation_xy7wg")
+"RESET": SubResource("Animation_2qnhg")
 }
 
 [node name="Node3D" type="Node3D"]
 
-[node name="TestOldTownHouse1gltf" parent="." instance=ExtResource("1_e5yh2")]
+[node name="TestOldTownHouse1gltf" parent="." instance=ExtResource("1_14u34")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26)
 
 [node name="Tall Boy" type="Node3D" parent="."]
 
-[node name="OldTown_HouseBody1_gltf" parent="Tall Boy" instance=ExtResource("2_bpf68")]
+[node name="OldTown_HouseBody1_gltf" parent="Tall Boy" instance=ExtResource("2_tpvas")]
 
-[node name="OldTown_HouseBody1_gltf2" parent="Tall Boy" instance=ExtResource("2_bpf68")]
+[node name="OldTown_HouseBody1_gltf2" parent="Tall Boy" instance=ExtResource("2_tpvas")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.96161, 0)
 
-[node name="OldTown_Roof1_gltf" parent="Tall Boy" instance=ExtResource("3_gby25")]
+[node name="OldTown_Roof1_gltf" parent="Tall Boy" instance=ExtResource("3_gk7ew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07896, 0.305976)
 
 [node name="Wide One" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
-[node name="OldTown_Roof3_gltf" parent="Wide One" instance=ExtResource("4_tcy1s")]
+[node name="OldTown_Roof3_gltf" parent="Wide One" instance=ExtResource("4_fkugh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
 
-[node name="OldTown_HouseBody3_gltf" parent="Wide One" instance=ExtResource("5_w010v")]
+[node name="OldTown_HouseBody3_gltf" parent="Wide One" instance=ExtResource("5_4xpmk")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
 
-[node name="OldTown_HouseBody2_gltf" parent="Wide One" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf" parent="Wide One" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
 
-[node name="OldTown_HouseBody2_gltf2" parent="Wide One" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf2" parent="Wide One" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
 visible = false
 
-[node name="OldTown_HouseBody3_gltf2" parent="Wide One" instance=ExtResource("5_w010v")]
+[node name="OldTown_HouseBody3_gltf2" parent="Wide One" instance=ExtResource("5_4xpmk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
 
-[node name="OldTown_Roof2_gltf" parent="Wide One" instance=ExtResource("7_ymcwd")]
+[node name="OldTown_Roof2_gltf" parent="Wide One" instance=ExtResource("7_shtbq")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
 
 [node name="Tall Boy 2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.5625)
 
-[node name="AllDaHousesgltf" parent="Tall Boy 2" instance=ExtResource("8_q7paf")]
+[node name="AllDaHousesgltf" parent="Tall Boy 2" instance=ExtResource("8_drxuy")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
 
-[node name="OldTown_HouseBody2_gltf2" parent="Tall Boy 2" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf2" parent="Tall Boy 2" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
-[node name="OldTown_HouseBody2_gltf3" parent="Tall Boy 2" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf3" parent="Tall Boy 2" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
 
-[node name="OldTown_HouseBody2_gltf" parent="Tall Boy 2" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf" parent="Tall Boy 2" instance=ExtResource("6_nemw3")]
 
-[node name="OldTown_Roof3_gltf" parent="Tall Boy 2" instance=ExtResource("4_tcy1s")]
+[node name="OldTown_Roof3_gltf" parent="Tall Boy 2" instance=ExtResource("4_fkugh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
 
 [node name="BasePlate" type="Node3D" parent="."]
@@ -1069,117 +1379,117 @@ skeleton = NodePath("")
 [node name="Big Building" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.875, 0, -27.875)
 
-[node name="OldTown_HouseBody2_gltf" parent="Big Building" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf" parent="Big Building" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
 
-[node name="OldTown_HouseBody2_gltf2" parent="Big Building" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf2" parent="Big Building" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
 
-[node name="OldTown_HouseBody2_gltf3" parent="Big Building" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf3" parent="Big Building" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
 
-[node name="OldTown_HouseBody2_gltf4" parent="Big Building" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf4" parent="Big Building" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
 
-[node name="OldTown_HouseBody2_gltf5" parent="Big Building" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf5" parent="Big Building" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
 
-[node name="OldTown_HouseBody2_gltf6" parent="Big Building" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf6" parent="Big Building" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
 
-[node name="OldTown_Roof2_gltf" parent="Big Building" instance=ExtResource("7_ymcwd")]
+[node name="OldTown_Roof2_gltf" parent="Big Building" instance=ExtResource("7_shtbq")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
 
-[node name="OldTown_Roof2_gltf2" parent="Big Building" instance=ExtResource("7_ymcwd")]
+[node name="OldTown_Roof2_gltf2" parent="Big Building" instance=ExtResource("7_shtbq")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
 
-[node name="OldTown_Roof2_gltf3" parent="Big Building" instance=ExtResource("7_ymcwd")]
+[node name="OldTown_Roof2_gltf3" parent="Big Building" instance=ExtResource("7_shtbq")]
 transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
 
 [node name="Deep Copy" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8125, 0, -14.9375)
 
-[node name="TestOldTownHouse1gltf" parent="Deep Copy" instance=ExtResource("1_e5yh2")]
+[node name="TestOldTownHouse1gltf" parent="Deep Copy" instance=ExtResource("1_14u34")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -26.9, 0, -30.4125)
 
 [node name="Tall Boy" type="Node3D" parent="Deep Copy"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -26.9, 0, -4.4125)
 
-[node name="OldTown_HouseBody1_gltf" parent="Deep Copy/Tall Boy" instance=ExtResource("2_bpf68")]
+[node name="OldTown_HouseBody1_gltf" parent="Deep Copy/Tall Boy" instance=ExtResource("2_tpvas")]
 
-[node name="OldTown_HouseBody1_gltf2" parent="Deep Copy/Tall Boy" instance=ExtResource("2_bpf68")]
+[node name="OldTown_HouseBody1_gltf2" parent="Deep Copy/Tall Boy" instance=ExtResource("2_tpvas")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.96161, 0)
 
-[node name="OldTown_Roof1_gltf" parent="Deep Copy/Tall Boy" instance=ExtResource("3_gby25")]
+[node name="OldTown_Roof1_gltf" parent="Deep Copy/Tall Boy" instance=ExtResource("3_gk7ew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07896, 0.305976)
 
 [node name="Wide One" type="Node3D" parent="Deep Copy"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -26.9, 0, -3.4125)
 
-[node name="OldTown_Roof3_gltf" parent="Deep Copy/Wide One" instance=ExtResource("4_tcy1s")]
+[node name="OldTown_Roof3_gltf" parent="Deep Copy/Wide One" instance=ExtResource("4_fkugh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
 
-[node name="OldTown_HouseBody3_gltf" parent="Deep Copy/Wide One" instance=ExtResource("5_w010v")]
+[node name="OldTown_HouseBody3_gltf" parent="Deep Copy/Wide One" instance=ExtResource("5_4xpmk")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
 
-[node name="OldTown_HouseBody2_gltf" parent="Deep Copy/Wide One" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf" parent="Deep Copy/Wide One" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
 
-[node name="OldTown_HouseBody2_gltf2" parent="Deep Copy/Wide One" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf2" parent="Deep Copy/Wide One" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
 visible = false
 
-[node name="OldTown_HouseBody3_gltf2" parent="Deep Copy/Wide One" instance=ExtResource("5_w010v")]
+[node name="OldTown_HouseBody3_gltf2" parent="Deep Copy/Wide One" instance=ExtResource("5_4xpmk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
 
-[node name="OldTown_Roof2_gltf" parent="Deep Copy/Wide One" instance=ExtResource("7_ymcwd")]
+[node name="OldTown_Roof2_gltf" parent="Deep Copy/Wide One" instance=ExtResource("7_shtbq")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
 
 [node name="Tall Boy 2" type="Node3D" parent="Deep Copy"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -26.9, 0, -17.975)
 
-[node name="AllDaHousesgltf" parent="Deep Copy/Tall Boy 2" instance=ExtResource("8_q7paf")]
+[node name="AllDaHousesgltf" parent="Deep Copy/Tall Boy 2" instance=ExtResource("8_drxuy")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
 
-[node name="OldTown_HouseBody2_gltf2" parent="Deep Copy/Tall Boy 2" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf2" parent="Deep Copy/Tall Boy 2" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
-[node name="OldTown_HouseBody2_gltf3" parent="Deep Copy/Tall Boy 2" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf3" parent="Deep Copy/Tall Boy 2" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
 
-[node name="OldTown_HouseBody2_gltf" parent="Deep Copy/Tall Boy 2" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf" parent="Deep Copy/Tall Boy 2" instance=ExtResource("6_nemw3")]
 
-[node name="OldTown_Roof3_gltf" parent="Deep Copy/Tall Boy 2" instance=ExtResource("4_tcy1s")]
+[node name="OldTown_Roof3_gltf" parent="Deep Copy/Tall Boy 2" instance=ExtResource("4_fkugh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
 
 [node name="Big Building" type="Node3D" parent="Deep Copy"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.025, 0, 23.4625)
 
-[node name="OldTown_HouseBody2_gltf" parent="Deep Copy/Big Building" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf" parent="Deep Copy/Big Building" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
 
-[node name="OldTown_HouseBody2_gltf2" parent="Deep Copy/Big Building" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf2" parent="Deep Copy/Big Building" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
 
-[node name="OldTown_HouseBody2_gltf3" parent="Deep Copy/Big Building" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf3" parent="Deep Copy/Big Building" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
 
-[node name="OldTown_HouseBody2_gltf4" parent="Deep Copy/Big Building" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf4" parent="Deep Copy/Big Building" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
 
-[node name="OldTown_HouseBody2_gltf5" parent="Deep Copy/Big Building" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf5" parent="Deep Copy/Big Building" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
 
-[node name="OldTown_HouseBody2_gltf6" parent="Deep Copy/Big Building" instance=ExtResource("6_ca721")]
+[node name="OldTown_HouseBody2_gltf6" parent="Deep Copy/Big Building" instance=ExtResource("6_nemw3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
 
-[node name="OldTown_Roof2_gltf" parent="Deep Copy/Big Building" instance=ExtResource("7_ymcwd")]
+[node name="OldTown_Roof2_gltf" parent="Deep Copy/Big Building" instance=ExtResource("7_shtbq")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
 
-[node name="OldTown_Roof2_gltf2" parent="Deep Copy/Big Building" instance=ExtResource("7_ymcwd")]
+[node name="OldTown_Roof2_gltf2" parent="Deep Copy/Big Building" instance=ExtResource("7_shtbq")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
 
-[node name="OldTown_Roof2_gltf3" parent="Deep Copy/Big Building" instance=ExtResource("7_ymcwd")]
+[node name="OldTown_Roof2_gltf3" parent="Deep Copy/Big Building" instance=ExtResource("7_shtbq")]
 transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -1204,8 +1514,8 @@ environment = SubResource("Environment_v12p8")
 
 [node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.6875, 0, 0)
-script = ExtResource("9_h8s6p")
-screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Ext Streets of Old Town2.xml"
+script = ExtResource("9_b88p1")
+screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Ext Enter the Necromancer.xml"
 playerCharacter = NodePath("Cato Actor")
 initialShotName = "Initial Shot"
 dialogueBox = NodePath("Subtitle Style")
@@ -1216,16 +1526,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
 
 [node name="Initial Shot" type="Camera3D" parent="Cutscene/Shot List"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, 4)
-script = ExtResource("10_buxyv")
+script = ExtResource("10_18dmc")
 
 [node name="Blocking Marks" type="Node3D" parent="Cutscene"]
+
+[node name="Enter the Necromancer" type="Marker3D" parent="Cutscene/Blocking Marks"]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 16, -0.5, -6.25)
+
+[node name="Enter the Minions" type="Marker3D" parent="Cutscene/Blocking Marks"]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 8, -0.5, -6.25)
+
+[node name="Stand Up to the Necromancer" type="Marker3D" parent="Cutscene/Blocking Marks"]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 7.5, -0.5, -4.062)
 
 [node name="CameraModifierHandle" type="Node3D" parent="Cutscene"]
 
 [node name="Cutscene Camera" type="Camera3D" parent="Cutscene/CameraModifierHandle"]
 transform = Transform3D(1, 0, 0, 0, 0.907642, 0.419744, 0, -0.419744, 0.907642, 0, 4.83687, 10.4591)
 current = true
-script = ExtResource("11_6ddnu")
+script = ExtResource("11_nbwg5")
 
 [node name="BeatTimer" type="Timer" parent="Cutscene"]
 one_shot = true
@@ -1237,7 +1556,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("12_dyih6")
+script = ExtResource("12_cgqtd")
 dialogueLabel = NodePath("Subtitle Bar/RichTextLabel")
 myResponseBox = NodePath("Responses")
 textDisplaySpeed = 10.0
@@ -1265,7 +1584,7 @@ offset_left = 14.0
 offset_top = -0.120056
 offset_right = -0.720016
 offset_bottom = 0.039917
-texture = ExtResource("13_fnyf6")
+texture = ExtResource("13_44535")
 stretch_mode = 2
 
 [node name="Subtitle Bar" type="VBoxContainer" parent="Cutscene/Subtitle Style"]
@@ -1289,7 +1608,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
 [node name="RichTextLabel" type="RichTextLabel" parent="Cutscene/Subtitle Style/Subtitle Bar"]
 clip_contents = false
 layout_mode = 2
-theme = ExtResource("14_wai1p")
+theme = ExtResource("14_gene4")
 theme_override_font_sizes/normal_font_size = 40
 theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
@@ -1311,12 +1630,12 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
-script = ExtResource("15_4kd2p")
+script = ExtResource("15_owalv")
 responseLabels = [NodePath("VBoxContainer/RichTextLabel"), NodePath("VBoxContainer/RichTextLabel2"), NodePath("VBoxContainer/RichTextLabel3"), NodePath("VBoxContainer/RichTextLabel4")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Cutscene/Subtitle Style/Responses"]
 layout_mode = 2
-theme = ExtResource("16_32vbr")
+theme = ExtResource("16_lue08")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
 layout_mode = 2
@@ -1408,11 +1727,11 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene"]
-stream = ExtResource("17_d5our")
+stream = ExtResource("17_dlnft")
 
 [node name="Cato Actor" type="Node3D" parent="Cutscene"]
 transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 4.68964, -0.537474, -5.61947)
-script = ExtResource("18_u6po5")
+script = ExtResource("18_0abwi")
 actorName = "Cato"
 walkingSpeedUnitsPerSecond = 4.0
 
@@ -1422,10 +1741,10 @@ pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture_filter = 1
-texture = ExtResource("19_5n0q6")
+texture = ExtResource("19_2kwth")
 hframes = 10
-vframes = 4
-frame = 38
+vframes = 5
+frame = 37
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Cato Actor"]
 autoplay = "Idle"
@@ -1438,11 +1757,11 @@ transform = Transform3D(0.25, -0.0669873, 0.965925, 0.258819, 0.965926, -1.10534
 visible = false
 pixel_size = 0.0125
 shaded = true
-texture = ExtResource("20_boelg")
+texture = ExtResource("20_0oumj")
 
 [node name="Luciene Actor" type="Node3D" parent="Cutscene"]
-transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, -8.5, -0.5, -6.25)
-script = ExtResource("18_u6po5")
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 0.500002, -0.5, -6.25)
+script = ExtResource("18_0abwi")
 actorName = "Luciene"
 walkingSpeedUnitsPerSecond = 4.0
 
@@ -1452,18 +1771,18 @@ pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture_filter = 1
-texture = ExtResource("21_am7rb")
-hframes = 5
+texture = ExtResource("21_h75cp")
+hframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Luciene Actor"]
 autoplay = "Idle"
 libraries = {
-"": SubResource("AnimationLibrary_1q83x")
+"": SubResource("AnimationLibrary_fr5w8")
 }
 
 [node name="Silver Actor" type="Node3D" parent="Cutscene"]
-transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, -11.5, -0.5, -6.25)
-script = ExtResource("18_u6po5")
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, -3.49999, -0.5, -6.25)
+script = ExtResource("18_0abwi")
 actorName = "Silver"
 walkingSpeedUnitsPerSecond = 4.0
 
@@ -1473,53 +1792,74 @@ pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture_filter = 1
-texture = ExtResource("22_1ukqg")
-hframes = 5
+texture = ExtResource("22_old0r")
+hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Silver Actor"]
 autoplay = "Idle"
 libraries = {
-"": SubResource("AnimationLibrary_lqfi8")
+"": SubResource("AnimationLibrary_l0xe2")
 }
 
-[node name="Skeleton Horde" type="Node3D" parent="Cutscene"]
-transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 21, -0.503, -6.434)
-script = ExtResource("18_u6po5")
-actorName = "Skeleton Horde"
+[node name="Necromancer Actor" type="Node3D" parent="Cutscene"]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 24.0625, -0.5, -6.25)
+script = ExtResource("18_0abwi")
+actorName = "Necromancer"
 walkingSpeedUnitsPerSecond = 4.0
 
-[node name="Skeleton" type="Sprite3D" parent="Cutscene/Skeleton Horde"]
-transform = Transform3D(0.965923, 0, -0.258818, 0, 1, 0, 0.258818, 0, 0.965923, -0.935359, 1.57321, 0.255529)
+[node name="Sprite3D" type="Sprite3D" parent="Cutscene/Necromancer Actor"]
+transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -0.68536, 4.10203, 0.255529)
 pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture_filter = 1
-texture = ExtResource("22_ucrtf")
-hframes = 10
-vframes = 2
+texture = ExtResource("23_1rh6o")
+hframes = 4
 
-[node name="Skeleton Two" type="Sprite3D" parent="Cutscene/Skeleton Horde"]
-transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, 2.94, 1.29, 1.881)
-pixel_size = 0.0125
-shaded = true
-alpha_cut = 2
-texture_filter = 1
-texture = ExtResource("22_ucrtf")
-hframes = 10
-vframes = 2
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Necromancer Actor"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_1uicd")
+}
 
-[node name="Skeleton Guard" type="Sprite3D" parent="Cutscene/Skeleton Horde"]
-transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, 0.002141, 2.16453, 1.88053)
+[node name="Necromancer Minions" type="Node3D" parent="Cutscene"]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 22.25, -0.5, -6.25)
+script = ExtResource("18_0abwi")
+actorName = "Necromancer Minions"
+walkingSpeedUnitsPerSecond = 4.0
+
+[node name="SkeletonA" type="Sprite3D" parent="Cutscene/Necromancer Minions"]
+transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, 2.50214, 2.22703, 0.00957441)
 pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture_filter = 1
-texture = ExtResource("20_vq01j")
+texture = ExtResource("24_aypdr")
 hframes = 10
 vframes = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Skeleton Horde"]
+[node name="SkeletonA2" type="Sprite3D" parent="Cutscene/Necromancer Minions"]
+transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, 3.62714, 2.22703, 1.50957)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("24_aypdr")
+hframes = 10
+vframes = 4
+
+[node name="SkeletonA3" type="Sprite3D" parent="Cutscene/Necromancer Minions"]
+transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, 4.56464, 2.22703, 2.69707)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("24_aypdr")
+hframes = 10
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Necromancer Minions"]
 autoplay = "Idle"
 libraries = {
-"": SubResource("AnimationLibrary_ihqec")
+"": SubResource("AnimationLibrary_u6xvg")
 }
