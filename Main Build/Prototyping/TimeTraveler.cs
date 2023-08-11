@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Threading.Tasks;
+using System.Linq;
 
 public partial class TimeTraveler : Node
 {
@@ -32,21 +33,28 @@ public partial class TimeTraveler : Node
 	Node3D present;
 	[Export]
 	Node3D past;
+	[Export]
+	Camera3D timeTravelCamera;
+	Camera3D previousCamera;
+
+	bool goingToThePast = true;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		renderedScenePlane.Visible=false;
 		present.Visible = true;
 		past.Visible = false;
+		foreach(CollisionObject3D body in present.FindChildren("*").Where(x => x is CollisionObject3D)){
+			body.ProcessMode = Node.ProcessModeEnum.Always;
+		}
+		foreach(CollisionObject3D body in past.FindChildren("*").Where(x => x is CollisionObject3D)){
+			body.ProcessMode = Node.ProcessModeEnum.Disabled;
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public async override void _Process(double delta)
 	{
-		if(Input.IsActionJustPressed("debug_5")){
-			inSlowDown = true;
-			timer = slowDownTimeInSeconds;
-		}
 		if(inSlowDown){
 			timer -= delta;
 			if(timer < 0) timer = 0;
@@ -59,14 +67,45 @@ public partial class TimeTraveler : Node
 			//Camera3D camera = GetViewport().GetCamera3D();
 			//camera.Position = new Vector3(GetViewport().GetCamera3D().Position.X, GetViewport().GetCamera3D().Position.Y, (float)(8.594 * (timer/slowDownTimeInSeconds) + 6.2 * (1-timer/slowDownTimeInSeconds)));
 			if(timer == 0){
-				inSlowDown = false;
-				await CaptureCurrentSceneAndSetFacade();
-				present.Visible = false;
-				past.Visible = true;
+					inSlowDown = false;
+					await CaptureCurrentSceneAndSetFacade();
+					CatoSprite.Set("no_depth_test", true);
+				if(goingToThePast){
+					present.Visible = false;
+					foreach(CollisionObject3D body in present.FindChildren("*").Where(x => x is CollisionObject3D)){
+						body.ProcessMode = Node.ProcessModeEnum.Disabled;
+					}
+					foreach(CollisionObject3D body in past.FindChildren("*").Where(x => x is CollisionObject3D)){
+						body.ProcessMode = Node.ProcessModeEnum.Always;
+					}
+					past.Visible = true;
+					goingToThePast = false;
+				}else{
+					present.Visible = true;
+					foreach(CollisionObject3D body in present.FindChildren("*").Where(x => x is CollisionObject3D)){
+						body.ProcessMode = Node.ProcessModeEnum.Always;
+					}
+					foreach(CollisionObject3D body in past.FindChildren("*").Where(x => x is CollisionObject3D)){
+						body.ProcessMode = Node.ProcessModeEnum.Disabled;
+					}
+					past.Visible = false;
+					goingToThePast = true;
+				}
 				renderedScenePlane.GetNode<AnimationPlayer>("AnimationPlayer").Play("FadeIn");
 				await ToSignal(renderedScenePlane.GetNode<AnimationPlayer>("AnimationPlayer"), AnimationPlayer.SignalName.AnimationFinished);
+				CatoSprite.Set("no_depth_test", false);
+				timeTravelCamera.Current = false;
+				previousCamera.Current = true;
 			}
 		}
+	}
+
+	public void Activate(){
+		inSlowDown = true;
+		timer = slowDownTimeInSeconds;
+		previousCamera = GetViewport().GetCamera3D();
+		previousCamera.Current = false;
+		timeTravelCamera.Current = true;
 	}
 
 	private async Task CaptureCurrentSceneAndSetFacade(){

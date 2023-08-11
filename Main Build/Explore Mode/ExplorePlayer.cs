@@ -26,13 +26,15 @@ public partial class ExplorePlayer : CharacterBody3D
 
 	private Vector3 direction;
 
-	private TimeFragment timeFrag;
+	private Area3D timeFrag;
 
 	private ExploreNPC npcInRange;
 
 	private InteractionPoint pointInRange;
 
 	private Waypoint[] waypoints = new Waypoint[3];
+	[Export]
+	TimeTraveler timeObject;
 
 	private int promenade;
 
@@ -46,9 +48,10 @@ public partial class ExplorePlayer : CharacterBody3D
 		if(!inControl) return;
 		Vector3 velocity = Velocity;
 
-		if(Input.IsActionJustPressed("com_atk")){
+		if(Input.IsActionJustPressed("ui_proceed")){
 			if(timeFrag != null){
-				timeFrag.TimeTravel(this);
+				timeObject.Activate();
+				return;
 				if(npcInRange != null){
 					npcInRange.DisarmCutscene();
 					npcInRange = null;
@@ -73,7 +76,7 @@ public partial class ExplorePlayer : CharacterBody3D
 		velocity = new Vector3(direction.X, velocity.Y, direction.Z);
 		Velocity = velocity;
 		MoveAndSlide();
-		if(!timeEnvironment.IsInPast()) ManageFollowerWaypoints();
+		//if(!timeEnvironment.IsInPast()) ManageFollowerWaypoints();
 	}
 
     public override void _Process(double delta)
@@ -107,8 +110,7 @@ public partial class ExplorePlayer : CharacterBody3D
 
 	public void OnInteractionAreaEntered(Area3D area){
 		if(area.GetGroups().Contains("Time Fragment")){
-			timeFrag = (TimeFragment) area;
-			if(((TimeFragment)area).ArmTimeFragment())timeFrag = (TimeFragment)area;
+			timeFrag = area;
 		}
 		if(area.GetGroups().Contains("Encounter")){
 			Encounter en = (Encounter) area;
@@ -145,7 +147,7 @@ public partial class ExplorePlayer : CharacterBody3D
 
 	public void OnInteractionAreaExited(Area3D area){
 		if(area.GetGroups().Contains("Time Fragment")){
-			((TimeFragment)area).DisarmTimeFragment();
+			//((TimeFragment)area).DisarmTimeFragment();
 		}
 		if(area.GetGroups().Contains("NPC")){
 			ExploreNPC npc = (ExploreNPC) area.GetParent();

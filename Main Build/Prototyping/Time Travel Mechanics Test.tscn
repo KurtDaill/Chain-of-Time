@@ -184,14 +184,14 @@ albedo_color = Color(0.270588, 0.270588, 0.270588, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eek08"]
 albedo_color = Color(0.584314, 0, 0.0156863, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5boq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0qvcn"]
 transparency = 3
 alpha_hash_scale = 1.0
 alpha_antialiasing_mode = 0
 shading_mode = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_n1pjj"]
-material = SubResource("StandardMaterial3D_s5boq")
+material = SubResource("StandardMaterial3D_0qvcn")
 size = Vector2(1.92, 1.08)
 
 [sub_resource type="Animation" id="Animation_d1xig"]

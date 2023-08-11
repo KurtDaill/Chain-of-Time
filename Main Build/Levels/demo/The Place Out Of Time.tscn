@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://ljqcnms5jk5k"]
+[gd_scene load_steps=61 format=3 uid="uid://ljqcnms5jk5k"]
 
 [ext_resource type="Shader" path="res://Art/Shaders/clouds.gdshader" id="1_42faa"]
 [ext_resource type="PackedScene" uid="uid://c5ssdf1rt2h53" path="res://Art/3D/Past Bridge.gltf" id="1_mvxce"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cqv1vos7ba7yq" path="res://Old/Art/Time Gate.png" id="9_74a1y"]
 [ext_resource type="Texture2D" uid="uid://btk1yctj4dwbu" path="res://Old/Art/Time Gate Portal.png" id="10_m2n1j"]
 [ext_resource type="Texture2D" uid="uid://cg73nhfqlomom" path="res://Old/Art/Time Gate Hour Glass.png" id="11_bs4s6"]
+[ext_resource type="Script" path="res://Prototyping/TimeTraveler.cs" id="12_1icgm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nixts"]
 shader = ExtResource("1_42faa")
@@ -321,6 +322,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Camera Pivot/Camera3D:current")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Time Travel Camera:current")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_s04vr"]
 resource_name = "Day Night"
@@ -410,6 +435,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Camera Pivot/Camera3D:current")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Time Travel Camera:current")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_uhqxq"]
@@ -509,6 +558,9 @@ _data = {
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mc1vo"]
 height = 7.625
 radius = 35.9375
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6fl6l"]
+size = Vector3(35.5, 1, 35.375)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_yuvkw"]
 height = 4.625
@@ -657,22 +709,136 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_xmjxt"]
 material = SubResource("StandardMaterial3D_hu555")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5boq"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+shading_mode = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_2gf17"]
+material = SubResource("StandardMaterial3D_s5boq")
+size = Vector2(1.92, 1.08)
+
+[sub_resource type="Animation" id="Animation_p5eur"]
+resource_name = "FadeIn"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:mesh:material:albedo_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.0156863, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mesh:material:albedo_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:mesh:material:albedo_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1, 2)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:mesh:material:albedo_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1, 2)
+}
+
+[sub_resource type="Animation" id="Animation_pkxm4"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:mesh:material:albedo_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:mesh:material:albedo_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:mesh:material:albedo_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:mesh:material:albedo_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dbgas"]
+_data = {
+"FadeIn": SubResource("Animation_p5eur"),
+"RESET": SubResource("Animation_pkxm4")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fwhny"]
+size = Vector3(8.28555, 1, 31.5625)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u66of"]
+size = Vector3(1, 1, 30.837)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2tu8c"]
+size = Vector3(2.5625, 4, 0.125)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aupuk"]
+size = Vector3(8.25, 1, 2.375)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1n44a"]
+size = Vector3(1, 1.75, 3.3125)
+
 [node name="Node3D" type="Node3D"]
-
-[node name="Past Bridge" parent="." instance=ExtResource("1_mvxce")]
-transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 110.938, 32.1875)
-visible = false
-
-[node name="Past Bridge" parent="Past Bridge" instance=ExtResource("1_mvxce")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tsqja")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.384295, -0.92321, -9.55047e-08, -0.896944, 0.373362, 0.236838, -0.218651, 0.0910157, -0.971549, 6.75, -2.75, -12.5)
-light_color = Color(1, 0.984314, 0.811765, 1)
-shadow_enabled = true
 
 [node name="Water" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
@@ -700,7 +866,7 @@ size = Vector3(2089.94, 215.044, 2057.97)
 enable_shadows = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Fast Start"
+autoplay = "Camera Travel"
 libraries = {
 "": SubResource("AnimationLibrary_6c4i2")
 }
@@ -714,18 +880,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 111.43, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.3125, 0)
 shape = SubResource("CylinderShape3D_mc1vo")
 
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="placeoutoftimetestscene/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8125, 0)
+shape = SubResource("BoxShape3D_6fl6l")
+
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="placeoutoftimetestscene/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.3125, 0)
 shape = SubResource("CylinderShape3D_yuvkw")
 
-[node name="ExplorePlayer" type="CharacterBody3D" parent="."]
+[node name="ExplorePlayer" type="CharacterBody3D" parent="." node_paths=PackedStringArray("exploreCamera", "timeObject")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -53.245, 107.649, 6.08793)
 visible = false
-floor_max_angle = 0.872665
-safe_margin = 0.01
+floor_max_angle = 1.309
 script = ExtResource("4_47dq0")
 Speed = 8.0
+exploreCamera = NodePath("Explore Camera")
 waypointRes = "res://Explore Mode/Waypoint.tscn"
+timeObject = NodePath("../TimeTraveler")
 
 [node name="Sprite3D" type="Sprite3D" parent="ExplorePlayer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12249, 3.85, 0)
@@ -765,12 +936,6 @@ shape = SubResource("CylinderShape3D_3tska")
 [node name="Explore Camera" type="Camera3D" parent="ExplorePlayer"]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 6.22, 16.951)
 
-[node name="Present Bridge" parent="." instance=ExtResource("7_8ao1p")]
-transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 9.125, 111.063, 31.8125)
-
-[node name="Present Bridge2" parent="." instance=ExtResource("7_8ao1p")]
-transform = Transform3D(-1, -2.26267e-08, -8.44439e-08, -4.37114e-08, 0.965926, 0.258819, 7.57103e-08, 0.258819, -0.965926, -9, 110.688, 33.125)
-
 [node name="Camera Pivot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 112.875, 0)
 
@@ -789,30 +954,144 @@ hframes = 10
 vframes = 5
 frame = 44
 
-[node name="ToPastGate" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.78125, 109.438, 44.5)
+[node name="TimeTraveler" type="Node" parent="." node_paths=PackedStringArray("CatoSprite", "renderedScenePlane", "present", "past", "timeTravelCamera")]
+script = ExtResource("12_1icgm")
+slowDownTimeInSeconds = 0.2
+CatoSprite = NodePath("../ExplorePlayer/Sprite3D")
+renderedScenePlane = NodePath("../Time Travel Camera/MeshInstance3D2")
+present = NodePath("../Present")
+past = NodePath("../Past")
+timeTravelCamera = NodePath("../Time Travel Camera")
 
-[node name="Sprite3D" type="Sprite3D" parent="ToPastGate"]
+[node name="Time Travel Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3, 109.434, 52.642)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Time Travel Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("QuadMesh_2gf17")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Time Travel Camera/MeshInstance3D2"]
+libraries = {
+"": SubResource("AnimationLibrary_dbgas")
+}
+
+[node name="Past" type="Node3D" parent="."]
+
+[node name="Past Bridge" parent="Past" instance=ExtResource("1_mvxce")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 110.938, 32.1875)
+
+[node name="Past Bridge" parent="Past/Past Bridge" instance=ExtResource("1_mvxce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Past/Past Bridge"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Past/Past Bridge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.562706, 0.797825)
+shape = SubResource("BoxShape3D_fwhny")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Past/Past Bridge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53168, 0.586296, -0.158457)
+shape = SubResource("BoxShape3D_u66of")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Past/Past Bridge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.40582, 0.586266, -0.158449)
+shape = SubResource("BoxShape3D_u66of")
+
+[node name="ToPresentGate" type="Node3D" parent="Past"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.65625, 116.75, 15.1875)
+
+[node name="Sprite3D" type="Sprite3D" parent="Past/ToPresentGate"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 pixel_size = 0.0125
 texture = ExtResource("9_74a1y")
 
-[node name="Sprite3D2" type="Sprite3D" parent="ToPastGate"]
+[node name="Sprite3D2" type="Sprite3D" parent="Past/ToPresentGate"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.0625)
 modulate = Color(1, 1, 1, 0.490196)
 pixel_size = 0.0125
 texture = ExtResource("10_m2n1j")
 
-[node name="Sprite3D3" type="Sprite3D" parent="ToPastGate"]
+[node name="Sprite3D3" type="Sprite3D" parent="Past/ToPresentGate"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 pixel_size = 0.0125
 texture = ExtResource("11_bs4s6")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="ToPastGate"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Past/ToPresentGate"]
 light_color = Color(0.541176, 0.768627, 1, 1)
 shadow_enabled = true
 omni_range = 14.0
 omni_attenuation = 0.31864
+
+[node name="Area3D" type="Area3D" parent="Past/ToPresentGate"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Past/ToPresentGate/Area3D"]
+shape = SubResource("BoxShape3D_2tu8c")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Past"]
+transform = Transform3D(-0.384295, -0.92321, -8.96275e-08, -0.833339, 0.346885, 0.430369, -0.397321, 0.165389, -0.902653, 6.75, -2.75, -12.5)
+light_color = Color(1, 0.984314, 0.811765, 1)
+shadow_enabled = true
+
+[node name="Present" type="Node3D" parent="."]
+
+[node name="Present Bridge" type="StaticBody3D" parent="Present"]
+
+[node name="Bottom" parent="Present/Present Bridge" instance=ExtResource("7_8ao1p")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 9.125, 111.063, 31.8125)
+
+[node name="Top" parent="Present/Present Bridge" instance=ExtResource("7_8ao1p")]
+transform = Transform3D(-1, -2.26267e-08, -8.44439e-08, -4.37114e-08, 0.965926, 0.258819, 7.57103e-08, 0.258819, -0.965926, -9, 110.688, 33.125)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Present/Present Bridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 107.688, 44.0358)
+shape = SubResource("BoxShape3D_aupuk")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Present/Present Bridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.375, 107.688, 45.875)
+shape = SubResource("BoxShape3D_1n44a")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Present/Present Bridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.625, 107.688, 45.875)
+shape = SubResource("BoxShape3D_1n44a")
+
+[node name="ToPastGate" type="Node3D" parent="Present" groups=["Time Fragment"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.78125, 109.438, 44.5)
+
+[node name="Sprite3D" type="Sprite3D" parent="Present/ToPastGate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+pixel_size = 0.0125
+texture = ExtResource("9_74a1y")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Present/ToPastGate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.0625)
+modulate = Color(1, 1, 1, 0.490196)
+pixel_size = 0.0125
+texture = ExtResource("10_m2n1j")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Present/ToPastGate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+pixel_size = 0.0125
+texture = ExtResource("11_bs4s6")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Present/ToPastGate"]
+light_color = Color(0.541176, 0.768627, 1, 1)
+shadow_enabled = true
+omni_range = 14.0
+omni_attenuation = 0.31864
+
+[node name="Area3D" type="Area3D" parent="Present/ToPastGate" groups=["Time Fragment"]]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Present/ToPastGate/Area3D"]
+shape = SubResource("BoxShape3D_2tu8c")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Present"]
+transform = Transform3D(-0.384295, -0.92321, -8.91792e-08, -0.914767, 0.38078, 0.134937, -0.124575, 0.0518557, -0.990854, 6.75, -2.75, -12.5)
+light_color = Color(1, 0.984314, 0.811765, 1)
+shadow_enabled = true
 
 [connection signal="area_entered" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaEntered" flags=18]
 [connection signal="area_exited" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaExited" flags=18]
