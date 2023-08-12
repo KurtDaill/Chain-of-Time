@@ -31,6 +31,8 @@ public partial class CutsceneDirector : Node3D
     string playerCharacterName;
 
     StoryState storyState;
+    [Export]
+    Camera3D cutsceneCam;
     CutsceneCamera mainCutsceneCamera;
     CutsceneResponseBox playerCharacterResponseBox;
     AnimationPlayer animPlay;
@@ -46,7 +48,7 @@ public partial class CutsceneDirector : Node3D
         play = ScreenPlayLoader.LoadScript(screenPlayXMLFilePath);
         storyState = GetTree().Root.GetNode<GameMaster>("GameMaster").GetStoryState();
         playerCharacterName = playerCharacter.GetActorName();
-
+        mainCutsceneCamera = (CutsceneCamera) cutsceneCam;
 
         //Set initial camera position;
         if(shotList.TryGetValue(initialShotName, out CutsceneShot initialShotObject))mainCutsceneCamera.StartTransition(initialShotObject.GetShotDetails(), "cut");
@@ -74,7 +76,7 @@ public partial class CutsceneDirector : Node3D
         foreach(Marker3D blockingMark in this.GetNode<Node3D>("Blocking Marks").GetChildren()){
             blockingMarks.Add(blockingMark.Name, blockingMark);
         }
-        mainCutsceneCamera = this.GetNode<CutsceneCamera>("CameraModifierHandle/Cutscene Camera");
+        //mainCutsceneCamera = this.GetNode<CutsceneCamera>("CameraModifierHandle/Cutscene Camera");
         animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
     }
 
@@ -171,7 +173,8 @@ public partial class CutsceneDirector : Node3D
                     waitingOnAnimation = true;
                 }
                 //lineActor.SpeakLine(line);
-                dialogueBox.BeginDialogue(line);
+                if(line.GetSpeaker() == "???") dialogueBox.BeginDialogue(line, new Color(1,1,1,1));
+                else dialogueBox.BeginDialogue(line, lineActor.GetColor());
 
                 break;
             case "CutsceneCharacterAnimation":

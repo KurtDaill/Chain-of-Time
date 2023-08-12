@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://ljqcnms5jk5k"]
+[gd_scene load_steps=62 format=3 uid="uid://ljqcnms5jk5k"]
 
 [ext_resource type="Shader" path="res://Art/Shaders/clouds.gdshader" id="1_42faa"]
 [ext_resource type="PackedScene" uid="uid://c5ssdf1rt2h53" path="res://Art/3D/Past Bridge.gltf" id="1_mvxce"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://btk1yctj4dwbu" path="res://Old/Art/Time Gate Portal.png" id="10_m2n1j"]
 [ext_resource type="Texture2D" uid="uid://cg73nhfqlomom" path="res://Old/Art/Time Gate Hour Glass.png" id="11_bs4s6"]
 [ext_resource type="Script" path="res://Prototyping/TimeTraveler.cs" id="12_1icgm"]
+[ext_resource type="Script" path="res://Levels/demo/TextExit.cs" id="13_stb0d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nixts"]
 shader = ExtResource("1_42faa")
@@ -118,7 +119,7 @@ shader_parameter/heightmap_scale = 16.0
 shader_parameter/heightmap_min_layers = 8
 shader_parameter/heightmap_max_layers = 32
 shader_parameter/heightmap_flip = Vector2(1, 1)
-shader_parameter/uv1_scale = Vector3(20, 20, 50)
+shader_parameter/uv1_scale = Vector3(200, 200, 0)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
@@ -126,7 +127,7 @@ shader_parameter/texture_normal = SubResource("NoiseTexture2D_62yrh")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cglte"]
 material = SubResource("ShaderMaterial_jrpm5")
-size = Vector2(4000, 4000)
+size = Vector2(40000, 40000)
 subdivide_width = 20
 subdivide_depth = 30
 
@@ -352,6 +353,92 @@ resource_name = "Day Night"
 length = 4.0
 loop_mode = 1
 
+[sub_resource type="Animation" id="Animation_uhqxq"]
+resource_name = "Fast Start"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera Pivot/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-52.672, -0.315, 17.635)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera Pivot:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-12.5664, -2.6, 0.489363, 0.25, 0),
+"times": PackedFloat32Array(0.2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera Pivot/Camera3D/MeshInstance3D:mesh:material:albedo_color:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cato Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ExplorePlayer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ExplorePlayer/Explore Camera:current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cato Sprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_v6hyy"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -459,92 +546,6 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_uhqxq"]
-resource_name = "Fast Start"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera Pivot/Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-52.672, -0.315, 17.635)]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera Pivot:rotation:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-12.5664, -2.6, 0.489363, 0.25, 0),
-"times": PackedFloat32Array(0.2)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera Pivot/Camera3D/MeshInstance3D:mesh:material:albedo_color:a")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Cato Sprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("ExplorePlayer:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("ExplorePlayer/Explore Camera:current")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Cato Sprite:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6c4i2"]
@@ -827,7 +828,7 @@ size = Vector3(8.28555, 1, 31.5625)
 size = Vector3(1, 1, 30.837)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2tu8c"]
-size = Vector3(2.5625, 4, 0.125)
+size = Vector3(5.76217, 9.41675, 0.125)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aupuk"]
 size = Vector3(8.25, 1, 2.375)
@@ -1088,6 +1089,39 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Present/ToPastGate/Area3D"]
 shape = SubResource("BoxShape3D_2tu8c")
 
+[node name="Exit Gate" type="Node3D" parent="Present"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0361261, 120.313, 0.0696001)
+
+[node name="Sprite3D" type="Sprite3D" parent="Present/Exit Gate"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.5, 0)
+pixel_size = 0.0125
+texture = ExtResource("9_74a1y")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Present/Exit Gate"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.5, -0.0625)
+modulate = Color(1, 1, 1, 0.490196)
+pixel_size = 0.0125
+texture = ExtResource("10_m2n1j")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Present/Exit Gate"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.5, 0)
+pixel_size = 0.0125
+texture = ExtResource("11_bs4s6")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Present/Exit Gate"]
+light_color = Color(0.541176, 0.768627, 1, 1)
+shadow_enabled = true
+omni_range = 14.0
+omni_attenuation = 0.31864
+
+[node name="Area3D" type="Area3D" parent="Present/Exit Gate"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("13_stb0d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Present/Exit Gate/Area3D"]
+shape = SubResource("BoxShape3D_2tu8c")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Present"]
 transform = Transform3D(-0.384295, -0.92321, -8.91792e-08, -0.914767, 0.38078, 0.134937, -0.124575, 0.0518557, -0.990854, 6.75, -2.75, -12.5)
 light_color = Color(1, 0.984314, 0.811765, 1)
@@ -1096,3 +1130,4 @@ shadow_enabled = true
 [connection signal="area_entered" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaEntered" flags=18]
 [connection signal="area_exited" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaExited" flags=18]
 [connection signal="area_entered" from="ExplorePlayer/BodyArea" to="ExplorePlayer" method="OnBodyAreaEntered" flags=18]
+[connection signal="area_entered" from="Present/Exit Gate/Area3D" to="Present/Exit Gate/Area3D" method="OnTouch"]

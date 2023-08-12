@@ -1202,7 +1202,7 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_v12p8")
 
-[node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox")]
+[node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox", "cutsceneCam")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.6875, 0, 0)
 script = ExtResource("9_h8s6p")
 screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Ext Streets of Old Town2.xml"
@@ -1210,6 +1210,7 @@ playerCharacter = NodePath("Cato Actor")
 initialShotName = "Initial Shot"
 dialogueBox = NodePath("Subtitle Style")
 autoPlay = true
+cutsceneCam = NodePath("CameraModifierHandle/Cutscene Camera")
 
 [node name="Shot List" type="Node3D" parent="Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
@@ -1240,7 +1241,6 @@ grow_vertical = 2
 script = ExtResource("12_dyih6")
 dialogueLabel = NodePath("Subtitle Bar/RichTextLabel")
 myResponseBox = NodePath("Responses")
-textDisplaySpeed = 10.0
 
 [node name="Background Panel" type="Panel" parent="Cutscene/Subtitle Style"]
 visible = false
@@ -1415,6 +1415,7 @@ transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 4.68964,
 script = ExtResource("18_u6po5")
 actorName = "Cato"
 walkingSpeedUnitsPerSecond = 4.0
+characterColor = Color(0.568627, 0.0784314, 0.215686, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cato Actor"]
 transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -0.935359, 1.97703, 0.255529)
@@ -1424,7 +1425,7 @@ alpha_cut = 2
 texture_filter = 1
 texture = ExtResource("19_5n0q6")
 hframes = 10
-vframes = 4
+vframes = 5
 frame = 38
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Cato Actor"]
@@ -1445,6 +1446,7 @@ transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, -8.5, -0
 script = ExtResource("18_u6po5")
 actorName = "Luciene"
 walkingSpeedUnitsPerSecond = 4.0
+characterColor = Color(0.470588, 0.392157, 0.776471, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Luciene Actor"]
 transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -0.935359, 3.97703, 0.255529)
@@ -1453,7 +1455,7 @@ shaded = true
 alpha_cut = 2
 texture_filter = 1
 texture = ExtResource("21_am7rb")
-hframes = 5
+hframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Luciene Actor"]
 autoplay = "Idle"
@@ -1466,6 +1468,7 @@ transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, -11.5, -
 script = ExtResource("18_u6po5")
 actorName = "Silver"
 walkingSpeedUnitsPerSecond = 4.0
+characterColor = Color(0.278431, 0.447059, 0.219608, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Silver Actor"]
 transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -0.935359, 3.97703, 0.255529)
@@ -1474,7 +1477,7 @@ shaded = true
 alpha_cut = 2
 texture_filter = 1
 texture = ExtResource("22_1ukqg")
-hframes = 5
+hframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Silver Actor"]
 autoplay = "Idle"

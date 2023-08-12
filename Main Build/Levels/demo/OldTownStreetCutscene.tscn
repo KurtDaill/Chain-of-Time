@@ -473,6 +473,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_4c2mm"]
 resource_name = "Run Out"
@@ -630,7 +642,7 @@ tracks/0/keys = {
 "values": [21, 28]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_k6i78"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqyp1"]
 _data = {
 "Anxious Pacing": SubResource("Animation_i3lke"),
 "Draw Sword": SubResource("Animation_fachi"),
@@ -1173,7 +1185,7 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_v12p8")
 
-[node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox")]
+[node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox", "cutsceneCam")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.6875, 0, 0)
 script = ExtResource("14_l8hni")
 screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Ext Streets of Old Town.xml"
@@ -1181,6 +1193,7 @@ playerCharacter = NodePath("Cato Actor")
 initialShotName = "Initial Shot"
 dialogueBox = NodePath("Subtitle Style")
 autoPlay = true
+cutsceneCam = NodePath("CameraModifierHandle/Cutscene Camera")
 
 [node name="Shot List" type="Node3D" parent="Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
@@ -1196,7 +1209,7 @@ script = ExtResource("15_uaqp1")
 [node name="Blocking Marks" type="Node3D" parent="Cutscene"]
 
 [node name="Run In" type="Marker3D" parent="Cutscene/Blocking Marks"]
-transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, 2.505, -0.628012, -2.1215)
+transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, 0.592827, -0.628012, -2.1215)
 
 [node name="Defend the Kid" type="Marker3D" parent="Cutscene/Blocking Marks"]
 transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, 4.44103, -0.5625, -5.72976)
@@ -1221,7 +1234,6 @@ grow_vertical = 2
 script = ExtResource("17_a4etc")
 dialogueLabel = NodePath("Subtitle Bar/RichTextLabel")
 myResponseBox = NodePath("Responses")
-textDisplaySpeed = 10.0
 
 [node name="Background Panel" type="Panel" parent="Cutscene/Subtitle Style"]
 visible = false
@@ -1274,7 +1286,7 @@ theme = ExtResource("19_k3xnv")
 theme_override_font_sizes/normal_font_size = 40
 theme_override_font_sizes/bold_font_size = 48
 bbcode_enabled = true
-text = "[b]Cato[/b] - This is some test text. I'm not 100% Sure About what's going to live here."
+text = "[color=#ffffff88][b]Cato[/b] - [/color]This is some test text. I'm not 100% Sure About what's going to live here."
 fit_content = true
 
 [node name="Responses" type="VBoxContainer" parent="Cutscene/Subtitle Style" node_paths=PackedStringArray("responseLabels")]
@@ -1392,26 +1404,27 @@ libraries = {
 stream = ExtResource("22_lbe3a")
 
 [node name="Cato Actor" type="Node3D" parent="Cutscene"]
-transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, -17, -0.628, 0.003)
+transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, -11.3852, -0.628, 0.00300026)
 script = ExtResource("11_vchym")
 actorName = "Cato"
 walkingSpeedUnitsPerSecond = 4.0
+characterColor = Color(0.568627, 0.0784314, 0.215686, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cato Actor"]
-transform = Transform3D(-3.14414e-06, 0, 0.999997, 0, 1, 0, -0.999997, 0, -3.14414e-06, -0.935359, 1.97703, 0.255529)
+transform = Transform3D(-4.61936e-07, 0, 0.999997, 0, 1, 0, -0.999997, 0, -4.61936e-07, -0.935359, 1.97703, 0.255529)
 pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture_filter = 1
 texture = ExtResource("12_iopag")
 hframes = 10
-vframes = 4
-frame = 25
+vframes = 5
+frame = 26
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Cato Actor"]
 autoplay = "Idle"
 libraries = {
-"": SubResource("AnimationLibrary_k6i78")
+"": SubResource("AnimationLibrary_lqyp1")
 }
 
 [node name="Prop_Letter" type="Sprite3D" parent="Cutscene/Cato Actor"]

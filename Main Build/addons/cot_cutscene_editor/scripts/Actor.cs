@@ -8,6 +8,8 @@ public partial class Actor : Node3D
 	protected string actorName;
 	[Export]
 	protected double walkingSpeedUnitsPerSecond = 2;
+	[Export]
+	protected Color characterColor;
 	protected double blockingTimeElapsed, blockingTimeTotal;
 	string destinationBlockingMarkerName;
 	protected CutsceneDialogueBox dialogueBox;
@@ -21,7 +23,7 @@ public partial class Actor : Node3D
 	Vector3 blockingTargetGlobalPosition, blockingOriginGlobalPosition;
 	public override void _Ready()
 	{
-		dialogueBox = this.GetNode<CutsceneDialogueBox>("Dialogue Box");
+		//dialogueBox = this.GetNode<CutsceneDialogueBox>("Dialogue Box");
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");	
 	}
 
@@ -44,16 +46,17 @@ public partial class Actor : Node3D
 		}
 	}
 
-	public void SpeakLine(CutsceneLine line){
-		dialogueBox.BeginDialogue(line);
-	} 
-
 	public AnimationPlayer GetAnimationPlayer(){
 		return animPlay;
 	}
 	public CutsceneDialogueBox GetDialogueBox(){
 		return dialogueBox;
 	}
+
+	public Color GetColor(){
+		return characterColor;
+	}
+
 	public void StartBlockingMovement(Vector3 target, string markerName){
 		blockingOriginGlobalPosition = this.GlobalPosition;
 		blockingTargetGlobalPosition = target;

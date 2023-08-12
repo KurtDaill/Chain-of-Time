@@ -12,7 +12,7 @@ public partial class CutsceneDialogueBox : Control
 
 	//Actor speaker;
 	[Export]
-	double textDisplaySpeed;
+	double textDisplaySpeed = 20;
 	double timeElapsed;
 	bool printingOut = false;
 
@@ -44,13 +44,13 @@ public partial class CutsceneDialogueBox : Control
 		}
 	}
 
-	public void BeginDialogue(CutsceneLine line){
+	public void BeginDialogue(CutsceneLine line, Color actorColor){
 		dialogueLabel.VisibleCharacters = 0;
 		timeElapsed = 0;
 		printingOut = true;
 		this.Visible = true;
 
-		dialogueLabel.Text = "[b]" + line.GetSpeaker() + "- [/b] " + line.GetText();
+		dialogueLabel.Text = "[color=" + actorColor.ToHtml() +"][b]" + line.GetSpeaker() + "- [/b][/color] " + line.GetText();
 	}
 
 	public void RushDialogue(){

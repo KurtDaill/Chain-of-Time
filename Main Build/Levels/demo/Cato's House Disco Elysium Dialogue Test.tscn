@@ -454,7 +454,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1, 8]
+"values": [21, 28]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5fvfv"]
@@ -709,7 +709,7 @@ bg_color = Color(0.447059, 0.737255, 0.929412, 0.67451)
 
 [sub_resource type="Animation" id="Animation_jm3qf"]
 resource_name = "Distant Boom"
-length = 4.0
+length = 3.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -733,6 +733,26 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cato Actor/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("Freeze"),
+"times": PackedFloat32Array(1.3)
+}
+tracks/3/type = "animation"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cera Actor/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": PackedStringArray("Surprise"),
+"times": PackedFloat32Array(1.3)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_38b4b"]
@@ -798,12 +818,13 @@ environment = SubResource("Environment_5clu4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36, 3.625, 12.913)
 fov = 50.0
 
-[node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox")]
+[node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox", "cutsceneCam")]
 script = ExtResource("5_pb04e")
 screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Int Cato House Before Invasion.xml"
 playerCharacter = NodePath("Cato Actor")
 initialShotName = "MainShot"
 dialogueBox = NodePath("Subtitle Style")
+cutsceneCam = NodePath("CameraModifierHandle/Cutscene Camera")
 
 [node name="Shot List" type="Node3D" parent="Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
@@ -838,6 +859,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.31603, 0, 0.14524)
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 5.94103, -0.125, 0.145243)
 
 [node name="CameraModifierHandle" type="Node3D" parent="Cutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
 
 [node name="Cutscene Camera" type="Camera3D" parent="Cutscene/CameraModifierHandle"]
 transform = Transform3D(1, 0, 0, 0, 0.907642, 0.419744, 0, -0.419744, 0.907642, 0, 4.83687, 10.4591)
@@ -848,17 +870,19 @@ script = ExtResource("7_egwab")
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -1.309, -0.125, 1.245)
 script = ExtResource("8_52v0l")
 actorName = "Cato"
+characterColor = Color(0.568627, 0.0784314, 0.215686, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cato Actor"]
 transform = Transform3D(0.258815, 0, 0.965924, 0, 1, 0, -0.965924, 0, 0.258815, -0.935359, 1.57321, 0.255529)
+offset = Vector2(50, 40)
 pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture_filter = 1
 texture = ExtResource("9_flla6")
 hframes = 10
-vframes = 3
-frame = 7
+vframes = 5
+frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Cato Actor"]
 autoplay = "Idle"
@@ -877,9 +901,11 @@ texture = ExtResource("12_utw4k")
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -3.18397, 0, -1.29226)
 script = ExtResource("8_52v0l")
 actorName = "Cera"
+characterColor = Color(0.168627, 0.305882, 0.584314, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cera Actor"]
 transform = Transform3D(0.965923, 0, -0.258818, 0, 1, 0, 0.258818, 0, 0.965923, 0, 2.136, 0)
+offset = Vector2(0, 150)
 pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
@@ -927,7 +953,6 @@ grow_vertical = 2
 script = ExtResource("17_wiag7")
 dialogueLabel = NodePath("Subtitle Bar/RichTextLabel")
 myResponseBox = NodePath("Responses")
-textDisplaySpeed = 10.0
 
 [node name="Background Panel" type="Panel" parent="Cutscene/Subtitle Style"]
 visible = false

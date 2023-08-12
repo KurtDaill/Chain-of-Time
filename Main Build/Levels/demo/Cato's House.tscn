@@ -386,7 +386,8 @@ shaded = true
 alpha_cut = 2
 texture_filter = 1
 texture = ExtResource("9_w7qxu")
-hframes = 8
+hframes = 10
+vframes = 4
 frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Cato Actor"]
