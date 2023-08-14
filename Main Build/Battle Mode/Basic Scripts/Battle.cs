@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
 using static BattleUtilities;
-public partial class Battle : Node3D
+public partial class Battle : GameplayMode
 {
 	private BattlePhase currentPhase = BattlePhase.StartOfTurn;
 	[Export]
@@ -48,7 +48,7 @@ public partial class Battle : Node3D
 		}
 	}
 
-	public override async void _Process(double delta){
+	public override async Task<GameplayMode> RemoteProcess(double delta){ //TO-DO can we implement "waiting" in a better way?
 		switch(currentPhase){
 			/*
 				Changes functionality depending on current phase
@@ -60,11 +60,11 @@ public partial class Battle : Node3D
 			case BattlePhase.StartOfTurn :
 				//Game Executes Location logic for downed characters
 				//Drag all Status Effect Event Data into Action Chain. then await ExecuteCombatEvents(eventChain);
-				if(waiting) return;
+				if(waiting) return null;
 				waiting = true;
 				await CharactersGoDown();
 				betweenActionsTimer.Start();
-				await ToSignal(betweenActionsTimer, Timer.SignalName.Timeout);
+				//await ToSignal(betweenActionsTimer, Timer.SignalName.Timeout);
 				List<CombatEventData> statusCED = new List<CombatEventData>();
 				foreach(Combatant com in battleRoster.GetAllCombatants()){
 					foreach(OnUpkeepStatus up in com.GetUpkeepStatusEffects()){
@@ -82,7 +82,7 @@ public partial class Battle : Node3D
 				//Clear Action Chain
 				eventChain = null;
 				//GUI.Start Doing your Thing()
-				if(waiting) return;
+				if(waiting) return null;
 				battleRoster.ClearVirutalPositions();
 				waiting = true;
 				//Might need better solution for finding characters who are Dead
@@ -95,7 +95,7 @@ public partial class Battle : Node3D
 				
 			//PlayerCommandExecute -Game Iterates through player attacks, allowing each to play its animation in sequence
 			case BattlePhase.PlayerCommandExecute :
-				if(waiting) return;
+				if(waiting) return null;
 				waiting = true;
 				await ExecuteCombatEvents(eventChain);
 				waiting = false;
@@ -105,7 +105,7 @@ public partial class Battle : Node3D
 				
 			//TurnOver - Game allows each enemy to calculate what attack it wants to execute, a set ammount of time is forced to pass before enemy attacks
 			case BattlePhase.TurnOver :
-				if(waiting) return;
+				if(waiting) return null;
 				waiting = true;
 				await CharactersGoDown();
 				EnemyCombatant[] enemies = battleRoster.GetAllEnemyCombatants();
@@ -122,13 +122,14 @@ public partial class Battle : Node3D
 
 			//EnemyCommandExecute - Game Iterates through enemy attacks, allowing each to play its animaiton in sequence
 			case BattlePhase.EnemyCommandExecute :
-				if(waiting) return;
+				if(waiting) return null;
 				waiting = true;
 				await ExecuteCombatEvents(eventChain);
 				waiting = false;
 				currentPhase = BattlePhase.StartOfTurn;
 				break;	
-		}		
+		}
+		return null;		
 	}
 
 	//General solution for phases that are essentially "Stop everything let these animations play in sequence"

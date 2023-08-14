@@ -1,12 +1,13 @@
 using Godot;
 using System;
-
+using System.Threading.Tasks;
+using static GameplayUtilities;
 public partial class SceneConfig : Node
 {
 	[Export]
 	NodePath startCustscene;
 	[Export]
-	NodePath startBattle;
+	Battle startBattle;
 	[Export]
 	Camera3D camera;
 	[Export]
@@ -16,6 +17,8 @@ public partial class SceneConfig : Node
 	[Export]
 	AudioStreamPlayer bgMusic;
 
+	GameMaster gm;
+
 	private enum StartingMode{
 		Explore,
 		Cutscene,
@@ -23,18 +26,10 @@ public partial class SceneConfig : Node
 	};
 
 	public override void _Ready(){
-		this.GetNode<CameraManager>("/root/CameraManager").SwitchCamera(camera);
-		ePlayer.SetActive(false);
+		gm = this.GetNode<GameMaster>("/root/GameMaster");
 		switch(beginIn){
-			case StartingMode.Explore:
-				ePlayer.SetActive(true);
-				break;
-			case StartingMode.Cutscene:
-				//GetNode<CutsceneDirector>(startCustscene).StartCutscene();
-				break;
 			case StartingMode.Battle:
-				//GetNode<Encounter>(startBattle).StartEncounter(ePlayer);
-				break;
+				gm.SetMode(startBattle); break;
 		}
 	}
 

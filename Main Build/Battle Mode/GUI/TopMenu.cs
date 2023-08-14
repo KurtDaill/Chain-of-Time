@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using static GameplayUtilities;
 public partial class TopMenu : BattleMenu
 {
     //TODO Highlight Animations

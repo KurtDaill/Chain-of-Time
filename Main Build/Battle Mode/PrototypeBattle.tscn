@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://bftjxb62srdq"]
+[gd_scene load_steps=17 format=3 uid="uid://bftjxb62srdq"]
 
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Battle.cs" id="1_4rxw7"]
+[ext_resource type="Script" path="res://SceneConfig.cs" id="1_tpom7"]
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="2_1verb"]
 [ext_resource type="PackedScene" uid="uid://234suufiqv8c" path="res://Battle Mode/Player Characters/Silver Combatant.tscn" id="3_5nfiw"]
 [ext_resource type="Texture2D" uid="uid://bkdgvs1hqa6nu" path="res://GUI/Point-export.png" id="3_w3rfi"]
@@ -172,7 +173,7 @@ wait_time = 0.4
 wait_time = 0.2
 
 [node name="BattleDungeon" parent="." instance=ExtResource("5_7bshd")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0.0138144, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="BattleDungeon"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.24, 1.74, -0.86)
@@ -274,6 +275,11 @@ spot_angle = 20.4822
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_51ne1")
+
+[node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("startBattle")]
+script = ExtResource("1_tpom7")
+startBattle = NodePath("../Battle")
+beginIn = 2
 
 [editable path="Battle/Camera3D/BattleGUI"]
 [editable path="Battle/Camera3D/BattleGUI/Skill Menu/Card Rack/Card 1"]

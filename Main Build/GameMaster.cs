@@ -19,10 +19,11 @@ public partial class GameMaster : Node
         state = GD.Load<StoryState>("res://ExampleStoryState.tres");
     }
 
+
     public override async void _Process(double delta)
     {
         base._Process(delta);
-        GameplayMode returnedMode = currentMode.RemoteProcess(delta);
+		GameplayMode returnedMode = await currentMode.RemoteProcess(delta);
         currentMode.HandleInput(ReadInput());
         if(returnedMode != null){
             await currentMode.TransitionOut();
@@ -89,6 +90,10 @@ public partial class GameMaster : Node
 
     public void SetFlagValue(string flag, bool value){
         state.TrySetFlag(flag, value);
+    }
+
+    public void SetMode(GameplayMode mode){
+        currentMode = mode;
     }
 }
 

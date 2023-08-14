@@ -3,7 +3,7 @@ using Godot;
 using static GameplayUtilities;
 using System.Threading.Tasks;
 
-public abstract class GameplayMode : Node3D{
+public abstract partial class GameplayMode : Node3D{
 
     /*This function is used for the current mode to set everything up how it would like it before having to accepting Player Input.
     It's configured as a task such that visual effects lasting longer than a frame can be handled under this function.*/
@@ -18,7 +18,7 @@ public abstract class GameplayMode : Node3D{
     /*Behaviour that proceeds without player input is handled here.
     Because there should only be one mode running at a time, we don't use process with our gameplay modes, but instead
     have the GameMaster call it's current mode's "RemoteProcess" */
-    public virtual GameplayMode RemoteProcess(double delta)
+    public virtual async Task<GameplayMode> RemoteProcess(double delta)
     {
         return null;
     }

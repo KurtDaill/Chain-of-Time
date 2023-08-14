@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using static BattleUtilities;
+using static GameplayUtilities;
 
 public partial class SwapMenu : BattleMenu{
     private int targetLane, targetRank;
