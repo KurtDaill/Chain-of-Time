@@ -54,22 +54,22 @@ public partial class SkillMenu : BattleMenu
         //Check current characters readied skills, setup cards to match that data
     }
 
-    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){       
+    public override PlayerAbility HandleInput(PlayerInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){       
         var oldCard = selectedOption;
         switch(input){
-            case MenuInput.Right : 
+            case PlayerInput.Right : 
                 selectedOption++;
                 if(selectedOption >= availableCards){
                     selectedOption = availableCards-1;
                 }
                 break;
-            case MenuInput.Left :
+            case PlayerInput.Left :
                 selectedOption--;
                 if(selectedOption < 0){
                     selectedOption = 0;
                 }
                 break;
-            case MenuInput.Select : //TODO: Should go to a "Targeting" menu --- ChargeSP returns false if player can't pay, and MUST BE AT THE END OF THIS CONDITIONAL!!!
+            case PlayerInput.Select : //TODO: Should go to a "Targeting" menu --- ChargeSP returns false if player can't pay, and MUST BE AT THE END OF THIS CONDITIONAL!!!
                 if(noSkills == false && character.GetSkills()[selectedOption].GetenabledRanks().Contains(caller.GetRoster().GetCharacterVirtualPosition(character).GetRank()) && character.ChargeSP(character.GetSkills()[selectedOption].GetSPCost())){ 
                     //menuAnim.Play("Exit");
                     NewTargetingMenu tMenu = (NewTargetingMenu) parentGUI.menus[5];
@@ -89,7 +89,7 @@ public partial class SkillMenu : BattleMenu
             if(oldCard != -1) cards[oldCard].Stow();
             cards[selectedOption].Draw();
         }
-        if(input == MenuInput.Back){
+        if(input == PlayerInput.Back){
             //menuAnim.Play("Exit");
             parentGUI.ChangeMenu(0, character);
             return null;

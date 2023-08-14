@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static BattleMenu;
+using static GameplayUtilities;
 
 public partial class BattleGUI : Control
 {
@@ -135,14 +135,14 @@ public partial class BattleGUI : Control
 		}
 	}
 
-	public MenuInput ReadInput(){
-		if(Input.IsActionJustPressed("ui_back")){ return MenuInput.Back; }
-		if(Input.IsActionJustPressed("ui_proceed")){ return MenuInput.Select; }
-		if(Input.IsActionJustPressed("ui_up")){ return MenuInput.Up; }
-		if(Input.IsActionJustPressed("ui_right")){ return MenuInput.Right; }
-		if(Input.IsActionJustPressed("ui_down")){ return MenuInput.Down; }
-		if(Input.IsActionJustPressed("ui_left")){ return MenuInput.Left; }
-		return MenuInput.None;
+	public PlayerInput ReadInput(){
+		if(Input.IsActionJustPressed("ui_back")){ return PlayerInput.Back; }
+		if(Input.IsActionJustPressed("ui_proceed")){ return PlayerInput.Select; }
+		if(Input.IsActionJustPressed("ui_up")){ return PlayerInput.Up; }
+		if(Input.IsActionJustPressed("ui_right")){ return PlayerInput.Right; }
+		if(Input.IsActionJustPressed("ui_down")){ return PlayerInput.Down; }
+		if(Input.IsActionJustPressed("ui_left")){ return PlayerInput.Left; }
+		return PlayerInput.None;
 	} 
 
 	public void GoToNextCharacter(){
@@ -158,7 +158,7 @@ public partial class BattleGUI : Control
 			}
 		}
 		//If we've reached this block of code, we have CED for every player, and can send it all back.
-		EmitSignal(BattleGUI.SignalName.PlayerFinishedCommandInput);
+		EmitSignal(SignalName.PlayerFinishedCommandInput);
 		this.active = false;
 		HideGUI(true, true);
 	}

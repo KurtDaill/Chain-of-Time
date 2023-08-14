@@ -38,7 +38,7 @@ public abstract partial class CombatAction : Node
         if(running){
             //If there are no flags we're waiting on
             if(flagsRequiredToComplete.Where(x => x == false).Count() == 0){
-                EmitSignal(CombatAction.SignalName.ActionComplete);
+                EmitSignal(SignalName.ActionComplete);
                 running = false;
             } 
         }

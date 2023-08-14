@@ -112,10 +112,10 @@ public partial class TargetingMenu : BattleMenu {
 
 	//Handles input from the core Menu Command
 	//Returns a new menu in the scenario we have to switch between menus
-	public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){ 
+	public override PlayerAbility HandleInput(PlayerInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){ 
 		
 		if(decisionRequired){
-			if(input == MenuInput.Right || input == MenuInput.Left){
+			if(input == PlayerInput.Right || input == PlayerInput.Left){
 				switch(workingRule){
 					case TargetingLogic.Melee :
 						//Melee only has one potential target, therefore you can't switch 'em
@@ -124,11 +124,11 @@ public partial class TargetingMenu : BattleMenu {
 					/* Reach is on the Chopping Block
 					case TargetingLogic.Reach :
 						if(caller.GetRoster().GetCombatant(BattleRank.EnemyMid) != null && plannedTargets[0].GetPosition() == BattleRank.EnemyFront 
-						&& input == MenuInput.Right && character.GetPosition() == BattleRank.HeroFront){
+						&& input == PlayerInput.Right && character.GetPosition() == BattleRank.HeroFront){
 						//You can only target the enemy in the second rank with a reach attack if you're right on the front (reach only gives you 2 slots of range)
 							SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.EnemyMid), caller);
 						}
-						else if(plannedTargets[0].GetPosition() == BattleRank.EnemyMid && input == MenuInput.Left){
+						else if(plannedTargets[0].GetPosition() == BattleRank.EnemyMid && input == PlayerInput.Left){
 						//We don't check if enemy one exists because they have to in order for there to still be a battle    
 							SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.EnemyFront), caller);
 						}
@@ -138,24 +138,24 @@ public partial class TargetingMenu : BattleMenu {
 					case TargetingLogic.Ranged :
 						switch(plannedTargets[0].GetPosition()){
 							case BattleRank.EnemyFront :
-								if(input == MenuInput.Right && caller.GetRoster().GetCombatant(BattleRank.EnemyMid) != null){
+								if(input == PlayerInput.Right && caller.GetRoster().GetCombatant(BattleRank.EnemyMid) != null){
 									SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.EnemyMid), caller);
 								}else{
 									RejectSelection(); //We know input == Left and there's no left target or there's no right target at all
 								}
 								break;
 							case BattleRank.EnemyMid :
-								if(input == MenuInput.Right && caller.GetRoster().GetCombatant(BattleRank.EnemyBack) != null){
+								if(input == PlayerInput.Right && caller.GetRoster().GetCombatant(BattleRank.EnemyBack) != null){
 									SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.EnemyBack), caller);
 								}
-								else if(input == MenuInput.Left){//We don't check if there's an enemy one because there must be for battle to be happening
+								else if(input == PlayerInput.Left){//We don't check if there's an enemy one because there must be for battle to be happening
 									SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.EnemyFront), caller);
 								}else{
 									RejectSelection(); //We know input == Left and there's no left target or there's no right target at all
 								}
 								break;
 							case BattleRank.EnemyBack :
-								if(input == MenuInput.Left){//We don't check if there's an enemy two, because there must be if we're targeting enemy three
+								if(input == PlayerInput.Left){//We don't check if there's an enemy two, because there must be if we're targeting enemy three
 									SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.EnemyMid), caller);
 								}
 								break;
@@ -164,24 +164,24 @@ public partial class TargetingMenu : BattleMenu {
 					case TargetingLogic.AnyAlly :
 						switch(plannedTargets[0].GetPosition()){
 							case BattleRank.HeroFront :
-								if(input == MenuInput.Right && caller.GetRoster().GetCombatant(BattleRank.HeroMid) != null){
+								if(input == PlayerInput.Right && caller.GetRoster().GetCombatant(BattleRank.HeroMid) != null){
 									SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.HeroMid), caller);
 								}else{
 									RejectSelection(); //because we know input == Left and there's no left target or there's no right target at all
 								}
 								break;
 							case BattleRank.HeroMid :
-								if(input == MenuInput.Right && caller.GetRoster().GetCombatant(BattleRank.HeroBack) != null){
+								if(input == PlayerInput.Right && caller.GetRoster().GetCombatant(BattleRank.HeroBack) != null){
 									SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.HeroBack), caller);
 								}
-								else if(input == MenuInput.Left){//We don't check if there's an Hero one because there must be for battle to be happening
+								else if(input == PlayerInput.Left){//We don't check if there's an Hero one because there must be for battle to be happening
 									SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.HeroFront), caller);
 								}else{
 									RejectSelection();//We know input == Left and there's no left target or there's no right target at all
 								}
 								break;
 							case BattleRank.HeroBack :
-								if(input == MenuInput.Left){//We don't check if there's an Hero two, because there must be if we're targeting Hero three
+								if(input == PlayerInput.Left){//We don't check if there's an Hero two, because there must be if we're targeting Hero three
 									SetNewTargets(caller.GetRoster().GetCombatant(BattleRank.HeroMid), caller);
 								}
 								break;
@@ -191,7 +191,7 @@ public partial class TargetingMenu : BattleMenu {
 			}
 		}
 		
-		if(input == MenuInput.Select){//Need to Double Check if that target is legal!
+		if(input == PlayerInput.Select){//Need to Double Check if that target is legal!
 				if(CheckTargetLegality(plannedTargets, caller, out var realTargets)){
 					abilityInQuestion.SetTargets(realTargets.ToArray<Combatant>());
 					var result = abilityInQuestion;
@@ -202,7 +202,7 @@ public partial class TargetingMenu : BattleMenu {
 				}else{ //Our target isn't legal (Oh noes!)
 					RejectSelection();
 				}
-		}else if(input == MenuInput.Back){
+		}else if(input == PlayerInput.Back){
 			abilityInQuestion = null;
 			parentGUI.ChangeMenu(-1, character);
 			character.GainSP(parentGUI.spSpentByEachCombatant[parentGUI.GetIndexOfCharacterInQuestion()]);

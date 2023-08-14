@@ -36,26 +36,26 @@ public partial class PartyMenu : BattleMenu{
         buttonHighlights[optionSelected].Visible = true;
 
     }
-    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI)
+    public override PlayerAbility HandleInput(PlayerInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI)
     {
         switch(input){
-            case MenuInput.Left :
+            case PlayerInput.Left :
                 if(lastFrameSelection != 0 && buttonsEnabled[0]) SwitchSelection(0);
                 lastFrameSelection = 0;
                 break;
-            case MenuInput.Down :
+            case PlayerInput.Down :
                 if(lastFrameSelection != 1 && buttonsEnabled[1]) SwitchSelection(1);
                 lastFrameSelection = 1;
                 break;
-            case MenuInput.Right :
+            case PlayerInput.Right :
                 if(lastFrameSelection != 2 && buttonsEnabled[2]) SwitchSelection(2);
                 lastFrameSelection = 2;
                 break;
-            case MenuInput.Up :
+            case PlayerInput.Up :
                 if(lastFrameSelection != 3 && buttonsEnabled[3]) SwitchSelection(3);
                 lastFrameSelection = 3;
                 break;
-            case MenuInput.Select :
+            case PlayerInput.Select :
                 switch(optionSelected){
                     case 1 :
                         if(caller.GetRoster().GetAllPlayerCombatants().Length > 1) //If there's more than one player...
@@ -65,7 +65,7 @@ public partial class PartyMenu : BattleMenu{
                         break;
                 }
                 break;
-            case MenuInput.Back :
+            case PlayerInput.Back :
                 parentGUI.ChangeMenu(0, character); //Goes back to top menu
                 break;
         }

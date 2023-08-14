@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using static BattleUtilities;
+using static GameplayUtilities;
 
 public partial class NewTargetingMenu : BattleMenu {
     PlayerAbility currentAbility;
@@ -75,7 +76,7 @@ public partial class NewTargetingMenu : BattleMenu {
         }
     }
 
-    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
+    public override PlayerAbility HandleInput(PlayerInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         //Respond to player input
         /*
             If the ability is a type that has no player input->
@@ -94,7 +95,7 @@ public partial class NewTargetingMenu : BattleMenu {
                     Run Check Target Legaltiy
         */
         
-        if(input == MenuInput.Back){
+        if(input == PlayerInput.Back){
             SetPointers(caller);
             parentGUI.ChangeMenu(0, character);
 			character.GainSP(parentGUI.spSpentByEachCombatant[parentGUI.GetIndexOfCharacterInQuestion()], false);
@@ -116,7 +117,7 @@ public partial class NewTargetingMenu : BattleMenu {
                 HandleSelectRank(input, character, caller, parentGUI);
                 break;
         }
-        if(input == MenuInput.Select){
+        if(input == PlayerInput.Select){
             List<Combatant> legalTargets = GetLegalTargets(selectedTargets, caller, character,positionIndex);
             if(selectedTargets[0] is EnemyCombatant){
                 if(legalTargets.Count() == 0){
@@ -139,24 +140,24 @@ public partial class NewTargetingMenu : BattleMenu {
         return null;
     }
 
-    public void HandleSelectCharacter(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
+    public void HandleSelectCharacter(PlayerInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         int selectLane = (int)selectedTargets[0].GetPosition().GetLane();
         int selectRank = (int)selectedTargets[0].GetPosition().GetRank();
         Combatant newSelection;
         switch(input){
-            case MenuInput.Right :
+            case PlayerInput.Right :
             if(selectRank == 5){ RejectSelection(); return; }
             else selectRank++;
             break;
-            case MenuInput.Left :
+            case PlayerInput.Left :
             if(selectRank == 0){ RejectSelection(); return; }
             else selectRank--;
             break;
-            case MenuInput.Up :
+            case PlayerInput.Up :
             if(selectLane == 2){ RejectSelection(); return; } 
             else selectLane++;
             break;
-            case MenuInput.Down :
+            case PlayerInput.Down :
             if(selectLane == 0){ RejectSelection(); return; } 
             else selectLane--;
             break;
@@ -169,13 +170,13 @@ public partial class NewTargetingMenu : BattleMenu {
         SetPointers(caller, selectedTargets);
     }
 
-    public void HandleSelectLane(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
+    public void HandleSelectLane(PlayerInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         switch(input){
-            case MenuInput.Up :
+            case PlayerInput.Up :
                 if(positionIndex == 2) { RejectSelection(); return;}
                 positionIndex ++;
                 break;
-            case MenuInput.Down :
+            case PlayerInput.Down :
                 if(positionIndex == 0) { RejectSelection(); return;}
                 positionIndex --;
                 break;
@@ -184,14 +185,14 @@ public partial class NewTargetingMenu : BattleMenu {
         SetPointers(caller, selectedTargets);
     }
 
-    public void HandleSelectRank(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
+    public void HandleSelectRank(PlayerInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         int checkIndex = positionIndex;
         switch(input){
-            case MenuInput.Right:
+            case PlayerInput.Right:
                 if(positionIndex == 5) {RejectSelection(); return;};
                 checkIndex ++;
                 break;
-            case MenuInput.Left :
+            case PlayerInput.Left :
                 if(positionIndex == 0) {RejectSelection(); return;};
                 checkIndex --;
                 break;

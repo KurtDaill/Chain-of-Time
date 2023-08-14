@@ -29,31 +29,31 @@ public partial class TopMenu : BattleMenu
        if(highlightedTab != -1) menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = true;
     }
 
-    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI)
+    public override PlayerAbility HandleInput(PlayerInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI)
     {
         if(highlightedTab == -1){
-            if(input != MenuInput.None){
+            if(input != PlayerInput.None){
                 highlightedTab = 0;
                 menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = true;
                 menuTabs[highlightedTab].SizeFlagsHorizontal = SizeFlags.ShrinkBegin;
             }
         }else{
             switch(input){
-                case MenuInput.Up: 
+                case PlayerInput.Up: 
                     if(highlightedTab > 0){
                         menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = false;
                         menuTabs[highlightedTab].SizeFlagsHorizontal = SizeFlags.ShrinkEnd;
                         highlightedTab--;
                     }
                     break;
-                case MenuInput.Down: 
+                case PlayerInput.Down: 
                     if(highlightedTab < 3){
                         menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = false;
                         menuTabs[highlightedTab].SizeFlagsHorizontal = SizeFlags.ShrinkEnd;
                         highlightedTab++;
                     }
                     break; 
-                case MenuInput.Select:
+                case PlayerInput.Select:
                     switch(highlightedTab){
                         case 0:
                             //Goes to the Attack Menu
@@ -75,7 +75,7 @@ public partial class TopMenu : BattleMenu
                     if(highlightedTab != -1) menuTabs[highlightedTab].GetNode<TextureRect>("Highlight").Visible = false;
                     if(highlightedTab != -1) menuTabs[highlightedTab].SizeFlagsHorizontal = SizeFlags.ShrinkEnd;
                     break;
-                case MenuInput.Back:
+                case PlayerInput.Back:
                     parentGUI.GotoPreviousCharacter();
                     break;
             } 

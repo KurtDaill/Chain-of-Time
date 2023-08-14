@@ -1,19 +1,11 @@
 using Godot;
 using System;
+using static GameplayUtilities;
 
 public abstract partial class BattleMenu : Control
 {
     //public BattleGUI parentGUI;
-    public enum MenuInput
-    {
-        Up,
-        Right,
-        Down,
-        Left,
-        Select,
-        Back,
-        None,
-    }
+    
 
     public override void _Ready(){
         //parentGUI = (BattleGUI) GetParent();
@@ -26,5 +18,5 @@ public abstract partial class BattleMenu : Control
 
     //Handles input from the core Menu Command
     //Returns a new menu in the scenario we have to switch between menus
-    public virtual PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){ return null;}
+    public virtual PlayerAbility HandleInput(PlayerInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){ return null;}
 }

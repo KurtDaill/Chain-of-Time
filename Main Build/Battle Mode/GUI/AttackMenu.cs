@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+using static GameplayUtilities;
 public partial class AttackMenu : BattleMenu
 {
     private AudioStreamPlayer selectError;
@@ -44,15 +44,15 @@ public partial class AttackMenu : BattleMenu
         ((NewTargetingMenu)parentGUI.menus[5]).SetAbilityForTargeting(character.GetBasicAttack(), character, caller, parentGUI);
     }
 
-    public override PlayerAbility HandleInput(MenuInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
-        if(input == MenuInput.Back){
+    public override PlayerAbility HandleInput(PlayerInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
+        if(input == PlayerInput.Back){
             parentGUI.ChangeMenu(0, character);
             ((NewTargetingMenu)parentGUI.menus[5]).SetPointers(caller);
             return null;
         }else{  
             return parentGUI.menus[5].HandleInput(input, character, caller, parentGUI);
         }
-        /*else if(input == MenuInput.Select){
+        /*else if(input == PlayerInput.Select){
             //var ability = character.GetBasicAttack();
             //ability.SetTargets(new PMCharacter[]{caller.PositionLookup(PMBattleUtilities.BattlePos.EnemyOne)});//TODO make conform with selection functions
             //return ability;

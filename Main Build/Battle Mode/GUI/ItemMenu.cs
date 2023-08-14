@@ -47,8 +47,8 @@ public partial class ItemMenu : BattleMenu
     }
 */
 /*
-    public override PMAbility HandleInput(MenuInput input, PMPlayerCharacter character, PMBattle caller){
-        if(input == MenuInput.Back){
+    public override PMAbility HandleInput(PlayerInput input, PMPlayerCharacter character, PMBattle caller){
+        if(input == PlayerInput.Back){
             parentGUI.ChangeMenu(0, character, caller);
             return null;
         }

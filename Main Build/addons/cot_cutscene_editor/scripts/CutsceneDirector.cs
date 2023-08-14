@@ -1,7 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using static BattleMenu; //TODO Move MenuInput to a more general solution?
+using static BattleMenu;
 [Tool]
 public partial class CutsceneDirector : Node3D
 {
