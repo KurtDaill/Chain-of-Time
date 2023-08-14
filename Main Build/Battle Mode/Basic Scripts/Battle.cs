@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
 using static BattleUtilities;
+using static GameplayUtilities;
 public partial class Battle : GameplayMode
 {
 	private BattlePhase currentPhase = BattlePhase.StartOfTurn;
@@ -132,6 +133,11 @@ public partial class Battle : GameplayMode
 		return null;		
 	}
 
+    public override void HandleInput(PlayerInput input)
+    {
+		if(currentPhase != BattlePhase.PlayerSelectsCommands) return;
+		gui.HandleInputForMenu(input);
+    }
 	//General solution for phases that are essentially "Stop everything let these animations play in sequence"
 	private async Task ExecuteCombatEvents(CombatEventData[] eventData)
 	{

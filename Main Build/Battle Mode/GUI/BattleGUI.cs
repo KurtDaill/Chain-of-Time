@@ -37,20 +37,22 @@ public partial class BattleGUI : Control
 
 	public override void _Process(double delta)
 	{
-		if(active){
-			base._Process(delta);
-			if(!playersInQuestion[abilitiesQueued.Count(x => x != null)].IsAbleToAct()){
-				GoToNextCharacter();
-				return;
-			}
-			var returnedAbility = currentMenu.HandleInput(ReadInput(), playersInQuestion[abilitiesQueued.Count(x => x != null)], parentBattle, this);
-			if(returnedAbility != null){
-				abilitiesQueued[abilitiesQueued.Count(x => x != null)] = returnedAbility.GetEventData();
-				//chainGUI.LogAbility(returnedAbility.GetName(), abilitiesQueued.Count(x => x != null) == playersInQuestion.Length);
-				if(returnedAbility.GetPositionSwaps() != null) parentBattle.GetRoster().LogVirtualPositionSwap(abilitiesQueued.Count(x => x != null) - 1, returnedAbility.GetPositionSwaps());
-				GoToNextCharacter();
-			}
+	}
+
+	public void HandleInputForMenu(PlayerInput input){
+		if(playersInQuestion == null) return;
+		if(!playersInQuestion[abilitiesQueued.Count(x => x != null)].IsAbleToAct()){
+			GoToNextCharacter();
+			return;
 		}
+		var returnedAbility = currentMenu.HandleInput(input, playersInQuestion[abilitiesQueued.Count(x => x != null)], parentBattle, this);
+		if(returnedAbility != null){
+			abilitiesQueued[abilitiesQueued.Count(x => x != null)] = returnedAbility.GetEventData();
+			//chainGUI.LogAbility(returnedAbility.GetName(), abilitiesQueued.Count(x => x != null) == playersInQuestion.Length);
+			if(returnedAbility.GetPositionSwaps() != null) parentBattle.GetRoster().LogVirtualPositionSwap(abilitiesQueued.Count(x => x != null) - 1, returnedAbility.GetPositionSwaps());
+			GoToNextCharacter();
+		}
+
 	}
 
 
@@ -134,16 +136,6 @@ public partial class BattleGUI : Control
 			ChangeMenu(0, playersInQuestion[abilitiesQueued.Count(x => x != null)]);
 		}
 	}
-
-	public PlayerInput ReadInput(){
-		if(Input.IsActionJustPressed("ui_back")){ return PlayerInput.Back; }
-		if(Input.IsActionJustPressed("ui_proceed")){ return PlayerInput.Select; }
-		if(Input.IsActionJustPressed("ui_up")){ return PlayerInput.Up; }
-		if(Input.IsActionJustPressed("ui_right")){ return PlayerInput.Right; }
-		if(Input.IsActionJustPressed("ui_down")){ return PlayerInput.Down; }
-		if(Input.IsActionJustPressed("ui_left")){ return PlayerInput.Left; }
-		return PlayerInput.None;
-	} 
 
 	public void GoToNextCharacter(){
 		//If Next player isn't able to act, fill in a null in abilities queue then repeat this logic.
