@@ -27,11 +27,16 @@ public partial class BigBoot : PlayerSkill
 			case 0 : target[0].TakeDamage(5); break;
 			case 1 : 
 				parentBattle.GetRoster().SwapCharacters(source.GetPosition(), new BattlePosition(source.GetPosition().GetLane(), BattleRank.HeroMid));
-				WaitForSwap();
+				//WaitForSwap();
+				
+				flagsRequiredToComplete[1] = true;
 				//We shouldn't have triggered the flag for completing the core animation (it should be made long enough to not finish before the swap), so Big Boot Recovery finishing should be what trips that flag.
 				//source.GetAnimationPlayer().Play("Big Boot Recovery");
 				break;
 			default : throw new ArgumentException("Player Skill Big Boot only has phases 0 & 1, given phase value out of range.");
+		}
+		if(flagsRequiredToComplete[0] && flagsRequiredToComplete[1]){
+			EmitSignal(SignalName.ActionComplete);
 		}
 	}
 
