@@ -8,32 +8,18 @@ public abstract class CutsceneAction{
 
 public class CutsceneLine : CutsceneAction{
     string speaker, text;
-    CutsceneTextEffect[]effects;
-    int[] effectStartIndexes;
-    int[] effectEndIndexes;
     bool hasConcurrentAnimation;
     CutsceneCharacterAnimation concurrentAnimation;
 
-    public CutsceneLine(string speaker, string text, CutsceneTextEffect[] effects, bool hasAnim = false, CutsceneCharacterAnimation concurrentAnim = null){
+    public CutsceneLine(string speaker, string text, bool hasAnim = false, CutsceneCharacterAnimation concurrentAnim = null){
         this.speaker = speaker;
         this.text = text;
-        this.effects = effects;
-
-        effectStartIndexes = new int[effects.Length];
-        effectEndIndexes = new int[effects.Length];
-        for(int i = 0; i < effects.Length; i++){
-            effectStartIndexes[i] = effects[i].getStart();
-            effectEndIndexes[i] = effects[i].getEnd();
-        }
         hasConcurrentAnimation = hasAnim;
         concurrentAnimation = concurrentAnim;
     }
 
     public string GetText(){return text;}
     public string GetSpeaker(){return speaker;}
-    public int[] GetEffectStarts(){return effectStartIndexes;}
-    public int[] GetEfffectEnds(){return effectEndIndexes;}
-    public CutsceneTextEffect[] GetTextEffects(){return effects;}
     public bool HasConcurrentAnimation(){return hasConcurrentAnimation;}
     public CutsceneCharacterAnimation GetConcurrentAnimation(){return concurrentAnimation;}
 }

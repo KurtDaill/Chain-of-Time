@@ -47,6 +47,8 @@ public partial class Battle : GameplayMode
 			GameMaster GM = GetNode<GameMaster>("/root/GameMaster");
 			GM.LoadPartyData(battleRoster);
 		}
+		Visible = false;
+		gui.Visible = false;
 	}
 
 	public override async Task<GameplayMode> RemoteProcess(double delta){ //TO-DO can we implement "waiting" in a better way?
@@ -195,6 +197,11 @@ public partial class Battle : GameplayMode
 		public BadCombatAnimationException(){}
 		public BadCombatAnimationException(string message): base(message){}
 		public BadCombatAnimationException(string message, Exception inner) : base(message, inner){}
+	}
+
+	public async override Task StartUp(){
+		this.Visible = true;
+		gui.Visible = true;
 	}
 }
 

@@ -27,8 +27,7 @@ public abstract partial class GameplayMode : Node3D{
     
     As this mode knows what it just send out to GameMaster for the next mode, it can perfrom specific clean-up actions and changes, the most
     obvious case being moving the camera to the proper place through a linear transition.*/
-    public virtual Task TransitionOut(){
+    public async virtual Task TransitionOut(){
         //Move the Camera Here...
-        return null;
     }
 }

@@ -23,7 +23,7 @@ public partial class GameMaster : Node
     public override async void _Process(double delta)
     {
         base._Process(delta);
-		GameplayMode returnedMode = await currentMode.RemoteProcess(delta);
+        GameplayMode returnedMode = await currentMode.RemoteProcess(delta);
         currentMode.HandleInput(ReadInput());
         if(returnedMode != null){
             await currentMode.TransitionOut();
@@ -37,7 +37,7 @@ public partial class GameMaster : Node
         if(Input.IsActionJustPressed("ui_down")){return PlayerInput.Down;}
         if(Input.IsActionJustPressed("ui_left")){return PlayerInput.Left;}
         if(Input.IsActionJustPressed("ui_down")){return PlayerInput.Right;}
-        if(Input.IsActionJustPressed("ui_select")){return PlayerInput.Select;}
+        if(Input.IsActionJustPressed("ui_accept")){return PlayerInput.Select;}
         if(Input.IsActionJustPressed("ui_back")){return PlayerInput.Back;}
         return PlayerInput.None;
     }

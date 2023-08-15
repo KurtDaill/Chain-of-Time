@@ -1,9 +1,10 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using static BattleMenu;
+using System.Threading.Tasks;
+using static GameplayUtilities;
 [Tool]
-public partial class CutsceneDirector : Node3D
+public partial class CutsceneDirector : GameplayMode
 {
     public bool enabled = true;
     bool waitingOnAnimation = false;
@@ -24,12 +25,9 @@ public partial class CutsceneDirector : Node3D
     string initialShotName;
     [Export]
     CutsceneDialogueBox dialogueBox;
-    [Export]
-    bool autoPlay;
     Dictionary<string, CutsceneShot> shotList;
     Dictionary<string, Marker3D> blockingMarks;
     string playerCharacterName;
-
     StoryState storyState;
     [Export]
     Camera3D cutsceneCam;
@@ -38,6 +36,10 @@ public partial class CutsceneDirector : Node3D
     AnimationPlayer animPlay;
     //Implements the momento pattern
     Stack<PackedScene> cutsceneStateHistory;
+    [Export]
+    Node nextGameplayMode;
+    GameplayMode nextMode;
+    bool done;
 
     public override void _Ready()
     {
@@ -56,7 +58,8 @@ public partial class CutsceneDirector : Node3D
         
 
         cutsceneStateHistory = new Stack<PackedScene>();
-        if(autoPlay)PlayCutscene();
+        done = false;
+        nextMode = (GameplayMode) nextGameplayMode;
     }
 
     //Because we deleted and reload our children during editing, we want to have this set as its own function to be called then instead of just in ready
@@ -80,12 +83,15 @@ public partial class CutsceneDirector : Node3D
         animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
     }
 
-    public override void _Process(double delta){
-        HandleInput();
+    public override async Task<GameplayMode> RemoteProcess(double delta){
+        if(done){
+            return nextMode;
+        }
+        return null;
     }
 
-    private void HandleInput(){
-        if(Input.IsActionJustPressed("ui_accept")){
+    public override void HandleInput(PlayerInput input){
+        if(input == PlayerInput.Select){
             switch(currentAction.GetType().Name){
                 case "CutsceneLine" :
                     /* If no concurrent Animation : 
@@ -118,14 +124,14 @@ public partial class CutsceneDirector : Node3D
                     break;
             }
         }
-        else if(Input.IsActionJustPressed("ui_down")){
+        else if(input == PlayerInput.Down){
             switch(currentAction.GetType().Name){
                 case "CutsceneEndBlock" :
                     playerCharacterResponseBox.GoDownList();
                     break;
             }
         }
-        else if(Input.IsActionJustPressed("ui_up")){
+        else if(input == PlayerInput.Down){
             switch(currentAction.GetType().Name){
                 case "CutsceneEndBlock" :
                     playerCharacterResponseBox.GoUpList();
@@ -138,21 +144,21 @@ public partial class CutsceneDirector : Node3D
         }*/
     }
 
-    public void PlayCutscene(){
+    public async void PlayCutscene(){
         block = play.Start();
         waitingOnAnimation = false;
         currentAction = block.StartBlockAndGetFirstAction();
-        StartAction(currentAction);
+        await StartAction(currentAction);
         //SaveLiveState();
         //currentAction = block.GetNextAction(); //Should Get the first action loaded
     }
 
-    public void AdvanceToNextAction(){
+    public async void AdvanceToNextAction(){
         currentAction = block.GetNextAction();
-        StartAction(currentAction);
+        done = await StartAction(currentAction);
     }
 
-    public async void StartAction(CutsceneAction act){
+    public async Task<bool> StartAction(CutsceneAction act){ //TODO double check this needs to be async
         //SaveLiveState();
         switch(act.GetType().Name){
             case "CutsceneLine" :
@@ -175,7 +181,6 @@ public partial class CutsceneDirector : Node3D
                 //lineActor.SpeakLine(line);
                 if(line.GetSpeaker() == "???") dialogueBox.BeginDialogue(line, new Color(1,1,1,1));
                 else dialogueBox.BeginDialogue(line, lineActor.GetColor());
-
                 break;
             case "CutsceneCharacterAnimation":
                 CutsceneCharacterAnimation anim = (CutsceneCharacterAnimation) act;
@@ -241,7 +246,7 @@ public partial class CutsceneDirector : Node3D
                 this.animPlay.Play(envAnimation.GetAnimation());
                 await ToSignal(this.animPlay, AnimationPlayer.SignalName.AnimationFinished);
                 AdvanceToNextAction();
-                return;
+                return false;
             case "CutsceneSmashCut": //TODO Add in some kind of system to track whether we're waiting on anything or should advance to the next
                 CutsceneSmashCut smashCut = (CutsceneSmashCut) act;
                 foreach(CutsceneCharacterMove smashCutMove in smashCut.GetCharacterMoves()){
@@ -273,19 +278,24 @@ public partial class CutsceneDirector : Node3D
                 if(endBlock.IsResponseBlock()){
                     playerCharacterResponseBox = dialogueBox.StartDialogueResponse(endBlock.GetDialogueOptions());
                 }else{
-                    GotoNextBlock(endBlock.GetGotoBlockTarget());
+                    //Returns true if this is the end of the cutscene...
+                    return GotoNextBlock(endBlock.GetGotoBlockTarget());
                 }
                 
                 break;
         }
-
+        return false;
     }
 
-    public void GotoNextBlock(string targetBlock){
+    //Returns true if this is the end of the cutscene...
+    public bool GotoNextBlock(string targetBlock){
         if(targetBlock == null || targetBlock == "INVALID") throw new ArgumentException();
         if(targetBlock == "EXIT"){
             //TODO handle quitting cutscenes
+            GD.Print("From: the Cutscene Object -");
             GD.Print("So long, Gay Bowser!");
+            return true;
+
         }else{
             if(play.TryGetBlock(targetBlock, out CutsceneBlock newLoadedBlock)){
                 block = newLoadedBlock;
@@ -295,6 +305,7 @@ public partial class CutsceneDirector : Node3D
                 throw new ArgumentException("Listed Block: " + targetBlock + " not found in screenplay! Check your XML script file!");
             }
         }
+        return false;
     }
 
     public void OnCutsceneAnimationComplete(StringName animation){
@@ -318,7 +329,14 @@ public partial class CutsceneDirector : Node3D
         watchedBlockingMoves.Remove(markerName);
         AdvanceToNextAction();
     }
-    
+
+    public override async Task TransitionOut()
+    {
+        this.Visible = false;
+        //TODO add in visual effects (or do those belong in Transition in?)
+    }
+
+
     /*
     //Implements the "Save State" section of the momento pattern using packed scenes
     public void SaveLiveState(){
@@ -347,17 +365,6 @@ public partial class CutsceneDirector : Node3D
         //this.GetParent().GetChild<CutsceneDirector>(2).GetNode<CutsceneCamera>("Cutscene Camera").Current = true;
         //this.Free();
     }
-    */   
-}
+    */
 
-public static class CutsceneUtils{
-	public enum TextEffectType{
-        Bold,
-        Italics,
-        Underline,
-        Wave,
-        Impact,
-        BigImpact,
-        Shiver
-    }
 }

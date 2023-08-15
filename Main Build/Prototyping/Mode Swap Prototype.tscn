@@ -1,0 +1,1615 @@
+[gd_scene load_steps=76 format=3 uid="uid://bnabraied2dsw"]
+
+[ext_resource type="PackedScene" uid="uid://cj7260eer0ta5" path="res://Art/3D/TestOldTownHouse1gltf.gltf" id="1_58hvu"]
+[ext_resource type="Script" path="res://SceneConfig.cs" id="1_wgip6"]
+[ext_resource type="PackedScene" uid="uid://744jase51iw4" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody1_gltf.gltf" id="2_52j5o"]
+[ext_resource type="PackedScene" uid="uid://663as0b6h32w" path="res://Art/3D/OldTownBlocks/OldTown_Roof1_gltf.gltf" id="3_xn0su"]
+[ext_resource type="PackedScene" uid="uid://dvsfko0dk77di" path="res://Art/3D/OldTownBlocks/OldTown_Roof3_gltf.gltf" id="4_8qt63"]
+[ext_resource type="PackedScene" uid="uid://vog8ct3qc5w8" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody3_gltf.gltf" id="5_1neit"]
+[ext_resource type="PackedScene" uid="uid://c7jx0chv8iiqc" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody2_gltf.gltf" id="6_gpjpi"]
+[ext_resource type="PackedScene" uid="uid://cjrdgly6ew04o" path="res://Art/3D/OldTownBlocks/OldTown_Roof2_gltf.gltf" id="7_kom3i"]
+[ext_resource type="PackedScene" uid="uid://cmspx3xel8pa2" path="res://Art/3D/OldTownBlocks/Balcony Piece.tscn" id="8_xve0m"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDirector.cs" id="9_q1n18"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneShot.cs" id="10_m1u5r"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneCamera.cs" id="11_topby"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDialogueBox.cs" id="12_hhg4i"]
+[ext_resource type="Texture2D" uid="uid://bc5cvecx1cei7" path="res://Art/Time Sense.png" id="13_nlimb"]
+[ext_resource type="Theme" uid="uid://c3w8cbrksjko5" path="res://GUI/Themes/Cutscene Themes/NormalDialogueText.tres" id="14_5tltv"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneResponseBox.cs" id="15_u4fwd"]
+[ext_resource type="Theme" uid="uid://c6hjkq2or80ln" path="res://GUI/Themes/Cutscene Themes/Dialogue Responses.tres" id="16_ayedl"]
+[ext_resource type="AudioStream" uid="uid://ckxbt64hf7jpw" path="res://Audio/Distant Boom.wav" id="17_4efrq"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/Actor.cs" id="18_l6qvf"]
+[ext_resource type="Texture2D" uid="uid://bxpwsf3thk4fo" path="res://Art/Prod Sprite Sheets/CatoCinematicAnimation-Sheet.png" id="19_khtrx"]
+[ext_resource type="Texture2D" uid="uid://b43sxpud60he4" path="res://Art/Letter.png" id="20_wp5pv"]
+[ext_resource type="Texture2D" uid="uid://ro8v5idok0eh" path="res://Art/Prod Sprite Sheets/Orc Kid Cinematic Sheet-Sheet.png" id="21_anjpj"]
+[ext_resource type="Texture2D" uid="uid://qxueooqq05r1" path="res://Art/Prod Sprite Sheets/Skeleton Combat Sprite-Sheet.png" id="22_1yueq"]
+[ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Battle.cs" id="24_pxhrf"]
+[ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="25_semha"]
+[ext_resource type="Texture2D" uid="uid://bkdgvs1hqa6nu" path="res://GUI/Point-export.png" id="26_dkpch"]
+[ext_resource type="PackedScene" uid="uid://ck78k6iju4ldb" path="res://Battle Mode/Player Characters/Cato Combatant.tscn" id="27_j7es1"]
+[ext_resource type="PackedScene" uid="uid://ckh4ejsj04t82" path="res://Battle Mode/Enemies/Skeleton.tscn" id="28_i2l6e"]
+[ext_resource type="PackedScene" uid="uid://ctkjn6qaseru7" path="res://Battle Mode/BattleGUI.tscn" id="29_8ooj4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o4fkr"]
+load_path = "res://.godot/imported/AllDaHousesgltf_1.png-641c98bdb8cf566a8417dbe937812620.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkrq7"]
+resource_name = "material_1"
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.686275, 0.686275, 0.686275, 1)
+albedo_texture = SubResource("CompressedTexture2D_o4fkr")
+texture_filter = 0
+texture_repeat = false
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_twsxp"]
+_surfaces = [{
+"aabb": AABB(-13.3125, -0.50625, -4.53125, 18.125, 0.50001, 9.06251),
+"format": 4097,
+"index_count": 36,
+"index_data": PackedByteArray(2, 0, 1, 0, 0, 0, 2, 0, 3, 0, 1, 0, 6, 0, 5, 0, 4, 0, 6, 0, 7, 0, 5, 0, 4, 0, 2, 0, 0, 0, 4, 0, 5, 0, 2, 0, 3, 0, 6, 0, 1, 0, 3, 0, 7, 0, 6, 0, 1, 0, 4, 0, 0, 0, 1, 0, 6, 0, 4, 0, 5, 0, 3, 0, 2, 0, 5, 0, 7, 0, 3, 0),
+"name": "material_1",
+"primitive": 3,
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 64, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 64, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 192, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 192, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 64, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 192, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 64, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 192)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3roxb"]
+resource_name = "blockbench_export_mesh2"
+_surfaces = [{
+"aabb": AABB(-13.3125, -0.50625, -4.53125, 18.125, 0.50001, 9.06251),
+"attribute_data": PackedByteArray(0, 0, 136, 62, 0, 0, 0, 0, 0, 0, 136, 62, 0, 0, 128, 60, 0, 128, 7, 63, 0, 0, 0, 0, 0, 128, 7, 63, 0, 0, 128, 60, 0, 128, 7, 63, 0, 0, 144, 60, 0, 0, 136, 62, 0, 0, 144, 60, 0, 128, 7, 63, 0, 0, 8, 61, 0, 0, 136, 62, 0, 0, 8, 61, 0, 0, 135, 62, 0, 0, 135, 62, 0, 0, 135, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 135, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 135, 62, 0, 0, 136, 62, 0, 0, 0, 0, 0, 0, 136, 62, 0, 0, 135, 62, 0, 128, 7, 63, 0, 0, 0, 0, 0, 128, 7, 63, 0, 128, 7, 63, 0, 0, 16, 61, 0, 0, 136, 62, 0, 0, 16, 61, 0, 128, 7, 63, 0, 0, 80, 61, 0, 0, 136, 62, 0, 0, 80, 61, 0, 0, 136, 62, 0, 0, 88, 61, 0, 0, 136, 62, 0, 0, 140, 61, 0, 128, 7, 63, 0, 0, 88, 61, 0, 128, 7, 63, 0, 0, 140, 61),
+"format": 4119,
+"index_count": 36,
+"index_data": PackedByteArray(2, 0, 1, 0, 0, 0, 2, 0, 3, 0, 1, 0, 6, 0, 5, 0, 4, 0, 6, 0, 7, 0, 5, 0, 10, 0, 9, 0, 8, 0, 10, 0, 11, 0, 9, 0, 14, 0, 13, 0, 12, 0, 14, 0, 15, 0, 13, 0, 18, 0, 17, 0, 16, 0, 18, 0, 19, 0, 17, 0, 22, 0, 21, 0, 20, 0, 22, 0, 23, 0, 21, 0),
+"material": SubResource("StandardMaterial3D_dkrq7"),
+"name": "material_1",
+"primitive": 3,
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 64, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 64, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 192, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 192, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 64, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 192, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 64, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 192, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 64, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 192, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 64, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 192, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 64, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 64, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 192, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 192, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 64, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 64, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 64, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 64, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 192, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 192, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 192, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 192, 255, 255, 255, 255, 0, 0, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_twsxp")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y1wly"]
+load_path = "res://.godot/imported/AllDaHousesgltf_1.png-641c98bdb8cf566a8417dbe937812620.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5jeg"]
+resource_name = "material_1"
+transparency = 2
+alpha_scissor_threshold = 0.05
+alpha_antialiasing_mode = 0
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_y1wly")
+texture_filter = 0
+texture_repeat = false
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_r24kl"]
+_surfaces = [{
+"aabb": AABB(-13.3125, -0.50625, -4.53125, 18.125, 0.50001, 9.06251),
+"format": 4097,
+"index_count": 36,
+"index_data": PackedByteArray(2, 0, 1, 0, 0, 0, 2, 0, 3, 0, 1, 0, 6, 0, 5, 0, 4, 0, 6, 0, 7, 0, 5, 0, 4, 0, 2, 0, 0, 0, 4, 0, 5, 0, 2, 0, 3, 0, 6, 0, 1, 0, 3, 0, 7, 0, 6, 0, 1, 0, 4, 0, 0, 0, 1, 0, 6, 0, 4, 0, 5, 0, 3, 0, 2, 0, 5, 0, 7, 0, 3, 0),
+"name": "material_1",
+"primitive": 3,
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 64, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 64, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 192, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 192, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 64, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 192, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 64, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 192)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_r53go"]
+resource_name = "blockbench_export_mesh2"
+_surfaces = [{
+"aabb": AABB(-13.3125, -0.50625, -4.53125, 18.125, 0.50001, 9.06251),
+"attribute_data": PackedByteArray(0, 0, 136, 62, 0, 0, 0, 0, 0, 0, 136, 62, 0, 0, 128, 60, 0, 128, 7, 63, 0, 0, 0, 0, 0, 128, 7, 63, 0, 0, 128, 60, 0, 128, 7, 63, 0, 0, 144, 60, 0, 0, 136, 62, 0, 0, 144, 60, 0, 128, 7, 63, 0, 0, 8, 61, 0, 0, 136, 62, 0, 0, 8, 61, 0, 0, 135, 62, 0, 0, 135, 62, 0, 0, 135, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 135, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 135, 62, 0, 0, 136, 62, 0, 0, 0, 0, 0, 0, 136, 62, 0, 0, 135, 62, 0, 128, 7, 63, 0, 0, 0, 0, 0, 128, 7, 63, 0, 128, 7, 63, 0, 0, 16, 61, 0, 0, 136, 62, 0, 0, 16, 61, 0, 128, 7, 63, 0, 0, 80, 61, 0, 0, 136, 62, 0, 0, 80, 61, 0, 0, 136, 62, 0, 0, 88, 61, 0, 0, 136, 62, 0, 0, 140, 61, 0, 128, 7, 63, 0, 0, 88, 61, 0, 128, 7, 63, 0, 0, 140, 61),
+"format": 4119,
+"index_count": 36,
+"index_data": PackedByteArray(2, 0, 1, 0, 0, 0, 2, 0, 3, 0, 1, 0, 6, 0, 5, 0, 4, 0, 6, 0, 7, 0, 5, 0, 10, 0, 9, 0, 8, 0, 10, 0, 11, 0, 9, 0, 14, 0, 13, 0, 12, 0, 14, 0, 15, 0, 13, 0, 18, 0, 17, 0, 16, 0, 18, 0, 19, 0, 17, 0, 22, 0, 21, 0, 20, 0, 22, 0, 23, 0, 21, 0),
+"material": SubResource("StandardMaterial3D_e5jeg"),
+"name": "material_1",
+"primitive": 3,
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 64, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 64, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 192, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 192, 255, 255, 255, 127, 255, 255, 255, 255, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 64, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 192, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 64, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 192, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 64, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 192, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 64, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 192, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 64, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 64, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 192, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 192, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 64, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 64, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 64, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 64, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 154, 64, 205, 204, 204, 187, 0, 0, 145, 192, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 154, 64, 154, 153, 1, 191, 0, 0, 145, 192, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 85, 193, 205, 204, 204, 187, 0, 0, 145, 192, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 85, 193, 154, 153, 1, 191, 0, 0, 145, 192, 255, 255, 255, 255, 0, 0, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_r24kl")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4tp0"]
+size = Vector3(19.125, 0.001, 102.563)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sjehb"]
+size = Vector3(6.5625, 1, 66)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fmaww"]
+sky_top_color = Color(0.117647, 0.0901961, 0.301961, 1)
+sky_horizon_color = Color(0.62, 0.329013, 0.0744, 1)
+sky_curve = 0.0609192
+ground_bottom_color = Color(0.0431373, 0.0313726, 0.0196078, 1)
+ground_horizon_color = Color(0.247059, 0.25098, 0.262745, 1)
+sun_angle_max = 15.32
+sun_curve = 0.0522061
+
+[sub_resource type="Sky" id="Sky_sk73x"]
+sky_material = SubResource("ProceduralSkyMaterial_fmaww")
+
+[sub_resource type="Environment" id="Environment_v12p8"]
+background_mode = 2
+sky = SubResource("Sky_sk73x")
+ambient_light_source = 2
+ambient_light_color = Color(0.709804, 0.772549, 1, 1)
+ambient_light_energy = 0.2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iw0w"]
+bg_color = Color(0.623529, 0.686275, 0.741176, 0.337255)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y51iu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncocj"]
+bg_color = Color(0.447059, 0.737255, 0.929412, 0.67451)
+
+[sub_resource type="Animation" id="Animation_jm3qf"]
+resource_name = "Distant Boom"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraModifierHandle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.4, 0, 0), Vector3(0.4, 0, 0), Vector3(-0.3, 0, 0), Vector3(0.3, 0, 0), Vector3(-0.2, 0, 0), Vector3(0.2, 0, 0), Vector3(-0.1, 0, 0), Vector3(0.1, 0, 0), Vector3(-0.1, 0, 0), Vector3(0.1, 0, 0), Vector3(-0.05, 0, 0), Vector3(0.05, 0, 0), Vector3(-0.05, 0, 0), Vector3(0.05, 0, 0), Vector3(-0.05, 0, 0), Vector3(0.05, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_38b4b"]
+_data = {
+"Distant Boom": SubResource("Animation_jm3qf")
+}
+
+[sub_resource type="Animation" id="Animation_i3lke"]
+resource_name = "Anxious Pacing"
+length = 8.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.5, 4, 5, 6.5, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.935359, 1.57321, 0.255529), Vector3(2, 1.573, 0.256), Vector3(2, 1.573, 0.256), Vector3(-1, 1.573, 0.256), Vector3(-1, 1.573, 0.256), Vector3(2, 1.573, 0.256), Vector3(-0.935359, 1.57321, 0.255529)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5, 5, 6.5, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.261799, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite3D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_fachi"]
+resource_name = "Draw Sword"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [11, 12, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_hbyni"]
+resource_name = "Fiddle with Object Sit"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_mnssw"]
+resource_name = "Freeze"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 2]
+}
+
+[sub_resource type="Animation" id="Animation_ergnw"]
+resource_name = "Hesitate"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 13, 15, 14]
+}
+
+[sub_resource type="Animation" id="Animation_bkc5n"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_xwaf0"]
+resource_name = "Cato Idle Sit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Prop_Letter:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0plmh"]
+resource_name = "Look Around"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.4, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [13, 15, 13, 15, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_m6h2j"]
+resource_name = "Cato Look Behind Sit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_ukiyq"]
+resource_name = "Look Up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [14, 13]
+}
+
+[sub_resource type="Animation" id="Animation_ls8h1"]
+resource_name = "Nod"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [13, 14, 13]
+}
+
+[sub_resource type="Animation" id="Animation_80o84"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dialogue Box:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.92119, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.935359, 1.97703, 0.255529)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Prop_Letter:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.145586, 1.3125, 0.543333)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Prop_Letter:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite3D:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4c2mm"]
+resource_name = "Run Out"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(5.941, -0.125, -0.505), Vector3(10.1285, -0.125, 0.4325)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.309, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [18, 25]
+}
+
+[sub_resource type="Animation" id="Animation_5fwyo"]
+resource_name = "Show Object Sit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Prop_Letter:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Prop_Letter:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector3(-0.75107, 1.375, -0.563895)]
+}
+
+[sub_resource type="Animation" id="Animation_jlj8p"]
+resource_name = "Stand Up and Draw Sword"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 9, 7, 11, 12, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector3(-1.37147, -0.125, -0.229757), Vector3(-1.37147, -0.125, -0.042257), Vector3(-1.37147, -0.125, 0.145243)]
+}
+
+[sub_resource type="Animation" id="Animation_i57d2"]
+resource_name = "Surprise"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_wag5e"]
+resource_name = "Taunt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [18, 19, 20]
+}
+
+[sub_resource type="Animation" id="Animation_i5yur"]
+resource_name = "Walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [21, 28]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqyp1"]
+_data = {
+"Anxious Pacing": SubResource("Animation_i3lke"),
+"Draw Sword": SubResource("Animation_fachi"),
+"Fiddle with Object Sit": SubResource("Animation_hbyni"),
+"Freeze": SubResource("Animation_mnssw"),
+"Hesitate": SubResource("Animation_ergnw"),
+"Idle": SubResource("Animation_bkc5n"),
+"Idle Sit": SubResource("Animation_xwaf0"),
+"Look Around": SubResource("Animation_0plmh"),
+"Look Behind Sit": SubResource("Animation_m6h2j"),
+"Look Up": SubResource("Animation_ukiyq"),
+"Nod": SubResource("Animation_ls8h1"),
+"RESET": SubResource("Animation_80o84"),
+"Run Out": SubResource("Animation_4c2mm"),
+"Show Object Sit": SubResource("Animation_5fwyo"),
+"Stand Up and Draw Sword": SubResource("Animation_jlj8p"),
+"Surprise": SubResource("Animation_i57d2"),
+"Taunt": SubResource("Animation_wag5e"),
+"Walk": SubResource("Animation_i5yur")
+}
+
+[sub_resource type="Animation" id="Animation_vwyho"]
+resource_name = "Cower"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_54klq"]
+resource_name = "Look Up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_mwdif"]
+resource_name = "Nod"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 2]
+}
+
+[sub_resource type="Animation" id="Animation_8imuo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bdt4x"]
+_data = {
+"Cower": SubResource("Animation_vwyho"),
+"Look Up": SubResource("Animation_54klq"),
+"Nod": SubResource("Animation_mwdif"),
+"RESET": SubResource("Animation_8imuo")
+}
+
+[sub_resource type="Animation" id="Animation_bnlkv"]
+resource_name = "Menace"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 3, 4, 7, 8, 9, 10, 0]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-0.0030123, -0.25, 0, 0, 0.372808, 0.621988, -0.1, 0, 0.1, 0.0101791, -0.0030123, 0, 0.138548, 0.25, 0, -0.0030123, -0.116423, 0.000709858, 0.0071851, 0.14728, 0.621988, -0.1, 0, 0.1, 0.0101791, -0.0030123, 0, 0.138548, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1)
+}
+
+[sub_resource type="Animation" id="Animation_2oiq5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(5.19553, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.0030123, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-8.43145, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_k1c8k"]
+resource_name = "Surprise"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(5.19553, -0.25, 0, 0.25, 0, 5.75803, -0.25, 0, 0.25, 0, 5.19553, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.0030123, -0.25, 0, 0.25, 0, 0.371988, -0.25, 0, 0.25, 0, -0.0030123, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-8.43145, -0.25, 0, 0.25, 0, -8.43145, -0.25, 0, 0.25, 0, -8.43145, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4uacx"]
+_data = {
+"Menace": SubResource("Animation_bnlkv"),
+"RESET": SubResource("Animation_2oiq5"),
+"Surprise": SubResource("Animation_k1c8k")
+}
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("startCutscene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1875, 4.1875, -0.1875)
+script = ExtResource("1_wgip6")
+startCutscene = NodePath("Cutscene")
+beginIn = 1
+
+[node name="TestOldTownHouse1gltf" parent="." instance=ExtResource("1_58hvu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26)
+
+[node name="Tall Boy" type="Node3D" parent="."]
+
+[node name="OldTown_HouseBody1_gltf" parent="Tall Boy" instance=ExtResource("2_52j5o")]
+
+[node name="OldTown_HouseBody1_gltf2" parent="Tall Boy" instance=ExtResource("2_52j5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.96161, 0)
+
+[node name="OldTown_Roof1_gltf" parent="Tall Boy" instance=ExtResource("3_xn0su")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07896, 0.305976)
+
+[node name="Wide One" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="OldTown_Roof3_gltf" parent="Wide One" instance=ExtResource("4_8qt63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
+
+[node name="OldTown_HouseBody3_gltf" parent="Wide One" instance=ExtResource("5_1neit")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
+
+[node name="OldTown_HouseBody2_gltf" parent="Wide One" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="Wide One" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
+visible = false
+
+[node name="OldTown_HouseBody3_gltf2" parent="Wide One" instance=ExtResource("5_1neit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
+
+[node name="OldTown_Roof2_gltf" parent="Wide One" instance=ExtResource("7_kom3i")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
+
+[node name="Tall Boy 2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.5625)
+
+[node name="AllDaHousesgltf" parent="Tall Boy 2" instance=ExtResource("8_xve0m")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="Tall Boy 2" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="OldTown_HouseBody2_gltf3" parent="Tall Boy 2" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="OldTown_HouseBody2_gltf" parent="Tall Boy 2" instance=ExtResource("6_gpjpi")]
+
+[node name="OldTown_Roof3_gltf" parent="Tall Boy 2" instance=ExtResource("4_8qt63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
+
+[node name="BasePlate" type="Node3D" parent="."]
+
+[node name="Path" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.3125, -0.5625, 0.625)
+mesh = SubResource("ArrayMesh_3roxb")
+skeleton = NodePath("")
+
+[node name="Path3" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.3125, -0.5625, -17.5)
+mesh = SubResource("ArrayMesh_3roxb")
+skeleton = NodePath("")
+
+[node name="Path4" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.3125, -0.5625, -35.625)
+mesh = SubResource("ArrayMesh_3roxb")
+skeleton = NodePath("")
+
+[node name="Path2" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.3125, -0.5625, 18.75)
+mesh = SubResource("ArrayMesh_3roxb")
+skeleton = NodePath("")
+
+[node name="Path5" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.375, -0.5625, 0.625)
+mesh = SubResource("ArrayMesh_3roxb")
+skeleton = NodePath("")
+
+[node name="Path6" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.375, -0.5625, -17.5)
+mesh = SubResource("ArrayMesh_3roxb")
+skeleton = NodePath("")
+
+[node name="Path7" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.375, -0.5625, -35.625)
+mesh = SubResource("ArrayMesh_3roxb")
+skeleton = NodePath("")
+
+[node name="Path8" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.375, -0.5625, 18.75)
+mesh = SubResource("ArrayMesh_3roxb")
+skeleton = NodePath("")
+
+[node name="housebase" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3125)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase2" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.75)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase5" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.8125)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase6" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26.875)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase7" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -35.9375)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase8" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase3" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.875)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase4" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.4375)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase4" type="MeshInstance3D" parent="BasePlate/housebase4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.0625)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase5" type="MeshInstance3D" parent="BasePlate/housebase4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.125)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase9" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0.3125)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase10" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -8.75)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase11" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -17.8125)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase12" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -26.875)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase13" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -35.9375)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase14" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -45)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase15" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 8.875)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase16" type="MeshInstance3D" parent="BasePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 17.4375)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase4" type="MeshInstance3D" parent="BasePlate/housebase16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.0625)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="housebase5" type="MeshInstance3D" parent="BasePlate/housebase16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.125)
+mesh = SubResource("ArrayMesh_r53go")
+skeleton = NodePath("")
+
+[node name="Big Building" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.875, 0, -27.875)
+
+[node name="OldTown_HouseBody2_gltf" parent="Big Building" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf2" parent="Big Building" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf3" parent="Big Building" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf4" parent="Big Building" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf5" parent="Big Building" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
+
+[node name="OldTown_HouseBody2_gltf6" parent="Big Building" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
+
+[node name="OldTown_Roof2_gltf" parent="Big Building" instance=ExtResource("7_kom3i")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
+
+[node name="OldTown_Roof2_gltf2" parent="Big Building" instance=ExtResource("7_kom3i")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
+
+[node name="OldTown_Roof2_gltf3" parent="Big Building" instance=ExtResource("7_kom3i")]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
+
+[node name="Deep Copy" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8125, 0, -14.9375)
+
+[node name="TestOldTownHouse1gltf" parent="Deep Copy" instance=ExtResource("1_58hvu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -26.9, 0, -30.4125)
+
+[node name="Tall Boy" type="Node3D" parent="Deep Copy"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -26.9, 0, -4.4125)
+
+[node name="OldTown_HouseBody1_gltf" parent="Deep Copy/Tall Boy" instance=ExtResource("2_52j5o")]
+
+[node name="OldTown_HouseBody1_gltf2" parent="Deep Copy/Tall Boy" instance=ExtResource("2_52j5o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.96161, 0)
+
+[node name="OldTown_Roof1_gltf" parent="Deep Copy/Tall Boy" instance=ExtResource("3_xn0su")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07896, 0.305976)
+
+[node name="Wide One" type="Node3D" parent="Deep Copy"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -26.9, 0, -3.4125)
+
+[node name="OldTown_Roof3_gltf" parent="Deep Copy/Wide One" instance=ExtResource("4_8qt63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
+
+[node name="OldTown_HouseBody3_gltf" parent="Deep Copy/Wide One" instance=ExtResource("5_1neit")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
+
+[node name="OldTown_HouseBody2_gltf" parent="Deep Copy/Wide One" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="Deep Copy/Wide One" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
+visible = false
+
+[node name="OldTown_HouseBody3_gltf2" parent="Deep Copy/Wide One" instance=ExtResource("5_1neit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
+
+[node name="OldTown_Roof2_gltf" parent="Deep Copy/Wide One" instance=ExtResource("7_kom3i")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
+
+[node name="Tall Boy 2" type="Node3D" parent="Deep Copy"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -26.9, 0, -17.975)
+
+[node name="AllDaHousesgltf" parent="Deep Copy/Tall Boy 2" instance=ExtResource("8_xve0m")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="Deep Copy/Tall Boy 2" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="OldTown_HouseBody2_gltf3" parent="Deep Copy/Tall Boy 2" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="OldTown_HouseBody2_gltf" parent="Deep Copy/Tall Boy 2" instance=ExtResource("6_gpjpi")]
+
+[node name="OldTown_Roof3_gltf" parent="Deep Copy/Tall Boy 2" instance=ExtResource("4_8qt63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
+
+[node name="Big Building" type="Node3D" parent="Deep Copy"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.025, 0, 23.4625)
+
+[node name="OldTown_HouseBody2_gltf" parent="Deep Copy/Big Building" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf2" parent="Deep Copy/Big Building" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf3" parent="Deep Copy/Big Building" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf4" parent="Deep Copy/Big Building" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf5" parent="Deep Copy/Big Building" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
+
+[node name="OldTown_HouseBody2_gltf6" parent="Deep Copy/Big Building" instance=ExtResource("6_gpjpi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
+
+[node name="OldTown_Roof2_gltf" parent="Deep Copy/Big Building" instance=ExtResource("7_kom3i")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
+
+[node name="OldTown_Roof2_gltf2" parent="Deep Copy/Big Building" instance=ExtResource("7_kom3i")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
+
+[node name="OldTown_Roof2_gltf3" parent="Deep Copy/Big Building" instance=ExtResource("7_kom3i")]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75, 0, 0)
+shape = SubResource("BoxShape3D_g4tp0")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5625, -1.0625, 0)
+shape = SubResource("BoxShape3D_sjehb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.965926, 0.224144, 0.12941, -0.258819, 0.836516, 0.482963, 0, -0.5, 0.866025, 0, 0, 0)
+light_energy = 0.2
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v12p8")
+
+[node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox", "cutsceneCam", "nextGameplayMode")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.6875, 0, 0)
+script = ExtResource("9_q1n18")
+screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Ext Streets of Old Town.xml"
+playerCharacter = NodePath("Cato Actor")
+initialShotName = "Initial Shot"
+dialogueBox = NodePath("Subtitle Style")
+cutsceneCam = NodePath("CameraModifierHandle/Cutscene Camera")
+nextGameplayMode = NodePath("../Battle")
+
+[node name="Shot List" type="Node3D" parent="Cutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
+
+[node name="Initial Shot" type="Camera3D" parent="Cutscene/Shot List"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8125, 2.0625, 6.125)
+script = ExtResource("10_m1u5r")
+
+[node name="Kids in Trouble" type="Camera3D" parent="Cutscene/Shot List"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.09, 2)
+script = ExtResource("10_m1u5r")
+
+[node name="Blocking Marks" type="Node3D" parent="Cutscene"]
+
+[node name="Run In" type="Marker3D" parent="Cutscene/Blocking Marks"]
+transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, 0.592827, -0.628012, -2.1215)
+
+[node name="Defend the Kid" type="Marker3D" parent="Cutscene/Blocking Marks"]
+transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, 4.44103, -0.5625, -5.72976)
+
+[node name="CameraModifierHandle" type="Node3D" parent="Cutscene"]
+
+[node name="Cutscene Camera" type="Camera3D" parent="Cutscene/CameraModifierHandle"]
+transform = Transform3D(1, 0, 0, 0, 0.907642, 0.419744, 0, -0.419744, 0.907642, 0, 4.83687, 10.4591)
+current = true
+script = ExtResource("11_topby")
+
+[node name="BeatTimer" type="Timer" parent="Cutscene"]
+one_shot = true
+
+[node name="Subtitle Style" type="Control" parent="Cutscene" node_paths=PackedStringArray("dialogueLabel", "myResponseBox")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_hhg4i")
+dialogueLabel = NodePath("Subtitle Bar/RichTextLabel")
+myResponseBox = NodePath("Responses")
+
+[node name="Background Panel" type="Panel" parent="Cutscene/Subtitle Style"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.734
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.280029
+offset_right = -5.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8iw0w")
+
+[node name="Portrait" type="TextureRect" parent="Cutscene/Subtitle Style"]
+layout_mode = 2
+anchor_top = 0.839
+anchor_right = 0.091
+anchor_bottom = 0.987
+offset_left = 14.0
+offset_top = -0.120056
+offset_right = -0.720016
+offset_bottom = 0.039917
+texture = ExtResource("13_nlimb")
+stretch_mode = 2
+
+[node name="Subtitle Bar" type="VBoxContainer" parent="Cutscene/Subtitle Style"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.097
+anchor_top = 0.86
+anchor_right = 0.66
+anchor_bottom = 1.0
+offset_left = -0.240005
+offset_top = -31.8
+offset_right = 0.799927
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dialogue Spacer" type="Panel" parent="Cutscene/Subtitle Style/Subtitle Bar"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Cutscene/Subtitle Style/Subtitle Bar"]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("14_5tltv")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[color=#ffffff88][b]Cato[/b] - [/color]This is some test text. I'm not 100% Sure About what's going to live here."
+fit_content = true
+
+[node name="Responses" type="VBoxContainer" parent="Cutscene/Subtitle Style" node_paths=PackedStringArray("responseLabels")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.66
+anchor_top = 0.531
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.799927
+offset_top = 0.519958
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("15_u4fwd")
+responseLabels = [NodePath("VBoxContainer/RichTextLabel"), NodePath("VBoxContainer/RichTextLabel2"), NodePath("VBoxContainer/RichTextLabel3"), NodePath("VBoxContainer/RichTextLabel4")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Cutscene/Subtitle Style/Responses"]
+layout_mode = 2
+theme = ExtResource("16_ayedl")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "This is no longer the selected Response.
+"
+fit_content = true
+
+[node name="Highlight" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer/RichTextLabel"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 713.0
+offset_bottom = 97.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+
+[node name="Response Spacer" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "This is Response Two, which is also longer"
+fit_content = true
+
+[node name="Highlight" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer/RichTextLabel2"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 768.0
+offset_bottom = 85.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+
+[node name="Response Spacer2" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "This is Response Three, There is no Meme"
+fit_content = true
+
+[node name="Highlight" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer/RichTextLabel3"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 884.0
+offset_bottom = 102.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+
+[node name="Response Spacer3" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "This is Response Four, All Hail Response Four"
+fit_content = true
+
+[node name="Highlight" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer/RichTextLabel4"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 772.0
+offset_bottom = 102.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene"]
+libraries = {
+"": SubResource("AnimationLibrary_38b4b")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene"]
+stream = ExtResource("17_4efrq")
+
+[node name="Cato Actor" type="Node3D" parent="Cutscene"]
+transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, -11.3852, -0.628, 0.00300026)
+script = ExtResource("18_l6qvf")
+actorName = "Cato"
+walkingSpeedUnitsPerSecond = 4.0
+characterColor = Color(0.568627, 0.0784314, 0.215686, 1)
+
+[node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cato Actor"]
+transform = Transform3D(-3.61998e-06, 0, 0.999997, 0, 1, 0, -0.999997, 0, -3.61998e-06, -0.935359, 1.97703, 0.255529)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("19_khtrx")
+hframes = 10
+vframes = 5
+frame = 26
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Cato Actor"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_lqyp1")
+}
+
+[node name="Prop_Letter" type="Sprite3D" parent="Cutscene/Cato Actor"]
+transform = Transform3D(0.25, -0.0669873, 0.965925, 0.258819, 0.965926, -1.10534e-08, -0.933009, 0.25, 0.258819, -0.145586, 1.3125, 0.543333)
+visible = false
+pixel_size = 0.0125
+shaded = true
+texture = ExtResource("20_wp5pv")
+
+[node name="Orc Kid Actor" type="Node3D" parent="Cutscene"]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 4.32053, -0.0030123, -8.43145)
+script = ExtResource("18_l6qvf")
+actorName = "Orc Kid"
+
+[node name="Sprite3D" type="Sprite3D" parent="Cutscene/Orc Kid Actor"]
+transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -2.06036, 4.01071, 0.255529)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("21_anjpj")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Orc Kid Actor"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_bdt4x")
+}
+
+[node name="Prop_Letter" type="Sprite3D" parent="Cutscene/Orc Kid Actor"]
+transform = Transform3D(0.25, -0.0669873, 0.965925, 0.258819, 0.965926, -1.10534e-08, -0.933009, 0.25, 0.258819, -0.145586, 1.3125, 0.543333)
+visible = false
+pixel_size = 0.0125
+shaded = true
+texture = ExtResource("20_wp5pv")
+
+[node name="Skeleton Actor" type="Node3D" parent="Cutscene"]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 5.19553, -0.0030123, -8.43145)
+script = ExtResource("18_l6qvf")
+actorName = "Skeleton"
+
+[node name="Sprite3D" type="Sprite3D" parent="Cutscene/Skeleton Actor"]
+transform = Transform3D(0.965923, 0, -0.258818, 0, 1, 0, 0.258818, 0, 0.965923, 2.06464, 0.82321, 0.880529)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("22_1yueq")
+hframes = 10
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Skeleton Actor"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_4uacx")
+}
+
+[node name="Prop_Letter" type="Sprite3D" parent="Cutscene/Skeleton Actor"]
+transform = Transform3D(0.25, -0.0669873, 0.965925, 0.258819, 0.965926, -1.10534e-08, -0.933009, 0.25, 0.258819, -0.145586, 1.3125, 0.543333)
+visible = false
+pixel_size = 0.0125
+shaded = true
+texture = ExtResource("20_wp5pv")
+
+[node name="Battle" type="Node3D" parent="." node_paths=PackedStringArray("gui", "battleRoster")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.25, -0.625, -5.1875)
+script = ExtResource("24_pxhrf")
+gui = NodePath("Camera3D/BattleGUI")
+nextBattlePath = "res://Levels/Combat Playtest One/Victory.tscn"
+defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
+startingScene = true
+battleRoster = NodePath("Roster")
+
+[node name="Roster" type="Node3D" parent="Battle" node_paths=PackedStringArray("positionPointer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("25_semha")
+positionPointer = NodePath("Pointer")
+debugMode = true
+
+[node name="Pointer" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1)
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="Battle/Roster/Pointer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.64, 0)
+pixel_size = 0.008
+texture = ExtResource("26_dkpch")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Battle/Roster/Pointer"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.76, 0)
+light_color = Color(1, 0.984314, 0.701961, 1)
+light_energy = 32.0
+spot_angle = 15.0
+
+[node name="HeroBack0" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.52, 0, -0.0625001)
+
+[node name="HeroBack1" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -1.0625)
+
+[node name="HeroBack2" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.48, 0, -2.0625)
+
+[node name="HeroMid0" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, 0, -1.19209e-07)
+
+[node name="HeroMid1" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 0, -1)
+
+[node name="HeroMid2" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.08, 0, -2)
+
+[node name="HeroFront0" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56, 0, 0.0625)
+
+[node name="HeroFront1" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -0.9375)
+
+[node name="Cato" parent="Battle/Roster/HeroFront1" node_paths=PackedStringArray("readout") instance=ExtResource("27_j7es1")]
+readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
+
+[node name="HeroFront2" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1.9375)
+
+[node name="EnemyFront0" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0, 0.0625)
+
+[node name="EnemyFront1" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, -0.9375)
+
+[node name="Skeleton" parent="Battle/Roster/EnemyFront1" instance=ExtResource("28_i2l6e")]
+
+[node name="EnemyFront2" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1.9375)
+
+[node name="EnemyMid0" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2, 0, 0)
+
+[node name="EnemyMid1" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 0, -1)
+
+[node name="EnemyMid2" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -2)
+
+[node name="EnemyBack0" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.52, 0, -0.0625)
+
+[node name="EnemyBack1" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -3.0625)
+
+[node name="EnemyBack2" type="Node3D" parent="Battle/Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48, 0, -2.0625)
+
+[node name="Camera3D" type="Camera3D" parent="Battle"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -1.53, 4.8125, 15.5625)
+current = true
+fov = 60.0
+
+[node name="BattleGUI" parent="Battle/Camera3D" instance=ExtResource("29_8ooj4")]
+
+[node name="Readouts" parent="Battle/Camera3D/BattleGUI" index="6" node_paths=PackedStringArray("readouts", "topMenu")]
+readouts = [null, null, null]
+topMenu = NodePath("Top Menu")
+
+[node name="Silver Readout" parent="Battle/Camera3D/BattleGUI/Readouts" index="0"]
+visible = false
+
+[node name="Luciene Readout" parent="Battle/Camera3D/BattleGUI/Readouts" index="1"]
+visible = false
+
+[node name="Turnover Timer" type="Timer" parent="Battle"]
+wait_time = 0.4
+
+[node name="Between Actions Timer" type="Timer" parent="Battle"]
+wait_time = 0.2
+
+[editable path="Battle/Camera3D/BattleGUI"]

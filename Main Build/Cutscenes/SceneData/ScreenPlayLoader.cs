@@ -4,7 +4,6 @@ using Godot;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-using static CutsceneUtils;
 
 public static class ScreenPlayLoader{
         
@@ -146,25 +145,8 @@ public static class ScreenPlayLoader{
         if(lineNode.Name != "line") throw new ArgumentException(); 
         string speaker = lineNode.FirstChild.InnerText;
         string text = lineNode.FirstChild.NextSibling.InnerText;
-        List<CutsceneTextEffect> effects = new List<CutsceneTextEffect>();
-        //Index is used track where in the bigger line we are. We pass this data to the Text Effects so they know where to start/stop
-        int index = -1;
-
-        //The only children Line nodes should have are text effects and text fragments, so this iterates through those.
-        foreach(XmlNode node in lineNode.FirstChild.NextSibling.ChildNodes){ 
-            switch(node.Name){ //If we find a text fragement, we just note it's length for indexing.
-                case "#text":
-                    index += node.InnerText.Length;
-                    break;
-                default: //This is a text effect, we pull out which kind it is from the XML name and save it.
-                    int start = index;
-                    int end = index + node.InnerText.Length;
-                    effects.Add(new CutsceneTextEffect(start, end, node.Name));
-                    break;
-            }
-        }
-        bool hasAnim = (anim != null);
-        return new CutsceneLine(speaker, text, effects.ToArray(), hasAnim, anim);
+        bool hasAnim = anim != null;
+        return new CutsceneLine(speaker, text, hasAnim, anim);
     }
 
     //returns whether or not it returned a line

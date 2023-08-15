@@ -150,7 +150,7 @@ public partial class BattleGUI : Control
 			}
 		}
 		//If we've reached this block of code, we have CED for every player, and can send it all back.
-		EmitSignal(SignalName.PlayerFinishedCommandInput);
+		EmitSignal(BattleGUI.SignalName.PlayerFinishedCommandInput);
 		this.active = false;
 		HideGUI(true, true);
 	}

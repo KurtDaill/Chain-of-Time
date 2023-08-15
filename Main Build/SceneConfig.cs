@@ -5,7 +5,7 @@ using static GameplayUtilities;
 public partial class SceneConfig : Node
 {
 	[Export]
-	NodePath startCustscene;
+	CutsceneDirector startCutscene;
 	[Export]
 	Battle startBattle;
 	[Export]
@@ -30,6 +30,10 @@ public partial class SceneConfig : Node
 		switch(beginIn){
 			case StartingMode.Battle:
 				gm.SetMode(startBattle); break;
+			case StartingMode.Cutscene:
+				gm.SetMode(startCutscene);
+				startCutscene.PlayCutscene();
+				break;
 		}
 	}
 
