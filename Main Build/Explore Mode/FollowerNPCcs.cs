@@ -27,7 +27,7 @@ public partial class FollowerNPCcs : CharacterBody3D
 	private bool followerEnabled = true;
 
 	public override void _Ready(){
-		player = this.GetParent<SceneConfig>().GetExplorePlayer();
+		//player = this.GetParent<SceneConfig>().GetExplorePlayer();
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
 	}
 

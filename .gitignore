@@ -1,5 +1,5 @@
 # Godot-specific ignores
-.import/
+*.import
 export.cfg
 export_presets.cfg
 .godot/
@@ -16,3 +16,5 @@ Test Builds/Chain Of Time.pck
 *.zip
 *.exe
 *.pck
+*.import
+*.import

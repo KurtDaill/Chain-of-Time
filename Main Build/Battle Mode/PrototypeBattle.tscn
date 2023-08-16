@@ -55,7 +55,9 @@ ambient_light_source = 2
 ambient_light_color = Color(0.380392, 0.376471, 0.431373, 1)
 ambient_light_energy = 1.5
 
-[node name="TopNode" type="Node3D"]
+[node name="TopNode" type="Node3D" node_paths=PackedStringArray("startingMode")]
+script = ExtResource("1_tpom7")
+startingMode = NodePath("Battle")
 
 [node name="Battle" type="Node3D" parent="." node_paths=PackedStringArray("gui", "battleRoster")]
 script = ExtResource("1_4rxw7")
@@ -276,10 +278,8 @@ spot_angle = 20.4822
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_51ne1")
 
-[node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("startBattle")]
+[node name="Node3D" type="Node3D" parent="."]
 script = ExtResource("1_tpom7")
-startBattle = NodePath("../Battle")
-beginIn = 2
 
 [editable path="Battle/Camera3D/BattleGUI"]
 [editable path="Battle/Camera3D/BattleGUI/Skill Menu/Card Rack/Card 1"]

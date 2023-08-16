@@ -36,7 +36,7 @@ public partial class GameMaster : Node
         if(Input.IsActionJustPressed("ui_up")){return PlayerInput.Up;}
         if(Input.IsActionJustPressed("ui_down")){return PlayerInput.Down;}
         if(Input.IsActionJustPressed("ui_left")){return PlayerInput.Left;}
-        if(Input.IsActionJustPressed("ui_down")){return PlayerInput.Right;}
+        if(Input.IsActionJustPressed("ui_right")){return PlayerInput.Right;}
         if(Input.IsActionJustPressed("ui_accept")){return PlayerInput.Select;}
         if(Input.IsActionJustPressed("ui_back")){return PlayerInput.Back;}
         return PlayerInput.None;
