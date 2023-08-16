@@ -10,6 +10,13 @@ public partial class Actor : Node3D
 	protected double walkingSpeedUnitsPerSecond = 2;
 	[Export]
 	protected Color characterColor;
+	[Export]
+	protected AudioStreamPlayer OneSyllablePip;
+	[Export]
+	protected AudioStreamPlayer TwoSyllablePip;
+	[Export]
+	protected AudioStreamPlayer EmphasisPip;
+
 	protected double blockingTimeElapsed, blockingTimeTotal;
 	string destinationBlockingMarkerName;
 	protected CutsceneDialogueBox dialogueBox;

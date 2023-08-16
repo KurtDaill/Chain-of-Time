@@ -1,0 +1,761 @@
+[gd_scene load_steps=36 format=3 uid="uid://bvp4j8v7t4l8l"]
+
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDirector.cs" id="1_ujone"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneShot.cs" id="2_ki0dt"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneCamera.cs" id="3_ahiyd"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDialogueBox.cs" id="4_ngqmc"]
+[ext_resource type="Texture2D" uid="uid://bc5cvecx1cei7" path="res://Art/Time Sense.png" id="5_66733"]
+[ext_resource type="Theme" uid="uid://c3w8cbrksjko5" path="res://GUI/Themes/Cutscene Themes/NormalDialogueText.tres" id="6_5net3"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneResponseBox.cs" id="7_5bidd"]
+[ext_resource type="Theme" uid="uid://c6hjkq2or80ln" path="res://GUI/Themes/Cutscene Themes/Dialogue Responses.tres" id="8_gc3mf"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/Actor.cs" id="10_hbjlf"]
+[ext_resource type="Texture2D" uid="uid://bxpwsf3thk4fo" path="res://Art/Prod Sprite Sheets/CatoCinematicAnimation-Sheet.png" id="11_xvcjd"]
+[ext_resource type="Texture2D" uid="uid://b43sxpud60he4" path="res://Art/Letter.png" id="12_ekhjh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iw0w"]
+bg_color = Color(0.623529, 0.686275, 0.741176, 0.337255)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y51iu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncocj"]
+bg_color = Color(0.447059, 0.737255, 0.929412, 0.67451)
+
+[sub_resource type="Animation" id="Animation_jm3qf"]
+resource_name = "Distant Boom"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraModifierHandle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.4, 0, 0), Vector3(0.4, 0, 0), Vector3(-0.3, 0, 0), Vector3(0.3, 0, 0), Vector3(-0.2, 0, 0), Vector3(0.2, 0, 0), Vector3(-0.1, 0, 0), Vector3(0.1, 0, 0), Vector3(-0.1, 0, 0), Vector3(0.1, 0, 0), Vector3(-0.05, 0, 0), Vector3(0.05, 0, 0), Vector3(-0.05, 0, 0), Vector3(0.05, 0, 0), Vector3(-0.05, 0, 0), Vector3(0.05, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_38b4b"]
+_data = {
+"Distant Boom": SubResource("Animation_jm3qf")
+}
+
+[sub_resource type="Animation" id="Animation_i3lke"]
+resource_name = "Anxious Pacing"
+length = 8.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.5, 4, 5, 6.5, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.935359, 1.57321, 0.255529), Vector3(2, 1.573, 0.256), Vector3(2, 1.573, 0.256), Vector3(-1, 1.573, 0.256), Vector3(-1, 1.573, 0.256), Vector3(2, 1.573, 0.256), Vector3(-0.935359, 1.57321, 0.255529)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5, 5, 6.5, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.261799, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite3D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_fachi"]
+resource_name = "Draw Sword"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [11, 12, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_hbyni"]
+resource_name = "Fiddle with Object Sit"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_mnssw"]
+resource_name = "Freeze"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 2]
+}
+
+[sub_resource type="Animation" id="Animation_ergnw"]
+resource_name = "Hesitate"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 13, 15, 14]
+}
+
+[sub_resource type="Animation" id="Animation_bkc5n"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_xwaf0"]
+resource_name = "Cato Idle Sit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Prop_Letter:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0plmh"]
+resource_name = "Look Around"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.4, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [13, 15, 13, 15, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_m6h2j"]
+resource_name = "Cato Look Behind Sit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_ukiyq"]
+resource_name = "Look Up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [14, 13]
+}
+
+[sub_resource type="Animation" id="Animation_ls8h1"]
+resource_name = "Nod"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [13, 14, 13]
+}
+
+[sub_resource type="Animation" id="Animation_80o84"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dialogue Box:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.92119, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.935359, 1.97703, 0.255529)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Prop_Letter:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.145586, 1.3125, 0.543333)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Prop_Letter:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite3D:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4c2mm"]
+resource_name = "Run Out"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(5.941, -0.125, -0.505), Vector3(10.1285, -0.125, 0.4325)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.309, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [18, 25]
+}
+
+[sub_resource type="Animation" id="Animation_5fwyo"]
+resource_name = "Show Object Sit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Prop_Letter:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Prop_Letter:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector3(-0.75107, 1.375, -0.563895)]
+}
+
+[sub_resource type="Animation" id="Animation_jlj8p"]
+resource_name = "Stand Up and Draw Sword"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 9, 7, 11, 12, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector3(-1.37147, -0.125, -0.229757), Vector3(-1.37147, -0.125, -0.042257), Vector3(-1.37147, -0.125, 0.145243)]
+}
+
+[sub_resource type="Animation" id="Animation_i57d2"]
+resource_name = "Surprise"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_wag5e"]
+resource_name = "Taunt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [18, 19, 20]
+}
+
+[sub_resource type="Animation" id="Animation_i5yur"]
+resource_name = "Walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [21, 28]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqyp1"]
+_data = {
+"Anxious Pacing": SubResource("Animation_i3lke"),
+"Draw Sword": SubResource("Animation_fachi"),
+"Fiddle with Object Sit": SubResource("Animation_hbyni"),
+"Freeze": SubResource("Animation_mnssw"),
+"Hesitate": SubResource("Animation_ergnw"),
+"Idle": SubResource("Animation_bkc5n"),
+"Idle Sit": SubResource("Animation_xwaf0"),
+"Look Around": SubResource("Animation_0plmh"),
+"Look Behind Sit": SubResource("Animation_m6h2j"),
+"Look Up": SubResource("Animation_ukiyq"),
+"Nod": SubResource("Animation_ls8h1"),
+"RESET": SubResource("Animation_80o84"),
+"Run Out": SubResource("Animation_4c2mm"),
+"Show Object Sit": SubResource("Animation_5fwyo"),
+"Stand Up and Draw Sword": SubResource("Animation_jlj8p"),
+"Surprise": SubResource("Animation_i57d2"),
+"Taunt": SubResource("Animation_wag5e"),
+"Walk": SubResource("Animation_i5yur")
+}
+
+[node name="Cutscene" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.6875, 0, 0)
+script = ExtResource("1_ujone")
+screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Ext Streets of Old Town.xml"
+initialShotName = "Initial Shot"
+
+[node name="Shot List" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
+
+[node name="Initial Shot" type="Camera3D" parent="Shot List"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8125, 2.0625, 6.125)
+current = true
+script = ExtResource("2_ki0dt")
+
+[node name="Blocking Marks" type="Node3D" parent="."]
+
+[node name="CameraModifierHandle" type="Node3D" parent="."]
+
+[node name="Cutscene Camera" type="Camera3D" parent="CameraModifierHandle"]
+transform = Transform3D(1, 0, 0, 0, 0.907642, 0.419744, 0, -0.419744, 0.907642, 0, 4.83687, 10.4591)
+current = true
+script = ExtResource("3_ahiyd")
+
+[node name="BeatTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Subtitle Style" type="Control" parent="." node_paths=PackedStringArray("dialogueLabel", "myResponseBox")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_ngqmc")
+dialogueLabel = NodePath("Subtitle Bar/RichTextLabel")
+myResponseBox = NodePath("Responses")
+
+[node name="Background Panel" type="Panel" parent="Subtitle Style"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.734
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.280029
+offset_right = -5.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8iw0w")
+
+[node name="Portrait" type="TextureRect" parent="Subtitle Style"]
+layout_mode = 2
+anchor_top = 0.839
+anchor_right = 0.091
+anchor_bottom = 0.987
+offset_left = 14.0
+offset_top = -0.120056
+offset_right = -0.720016
+offset_bottom = 0.039917
+texture = ExtResource("5_66733")
+stretch_mode = 2
+
+[node name="Subtitle Bar" type="VBoxContainer" parent="Subtitle Style"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.097
+anchor_top = 0.86
+anchor_right = 0.66
+anchor_bottom = 1.0
+offset_left = -0.240005
+offset_top = -31.8
+offset_right = 0.799927
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dialogue Spacer" type="Panel" parent="Subtitle Style/Subtitle Bar"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Subtitle Style/Subtitle Bar"]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("6_5net3")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[color=#ffffff88][b]Cato[/b] - [/color]This is some test text. I'm not 100% Sure About what's going to live here."
+fit_content = true
+
+[node name="Responses" type="VBoxContainer" parent="Subtitle Style" node_paths=PackedStringArray("responseLabels")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.66
+anchor_top = 0.531
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.799927
+offset_top = 0.519958
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("7_5bidd")
+responseLabels = [NodePath("VBoxContainer/RichTextLabel"), NodePath("VBoxContainer/RichTextLabel2"), NodePath("VBoxContainer/RichTextLabel3"), NodePath("VBoxContainer/RichTextLabel4")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Subtitle Style/Responses"]
+layout_mode = 2
+theme = ExtResource("8_gc3mf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Subtitle Style/Responses/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "This is no longer the selected Response.
+"
+fit_content = true
+
+[node name="Highlight" type="Panel" parent="Subtitle Style/Responses/VBoxContainer/RichTextLabel"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 713.0
+offset_bottom = 97.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+
+[node name="Response Spacer" type="Panel" parent="Subtitle Style/Responses/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Subtitle Style/Responses/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "This is Response Two, which is also longer"
+fit_content = true
+
+[node name="Highlight" type="Panel" parent="Subtitle Style/Responses/VBoxContainer/RichTextLabel2"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 768.0
+offset_bottom = 85.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+
+[node name="Response Spacer2" type="Panel" parent="Subtitle Style/Responses/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Subtitle Style/Responses/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "This is Response Three, There is no Meme"
+fit_content = true
+
+[node name="Highlight" type="Panel" parent="Subtitle Style/Responses/VBoxContainer/RichTextLabel3"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 884.0
+offset_bottom = 102.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+
+[node name="Response Spacer3" type="Panel" parent="Subtitle Style/Responses/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Subtitle Style/Responses/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "This is Response Four, All Hail Response Four"
+fit_content = true
+
+[node name="Highlight" type="Panel" parent="Subtitle Style/Responses/VBoxContainer/RichTextLabel4"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 772.0
+offset_bottom = 102.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_38b4b")
+}
+
+[node name="Cato Actor" type="Node3D" parent="."]
+transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, -11.3852, -0.628, 0.00300026)
+script = ExtResource("10_hbjlf")
+actorName = "Cato"
+walkingSpeedUnitsPerSecond = 4.0
+characterColor = Color(0.568627, 0.0784314, 0.215686, 1)
+
+[node name="Sprite3D" type="Sprite3D" parent="Cato Actor"]
+transform = Transform3D(-3.61998e-06, 0, 0.999997, 0, 1, 0, -0.999997, 0, -3.61998e-06, -0.935359, 1.97703, 0.255529)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("11_xvcjd")
+hframes = 10
+vframes = 5
+frame = 26
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cato Actor"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_lqyp1")
+}
+
+[node name="Prop_Letter" type="Sprite3D" parent="Cato Actor"]
+transform = Transform3D(0.25, -0.0669873, 0.965925, 0.258819, 0.965926, -1.10534e-08, -0.933009, 0.25, 0.258819, -0.145586, 1.3125, 0.543333)
+visible = false
+pixel_size = 0.0125
+shaded = true
+texture = ExtResource("12_ekhjh")

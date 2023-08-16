@@ -20,6 +20,8 @@ public partial class Battle : GameplayMode
 	private string defeatScreenPath;
 	[Export]
 	bool startingScene = false;
+	[Export]
+	Camera3D battleCamera;
 
 	//private eventChain theChain = new eventChain();
 
@@ -49,6 +51,7 @@ public partial class Battle : GameplayMode
 		}
 		Visible = false;
 		gui.Visible = false;
+		this.battleCamera.Current = false;
 	}
 
 	public override async Task<GameplayMode> RemoteProcess(double delta){ //TO-DO can we implement "waiting" in a better way?
@@ -202,6 +205,7 @@ public partial class Battle : GameplayMode
 	public async override Task StartUp(){
 		this.Visible = true;
 		gui.Visible = true;
+		battleCamera.Current = true;
 	}
 }
 

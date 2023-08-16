@@ -60,6 +60,8 @@ public partial class CutsceneDirector : GameplayMode
         cutsceneStateHistory = new Stack<PackedScene>();
         done = false;
         nextMode = (GameplayMode) nextGameplayMode;
+        this.Visible = false;
+        this.cutsceneCam.Current = false;
     }
 
     //Because we deleted and reload our children during editing, we want to have this set as its own function to be called then instead of just in ready
@@ -336,6 +338,11 @@ public partial class CutsceneDirector : GameplayMode
         //TODO add in visual effects (or do those belong in Transition in?)
     }
 
+    public async override Task StartUp(){
+        this.Visible = true;
+        this.cutsceneCam.Current = true;
+        PlayCutscene();
+    }
 
     /*
     //Implements the "Save State" section of the momento pattern using packed scenes

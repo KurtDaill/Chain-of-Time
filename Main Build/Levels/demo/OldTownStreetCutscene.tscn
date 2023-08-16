@@ -1192,7 +1192,6 @@ screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Ext Streets 
 playerCharacter = NodePath("Cato Actor")
 initialShotName = "Initial Shot"
 dialogueBox = NodePath("Subtitle Style")
-autoPlay = true
 cutsceneCam = NodePath("CameraModifierHandle/Cutscene Camera")
 
 [node name="Shot List" type="Node3D" parent="Cutscene"]
@@ -1411,7 +1410,7 @@ walkingSpeedUnitsPerSecond = 4.0
 characterColor = Color(0.568627, 0.0784314, 0.215686, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cato Actor"]
-transform = Transform3D(-4.61936e-07, 0, 0.999997, 0, 1, 0, -0.999997, 0, -4.61936e-07, -0.935359, 1.97703, 0.255529)
+transform = Transform3D(-3.61998e-06, 0, 0.999997, 0, 1, 0, -0.999997, 0, -3.61998e-06, -0.935359, 1.97703, 0.255529)
 pixel_size = 0.0125
 shaded = true
 alpha_cut = 2

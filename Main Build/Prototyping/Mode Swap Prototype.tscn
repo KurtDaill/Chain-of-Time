@@ -144,12 +144,12 @@ ambient_light_source = 2
 ambient_light_color = Color(0.709804, 0.772549, 1, 1)
 ambient_light_energy = 0.2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iw0w"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hveqv"]
 bg_color = Color(0.623529, 0.686275, 0.741176, 0.337255)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y51iu"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_syscj"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncocj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6rij"]
 bg_color = Color(0.447059, 0.737255, 0.929412, 0.67451)
 
 [sub_resource type="Animation" id="Animation_jm3qf"]
@@ -860,9 +860,10 @@ _data = {
 "Surprise": SubResource("Animation_k1c8k")
 }
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("startingMode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1875, 4.1875, -0.1875)
 script = ExtResource("1_wgip6")
+startingMode = NodePath("Cutscene A")
 
 [node name="TestOldTownHouse1gltf" parent="." instance=ExtResource("1_58hvu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26)
@@ -1185,7 +1186,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5625, -1.0625, 0)
 shape = SubResource("BoxShape3D_sjehb")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.965926, 0.224144, 0.12941, -0.258819, 0.836516, 0.482963, 0, -0.5, 0.866025, 0, 0, 0)
+transform = Transform3D(0.965926, 0.224144, 0.129409, -0.258819, 0.836516, 0.482963, -2.98023e-08, -0.5, 0.866025, 0, 0, 0)
 light_energy = 0.2
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
@@ -1194,7 +1195,7 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_v12p8")
 
-[node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox", "cutsceneCam", "nextGameplayMode")]
+[node name="Cutscene A" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox", "cutsceneCam", "nextGameplayMode")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.6875, 0, 0)
 script = ExtResource("9_q1n18")
 screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Ext Streets of Old Town.xml"
@@ -1202,38 +1203,38 @@ playerCharacter = NodePath("Cato Actor")
 initialShotName = "Initial Shot"
 dialogueBox = NodePath("Subtitle Style")
 cutsceneCam = NodePath("CameraModifierHandle/Cutscene Camera")
-nextGameplayMode = NodePath("../Battle")
+nextGameplayMode = NodePath("../Battle A")
 
-[node name="Shot List" type="Node3D" parent="Cutscene"]
+[node name="Shot List" type="Node3D" parent="Cutscene A"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
 
-[node name="Initial Shot" type="Camera3D" parent="Cutscene/Shot List"]
+[node name="Initial Shot" type="Camera3D" parent="Cutscene A/Shot List"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8125, 2.0625, 6.125)
 script = ExtResource("10_m1u5r")
 
-[node name="Kids in Trouble" type="Camera3D" parent="Cutscene/Shot List"]
+[node name="Kids in Trouble" type="Camera3D" parent="Cutscene A/Shot List"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.09, 2)
 script = ExtResource("10_m1u5r")
 
-[node name="Blocking Marks" type="Node3D" parent="Cutscene"]
+[node name="Blocking Marks" type="Node3D" parent="Cutscene A"]
 
-[node name="Run In" type="Marker3D" parent="Cutscene/Blocking Marks"]
+[node name="Run In" type="Marker3D" parent="Cutscene A/Blocking Marks"]
 transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, 0.592827, -0.628012, -2.1215)
 
-[node name="Defend the Kid" type="Marker3D" parent="Cutscene/Blocking Marks"]
+[node name="Defend the Kid" type="Marker3D" parent="Cutscene A/Blocking Marks"]
 transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, 4.44103, -0.5625, -5.72976)
 
-[node name="CameraModifierHandle" type="Node3D" parent="Cutscene"]
+[node name="CameraModifierHandle" type="Node3D" parent="Cutscene A"]
 
-[node name="Cutscene Camera" type="Camera3D" parent="Cutscene/CameraModifierHandle"]
+[node name="Cutscene Camera" type="Camera3D" parent="Cutscene A/CameraModifierHandle"]
 transform = Transform3D(1, 0, 0, 0, 0.907642, 0.419744, 0, -0.419744, 0.907642, 0, 4.83687, 10.4591)
 current = true
 script = ExtResource("11_topby")
 
-[node name="BeatTimer" type="Timer" parent="Cutscene"]
+[node name="BeatTimer" type="Timer" parent="Cutscene A"]
 one_shot = true
 
-[node name="Subtitle Style" type="Control" parent="Cutscene" node_paths=PackedStringArray("dialogueLabel", "myResponseBox")]
+[node name="Subtitle Style" type="Control" parent="Cutscene A" node_paths=PackedStringArray("dialogueLabel", "myResponseBox")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1244,7 +1245,7 @@ script = ExtResource("12_hhg4i")
 dialogueLabel = NodePath("Subtitle Bar/RichTextLabel")
 myResponseBox = NodePath("Responses")
 
-[node name="Background Panel" type="Panel" parent="Cutscene/Subtitle Style"]
+[node name="Background Panel" type="Panel" parent="Cutscene A/Subtitle Style"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -1256,9 +1257,9 @@ offset_right = -5.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_8iw0w")
+theme_override_styles/panel = SubResource("StyleBoxFlat_hveqv")
 
-[node name="Portrait" type="TextureRect" parent="Cutscene/Subtitle Style"]
+[node name="Portrait" type="TextureRect" parent="Cutscene A/Subtitle Style"]
 layout_mode = 2
 anchor_top = 0.839
 anchor_right = 0.091
@@ -1270,7 +1271,7 @@ offset_bottom = 0.039917
 texture = ExtResource("13_nlimb")
 stretch_mode = 2
 
-[node name="Subtitle Bar" type="VBoxContainer" parent="Cutscene/Subtitle Style"]
+[node name="Subtitle Bar" type="VBoxContainer" parent="Cutscene A/Subtitle Style"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.097
@@ -1283,12 +1284,12 @@ offset_right = 0.799927
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Dialogue Spacer" type="Panel" parent="Cutscene/Subtitle Style/Subtitle Bar"]
+[node name="Dialogue Spacer" type="Panel" parent="Cutscene A/Subtitle Style/Subtitle Bar"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_syscj")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Cutscene/Subtitle Style/Subtitle Bar"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Cutscene A/Subtitle Style/Subtitle Bar"]
 clip_contents = false
 layout_mode = 2
 theme = ExtResource("14_5tltv")
@@ -1298,7 +1299,7 @@ bbcode_enabled = true
 text = "[color=#ffffff88][b]Cato[/b] - [/color]This is some test text. I'm not 100% Sure About what's going to live here."
 fit_content = true
 
-[node name="Responses" type="VBoxContainer" parent="Cutscene/Subtitle Style" node_paths=PackedStringArray("responseLabels")]
+[node name="Responses" type="VBoxContainer" parent="Cutscene A/Subtitle Style" node_paths=PackedStringArray("responseLabels")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -1314,20 +1315,20 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 script = ExtResource("15_u4fwd")
-responseLabels = []
+responseLabels = [NodePath("VBoxContainer/RichTextLabel"), NodePath("VBoxContainer/RichTextLabel2"), NodePath("VBoxContainer/RichTextLabel3"), NodePath("VBoxContainer/RichTextLabel4")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Cutscene/Subtitle Style/Responses"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Cutscene A/Subtitle Style/Responses"]
 layout_mode = 2
 theme = ExtResource("16_ayedl")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Cutscene A/Subtitle Style/Responses/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 40
 text = "This is no longer the selected Response.
 "
 fit_content = true
 
-[node name="Highlight" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer/RichTextLabel"]
+[node name="Highlight" type="Panel" parent="Cutscene A/Subtitle Style/Responses/VBoxContainer/RichTextLabel"]
 visible = false
 z_index = -1
 layout_mode = 0
@@ -1335,14 +1336,14 @@ offset_left = 1.0
 offset_top = -1.0
 offset_right = 713.0
 offset_bottom = 97.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_j6rij")
 
-[node name="Response Spacer" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+[node name="Response Spacer" type="Panel" parent="Cutscene A/Subtitle Style/Responses/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_syscj")
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="Cutscene A/Subtitle Style/Responses/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
@@ -1350,7 +1351,7 @@ theme_override_font_sizes/normal_font_size = 40
 text = "This is Response Two, which is also longer"
 fit_content = true
 
-[node name="Highlight" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer/RichTextLabel2"]
+[node name="Highlight" type="Panel" parent="Cutscene A/Subtitle Style/Responses/VBoxContainer/RichTextLabel2"]
 visible = false
 z_index = -1
 layout_mode = 0
@@ -1358,21 +1359,21 @@ offset_left = 1.0
 offset_top = -1.0
 offset_right = 768.0
 offset_bottom = 85.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_j6rij")
 
-[node name="Response Spacer2" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+[node name="Response Spacer2" type="Panel" parent="Cutscene A/Subtitle Style/Responses/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_syscj")
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="Cutscene A/Subtitle Style/Responses/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
 theme_override_font_sizes/normal_font_size = 40
 text = "This is Response Three, There is no Meme"
 fit_content = true
 
-[node name="Highlight" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer/RichTextLabel3"]
+[node name="Highlight" type="Panel" parent="Cutscene A/Subtitle Style/Responses/VBoxContainer/RichTextLabel3"]
 visible = false
 z_index = -1
 layout_mode = 0
@@ -1380,21 +1381,21 @@ offset_left = 1.0
 offset_top = -1.0
 offset_right = 884.0
 offset_bottom = 102.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_j6rij")
 
-[node name="Response Spacer3" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+[node name="Response Spacer3" type="Panel" parent="Cutscene A/Subtitle Style/Responses/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_syscj")
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+[node name="RichTextLabel4" type="RichTextLabel" parent="Cutscene A/Subtitle Style/Responses/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
 theme_override_font_sizes/normal_font_size = 40
 text = "This is Response Four, All Hail Response Four"
 fit_content = true
 
-[node name="Highlight" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer/RichTextLabel4"]
+[node name="Highlight" type="Panel" parent="Cutscene A/Subtitle Style/Responses/VBoxContainer/RichTextLabel4"]
 visible = false
 z_index = -1
 layout_mode = 0
@@ -1402,24 +1403,24 @@ offset_left = 1.0
 offset_top = -1.0
 offset_right = 772.0
 offset_bottom = 102.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_j6rij")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene A"]
 libraries = {
 "": SubResource("AnimationLibrary_38b4b")
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene A"]
 stream = ExtResource("17_4efrq")
 
-[node name="Cato Actor" type="Node3D" parent="Cutscene"]
+[node name="Cato Actor" type="Node3D" parent="Cutscene A"]
 transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, -11.3852, -0.628, 0.00300026)
 script = ExtResource("18_l6qvf")
 actorName = "Cato"
 walkingSpeedUnitsPerSecond = 4.0
 characterColor = Color(0.568627, 0.0784314, 0.215686, 1)
 
-[node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cato Actor"]
+[node name="Sprite3D" type="Sprite3D" parent="Cutscene A/Cato Actor"]
 transform = Transform3D(-3.61998e-06, 0, 0.999997, 0, 1, 0, -0.999997, 0, -3.61998e-06, -0.935359, 1.97703, 0.255529)
 pixel_size = 0.0125
 shaded = true
@@ -1430,25 +1431,25 @@ hframes = 10
 vframes = 5
 frame = 26
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Cato Actor"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene A/Cato Actor"]
 autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_lqyp1")
 }
 
-[node name="Prop_Letter" type="Sprite3D" parent="Cutscene/Cato Actor"]
+[node name="Prop_Letter" type="Sprite3D" parent="Cutscene A/Cato Actor"]
 transform = Transform3D(0.25, -0.0669873, 0.965925, 0.258819, 0.965926, -1.10534e-08, -0.933009, 0.25, 0.258819, -0.145586, 1.3125, 0.543333)
 visible = false
 pixel_size = 0.0125
 shaded = true
 texture = ExtResource("20_wp5pv")
 
-[node name="Orc Kid Actor" type="Node3D" parent="Cutscene"]
+[node name="Orc Kid Actor" type="Node3D" parent="Cutscene A"]
 transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 4.32053, -0.0030123, -8.43145)
 script = ExtResource("18_l6qvf")
 actorName = "Orc Kid"
 
-[node name="Sprite3D" type="Sprite3D" parent="Cutscene/Orc Kid Actor"]
+[node name="Sprite3D" type="Sprite3D" parent="Cutscene A/Orc Kid Actor"]
 transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -2.06036, 4.01071, 0.255529)
 pixel_size = 0.0125
 shaded = true
@@ -1457,25 +1458,25 @@ texture_filter = 1
 texture = ExtResource("21_anjpj")
 hframes = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Orc Kid Actor"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene A/Orc Kid Actor"]
 autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_bdt4x")
 }
 
-[node name="Prop_Letter" type="Sprite3D" parent="Cutscene/Orc Kid Actor"]
+[node name="Prop_Letter" type="Sprite3D" parent="Cutscene A/Orc Kid Actor"]
 transform = Transform3D(0.25, -0.0669873, 0.965925, 0.258819, 0.965926, -1.10534e-08, -0.933009, 0.25, 0.258819, -0.145586, 1.3125, 0.543333)
 visible = false
 pixel_size = 0.0125
 shaded = true
 texture = ExtResource("20_wp5pv")
 
-[node name="Skeleton Actor" type="Node3D" parent="Cutscene"]
+[node name="Skeleton Actor" type="Node3D" parent="Cutscene A"]
 transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 5.19553, -0.0030123, -8.43145)
 script = ExtResource("18_l6qvf")
 actorName = "Skeleton"
 
-[node name="Sprite3D" type="Sprite3D" parent="Cutscene/Skeleton Actor"]
+[node name="Sprite3D" type="Sprite3D" parent="Cutscene A/Skeleton Actor"]
 transform = Transform3D(0.965923, 0, -0.258818, 0, 1, 0, 0.258818, 0, 0.965923, 2.06464, 0.82321, 0.880529)
 pixel_size = 0.0125
 shaded = true
@@ -1485,129 +1486,156 @@ texture = ExtResource("22_1yueq")
 hframes = 10
 vframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Skeleton Actor"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene A/Skeleton Actor"]
 autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_4uacx")
 }
 
-[node name="Prop_Letter" type="Sprite3D" parent="Cutscene/Skeleton Actor"]
+[node name="Prop_Letter" type="Sprite3D" parent="Cutscene A/Skeleton Actor"]
 transform = Transform3D(0.25, -0.0669873, 0.965925, 0.258819, 0.965926, -1.10534e-08, -0.933009, 0.25, 0.258819, -0.145586, 1.3125, 0.543333)
 visible = false
 pixel_size = 0.0125
 shaded = true
 texture = ExtResource("20_wp5pv")
 
-[node name="Battle" type="Node3D" parent="." node_paths=PackedStringArray("gui", "battleRoster")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.25, -0.625, -5.1875)
+[node name="Battle A" type="Node3D" parent="." node_paths=PackedStringArray("gui", "battleCamera", "battleRoster")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.5, -0.5, -5.1875)
 script = ExtResource("24_pxhrf")
 gui = NodePath("Camera3D/BattleGUI")
 nextBattlePath = "res://Levels/Combat Playtest One/Victory.tscn"
 defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
 startingScene = true
+battleCamera = NodePath("Camera3D")
 battleRoster = NodePath("Roster")
 
-[node name="Roster" type="Node3D" parent="Battle" node_paths=PackedStringArray("positionPointer")]
+[node name="Roster" type="Node3D" parent="Battle A" node_paths=PackedStringArray("positionPointer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 script = ExtResource("25_semha")
 positionPointer = NodePath("Pointer")
 debugMode = true
 
-[node name="Pointer" type="Node3D" parent="Battle/Roster"]
+[node name="Pointer" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1)
 visible = false
 
-[node name="Sprite3D" type="Sprite3D" parent="Battle/Roster/Pointer"]
+[node name="Sprite3D" type="Sprite3D" parent="Battle A/Roster/Pointer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.64, 0)
 pixel_size = 0.008
 texture = ExtResource("26_dkpch")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Battle/Roster/Pointer"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Battle A/Roster/Pointer"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.76, 0)
 light_color = Color(1, 0.984314, 0.701961, 1)
 light_energy = 32.0
 spot_angle = 15.0
 
-[node name="HeroBack0" type="Node3D" parent="Battle/Roster"]
+[node name="HeroBack0" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.52, 0, -0.0625001)
 
-[node name="HeroBack1" type="Node3D" parent="Battle/Roster"]
+[node name="HeroBack1" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -1.0625)
 
-[node name="HeroBack2" type="Node3D" parent="Battle/Roster"]
+[node name="HeroBack2" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.48, 0, -2.0625)
 
-[node name="HeroMid0" type="Node3D" parent="Battle/Roster"]
+[node name="HeroMid0" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, 0, -1.19209e-07)
 
-[node name="HeroMid1" type="Node3D" parent="Battle/Roster"]
+[node name="HeroMid1" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 0, -1)
 
-[node name="HeroMid2" type="Node3D" parent="Battle/Roster"]
+[node name="HeroMid2" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.08, 0, -2)
 
-[node name="HeroFront0" type="Node3D" parent="Battle/Roster"]
+[node name="HeroFront0" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56, 0, 0.0625)
 
-[node name="HeroFront1" type="Node3D" parent="Battle/Roster"]
+[node name="HeroFront1" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -0.9375)
 
-[node name="Cato" parent="Battle/Roster/HeroFront1" node_paths=PackedStringArray("readout") instance=ExtResource("27_j7es1")]
+[node name="Cato" parent="Battle A/Roster/HeroFront1" node_paths=PackedStringArray("readout") instance=ExtResource("27_j7es1")]
 readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
 
-[node name="HeroFront2" type="Node3D" parent="Battle/Roster"]
+[node name="HeroFront2" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1.9375)
 
-[node name="EnemyFront0" type="Node3D" parent="Battle/Roster"]
+[node name="EnemyFront0" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0, 0.0625)
 
-[node name="EnemyFront1" type="Node3D" parent="Battle/Roster"]
+[node name="EnemyFront1" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, -0.9375)
 
-[node name="Skeleton" parent="Battle/Roster/EnemyFront1" instance=ExtResource("28_i2l6e")]
+[node name="Skeleton" parent="Battle A/Roster/EnemyFront1" instance=ExtResource("28_i2l6e")]
 
-[node name="EnemyFront2" type="Node3D" parent="Battle/Roster"]
+[node name="EnemyFront2" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1.9375)
 
-[node name="EnemyMid0" type="Node3D" parent="Battle/Roster"]
+[node name="EnemyMid0" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2, 0, 0)
 
-[node name="EnemyMid1" type="Node3D" parent="Battle/Roster"]
+[node name="EnemyMid1" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 0, -1)
 
-[node name="EnemyMid2" type="Node3D" parent="Battle/Roster"]
+[node name="EnemyMid2" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -2)
 
-[node name="EnemyBack0" type="Node3D" parent="Battle/Roster"]
+[node name="EnemyBack0" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.52, 0, -0.0625)
 
-[node name="EnemyBack1" type="Node3D" parent="Battle/Roster"]
+[node name="EnemyBack1" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -3.0625)
 
-[node name="EnemyBack2" type="Node3D" parent="Battle/Roster"]
+[node name="EnemyBack2" type="Node3D" parent="Battle A/Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48, 0, -2.0625)
 
-[node name="Camera3D" type="Camera3D" parent="Battle"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -1.53, 4.8125, 15.5625)
-current = true
+[node name="Camera3D" type="Camera3D" parent="Battle A"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 4.813, 15.563)
 fov = 60.0
 
-[node name="BattleGUI" parent="Battle/Camera3D" instance=ExtResource("29_8ooj4")]
+[node name="BattleGUI" parent="Battle A/Camera3D" instance=ExtResource("29_8ooj4")]
 
-[node name="Readouts" parent="Battle/Camera3D/BattleGUI" index="6" node_paths=PackedStringArray("readouts", "topMenu")]
+[node name="_VScrollBar_54692" type="VScrollBar" parent="Battle A/Camera3D/BattleGUI/Attack Menu/Backboard/Rules Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+step = 1.0
+
+[node name="_VScrollBar_54699" type="VScrollBar" parent="Battle A/Camera3D/BattleGUI/Targeting Menu/Basic Attack/Rules Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+step = 1.0
+
+[node name="_VScrollBar_54700" type="VScrollBar" parent="Battle A/Camera3D/BattleGUI/Targeting Menu/Skill/Name" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+step = 1.0
+
+[node name="_VScrollBar_54701" type="VScrollBar" parent="Battle A/Camera3D/BattleGUI/Targeting Menu/Skill/Rules Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+step = 1.0
+
+[node name="Readouts" parent="Battle A/Camera3D/BattleGUI" index="6" node_paths=PackedStringArray("readouts")]
 readouts = []
-topMenu = NodePath("Top Menu")
 
-[node name="Silver Readout" parent="Battle/Camera3D/BattleGUI/Readouts" index="0"]
+[node name="Silver Readout" parent="Battle A/Camera3D/BattleGUI/Readouts" index="0"]
 visible = false
 
-[node name="Luciene Readout" parent="Battle/Camera3D/BattleGUI/Readouts" index="1"]
+[node name="Luciene Readout" parent="Battle A/Camera3D/BattleGUI/Readouts" index="1"]
 visible = false
 
-[node name="Turnover Timer" type="Timer" parent="Battle"]
+[node name="Turnover Timer" type="Timer" parent="Battle A"]
 wait_time = 0.4
 
-[node name="Between Actions Timer" type="Timer" parent="Battle"]
+[node name="Between Actions Timer" type="Timer" parent="Battle A"]
 wait_time = 0.2
 
-[editable path="Battle/Camera3D/BattleGUI"]
+[editable path="Battle A/Camera3D/BattleGUI"]
