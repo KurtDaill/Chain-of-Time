@@ -1,5 +1,6 @@
-[gd_scene load_steps=31 format=3 uid="uid://d04kt4k1c2dt7"]
+[gd_scene load_steps=32 format=3 uid="uid://d04kt4k1c2dt7"]
 
+[ext_resource type="Script" path="res://SceneConfig.cs" id="1_i2qmm"]
 [ext_resource type="PackedScene" uid="uid://cj7260eer0ta5" path="res://Art/3D/TestOldTownHouse1gltf.gltf" id="1_lnuj6"]
 [ext_resource type="PackedScene" uid="uid://744jase51iw4" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody1_gltf.gltf" id="2_gfedo"]
 [ext_resource type="PackedScene" uid="uid://663as0b6h32w" path="res://Art/3D/OldTownBlocks/OldTown_Roof1_gltf.gltf" id="3_fwfnj"]
@@ -132,7 +133,9 @@ ambient_light_source = 2
 ambient_light_color = Color(0.709804, 0.772549, 1, 1)
 ambient_light_energy = 0.2
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("startingMode")]
+script = ExtResource("1_i2qmm")
+startingMode = NodePath("Battle")
 
 [node name="TestOldTownHouse1gltf" parent="." instance=ExtResource("1_lnuj6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6875, 0.4375, 26)

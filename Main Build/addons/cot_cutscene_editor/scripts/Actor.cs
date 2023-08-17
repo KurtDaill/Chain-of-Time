@@ -76,4 +76,16 @@ public partial class Actor : Node3D
 		blockingTimeElapsed = 0;
 		destinationBlockingMarkerName = markerName;
 	}
+
+	public void PlayOneSyllablePip(){
+		if(OneSyllablePip != null) OneSyllablePip.Play();
+	}
+
+	public void PlayTwoSyllablePip(){
+		if(TwoSyllablePip != null)TwoSyllablePip.Play();
+	}
+
+	public void PlayEmphasisPip(){
+		if(EmphasisPip != null)EmphasisPip.Play();
+	}
 }

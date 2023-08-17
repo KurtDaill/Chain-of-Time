@@ -1,5 +1,6 @@
-[gd_scene load_steps=92 format=3 uid="uid://b7tnyob5w0pfp"]
+[gd_scene load_steps=101 format=3 uid="uid://b7tnyob5w0pfp"]
 
+[ext_resource type="Script" path="res://SceneConfig.cs" id="1_5buvu"]
 [ext_resource type="PackedScene" uid="uid://cj7260eer0ta5" path="res://Art/3D/TestOldTownHouse1gltf.gltf" id="1_14u34"]
 [ext_resource type="PackedScene" uid="uid://744jase51iw4" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody1_gltf.gltf" id="2_tpvas"]
 [ext_resource type="PackedScene" uid="uid://663as0b6h32w" path="res://Art/3D/OldTownBlocks/OldTown_Roof1_gltf.gltf" id="3_gk7ew"]
@@ -21,9 +22,17 @@
 [ext_resource type="Texture2D" uid="uid://bxpwsf3thk4fo" path="res://Art/Prod Sprite Sheets/CatoCinematicAnimation-Sheet.png" id="19_2kwth"]
 [ext_resource type="Texture2D" uid="uid://b43sxpud60he4" path="res://Art/Letter.png" id="20_0oumj"]
 [ext_resource type="Texture2D" uid="uid://wy4a13eqgfmx" path="res://Art/Prod Sprite Sheets/Luciene Cinematic Sprite-Sheet.png" id="21_h75cp"]
+[ext_resource type="AudioStream" uid="uid://bqlqyw76b8so8" path="res://Audio/Voices/Cato/TwoSyllablePip1.wav" id="22_7rhdj"]
 [ext_resource type="Texture2D" uid="uid://c6d5hexnmg817" path="res://Art/Prod Sprite Sheets/Silver Cinematic Animation-Sheet.png" id="22_old0r"]
 [ext_resource type="Texture2D" uid="uid://dtej42sowyqpt" path="res://Art/Prod Sprite Sheets/Necromancer Cinematic Animation-Sheet.png" id="23_1rh6o"]
+[ext_resource type="AudioStream" uid="uid://0k7sa6vojxm5" path="res://Audio/Voices/Cato/OneSyllablePip1.wav" id="23_q8bvb"]
 [ext_resource type="Texture2D" uid="uid://dl2nhvu4ncgu0" path="res://Art/Prod Sprite Sheets/Skeleton Guard Combat Sprite-Sheet.png" id="24_aypdr"]
+[ext_resource type="AudioStream" uid="uid://clcqi6q2owc3s" path="res://Audio/Voices/Luciene/TwoSyllablePip1.wav" id="25_jjdee"]
+[ext_resource type="AudioStream" uid="uid://cq41t8kks6fe5" path="res://Audio/Voices/Necromancer/TwoSyllablePip.wav" id="25_y2avq"]
+[ext_resource type="AudioStream" uid="uid://kpbat8aqlyjj" path="res://Audio/Voices/Necromancer/OneSyllablePip1.wav" id="26_1jtdo"]
+[ext_resource type="AudioStream" uid="uid://d3o8yv63qm602" path="res://Audio/Voices/Luciene/OneSyllablePip1.wav" id="26_1lqhb"]
+[ext_resource type="AudioStream" uid="uid://c8rxmedhrlnk5" path="res://Audio/Voices/Silver/TwoSyllablePip1.wav" id="26_gvyp1"]
+[ext_resource type="AudioStream" uid="uid://d1pmjwoejy6wx" path="res://Audio/Voices/Silver/OneSyllablePip1.wav" id="27_ep6dc"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o4fkr"]
 load_path = "res://.godot/imported/AllDaHousesgltf_1.png-641c98bdb8cf566a8417dbe937812620.ctex"
@@ -1192,7 +1201,9 @@ _data = {
 "RESET": SubResource("Animation_2qnhg")
 }
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("startingMode")]
+script = ExtResource("1_5buvu")
+startingMode = NodePath("Cutscene")
 
 [node name="TestOldTownHouse1gltf" parent="." instance=ExtResource("1_14u34")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26)
@@ -1531,7 +1542,6 @@ screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Ext Enter th
 playerCharacter = NodePath("Cato Actor")
 initialShotName = "Initial Shot"
 dialogueBox = NodePath("Subtitle Style")
-autoPlay = true
 cutsceneCam = NodePath("CameraModifierHandle/Cutscene Camera")
 
 [node name="Shot List" type="Node3D" parent="Cutscene"]
@@ -1741,12 +1751,14 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene"]
 stream = ExtResource("17_dlnft")
 
-[node name="Cato Actor" type="Node3D" parent="Cutscene"]
+[node name="Cato Actor" type="Node3D" parent="Cutscene" node_paths=PackedStringArray("OneSyllablePip", "TwoSyllablePip")]
 transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 4.68964, -0.537474, -5.61947)
 script = ExtResource("18_0abwi")
 actorName = "Cato"
 walkingSpeedUnitsPerSecond = 4.0
 characterColor = Color(0.568627, 0.0784314, 0.215686, 1)
+OneSyllablePip = NodePath("OneSyl")
+TwoSyllablePip = NodePath("TwoSyl")
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cato Actor"]
 transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -0.935359, 1.97703, 0.255529)
@@ -1772,12 +1784,22 @@ pixel_size = 0.0125
 shaded = true
 texture = ExtResource("20_0oumj")
 
-[node name="Luciene Actor" type="Node3D" parent="Cutscene"]
+[node name="TwoSyl" type="AudioStreamPlayer" parent="Cutscene/Cato Actor"]
+stream = ExtResource("22_7rhdj")
+max_polyphony = 3
+
+[node name="OneSyl" type="AudioStreamPlayer" parent="Cutscene/Cato Actor"]
+stream = ExtResource("23_q8bvb")
+max_polyphony = 6
+
+[node name="Luciene Actor" type="Node3D" parent="Cutscene" node_paths=PackedStringArray("OneSyllablePip", "TwoSyllablePip")]
 transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 0.500002, -0.5, -6.25)
 script = ExtResource("18_0abwi")
 actorName = "Luciene"
 walkingSpeedUnitsPerSecond = 4.0
 characterColor = Color(0.470588, 0.392157, 0.776471, 1)
+OneSyllablePip = NodePath("OneSyl")
+TwoSyllablePip = NodePath("TwoSyl")
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Luciene Actor"]
 transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -0.935359, 3.97703, 0.255529)
@@ -1794,12 +1816,22 @@ libraries = {
 "": SubResource("AnimationLibrary_fr5w8")
 }
 
-[node name="Silver Actor" type="Node3D" parent="Cutscene"]
+[node name="TwoSyl" type="AudioStreamPlayer" parent="Cutscene/Luciene Actor"]
+stream = ExtResource("25_jjdee")
+max_polyphony = 3
+
+[node name="OneSyl" type="AudioStreamPlayer" parent="Cutscene/Luciene Actor"]
+stream = ExtResource("26_1lqhb")
+max_polyphony = 6
+
+[node name="Silver Actor" type="Node3D" parent="Cutscene" node_paths=PackedStringArray("OneSyllablePip", "TwoSyllablePip")]
 transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, -3.49999, -0.5, -6.25)
 script = ExtResource("18_0abwi")
 actorName = "Silver"
 walkingSpeedUnitsPerSecond = 4.0
 characterColor = Color(0.278431, 0.447059, 0.219608, 1)
+OneSyllablePip = NodePath("OneSyl")
+TwoSyllablePip = NodePath("TwoSyl")
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Silver Actor"]
 transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -0.935359, 3.97703, 0.255529)
@@ -1816,12 +1848,22 @@ libraries = {
 "": SubResource("AnimationLibrary_l0xe2")
 }
 
-[node name="Necromancer Actor" type="Node3D" parent="Cutscene"]
+[node name="TwoSyl" type="AudioStreamPlayer" parent="Cutscene/Silver Actor"]
+stream = ExtResource("26_gvyp1")
+max_polyphony = 3
+
+[node name="OneSyl" type="AudioStreamPlayer" parent="Cutscene/Silver Actor"]
+stream = ExtResource("27_ep6dc")
+max_polyphony = 6
+
+[node name="Necromancer Actor" type="Node3D" parent="Cutscene" node_paths=PackedStringArray("OneSyllablePip", "TwoSyllablePip")]
 transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 24.0625, -0.5, -6.25)
 script = ExtResource("18_0abwi")
 actorName = "Necromancer"
 walkingSpeedUnitsPerSecond = 4.0
 characterColor = Color(0.678431, 0.592157, 0.72549, 1)
+OneSyllablePip = NodePath("OneSyl")
+TwoSyllablePip = NodePath("TwoSyl")
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Necromancer Actor"]
 transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -0.68536, 4.10203, 0.255529)
@@ -1837,6 +1879,14 @@ autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_1uicd")
 }
+
+[node name="TwoSyl" type="AudioStreamPlayer" parent="Cutscene/Necromancer Actor"]
+stream = ExtResource("25_y2avq")
+max_polyphony = 3
+
+[node name="OneSyl" type="AudioStreamPlayer" parent="Cutscene/Necromancer Actor"]
+stream = ExtResource("26_1jtdo")
+max_polyphony = 6
 
 [node name="Necromancer Minions" type="Node3D" parent="Cutscene"]
 transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 22.25, -0.5, -6.25)

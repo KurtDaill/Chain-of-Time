@@ -181,8 +181,8 @@ public partial class CutsceneDirector : GameplayMode
                     waitingOnAnimation = true;
                 }
                 //lineActor.SpeakLine(line);
-                if(line.GetSpeaker() == "???") dialogueBox.BeginDialogue(line, new Color(1,1,1,1));
-                else dialogueBox.BeginDialogue(line, lineActor.GetColor());
+                if(line.GetSpeaker() == "???") dialogueBox.BeginDialogue(line, null); //TODO Handle this
+                else dialogueBox.BeginDialogue(line, lineActor);
                 break;
             case "CutsceneCharacterAnimation":
                 CutsceneCharacterAnimation anim = (CutsceneCharacterAnimation) act;

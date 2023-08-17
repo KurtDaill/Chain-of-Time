@@ -185,9 +185,9 @@ albedo_color = Color(0.270588, 0.270588, 0.270588, 1)
 albedo_color = Color(0.584314, 0, 0.0156863, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0qvcn"]
-transparency = 3
-alpha_hash_scale = 1.0
-alpha_antialiasing_mode = 0
+render_priority = -1
+transparency = 4
+blend_mode = 1
 shading_mode = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_n1pjj"]
@@ -196,50 +196,50 @@ size = Vector2(1.92, 1.08)
 
 [sub_resource type="Animation" id="Animation_d1xig"]
 resource_name = "FadeIn"
-length = 2.0
+length = 3.0
 tracks/0/type = "bezier"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:mesh:material:albedo_color:r")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.0156863, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(1, 2)
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.4, 0.00391829, 1, -0.25, 0, 0.86, -0.181669, 0.0156863, -1.78, 0.0515662, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 2.8)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/path = NodePath(".:mesh:material:albedo_color:g")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(1, 2)
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.4, 0.00391829, 1, -0.25, 0, 1, -0.269096, 0, -1.88, 0.126862, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 2.8)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
-tracks/2/enabled = false
+tracks/2/enabled = true
 tracks/2/path = NodePath(".:mesh:material:albedo_color:b")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(1, 2)
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 2.8)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
-tracks/3/enabled = false
+tracks/3/enabled = true
 tracks/3/path = NodePath(".:mesh:material:albedo_color:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(1, 2)
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.94, -0.168057, 0, -1.49, 0.176016, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 3)
 }
 
 [sub_resource type="Animation" id="Animation_rru1a"]
@@ -388,13 +388,15 @@ radius = 1.125
 height = 4.0
 material = SubResource("StandardMaterial3D_vyl0v")
 
-[node name="TimeTraveler" type="Node" parent="." node_paths=PackedStringArray("CatoSprite", "renderedScenePlane", "present", "past")]
+[node name="TimeTraveler" type="Node" parent="." node_paths=PackedStringArray("CatoSprite", "renderedScenePlane", "present", "past", "timeTravelCamera")]
 script = ExtResource("1_4yl0v")
 slowDownTimeInSeconds = 2.0
 CatoSprite = NodePath("../Cato")
 renderedScenePlane = NodePath("../Camera3D/MeshInstance3D2")
 present = NodePath("../Present")
 past = NodePath("../Past")
+timeTravelCamera = NodePath("../Camera3D")
+debugMode = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.988573, 0.150743, 0, -0.150743, 0.988573, 0, 3.33937, 8.59417)
@@ -415,11 +417,11 @@ environment = SubResource("Environment_yj3kw")
 [node name="Cato" type="Sprite3D" parent="." groups=["Cato"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.09497, 0)
 pixel_size = 0.0125
+no_depth_test = true
 alpha_cut = 2
 texture = ExtResource("2_3aqkb")
 hframes = 10
 vframes = 7
-frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cato" groups=["AnimationPlayer", "Cato"]]
 autoplay = "Loop"

@@ -10,7 +10,7 @@
         <setCharacterAnimation concurent="true"><character>Silver</character><animation>Look Around</animation></setCharacterAnimation>
         <line><speaker>Silver</speaker>I reckon we have a moment Boss.</line>
         <setCharacterAnimation><character>Luciene</character><animation>Turn Back</animation></setCharacterAnimation>
-        <line><speaker>Luciene</speaker>Mr. Argent: Where is Cera?</line>
+        <line><speaker>Luciene</speaker>Mr Argent: Where is Cera?</line>
         <setCharacterAnimation concurent="true"><character>Cato</character><animation>Suspicious</animation></setCharacterAnimation>
         <line><speaker>Cato</speaker>What?</line>
         <line><speaker>Luciene</speaker>Her safety is of the utmost importance.</line>

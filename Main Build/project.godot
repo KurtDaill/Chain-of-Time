@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Chain Of Time"
-run/main_scene="res://Prototyping/Mode Swap Prototype.tscn"
+run/main_scene="res://Prototyping/Time Travel Mechanics Test.tscn"
 config/features=PackedStringArray("4.1", "C#")
 config/icon="res://icon.png"
 

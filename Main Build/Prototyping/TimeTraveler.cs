@@ -2,6 +2,8 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Diagnostics;
+
 
 public partial class TimeTraveler : Node
 {
@@ -35,6 +37,8 @@ public partial class TimeTraveler : Node
 	Node3D past;
 	[Export]
 	Camera3D timeTravelCamera;
+	[Export]
+	bool debugMode = false;
 	Camera3D previousCamera;
 
 	bool goingToThePast = true;
@@ -98,6 +102,7 @@ public partial class TimeTraveler : Node
 				previousCamera.Current = true;
 			}
 		}
+		if(debugMode) if(Input.IsActionJustPressed("debug_5")) Activate();
 	}
 
 	public void Activate(){
