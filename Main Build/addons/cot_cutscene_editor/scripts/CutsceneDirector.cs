@@ -40,6 +40,10 @@ public partial class CutsceneDirector : GameplayMode
     Node nextGameplayMode;
     GameplayMode nextMode;
     bool done;
+    [Export]
+    string cutsceneName;
+    [Signal]
+    public delegate void CutsceneCompleteEventHandler(string nameOfCutscene);
 
     public override void _Ready()
     {
@@ -335,6 +339,7 @@ public partial class CutsceneDirector : GameplayMode
     public override async Task TransitionOut()
     {
         this.Visible = false;
+        EmitSignal(CutsceneDirector.SignalName.CutsceneComplete, new Variant[]{cutsceneName});
         //TODO add in visual effects (or do those belong in Transition in?)
     }
 

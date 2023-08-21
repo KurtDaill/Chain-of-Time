@@ -4,7 +4,8 @@ using System.Linq;
 using static GameplayUtilities;
 public partial class GameMaster : Node
 {
-    
+    [Signal]
+    public delegate void GameModeBeginEventHandler(GameplayMode beginningMode);
     [Export]
     StoryState state = new StoryState();
 
@@ -29,6 +30,7 @@ public partial class GameMaster : Node
             await currentMode.TransitionOut();
             currentMode = returnedMode; 
             await returnedMode.StartUp();
+            EmitSignal(GameMaster.SignalName.GameModeBegin, new Variant[]{returnedMode});
         }
     }
 

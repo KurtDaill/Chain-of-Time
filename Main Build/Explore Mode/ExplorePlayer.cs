@@ -128,6 +128,12 @@ public partial class ExplorePlayer : CharacterBody3D
 				pointInRange = point;
 			}
 		}
+		if(area.GetGroups().Contains("Dialogue")){
+			DialogueInteractable dialogue = (DialogueInteractable) area.GetParent();
+			if(dialogue.ArmCutscene()){
+				//pointInRange = point;
+			}
+		}
 		
 	}
 

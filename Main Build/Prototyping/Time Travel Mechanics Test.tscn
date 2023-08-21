@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d2523wst7m8sf"]
+[gd_scene load_steps=24 format=3 uid="uid://d2523wst7m8sf"]
 
 [ext_resource type="Script" path="res://Prototyping/TimeTraveler.cs" id="1_4yl0v"]
 [ext_resource type="Texture2D" uid="uid://d054fqnoqr0oo" path="res://Art/Prod Sprite Sheets/Cato Combat Sprite-Sheet.png" id="2_3aqkb"]
@@ -295,6 +295,8 @@ _data = {
 "RESET": SubResource("Animation_rru1a")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1c8sv"]
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0fe2d"]
 
 [sub_resource type="Sky" id="Sky_yb0rf"]
@@ -410,6 +412,19 @@ mesh = SubResource("QuadMesh_n1pjj")
 libraries = {
 "": SubResource("AnimationLibrary_gk8ml")
 }
+
+[node name="Control" type="Panel" parent="Camera3D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1c8sv")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera3D/Control"]
+layout_mode = 0
+offset_right = 1869.0
+offset_bottom = 1037.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yj3kw")

@@ -11,6 +11,8 @@ public abstract partial class DialogueInteractable : Node3D{
 	protected CutsceneDirector cutscene;
 	[Export]
 	public Area3D interactArea;
+	[Export]
+	DialoguePrompt prompt;
 
 	protected bool armed = false;
 
@@ -26,6 +28,7 @@ public abstract partial class DialogueInteractable : Node3D{
 	public virtual bool ArmCutscene(){
 		if(hasCutscene){
 			armed = true;
+			prompt.ShowPrompt();
 			return true;
 		}
 		return false;
@@ -33,6 +36,7 @@ public abstract partial class DialogueInteractable : Node3D{
 
 	public virtual void DisarmCutscene(){
 		armed = false;
+		prompt.HidePrompt();
 	}
 
     public virtual async void PlayCutscene(){
