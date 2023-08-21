@@ -23,13 +23,13 @@ public partial class DialoguePrompt : Node3D
 
 	public void ShowPrompt(){
 		if(isListen){
-			animPlay.Play("Show Listen");
+			animPlay.Play("ShowListen");
 		}else{
-			animPlay.Play("Show Talk");
+			animPlay.Play("ShowTalk");
 		}
 	}
 
 	public void HidePrompt(){
-		animPlay.Play("Hide Prompt");
+		animPlay.Play("HidePrompt");
 	}
 }

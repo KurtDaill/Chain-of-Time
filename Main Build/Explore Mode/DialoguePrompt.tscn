@@ -636,6 +636,7 @@ libraries = {
 [node name="Talk to Me Bubble" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 3.08, 0.12)
 shaded = true
+no_depth_test = true
 alpha_cut = 2
 texture = ExtResource("2_8lvuo")
 
@@ -644,6 +645,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.56, -9.68575e-08)
 modulate = Color(1, 1, 1, 0)
 pixel_size = 0.008
 shaded = true
+no_depth_test = true
 alpha_cut = 2
 texture_filter = 2
 texture = ExtResource("1_c70nt")

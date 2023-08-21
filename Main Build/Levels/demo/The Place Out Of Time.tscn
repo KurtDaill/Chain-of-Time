@@ -887,14 +887,13 @@ shape = SubResource("BoxShape3D_6fl6l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.3125, 0)
 shape = SubResource("CylinderShape3D_yuvkw")
 
-[node name="ExplorePlayer" type="CharacterBody3D" parent="." node_paths=PackedStringArray("exploreCamera", "timeObject")]
+[node name="ExplorePlayer" type="CharacterBody3D" parent="." node_paths=PackedStringArray("exploreCamera")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -53.245, 107.649, 6.08793)
 visible = false
 floor_max_angle = 1.309
 script = ExtResource("4_47dq0")
 Speed = 8.0
 exploreCamera = NodePath("Explore Camera")
-timeObject = NodePath("../TimeTraveler")
 
 [node name="Sprite3D" type="Sprite3D" parent="ExplorePlayer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12249, 3.85, 0)

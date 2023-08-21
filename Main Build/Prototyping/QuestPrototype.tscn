@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dbj6pqnsv61a2"]
+[gd_scene load_steps=54 format=3 uid="uid://dbj6pqnsv61a2"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_5wf8w"]
 [ext_resource type="PackedScene" uid="uid://cg0lh548glsxq" path="res://Art/3D/Cato's House Rough Render.dae" id="1_a83t2"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/Actor.cs" id="12_ld5kw"]
 [ext_resource type="Texture2D" uid="uid://bxpwsf3thk4fo" path="res://Art/Prod Sprite Sheets/CatoCinematicAnimation-Sheet.png" id="13_7sdnd"]
 [ext_resource type="Texture2D" uid="uid://b43sxpud60he4" path="res://Art/Letter.png" id="14_fn1cl"]
+[ext_resource type="Script" path="res://Explore Mode/CutsceneInteractZone.cs" id="16_g5e5r"]
 [ext_resource type="PackedScene" uid="uid://d31imjbtaeidb" path="res://Explore Mode/DialoguePrompt.tscn" id="16_jior5"]
 [ext_resource type="Script" path="res://Explore Mode/ExploreMode.cs" id="17_rnfvf"]
 
@@ -982,19 +983,20 @@ pixel_size = 0.0125
 shaded = true
 texture = ExtResource("14_fn1cl")
 
-[node name="Dialogue Trigger Zone" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
-
-[node name="Area3D" type="Area3D" parent="Dialogue Trigger Zone" groups=["Dialogue"]]
+[node name="Dialogue Trigger Zone" type="Area3D" parent="." node_paths=PackedStringArray("prompt", "targetMode")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.569865, 0, -1)
 collision_layer = 3
 collision_mask = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Dialogue Trigger Zone/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.375, 1.0625, 0.5)
-shape = SubResource("CylinderShape3D_b05di")
+script = ExtResource("16_g5e5r")
+prompt = NodePath("DialoguePrompt")
+targetMode = NodePath("../Cutscene")
 
 [node name="DialoguePrompt" parent="Dialogue Trigger Zone" instance=ExtResource("16_jior5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.125, 0, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dialogue Trigger Zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.42388, 1.0625, 0.5)
+shape = SubResource("CylinderShape3D_b05di")
 
 [node name="ExploreMode" type="Node3D" parent="." node_paths=PackedStringArray("exploreCamera", "explorePlayer")]
 script = ExtResource("17_rnfvf")

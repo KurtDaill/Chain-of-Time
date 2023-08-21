@@ -2,6 +2,7 @@ using System;
 using Godot;
 using System.Threading.Tasks;
 using static GameplayUtilities;
+using System.Dynamic;
 
 public partial class ExploreMode : GameplayMode{
     [Export]
@@ -9,11 +10,14 @@ public partial class ExploreMode : GameplayMode{
     [Export]
     ExplorePlayer explorePlayer;
 
+    private GameplayMode modeOnDeck;
+
     public override void _Ready()
     {
         base._Ready();
         explorePlayer.Visible = false;
         exploreCamera.Visible = false;
+        explorePlayer.SetExploreMode(this);
     }
     public override Task StartUp(){
         explorePlayer.Visible = true;
@@ -23,6 +27,11 @@ public partial class ExploreMode : GameplayMode{
 
     public override async Task<GameplayMode> RemoteProcess(double delta)
     {
+        if(modeOnDeck != null){
+            GameplayMode temp = modeOnDeck;
+            modeOnDeck = null;
+            return temp;
+        }
         return null;
     }
 
@@ -32,6 +41,10 @@ public partial class ExploreMode : GameplayMode{
 
     public override void HandleInput(PlayerInput input)
     {
-        explorePlayer.HandleInput();
+        explorePlayer.HandleInput(input);
+    }
+
+    public void SetModeOnDeck(GameplayMode mode){
+        modeOnDeck = mode;
     }
 }

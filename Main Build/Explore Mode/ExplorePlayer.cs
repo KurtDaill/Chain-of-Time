@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using static GameplayUtilities;
 
 public partial class ExplorePlayer : CharacterBody3D
 {
@@ -16,13 +18,19 @@ public partial class ExplorePlayer : CharacterBody3D
 	private AnimationPlayer animPlay;
 
 	private Vector3 direction;
-	[Export]
-	TimeTraveler timeObject;
+
+	private InteractZone zoneOnDeck;
+	private List<InteractZone> areasWithin;
 
 	Vector2 inputDir;
 
+	ExploreMode myExploreMode;
+
+	GameplayMode nextMode;
+
 	public override void _Ready(){
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
+		areasWithin = new List<InteractZone>();
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -49,7 +57,10 @@ public partial class ExplorePlayer : CharacterBody3D
 		//if(!timeEnvironment.IsInPast()) ManageFollowerWaypoints();
 	}
 
-	public void HandleInput(){
+	public void HandleInput(PlayerInput input){
+		if(input == PlayerInput.Select){
+			myExploreMode.SetModeOnDeck(zoneOnDeck.Activate());
+		}
 		inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 	}
 
@@ -83,7 +94,10 @@ public partial class ExplorePlayer : CharacterBody3D
 	}
 
 	public void OnInteractionAreaEntered(Area3D area){
-		
+		if(area is CutsceneInteractZone){
+			areasWithin.Add(area as InteractZone);
+			zoneOnDeck = area as CutsceneInteractZone;
+		}
 	}
 
 	public void OnBodyAreaEntered(Area3D area){
@@ -91,5 +105,17 @@ public partial class ExplorePlayer : CharacterBody3D
 	}
 
 	public void OnInteractionAreaExited(Area3D area){
+		if(area is InteractZone){
+			if(areasWithin.Contains(area as InteractZone)){
+				areasWithin.Remove(area as InteractZone);
+			}
+			if(zoneOnDeck == area){
+				zoneOnDeck = areasWithin[0];
+			}
+		}
+	}
+
+	public void SetExploreMode(ExploreMode mode){
+		myExploreMode = mode;
 	}
 }
