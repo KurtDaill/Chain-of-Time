@@ -894,7 +894,6 @@ floor_max_angle = 1.309
 script = ExtResource("4_47dq0")
 Speed = 8.0
 exploreCamera = NodePath("Explore Camera")
-waypointRes = "res://Explore Mode/Waypoint.tscn"
 timeObject = NodePath("../TimeTraveler")
 
 [node name="Sprite3D" type="Sprite3D" parent="ExplorePlayer"]

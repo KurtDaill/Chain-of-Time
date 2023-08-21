@@ -1,5 +1,6 @@
-[gd_scene load_steps=52 format=3 uid="uid://dbj6pqnsv61a2"]
+[gd_scene load_steps=53 format=3 uid="uid://dbj6pqnsv61a2"]
 
+[ext_resource type="Script" path="res://SceneConfig.cs" id="1_5wf8w"]
 [ext_resource type="PackedScene" uid="uid://cg0lh548glsxq" path="res://Art/3D/Cato's House Rough Render.dae" id="1_a83t2"]
 [ext_resource type="Script" path="res://Explore Mode/ExplorePlayer.cs" id="2_cnpev"]
 [ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Prod Sprite Sheets/Adventure Cato Sprite-Sheet.png" id="3_ohx47"]
@@ -14,8 +15,8 @@
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/Actor.cs" id="12_ld5kw"]
 [ext_resource type="Texture2D" uid="uid://bxpwsf3thk4fo" path="res://Art/Prod Sprite Sheets/CatoCinematicAnimation-Sheet.png" id="13_7sdnd"]
 [ext_resource type="Texture2D" uid="uid://b43sxpud60he4" path="res://Art/Letter.png" id="14_fn1cl"]
-[ext_resource type="Script" path="res://Explore Mode/DialogueInteractable.cs" id="15_31eoo"]
 [ext_resource type="PackedScene" uid="uid://d31imjbtaeidb" path="res://Explore Mode/DialoguePrompt.tscn" id="16_jior5"]
+[ext_resource type="Script" path="res://Explore Mode/ExploreMode.cs" id="17_rnfvf"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a2cjr"]
 radius = 0.52
@@ -652,7 +653,9 @@ _data = {
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_b05di"]
 radius = 2.0
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("startingMode")]
+script = ExtResource("1_5wf8w")
+startingMode = NodePath("ExploreMode")
 
 [node name="Cato\'s House Rough Render" parent="." instance=ExtResource("1_a83t2")]
 
@@ -664,14 +667,11 @@ light_indirect_energy = 3.0
 shadow_enabled = true
 omni_range = 15.5625
 
-[node name="ExplorePlayer" type="CharacterBody3D" parent="." node_paths=PackedStringArray("exploreCamera", "timeObject")]
+[node name="ExplorePlayer" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -2.245, 0.211502, 0.58793)
 floor_max_angle = 1.309
 script = ExtResource("2_cnpev")
 Speed = 8.0
-exploreCamera = NodePath("")
-waypointRes = "res://Explore Mode/Waypoint.tscn"
-timeObject = NodePath("")
 
 [node name="Sprite3D" type="Sprite3D" parent="ExplorePlayer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12249, 3.85, 0)
@@ -716,11 +716,16 @@ transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collision"]
 shape = SubResource("WorldBoundaryShape3D_d8ik0")
 
-[node name="Cutscene" type="Node3D" parent="."]
+[node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox", "cutsceneCam", "nextGameplayMode")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 2.25, 0, 0)
+visible = false
 script = ExtResource("4_re66v")
 screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Ext Streets of Old Town.xml"
+playerCharacter = NodePath("Cato Actor")
 initialShotName = "Initial Shot"
+dialogueBox = NodePath("Subtitle Style")
+cutsceneCam = NodePath("CameraModifierHandle/Cutscene Camera")
+nextGameplayMode = NodePath("../ExploreMode")
 
 [node name="Shot List" type="Node3D" parent="Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
@@ -977,12 +982,8 @@ pixel_size = 0.0125
 shaded = true
 texture = ExtResource("14_fn1cl")
 
-[node name="Dialogue Trigger Zone" type="Node3D" parent="." node_paths=PackedStringArray("cutsceneNode", "interactArea", "prompt")]
-script = ExtResource("15_31eoo")
-hasCutscene = true
-cutsceneNode = NodePath("../Cutscene")
-interactArea = NodePath("Area3D")
-prompt = NodePath("DialoguePrompt")
+[node name="Dialogue Trigger Zone" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
 
 [node name="Area3D" type="Area3D" parent="Dialogue Trigger Zone" groups=["Dialogue"]]
 collision_layer = 3
@@ -993,7 +994,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.375, 1.0625, 0.5)
 shape = SubResource("CylinderShape3D_b05di")
 
 [node name="DialoguePrompt" parent="Dialogue Trigger Zone" instance=ExtResource("16_jior5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.625, 0, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.125, 0, 0.5)
+
+[node name="ExploreMode" type="Node3D" parent="." node_paths=PackedStringArray("exploreCamera", "explorePlayer")]
+script = ExtResource("17_rnfvf")
+exploreCamera = NodePath("../ExplorePlayer/Explore Camera")
+explorePlayer = NodePath("../ExplorePlayer")
 
 [connection signal="area_entered" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaEntered" flags=18]
 [connection signal="area_exited" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaExited" flags=18]

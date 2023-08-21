@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpdw4vy2v62k4"]
-
-[ext_resource type="Script" path="res://Explore Mode/Waypoint.cs" id="1_y6jhp"]
-
-[node name="Waypoint" type="Node3D"]
-script = ExtResource("1_y6jhp")
