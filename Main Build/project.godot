@@ -18,7 +18,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GameMaster="*res://GameMaster.cs"
-CameraManager="res://Old/CameraManager.cs"
+QuestMaster="*res://Explore Mode/Quest System/QuestMaster.tscn"
 
 [display]
 

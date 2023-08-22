@@ -12,7 +12,7 @@ public partial class Quest : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-        foreach(QuestObjective obj in this.GetChildren().Where(x => x is QuestObjective)){
+        foreach(QuestObjective obj in GetNode("Objectives").GetChildren().Where(x => x is QuestObjective)){
             obj.ObjectiveCompleted += OnObjectiveCompleted;
         }
 	}
@@ -25,7 +25,7 @@ public partial class Quest : Node
     public virtual void ConnectToGameMode(GameplayMode mode){
         switch(mode.GetType().Name){
             case nameof(CutsceneDirector):
-                foreach(TalkToNPCQuestObjective talkObj in this.GetChildren().Where(x => x is TalkToNPCQuestObjective)){
+                foreach(TalkToNPCQuestObjective talkObj in GetNode("Objectives").GetChildren().Where(x => x is TalkToNPCQuestObjective)){
                     talkObj.ConnectToSignalInMode(mode);
                 }
                 break;

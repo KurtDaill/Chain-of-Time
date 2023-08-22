@@ -715,6 +715,7 @@ transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 
 [node name="Collision" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00211084, 0)
 shape = SubResource("WorldBoundaryShape3D_d8ik0")
 
 [node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox", "cutsceneCam", "nextGameplayMode")]
@@ -727,6 +728,7 @@ initialShotName = "Initial Shot"
 dialogueBox = NodePath("Subtitle Style")
 cutsceneCam = NodePath("CameraModifierHandle/Cutscene Camera")
 nextGameplayMode = NodePath("../ExploreMode")
+cutsceneName = "QuestTest"
 
 [node name="Shot List" type="Node3D" parent="Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
