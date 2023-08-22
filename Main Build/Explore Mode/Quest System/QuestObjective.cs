@@ -4,8 +4,10 @@ using System;
 public partial class QuestObjective : Node
 {
     [Signal]
-    public delegate void ObjectiveCompletedEventHandler();
-    bool completed = false;
+    public delegate void ObjectiveCompleteEventHandler();
+    protected bool completed = false;
+    [Export]
+    protected string playerFacingDescription;
     
     public override void _Ready(){
 
@@ -16,11 +18,15 @@ public partial class QuestObjective : Node
     }
 
     private void Complete(){
-        if(!completed) EmitSignal(QuestObjective.SignalName.ObjectiveCompleted);
+        if(!completed) EmitSignal(QuestObjective.SignalName.ObjectiveComplete);
         completed = true;
     }
 
     public bool IsCompleted(){
         return completed;
+    }
+
+    public string GetDescription(){
+        return playerFacingDescription;
     }
 }

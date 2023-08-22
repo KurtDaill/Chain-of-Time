@@ -66,6 +66,7 @@ public partial class CutsceneDirector : GameplayMode
         nextMode = (GameplayMode) nextGameplayMode;
         this.Visible = false;
         this.cutsceneCam.Current = false;
+        dialogueBox.Visible = false;
     }
 
     //Because we deleted and reload our children during editing, we want to have this set as its own function to be called then instead of just in ready
@@ -340,6 +341,7 @@ public partial class CutsceneDirector : GameplayMode
     public override async Task TransitionOut()
     {
         this.Visible = false;
+        this.dialogueBox.Visible = false;
         EmitSignal(CutsceneDirector.SignalName.CutsceneComplete, new Variant[]{cutsceneName});
         //TODO add in visual effects (or do those belong in Transition in?)
     }
@@ -347,6 +349,7 @@ public partial class CutsceneDirector : GameplayMode
     public async override Task StartUp(){
         this.Visible = true;
         this.cutsceneCam.Current = true;
+        this.dialogueBox.Visible = true;
         PlayCutscene();
     }
 

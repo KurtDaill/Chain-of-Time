@@ -13,12 +13,14 @@ script = ExtResource("1_aa1a8")
 
 [node name="Quest_Final Delivery" type="Node" parent="In Progress"]
 script = ExtResource("2_6kshb")
+questName = "Final Delivery"
 
 [node name="Objectives" type="Node" parent="In Progress/Quest_Final Delivery"]
 
-[node name="Node" type="Node" parent="In Progress/Quest_Final Delivery/Objectives"]
+[node name="Talk to Cato" type="Node" parent="In Progress/Quest_Final Delivery/Objectives"]
 script = ExtResource("3_oi8h2")
 targetCutscene = "QuestTest"
+playerFacingDescription = "Talk to Cato"
 
 [node name="Rewards" type="Node" parent="In Progress/Quest_Final Delivery"]
 

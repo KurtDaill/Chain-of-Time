@@ -18,7 +18,8 @@ public partial class TalkToNPCQuestObjective : QuestObjective
 
     public void OnCutsceneComplete(string cutsceneName){
         if(targetCutscene == cutsceneName){
-            EmitSignal(QuestObjective.SignalName.ObjectiveCompleted);
+            completed = true;
+            EmitSignal(QuestObjective.SignalName.ObjectiveComplete);
         }
     }
 }
