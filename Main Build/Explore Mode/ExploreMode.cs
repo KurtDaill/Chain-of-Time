@@ -16,12 +16,12 @@ public partial class ExploreMode : GameplayMode{
     {
         base._Ready();
         explorePlayer.Visible = false;
-        exploreCamera.Visible = false;
+        exploreCamera.Current = false;
         explorePlayer.SetExploreMode(this);
     }
     public override Task StartUp(){
         explorePlayer.Visible = true;
-        exploreCamera.Visible = true;
+        exploreCamera.Current = true;
         return null;
     }
 
@@ -36,7 +36,7 @@ public partial class ExploreMode : GameplayMode{
     }
 
     public async override Task TransitionOut(){
-        //Move the Camera Here...
+        explorePlayer.Visible = false;
     }
 
     public override void HandleInput(PlayerInput input)

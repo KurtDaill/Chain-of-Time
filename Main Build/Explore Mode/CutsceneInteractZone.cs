@@ -12,4 +12,10 @@ public partial class CutsceneInteractZone : InteractZone
     protected override void PlayerExitAreaBehaviour(){
         prompt.HidePrompt();
     }
+
+    public override GameplayMode Activate(){
+        CutsceneDirector cutscene = base.Activate() as CutsceneDirector;
+        prompt.HidePromptForCutscene(cutscene);
+        return cutscene;
+    }
 }

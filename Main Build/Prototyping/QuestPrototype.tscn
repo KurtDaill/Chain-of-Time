@@ -721,7 +721,7 @@ shape = SubResource("WorldBoundaryShape3D_d8ik0")
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 2.25, 0, 0)
 visible = false
 script = ExtResource("4_re66v")
-screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Ext Streets of Old Town.xml"
+screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Example New Script.xml"
 playerCharacter = NodePath("Cato Actor")
 initialShotName = "Initial Shot"
 dialogueBox = NodePath("Subtitle Style")
@@ -732,7 +732,7 @@ nextGameplayMode = NodePath("../ExploreMode")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
 
 [node name="Initial Shot" type="Camera3D" parent="Cutscene/Shot List"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8125, 2.0625, 6.125)
+transform = Transform3D(0.97237, 0, -0.233445, 0, 1, 0, 0.233445, 0, 0.97237, 2.183, 2.218, 6.125)
 current = true
 script = ExtResource("5_wmiy2")
 

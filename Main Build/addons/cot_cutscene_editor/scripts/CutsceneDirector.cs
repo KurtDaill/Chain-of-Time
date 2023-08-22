@@ -91,6 +91,7 @@ public partial class CutsceneDirector : GameplayMode
 
     public override async Task<GameplayMode> RemoteProcess(double delta){
         if(done){
+            done = false;
             return nextMode;
         }
         return null;

@@ -1,6 +1,6 @@
 using Godot;
 using System;
-
+[Tool]
 public partial class CutsceneCamera : Camera3D
 {
 	private bool moving;

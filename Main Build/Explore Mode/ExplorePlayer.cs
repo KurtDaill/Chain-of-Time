@@ -110,7 +110,11 @@ public partial class ExplorePlayer : CharacterBody3D
 				areasWithin.Remove(area as InteractZone);
 			}
 			if(zoneOnDeck == area){
-				zoneOnDeck = areasWithin[0];
+				if(areasWithin.Count > 0){
+					zoneOnDeck = areasWithin[0];
+				}else{
+					zoneOnDeck = null;
+				}
 			}
 		}
 	}

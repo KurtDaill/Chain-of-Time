@@ -8,7 +8,7 @@
         <line><speaker>Cato</speaker>This is some test text...</line>
         <setFlag name="Is Cato a Cool Dude"><state>true</state></setFlag>
         <modValue name="Cool Factor"><modifier>+100</modifier></modValue>
-        <setCharacterAnimation concurent="true"><character>Cato</character><animation>Big Gesture</animation></setCharacterAnimation>
+        <!--<setCharacterAnimation concurent="true"><character>Cato</character><animation>Big Gesture</animation></setCharacterAnimation>-->
         <line>
             <speaker>Cato</speaker>
             This is really neat!
