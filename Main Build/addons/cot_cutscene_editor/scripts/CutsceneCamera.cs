@@ -27,6 +27,7 @@ public partial class CutsceneCamera : Camera3D
 					timeElapsed += delta;
 					if(timeElapsed >= transitionLength) timeElapsed = transitionLength;
 					this.GlobalTransform = startingShotDetails.GetGlobalTransform().InterpolateWith(targetShotDetails.GetGlobalTransform(), (float)(timeElapsed/transitionLength));
+					this.Fov = (startingShotDetails.GetFieldOfView() * (1 - ((float)(timeElapsed/transitionLength)))) + (targetShotDetails.GetFieldOfView() * (float)(timeElapsed/transitionLength));
 					if(timeElapsed == transitionLength){
 						EmitSignal(CutsceneCamera.SignalName.ShotTransitionComplete);
 						moving = false;

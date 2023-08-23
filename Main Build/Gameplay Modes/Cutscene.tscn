@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bvp4j8v7t4l8l"]
+[gd_scene load_steps=37 format=3 uid="uid://bvp4j8v7t4l8l"]
 
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDirector.cs" id="1_ujone"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneShot.cs" id="2_ki0dt"]
@@ -505,11 +505,40 @@ tracks/0/keys = {
 "values": [21, 28]
 }
 
+[sub_resource type="Animation" id="Animation_ig81r"]
+resource_name = "Fiddle with Object Sit Right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lqyp1"]
 _data = {
 "Anxious Pacing": SubResource("Animation_i3lke"),
 "Draw Sword": SubResource("Animation_fachi"),
 "Fiddle with Object Sit": SubResource("Animation_hbyni"),
+"Fiddle with Object Sit Right": SubResource("Animation_ig81r"),
 "Freeze": SubResource("Animation_mnssw"),
 "Hesitate": SubResource("Animation_ergnw"),
 "Idle": SubResource("Animation_bkc5n"),
@@ -527,11 +556,15 @@ _data = {
 "Walk": SubResource("Animation_i5yur")
 }
 
-[node name="Cutscene" type="Node3D"]
+[node name="Cutscene" type="Node3D" node_paths=PackedStringArray("playerCharacter", "dialogueBox", "cutsceneCam")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.6875, 0, 0)
 script = ExtResource("1_ujone")
 screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Ext Streets of Old Town.xml"
+playerCharacter = NodePath("Cato Actor")
 initialShotName = "Initial Shot"
+dialogueBox = NodePath("Subtitle Style")
+cutsceneCam = NodePath("CameraModifierHandle/Cutscene Camera")
+cutsceneName = "Default Cutscene Name"
 
 [node name="Shot List" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)

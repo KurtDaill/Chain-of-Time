@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://btk1yctj4dwbu" path="res://Old/Art/Time Gate Portal.png" id="10_m2n1j"]
 [ext_resource type="Texture2D" uid="uid://cg73nhfqlomom" path="res://Old/Art/Time Gate Hour Glass.png" id="11_bs4s6"]
 [ext_resource type="Script" path="res://Prototyping/TimeTraveler.cs" id="12_1icgm"]
-[ext_resource type="Script" path="res://Levels/demo/TextExit.cs" id="13_stb0d"]
+[ext_resource type="Script" path="res://Levels/demo/Dev Week Levels/TextExit.cs" id="13_5ydtg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nixts"]
 shader = ExtResource("1_42faa")
@@ -1113,7 +1113,7 @@ omni_attenuation = 0.31864
 [node name="Area3D" type="Area3D" parent="Present/Exit Gate"]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("13_stb0d")
+script = ExtResource("13_5ydtg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Present/Exit Gate/Area3D"]
 shape = SubResource("BoxShape3D_2tu8c")

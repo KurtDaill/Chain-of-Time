@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="../../SceneData/ScreenplaySchema.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<screenplay>
+    <block name="start">
+        <setCharacterAnimation idleLoop="true"><character>Cato</character><animation>Fiddle with Object Sit</animation></setCharacterAnimation>
+        <beat>1</beat>
+        <cameraMove transition="linear" transitionLengthInSeconds="4">Push In One</cameraMove>
+        <beat>2</beat>
+        <envAnimation>Entrance</envAnimation>
+        <line><speaker>Cato</speaker>Sorry folks, office is closed. I'm heading off for my last delivery</line>
+        <setCharacterAnimation><character>Cato</character><animation></animation>Stand Up</setCharacterAnimation>
+        <envAnimation>Enable Arrivals</envAnimation>
+        <setCharacterAnimation idleLoop="true"><character>Cato</character><animation>Idle Left</animation></setCharacterAnimation>
+        <beat>0.2</beat>
+        <cameraMove transition="linear" transitionLengthInSeconds="1.0">New Arrivals</cameraMove>
+        <line><speaker>Luciene</speaker>I hope you can make an exception, Mr. Argent.</line>
+        <setCharacterAnimation><character>Luciene</character><animation>Hold Letter Out</animation></setCharacterAnimation>
+        <beat>0.5</beat>
+        <setCharacterAnimation><character>Cato</character><animation>Sigh</animation></setCharacterAnimation>
+        <setCharacterAnimation idleLoop="true"><character>Silver</character><animation>Look Somewhere Else</animation></setCharacterAnimation>
+        <beat>0.75</beat>
+        <setCharacterAnimation><character>Cato</character><animation>Take Letter</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Cato</character><animation>Look Tired</animation></setCharacterAnimation>
+        <line><speaker>Cato</speaker>Look, we really appreciate it, but we've gotten so many of these over the years...</line>
+        <setCharacterAnimation><character>Luciene</character><animation>Go To Confused</animation></setCharacterAnimation>
+        <setCharacterAnimation concurent="true"><character>Cato</character><animation>Pinch Nose</animation></setCharacterAnimation>
+        <line><speaker>Cato</speaker> I know. She was the chosen one. I'm sure she saved your town or the story really meant a lot to you.</line>
+        <setCharacterAnimation><character>Luciene</character><animation>Look at Silver</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Silver</character><animation>Shrug</animation></setCharacterAnimation>
+        <setCharacterAnimation idleLoop="true"><character>Luciene</character><animation>Confusion Idle</animation></setCharacterAnimation>
+        <line><speaker>Cato</speaker>It's very nice of you to write, but my mother is dead.</line>
+        <line><speaker>Cato</speaker>She's been dead for [shake]years[/shake]. . .</line>
+        <line><speaker>Cato</speaker> and I've been delivering every condolence, and well wishing, and [shake]very[/shake] late piece of fan mail to my own door</line></line>
+        <beat>1</beat>
+        <setCharacterAnimation><character>Cato</character>Sigh</setCharacterAnimation>
+        <setCharacterAnimation><character>Cato</character>Look at the Floor</setCharacterAnimation>
+        <line><speaker>Cato</speaker>Look. . .uh. . .</line>
+        <line><speaker>Cato</speaker>I'll take this one. But it's the last one.</line>
+        <line><speaker>Luciene</speaker>. . .</line>
+        <setCharacterAnimation idleLoop="true"><character>Luciene</character>Idle</setCharacterAnimation>
+        <line autoProceed="true"><speaker>Luciene</speaker>Mr Argent, I'm not sure you-</line>
+        <line><speaker>Cato</speaker>I'm sure I don't. . .</line>
+        <characterMove character="Cato">To Off Screen</characterMove>
+        <setCharacterAnimation><character>Luciene</character><animation>Look at Silver</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Silver</character><animation>Shrug</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Luciene</character>Tense Sigh</setCharacterAnimation>
+        <END><GOTO>EXIT</GOTO></END>
+    </block>
+</screenplay>
