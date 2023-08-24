@@ -8,7 +8,7 @@
         <beat>2</beat>
         <envAnimation>Entrance</envAnimation>
         <line><speaker>Cato</speaker>Sorry folks, office is closed. I'm heading off for my last delivery</line>
-        <setCharacterAnimation><character>Cato</character><animation></animation>Stand Up</setCharacterAnimation>
+        <setCharacterAnimation><character>Cato</character><animation>Stand Up</animation></setCharacterAnimation>
         <envAnimation>Enable Arrivals</envAnimation>
         <setCharacterAnimation idleLoop="true"><character>Cato</character><animation>Idle Left</animation></setCharacterAnimation>
         <beat>0.2</beat>
@@ -16,34 +16,36 @@
         <line><speaker>Luciene</speaker>I hope you can make an exception, Mr. Argent.</line>
         <setCharacterAnimation><character>Luciene</character><animation>Hold Letter Out</animation></setCharacterAnimation>
         <beat>0.5</beat>
+        <characterMove character="Cato">Cato Clear Desk</characterMove>
+        <characterMove character="Cato">Cato Take Letter</characterMove>
         <setCharacterAnimation><character>Cato</character><animation>Sigh</animation></setCharacterAnimation>
         <setCharacterAnimation idleLoop="true"><character>Silver</character><animation>Look Somewhere Else</animation></setCharacterAnimation>
         <beat>0.75</beat>
         <setCharacterAnimation><character>Cato</character><animation>Take Letter</animation></setCharacterAnimation>
-        <setCharacterAnimation><character>Cato</character><animation>Look Tired</animation></setCharacterAnimation>
         <line><speaker>Cato</speaker>Look, we really appreciate it, but we've gotten so many of these over the years...</line>
         <setCharacterAnimation><character>Luciene</character><animation>Go To Confused</animation></setCharacterAnimation>
-        <setCharacterAnimation concurent="true"><character>Cato</character><animation>Pinch Nose</animation></setCharacterAnimation>
         <line><speaker>Cato</speaker> I know. She was the chosen one. I'm sure she saved your town or the story really meant a lot to you.</line>
+        <setCharacterAnimation><character>Cato</character><animation>Get Composed</animation></setCharacterAnimation>
         <setCharacterAnimation><character>Luciene</character><animation>Look at Silver</animation></setCharacterAnimation>
         <setCharacterAnimation><character>Silver</character><animation>Shrug</animation></setCharacterAnimation>
         <setCharacterAnimation idleLoop="true"><character>Luciene</character><animation>Confusion Idle</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Cato</character><animation>Look at Floor</animation></setCharacterAnimation>
         <line><speaker>Cato</speaker>It's very nice of you to write, but my mother is dead.</line>
         <line><speaker>Cato</speaker>She's been dead for [shake]years[/shake]. . .</line>
-        <line><speaker>Cato</speaker> and I've been delivering every condolence, and well wishing, and [shake]very[/shake] late piece of fan mail to my own door</line></line>
+        <line><speaker>Cato</speaker> and I've been delivering every condolence, and well wishing, and [shake]very[/shake] late piece of fan mail to my own door</line>
         <beat>1</beat>
-        <setCharacterAnimation><character>Cato</character>Sigh</setCharacterAnimation>
-        <setCharacterAnimation><character>Cato</character>Look at the Floor</setCharacterAnimation>
+        <setCharacterAnimation><character>Cato</character><animation>Sigh</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Cato</character><animation>Look at Floor</animation></setCharacterAnimation>
         <line><speaker>Cato</speaker>Look. . .uh. . .</line>
         <line><speaker>Cato</speaker>I'll take this one. But it's the last one.</line>
         <line><speaker>Luciene</speaker>. . .</line>
-        <setCharacterAnimation idleLoop="true"><character>Luciene</character>Idle</setCharacterAnimation>
+        <setCharacterAnimation idleLoop="true"><character>Luciene</character><animation>Idle</animation></setCharacterAnimation>
         <line autoProceed="true"><speaker>Luciene</speaker>Mr Argent, I'm not sure you-</line>
         <line><speaker>Cato</speaker>I'm sure I don't. . .</line>
         <characterMove character="Cato">To Off Screen</characterMove>
         <setCharacterAnimation><character>Luciene</character><animation>Look at Silver</animation></setCharacterAnimation>
         <setCharacterAnimation><character>Silver</character><animation>Shrug</animation></setCharacterAnimation>
-        <setCharacterAnimation><character>Luciene</character>Tense Sigh</setCharacterAnimation>
+        <setCharacterAnimation><character>Luciene</character><animation>Tense Sigh</animation></setCharacterAnimation>
         <END><GOTO>EXIT</GOTO></END>
     </block>
 </screenplay>

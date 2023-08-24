@@ -1209,7 +1209,6 @@ screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Ext Streets 
 playerCharacter = NodePath("Cato Actor")
 initialShotName = "Initial Shot"
 dialogueBox = NodePath("Subtitle Style")
-autoPlay = true
 cutsceneCam = NodePath("CameraModifierHandle/Cutscene Camera")
 
 [node name="Shot List" type="Node3D" parent="Cutscene"]

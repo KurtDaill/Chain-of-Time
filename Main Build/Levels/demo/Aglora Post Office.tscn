@@ -1,8 +1,8 @@
-[gd_scene load_steps=66 format=3 uid="uid://qckysdpaoade"]
+[gd_scene load_steps=76 format=3 uid="uid://qckysdpaoade"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_6v8eb"]
 [ext_resource type="Environment" uid="uid://dt4r45ovu5fyx" path="res://Explore Mode/Environment Used For Interior Shots.tres" id="1_tn5h5"]
-[ext_resource type="PackedScene" uid="uid://byl0opcoo2u3l" path="res://Art/3D/Post Office Rough Render.gltf" id="2_tt4ss"]
+[ext_resource type="PackedScene" uid="uid://u0pw5cvegd6h" path="res://Art/3D/Post Office Rough Render.gltf" id="2_tt4ss"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDirector.cs" id="3_ff4qr"]
 [ext_resource type="PackedScene" uid="uid://dj3hdxl03mnbi" path="res://Art/3D/Scaled_Chair.gltf" id="4_lqoj4"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneShot.cs" id="4_tqq36"]
@@ -14,14 +14,14 @@
 [ext_resource type="Theme" uid="uid://c6hjkq2or80ln" path="res://GUI/Themes/Cutscene Themes/Dialogue Responses.tres" id="10_vnu2h"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/Actor.cs" id="11_xyeqh"]
 [ext_resource type="Texture2D" uid="uid://bxpwsf3thk4fo" path="res://Art/Prod Sprite Sheets/CatoCinematicAnimation-Sheet.png" id="12_ostdf"]
-[ext_resource type="AudioStream" uid="uid://d12eiwv78fm3q" path="res://Audio/Post Office Door Sound.wav" id="13_1c1u6"]
+[ext_resource type="AudioStream" uid="uid://blxm7gxkniqqk" path="res://Audio/Post Office Door Sound.wav" id="13_1c1u6"]
 [ext_resource type="Texture2D" uid="uid://b43sxpud60he4" path="res://Art/Letter.png" id="13_p0pyi"]
 [ext_resource type="Texture2D" uid="uid://wy4a13eqgfmx" path="res://Art/Prod Sprite Sheets/Luciene Cinematic Sprite-Sheet.png" id="17_1xs1t"]
-[ext_resource type="AudioStream" uid="uid://clcqi6q2owc3s" path="res://Audio/Voices/Luciene/TwoSyllablePip1.wav" id="18_udhji"]
-[ext_resource type="AudioStream" uid="uid://d3o8yv63qm602" path="res://Audio/Voices/Luciene/OneSyllablePip1.wav" id="19_28ll1"]
+[ext_resource type="AudioStream" uid="uid://bmpycxcxi54nv" path="res://Audio/Voices/Luciene/TwoSyllablePip1.wav" id="18_udhji"]
+[ext_resource type="AudioStream" uid="uid://cswstpmnayj8o" path="res://Audio/Voices/Luciene/OneSyllablePip1.wav" id="19_28ll1"]
 [ext_resource type="Texture2D" uid="uid://c6d5hexnmg817" path="res://Art/Prod Sprite Sheets/Silver Cinematic Animation-Sheet.png" id="20_louv3"]
-[ext_resource type="AudioStream" uid="uid://c8rxmedhrlnk5" path="res://Audio/Voices/Silver/TwoSyllablePip1.wav" id="21_nle2v"]
-[ext_resource type="AudioStream" uid="uid://d1pmjwoejy6wx" path="res://Audio/Voices/Silver/OneSyllablePip1.wav" id="22_biccc"]
+[ext_resource type="AudioStream" uid="uid://bg7qpygf7bl7e" path="res://Audio/Voices/Silver/TwoSyllablePip1.wav" id="21_nle2v"]
+[ext_resource type="AudioStream" uid="uid://b8vqsywace6gj" path="res://Audio/Voices/Silver/OneSyllablePip1.wav" id="22_biccc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iw0w"]
 bg_color = Color(0.623529, 0.686275, 0.741176, 0.337255)
@@ -30,6 +30,34 @@ bg_color = Color(0.623529, 0.686275, 0.741176, 0.337255)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncocj"]
 bg_color = Color(0.447059, 0.737255, 0.929412, 0.67451)
+
+[sub_resource type="Animation" id="Animation_qvmo6"]
+resource_name = "Enable Arrivals"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Luciene Actor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Silver Actor:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_g268k"]
 resource_name = "Entrance"
@@ -76,34 +104,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_qvmo6"]
-resource_name = "Enable Arrivals"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Luciene Actor:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Silver Actor:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ukwa6"]
@@ -225,6 +225,21 @@ tracks/0/keys = {
 "values": [6, 2]
 }
 
+[sub_resource type="Animation" id="Animation_wevdc"]
+resource_name = "Get Composed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [49, 48, 52]
+}
+
 [sub_resource type="Animation" id="Animation_hapv2"]
 resource_name = "Hesitate"
 length = 3.0
@@ -270,7 +285,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [46]
+"values": [47]
 }
 
 [sub_resource type="Animation" id="Animation_h87bq"]
@@ -347,6 +362,21 @@ tracks/0/keys = {
 "values": [14, 13]
 }
 
+[sub_resource type="Animation" id="Animation_6nmjs"]
+resource_name = "Look at Floor"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [52, 51]
+}
+
 [sub_resource type="Animation" id="Animation_o8yd4"]
 resource_name = "Nod"
 length = 0.6
@@ -386,7 +416,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.935359, 1.97703, 0.255529)]
+"values": [Vector3(-0.935359, 2.05376, 0.255529)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -528,6 +558,22 @@ tracks/2/keys = {
 "values": [Vector3(-0.75107, 1.375, -0.563895)]
 }
 
+[sub_resource type="Animation" id="Animation_kansh"]
+resource_name = "Sigh"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [46, 48, 49]
+}
+
 [sub_resource type="Animation" id="Animation_1p1la"]
 resource_name = "Stand Up"
 length = 0.7
@@ -600,6 +646,46 @@ tracks/0/keys = {
 "values": [16, 17]
 }
 
+[sub_resource type="Animation" id="Animation_wfyve"]
+resource_name = "Take Letter"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [50, 49]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Luciene Actor/Sprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [11, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Luciene Actor/Letter Prop:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_wwiag"]
 resource_name = "Taunt"
 length = 0.5
@@ -639,6 +725,7 @@ _data = {
 "Draw Sword": SubResource("Animation_lgajy"),
 "Fiddle with Object Sit": SubResource("Animation_o5x1j"),
 "Freeze": SubResource("Animation_0ugds"),
+"Get Composed": SubResource("Animation_wevdc"),
 "Hesitate": SubResource("Animation_hapv2"),
 "Idle": SubResource("Animation_jfabm"),
 "Idle Left": SubResource("Animation_y4ijg"),
@@ -646,15 +733,34 @@ _data = {
 "Look Around": SubResource("Animation_s2gko"),
 "Look Behind Sit": SubResource("Animation_t6hg0"),
 "Look Up": SubResource("Animation_b61d6"),
+"Look at Floor": SubResource("Animation_6nmjs"),
 "Nod": SubResource("Animation_o8yd4"),
 "RESET": SubResource("Animation_moagd"),
 "Run Out": SubResource("Animation_0poes"),
 "Show Object Sit": SubResource("Animation_dqyju"),
+"Sigh": SubResource("Animation_kansh"),
 "Stand Up": SubResource("Animation_1p1la"),
 "Stand Up and Draw Sword": SubResource("Animation_mtxq6"),
 "Surprise": SubResource("Animation_slpr8"),
+"Take Letter": SubResource("Animation_wfyve"),
 "Taunt": SubResource("Animation_wwiag"),
 "Walk": SubResource("Animation_14f0k")
+}
+
+[sub_resource type="Animation" id="Animation_h3uce"]
+resource_name = "Confusion Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
 }
 
 [sub_resource type="Animation" id="Animation_5l0rp"]
@@ -673,6 +779,48 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 2]
 }
 
+[sub_resource type="Animation" id="Animation_dseu2"]
+resource_name = "Go To Confused"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_nnexw"]
+resource_name = "Hold Letter Out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Letter Prop:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="Animation" id="Animation_0os45"]
 resource_name = "Idle"
 tracks/0/type = "value"
@@ -686,6 +834,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_lsvai"]
+resource_name = "Look at Silver"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
 }
 
 [sub_resource type="Animation" id="Animation_4ow57"]
@@ -712,7 +876,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.500002, -0.5, -6.25)]
+"values": [Vector3(-0.775546, 0.0376296, 0.43548)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -725,6 +889,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Letter Prop:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Letter Prop:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.25, 1.125, 0.25)]
 }
 
 [sub_resource type="Animation" id="Animation_338xk"]
@@ -797,8 +985,12 @@ loop_mode = 1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kddw4"]
 _data = {
+"Confusion Idle": SubResource("Animation_h3uce"),
 "Draw Sword": SubResource("Animation_5l0rp"),
+"Go To Confused": SubResource("Animation_dseu2"),
+"Hold Letter Out": SubResource("Animation_nnexw"),
 "Idle": SubResource("Animation_0os45"),
+"Look at Silver": SubResource("Animation_lsvai"),
 "RESET": SubResource("Animation_4ow57"),
 "Slide In": SubResource("Animation_338xk"),
 "Tense Sigh": SubResource("Animation_4ulpm"),
@@ -823,6 +1015,22 @@ tracks/0/keys = {
 "values": [0, 3, 4, 3, 0]
 }
 
+[sub_resource type="Animation" id="Animation_4qj8n"]
+resource_name = "Look Somewhere Else"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
 [sub_resource type="Animation" id="Animation_7egl4"]
 length = 0.001
 tracks/0/type = "value"
@@ -836,6 +1044,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.2584, 0.0323663, -3.47297)]
 }
 
 [sub_resource type="Animation" id="Animation_guvrf"]
@@ -852,6 +1072,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 5, 0]
+}
+
+[sub_resource type="Animation" id="Animation_ie0ha"]
+resource_name = "Shrug"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.9, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 10, 8, 7]
 }
 
 [sub_resource type="Animation" id="Animation_jgp1g"]
@@ -888,8 +1124,10 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dcer2"]
 _data = {
 "Look Around": SubResource("Animation_prfhx"),
+"Look Somewhere Else": SubResource("Animation_4qj8n"),
 "RESET": SubResource("Animation_7egl4"),
 "Ready Up": SubResource("Animation_guvrf"),
+"Shrug": SubResource("Animation_ie0ha"),
 "Slide In2": SubResource("Animation_jgp1g"),
 "Tip Hat": SubResource("Animation_3lmst")
 }
@@ -970,6 +1208,15 @@ current = true
 script = ExtResource("4_tqq36")
 
 [node name="Blocking Marks" type="Node3D" parent="Cutscene"]
+
+[node name="Cato Take Letter" type="Marker3D" parent="Cutscene/Blocking Marks"]
+transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, 0.75353, 0.9375, 1.41444)
+
+[node name="Cato Clear Desk" type="Marker3D" parent="Cutscene/Blocking Marks"]
+transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, 2.96419, 0.9375, -1.66249)
+
+[node name="To Off Screen" type="Marker3D" parent="Cutscene/Blocking Marks"]
+transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, -8.67369, 0.9375, -1.09427)
 
 [node name="CameraModifierHandle" type="Node3D" parent="Cutscene"]
 
@@ -1165,15 +1412,15 @@ walkingSpeedUnitsPerSecond = 4.0
 characterColor = Color(0.568627, 0.0784314, 0.215686, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cato Actor"]
-transform = Transform3D(-3.61998e-06, 0, 0.999997, 0, 1, 0, -0.999997, 0, -3.61998e-06, -0.935359, 1.97703, 0.255529)
+transform = Transform3D(-3.61998e-06, 0, 0.999997, 0, 1, 0, -0.999997, 0, -3.61998e-06, -0.935359, 2.05376, 0.255529)
 pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture_filter = 1
 texture = ExtResource("12_ostdf")
 hframes = 10
-vframes = 5
-frame = 46
+vframes = 6
+frame = 51
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Cato Actor"]
 autoplay = "Idle"
@@ -1190,15 +1437,13 @@ texture = ExtResource("13_p0pyi")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cutscene"]
 
-[node name="Luciene Actor" type="Node3D" parent="Cutscene" node_paths=PackedStringArray("OneSyllablePip", "TwoSyllablePip")]
-transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 0.500002, -0.5, -6.25)
+[node name="Luciene Actor" type="Node3D" parent="Cutscene"]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, -0.775546, 0.0376296, 0.43548)
 visible = false
 script = ExtResource("11_xyeqh")
 actorName = "Luciene"
 walkingSpeedUnitsPerSecond = 4.0
 characterColor = Color(0.470588, 0.392157, 0.776471, 1)
-OneSyllablePip = NodePath("")
-TwoSyllablePip = NodePath("")
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Luciene Actor"]
 transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -0.935359, 3.97703, 0.255529)
@@ -1207,7 +1452,8 @@ shaded = true
 alpha_cut = 2
 texture_filter = 1
 texture = ExtResource("17_1xs1t")
-hframes = 8
+hframes = 10
+vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Luciene Actor"]
 autoplay = "Idle"
@@ -1223,15 +1469,19 @@ max_polyphony = 3
 stream = ExtResource("19_28ll1")
 max_polyphony = 6
 
-[node name="Silver Actor" type="Node3D" parent="Cutscene" node_paths=PackedStringArray("OneSyllablePip", "TwoSyllablePip")]
-transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, -3.907, 0.026, -1.795)
+[node name="Letter Prop" type="Sprite3D" parent="Cutscene/Luciene Actor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.125, 0.25)
+visible = false
+pixel_size = 0.0125
+texture = ExtResource("13_p0pyi")
+
+[node name="Silver Actor" type="Node3D" parent="Cutscene"]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, -3.2584, 0.0323663, -3.47297)
 visible = false
 script = ExtResource("11_xyeqh")
 actorName = "Silver"
 walkingSpeedUnitsPerSecond = 4.0
 characterColor = Color(0.278431, 0.447059, 0.219608, 1)
-OneSyllablePip = NodePath("")
-TwoSyllablePip = NodePath("")
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Silver Actor"]
 transform = Transform3D(0.999997, 0, 3.88422e-07, 0, 1, 0, -3.88422e-07, 0, 0.999997, -1.37286, 3.97703, 0.255529)
@@ -1240,7 +1490,8 @@ shaded = true
 alpha_cut = 2
 texture_filter = 1
 texture = ExtResource("20_louv3")
-hframes = 7
+hframes = 10
+vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Silver Actor"]
 autoplay = "Idle"
