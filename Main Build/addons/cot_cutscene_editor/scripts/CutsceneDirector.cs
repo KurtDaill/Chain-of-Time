@@ -139,7 +139,7 @@ public partial class CutsceneDirector : GameplayMode
                     break;
             }
         }
-        else if(input == PlayerInput.Down){
+        else if(input == PlayerInput.Up){
             switch(currentAction.GetType().Name){
                 case "CutsceneEndBlock" :
                     playerCharacterResponseBox.GoUpList();

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="../../SceneData/ScreenplaySchema.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<screenplay>
+    <block name="start">
+        <beat>1</beat>
+        <setCharacterAnimation><character>Cato</character><animation>Look at Ceiling</animation></setCharacterAnimation>
+        <line><speaker>Cato</speaker>I suppose it figures you're finnaly going finish the Temple just when I'm leaving.</line>
+        <beat>1</beat>
+        <line><speaker>Lady Amaya</speaker>The Goddess of All controls time, Cato Argent. . .</line>
+        <setCharacterAnimation idleLoop="true"><character>Cato</character><animation>Idle</animation></setCharacterAnimation>
+        <line><speaker>Lady Amaya</speaker>The span of our abimitions, our sorrows, our very lives.</line>
+        <line><speaker>Lady Amaya</speaker>It is wise to note when she chooses to pair a beginning with an ending.</line>
+        <END>
+            <opt GOTO="kell">Good Omen, then? Goddess making sure she's there to see me off.</opt>
+            <opt GOTO="argue">I didn't know you were so eager ot be rid of me.</opt>
+            <opt GOTO="ominous">Is everything alright? You don't seem yourself ma'am.</opt>
+            <opt GOTO="letter 1">Forgive me: I'm a mailman, not a seer. I have a letter for you.</opt>
+        </END>
+    </block>
+    <block name="kell">
+        <line><speaker>Lady Amaya</speaker>The sages wrote that the Goddess only watches over humans, her chosen.</line>
+        <line><speaker>Lady Amaya</speaker>I'm afraid, young Kell, that your Little Gods will have to suffice</line>
+        <END>
+            <opt GOTO="hope">Well, they've never let me down.</opt>
+            <opt GOTO="doubt">Sages can be wrong. . .</opt>
+        </END>
+    </block>
+    <block name="hope">
+        <line><speaker>Lady Amaya</speaker>It is said that faint hope prevails over no hope at all.</line>
+        <setCharacterAnimation><character>Lady Amaya</character><animation>Face Camera</animation></setCharacterAnimation>
+        <line><speaker>Lady Amaya</speaker>I shall pray for you, young kell.</line>
+        <END><GOTO>letter 2</GOTO></END>
+    </block>
+    <block name="doubt">
+        <line><speaker>Lady Amaya</speaker>I would not ignore them. They foretold much of the distaters that have befallen my people. . .</line>
+        <line><speaker>Lady Amaya</speaker>and the path out of the darkness. . .</line>
+        <END><GOTO>letter 2</GOTO></END>
+    </block>
+    <block name="argue">
+        <line><speaker>Lady Amaya</speaker>What I want has little to do with it. The Goddess controls our fates.</line>
+        <END>
+            <opt GOTO="hard way">You know, I've never really believed in fate.</opt>
+            <opt GOTO="peek">and you get to peek ahead a few pages?</opt>
+        </END>
+    </block>
+    <block name="ominous">
+        <line><speaker>Lady Amaya</speaker>I. . .</line>
+        <beat>1</beat>
+        <line><speaker>Lady Amaya</speaker>I am well, young Kell.</line>
+        <beat>2</beat>
+        <line><speaker>Lady Amaya</speaker>You are embarking on a dangerous life now. I suggest you take greater care for yourself.</line>
+        <END><GOTO>letter 2</GOTO></END>
+    </block>
+    <block name="hard way">
+        <line><speaker>Lady Amaya</speaker>Then you've chosen the difficult path to the same outcome.</line>
+        <line><speaker>Lady Amaya</speaker>The goddess only leaves us control over which route we take to our predestined place . . .</line>
+        <END><GOTO>letter 2</GOTO></END>
+    </block>
+    <block name="peek">
+        <beat>0.5</beat>
+        <setCharacterAnimation><character>Lady Amaya</character><animation>Face Camera</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Lady Amaya</character><animation>Turn Think Smile</animation></setCharacterAnimation>
+        <line><speaker>Lady Amaya</speaker>I don't know if anyone has ever phrased it quite like that. . .</line>
+        <beat>0.5</beat>
+        <setCharacterAnimation><character>Lady Amaya</character><animation>Face Camera</animation></setCharacterAnimation>
+        <line><speaker>Lady Amaya</speaker>But no, I don't get to. . . [wave]peek[/wave] ahead. The Goddess gives me what I must know to guide my people.</line>
+        <line><speaker>Cato</speaker>Any Guidance for me?</line>
+        <setCharacterAnimation><character>Lady Amaya</character><animation>Look Down, Then Up</animation></setCharacterAnimation>
+        <line><speaker>Lady Amaya</speaker>I'm afraid not. Your fate is yours alone, now.</line>
+        <END><GOTO>letter 2</GOTO></END>
+    </block>
+    <block name="letter 2">
+        <setCharacterAnimation><character>Lady Amaya</character><animation>Face Camera</animation></setCharacterAnimation>
+        <line><speaker>Lady Amaya</speaker>I assume you haven't come merely for a sermon, I can assume you have a letter?</line>
+        <line><speaker>Cato</speaker>Uh, yes! One moment</line>
+        <END><GOTO>letter 1</GOTO></END>
+    </block>
+    <block name="letter 1">
+        <setCharacterAnimation><character>Cato</character><animation>Hold Out Letter</animation></setCharacterAnimation>
+        <line><speaker>Cato</speaker>It's a red seal, from Moonhaven itself. Royal Dispatch.</line>
+        <setCharacterAnimation><character>Lady Amaya</character><animation>Take Letter</animation></setCharacterAnimation>
+        <line><speaker>Lady Amaya</speaker>Hm. It's rare we get word from the capital.</line>
+        <setCharacterAnimation><character>Lady Amaya</character><animation>Look Down Then Up</animation></setCharacterAnimation>
+        <line><speaker>Lady Amaya</speaker>On reflection, I do have on epiece of advice for you: Cato Argent.</line>
+        <line><speaker>Lady Amaya</speaker>Make peace with your life tonight. Pray, meditate, whatever brings you stillnees of mind. You're embarking on a dangerous journey very soon.</line>
+        <END>
+            <opt GOTO="exit 1">Thank you, my lady.</opt>
+            <opt GOTO="exit 2">Is. . .is something going to happen to me?</opt>
+        </END>
+    </block>
+    <block name="exit 1">
+        <characterMove character="Cato">Out of Scene</characterMove>
+        <END><GOTO>epilogue</GOTO></END>
+    </block>
+    <block name="exit 2">
+        <beat>2</beat>
+        <line><speaker>Lady Amaya</speaker>I cannot say.</line>
+        <setCharacterAnimation><character>Lady Amaya</character><animation>Look Away</animation></setCharacterAnimation>
+        <beat>1</beat>
+        <characterMove character="Cato">Out of Scene</characterMove>
+        <END><GOTO>epilogue</GOTO></END>
+    </block>
+    <block name="epilogue">
+        <beat>1</beat>
+        <setCharacterAnimation><character>Lady Amaya</character><animation>Look Away</animation></setCharacterAnimation>
+        <beat>1</beat>
+        <line><speaker>Lady Amaya</speaker>The Kell will die this night.</line>
+        <beat>1</beat>
+        <line><speaker>Lady Amaya</speaker> I have foreseen it.</line>
+        <beat>1</beat>
+        <END><GOTO>EXIT</GOTO></END>
+    </block>
+</screenplay>

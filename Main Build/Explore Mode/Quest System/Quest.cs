@@ -36,7 +36,7 @@ public partial class Quest : Node
     }
 
     public void OnObjectiveComplete(){
-        List<QuestObjective> objectives = this.GetChildren().OfType<QuestObjective>().ToList();
+        List<QuestObjective> objectives = GetNode("Objectives").GetChildren().OfType<QuestObjective>().ToList();
         if(objectives.Count(x => !x.IsCompleted()) == 0){
             completed = true;
             EmitSignal(Quest.SignalName.QuestComplete);

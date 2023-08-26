@@ -48,6 +48,7 @@ public partial class CutsceneDialogueBox : Control
 				printingOut = false;
 				EmitSignal(CutsceneDialogueBox.SignalName.DisplayFinished);
 			}
+			
 			switch(dialogueLabel.GetParsedText()[dialogueLabel.VisibleCharacters]){
 				case ' ': waitingForNextWord = true; break;
 				case '.': case ':' : case ';': case '?': case '!' : //add a long delay

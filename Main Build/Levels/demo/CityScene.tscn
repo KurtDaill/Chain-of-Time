@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://ma5c1212ytwq"]
+[gd_scene load_steps=46 format=3 uid="uid://crmkinkvau7wp"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_mg7wy"]
-[ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_u843o"]
+[ext_resource type="PackedScene" path="res://Gameplay Modes/Explore.tscn" id="2_u843o"]
 [ext_resource type="Script" path="res://Explore Mode/ExplorePlayer.cs" id="3_2vl2t"]
 [ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Prod Sprite Sheets/Adventure Cato Sprite-Sheet.png" id="4_75fs1"]
+[ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="5_lt6y1"]
 [ext_resource type="PackedScene" uid="uid://744jase51iw4" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody1_gltf.gltf" id="5_nx5xy"]
 [ext_resource type="PackedScene" uid="uid://663as0b6h32w" path="res://Art/3D/OldTownBlocks/OldTown_Roof1_gltf.gltf" id="6_wl2no"]
 [ext_resource type="PackedScene" uid="uid://dvsfko0dk77di" path="res://Art/3D/OldTownBlocks/OldTown_Roof3_gltf.gltf" id="7_tfm81"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cjrdgly6ew04o" path="res://Art/3D/OldTownBlocks/OldTown_Roof2_gltf.gltf" id="10_c0vmr"]
 [ext_resource type="PackedScene" uid="uid://cmspx3xel8pa2" path="res://Art/3D/OldTownBlocks/Balcony Piece.tscn" id="11_oh73i"]
 [ext_resource type="PackedScene" uid="uid://cj7260eer0ta5" path="res://Art/3D/TestOldTownHouse1gltf.gltf" id="12_s40sv"]
+[ext_resource type="PackedScene" uid="uid://dhug2nx6h5r1g" path="res://Explore Mode/SceneTransitionZone.tscn" id="14_kjnul"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sstrf"]
 radius = 0.52
@@ -149,6 +151,27 @@ radius = 0.64
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_n2j7n"]
 radius = 0.36
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a705"]
+albedo_color = Color(1, 0, 0.0156863, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xnifg"]
+size = Vector3(10.875, 12.5625, 12.5625)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ywo1y"]
+albedo_color = Color(1, 0.815686, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xp1j5"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_acq60"]
+size = Vector3(35, 28.6875, 17.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8t6vw"]
+size = Vector3(4.375, 7.875, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6bgh"]
+albedo_color = Color(0, 0, 0, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_acev5"]
 size = Vector3(200, 1, 100)
 
@@ -166,6 +189,21 @@ size = Vector3(8.0625, 42.4375, 8.375)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w8usq"]
 size = Vector3(8.5, 28.25, 8.375)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ko8i"]
+albedo_color = Color(1, 0.490196, 0.905882, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qwx1k"]
+height = 44.875
+radius = 7.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7lpox"]
+height = 44.875
+radius = 4.0625
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jfth4"]
+height = 44.875
+radius = 2.25
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kx5vk"]
 mie_coefficient = 0.008
@@ -188,7 +226,7 @@ exploreCamera = NodePath("../ExplorePlayer/Explore Camera")
 explorePlayer = NodePath("../ExplorePlayer")
 
 [node name="ExplorePlayer" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -2.245, 0.211502, 0.58793)
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 85.13, 0.211502, 52.4629)
 floor_max_angle = 1.309
 script = ExtResource("3_2vl2t")
 Speed = 8.0
@@ -231,6 +269,7 @@ shape = SubResource("CylinderShape3D_n2j7n")
 [node name="Explore Camera" type="Camera3D" parent="ExplorePlayer"]
 transform = Transform3D(1, 2.40465e-08, -5.62842e-08, 1.99322e-09, 0.906308, 0.422618, 6.11732e-08, -0.422618, 0.906308, 0, 9.22, 14.7635)
 current = true
+near = 3.0
 
 [node name="Map Handle" type="Node3D" parent="ExplorePlayer"]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 4.25)
@@ -243,9 +282,61 @@ size = 120.0
 
 [node name="CitySetup" type="Node3D" parent="."]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CitySetup"]
+[node name="Post Office" type="CSGBox3D" parent="CitySetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.375, 5, 55.5625)
+size = Vector3(11.125, 10, 12.625)
+material = SubResource("StandardMaterial3D_0a705")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Post Office"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Post Office/StaticBody3D"]
+shape = SubResource("BoxShape3D_xnifg")
+
+[node name="Floor" type="CSGBox3D" parent="CitySetup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.505689, 26.75)
 size = Vector3(200, 1, 100)
+
+[node name="Workshop" type="CSGBox3D" parent="CitySetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.9375, 6.1875, 31.0625)
+size = Vector3(34.875, 14.25, 17.625)
+material = SubResource("StandardMaterial3D_ywo1y")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CitySetup/Workshop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4375, 11.6875, 0)
+radius = 3.5625
+height = 19.125
+material = SubResource("StandardMaterial3D_xp1j5")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CitySetup/Workshop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 11.6875, 0)
+radius = 3.5625
+height = 19.125
+material = SubResource("StandardMaterial3D_xp1j5")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CitySetup/Workshop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0625, 11.6875, 0)
+radius = 3.5625
+height = 19.125
+material = SubResource("StandardMaterial3D_xp1j5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Workshop"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Workshop/StaticBody3D"]
+shape = SubResource("BoxShape3D_acq60")
+
+[node name="Door" type="Area3D" parent="CitySetup/Workshop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1875, -6.6875, 8.5)
+script = ExtResource("5_lt6y1")
+targetScene = "res://Levels/demo/Workshop Scene.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Workshop/Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5625)
+shape = SubResource("BoxShape3D_8t6vw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CitySetup/Workshop/Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1875, 0.5625)
+size = Vector3(4.375, 3.5, 1)
+material = SubResource("StandardMaterial3D_m6bgh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CitySetup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26.75)
@@ -406,34 +497,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55651e-07, 0, -14.375)
 shape = SubResource("BoxShape3D_614fc")
 
-[node name="Wide One4" type="Node3D" parent="CitySetup"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.1, 0, 64.75)
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Wide One4" instance=ExtResource("7_tfm81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
-
-[node name="OldTown_HouseBody3_gltf" parent="CitySetup/Wide One4" instance=ExtResource("8_n4grp")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Wide One4" instance=ExtResource("9_tauy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Wide One4" instance=ExtResource("9_tauy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
-visible = false
-
-[node name="OldTown_HouseBody3_gltf2" parent="CitySetup/Wide One4" instance=ExtResource("8_n4grp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
-
-[node name="OldTown_Roof2_gltf" parent="CitySetup/Wide One4" instance=ExtResource("10_c0vmr")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Wide One4"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Wide One4/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55651e-07, 0, -14.375)
-shape = SubResource("BoxShape3D_614fc")
-
 [node name="Wide One5" type="Node3D" parent="CitySetup"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 60.1, 0, 70.125)
 
@@ -556,29 +619,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
 [node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy 7"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy 7/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="Tall Boy 6" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 51.725, 0, -12)
-
-[node name="AllDaHousesgltf" parent="CitySetup/Tall Boy 6" instance=ExtResource("11_oh73i")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Tall Boy 6" instance=ExtResource("9_tauy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Tall Boy 6" instance=ExtResource("9_tauy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Tall Boy 6" instance=ExtResource("9_tauy0")]
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Tall Boy 6" instance=ExtResource("7_tfm81")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy 6"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy 6/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
 shape = SubResource("BoxShape3D_wfydt")
 
@@ -1036,51 +1076,6 @@ shape = SubResource("BoxShape3D_wfydt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.625, 6.5625, -7.625)
 shape = SubResource("BoxShape3D_h7rie")
 
-[node name="Big Building6" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -33.275, 0, 39.1875)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Big Building6" instance=ExtResource("9_tauy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Big Building6" instance=ExtResource("9_tauy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Big Building6" instance=ExtResource("9_tauy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
-
-[node name="OldTown_HouseBody2_gltf4" parent="CitySetup/Big Building6" instance=ExtResource("9_tauy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
-
-[node name="OldTown_HouseBody2_gltf5" parent="CitySetup/Big Building6" instance=ExtResource("9_tauy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
-
-[node name="OldTown_HouseBody2_gltf6" parent="CitySetup/Big Building6" instance=ExtResource("9_tauy0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
-
-[node name="OldTown_Roof2_gltf" parent="CitySetup/Big Building6" instance=ExtResource("10_c0vmr")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
-
-[node name="OldTown_Roof2_gltf2" parent="CitySetup/Big Building6" instance=ExtResource("10_c0vmr")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
-
-[node name="OldTown_Roof2_gltf3" parent="CitySetup/Big Building6" instance=ExtResource("10_c0vmr")]
-transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Big Building6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 0, -4.1875)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Big Building6/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/Big Building6/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5625, -8.3125)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="CitySetup/Big Building6/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.625, 6.5625, -7.625)
-shape = SubResource("BoxShape3D_h7rie")
-
 [node name="TestOldTownHouse1gltf" parent="CitySetup" instance=ExtResource("12_s40sv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.4625, 0, -18.75)
 
@@ -1104,19 +1099,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
 shape = SubResource("BoxShape3D_w8usq")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/TestOldTownHouse1gltf3/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4375, 6.5625, 0)
-shape = SubResource("BoxShape3D_w8usq")
-
-[node name="TestOldTownHouse1gltf4" parent="CitySetup" instance=ExtResource("12_s40sv")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -63.275, 0, 32.1875)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/TestOldTownHouse1gltf4"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/TestOldTownHouse1gltf4/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_w8usq")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/TestOldTownHouse1gltf4/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4375, 6.5625, 0)
 shape = SubResource("BoxShape3D_w8usq")
 
@@ -1171,6 +1153,45 @@ shape = SubResource("BoxShape3D_w8usq")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/TestOldTownHouse1gltf2/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4375, 6.5625, 0)
 shape = SubResource("BoxShape3D_w8usq")
+
+[node name="Temple" type="Node3D" parent="CitySetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.25, 0, -13.8125)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CitySetup/Temple"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2.375)
+radius = 7.6875
+height = 39.125
+sides = 16
+material = SubResource("StandardMaterial3D_8ko8i")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CitySetup/Temple"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1875, 0, -5.0625)
+radius = 2.4375
+height = 72.75
+material = SubResource("StandardMaterial3D_8ko8i")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CitySetup/Temple"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1875, 0, 2.375)
+radius = 4.0625
+height = 49.875
+sides = 16
+material = SubResource("StandardMaterial3D_8ko8i")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Temple"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Temple/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1875, 0, 2.375)
+shape = SubResource("CylinderShape3D_qwx1k")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/Temple/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1875, 0, 2.375)
+shape = SubResource("CylinderShape3D_7lpox")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="CitySetup/Temple/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3125, 0, -5)
+shape = SubResource("CylinderShape3D_jfth4")
+
+[node name="Door" parent="CitySetup/Temple" instance=ExtResource("14_kjnul")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7bod6")

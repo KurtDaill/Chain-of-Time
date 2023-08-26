@@ -4,7 +4,7 @@ using Godot;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-
+using System.Text;
 public static class ScreenPlayLoader{
         
     public static ScreenPlay LoadScript(string filePath){
@@ -13,7 +13,17 @@ public static class ScreenPlayLoader{
         XmlReaderSettings settings = new XmlReaderSettings();
         settings.IgnoreComments = true;
 
-        XmlReader reader = XmlReader.Create(ProjectSettings.GlobalizePath(filePath), settings);
+        string loadedFromGD = Godot.FileAccess.GetFileAsString(filePath);
+        byte[] byteArray = Encoding.ASCII.GetBytes(loadedFromGD);
+        MemoryStream stream = new MemoryStream(byteArray);
+        XmlReader reader = XmlReader.Create(stream);
+        /*if(OS.HasFeature("editor")){
+            reader = XmlReader.Create(ProjectSettings.GlobalizePath(filePath), settings);
+        }else{
+            reader = XmlReader.Create(OS.GetExecutablePath().GetBaseDir().PathJoin(filePath.Substring(6)), settings);
+        }*/
+
+        
 
         scriptXML.Load(reader);
 
@@ -137,6 +147,7 @@ public static class ScreenPlayLoader{
             }
             blocks.Add(new CutsceneBlock(currentBlock.Attributes.GetNamedItem("name").Value, actions.ToArray()));
             if(currentBlock.NextSibling == null) break;
+            else currentBlock = currentBlock.NextSibling;
         }
         return new ScreenPlay(blocks);
     }

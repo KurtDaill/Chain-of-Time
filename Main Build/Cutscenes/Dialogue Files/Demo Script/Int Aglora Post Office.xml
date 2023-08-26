@@ -7,13 +7,15 @@
         <cameraMove transition="linear" transitionLengthInSeconds="4">Push In One</cameraMove>
         <beat>2</beat>
         <envAnimation>Entrance</envAnimation>
-        <line><speaker>Cato</speaker>Sorry folks, office is closed. I'm heading off for my last delivery</line>
+        <line><speaker>Cato</speaker>Sorry folks,post office is closed. I'm heading off for my last delivery</line>
+        <line><speaker>Cato</speaker>No more paper cuts and fudged address lines for this Kell: I'm more of a '[wave]wandering adventurer[/wave]' type now.</line>
         <setCharacterAnimation><character>Cato</character><animation>Stand Up</animation></setCharacterAnimation>
         <envAnimation>Enable Arrivals</envAnimation>
         <setCharacterAnimation idleLoop="true"><character>Cato</character><animation>Idle Left</animation></setCharacterAnimation>
         <beat>0.2</beat>
         <cameraMove transition="linear" transitionLengthInSeconds="1.0">New Arrivals</cameraMove>
         <line><speaker>Luciene</speaker>I hope you can make an exception, Mr. Argent.</line>
+        <line><speaker>Luciene</speaker>It's very important to me your family recieves this.</line>
         <setCharacterAnimation><character>Luciene</character><animation>Hold Letter Out</animation></setCharacterAnimation>
         <beat>0.5</beat>
         <characterMove character="Cato">Cato Clear Desk</characterMove>
@@ -40,7 +42,7 @@
         <line><speaker>Cato</speaker>I'll take this one. But it's the last one.</line>
         <line><speaker>Luciene</speaker>. . .</line>
         <setCharacterAnimation idleLoop="true"><character>Luciene</character><animation>Idle</animation></setCharacterAnimation>
-        <line autoProceed="true"><speaker>Luciene</speaker>Mr Argent, I'm not sure you-</line>
+        <line autoProceed="true"><speaker>Luciene</speaker>Mr Argent, I'm not sure you understa-</line>
         <line><speaker>Cato</speaker>I'm sure I don't. . .</line>
         <characterMove character="Cato">To Off Screen</characterMove>
         <setCharacterAnimation><character>Luciene</character><animation>Look at Silver</animation></setCharacterAnimation>

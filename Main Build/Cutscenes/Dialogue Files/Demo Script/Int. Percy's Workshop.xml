@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="../../SceneData/ScreenplaySchema.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<screenplay>
+    <block name="start">
+        <beat>1.5</beat>
+        <setCharacterAnimation><character>Boss Percy</character><animation>Look Up</animation></setCharacterAnimation>
+        <setCharacterAnimation concurent="true"><character>Boss Percy</character><animation>Smile</animation></setCharacterAnimation>
+        <line><speaker>Boss Percy</speaker>[wave]Cato![/wave] Just the man I wanted to see!</line>
+        <END>
+            <opt GOTO="letter">Well, first I've got a letter for you Mr Claire.</opt>
+            <opt GOTO="what">What?</opt>
+        </END>
+    </block>
+    <block name = "letter">
+        <line><speaker>Boss Percy</speaker>Oh [wave]damn[/wave] the mail, son, you're off to [shake]WAR[/shake]!</line>
+        <line autoProceed="true"><speaker>Cato</speaker>I'm not sure that's exactly-</line>
+        <line><speaker>Boss Percy</speaker>Oh I know it's [wave]adventure[/wave] or whatnot to you, but war all the same!</line>
+        <line><speaker>Boss Percy</speaker>and [wave]you've[/wave] forgotten the most important part of it!</line>
+        <END><GOTO>sword</GOTO></END>
+    </block>
+    <block name = "what">
+        <line><speaker>Boss Percy</speaker>[wave]Aahh[/wave], son you've forgotten already? Gonna need [shake]sharper[/shake] wits to survive out there!</line>
+        <line autoProceed="true"><speaker>Cato</speaker>I. . .uh, I have a-</line>
+        <line><speaker>Boss Percy</speaker>Well, I have [wave]something[/wave] for you son! Something Urgent!</line>
+        <END><GOTO>sword</GOTO></END>
+    </block>
+    <block name="sword">
+        <setCharacterAnimation><character>Boss Percy</character><animation>Get Sword and Think</animation></setCharacterAnimation>
+        <END>
+            <opt GOTO="comrades">Mr Claire?</opt>
+            <opt GOTO="monologue">. . .</opt>
+        </END>
+    </block>
+    <block name = "comrades">
+        <beat>1</beat>
+        <line><speaker>Boss Percy</speaker>Percy, if you will. We're all warriors here, no need to be formal</line>
+        <setCharacterAnimation><character>Boss Percy</character><animation>Offer Sword</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Cato</character><animation>Take Sword and Check it Out</animation></setCharacterAnimation>
+        <beat>0.5</beat>
+        <line><speaker>Cato</speaker>It's perfect. . .</line>
+        <setCharacterAnimation><character>Cato</character><animation>Sheathe Sword</animation></setCharacterAnimation>
+        <line><speaker>Cato</speaker>I can't thank you enough Mr Cl-. . . Percy.</line>
+        <beat>1</beat>
+        <line><speaker>Boss Percy</speaker>You Can.</line>
+        <beat>2</beat>
+        <line><speaker>Boss Percy</speaker>Just make sure you swing it at the right bastards.</line>
+        <setCharacterAnimation><character>Boss Percy</character><animation>Look Down</animation></setCharacterAnimation>
+        <beat>1.5</beat>
+        <setCharacterAnimation><character>Boss Percy</character><animation>Look Up</animation></setCharacterAnimation>
+        <line><speaker>Boss Percy</speaker>I'm sure you've got some last deliveries, don't let me keep you, son.</line>     
+        <END><GOTO>EXIT</GOTO></END>
+    </block>
+    <block name="monologue">
+        <beat>3</beat>
+        <line><speaker>Boss Percy</speaker>You want to take care, son.</line>
+        <setCharacterAnimation><character>Boss Percy</character><animation>Draw Sword</animation></setCharacterAnimation>
+        <line><speaker>Boss Percy</speaker>Once you've draw in it, you're in the fight for the rest of your life.</line>
+        <line><speaker>Boss Percy</speaker>However short. . .or long it is.</line>
+        <beat>2</beat>
+        <setCharacterAnimation><character>Boss Percy</character><animation>Sheath Sword</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Boss Percy</character><animation>Offer Sword</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Cato</character><animation>Take Sword</animation></setCharacterAnimation>
+        <setCharacterAnimation><character>Boss Percy</character><animation>Look Down</animation></setCharacterAnimation>
+        <beat>1</beat>
+        <setCharacterAnimation><character>Boss Percy</character><animation>Look Up</animation></setCharacterAnimation>
+        <line><speaker>Boss Percy</speaker>I'm sure you've got some last deliveries, don't let me keep you, son.</line>
+        <END><GOTO>EXIT</GOTO></END>
+    </block>
+</screenplay>   

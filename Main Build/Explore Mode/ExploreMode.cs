@@ -22,6 +22,7 @@ public partial class ExploreMode : GameplayMode{
     public override Task StartUp(){
         explorePlayer.Visible = true;
         exploreCamera.Current = true;
+        this.Visible = true;
         return null;
     }
 
@@ -37,6 +38,7 @@ public partial class ExploreMode : GameplayMode{
 
     public async override Task TransitionOut(){
         explorePlayer.Visible = false;
+        this.Visible = false;
     }
 
     public override void HandleInput(PlayerInput input)

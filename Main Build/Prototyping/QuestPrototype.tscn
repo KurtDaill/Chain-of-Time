@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b43sxpud60he4" path="res://Art/Letter.png" id="14_fn1cl"]
 [ext_resource type="Script" path="res://Explore Mode/CutsceneInteractZone.cs" id="16_g5e5r"]
 [ext_resource type="PackedScene" uid="uid://d31imjbtaeidb" path="res://Explore Mode/DialoguePrompt.tscn" id="16_jior5"]
-[ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="18_n68n7"]
+[ext_resource type="PackedScene" path="res://Gameplay Modes/Explore.tscn" id="18_n68n7"]
 [ext_resource type="Script" path="res://SceneTransition.cs" id="19_16l7q"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a2cjr"]

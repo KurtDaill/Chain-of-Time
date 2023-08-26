@@ -1,8 +1,8 @@
-[gd_scene load_steps=76 format=3 uid="uid://qckysdpaoade"]
+[gd_scene load_steps=77 format=3 uid="uid://qckysdpaoade"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_6v8eb"]
 [ext_resource type="Environment" uid="uid://dt4r45ovu5fyx" path="res://Explore Mode/Environment Used For Interior Shots.tres" id="1_tn5h5"]
-[ext_resource type="PackedScene" uid="uid://u0pw5cvegd6h" path="res://Art/3D/Post Office Rough Render.gltf" id="2_tt4ss"]
+[ext_resource type="PackedScene" uid="uid://byl0opcoo2u3l" path="res://Art/3D/Post Office Rough Render.gltf" id="2_tt4ss"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDirector.cs" id="3_ff4qr"]
 [ext_resource type="PackedScene" uid="uid://dj3hdxl03mnbi" path="res://Art/3D/Scaled_Chair.gltf" id="4_lqoj4"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneShot.cs" id="4_tqq36"]
@@ -14,14 +14,15 @@
 [ext_resource type="Theme" uid="uid://c6hjkq2or80ln" path="res://GUI/Themes/Cutscene Themes/Dialogue Responses.tres" id="10_vnu2h"]
 [ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/Actor.cs" id="11_xyeqh"]
 [ext_resource type="Texture2D" uid="uid://bxpwsf3thk4fo" path="res://Art/Prod Sprite Sheets/CatoCinematicAnimation-Sheet.png" id="12_ostdf"]
-[ext_resource type="AudioStream" uid="uid://blxm7gxkniqqk" path="res://Audio/Post Office Door Sound.wav" id="13_1c1u6"]
+[ext_resource type="AudioStream" uid="uid://d12eiwv78fm3q" path="res://Audio/Post Office Door Sound.wav" id="13_1c1u6"]
 [ext_resource type="Texture2D" uid="uid://b43sxpud60he4" path="res://Art/Letter.png" id="13_p0pyi"]
 [ext_resource type="Texture2D" uid="uid://wy4a13eqgfmx" path="res://Art/Prod Sprite Sheets/Luciene Cinematic Sprite-Sheet.png" id="17_1xs1t"]
-[ext_resource type="AudioStream" uid="uid://bmpycxcxi54nv" path="res://Audio/Voices/Luciene/TwoSyllablePip1.wav" id="18_udhji"]
-[ext_resource type="AudioStream" uid="uid://cswstpmnayj8o" path="res://Audio/Voices/Luciene/OneSyllablePip1.wav" id="19_28ll1"]
+[ext_resource type="AudioStream" uid="uid://clcqi6q2owc3s" path="res://Audio/Voices/Luciene/TwoSyllablePip1.wav" id="18_udhji"]
+[ext_resource type="AudioStream" uid="uid://d3o8yv63qm602" path="res://Audio/Voices/Luciene/OneSyllablePip1.wav" id="19_28ll1"]
 [ext_resource type="Texture2D" uid="uid://c6d5hexnmg817" path="res://Art/Prod Sprite Sheets/Silver Cinematic Animation-Sheet.png" id="20_louv3"]
-[ext_resource type="AudioStream" uid="uid://bg7qpygf7bl7e" path="res://Audio/Voices/Silver/TwoSyllablePip1.wav" id="21_nle2v"]
-[ext_resource type="AudioStream" uid="uid://b8vqsywace6gj" path="res://Audio/Voices/Silver/OneSyllablePip1.wav" id="22_biccc"]
+[ext_resource type="AudioStream" uid="uid://c8rxmedhrlnk5" path="res://Audio/Voices/Silver/TwoSyllablePip1.wav" id="21_nle2v"]
+[ext_resource type="AudioStream" uid="uid://d1pmjwoejy6wx" path="res://Audio/Voices/Silver/OneSyllablePip1.wav" id="22_biccc"]
+[ext_resource type="Script" path="res://SceneTransition.cs" id="23_uqxvo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iw0w"]
 bg_color = Color(0.623529, 0.686275, 0.741176, 0.337255)
@@ -416,7 +417,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.935359, 2.05376, 0.255529)]
+"values": [Vector3(-0.935359, 0.99126, 0.255529)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1178,7 +1179,7 @@ omni_attenuation = 2.73208
 [node name="Scaled_Chair" parent="Post Office Rough Render" instance=ExtResource("4_lqoj4")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 6.375, 0, -2.625)
 
-[node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox", "cutsceneCam")]
+[node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox", "cutsceneCam", "nextGameplayMode")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
 script = ExtResource("3_ff4qr")
 screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Int Aglora Post Office.xml"
@@ -1186,7 +1187,8 @@ playerCharacter = NodePath("Cato Actor")
 initialShotName = "Initial Shot"
 dialogueBox = NodePath("Subtitle Style")
 cutsceneCam = NodePath("CameraModifierHandle/Cutscene Camera")
-cutsceneName = "Default Cutscene Name"
+nextGameplayMode = NodePath("../Scene Transition")
+cutsceneName = "Very Beginning"
 
 [node name="Shot List" type="Node3D" parent="Cutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
@@ -1412,15 +1414,14 @@ walkingSpeedUnitsPerSecond = 4.0
 characterColor = Color(0.568627, 0.0784314, 0.215686, 1)
 
 [node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cato Actor"]
-transform = Transform3D(-3.61998e-06, 0, 0.999997, 0, 1, 0, -0.999997, 0, -3.61998e-06, -0.935359, 2.05376, 0.255529)
+transform = Transform3D(-3.61998e-06, 0, 0.999997, 0, 1, 0, -0.999997, 0, -3.61998e-06, -0.935359, 0.99126, 0.255529)
 pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture_filter = 1
 texture = ExtResource("12_ostdf")
 hframes = 10
-vframes = 6
-frame = 51
+vframes = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Cato Actor"]
 autoplay = "Idle"
@@ -1506,3 +1507,7 @@ max_polyphony = 3
 [node name="OneSyl" type="AudioStreamPlayer" parent="Cutscene/Silver Actor"]
 stream = ExtResource("22_biccc")
 max_polyphony = 6
+
+[node name="Scene Transition" type="Node3D" parent="."]
+script = ExtResource("23_uqxvo")
+targetScenePath = "res://Levels/demo/CityScene.tscn"

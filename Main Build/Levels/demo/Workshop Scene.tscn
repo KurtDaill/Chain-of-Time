@@ -1,0 +1,1464 @@
+[gd_scene load_steps=80 format=3 uid="uid://bm3utpqe0buko"]
+
+[ext_resource type="Script" path="res://SceneConfig.cs" id="1_u70fa"]
+[ext_resource type="PackedScene" uid="uid://c2d4fmlgsq2i3" path="res://Art/3D/Workshop Rough Render.gltf" id="2_uy24w"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDirector.cs" id="3_qgq8c"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneShot.cs" id="4_0sdmo"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneCamera.cs" id="5_dwrfx"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneDialogueBox.cs" id="6_b0m0i"]
+[ext_resource type="Texture2D" uid="uid://bc5cvecx1cei7" path="res://Art/Time Sense.png" id="7_2cvs1"]
+[ext_resource type="Theme" uid="uid://c3w8cbrksjko5" path="res://GUI/Themes/Cutscene Themes/NormalDialogueText.tres" id="8_kqyip"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/CutsceneResponseBox.cs" id="9_ky8wp"]
+[ext_resource type="Theme" uid="uid://c6hjkq2or80ln" path="res://GUI/Themes/Cutscene Themes/Dialogue Responses.tres" id="10_n01yd"]
+[ext_resource type="Script" path="res://addons/cot_cutscene_editor/scripts/Actor.cs" id="11_jm6od"]
+[ext_resource type="Texture2D" uid="uid://bxpwsf3thk4fo" path="res://Art/Prod Sprite Sheets/CatoCinematicAnimation-Sheet.png" id="12_4jno7"]
+[ext_resource type="Texture2D" uid="uid://b43sxpud60he4" path="res://Art/Letter.png" id="13_3v5rl"]
+[ext_resource type="Texture2D" uid="uid://ob2pe4pwy1gv" path="res://Art/Prod Sprite Sheets/Boss Percy Cinematic Sprite-Sheet.png" id="14_7gesr"]
+[ext_resource type="PackedScene" path="res://Gameplay Modes/Explore.tscn" id="15_wxca5"]
+[ext_resource type="Script" path="res://Explore Mode/CutsceneInteractZone.cs" id="16_jht5i"]
+[ext_resource type="Script" path="res://Explore Mode/ExplorePlayer.cs" id="16_ulljt"]
+[ext_resource type="PackedScene" uid="uid://d31imjbtaeidb" path="res://Explore Mode/DialoguePrompt.tscn" id="17_em40b"]
+[ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Prod Sprite Sheets/Adventure Cato Sprite-Sheet.png" id="17_irbfh"]
+[ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="18_63la4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j0s8a"]
+size = Vector3(33.6875, 1, 32.4375)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sngcc"]
+size = Vector3(10, 3, 3.0625)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ur2r1"]
+size = Vector3(2.6875, 9.0625, 1.9375)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hjwyd"]
+size = Vector3(1, 4.0625, 0.875)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3g82x"]
+size = Vector3(1, 15.75, 13.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gt51k"]
+size = Vector3(1, 15.75, 48.875)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dnmrb"]
+size = Vector3(1, 15.75, 9.8125)
+
+[sub_resource type="Environment" id="Environment_r816u"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.560784, 0.709804, 0.815686, 1)
+ambient_light_energy = 0.4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iw0w"]
+bg_color = Color(0.623529, 0.686275, 0.741176, 0.337255)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y51iu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncocj"]
+bg_color = Color(0.447059, 0.737255, 0.929412, 0.67451)
+
+[sub_resource type="Animation" id="Animation_jm3qf"]
+resource_name = "Distant Boom"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraModifierHandle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.4, 0, 0), Vector3(0.4, 0, 0), Vector3(-0.3, 0, 0), Vector3(0.3, 0, 0), Vector3(-0.2, 0, 0), Vector3(0.2, 0, 0), Vector3(-0.1, 0, 0), Vector3(0.1, 0, 0), Vector3(-0.1, 0, 0), Vector3(0.1, 0, 0), Vector3(-0.05, 0, 0), Vector3(0.05, 0, 0), Vector3(-0.05, 0, 0), Vector3(0.05, 0, 0), Vector3(-0.05, 0, 0), Vector3(0.05, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_38b4b"]
+_data = {
+"Distant Boom": SubResource("Animation_jm3qf")
+}
+
+[sub_resource type="Animation" id="Animation_i3lke"]
+resource_name = "Anxious Pacing"
+length = 8.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.5, 4, 5, 6.5, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.935359, 1.57321, 0.255529), Vector3(2, 1.573, 0.256), Vector3(2, 1.573, 0.256), Vector3(-1, 1.573, 0.256), Vector3(-1, 1.573, 0.256), Vector3(2, 1.573, 0.256), Vector3(-0.935359, 1.57321, 0.255529)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5, 5, 6.5, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.261799, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite3D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_fachi"]
+resource_name = "Draw Sword"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [11, 12, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_hbyni"]
+resource_name = "Fiddle with Object Sit"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_ig81r"]
+resource_name = "Fiddle with Object Sit Right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mnssw"]
+resource_name = "Freeze"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 2]
+}
+
+[sub_resource type="Animation" id="Animation_ergnw"]
+resource_name = "Hesitate"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 13, 15, 14]
+}
+
+[sub_resource type="Animation" id="Animation_bkc5n"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_xwaf0"]
+resource_name = "Cato Idle Sit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Prop_Letter:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0plmh"]
+resource_name = "Look Around"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.8, 2.4, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [13, 15, 13, 15, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_m6h2j"]
+resource_name = "Cato Look Behind Sit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_ukiyq"]
+resource_name = "Look Up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [14, 13]
+}
+
+[sub_resource type="Animation" id="Animation_ls8h1"]
+resource_name = "Nod"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [13, 14, 13]
+}
+
+[sub_resource type="Animation" id="Animation_80o84"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dialogue Box:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.92119, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.935359, 2.63295, 0.255528)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Prop_Letter:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.145586, 1.3125, 0.543333)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Prop_Letter:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite3D:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite3D:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [53]
+}
+
+[sub_resource type="Animation" id="Animation_4c2mm"]
+resource_name = "Run Out"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(5.941, -0.125, -0.505), Vector3(10.1285, -0.125, 0.4325)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.309, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [18, 25]
+}
+
+[sub_resource type="Animation" id="Animation_cduuf"]
+resource_name = "Sheathe Sword"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [66, 12, 11, 10]
+}
+
+[sub_resource type="Animation" id="Animation_5fwyo"]
+resource_name = "Show Object Sit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Prop_Letter:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Prop_Letter:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector3(-0.75107, 1.375, -0.563895)]
+}
+
+[sub_resource type="Animation" id="Animation_jlj8p"]
+resource_name = "Stand Up and Draw Sword"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 9, 7, 11, 12, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector3(-1.37147, -0.125, -0.229757), Vector3(-1.37147, -0.125, -0.042257), Vector3(-1.37147, -0.125, 0.145243)]
+}
+
+[sub_resource type="Animation" id="Animation_i57d2"]
+resource_name = "Surprise"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_4t0ek"]
+resource_name = "Take Sword"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [53, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Percy Actor/Sprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_p8qr4"]
+resource_name = "Take Sword and Check it Out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 0.9, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [53, 11, 12, 13, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Percy Actor/Sprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wag5e"]
+resource_name = "Taunt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [18, 19, 20]
+}
+
+[sub_resource type="Animation" id="Animation_i5yur"]
+resource_name = "Walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [21, 28]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqyp1"]
+_data = {
+"Anxious Pacing": SubResource("Animation_i3lke"),
+"Draw Sword": SubResource("Animation_fachi"),
+"Fiddle with Object Sit": SubResource("Animation_hbyni"),
+"Fiddle with Object Sit Right": SubResource("Animation_ig81r"),
+"Freeze": SubResource("Animation_mnssw"),
+"Hesitate": SubResource("Animation_ergnw"),
+"Idle": SubResource("Animation_bkc5n"),
+"Idle Sit": SubResource("Animation_xwaf0"),
+"Look Around": SubResource("Animation_0plmh"),
+"Look Behind Sit": SubResource("Animation_m6h2j"),
+"Look Up": SubResource("Animation_ukiyq"),
+"Nod": SubResource("Animation_ls8h1"),
+"RESET": SubResource("Animation_80o84"),
+"Run Out": SubResource("Animation_4c2mm"),
+"Sheathe Sword": SubResource("Animation_cduuf"),
+"Show Object Sit": SubResource("Animation_5fwyo"),
+"Stand Up and Draw Sword": SubResource("Animation_jlj8p"),
+"Surprise": SubResource("Animation_i57d2"),
+"Take Sword": SubResource("Animation_4t0ek"),
+"Take Sword and Check it Out": SubResource("Animation_p8qr4"),
+"Taunt": SubResource("Animation_wag5e"),
+"Walk": SubResource("Animation_i5yur")
+}
+
+[sub_resource type="Animation" id="Animation_8abv6"]
+resource_name = "Draw Sword"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [9, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_myfei"]
+resource_name = "Get Sword and Think"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8, 1.1, 1.3, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 3, 4, 3, 4, 3, 5, 9]
+}
+
+[sub_resource type="Animation" id="Animation_c8sb4"]
+resource_name = "Look Down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_sbu3i"]
+resource_name = "Look Up"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_mts5m"]
+resource_name = "Offer Sword"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_pe5er"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_ds7yl"]
+resource_name = "Sheath Sword"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [7, 6, 9]
+}
+
+[sub_resource type="Animation" id="Animation_duacb"]
+resource_name = "Smile"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k1foj"]
+_data = {
+"Draw Sword": SubResource("Animation_8abv6"),
+"Get Sword and Think": SubResource("Animation_myfei"),
+"Look Down": SubResource("Animation_c8sb4"),
+"Look Up": SubResource("Animation_sbu3i"),
+"Offer Sword": SubResource("Animation_mts5m"),
+"RESET": SubResource("Animation_pe5er"),
+"Sheath Sword": SubResource("Animation_ds7yl"),
+"Smile": SubResource("Animation_duacb")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_281qp"]
+radius = 2.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8t6vw"]
+size = Vector3(4.375, 7.875, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhxjh"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.756863)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8ycfo"]
+radius = 0.52
+
+[sub_resource type="Animation" id="Animation_ojxl6"]
+resource_name = "Idle"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_27shk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [137]
+}
+
+[sub_resource type="Animation" id="Animation_08ja1"]
+resource_name = "Time Walk"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 3, 3.3, 3.6, 4.1, 4.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 33, 34, 35, 36, 30, 0]
+}
+
+[sub_resource type="Animation" id="Animation_sjxoi"]
+resource_name = "Walk Down"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1, 8]
+}
+
+[sub_resource type="Animation" id="Animation_wwo8u"]
+resource_name = "Walk Left"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [9, 16]
+}
+
+[sub_resource type="Animation" id="Animation_q18n5"]
+resource_name = "Walk Right"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1, 8]
+}
+
+[sub_resource type="Animation" id="Animation_ypg7j"]
+resource_name = "Walk Up"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d2xct"]
+_data = {
+"Idle": SubResource("Animation_ojxl6"),
+"RESET": SubResource("Animation_27shk"),
+"Time Walk": SubResource("Animation_08ja1"),
+"Walk Down": SubResource("Animation_sjxoi"),
+"Walk Left": SubResource("Animation_wwo8u"),
+"Walk Right": SubResource("Animation_q18n5"),
+"Walk Up": SubResource("Animation_ypg7j")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dqqd4"]
+radius = 0.64
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tlltp"]
+radius = 0.36
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("startingMode")]
+script = ExtResource("1_u70fa")
+startingMode = NodePath("ExploreMode")
+
+[node name="Workshop Rough Render" parent="." instance=ExtResource("2_uy24w")]
+
+[node name="Lights" type="Node3D" parent="Workshop Rough Render"]
+
+[node name="Window" type="SpotLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(-1, 5.0243e-15, -8.74228e-08, -7.57103e-08, 0.5, 0.866025, 4.37114e-08, 0.866025, -0.5, -9.9375, 12.3125, -7.8125)
+light_color = Color(0.729412, 0.784314, 0.870588, 1)
+light_energy = 2.0
+light_size = 1.0
+shadow_enabled = true
+spot_range = 35.3125
+spot_attenuation = 1.41421
+spot_angle = 26.913
+
+[node name="Window2" type="SpotLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(-1, 5.0243e-15, -8.74228e-08, -7.57103e-08, 0.5, 0.866025, 4.37114e-08, 0.866025, -0.5, 10.125, 12.3125, -7.8125)
+light_color = Color(0.729412, 0.784314, 0.870588, 1)
+light_energy = 6.0
+light_size = 1.0
+shadow_enabled = true
+spot_range = 35.3125
+spot_attenuation = 1.56917
+spot_angle = 26.913
+
+[node name="Window3" type="SpotLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(-1, 5.0243e-15, -8.74228e-08, -7.57103e-08, 0.5, 0.866025, 4.37114e-08, 0.866025, -0.5, 8.5, 4.875, -7.8125)
+light_color = Color(0.729412, 0.784314, 0.870588, 1)
+light_energy = 6.0
+light_size = 3.0
+shadow_enabled = true
+spot_range = 10.75
+spot_attenuation = 1.1487
+spot_angle = 36.5759
+
+[node name="Shop Light" type="SpotLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, -7.25, 11.875, 0.8125)
+light_color = Color(1, 0.847059, 0.580392, 1)
+light_energy = 10.0
+shadow_enabled = true
+spot_range = 14.5625
+spot_attenuation = 0.63728
+spot_angle = 33.6841
+
+[node name="Shop Light2" type="SpotLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 5, 11.875, 0.8125)
+light_color = Color(1, 0.847059, 0.580392, 1)
+light_energy = 10.0
+shadow_enabled = true
+spot_range = 14.5625
+spot_attenuation = 0.63728
+spot_angle = 33.6841
+
+[node name="Shop Light3" type="SpotLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 5, 11.875, -3.1875)
+light_color = Color(1, 0.847059, 0.580392, 1)
+light_energy = 10.0
+shadow_enabled = true
+spot_range = 14.5625
+spot_attenuation = 0.63728
+spot_angle = 33.6841
+
+[node name="OmniLight" type="OmniLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 6, -13.0625)
+light_color = Color(1, 0.913725, 0.611765, 1)
+light_energy = 7.812
+omni_range = 13.099
+
+[node name="OmniLight2" type="OmniLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3.6875, -3.5625)
+light_color = Color(1, 0.913725, 0.611765, 1)
+light_energy = 5.286
+shadow_enabled = true
+omni_range = 12.124
+omni_attenuation = 1.86607
+
+[node name="Furnace" type="OmniLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.625, -1.75)
+light_color = Color(1, 0.592157, 0.258824, 1)
+shadow_enabled = true
+omni_attenuation = 3.13834
+
+[node name="Furance" type="OmniLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5625, 0.625, -1.75)
+light_color = Color(1, 0.592157, 0.258824, 1)
+shadow_enabled = true
+omni_attenuation = 3.13834
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Workshop Rough Render"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_j0s8a")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.5, -4)
+shape = SubResource("BoxShape3D_sngcc")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.375, -0.5, 1.9375)
+shape = SubResource("BoxShape3D_ur2r1")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, 1.4375)
+shape = SubResource("BoxShape3D_hjwyd")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -0.5, -2.5625)
+shape = SubResource("BoxShape3D_hjwyd")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, -0.5, -2.5625)
+shape = SubResource("BoxShape3D_hjwyd")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.25, -3.625)
+shape = SubResource("BoxShape3D_3g82x")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.75, 4.25, -8.5)
+shape = SubResource("BoxShape3D_gt51k")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.75, 4.25, 3.5625)
+shape = SubResource("BoxShape3D_gt51k")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 13.5, 4.25, -4.4375)
+shape = SubResource("BoxShape3D_dnmrb")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 11.9375, 4.25, -0.5)
+shape = SubResource("BoxShape3D_dnmrb")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 7.5625, 4.25, 3.9375)
+shape = SubResource("BoxShape3D_dnmrb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r816u")
+
+[node name="Cutscene" type="Node3D" parent="." node_paths=PackedStringArray("playerCharacter", "dialogueBox", "cutsceneCam", "nextGameplayMode")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -0.5, 0, 0)
+visible = false
+script = ExtResource("3_qgq8c")
+screenPlayXMLFilePath = "res://Cutscenes/Dialogue Files/Demo Script/Int. Percy's Workshop.xml"
+playerCharacter = NodePath("Cato Actor")
+initialShotName = "Initial Shot"
+dialogueBox = NodePath("Subtitle Style")
+cutsceneCam = NodePath("CameraModifierHandle/Cutscene Camera")
+nextGameplayMode = NodePath("../ExploreMode")
+cutsceneName = "PercyGetSword"
+
+[node name="Shot List" type="Node3D" parent="Cutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.303432, 0, 0)
+
+[node name="Initial Shot" type="Camera3D" parent="Cutscene/Shot List"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8125, 2.0625, 6.125)
+current = true
+script = ExtResource("4_0sdmo")
+
+[node name="Blocking Marks" type="Node3D" parent="Cutscene"]
+
+[node name="CameraModifierHandle" type="Node3D" parent="Cutscene"]
+
+[node name="Cutscene Camera" type="Camera3D" parent="Cutscene/CameraModifierHandle"]
+transform = Transform3D(1, 0, 0, 0, 0.996194, 0.0871557, 0, -0.0871557, 0.996194, -7.35, 3.422, 2.439)
+current = true
+script = ExtResource("5_dwrfx")
+
+[node name="BeatTimer" type="Timer" parent="Cutscene"]
+one_shot = true
+
+[node name="Subtitle Style" type="Control" parent="Cutscene" node_paths=PackedStringArray("dialogueLabel", "myResponseBox")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_b0m0i")
+dialogueLabel = NodePath("Subtitle Bar/RichTextLabel")
+myResponseBox = NodePath("Responses")
+
+[node name="Background Panel" type="Panel" parent="Cutscene/Subtitle Style"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.734
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.280029
+offset_right = -5.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8iw0w")
+
+[node name="Portrait" type="TextureRect" parent="Cutscene/Subtitle Style"]
+layout_mode = 2
+anchor_top = 0.839
+anchor_right = 0.091
+anchor_bottom = 0.987
+offset_left = 14.0
+offset_top = -0.120056
+offset_right = -0.720016
+offset_bottom = 0.039917
+texture = ExtResource("7_2cvs1")
+stretch_mode = 2
+
+[node name="Subtitle Bar" type="VBoxContainer" parent="Cutscene/Subtitle Style"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.097
+anchor_top = 0.86
+anchor_right = 0.66
+anchor_bottom = 1.0
+offset_left = -0.240005
+offset_top = -31.8
+offset_right = 0.799927
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dialogue Spacer" type="Panel" parent="Cutscene/Subtitle Style/Subtitle Bar"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Cutscene/Subtitle Style/Subtitle Bar"]
+clip_contents = false
+layout_mode = 2
+theme = ExtResource("8_kqyip")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[color=#ffffff88][b]Cato[/b] - [/color]This is some test text. I'm not 100% Sure About what's going to live here."
+fit_content = true
+
+[node name="Responses" type="VBoxContainer" parent="Cutscene/Subtitle Style" node_paths=PackedStringArray("responseLabels")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.66
+anchor_top = 0.531
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.799927
+offset_top = 0.519958
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("9_ky8wp")
+responseLabels = [NodePath("VBoxContainer/RichTextLabel"), NodePath("VBoxContainer/RichTextLabel2"), NodePath("VBoxContainer/RichTextLabel3"), NodePath("VBoxContainer/RichTextLabel4")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Cutscene/Subtitle Style/Responses"]
+layout_mode = 2
+theme = ExtResource("10_n01yd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "This is no longer the selected Response.
+"
+fit_content = true
+
+[node name="Highlight" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer/RichTextLabel"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 713.0
+offset_bottom = 97.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+
+[node name="Response Spacer" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "This is Response Two, which is also longer"
+fit_content = true
+
+[node name="Highlight" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer/RichTextLabel2"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 768.0
+offset_bottom = 85.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+
+[node name="Response Spacer2" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "This is Response Three, There is no Meme"
+fit_content = true
+
+[node name="Highlight" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer/RichTextLabel3"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 884.0
+offset_bottom = 102.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+
+[node name="Response Spacer3" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y51iu")
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "This is Response Four, All Hail Response Four"
+fit_content = true
+
+[node name="Highlight" type="Panel" parent="Cutscene/Subtitle Style/Responses/VBoxContainer/RichTextLabel4"]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 772.0
+offset_bottom = 102.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncocj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene"]
+libraries = {
+"": SubResource("AnimationLibrary_38b4b")
+}
+
+[node name="Cato Actor" type="Node3D" parent="Cutscene"]
+transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, -9.14572, -0.628, -1.3095)
+script = ExtResource("11_jm6od")
+actorName = "Cato"
+walkingSpeedUnitsPerSecond = 4.0
+characterColor = Color(0.568627, 0.0784314, 0.215686, 1)
+
+[node name="Sprite3D" type="Sprite3D" parent="Cutscene/Cato Actor"]
+transform = Transform3D(-3.61998e-06, 0, 0.999997, 0, 1, 0, -0.999997, 0, -3.61998e-06, -0.935359, 2.63295, 0.255528)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("12_4jno7")
+hframes = 10
+vframes = 7
+frame = 53
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Cato Actor"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_lqyp1")
+}
+
+[node name="Prop_Letter" type="Sprite3D" parent="Cutscene/Cato Actor"]
+transform = Transform3D(0.25, -0.0669873, 0.965925, 0.258819, 0.965926, -1.10534e-08, -0.933009, 0.25, 0.258819, -0.145586, 1.3125, 0.543333)
+visible = false
+pixel_size = 0.0125
+shaded = true
+texture = ExtResource("13_3v5rl")
+
+[node name="Percy Actor" type="Node3D" parent="Cutscene"]
+transform = Transform3D(-8.84149e-08, 0, -1, 0, 1, 0, 1, 0, -8.84149e-08, -7.13593, -0.624747, -4.6845)
+script = ExtResource("11_jm6od")
+actorName = "Boss Percy"
+walkingSpeedUnitsPerSecond = 4.0
+characterColor = Color(0.980392, 0.737255, 0.00784314, 1)
+
+[node name="Sprite3D" type="Sprite3D" parent="Cutscene/Percy Actor"]
+transform = Transform3D(-3.61998e-06, 0, 0.999997, 0, 1, 0, -0.999997, 0, -3.61998e-06, -0.747859, 4.75795, 0.255528)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("14_7gesr")
+hframes = 10
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cutscene/Percy Actor"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_k1foj")
+}
+
+[node name="Prop_Letter" type="Sprite3D" parent="Cutscene/Percy Actor"]
+transform = Transform3D(0.25, -0.0669873, 0.965925, 0.258819, 0.965926, -1.10534e-08, -0.933009, 0.25, 0.258819, -0.145586, 1.3125, 0.543333)
+visible = false
+pixel_size = 0.0125
+shaded = true
+texture = ExtResource("13_3v5rl")
+
+[node name="ExploreMode" parent="." node_paths=PackedStringArray("exploreCamera", "explorePlayer") instance=ExtResource("15_wxca5")]
+exploreCamera = NodePath("../ExplorePlayer/Explore Camera")
+explorePlayer = NodePath("../ExplorePlayer")
+
+[node name="Sprite3D" type="Sprite3D" parent="ExploreMode"]
+transform = Transform3D(0.999997, 0, 3.75111e-06, 0, 1, 0, -3.75111e-06, 0, 0.999997, -7.87286, 4.13295, -5.43197)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("14_7gesr")
+hframes = 10
+frame = 2
+
+[node name="Dialogue Trigger Zone" type="Area3D" parent="ExploreMode" node_paths=PackedStringArray("prompt", "targetMode")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4301, 0, -1)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("16_jht5i")
+prompt = NodePath("DialoguePrompt")
+targetMode = NodePath("../../Cutscene")
+
+[node name="DialoguePrompt" parent="ExploreMode/Dialogue Trigger Zone" instance=ExtResource("17_em40b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0625, 0.125, -4.375)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExploreMode/Dialogue Trigger Zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.42388, 0, -1.3125)
+shape = SubResource("CylinderShape3D_281qp")
+
+[node name="Door" type="Area3D" parent="ExploreMode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.625, -0.625, 1.9375)
+script = ExtResource("18_63la4")
+targetScene = "res://Levels/demo/CityScene.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExploreMode/Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5625)
+shape = SubResource("BoxShape3D_8t6vw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="ExploreMode/Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1875, 0.5625)
+size = Vector3(2, 3.5, 1)
+material = SubResource("StandardMaterial3D_mhxjh")
+
+[node name="ExplorePlayer" type="CharacterBody3D" parent="." node_paths=PackedStringArray("exploreCamera")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -2.245, 0.211502, 0.58793)
+floor_max_angle = 1.309
+script = ExtResource("16_ulljt")
+Speed = 8.0
+exploreCamera = NodePath("Explore Camera")
+
+[node name="Sprite3D" type="Sprite3D" parent="ExplorePlayer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12249, 3.85, 0)
+sorting_offset = 1.0
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture = ExtResource("17_irbfh")
+hframes = 10
+vframes = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplorePlayer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0400009, 1.04, 0)
+shape = SubResource("CylinderShape3D_8ycfo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ExplorePlayer"]
+root_node = NodePath("../Sprite3D")
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_d2xct")
+}
+
+[node name="Interaction Radius" type="Area3D" parent="ExplorePlayer"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplorePlayer/Interaction Radius"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 1.04, 0)
+shape = SubResource("CylinderShape3D_dqqd4")
+
+[node name="BodyArea" type="Area3D" parent="ExplorePlayer"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplorePlayer/BodyArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04, 0)
+shape = SubResource("CylinderShape3D_tlltp")
+
+[node name="Explore Camera" type="Camera3D" parent="ExplorePlayer"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 6.22, 16.951)
+
+[connection signal="area_entered" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaEntered" flags=18]
+[connection signal="area_exited" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaExited" flags=18]
+[connection signal="area_entered" from="ExplorePlayer/BodyArea" to="ExplorePlayer" method="OnBodyAreaEntered" flags=18]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhug2nx6h5r1g"]
+
+[ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="1_nvkv0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8t6vw"]
+size = Vector3(4.375, 7.875, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6bgh"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Door" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, -0.375, 9.1875)
+script = ExtResource("1_nvkv0")
+targetScene = "res://Levels/demo/Temple Scene.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5625)
+shape = SubResource("BoxShape3D_8t6vw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1875, 0.5625)
+size = Vector3(4.375, 3.5, 1)
+material = SubResource("StandardMaterial3D_m6bgh")
