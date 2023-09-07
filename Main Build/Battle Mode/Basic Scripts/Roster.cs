@@ -107,7 +107,14 @@ public partial class Roster : Node
 		if(positionData[(int)lane, (int)rank] != null) throw new RosterSpotTakenException("Tried Spawning New Character at Battle Position Already filled!");
 
 		positionData[(int)lane, (int)rank] = cha;
+		characterSpots[(int)lane, (int)rank].AddChild(cha);
+		cha.GlobalPosition = characterSpots[(int)lane, (int)rank].GlobalPosition;
 		cha.SetPosition(lane, rank);
+	}
+
+	public async void SetStartingCharacter(Combatant cha, BattleRank rank, BattleLane lane){
+		await ToSignal(this, Node.SignalName.Ready);
+		SetPositionNewCharacter(cha, rank, lane);
 	}
 
 	public void DelistCharacter(Combatant cha){ positionData[(int)cha.GetPosition().GetLane(), (int)cha.GetPosition().GetRank()] = null; }

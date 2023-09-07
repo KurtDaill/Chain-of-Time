@@ -27,10 +27,7 @@ public partial class GameMaster : Node
         GameplayMode returnedMode = await currentMode.RemoteProcess(delta);
         currentMode.HandleInput(ReadInput());
         if(returnedMode != null){
-            await currentMode.TransitionOut();
-            currentMode = returnedMode; 
-            await returnedMode.StartUp();
-            EmitSignal(GameMaster.SignalName.GameModeBegin, new Variant[]{returnedMode});
+            SetMode(returnedMode);
         }
     }
 
@@ -50,14 +47,17 @@ public partial class GameMaster : Node
     }
 
     public void LoadPartyData(Roster roster){
-        PlayerCombatant[] currentParty = roster.GetAllPlayerCombatants();
+        //foreach(PlayerData playerCombatantData in partyData){
+        roster.SetPositionNewCharacter(GD.Load<PackedScene>("res://Battle Mode/Player Characters/Cato Combatant.tscn").Instantiate<PlayerCombatant>(), BattleUtilities.BattleRank.HeroFront, BattleUtilities.BattleLane.Center);
+        //}
+        /*PlayerCombatant[] currentParty = roster.GetAllPlayerCombatants();
         foreach(PlayerCombatant player in currentParty){
             foreach(PlayerData data in partyData.Where(x => x != null)){
                 if(data.GetName() == player.GetName()){
                     player.LoadPlayerData(data);
                 }
             }
-        }
+        }*/
     }
 
     public void RestorePartyHPAndSP(){
@@ -93,9 +93,11 @@ public partial class GameMaster : Node
     public void SetFlagValue(string flag, bool value){
         state.TrySetFlag(flag, value);
     }
-
-    public void SetMode(GameplayMode mode){
-        currentMode = mode;
+    public async void SetMode(GameplayMode newMode){
+            if(currentMode != null) await currentMode.TransitionOut();
+            currentMode = newMode; 
+            await currentMode.StartUp();
+            EmitSignal(GameMaster.SignalName.GameModeBegin, new Variant[]{newMode});
     }
 }
 

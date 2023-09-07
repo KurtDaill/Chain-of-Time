@@ -1,7 +1,7 @@
 [gd_scene load_steps=46 format=3 uid="uid://crmkinkvau7wp"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_mg7wy"]
-[ext_resource type="PackedScene" path="res://Gameplay Modes/Explore.tscn" id="2_u843o"]
+[ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_u843o"]
 [ext_resource type="Script" path="res://Explore Mode/ExplorePlayer.cs" id="3_2vl2t"]
 [ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Prod Sprite Sheets/Adventure Cato Sprite-Sheet.png" id="4_75fs1"]
 [ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="5_lt6y1"]

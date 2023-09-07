@@ -1,0 +1,141 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnw71lb7ouxg4"]
+
+[ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Battle.cs" id="1_ywmr0"]
+[ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="2_k0wmx"]
+[ext_resource type="Texture2D" uid="uid://bkdgvs1hqa6nu" path="res://GUI/Point-export.png" id="3_kwh0g"]
+[ext_resource type="PackedScene" uid="uid://ctkjn6qaseru7" path="res://Battle Mode/BattleGUI.tscn" id="8_34yqp"]
+
+[node name="Battle" type="Node3D" node_paths=PackedStringArray("gui", "battleCamera", "battleRoster")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_ywmr0")
+gui = NodePath("Camera3D/BattleGUI")
+nextBattlePath = "res://Levels/Combat Playtest One/Victory.tscn"
+defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
+battleCamera = NodePath("Camera3D")
+battleRoster = NodePath("Roster")
+
+[node name="Roster" type="Node3D" parent="." node_paths=PackedStringArray("positionPointer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("2_k0wmx")
+positionPointer = NodePath("Pointer")
+
+[node name="Pointer" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1)
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="Roster/Pointer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.64, 0)
+pixel_size = 0.008
+texture = ExtResource("3_kwh0g")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Roster/Pointer"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.76, 0)
+light_color = Color(1, 0.984314, 0.701961, 1)
+light_energy = 32.0
+spot_angle = 15.0
+
+[node name="HeroBack0" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.52, 0, -0.0625001)
+
+[node name="HeroBack1" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -1.0625)
+
+[node name="HeroBack2" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.48, 0, -2.0625)
+
+[node name="HeroMid0" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, 0, -1.19209e-07)
+
+[node name="HeroMid1" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 0, -1)
+
+[node name="HeroMid2" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.08, 0, -2)
+
+[node name="HeroFront0" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56, 0, 0.0625)
+
+[node name="HeroFront1" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -0.9375)
+
+[node name="HeroFront2" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1.9375)
+
+[node name="EnemyFront0" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0, 0.0625)
+
+[node name="EnemyFront1" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, -0.9375)
+
+[node name="EnemyFront2" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1.9375)
+
+[node name="EnemyMid0" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2, 0, 0)
+
+[node name="EnemyMid1" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 0, -1)
+
+[node name="EnemyMid2" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -2)
+
+[node name="EnemyBack0" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.52, 0, -0.0625)
+
+[node name="EnemyBack1" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -3.0625)
+
+[node name="EnemyBack2" type="Node3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48, 0, -2.0625)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 4.813, 15.563)
+current = true
+fov = 60.0
+
+[node name="BattleGUI" parent="Camera3D" instance=ExtResource("8_34yqp")]
+
+[node name="_VScrollBar_54692" type="VScrollBar" parent="Camera3D/BattleGUI/Attack Menu/Backboard/Rules Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+step = 1.0
+
+[node name="_VScrollBar_54699" type="VScrollBar" parent="Camera3D/BattleGUI/Targeting Menu/Basic Attack/Rules Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+step = 1.0
+
+[node name="_VScrollBar_54700" type="VScrollBar" parent="Camera3D/BattleGUI/Targeting Menu/Skill/Name" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+step = 1.0
+
+[node name="_VScrollBar_54701" type="VScrollBar" parent="Camera3D/BattleGUI/Targeting Menu/Skill/Rules Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+step = 1.0
+
+[node name="Readouts" parent="Camera3D/BattleGUI" index="6" node_paths=PackedStringArray("readouts")]
+readouts = []
+
+[node name="Silver Readout" parent="Camera3D/BattleGUI/Readouts" index="0"]
+visible = false
+
+[node name="Luciene Readout" parent="Camera3D/BattleGUI/Readouts" index="1"]
+visible = false
+
+[node name="Turnover Timer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="Between Actions Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[editable path="Camera3D/BattleGUI"]

@@ -382,5 +382,7 @@ public partial class CutsceneDirector : GameplayMode
         //this.Free();
     }
     */
-
+    public CutsceneCamera GetCutsceneCamera(){
+        return mainCutsceneCamera;
+    }
 }

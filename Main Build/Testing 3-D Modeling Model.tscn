@@ -1,0 +1,137 @@
+[gd_scene load_steps=7 format=3 uid="uid://bj3rg56j8oyl8"]
+
+[ext_resource type="PackedScene" uid="uid://eertkjs2srsf" path="res://Art/3D/Test Environment.gltf" id="1_f58sw"]
+[ext_resource type="PackedScene" uid="uid://bqnpm2nas3cqm" path="res://Art/3D/Oldtown House 1.gltf" id="2_ruwv3"]
+[ext_resource type="PackedScene" uid="uid://ujfndoi8ehuf" path="res://Art/3D/Little House A.gltf" id="3_67hlm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_prtbg"]
+sky_top_color = Color(0.156863, 0.258824, 0.686275, 1)
+sky_horizon_color = Color(0.835294, 0.564706, 0.356863, 1)
+sky_curve = 0.219613
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.768627, 0.435294, 0.290196, 1)
+
+[sub_resource type="Sky" id="Sky_luk4u"]
+sky_material = SubResource("ProceduralSkyMaterial_prtbg")
+
+[sub_resource type="Environment" id="Environment_ogd57"]
+background_mode = 2
+sky = SubResource("Sky_luk4u")
+
+[node name="Scene Config" type="Node3D"]
+
+[node name="Test Environment" parent="." instance=ExtResource("1_f58sw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0)
+
+[node name="Oldtown House 1" parent="." instance=ExtResource("2_ruwv3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.5, 0, -8)
+
+[node name="Lights" type="Node3D" parent="Oldtown House 1"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Oldtown House 1/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.24999, 9.1875, 3.0625)
+light_color = Color(1, 0.764706, 0.219608, 1)
+light_energy = 6.94
+shadow_enabled = true
+omni_range = 5.286
+omni_attenuation = 0.870551
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Oldtown House 1/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.49997, 3.75, 4.6875)
+light_color = Color(1, 0.764706, 0.219608, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 5.286
+omni_attenuation = 0.870551
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Oldtown House 1/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93747, 3.75, 4.25)
+light_color = Color(1, 0.764706, 0.219608, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 5.286
+omni_attenuation = 0.870551
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Oldtown House 1/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.06247, 3.75, 4.25)
+light_color = Color(1, 0.764706, 0.219608, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 5.286
+omni_attenuation = 0.870551
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Oldtown House 1/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.49997, 3.75, 4.6875)
+light_color = Color(1, 0.764706, 0.219608, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 5.286
+omni_attenuation = 0.870551
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="Oldtown House 1/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.93747, 3.75, 4.25)
+light_color = Color(1, 0.764706, 0.219608, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 5.286
+omni_attenuation = 0.870551
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="Oldtown House 1/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.06247, 3.75, 4.25)
+light_color = Color(1, 0.764706, 0.219608, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 5.286
+omni_attenuation = 0.870551
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Oldtown House 1/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06249, 3.5, 4.625)
+light_color = Color(1, 0.764706, 0.219608, 1)
+light_energy = 4.958
+shadow_enabled = true
+omni_range = 5.286
+omni_attenuation = 2.21914
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Oldtown House 1/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00001, 5, 0.562504)
+light_color = Color(1, 0.764706, 0.219608, 1)
+light_energy = 4.958
+shadow_enabled = true
+omni_range = 5.286
+omni_attenuation = 2.21914
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Oldtown House 1/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00001, 5, 0.562506)
+light_color = Color(1, 0.764706, 0.219608, 1)
+light_energy = 4.958
+shadow_enabled = true
+omni_range = 5.286
+omni_attenuation = 2.21914
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="Oldtown House 1/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75001, 0.8125, 0.125021)
+light_color = Color(0.329412, 0.498039, 1, 1)
+light_energy = 0.05
+shadow_enabled = true
+omni_range = 5.286
+omni_attenuation = 2.21914
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="Oldtown House 1/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25001, 0.8125, 0.125023)
+light_color = Color(0.329412, 0.498039, 1, 1)
+light_energy = 0.05
+shadow_enabled = true
+omni_range = 5.286
+omni_attenuation = 2.21914
+
+[node name="Little House A" parent="." instance=ExtResource("3_67hlm")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.5, 0, -4)
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ogd57")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, 0.433013, -0.25, 0.482963, -0.853854, 0.194114, -0.12941, -0.288849, -0.948588, 0, 0, 0)
+light_color = Color(1, 0.803922, 0.580392, 1)
+light_energy = 2.0

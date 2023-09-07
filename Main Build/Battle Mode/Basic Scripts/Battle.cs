@@ -196,6 +196,18 @@ public partial class Battle : GameplayMode
 		GetTree().ChangeSceneToPacked(defeatScreen);
 	}
 
+	//YOU HAVE TO ADD THE BATTLE TO THE TREE AFTER INSTANCING
+	public static Battle InstanceBattle(Dictionary<BattlePosition, Combatant> intitialCombatants, bool useNormalPlayerParty, Vector3 targetGlobalPosition){
+		//HARDPATH
+		Battle instancedBattle = GD.Load<PackedScene>("res://Gameplay Modes/BattleInstanceTemplate.tscn").Instantiate<Battle>();
+		foreach(BattlePosition position in intitialCombatants.Keys){
+			intitialCombatants.TryGetValue(position, out Combatant newCom);
+			instancedBattle.GetRoster().SetStartingCharacter(newCom, position.GetRank(), position.GetLane());
+		}
+		instancedBattle.GlobalPosition = targetGlobalPosition;
+		return instancedBattle;
+	}
+
 	private class BadCombatAnimationException : Exception{
 		public BadCombatAnimationException(){}
 		public BadCombatAnimationException(string message): base(message){}

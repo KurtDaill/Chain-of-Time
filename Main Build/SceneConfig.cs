@@ -15,7 +15,6 @@ public partial class SceneConfig : Node
 	public override void _Ready(){
 		gm = GetNode<GameMaster>("/root/GameMaster");
 		gm.SetMode(startingMode);
-		startingMode.StartUp();
 	}
 	public void StopMusic(){
 		bgMusic.Stop();

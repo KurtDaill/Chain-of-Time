@@ -23,7 +23,7 @@ public partial class ExploreMode : GameplayMode{
         explorePlayer.Visible = true;
         exploreCamera.Current = true;
         this.Visible = true;
-        return null;
+        return Task.CompletedTask;
     }
 
     public override async Task<GameplayMode> RemoteProcess(double delta)
