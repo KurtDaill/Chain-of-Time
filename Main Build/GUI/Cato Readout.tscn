@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dpk6wt2nykmt2" path="res://GUI/Battle Menu Assets/Readouts/HP Candle Half.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://cuqh8yxm1dqtn" path="res://GUI/Battle Menu Assets/Readouts/HP Candle Empty.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://cuc7tn3snj7md" path="res://GUI/Battle Menu Assets/Readouts/Readout Highlight.png" id="8"]
-[ext_resource type="Theme" uid="uid://0sj6o2hvmgmt" path="res://GUI/Themes/Readout Text.tres" id="9"]
+[ext_resource type="Theme" uid="uid://0sj6o2hvmgmt" path="res://GUI/Themes/Battle Menu Themes/Readout Text.tres" id="9"]
 [ext_resource type="Script" path="res://GUI/PlayerCharacterReadout.cs" id="10"]
 
 [sub_resource type="Animation" id="75"]

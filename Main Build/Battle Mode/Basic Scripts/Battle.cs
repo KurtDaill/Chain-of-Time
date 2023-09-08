@@ -15,21 +15,19 @@ public partial class Battle : GameplayMode
     private Timer turnoverTimer;
 	private Timer betweenActionsTimer; 
 	[Export(PropertyHint.File)]
-	private string nextBattlePath;
-	[Export(PropertyHint.File)]
 	private string defeatScreenPath;
 	[Export]
 	bool startingScene = false;
 	[Export]
 	Camera3D battleCamera;
-
+	[Export]
+	GameplayMode postBattleMode;
 	//private eventChain theChain = new eventChain();
 
 	//private List<StatusEffect> Effects;
 
 	[Export]
 	private Roster battleRoster;
-	PackedScene nextBattle;
 	PackedScene defeatScreen;
 
 	public enum BattlePhase{
@@ -43,7 +41,6 @@ public partial class Battle : GameplayMode
 	public override void _Ready(){
         turnoverTimer = this.GetNode<Timer>("Turnover Timer");
 		betweenActionsTimer = this.GetNode<Timer>("Between Actions Timer");
-		if(nextBattlePath != null) nextBattle = GD.Load<PackedScene>(nextBattlePath);
 		if(defeatScreenPath != null) defeatScreen = GD.Load<PackedScene>(defeatScreenPath);
 		if(!startingScene){
 			GameMaster GM = GetNode<GameMaster>("/root/GameMaster");
@@ -52,6 +49,7 @@ public partial class Battle : GameplayMode
 		Visible = false;
 		gui.Visible = false;
 		this.battleCamera.Current = false;
+		GetNode<ReadoutContainer>("Camera3D/BattleGUI/Readouts").SetReadouts(battleRoster.GetAllPlayerCombatants().ToArray());
 	}
 
 	public override async Task<GameplayMode> RemoteProcess(double delta){ //TO-DO can we implement "waiting" in a better way?
@@ -80,19 +78,16 @@ public partial class Battle : GameplayMode
 				eventChain = statusCED.ToArray();
 				await ExecuteCombatEvents(eventChain);
 				waiting = false;
+				battleRoster.ClearVirutalPositions();
+				//GUI.Start Doing your Thing()
+				gui.ResetGUIStateAndStart(battleRoster.GetAllPlayerCombatants().Where(x => x.GetHP() > 0).ToArray());
 				currentPhase = BattlePhase.PlayerSelectsCommands;
 				break;
 				
 				//PlayerSelectsCommands - Game hands over funcionality to a GUI object that allows the player to select what abilities/attacks each character will use, it's appended to the Combat Chain
 			case BattlePhase.PlayerSelectsCommands :
-				//Clear Action Chain
-				eventChain = null;
-				//GUI.Start Doing your Thing()
 				if(waiting) return null;
-				battleRoster.ClearVirutalPositions();
 				waiting = true;
-				//Might need better solution for finding characters who are Dead
-				gui.ResetGUIStateAndStart(battleRoster.GetAllPlayerCombatants().Where(x => x.GetHP() > 0).ToArray());
 				await ToSignal(gui, BattleGUI.SignalName.PlayerFinishedCommandInput);
 				eventChain = gui.PickUpQueuedActions();
 				waiting = false;
@@ -135,6 +130,7 @@ public partial class Battle : GameplayMode
 				currentPhase = BattlePhase.StartOfTurn;
 				break;	
 		}
+		if(battleRoster.GetAllEnemyCombatants().Length == 0) return postBattleMode;
 		return null;		
 	}
 
@@ -183,21 +179,12 @@ public partial class Battle : GameplayMode
 		return battleRoster;
 	}
 
-	public void ConcludeBattle(){
-		if(nextBattlePath != null){
-			GetNode<GameMaster>("/root/GameMaster").SavePlayerParty(battleRoster);
-			GetTree().ChangeSceneToPacked(nextBattle);
-		}else{
-			GetTree().Quit();
-		}
-	}
-
 	public void DefeatPlayers(){
 		GetTree().ChangeSceneToPacked(defeatScreen);
 	}
 
 	//YOU HAVE TO ADD THE BATTLE TO THE TREE AFTER INSTANCING
-	public static Battle InstanceBattle(Dictionary<BattlePosition, Combatant> intitialCombatants, bool useNormalPlayerParty, Vector3 targetGlobalPosition){
+	public static Battle InstanceBattle(Dictionary<BattlePosition, Combatant> intitialCombatants, GameplayMode postBattleMode, bool useNormalPlayerParty, Vector3 targetGlobalPosition){
 		//HARDPATH
 		Battle instancedBattle = GD.Load<PackedScene>("res://Gameplay Modes/BattleInstanceTemplate.tscn").Instantiate<Battle>();
 		foreach(BattlePosition position in intitialCombatants.Keys){
@@ -205,6 +192,7 @@ public partial class Battle : GameplayMode
 			instancedBattle.GetRoster().SetStartingCharacter(newCom, position.GetRank(), position.GetLane());
 		}
 		instancedBattle.GlobalPosition = targetGlobalPosition;
+		instancedBattle.postBattleMode = postBattleMode;
 		return instancedBattle;
 	}
 

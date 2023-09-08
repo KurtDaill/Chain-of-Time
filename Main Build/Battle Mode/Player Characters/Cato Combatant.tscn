@@ -403,6 +403,7 @@ script = ExtResource("1_r8uo0")
 sp = 2
 maxSP = 2
 basicAttack = NodePath("CatoBasicAttack")
+ReadoutPrefabPath = "res://Battle Mode/GUI/PlayerReadout.tscn"
 displayPortrait = ExtResource("2_kpxx0")
 swapAbility = NodePath("SwapPositions")
 hp = 10

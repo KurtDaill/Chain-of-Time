@@ -14,7 +14,8 @@ public partial class PlayerCombatant : Combatant
 	protected Dictionary<double, int> basicAttackDamageRange;
 	[Export]
 	protected PlayerAbility basicAttack;
-	[Export]
+	[Export(PropertyHint.File)]
+	protected string ReadoutPrefabPath;
 	protected PlayerCharacterReadout readout;
 	[Export]
 	protected Texture2D displayPortrait;
@@ -30,10 +31,6 @@ public partial class PlayerCombatant : Combatant
 		foreach(Node child in GetChildren()){
 			if(child is PlayerSkill) readySkills[readySkills.Count(x => x != null)] = (PlayerSkill) child;
 		}
-		await ToSignal(readout.GetParent(), ReadoutContainer.SignalName.ReadyToPopulateReadouts);
-		readout.UpdateHP(hp, maxHP);
-		readout.UpdateSP(sp, maxSP);
-		readout.character = this;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -101,5 +98,13 @@ public partial class PlayerCombatant : Combatant
 		swapAbility.SetTargets(new Combatant[1]{ros.GetCombatant(target)});
 		swapAbility.SetupSwapDetails(ros, target);
 		return swapAbility;
+	}
+
+	public PlayerCharacterReadout GetReadoutInstanced(){
+		readout = GD.Load<PackedScene>(ReadoutPrefabPath).Instantiate<PlayerCharacterReadout>();
+		readout.character = this;
+		readout.UpdateHP(hp, maxHP);
+		readout.UpdateSP(sp, maxSP);
+		return readout;
 	}
 }

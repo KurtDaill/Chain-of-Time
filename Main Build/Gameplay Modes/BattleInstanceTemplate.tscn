@@ -9,7 +9,6 @@
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_ywmr0")
 gui = NodePath("Camera3D/BattleGUI")
-nextBattlePath = "res://Levels/Combat Playtest One/Victory.tscn"
 defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
 battleCamera = NodePath("Camera3D")
 battleRoster = NodePath("Roster")
@@ -123,8 +122,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 step = 1.0
 
-[node name="Readouts" parent="Camera3D/BattleGUI" index="6" node_paths=PackedStringArray("readouts")]
+[node name="Readouts" parent="Camera3D/BattleGUI" index="6" node_paths=PackedStringArray("readouts", "topMenu")]
 readouts = []
+topMenu = NodePath("Top Menu")
 
 [node name="Silver Readout" parent="Camera3D/BattleGUI/Readouts" index="0"]
 visible = false

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bgf5ye7apst7j" path="res://GUI/Battle Menu Assets/Readouts/HP Progress Bar.png" id="4_pj0sm"]
 [ext_resource type="Texture2D" uid="uid://xo0voufhv1qn" path="res://GUI/Battle Menu Assets/Readouts/SP Progress Bar.png" id="5_78hsj"]
 
-[node name="Cato Readout" type="TextureRect"]
+[node name="Cato Readout" type="TextureRect" node_paths=PackedStringArray("HP", "SP", "maxHPLabel", "maxSPLabel", "hpBar", "spBar", "highlight")]
 texture_filter = 1
 custom_minimum_size = Vector2(282, 153)
 offset_top = 1.0
@@ -17,6 +17,13 @@ size_flags_vertical = 8
 texture = ExtResource("1_mouco")
 stretch_mode = 2
 script = ExtResource("2_1tj86")
+HP = NodePath("HP")
+SP = NodePath("SP")
+maxHPLabel = NodePath("MaxHP")
+maxSPLabel = NodePath("MaxSP")
+hpBar = NodePath("HPBar")
+spBar = NodePath("SPBar")
+highlight = NodePath("Highlight")
 
 [node name="Highlight" type="TextureRect" parent="."]
 visible = false

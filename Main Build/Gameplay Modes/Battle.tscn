@@ -15,7 +15,6 @@ script = ExtResource("1_td6wf")
 gui = NodePath("Camera3D/BattleGUI")
 nextBattlePath = "res://Levels/Combat Playtest One/Victory.tscn"
 defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
-startingScene = true
 battleCamera = NodePath("Camera3D")
 battleRoster = NodePath("Roster")
 

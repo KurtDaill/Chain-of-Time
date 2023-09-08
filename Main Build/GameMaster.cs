@@ -99,6 +99,9 @@ public partial class GameMaster : Node
             await currentMode.StartUp();
             EmitSignal(GameMaster.SignalName.GameModeBegin, new Variant[]{newMode});
     }
+    public GameplayMode GetMode(){
+        return currentMode;
+    }
 }
 
 public class PlayerData{

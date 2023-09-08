@@ -9,7 +9,7 @@ public partial class ReadoutContainer : BoxContainer
 	[Export]
 	Godot.Collections.Array<PlayerCharacterReadout> readouts;
 	[Export]
-	VBoxContainer topMenu;
+	TopMenu topMenu;
 
 	// Declare member variables here. Examples:
 	// private int a = 2;
@@ -18,7 +18,6 @@ public partial class ReadoutContainer : BoxContainer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		EmitSignal(nameof(ReadyToPopulateReadouts), this);
 	}
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -61,5 +60,15 @@ public partial class ReadoutContainer : BoxContainer
 
 	private void PositionTopMenu(int currentCharacter){
 		this.MoveChild(topMenu, (readouts.Count - currentCharacter));
+	}
+
+	public void SetReadouts(PlayerCombatant[] playerCombatants){
+		foreach(Node child in this.GetChildren()){
+			this.RemoveChild(child);
+		}
+		this.AddChild(topMenu);
+		foreach(PlayerCombatant pCom in playerCombatants){
+			this.AddChild(pCom.GetReadoutInstanced());			
+		}
 	}
 }

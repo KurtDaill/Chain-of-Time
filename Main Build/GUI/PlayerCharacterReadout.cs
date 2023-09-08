@@ -4,23 +4,23 @@ using System.Collections.Generic;
 
 public partial class PlayerCharacterReadout : TextureRect
 {
-	Label HP, SP;
-	Label maxHPLabel, maxSPLabel;
-	TextureProgressBar hpBar, spBar;
-
-	HBoxContainer statusBar;
+	[Export]
+	Label HP;
+	[Export]
+	Label SP;
+	[Export]
+	Label maxHPLabel;
+	[Export]
+	Label maxSPLabel;
+	[Export]
+	TextureProgressBar hpBar;
+	[Export]
+	TextureProgressBar spBar;
 	public PlayerCombatant character;
+	[Export]
 	TextureRect highlight;
-
-	public override void _Ready()
+    public override void _Ready()
 	{
-		HP = GetNode<Label>("HP");
-		SP = GetNode<Label>("SP");
-		maxHPLabel = GetNode<Label>("MaxHP");
-		maxSPLabel = GetNode<Label>("MaxSP");
-		hpBar = GetNode<TextureProgressBar>("HPBar");
-		spBar = GetNode<TextureProgressBar>("SPBar");
-		highlight = GetNode<TextureRect>("Highlight");
 		highlight.Visible = false;
 		Deselect();
 	}

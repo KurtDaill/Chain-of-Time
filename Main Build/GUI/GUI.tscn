@@ -1,8 +1,6 @@
-[gd_scene format=2]
+[gd_scene format=3 uid="uid://b7wehofd60pal"]
 
 [node name="GUI" type="Control"]
+layout_mode = 3
 anchor_right = 0.5
 anchor_bottom = 0.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
