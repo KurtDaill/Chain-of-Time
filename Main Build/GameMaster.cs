@@ -14,12 +14,23 @@ public partial class GameMaster : Node
     PlayerData[] bookmark = new PlayerData[3];
 
     GameplayMode currentMode;
-
+    TimeOfDay currentTime;
+    public enum TimeOfDay{
+        Morning = 0,
+        Noon = 1,
+        Evening = 2,
+        Night = 3
+    }
+    [Signal]
+    public delegate void TimeOfDayChangedEventHandler(int time);
+    [Signal]
+    public delegate void NightBeginsEventHandler();
     public override void _Ready()
     {
         state = GD.Load<StoryState>("res://ExampleStoryState.tres");
         //Default Party Data
         partyData = new PlayerData[1]{new PlayerData("Cato", "res://Battle Mode/Player Characters/Cato Combatant.tscn", 6, 6, 2, 2, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroFront))};
+        currentTime = TimeOfDay.Morning;
     }
 
 
@@ -97,6 +108,16 @@ public partial class GameMaster : Node
     }
     public GameplayMode GetMode(){
         return currentMode;
+    }
+
+    public void AdvanceClock(){
+        if(currentTime == TimeOfDay.Night) throw new IndexOutOfRangeException("Can't advance time when already in night!");
+        switch(currentTime){
+            case TimeOfDay.Morning : currentTime = TimeOfDay.Noon; break;
+            case TimeOfDay.Noon : currentTime = TimeOfDay.Evening ; break;
+        }
+        if(currentTime == TimeOfDay.Night) EmitSignal(GameMaster.SignalName.NightBegins);
+        else EmitSignal(GameMaster.SignalName.TimeOfDayChanged, (int)currentTime);
     }
 }
 

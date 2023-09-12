@@ -59,7 +59,7 @@ public partial class ExplorePlayer : CharacterBody3D
 
 	public void HandleInput(PlayerInput input){
 		if(input == PlayerInput.Select){
-			myExploreMode.SetModeOnDeck(zoneOnDeck.Activate());
+			if(zoneOnDeck != null) myExploreMode.SetModeOnDeck(zoneOnDeck.Activate());
 		}
 		inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 	}

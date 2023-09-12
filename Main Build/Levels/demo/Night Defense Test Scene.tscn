@@ -154,22 +154,29 @@ radius = 0.64
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_n2j7n"]
 radius = 0.36
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mqjsh"]
-sky_top_color = Color(0.0117647, 0, 0.0980392, 1)
-sky_horizon_color = Color(0.0588235, 0.0823529, 0.329412, 1)
-sky_curve = 0.25227
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0.254902, 0.164706, 0.0117647, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ng0bw"]
+sky_top_color = Color(0.0509804, 0.447059, 0.74902, 1)
+sky_horizon_color = Color(1, 0.941176, 0.501961, 1)
+sky_curve = 0.109807
+sky_energy_multiplier = 0.8
+ground_bottom_color = Color(0.486275, 0.215686, 0.101961, 1)
+ground_horizon_color = Color(0.811765, 0.454902, 0.356863, 1)
+ground_curve = 0.0438997
+sun_angle_max = 18.0
+sun_curve = 0.235375
 
-[sub_resource type="Sky" id="Sky_r1ohp"]
-sky_material = SubResource("ProceduralSkyMaterial_mqjsh")
+[sub_resource type="Sky" id="Sky_fsfcl"]
+sky_material = SubResource("ProceduralSkyMaterial_ng0bw")
 
-[sub_resource type="Environment" id="Environment_7bod6"]
+[sub_resource type="Environment" id="Environment_fkraa"]
 background_mode = 2
-sky = SubResource("Sky_r1ohp")
+sky = SubResource("Sky_fsfcl")
 ambient_light_source = 3
+ambient_light_sky_contribution = 0.5
+ambient_light_energy = 0.0
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.015
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.811765, 0.976471, 1, 1)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_m5yur"]
 filter_ledge_spans = true
@@ -307,10 +314,11 @@ light_energy = 0.2
 light_cull_mask = 4293918752
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_7bod6")
+environment = SubResource("Environment_fkraa")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="Night Moon" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.913226, 0.0952219, 0.396171, -0.228723, -0.684861, 0.691847, 0.337201, -0.722426, -0.603653, 0, 0, 0)
+visible = false
 light_energy = 0.1
 shadow_enabled = true
 
@@ -1233,6 +1241,7 @@ shape = SubResource("CylinderShape3D_jfth4")
 [node name="Door" parent="NPC Navigation Region/CitySetup/Temple" instance=ExtResource("14_5pyj3")]
 
 [node name="Lights" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+visible = false
 
 [node name="WindowLight1" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8125, 4.75, 42.0625)
@@ -1687,6 +1696,24 @@ shape = SubResource("CylinderShape3D_7nlbq")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/City Defense Enemy"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, 1, 0.125)
 shape = SubResource("CylinderShape3D_hy64r")
+
+[node name="Sunset" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.994077, 0.00700554, -0.10845, -0.00751275, 0.991103, 0.132886, 0.108416, 0.132913, -0.98518, 0, 0, 0)
+visible = false
+light_color = Color(1, 0.772549, 0.380392, 1)
+light_energy = 3.0
+shadow_enabled = true
+
+[node name="Noon Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.711508, 0.476982, -0.515989, 0.656961, -0.19101, 0.729327, 0.249317, -0.857906, -0.449264, 0, 0, 0)
+visible = false
+shadow_enabled = true
+
+[node name="Morning Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.807866, 0.520092, -0.277232, -0.443844, 0.846361, 0.294409, 0.387757, -0.114795, 0.914585, 0, 0, 0)
+light_color = Color(1, 0.976471, 0.721569, 1)
+light_energy = 1.2
+shadow_enabled = true
 
 [connection signal="area_entered" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaEntered" flags=18]
 [connection signal="area_exited" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaExited" flags=18]
