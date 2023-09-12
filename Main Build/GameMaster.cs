@@ -18,6 +18,8 @@ public partial class GameMaster : Node
     public override void _Ready()
     {
         state = GD.Load<StoryState>("res://ExampleStoryState.tres");
+        //Default Party Data
+        partyData = new PlayerData[1]{new PlayerData("Cato", "res://Battle Mode/Player Characters/Cato Combatant.tscn", 6, 6, 2, 2, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroFront))};
     }
 
 
@@ -47,17 +49,11 @@ public partial class GameMaster : Node
     }
 
     public void LoadPartyData(Roster roster){
-        //foreach(PlayerData playerCombatantData in partyData){
-        roster.SetPositionNewCharacter(GD.Load<PackedScene>("res://Battle Mode/Player Characters/Cato Combatant.tscn").Instantiate<PlayerCombatant>(), BattleUtilities.BattleRank.HeroFront, BattleUtilities.BattleLane.Center);
-        //}
-        /*PlayerCombatant[] currentParty = roster.GetAllPlayerCombatants();
-        foreach(PlayerCombatant player in currentParty){
-            foreach(PlayerData data in partyData.Where(x => x != null)){
-                if(data.GetName() == player.GetName()){
-                    player.LoadPlayerData(data);
-                }
-            }
-        }*/
+        foreach(PlayerData playerCombatantData in partyData){
+            var playerCharacter = GD.Load<PackedScene>(playerCombatantData.GetPath()).Instantiate<PlayerCombatant>();
+            playerCharacter.LoadPlayerData(playerCombatantData);
+            roster.SetPositionNewCharacter(playerCharacter, playerCombatantData.GetStartingPosition());
+        }
     }
 
     public void RestorePartyHPAndSP(){
@@ -107,14 +103,18 @@ public partial class GameMaster : Node
 public class PlayerData{
     int hp, maxHP, sp, maxSP;
     string name;
+    string pathToPrefabScene;
+    BattlePosition position;
     //Abilities Known
 
-    public PlayerData(string name, int hp, int maxHP, int sp, int maxSP){
+    public PlayerData(string name, string pathToPrefabScene, int hp, int maxHP, int sp, int maxSP, BattlePosition position){
         this.name = name;
         this.hp = hp;
         this.maxHP = maxHP;
         this.sp = sp;
         this.maxSP = maxSP; 
+        this.pathToPrefabScene = pathToPrefabScene;
+        this.position = position;
     }
 
     public void RestoreHP(){hp = maxHP;}
@@ -125,6 +125,10 @@ public class PlayerData{
     public int GetSP(){return sp;}
     public int GetMaxSP(){return maxSP;}
     public string GetName(){return name;}
+    public string GetPath(){return pathToPrefabScene;}
+    public BattlePosition GetStartingPosition(){
+        return position;
+    }
 }
 
 public static class GameplayUtilities{

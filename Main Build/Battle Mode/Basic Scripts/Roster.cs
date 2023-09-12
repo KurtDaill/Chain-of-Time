@@ -100,7 +100,9 @@ public partial class Roster : Node
 	public void SwapCharacters(Combatant mover, BattlePosition destination){
 		SwapCharacters(mover.GetPosition(), destination);
 	}
-
+	public void SetPositionNewCharacter(Combatant cha, BattlePosition pos){
+		SetPositionNewCharacter(cha, pos.GetRank(), pos.GetLane());
+	}
 	public void SetPositionNewCharacter(Combatant cha, BattleRank rank, BattleLane lane){
 		foreach(Combatant com in positionData){ if(com == cha) throw new RosterNotConfiguredException("Tried Spawning New Character that already exists!"); }
 

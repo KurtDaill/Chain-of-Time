@@ -81,7 +81,21 @@ public partial class PlayerCombatant : Combatant
 	}
 
 	public PlayerData GetPlayerData(){
-		return new PlayerData(name, hp, maxHP, sp, maxSP);
+		string path;
+		switch(name){
+			case "Cato":
+				path = "res://Battle Mode/Player Characters/Cato Combatant.tscn";
+				break;
+			case "Silver":
+				path = "res://Battle Mode/Player Characters/Silver Combatant.tscn";
+				break;
+			case "Luciene":
+				path = "res://Battle Mode/Player Characters/Lucienne Combatant.tscn";
+				break;
+			default :
+				throw new ArgumentException("Player Character Name: " + name + "not recognized!");
+		}
+		return new PlayerData(name, path, hp, maxHP, sp, maxSP, GetPosition());//TODO Actually have a preset position to allow players to specify where people start
 	}
 
 	public void LoadPlayerData(PlayerData load){
@@ -90,8 +104,8 @@ public partial class PlayerCombatant : Combatant
 		this.maxHP = load.GetMaxHP();
 		this.sp = load.GetSP();
 		this.maxSP = load.GetMaxSP();
-		readout.UpdateHP(hp, maxHP);
-		readout.UpdateSP(sp, maxSP);
+		//readout.UpdateHP(hp, maxHP);
+		//readout.UpdateSP(sp, maxSP);
 	}
 
 	public PlayerAbility SetupAndGetSwap(Roster ros, BattlePosition target){

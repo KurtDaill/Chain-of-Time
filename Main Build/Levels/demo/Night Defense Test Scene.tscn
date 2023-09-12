@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cu4siw3uulnqt"]
+[gd_scene load_steps=53 format=3 uid="uid://cu4siw3uulnqt"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_360aq"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_15k8v"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dhug2nx6h5r1g" path="res://Explore Mode/SceneTransitionZone.tscn" id="14_5pyj3"]
 [ext_resource type="Script" path="res://Night Defense/EnemyGroup.cs" id="15_1mpni"]
 [ext_resource type="Texture2D" uid="uid://dl2nhvu4ncgu0" path="res://Art/Prod Sprite Sheets/Skeleton Guard Combat Sprite-Sheet.png" id="15_t8qco"]
+[ext_resource type="Script" path="res://Explore Mode/NPCNavigationRegion.cs" id="17_wq40a"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sstrf"]
 radius = 0.52
@@ -153,6 +154,27 @@ radius = 0.64
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_n2j7n"]
 radius = 0.36
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mqjsh"]
+sky_top_color = Color(0.0117647, 0, 0.0980392, 1)
+sky_horizon_color = Color(0.0588235, 0.0823529, 0.329412, 1)
+sky_curve = 0.25227
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.254902, 0.164706, 0.0117647, 1)
+
+[sub_resource type="Sky" id="Sky_r1ohp"]
+sky_material = SubResource("ProceduralSkyMaterial_mqjsh")
+
+[sub_resource type="Environment" id="Environment_7bod6"]
+background_mode = 2
+sky = SubResource("Sky_r1ohp")
+ambient_light_source = 3
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.015
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_m5yur"]
+filter_ledge_spans = true
+filter_walkable_low_height_spans = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a705"]
 albedo_color = Color(1, 0, 0.0156863, 1)
 
@@ -207,25 +229,8 @@ radius = 4.0625
 height = 44.875
 radius = 2.25
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qvlee"]
-size = Vector3(19.0625, 24, 41.75)
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mqjsh"]
-sky_top_color = Color(0.0117647, 0, 0.0980392, 1)
-sky_horizon_color = Color(0.0588235, 0.0823529, 0.329412, 1)
-sky_curve = 0.25227
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0.254902, 0.164706, 0.0117647, 1)
-
-[sub_resource type="Sky" id="Sky_r1ohp"]
-sky_material = SubResource("ProceduralSkyMaterial_mqjsh")
-
-[sub_resource type="Environment" id="Environment_7bod6"]
-background_mode = 2
-sky = SubResource("Sky_r1ohp")
-ambient_light_source = 3
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.015
+[sub_resource type="PlaneMesh" id="PlaneMesh_jy6xw"]
+size = Vector2(20, 200)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7nlbq"]
 radius = 2.4375
@@ -301,1335 +306,6 @@ transform = Transform3D(1, 7.53642e-15, 3.12168e-15, -7.53641e-15, 0.707107, 0.7
 light_energy = 0.2
 light_cull_mask = 4293918752
 
-[node name="CitySetup" type="Node3D" parent="."]
-
-[node name="Post Office" type="CSGBox3D" parent="CitySetup"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.375, 5, 55.5625)
-size = Vector3(11.125, 10, 12.625)
-material = SubResource("StandardMaterial3D_0a705")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Post Office"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Post Office/StaticBody3D"]
-shape = SubResource("BoxShape3D_xnifg")
-
-[node name="Floor" type="CSGBox3D" parent="CitySetup"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.505689, 26.75)
-size = Vector3(200, 1, 100)
-
-[node name="Workshop" type="CSGBox3D" parent="CitySetup"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.9375, 6.1875, 31.0625)
-size = Vector3(34.875, 14.25, 17.625)
-material = SubResource("StandardMaterial3D_ywo1y")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CitySetup/Workshop"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4375, 11.6875, 0)
-radius = 3.5625
-height = 19.125
-material = SubResource("StandardMaterial3D_xp1j5")
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CitySetup/Workshop"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 11.6875, 0)
-radius = 3.5625
-height = 19.125
-material = SubResource("StandardMaterial3D_xp1j5")
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CitySetup/Workshop"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0625, 11.6875, 0)
-radius = 3.5625
-height = 19.125
-material = SubResource("StandardMaterial3D_xp1j5")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Workshop"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Workshop/StaticBody3D"]
-shape = SubResource("BoxShape3D_acq60")
-
-[node name="Door" type="Area3D" parent="CitySetup/Workshop"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1875, -6.6875, 8.5)
-script = ExtResource("5_1illh")
-targetScene = "res://Levels/demo/Workshop Scene.tscn"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Workshop/Door"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5625)
-shape = SubResource("BoxShape3D_8t6vw")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CitySetup/Workshop/Door"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1875, 0.5625)
-size = Vector3(4.375, 3.5, 1)
-material = SubResource("StandardMaterial3D_m6bgh")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26.75)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.506504, 0)
-shape = SubResource("BoxShape3D_acev5")
-
-[node name="Tall Boy" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -50.4625, 0, -18.75)
-
-[node name="OldTown_HouseBody1_gltf" parent="CitySetup/Tall Boy" instance=ExtResource("6_uf6dn")]
-
-[node name="OldTown_HouseBody1_gltf2" parent="CitySetup/Tall Boy" instance=ExtResource("6_uf6dn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.96161, 0)
-
-[node name="OldTown_Roof1_gltf" parent="CitySetup/Tall Boy" instance=ExtResource("7_7d18b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07896, 0.305976)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, 0.3125)
-shape = SubResource("BoxShape3D_ch2p1")
-
-[node name="Tall Boy2" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -38.025, 0, 18.75)
-
-[node name="OldTown_HouseBody1_gltf" parent="CitySetup/Tall Boy2" instance=ExtResource("6_uf6dn")]
-
-[node name="OldTown_HouseBody1_gltf2" parent="CitySetup/Tall Boy2" instance=ExtResource("6_uf6dn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.96161, 0)
-
-[node name="OldTown_Roof1_gltf" parent="CitySetup/Tall Boy2" instance=ExtResource("7_7d18b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07896, 0.305976)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, 0.3125)
-shape = SubResource("BoxShape3D_ch2p1")
-
-[node name="Tall Boy4" type="Node3D" parent="CitySetup"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.9625, 0, 18.75)
-
-[node name="OldTown_HouseBody1_gltf" parent="CitySetup/Tall Boy4" instance=ExtResource("6_uf6dn")]
-
-[node name="OldTown_HouseBody1_gltf2" parent="CitySetup/Tall Boy4" instance=ExtResource("6_uf6dn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.96161, 0)
-
-[node name="OldTown_Roof1_gltf" parent="CitySetup/Tall Boy4" instance=ExtResource("7_7d18b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07896, 0.305976)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy4"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy4/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, 0.3125)
-shape = SubResource("BoxShape3D_ch2p1")
-
-[node name="Tall Boy3" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.1, 0, 12.9375)
-
-[node name="OldTown_HouseBody1_gltf" parent="CitySetup/Tall Boy3" instance=ExtResource("6_uf6dn")]
-
-[node name="OldTown_HouseBody1_gltf2" parent="CitySetup/Tall Boy3" instance=ExtResource("6_uf6dn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.96161, 0)
-
-[node name="OldTown_Roof1_gltf" parent="CitySetup/Tall Boy3" instance=ExtResource("7_7d18b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07896, 0.305976)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy3/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, 0.3125)
-shape = SubResource("BoxShape3D_ch2p1")
-
-[node name="Wide One" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -51.4625, 0, -18.75)
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Wide One" instance=ExtResource("8_ke00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
-
-[node name="OldTown_HouseBody3_gltf" parent="CitySetup/Wide One" instance=ExtResource("9_q2h7i")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Wide One" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Wide One" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
-visible = false
-
-[node name="OldTown_HouseBody3_gltf2" parent="CitySetup/Wide One" instance=ExtResource("9_q2h7i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
-
-[node name="OldTown_Roof2_gltf" parent="CitySetup/Wide One" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Wide One"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Wide One/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55651e-07, 0, -14.375)
-shape = SubResource("BoxShape3D_614fc")
-
-[node name="Wide One3" type="Node3D" parent="CitySetup"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.1, 0, 18.625)
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Wide One3" instance=ExtResource("8_ke00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
-
-[node name="OldTown_HouseBody3_gltf" parent="CitySetup/Wide One3" instance=ExtResource("9_q2h7i")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Wide One3" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Wide One3" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
-visible = false
-
-[node name="OldTown_HouseBody3_gltf2" parent="CitySetup/Wide One3" instance=ExtResource("9_q2h7i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
-
-[node name="OldTown_Roof2_gltf" parent="CitySetup/Wide One3" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Wide One3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Wide One3/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55651e-07, 0, -14.375)
-shape = SubResource("BoxShape3D_614fc")
-
-[node name="Wide One6" type="Node3D" parent="CitySetup"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.025, 0, 50.8125)
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Wide One6" instance=ExtResource("8_ke00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
-
-[node name="OldTown_HouseBody3_gltf" parent="CitySetup/Wide One6" instance=ExtResource("9_q2h7i")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Wide One6" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Wide One6" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
-visible = false
-
-[node name="OldTown_HouseBody3_gltf2" parent="CitySetup/Wide One6" instance=ExtResource("9_q2h7i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
-
-[node name="OldTown_Roof2_gltf" parent="CitySetup/Wide One6" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Wide One6"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Wide One6/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55651e-07, 0, -14.375)
-shape = SubResource("BoxShape3D_614fc")
-
-[node name="Wide One5" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 60.1, 0, 70.125)
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Wide One5" instance=ExtResource("8_ke00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
-
-[node name="OldTown_HouseBody3_gltf" parent="CitySetup/Wide One5" instance=ExtResource("9_q2h7i")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Wide One5" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Wide One5" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
-visible = false
-
-[node name="OldTown_HouseBody3_gltf2" parent="CitySetup/Wide One5" instance=ExtResource("9_q2h7i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
-
-[node name="OldTown_Roof2_gltf" parent="CitySetup/Wide One5" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Wide One5"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Wide One5/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55651e-07, 0, -14.375)
-shape = SubResource("BoxShape3D_614fc")
-
-[node name="Wide One2" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 68.725, 0, 4)
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Wide One2" instance=ExtResource("8_ke00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
-
-[node name="OldTown_HouseBody3_gltf" parent="CitySetup/Wide One2" instance=ExtResource("9_q2h7i")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Wide One2" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Wide One2" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
-visible = false
-
-[node name="OldTown_HouseBody3_gltf2" parent="CitySetup/Wide One2" instance=ExtResource("9_q2h7i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
-
-[node name="OldTown_Roof2_gltf" parent="CitySetup/Wide One2" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Wide One2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Wide One2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55651e-07, 0, -14.375)
-shape = SubResource("BoxShape3D_614fc")
-
-[node name="Tall Boy 2" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -36.9, 0, -18.75)
-
-[node name="AllDaHousesgltf" parent="CitySetup/Tall Boy 2" instance=ExtResource("12_ffwml")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Tall Boy 2" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Tall Boy 2" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Tall Boy 2" instance=ExtResource("10_le0ii")]
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Tall Boy 2" instance=ExtResource("8_ke00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy 2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy 2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="Tall Boy 3" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -53.275, 0, 16.375)
-
-[node name="AllDaHousesgltf" parent="CitySetup/Tall Boy 3" instance=ExtResource("12_ffwml")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Tall Boy 3" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Tall Boy 3" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Tall Boy 3" instance=ExtResource("10_le0ii")]
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Tall Boy 3" instance=ExtResource("8_ke00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy 3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy 3/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="Tall Boy 7" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.5375, 0, -11.1875)
-
-[node name="AllDaHousesgltf" parent="CitySetup/Tall Boy 7" instance=ExtResource("12_ffwml")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Tall Boy 7" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Tall Boy 7" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Tall Boy 7" instance=ExtResource("10_le0ii")]
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Tall Boy 7" instance=ExtResource("8_ke00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy 7"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy 7/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="Tall Boy 4" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -66.275, 0, 16.375)
-
-[node name="AllDaHousesgltf" parent="CitySetup/Tall Boy 4" instance=ExtResource("12_ffwml")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Tall Boy 4" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Tall Boy 4" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Tall Boy 4" instance=ExtResource("10_le0ii")]
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Tall Boy 4" instance=ExtResource("8_ke00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy 4"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy 4/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="Tall Boy 5" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 49.6625, 0, 16.75)
-
-[node name="AllDaHousesgltf" parent="CitySetup/Tall Boy 5" instance=ExtResource("12_ffwml")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Tall Boy 5" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Tall Boy 5" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Tall Boy 5" instance=ExtResource("10_le0ii")]
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Tall Boy 5" instance=ExtResource("8_ke00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy 5"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy 5/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="Tall Boy 9" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 34.9125, 0, 27.625)
-
-[node name="AllDaHousesgltf" parent="CitySetup/Tall Boy 9" instance=ExtResource("12_ffwml")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Tall Boy 9" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Tall Boy 9" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Tall Boy 9" instance=ExtResource("10_le0ii")]
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Tall Boy 9" instance=ExtResource("8_ke00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy 9"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy 9/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="Tall Boy 11" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 34.9125, 0, 68.9375)
-
-[node name="AllDaHousesgltf" parent="CitySetup/Tall Boy 11" instance=ExtResource("12_ffwml")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Tall Boy 11" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Tall Boy 11" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Tall Boy 11" instance=ExtResource("10_le0ii")]
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Tall Boy 11" instance=ExtResource("8_ke00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy 11"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy 11/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="Tall Boy 12" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 20.1, 0, 68.9375)
-
-[node name="AllDaHousesgltf" parent="CitySetup/Tall Boy 12" instance=ExtResource("12_ffwml")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Tall Boy 12" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Tall Boy 12" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Tall Boy 12" instance=ExtResource("10_le0ii")]
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Tall Boy 12" instance=ExtResource("8_ke00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy 12"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy 12/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="Tall Boy 13" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 49.725, 0, 68.9375)
-
-[node name="AllDaHousesgltf" parent="CitySetup/Tall Boy 13" instance=ExtResource("12_ffwml")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Tall Boy 13" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Tall Boy 13" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Tall Boy 13" instance=ExtResource("10_le0ii")]
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Tall Boy 13" instance=ExtResource("8_ke00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy 13"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy 13/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="Tall Boy 8" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 49.6625, 0, 38.3125)
-
-[node name="AllDaHousesgltf" parent="CitySetup/Tall Boy 8" instance=ExtResource("12_ffwml")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Tall Boy 8" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Tall Boy 8" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Tall Boy 8" instance=ExtResource("10_le0ii")]
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Tall Boy 8" instance=ExtResource("8_ke00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy 8"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy 8/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="Tall Boy 10" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 29.6, 0, 38.3125)
-
-[node name="AllDaHousesgltf" parent="CitySetup/Tall Boy 10" instance=ExtResource("12_ffwml")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Tall Boy 10" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Tall Boy 10" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Tall Boy 10" instance=ExtResource("10_le0ii")]
-
-[node name="OldTown_Roof3_gltf" parent="CitySetup/Tall Boy 10" instance=ExtResource("8_ke00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Tall Boy 10"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Tall Boy 10/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="Big Building" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -78.3375, 0, -10.875)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Big Building" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Big Building" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Big Building" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
-
-[node name="OldTown_HouseBody2_gltf4" parent="CitySetup/Big Building" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
-
-[node name="OldTown_HouseBody2_gltf5" parent="CitySetup/Big Building" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
-
-[node name="OldTown_HouseBody2_gltf6" parent="CitySetup/Big Building" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
-
-[node name="OldTown_Roof2_gltf" parent="CitySetup/Big Building" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
-
-[node name="OldTown_Roof2_gltf2" parent="CitySetup/Big Building" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
-
-[node name="OldTown_Roof2_gltf3" parent="CitySetup/Big Building" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Big Building"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 0, -4.1875)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Big Building/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/Big Building/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5625, -8.3125)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="CitySetup/Big Building/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.625, 6.5625, -7.625)
-shape = SubResource("BoxShape3D_h7rie")
-
-[node name="Big Building3" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 82.725, 0, -10.875)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Big Building3" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Big Building3" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Big Building3" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
-
-[node name="OldTown_HouseBody2_gltf4" parent="CitySetup/Big Building3" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
-
-[node name="OldTown_HouseBody2_gltf5" parent="CitySetup/Big Building3" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
-
-[node name="OldTown_HouseBody2_gltf6" parent="CitySetup/Big Building3" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
-
-[node name="OldTown_Roof2_gltf" parent="CitySetup/Big Building3" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
-
-[node name="OldTown_Roof2_gltf2" parent="CitySetup/Big Building3" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
-
-[node name="OldTown_Roof2_gltf3" parent="CitySetup/Big Building3" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Big Building3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 0, -4.1875)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Big Building3/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/Big Building3/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5625, -8.3125)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="CitySetup/Big Building3/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.625, 6.5625, -7.625)
-shape = SubResource("BoxShape3D_h7rie")
-
-[node name="Big Building5" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 77.1, 0, 41)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Big Building5" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Big Building5" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Big Building5" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
-
-[node name="OldTown_HouseBody2_gltf4" parent="CitySetup/Big Building5" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
-
-[node name="OldTown_HouseBody2_gltf5" parent="CitySetup/Big Building5" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
-
-[node name="OldTown_HouseBody2_gltf6" parent="CitySetup/Big Building5" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
-
-[node name="OldTown_Roof2_gltf" parent="CitySetup/Big Building5" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
-
-[node name="OldTown_Roof2_gltf2" parent="CitySetup/Big Building5" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
-
-[node name="OldTown_Roof2_gltf3" parent="CitySetup/Big Building5" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Big Building5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 0, -4.1875)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Big Building5/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/Big Building5/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5625, -8.3125)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="CitySetup/Big Building5/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.625, 6.5625, -7.625)
-shape = SubResource("BoxShape3D_h7rie")
-
-[node name="Big Building2" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 21.725, 0, 17.75)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Big Building2" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Big Building2" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Big Building2" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
-
-[node name="OldTown_HouseBody2_gltf4" parent="CitySetup/Big Building2" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
-
-[node name="OldTown_HouseBody2_gltf5" parent="CitySetup/Big Building2" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
-
-[node name="OldTown_HouseBody2_gltf6" parent="CitySetup/Big Building2" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
-
-[node name="OldTown_Roof2_gltf" parent="CitySetup/Big Building2" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
-
-[node name="OldTown_Roof2_gltf2" parent="CitySetup/Big Building2" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
-
-[node name="OldTown_Roof2_gltf3" parent="CitySetup/Big Building2" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Big Building2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 0, -4.1875)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Big Building2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/Big Building2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5625, -8.3125)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="CitySetup/Big Building2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.625, 6.5625, -7.625)
-shape = SubResource("BoxShape3D_h7rie")
-
-[node name="Big Building4" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 15.225, 0, 24.6875)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Big Building4" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Big Building4" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Big Building4" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
-
-[node name="OldTown_HouseBody2_gltf4" parent="CitySetup/Big Building4" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
-
-[node name="OldTown_HouseBody2_gltf5" parent="CitySetup/Big Building4" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
-
-[node name="OldTown_HouseBody2_gltf6" parent="CitySetup/Big Building4" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
-
-[node name="OldTown_Roof2_gltf" parent="CitySetup/Big Building4" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
-
-[node name="OldTown_Roof2_gltf2" parent="CitySetup/Big Building4" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
-
-[node name="OldTown_Roof2_gltf3" parent="CitySetup/Big Building4" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Big Building4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 0, -4.1875)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Big Building4/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/Big Building4/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5625, -8.3125)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="CitySetup/Big Building4/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.625, 6.5625, -7.625)
-shape = SubResource("BoxShape3D_h7rie")
-
-[node name="Big Building7" type="Node3D" parent="CitySetup"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21.525, 0, 55.625)
-
-[node name="OldTown_HouseBody2_gltf" parent="CitySetup/Big Building7" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
-
-[node name="OldTown_HouseBody2_gltf2" parent="CitySetup/Big Building7" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
-
-[node name="OldTown_HouseBody2_gltf3" parent="CitySetup/Big Building7" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
-
-[node name="OldTown_HouseBody2_gltf4" parent="CitySetup/Big Building7" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
-
-[node name="OldTown_HouseBody2_gltf5" parent="CitySetup/Big Building7" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
-
-[node name="OldTown_HouseBody2_gltf6" parent="CitySetup/Big Building7" instance=ExtResource("10_le0ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
-
-[node name="OldTown_Roof2_gltf" parent="CitySetup/Big Building7" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
-
-[node name="OldTown_Roof2_gltf2" parent="CitySetup/Big Building7" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
-
-[node name="OldTown_Roof2_gltf3" parent="CitySetup/Big Building7" instance=ExtResource("11_ahsi3")]
-transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Big Building7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 0, -4.1875)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Big Building7/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 6.5625, 0)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/Big Building7/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5625, -8.3125)
-shape = SubResource("BoxShape3D_wfydt")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="CitySetup/Big Building7/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.625, 6.5625, -7.625)
-shape = SubResource("BoxShape3D_h7rie")
-
-[node name="TestOldTownHouse1gltf" parent="CitySetup" instance=ExtResource("13_w51dc")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.4625, 0, -18.75)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/TestOldTownHouse1gltf"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/TestOldTownHouse1gltf/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_w8usq")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/TestOldTownHouse1gltf/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4375, 6.5625, 0)
-shape = SubResource("BoxShape3D_w8usq")
-
-[node name="TestOldTownHouse1gltf3" parent="CitySetup" instance=ExtResource("13_w51dc")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -84.0875, 0, 32.1875)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/TestOldTownHouse1gltf3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/TestOldTownHouse1gltf3/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_w8usq")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/TestOldTownHouse1gltf3/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4375, 6.5625, 0)
-shape = SubResource("BoxShape3D_w8usq")
-
-[node name="TestOldTownHouse1gltf5" parent="CitySetup" instance=ExtResource("13_w51dc")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -87.9, 0, 59.6875)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/TestOldTownHouse1gltf5"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/TestOldTownHouse1gltf5/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_w8usq")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/TestOldTownHouse1gltf5/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4375, 6.5625, 0)
-shape = SubResource("BoxShape3D_w8usq")
-
-[node name="TestOldTownHouse1gltf7" parent="CitySetup" instance=ExtResource("13_w51dc")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -42.5875, 0, 69)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/TestOldTownHouse1gltf7"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/TestOldTownHouse1gltf7/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_w8usq")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/TestOldTownHouse1gltf7/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4375, 6.5625, 0)
-shape = SubResource("BoxShape3D_w8usq")
-
-[node name="TestOldTownHouse1gltf6" parent="CitySetup" instance=ExtResource("13_w51dc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.8375, 0, 67.5625)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/TestOldTownHouse1gltf6"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/TestOldTownHouse1gltf6/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_w8usq")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/TestOldTownHouse1gltf6/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4375, 6.5625, 0)
-shape = SubResource("BoxShape3D_w8usq")
-
-[node name="TestOldTownHouse1gltf2" parent="CitySetup" instance=ExtResource("13_w51dc")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -88.525, 0, 16.6875)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/TestOldTownHouse1gltf2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/TestOldTownHouse1gltf2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
-shape = SubResource("BoxShape3D_w8usq")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/TestOldTownHouse1gltf2/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4375, 6.5625, 0)
-shape = SubResource("BoxShape3D_w8usq")
-
-[node name="Temple" type="Node3D" parent="CitySetup"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.25, 0, -13.8125)
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CitySetup/Temple"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2.375)
-radius = 7.6875
-height = 39.125
-sides = 16
-material = SubResource("StandardMaterial3D_8ko8i")
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CitySetup/Temple"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1875, 0, -5.0625)
-radius = 2.4375
-height = 72.75
-material = SubResource("StandardMaterial3D_8ko8i")
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CitySetup/Temple"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1875, 0, 2.375)
-radius = 4.0625
-height = 49.875
-sides = 16
-material = SubResource("StandardMaterial3D_8ko8i")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Temple"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Temple/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1875, 0, 2.375)
-shape = SubResource("CylinderShape3D_qwx1k")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CitySetup/Temple/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1875, 0, 2.375)
-shape = SubResource("CylinderShape3D_7lpox")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="CitySetup/Temple/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3125, 0, -5)
-shape = SubResource("CylinderShape3D_jfth4")
-
-[node name="Door" parent="CitySetup/Temple" instance=ExtResource("14_5pyj3")]
-
-[node name="Lights" type="Node3D" parent="CitySetup"]
-
-[node name="WindowLight1" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8125, 4.75, 42.0625)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight32" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, 4.4375, 34.3125)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight34" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 5.8125, 12.375)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight35" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 12.6875, 8.3125)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight36" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 12.6875, 15.8125)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight37" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8125, 14.0625, 17.0625)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight38" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8125, 15.0625, 33.8125)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight39" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8125, 6.9375, 30.125)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight40" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 5.3125, 69.625)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight43" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 5.875, 70.6875)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight44" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 4.5625, 66.75)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight45" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 12.4375, 66.75)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight41" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 6, 57.9375)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight42" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 12.75, 61.75)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight33" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, 13.9375, 38.4375)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight9" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6875, 5, 45)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight10" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.625, 8.875, 45)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight11" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.25, 8.875, 45)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight12" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.5, 13.0625, 37.8125)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight13" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.375, 12.75, -5.25)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight14" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.5625, 4.875, -5.25)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight15" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.1875, 4.8125, -12.9375)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight16" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.8125, 6.0625, -12.9375)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight17" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.4375, 6.0625, -12.9375)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight18" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.4375, 6.0625, -12.9375)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight19" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.4375, 13.0625, -12.9375)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight20" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.8125, 14, -12.9375)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight21" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.625, 13.125, -6)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight23" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.0625, 5.9375, -2.5)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight24" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.0625, 5.9375, -4.0625)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight25" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.875, 5.9375, -4.0625)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight26" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.875, 12.8125, -4.0625)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight27" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.5625, 13.875, -4.0625)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight28" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.8125, 13.875, -4.0625)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight29" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.75, 12.75, 2.375)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight30" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.75, 14.1875, -1.375)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight31" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.75, 4.9375, 2.5)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight22" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.25, 14.1875, -12.25)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight2" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5625, 13.75, 42.0625)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight3" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.75, 12.4375, 43.1875)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight4" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8125, 6.5, 43.1875)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight5" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.8125, 12.9375, 43.75)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight8" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.8125, 20.3125, 43.75)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight6" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.375, 14, 43.75)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="WindowLight7" type="OmniLight3D" parent="CitySetup/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.75, 5.0625, 46)
-light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
-light_size = 1.0
-shadow_enabled = true
-omni_range = 7.446
-omni_attenuation = 1.41421
-
-[node name="Enemy Walking Zone Map" type="Node3D" parent="."]
-
-[node name="Zone1" type="Area3D" parent="Enemy Walking Zone Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.125, 0, 30.125)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy Walking Zone Map/Zone1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.9375)
-shape = SubResource("BoxShape3D_qvlee")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_7bod6")
 
@@ -1638,11 +314,1355 @@ transform = Transform3D(0.913226, 0.0952219, 0.396171, -0.228723, -0.684861, 0.6
 light_energy = 0.1
 shadow_enabled = true
 
-[node name="City Defense Enemy" type="CharacterBody3D" parent="."]
+[node name="NPC Navigation Region" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_m5yur")
+script = ExtResource("17_wq40a")
+
+[node name="Navigation Setup Delay" type="Timer" parent="NPC Navigation Region"]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="CitySetup" type="Node3D" parent="NPC Navigation Region"]
+
+[node name="Post Office" type="CSGBox3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.375, 5, 55.5625)
+size = Vector3(11.125, 10, 12.625)
+material = SubResource("StandardMaterial3D_0a705")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Post Office"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Post Office/StaticBody3D"]
+shape = SubResource("BoxShape3D_xnifg")
+
+[node name="Workshop" type="CSGBox3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.9375, 6.1875, 31.0625)
+size = Vector3(34.875, 14.25, 17.625)
+material = SubResource("StandardMaterial3D_ywo1y")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="NPC Navigation Region/CitySetup/Workshop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4375, 11.6875, 0)
+radius = 3.5625
+height = 19.125
+material = SubResource("StandardMaterial3D_xp1j5")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="NPC Navigation Region/CitySetup/Workshop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 11.6875, 0)
+radius = 3.5625
+height = 19.125
+material = SubResource("StandardMaterial3D_xp1j5")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="NPC Navigation Region/CitySetup/Workshop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0625, 11.6875, 0)
+radius = 3.5625
+height = 19.125
+material = SubResource("StandardMaterial3D_xp1j5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Workshop"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Workshop/StaticBody3D"]
+shape = SubResource("BoxShape3D_acq60")
+
+[node name="Door" type="Area3D" parent="NPC Navigation Region/CitySetup/Workshop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1875, -6.6875, 8.5)
+script = ExtResource("5_1illh")
+targetScene = "res://Levels/demo/Workshop Scene.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Workshop/Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5625)
+shape = SubResource("BoxShape3D_8t6vw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NPC Navigation Region/CitySetup/Workshop/Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1875, 0.5625)
+size = Vector3(4.375, 3.5, 1)
+material = SubResource("StandardMaterial3D_m6bgh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26.75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.506504, 0)
+shape = SubResource("BoxShape3D_acev5")
+
+[node name="Tall Boy" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -50.4625, 0, -18.75)
+
+[node name="OldTown_HouseBody1_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy" instance=ExtResource("6_uf6dn")]
+
+[node name="OldTown_HouseBody1_gltf2" parent="NPC Navigation Region/CitySetup/Tall Boy" instance=ExtResource("6_uf6dn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.96161, 0)
+
+[node name="OldTown_Roof1_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy" instance=ExtResource("7_7d18b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07896, 0.305976)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Tall Boy"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Tall Boy/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, 0.3125)
+shape = SubResource("BoxShape3D_ch2p1")
+
+[node name="Tall Boy2" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -38.025, 0, 18.75)
+
+[node name="OldTown_HouseBody1_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy2" instance=ExtResource("6_uf6dn")]
+
+[node name="OldTown_HouseBody1_gltf2" parent="NPC Navigation Region/CitySetup/Tall Boy2" instance=ExtResource("6_uf6dn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.96161, 0)
+
+[node name="OldTown_Roof1_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy2" instance=ExtResource("7_7d18b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07896, 0.305976)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Tall Boy2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Tall Boy2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, 0.3125)
+shape = SubResource("BoxShape3D_ch2p1")
+
+[node name="Tall Boy4" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.9625, 0, 18.75)
+
+[node name="OldTown_HouseBody1_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy4" instance=ExtResource("6_uf6dn")]
+
+[node name="OldTown_HouseBody1_gltf2" parent="NPC Navigation Region/CitySetup/Tall Boy4" instance=ExtResource("6_uf6dn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.96161, 0)
+
+[node name="OldTown_Roof1_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy4" instance=ExtResource("7_7d18b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07896, 0.305976)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Tall Boy4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Tall Boy4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, 0.3125)
+shape = SubResource("BoxShape3D_ch2p1")
+
+[node name="Tall Boy3" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.1, 0, 12.9375)
+
+[node name="OldTown_HouseBody1_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy3" instance=ExtResource("6_uf6dn")]
+
+[node name="OldTown_HouseBody1_gltf2" parent="NPC Navigation Region/CitySetup/Tall Boy3" instance=ExtResource("6_uf6dn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.96161, 0)
+
+[node name="OldTown_Roof1_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy3" instance=ExtResource("7_7d18b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07896, 0.305976)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Tall Boy3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Tall Boy3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 0, 0.3125)
+shape = SubResource("BoxShape3D_ch2p1")
+
+[node name="Wide One" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -51.4625, 0, -18.75)
+
+[node name="OldTown_Roof3_gltf" parent="NPC Navigation Region/CitySetup/Wide One" instance=ExtResource("8_ke00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
+
+[node name="OldTown_HouseBody3_gltf" parent="NPC Navigation Region/CitySetup/Wide One" instance=ExtResource("9_q2h7i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Wide One" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Wide One" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
+visible = false
+
+[node name="OldTown_HouseBody3_gltf2" parent="NPC Navigation Region/CitySetup/Wide One" instance=ExtResource("9_q2h7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
+
+[node name="OldTown_Roof2_gltf" parent="NPC Navigation Region/CitySetup/Wide One" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Wide One"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Wide One/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55651e-07, 0, -14.375)
+shape = SubResource("BoxShape3D_614fc")
+
+[node name="Wide One3" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.1, 0, 18.625)
+
+[node name="OldTown_Roof3_gltf" parent="NPC Navigation Region/CitySetup/Wide One3" instance=ExtResource("8_ke00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
+
+[node name="OldTown_HouseBody3_gltf" parent="NPC Navigation Region/CitySetup/Wide One3" instance=ExtResource("9_q2h7i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Wide One3" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Wide One3" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
+visible = false
+
+[node name="OldTown_HouseBody3_gltf2" parent="NPC Navigation Region/CitySetup/Wide One3" instance=ExtResource("9_q2h7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
+
+[node name="OldTown_Roof2_gltf" parent="NPC Navigation Region/CitySetup/Wide One3" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Wide One3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Wide One3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55651e-07, 0, -14.375)
+shape = SubResource("BoxShape3D_614fc")
+
+[node name="Wide One6" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.025, 0, 50.8125)
+
+[node name="OldTown_Roof3_gltf" parent="NPC Navigation Region/CitySetup/Wide One6" instance=ExtResource("8_ke00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
+
+[node name="OldTown_HouseBody3_gltf" parent="NPC Navigation Region/CitySetup/Wide One6" instance=ExtResource("9_q2h7i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Wide One6" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Wide One6" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
+visible = false
+
+[node name="OldTown_HouseBody3_gltf2" parent="NPC Navigation Region/CitySetup/Wide One6" instance=ExtResource("9_q2h7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
+
+[node name="OldTown_Roof2_gltf" parent="NPC Navigation Region/CitySetup/Wide One6" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Wide One6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Wide One6/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55651e-07, 0, -14.375)
+shape = SubResource("BoxShape3D_614fc")
+
+[node name="Wide One5" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 60.1, 0, 70.125)
+
+[node name="OldTown_Roof3_gltf" parent="NPC Navigation Region/CitySetup/Wide One5" instance=ExtResource("8_ke00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
+
+[node name="OldTown_HouseBody3_gltf" parent="NPC Navigation Region/CitySetup/Wide One5" instance=ExtResource("9_q2h7i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Wide One5" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Wide One5" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
+visible = false
+
+[node name="OldTown_HouseBody3_gltf2" parent="NPC Navigation Region/CitySetup/Wide One5" instance=ExtResource("9_q2h7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
+
+[node name="OldTown_Roof2_gltf" parent="NPC Navigation Region/CitySetup/Wide One5" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Wide One5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Wide One5/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55651e-07, 0, -14.375)
+shape = SubResource("BoxShape3D_614fc")
+
+[node name="Wide One2" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 68.725, 0, 4)
+
+[node name="OldTown_Roof3_gltf" parent="NPC Navigation Region/CitySetup/Wide One2" instance=ExtResource("8_ke00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.625, -18.1875)
+
+[node name="OldTown_HouseBody3_gltf" parent="NPC Navigation Region/CitySetup/Wide One2" instance=ExtResource("9_q2h7i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 7.88644, -18.2602)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Wide One2" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Wide One2" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.375)
+visible = false
+
+[node name="OldTown_HouseBody3_gltf2" parent="NPC Navigation Region/CitySetup/Wide One2" instance=ExtResource("9_q2h7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0, -18.25)
+
+[node name="OldTown_Roof2_gltf" parent="NPC Navigation Region/CitySetup/Wide One2" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.5625, -10.375)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Wide One2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Wide One2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55651e-07, 0, -14.375)
+shape = SubResource("BoxShape3D_614fc")
+
+[node name="Tall Boy 2" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -36.9, 0, -18.75)
+
+[node name="AllDaHousesgltf" parent="NPC Navigation Region/CitySetup/Tall Boy 2" instance=ExtResource("12_ffwml")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Tall Boy 2" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Tall Boy 2" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 2" instance=ExtResource("10_le0ii")]
+
+[node name="OldTown_Roof3_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 2" instance=ExtResource("8_ke00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Tall Boy 2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Tall Boy 2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="Tall Boy 3" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -53.275, 0, 16.375)
+
+[node name="AllDaHousesgltf" parent="NPC Navigation Region/CitySetup/Tall Boy 3" instance=ExtResource("12_ffwml")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Tall Boy 3" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Tall Boy 3" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 3" instance=ExtResource("10_le0ii")]
+
+[node name="OldTown_Roof3_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 3" instance=ExtResource("8_ke00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Tall Boy 3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Tall Boy 3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="Tall Boy 7" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.5375, 0, -11.1875)
+
+[node name="AllDaHousesgltf" parent="NPC Navigation Region/CitySetup/Tall Boy 7" instance=ExtResource("12_ffwml")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Tall Boy 7" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Tall Boy 7" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 7" instance=ExtResource("10_le0ii")]
+
+[node name="OldTown_Roof3_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 7" instance=ExtResource("8_ke00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Tall Boy 7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Tall Boy 7/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="Tall Boy 4" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -66.275, 0, 16.375)
+
+[node name="AllDaHousesgltf" parent="NPC Navigation Region/CitySetup/Tall Boy 4" instance=ExtResource("12_ffwml")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Tall Boy 4" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Tall Boy 4" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 4" instance=ExtResource("10_le0ii")]
+
+[node name="OldTown_Roof3_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 4" instance=ExtResource("8_ke00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Tall Boy 4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Tall Boy 4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="Tall Boy 5" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 49.6625, 0, 16.75)
+
+[node name="AllDaHousesgltf" parent="NPC Navigation Region/CitySetup/Tall Boy 5" instance=ExtResource("12_ffwml")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Tall Boy 5" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Tall Boy 5" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 5" instance=ExtResource("10_le0ii")]
+
+[node name="OldTown_Roof3_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 5" instance=ExtResource("8_ke00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Tall Boy 5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Tall Boy 5/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="Tall Boy 9" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 34.9125, 0, 27.625)
+
+[node name="AllDaHousesgltf" parent="NPC Navigation Region/CitySetup/Tall Boy 9" instance=ExtResource("12_ffwml")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Tall Boy 9" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Tall Boy 9" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 9" instance=ExtResource("10_le0ii")]
+
+[node name="OldTown_Roof3_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 9" instance=ExtResource("8_ke00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Tall Boy 9"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Tall Boy 9/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="Tall Boy 11" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 34.9125, 0, 68.9375)
+
+[node name="AllDaHousesgltf" parent="NPC Navigation Region/CitySetup/Tall Boy 11" instance=ExtResource("12_ffwml")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Tall Boy 11" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Tall Boy 11" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 11" instance=ExtResource("10_le0ii")]
+
+[node name="OldTown_Roof3_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 11" instance=ExtResource("8_ke00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Tall Boy 11"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Tall Boy 11/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="Tall Boy 12" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 20.1, 0, 68.9375)
+
+[node name="AllDaHousesgltf" parent="NPC Navigation Region/CitySetup/Tall Boy 12" instance=ExtResource("12_ffwml")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Tall Boy 12" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Tall Boy 12" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 12" instance=ExtResource("10_le0ii")]
+
+[node name="OldTown_Roof3_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 12" instance=ExtResource("8_ke00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Tall Boy 12"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Tall Boy 12/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="Tall Boy 13" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 49.725, 0, 68.9375)
+
+[node name="AllDaHousesgltf" parent="NPC Navigation Region/CitySetup/Tall Boy 13" instance=ExtResource("12_ffwml")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Tall Boy 13" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Tall Boy 13" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 13" instance=ExtResource("10_le0ii")]
+
+[node name="OldTown_Roof3_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 13" instance=ExtResource("8_ke00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Tall Boy 13"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Tall Boy 13/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="Tall Boy 8" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 49.6625, 0, 38.3125)
+
+[node name="AllDaHousesgltf" parent="NPC Navigation Region/CitySetup/Tall Boy 8" instance=ExtResource("12_ffwml")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Tall Boy 8" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Tall Boy 8" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 8" instance=ExtResource("10_le0ii")]
+
+[node name="OldTown_Roof3_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 8" instance=ExtResource("8_ke00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Tall Boy 8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Tall Boy 8/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="Tall Boy 10" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 29.6, 0, 38.3125)
+
+[node name="AllDaHousesgltf" parent="NPC Navigation Region/CitySetup/Tall Boy 10" instance=ExtResource("12_ffwml")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.125, 8, 0.0625)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Tall Boy 10" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Tall Boy 10" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 10" instance=ExtResource("10_le0ii")]
+
+[node name="OldTown_Roof3_gltf" parent="NPC Navigation Region/CitySetup/Tall Boy 10" instance=ExtResource("8_ke00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.0625, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Tall Boy 10"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Tall Boy 10/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="Big Building" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -78.3375, 0, -10.875)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Big Building" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Big Building" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Big Building" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf4" parent="NPC Navigation Region/CitySetup/Big Building" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf5" parent="NPC Navigation Region/CitySetup/Big Building" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
+
+[node name="OldTown_HouseBody2_gltf6" parent="NPC Navigation Region/CitySetup/Big Building" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
+
+[node name="OldTown_Roof2_gltf" parent="NPC Navigation Region/CitySetup/Big Building" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
+
+[node name="OldTown_Roof2_gltf2" parent="NPC Navigation Region/CitySetup/Big Building" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
+
+[node name="OldTown_Roof2_gltf3" parent="NPC Navigation Region/CitySetup/Big Building" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Big Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 0, -4.1875)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5625, -8.3125)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.625, 6.5625, -7.625)
+shape = SubResource("BoxShape3D_h7rie")
+
+[node name="Big Building3" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 82.725, 0, -10.875)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Big Building3" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Big Building3" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Big Building3" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf4" parent="NPC Navigation Region/CitySetup/Big Building3" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf5" parent="NPC Navigation Region/CitySetup/Big Building3" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
+
+[node name="OldTown_HouseBody2_gltf6" parent="NPC Navigation Region/CitySetup/Big Building3" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
+
+[node name="OldTown_Roof2_gltf" parent="NPC Navigation Region/CitySetup/Big Building3" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
+
+[node name="OldTown_Roof2_gltf2" parent="NPC Navigation Region/CitySetup/Big Building3" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
+
+[node name="OldTown_Roof2_gltf3" parent="NPC Navigation Region/CitySetup/Big Building3" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Big Building3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 0, -4.1875)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5625, -8.3125)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.625, 6.5625, -7.625)
+shape = SubResource("BoxShape3D_h7rie")
+
+[node name="Big Building5" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 77.1, 0, 41)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Big Building5" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Big Building5" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Big Building5" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf4" parent="NPC Navigation Region/CitySetup/Big Building5" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf5" parent="NPC Navigation Region/CitySetup/Big Building5" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
+
+[node name="OldTown_HouseBody2_gltf6" parent="NPC Navigation Region/CitySetup/Big Building5" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
+
+[node name="OldTown_Roof2_gltf" parent="NPC Navigation Region/CitySetup/Big Building5" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
+
+[node name="OldTown_Roof2_gltf2" parent="NPC Navigation Region/CitySetup/Big Building5" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
+
+[node name="OldTown_Roof2_gltf3" parent="NPC Navigation Region/CitySetup/Big Building5" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Big Building5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 0, -4.1875)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building5/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building5/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5625, -8.3125)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building5/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.625, 6.5625, -7.625)
+shape = SubResource("BoxShape3D_h7rie")
+
+[node name="Big Building2" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 21.725, 0, 17.75)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Big Building2" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Big Building2" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Big Building2" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf4" parent="NPC Navigation Region/CitySetup/Big Building2" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf5" parent="NPC Navigation Region/CitySetup/Big Building2" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
+
+[node name="OldTown_HouseBody2_gltf6" parent="NPC Navigation Region/CitySetup/Big Building2" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
+
+[node name="OldTown_Roof2_gltf" parent="NPC Navigation Region/CitySetup/Big Building2" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
+
+[node name="OldTown_Roof2_gltf2" parent="NPC Navigation Region/CitySetup/Big Building2" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
+
+[node name="OldTown_Roof2_gltf3" parent="NPC Navigation Region/CitySetup/Big Building2" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Big Building2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 0, -4.1875)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5625, -8.3125)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.625, 6.5625, -7.625)
+shape = SubResource("BoxShape3D_h7rie")
+
+[node name="Big Building4" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 15.225, 0, 24.6875)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Big Building4" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Big Building4" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Big Building4" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf4" parent="NPC Navigation Region/CitySetup/Big Building4" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf5" parent="NPC Navigation Region/CitySetup/Big Building4" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
+
+[node name="OldTown_HouseBody2_gltf6" parent="NPC Navigation Region/CitySetup/Big Building4" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
+
+[node name="OldTown_Roof2_gltf" parent="NPC Navigation Region/CitySetup/Big Building4" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
+
+[node name="OldTown_Roof2_gltf2" parent="NPC Navigation Region/CitySetup/Big Building4" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
+
+[node name="OldTown_Roof2_gltf3" parent="NPC Navigation Region/CitySetup/Big Building4" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Big Building4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 0, -4.1875)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5625, -8.3125)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.625, 6.5625, -7.625)
+shape = SubResource("BoxShape3D_h7rie")
+
+[node name="Big Building7" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21.525, 0, 55.625)
+
+[node name="OldTown_HouseBody2_gltf" parent="NPC Navigation Region/CitySetup/Big Building7" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf2" parent="NPC Navigation Region/CitySetup/Big Building7" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf3" parent="NPC Navigation Region/CitySetup/Big Building7" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -11.875)
+
+[node name="OldTown_HouseBody2_gltf4" parent="NPC Navigation Region/CitySetup/Big Building7" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -4.3125)
+
+[node name="OldTown_HouseBody2_gltf5" parent="NPC Navigation Region/CitySetup/Big Building7" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -11.875)
+
+[node name="OldTown_HouseBody2_gltf6" parent="NPC Navigation Region/CitySetup/Big Building7" instance=ExtResource("10_le0ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 8, -11.875)
+
+[node name="OldTown_Roof2_gltf" parent="NPC Navigation Region/CitySetup/Big Building7" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 8.625, -4.0625)
+
+[node name="OldTown_Roof2_gltf2" parent="NPC Navigation Region/CitySetup/Big Building7" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.5625, 8.625, -11.875)
+
+[node name="OldTown_Roof2_gltf3" parent="NPC Navigation Region/CitySetup/Big Building7" instance=ExtResource("11_ahsi3")]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 0.0625, 27.75, -11.875)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Big Building7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90735e-06, 0, -4.1875)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building7/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 6.5625, 0)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building7/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5625, -8.3125)
+shape = SubResource("BoxShape3D_wfydt")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Big Building7/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.625, 6.5625, -7.625)
+shape = SubResource("BoxShape3D_h7rie")
+
+[node name="TestOldTownHouse1gltf" parent="NPC Navigation Region/CitySetup" instance=ExtResource("13_w51dc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.4625, 0, -18.75)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_w8usq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4375, 6.5625, 0)
+shape = SubResource("BoxShape3D_w8usq")
+
+[node name="TestOldTownHouse1gltf3" parent="NPC Navigation Region/CitySetup" instance=ExtResource("13_w51dc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -84.0875, 0, 32.1875)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_w8usq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4375, 6.5625, 0)
+shape = SubResource("BoxShape3D_w8usq")
+
+[node name="TestOldTownHouse1gltf5" parent="NPC Navigation Region/CitySetup" instance=ExtResource("13_w51dc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -87.9, 0, 59.6875)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf5/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_w8usq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf5/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4375, 6.5625, 0)
+shape = SubResource("BoxShape3D_w8usq")
+
+[node name="TestOldTownHouse1gltf7" parent="NPC Navigation Region/CitySetup" instance=ExtResource("13_w51dc")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -42.5875, 0, 69)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf7/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_w8usq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf7/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4375, 6.5625, 0)
+shape = SubResource("BoxShape3D_w8usq")
+
+[node name="TestOldTownHouse1gltf6" parent="NPC Navigation Region/CitySetup" instance=ExtResource("13_w51dc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.8375, 0, 67.5625)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf6/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_w8usq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf6/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4375, 6.5625, 0)
+shape = SubResource("BoxShape3D_w8usq")
+
+[node name="TestOldTownHouse1gltf2" parent="NPC Navigation Region/CitySetup" instance=ExtResource("13_w51dc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -88.525, 0, 16.6875)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19209e-07, 6.5625, 0)
+shape = SubResource("BoxShape3D_w8usq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/TestOldTownHouse1gltf2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4375, 6.5625, 0)
+shape = SubResource("BoxShape3D_w8usq")
+
+[node name="Temple" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.25, 0, -13.8125)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="NPC Navigation Region/CitySetup/Temple"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2.375)
+radius = 7.6875
+height = 39.125
+sides = 16
+material = SubResource("StandardMaterial3D_8ko8i")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="NPC Navigation Region/CitySetup/Temple"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1875, 0, -5.0625)
+radius = 2.4375
+height = 72.75
+material = SubResource("StandardMaterial3D_8ko8i")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="NPC Navigation Region/CitySetup/Temple"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1875, 0, 2.375)
+radius = 4.0625
+height = 49.875
+sides = 16
+material = SubResource("StandardMaterial3D_8ko8i")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NPC Navigation Region/CitySetup/Temple"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Temple/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1875, 0, 2.375)
+shape = SubResource("CylinderShape3D_qwx1k")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Temple/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1875, 0, 2.375)
+shape = SubResource("CylinderShape3D_7lpox")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="NPC Navigation Region/CitySetup/Temple/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3125, 0, -5)
+shape = SubResource("CylinderShape3D_jfth4")
+
+[node name="Door" parent="NPC Navigation Region/CitySetup/Temple" instance=ExtResource("14_5pyj3")]
+
+[node name="Lights" type="Node3D" parent="NPC Navigation Region/CitySetup"]
+
+[node name="WindowLight1" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8125, 4.75, 42.0625)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight32" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, 4.4375, 34.3125)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight34" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 5.8125, 12.375)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight35" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 12.6875, 8.3125)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight36" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 12.6875, 15.8125)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight37" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8125, 14.0625, 17.0625)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight38" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8125, 15.0625, 33.8125)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight39" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8125, 6.9375, 30.125)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight40" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 5.3125, 69.625)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight43" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 5.875, 70.6875)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight44" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 4.5625, 66.75)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight45" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 12.4375, 66.75)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight41" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 6, 57.9375)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight42" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 12.75, 61.75)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight33" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, 13.9375, 38.4375)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight9" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6875, 5, 45)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight10" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.625, 8.875, 45)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight11" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.25, 8.875, 45)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight12" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.5, 13.0625, 37.8125)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight13" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.375, 12.75, -5.25)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight14" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.5625, 4.875, -5.25)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight15" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.1875, 4.8125, -12.9375)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight16" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.8125, 6.0625, -12.9375)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight17" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.4375, 6.0625, -12.9375)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight18" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.4375, 6.0625, -12.9375)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight19" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.4375, 13.0625, -12.9375)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight20" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.8125, 14, -12.9375)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight21" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.625, 13.125, -6)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight23" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.0625, 5.9375, -2.5)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight24" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.0625, 5.9375, -4.0625)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight25" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.875, 5.9375, -4.0625)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight26" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.875, 12.8125, -4.0625)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight27" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.5625, 13.875, -4.0625)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight28" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.8125, 13.875, -4.0625)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight29" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.75, 12.75, 2.375)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight30" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.75, 14.1875, -1.375)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight31" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.75, 4.9375, 2.5)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight22" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.25, 14.1875, -12.25)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight2" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5625, 13.75, 42.0625)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight3" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.75, 12.4375, 43.1875)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight4" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8125, 6.5, 43.1875)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight5" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.8125, 12.9375, 43.75)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight8" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.8125, 20.3125, 43.75)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight6" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.375, 14, 43.75)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="WindowLight7" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.75, 5.0625, 46)
+light_color = Color(1, 0.972549, 0.690196, 1)
+light_energy = 3.0
+light_size = 1.0
+shadow_enabled = true
+omni_range = 7.446
+omni_attenuation = 1.41421
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4375, 0, 0)
+mesh = SubResource("PlaneMesh_jy6xw")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.4375, 0, 2.6875)
+mesh = SubResource("PlaneMesh_jy6xw")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.4375, 0, 52.75)
+mesh = SubResource("PlaneMesh_jy6xw")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="NPC Navigation Region/CitySetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.25, 0, 2.875)
+mesh = SubResource("PlaneMesh_jy6xw")
+
+[node name="City Defense Enemy" type="CharacterBody3D" parent="NPC Navigation Region"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8125, 0, 39.75)
 script = ExtResource("15_1mpni")
+maximumWaitTime = 2.0
+wanderRange = 15.0
+moveSpeed = 7.0
 
-[node name="Sprite3D" type="Sprite3D" parent="City Defense Enemy"]
+[node name="Sprite3D" type="Sprite3D" parent="NPC Navigation Region/City Defense Enemy"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1.8125, 0)
 layers = 33
 shaded = true
@@ -1650,25 +1670,25 @@ texture = ExtResource("15_t8qco")
 hframes = 10
 vframes = 4
 
-[node name="OmniLight3D" type="OmniLight3D" parent="City Defense Enemy/Sprite3D"]
+[node name="OmniLight3D" type="OmniLight3D" parent="NPC Navigation Region/City Defense Enemy/Sprite3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, -0.625, 0.75)
 light_energy = 0.05
 light_cull_mask = 4293918752
 omni_range = 2.0
 omni_attenuation = 0.0065695
 
-[node name="Encounter Radius" type="Area3D" parent="City Defense Enemy"]
+[node name="Encounter Radius" type="Area3D" parent="NPC Navigation Region/City Defense Enemy"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="City Defense Enemy/Encounter Radius"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/City Defense Enemy/Encounter Radius"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_7nlbq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="City Defense Enemy"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/City Defense Enemy"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, 1, 0.125)
 shape = SubResource("CylinderShape3D_hy64r")
 
 [connection signal="area_entered" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaEntered" flags=18]
 [connection signal="area_exited" from="ExplorePlayer/Interaction Radius" to="ExplorePlayer" method="OnInteractionAreaExited" flags=18]
 [connection signal="area_entered" from="ExplorePlayer/BodyArea" to="ExplorePlayer" method="OnBodyAreaEntered" flags=18]
-[connection signal="area_entered" from="City Defense Enemy/Encounter Radius" to="City Defense Enemy" method="OnEncounterZoneAreaEntered"]
+[connection signal="area_entered" from="NPC Navigation Region/City Defense Enemy/Encounter Radius" to="NPC Navigation Region/City Defense Enemy" method="OnEncounterZoneAreaEntered"]
