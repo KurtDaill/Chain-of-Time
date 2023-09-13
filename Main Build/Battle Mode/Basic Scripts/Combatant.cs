@@ -87,6 +87,11 @@ public partial class Combatant : Node3D
 		//Figure out how we're dealing with death logic
 	}
 
+	public virtual void Heal(int healAmmount){
+		displayText.ShowHealing(Math.Min(maxHP - hp, healAmmount));
+		hp += Math.Min(maxHP - hp, healAmmount);
+	}
+
 	public bool HasAnimation(string name){
 		var test = animPlay.GetAnimationList();
 		return animPlay.HasAnimation(name);

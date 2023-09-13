@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d23io6jp617dx"]
+[gd_scene load_steps=21 format=3 uid="uid://d23io6jp617dx"]
 
 [ext_resource type="Script" path="res://Battle Mode/Player Characters/SilverCombatant.cs" id="1_bdure"]
 [ext_resource type="Texture2D" uid="uid://bfn61ql3ubmtc" path="res://Art/Prod Sprite Sheets/Luciene Combat Sprite-Sheet.png" id="3_y6mhs"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Battle Mode/Abilities/Reroute.cs" id="6_3mye5"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/PlayerSwap.cs" id="6_215qe"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/Incision.cs" id="7_05g3y"]
+[ext_resource type="Script" path="res://Battle Mode/Player Characters/UseItemAction.cs" id="8_cb5t6"]
 [ext_resource type="PackedScene" uid="uid://boneh1axl0j65" path="res://Battle Mode/Combat Text.tscn" id="9_mkjul"]
 [ext_resource type="AudioStream" uid="uid://cfj5vrhlk6arb" path="res://Audio/HitSound.wav" id="10_21crq"]
 
@@ -444,6 +445,10 @@ script = ExtResource("7_05g3y")
 swordFX = "res://Battle Mode/FX/incisionFXtscn.tscn"
 spCost = 2
 enabledRanks = Array[int]([1, 2, 3, 4, 5])
+
+[node name="Use Item" type="Node" parent="."]
+script = ExtResource("8_cb5t6")
+enabledRanks = Array[int]([0, 1, 2])
 
 [node name="Combat Text" parent="." instance=ExtResource("9_mkjul")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.876529, 2.26561, -0.0799999)

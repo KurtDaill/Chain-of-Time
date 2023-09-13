@@ -1,7 +1,8 @@
-[gd_scene load_steps=53 format=3 uid="uid://ctkjn6qaseru7"]
+[gd_scene load_steps=54 format=3 uid="uid://ctkjn6qaseru7"]
 
 [ext_resource type="Theme" uid="uid://d4kx000io04gf" path="res://GUI/Themes/Battle Menu Themes/Skill Card Normal Small.tres" id="3"]
 [ext_resource type="Theme" uid="uid://dq2wt80l1hcrn" path="res://GUI/Themes/Battle Menu Themes/Skill Card Normal.tres" id="5"]
+[ext_resource type="Texture2D" uid="uid://be0pkves0hyk8" path="res://GUI/Battle Menu Assets/Item Menu/Item Tab Highlight.png" id="15_lcn4c"]
 [ext_resource type="Texture2D" uid="uid://bjukb2viqs36y" path="res://GUI/Battle Menu Assets/Attack Menu/Normal Attack.png" id="17_o7fhh"]
 [ext_resource type="Texture2D" uid="uid://8iltg8hieg8a" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuRunHighlight.png" id="20"]
 [ext_resource type="AudioStream" uid="uid://vrcv026r88aw" path="res://Audio/UI_No.wav" id="21"]
@@ -800,9 +801,9 @@ offset_bottom = 92.6026
 texture = ExtResource("26")
 
 [node name="Item Menu" type="Control" parent="."]
-visible = false
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 753.0
+offset_right = 793.0
 offset_bottom = 40.0
 script = ExtResource("43")
 
@@ -847,6 +848,7 @@ offset_right = 522.0
 offset_bottom = 902.0
 pivot_offset = Vector2(261.773, 37.7793)
 texture = ExtResource("31")
+stretch_mode = 2
 
 [node name="Name" type="Label" parent="Item Menu/Item TabBar/Item Tab 1"]
 layout_mode = 0
@@ -866,6 +868,15 @@ offset_bottom = 57.0
 theme = ExtResource("5")
 text = "x00"
 
+[node name="Highlight" type="TextureRect" parent="Item Menu/Item TabBar/Item Tab 1"]
+visible = false
+layout_mode = 0
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 516.0
+offset_bottom = 75.0
+texture = ExtResource("15_lcn4c")
+
 [node name="Item Tab 2" type="TextureRect" parent="Item Menu/Item TabBar"]
 layout_mode = 0
 offset_left = 9.0
@@ -874,6 +885,7 @@ offset_right = 522.0
 offset_bottom = 986.0
 pivot_offset = Vector2(261.773, 37.7793)
 texture = ExtResource("31")
+stretch_mode = 2
 
 [node name="Name" type="Label" parent="Item Menu/Item TabBar/Item Tab 2"]
 layout_mode = 0
@@ -895,6 +907,15 @@ offset_bottom = 57.0
 theme = ExtResource("5")
 text = "x00"
 
+[node name="Highlight" type="TextureRect" parent="Item Menu/Item TabBar/Item Tab 2"]
+visible = false
+layout_mode = 0
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 516.0
+offset_bottom = 75.0
+texture = ExtResource("15_lcn4c")
+
 [node name="Item Tab 3" type="TextureRect" parent="Item Menu/Item TabBar"]
 layout_mode = 0
 offset_left = 9.0
@@ -903,6 +924,7 @@ offset_right = 522.0
 offset_bottom = 1071.0
 pivot_offset = Vector2(261.773, 37.7793)
 texture = ExtResource("31")
+stretch_mode = 2
 
 [node name="Name" type="Label" parent="Item Menu/Item TabBar/Item Tab 3"]
 layout_mode = 0
@@ -922,6 +944,15 @@ offset_bottom = 57.0
 theme = ExtResource("5")
 text = "x00"
 
+[node name="Highlight" type="TextureRect" parent="Item Menu/Item TabBar/Item Tab 3"]
+visible = false
+layout_mode = 0
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 516.0
+offset_bottom = 75.0
+texture = ExtResource("15_lcn4c")
+
 [node name="Item Tab 4" type="TextureRect" parent="Item Menu/Item TabBar"]
 layout_mode = 0
 offset_left = 9.0
@@ -930,6 +961,7 @@ offset_right = 522.0
 offset_bottom = 1156.0
 pivot_offset = Vector2(261.773, 37.7793)
 texture = ExtResource("31")
+stretch_mode = 2
 
 [node name="Name" type="Label" parent="Item Menu/Item TabBar/Item Tab 4"]
 layout_mode = 0
@@ -948,6 +980,15 @@ offset_right = 504.0
 offset_bottom = 57.0
 theme = ExtResource("5")
 text = "x00"
+
+[node name="Highlight" type="TextureRect" parent="Item Menu/Item TabBar/Item Tab 4"]
+visible = false
+layout_mode = 0
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 516.0
+offset_bottom = 75.0
+texture = ExtResource("15_lcn4c")
 
 [node name="Item Description" type="TextureRect" parent="Item Menu"]
 layout_mode = 0

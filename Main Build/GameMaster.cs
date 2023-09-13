@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Linq;
 using static GameplayUtilities;
+using System.Collections.Generic;
 public partial class GameMaster : Node
 {
     [Signal]
@@ -10,6 +11,7 @@ public partial class GameMaster : Node
     StoryState state = new StoryState();
 
     PlayerData[] partyData = new PlayerData[3];
+    List<Item> inventory = new List<Item>();
 
     PlayerData[] bookmark = new PlayerData[3];
 
@@ -30,6 +32,7 @@ public partial class GameMaster : Node
         state = GD.Load<StoryState>("res://ExampleStoryState.tres");
         //Default Party Data
         partyData = new PlayerData[1]{new PlayerData("Cato", "res://Battle Mode/Player Characters/Cato Combatant.tscn", 6, 6, 2, 2, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroFront))};
+        inventory = new List<Item>{GD.Load<PackedScene>("res://Battle Mode/Items/OrcishFireBrew.tscn").Instantiate<OrcishFireBrew>(), GD.Load<PackedScene>("res://Battle Mode/Items/OrcishFireBrew.tscn").Instantiate<OrcishFireBrew>()};
         currentTime = TimeOfDay.Morning;
     }
 
@@ -64,6 +67,9 @@ public partial class GameMaster : Node
             var playerCharacter = GD.Load<PackedScene>(playerCombatantData.GetPath()).Instantiate<PlayerCombatant>();
             playerCharacter.LoadPlayerData(playerCombatantData);
             roster.SetPositionNewCharacter(playerCharacter, playerCombatantData.GetStartingPosition());
+            foreach(Item item in inventory){
+                roster.GetNode("Items").AddChild(item);
+            }
         }
     }
 

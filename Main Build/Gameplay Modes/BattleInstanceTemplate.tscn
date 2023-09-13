@@ -13,10 +13,11 @@ defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
 battleCamera = NodePath("Camera3D")
 battleRoster = NodePath("Roster")
 
-[node name="Roster" type="Node3D" parent="." node_paths=PackedStringArray("positionPointer")]
+[node name="Roster" type="Node3D" parent="." node_paths=PackedStringArray("positionPointer", "Items")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 script = ExtResource("2_k0wmx")
 positionPointer = NodePath("Pointer")
+Items = NodePath("Items")
 
 [node name="Pointer" type="Node3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1)
@@ -86,6 +87,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -3.0625)
 
 [node name="EnemyBack2" type="Node3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48, 0, -2.0625)
+
+[node name="Items" type="Node" parent="Roster"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 4.813, 15.563)

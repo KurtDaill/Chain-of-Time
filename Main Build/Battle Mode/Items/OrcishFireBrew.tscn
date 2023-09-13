@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://w5v17kl23qxm"]
+
+[ext_resource type="Script" path="res://Battle Mode/Items/OrcishFireBrew.cs" id="1_th6pb"]
+
+[node name="OrcishFireBrew" type="Node"]
+script = ExtResource("1_th6pb")
+spGained = 3
+damageTaken = 2
+displayName = "Orcish Fire Brew"
+rulesText = "Gain 3 SP\\nTake 2 Damage"

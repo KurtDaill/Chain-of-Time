@@ -66,7 +66,7 @@ public partial class TopMenu : BattleMenu
                             break;
                         case 2:
                             //Goes to the Item Menu
-                            //parentGUI.ChangeMenu(3, character);
+                            parentGUI.ChangeMenu(3, character);
                             break;
                         case 3:
                             //Goes to the Party Menu

@@ -12,6 +12,8 @@ public partial class Roster : Node
 
 	[Export]
 	private Node3D positionPointer;
+	[Export]
+	Node Items;
 	[Signal]
 	public delegate void SwapCompleteEventHandler();
 

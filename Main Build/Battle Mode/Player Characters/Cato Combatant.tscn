@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ck78k6iju4ldb"]
+[gd_scene load_steps=25 format=3 uid="uid://ck78k6iju4ldb"]
 
 [ext_resource type="Script" path="res://Battle Mode/Player Characters/CatoCombatant.cs" id="1_r8uo0"]
 [ext_resource type="Texture2D" uid="uid://buymnk3wkjnd3" path="res://GUI/Cato Head Thing.png" id="2_kpxx0"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Battle Mode/Abilities/CatoTaunt.cs" id="8_t0u03"]
 [ext_resource type="AudioStream" uid="uid://cfj5vrhlk6arb" path="res://Audio/HitSound.wav" id="9_36gs7"]
 [ext_resource type="AudioStream" uid="uid://uo20buou3jxx" path="res://Audio/Melee Attack.wav" id="10_s787t"]
+[ext_resource type="Script" path="res://Battle Mode/Player Characters/UseItemAction.cs" id="12_e00tf"]
 
 [sub_resource type="Animation" id="Animation_xplvf"]
 resource_name = "CatoBasicAttack"
@@ -384,9 +385,28 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_ogaq5"]
+resource_name = "DrinkPotion"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s6heb"]
 _data = {
 "CatoBasicAttack": SubResource("Animation_xplvf"),
+"DrinkPotion": SubResource("Animation_ogaq5"),
 "GoDown": SubResource("Animation_2y8nh"),
 "HitReact": SubResource("Animation_8ixpk"),
 "Idle": SubResource("Animation_l3yyt"),
@@ -452,6 +472,10 @@ script = ExtResource("8_t0u03")
 tauntStatusEffectPath = "res://Battle Mode/Status Effects/StatusTauntUntilMove.tscn"
 spCost = 2
 enabledRanks = Array[int]([2, 3, 4, 5])
+
+[node name="Use Item" type="Node" parent="."]
+script = ExtResource("12_e00tf")
+enabledRanks = Array[int]([0, 1, 2])
 
 [node name="Combat Text" parent="." instance=ExtResource("8_3o5il")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63653, 1.66561, -0.0799999)

@@ -72,6 +72,7 @@ public partial class EnemyGroup : CharacterBody3D
             Battle encounter = Battle.InstanceBattle(encounterEnemies, this.GetNode<GameMaster>("/root/GameMaster").GetMode(), true, GlobalPosition);
             GetNode("/root/Scene Config").AddChild(encounter);
             this.GetNode<GameMaster>("/root/GameMaster").SetMode(encounter);
+            this.QueueFree();
         }
     }
     /*

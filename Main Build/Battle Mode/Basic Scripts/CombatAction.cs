@@ -37,7 +37,7 @@ public abstract partial class CombatAction : Node
     public override void _Process(double delta){
         if(running){
             //If there are no flags we're waiting on
-            if(flagsRequiredToComplete.Where(x => x == false).Count() == 0){
+            if(!flagsRequiredToComplete.Where(x => x == false).Any()){
                 EmitSignal(SignalName.ActionComplete);
                 running = false;
             } 
