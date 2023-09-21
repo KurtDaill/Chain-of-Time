@@ -1,10 +1,11 @@
-[gd_scene load_steps=53 format=3 uid="uid://cu4siw3uulnqt"]
+[gd_scene load_steps=51 format=3 uid="uid://cu4siw3uulnqt"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_360aq"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_15k8v"]
 [ext_resource type="Script" path="res://Explore Mode/ExplorePlayer.cs" id="3_leia1"]
 [ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Prod Sprite Sheets/Adventure Cato Sprite-Sheet.png" id="4_1f0fk"]
 [ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="5_1illh"]
+[ext_resource type="Environment" uid="uid://g3vd25xum2jr" path="res://Night Defense/Night Environment.tres" id="5_mt8cf"]
 [ext_resource type="PackedScene" uid="uid://744jase51iw4" path="res://Art/3D/OldTownBlocks/OldTown_HouseBody1_gltf.gltf" id="6_uf6dn"]
 [ext_resource type="PackedScene" uid="uid://663as0b6h32w" path="res://Art/3D/OldTownBlocks/OldTown_Roof1_gltf.gltf" id="7_7d18b"]
 [ext_resource type="PackedScene" uid="uid://dvsfko0dk77di" path="res://Art/3D/OldTownBlocks/OldTown_Roof3_gltf.gltf" id="8_ke00r"]
@@ -154,30 +155,6 @@ radius = 0.64
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_n2j7n"]
 radius = 0.36
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ng0bw"]
-sky_top_color = Color(0.0509804, 0.447059, 0.74902, 1)
-sky_horizon_color = Color(1, 0.941176, 0.501961, 1)
-sky_curve = 0.109807
-sky_energy_multiplier = 0.8
-ground_bottom_color = Color(0.486275, 0.215686, 0.101961, 1)
-ground_horizon_color = Color(0.811765, 0.454902, 0.356863, 1)
-ground_curve = 0.0438997
-sun_angle_max = 18.0
-sun_curve = 0.235375
-
-[sub_resource type="Sky" id="Sky_fsfcl"]
-sky_material = SubResource("ProceduralSkyMaterial_ng0bw")
-
-[sub_resource type="Environment" id="Environment_fkraa"]
-background_mode = 2
-sky = SubResource("Sky_fsfcl")
-ambient_light_source = 3
-ambient_light_sky_contribution = 0.5
-ambient_light_energy = 0.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.01
-volumetric_fog_albedo = Color(0.811765, 0.976471, 1, 1)
-
 [sub_resource type="NavigationMesh" id="NavigationMesh_m5yur"]
 filter_ledge_spans = true
 filter_walkable_low_height_spans = true
@@ -254,7 +231,7 @@ exploreCamera = NodePath("../ExplorePlayer/Explore Camera")
 explorePlayer = NodePath("../ExplorePlayer")
 
 [node name="ExplorePlayer" type="CharacterBody3D" parent="." groups=["Player"]]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -4.0575, 0.211502, 46.2754)
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -19.1674, 0.211502, 45.5691)
 floor_max_angle = 1.309
 script = ExtResource("3_leia1")
 Speed = 8.0
@@ -295,9 +272,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04, 0)
 shape = SubResource("CylinderShape3D_n2j7n")
 
 [node name="Explore Camera" type="Camera3D" parent="ExplorePlayer"]
-transform = Transform3D(1, 2.40465e-08, -5.62842e-08, 1.99322e-09, 0.906308, 0.422618, 6.11732e-08, -0.422618, 0.906308, 0, 9.22, 14.7635)
+transform = Transform3D(1, 2.40464e-08, -5.62841e-08, 1.99322e-09, 0.906308, 0.422618, 6.11732e-08, -0.422618, 0.906308, 0, 9.22, 14.7635)
 current = true
-near = 3.0
+fov = 37.8493
 
 [node name="Map Handle" type="Node3D" parent="ExplorePlayer"]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 4.25)
@@ -313,13 +290,19 @@ transform = Transform3D(1, 7.53642e-15, 3.12168e-15, -7.53641e-15, 0.707107, 0.7
 light_energy = 0.2
 light_cull_mask = 4293918752
 
+[node name="OmniLight3D" type="OmniLight3D" parent="ExplorePlayer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40434, 1.73842, 0.858418)
+light_color = Color(1, 0.74902, 0.160784, 1)
+light_energy = 7.0
+omni_range = 25.0
+omni_attenuation = 1.62451
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_fkraa")
+environment = ExtResource("5_mt8cf")
 
 [node name="Night Moon" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.913226, 0.0952219, 0.396171, -0.228723, -0.684861, 0.691847, 0.337201, -0.722426, -0.603653, 0, 0, 0)
-visible = false
-light_energy = 0.1
+light_energy = 0.025
 shadow_enabled = true
 
 [node name="NPC Navigation Region" type="NavigationRegion3D" parent="."]
@@ -1241,12 +1224,11 @@ shape = SubResource("CylinderShape3D_jfth4")
 [node name="Door" parent="NPC Navigation Region/CitySetup/Temple" instance=ExtResource("14_5pyj3")]
 
 [node name="Lights" type="Node3D" parent="NPC Navigation Region/CitySetup"]
-visible = false
 
 [node name="WindowLight1" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8125, 4.75, 42.0625)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1255,7 +1237,6 @@ omni_attenuation = 1.41421
 [node name="WindowLight32" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, 4.4375, 34.3125)
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1263,8 +1244,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight34" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 5.8125, 12.375)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1273,7 +1254,6 @@ omni_attenuation = 1.41421
 [node name="WindowLight35" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 12.6875, 8.3125)
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1281,8 +1261,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight36" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 12.6875, 15.8125)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1290,8 +1270,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight37" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8125, 14.0625, 17.0625)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1300,7 +1280,6 @@ omni_attenuation = 1.41421
 [node name="WindowLight38" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8125, 15.0625, 33.8125)
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1308,8 +1287,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight39" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8125, 6.9375, 30.125)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1317,8 +1296,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight40" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 5.3125, 69.625)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1326,8 +1305,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight43" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 5.875, 70.6875)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1335,8 +1314,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight44" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 4.5625, 66.75)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1345,7 +1324,6 @@ omni_attenuation = 1.41421
 [node name="WindowLight45" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 12.4375, 66.75)
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1353,8 +1331,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight41" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 6, 57.9375)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1363,7 +1341,6 @@ omni_attenuation = 1.41421
 [node name="WindowLight42" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 12.75, 61.75)
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1371,8 +1348,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight33" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.875, 13.9375, 38.4375)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1380,8 +1357,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight9" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6875, 5, 45)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1389,8 +1366,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight10" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.625, 8.875, 45)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1399,7 +1376,6 @@ omni_attenuation = 1.41421
 [node name="WindowLight11" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.25, 8.875, 45)
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1408,7 +1384,6 @@ omni_attenuation = 1.41421
 [node name="WindowLight12" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.5, 13.0625, 37.8125)
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1416,8 +1391,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight13" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.375, 12.75, -5.25)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1426,7 +1401,6 @@ omni_attenuation = 1.41421
 [node name="WindowLight14" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.5625, 4.875, -5.25)
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1435,7 +1409,6 @@ omni_attenuation = 1.41421
 [node name="WindowLight15" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.1875, 4.8125, -12.9375)
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1443,8 +1416,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight16" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.8125, 6.0625, -12.9375)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1453,7 +1426,6 @@ omni_attenuation = 1.41421
 [node name="WindowLight17" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.4375, 6.0625, -12.9375)
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1461,8 +1433,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight18" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.4375, 6.0625, -12.9375)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1471,7 +1443,6 @@ omni_attenuation = 1.41421
 [node name="WindowLight19" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.4375, 13.0625, -12.9375)
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1479,8 +1450,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight20" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.8125, 14, -12.9375)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1488,8 +1459,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight21" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.625, 13.125, -6)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1498,7 +1469,6 @@ omni_attenuation = 1.41421
 [node name="WindowLight23" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.0625, 5.9375, -2.5)
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1507,7 +1477,6 @@ omni_attenuation = 1.41421
 [node name="WindowLight24" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.0625, 5.9375, -4.0625)
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1515,8 +1484,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight25" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.875, 5.9375, -4.0625)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1524,8 +1493,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight26" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.875, 12.8125, -4.0625)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1533,8 +1502,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight27" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.5625, 13.875, -4.0625)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1542,8 +1511,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight28" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.8125, 13.875, -4.0625)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1552,7 +1521,6 @@ omni_attenuation = 1.41421
 [node name="WindowLight29" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.75, 12.75, 2.375)
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1560,8 +1528,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight30" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.75, 14.1875, -1.375)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1570,7 +1538,6 @@ omni_attenuation = 1.41421
 [node name="WindowLight31" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.75, 4.9375, 2.5)
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1578,8 +1545,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight22" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.25, 14.1875, -12.25)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1587,8 +1554,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight2" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5625, 13.75, 42.0625)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1596,8 +1563,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight3" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.75, 12.4375, 43.1875)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1605,8 +1572,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight4" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8125, 6.5, 43.1875)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1614,8 +1581,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight5" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.8125, 12.9375, 43.75)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1624,7 +1591,6 @@ omni_attenuation = 1.41421
 [node name="WindowLight8" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.8125, 20.3125, 43.75)
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1632,8 +1598,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight6" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.375, 14, 43.75)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1641,8 +1607,8 @@ omni_attenuation = 1.41421
 
 [node name="WindowLight7" type="OmniLight3D" parent="NPC Navigation Region/CitySetup/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.75, 5.0625, 46)
+visible = false
 light_color = Color(1, 0.972549, 0.690196, 1)
-light_energy = 3.0
 light_size = 1.0
 shadow_enabled = true
 omni_range = 7.446
@@ -1697,6 +1663,20 @@ shape = SubResource("CylinderShape3D_7nlbq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, 1, 0.125)
 shape = SubResource("CylinderShape3D_hy64r")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="NPC Navigation Region/City Defense Enemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.565244, 1.28677, 0.0415649)
+light_color = Color(0.784314, 0, 1, 1)
+light_energy = 0.2
+omni_range = 2.0
+omni_attenuation = 1.68179
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="NPC Navigation Region/City Defense Enemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872413, 1.28677, 0.0415649)
+light_color = Color(0.784314, 0, 1, 1)
+light_energy = 0.1
+omni_range = 2.0
+omni_attenuation = 1.68179
+
 [node name="Sunset" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.994077, 0.00700554, -0.10845, -0.00751275, 0.991103, 0.132886, 0.108416, 0.132913, -0.98518, 0, 0, 0)
 visible = false
@@ -1711,6 +1691,7 @@ shadow_enabled = true
 
 [node name="Morning Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.807866, 0.520092, -0.277232, -0.443844, 0.846361, 0.294409, 0.387757, -0.114795, 0.914585, 0, 0, 0)
+visible = false
 light_color = Color(1, 0.976471, 0.721569, 1)
 light_energy = 1.2
 shadow_enabled = true
