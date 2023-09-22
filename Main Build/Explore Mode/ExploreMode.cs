@@ -5,8 +5,7 @@ using static GameplayUtilities;
 using System.Dynamic;
 using static GameMaster;
 public partial class ExploreMode : GameplayMode{
-    [Export]
-    Camera3D exploreCamera;
+    ExploreCamera exploreCamera;
     [Export]
     ExplorePlayer explorePlayer;
     [Export]
@@ -18,6 +17,7 @@ public partial class ExploreMode : GameplayMode{
     {
         base._Ready();
         explorePlayer.Visible = false;
+        exploreCamera = explorePlayer.GetNode<ExploreCamera>("Explore Camera");
         exploreCamera.Current = false;
         explorePlayer.SetExploreMode(this);
         GetNode<GameMaster>("/root/GameMaster").TimeOfDayChanged += TimeChange;

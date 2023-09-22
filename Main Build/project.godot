@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Chain Of Time"
-run/main_scene="res://Levels/demo/Night Defense Test Scene.tscn"
+run/main_scene="res://Prototyping/Camera Sees Through Buildings.tscn"
 config/features=PackedStringArray("4.1", "C#")
 config/icon="res://icon.png"
 
@@ -199,12 +199,12 @@ debug_enter={
 2d_physics/layer_2="Players"
 3d_physics/layer_2="Explore Interaction"
 2d_physics/layer_3="Enemies"
-3d_physics/layer_3="Promenades"
 2d_physics/layer_4="HurtBox"
 2d_physics/layer_5="Hitbox"
 2d_physics/layer_10="Battle Ground Front"
 2d_physics/layer_11="Battle Ground Middle"
 2d_physics/layer_12="Battle Ground Back"
+3d_physics/layer_13="Buidling Line-of-Sight Detection"
 
 [logging]
 

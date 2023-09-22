@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/Battle UI-Sheet 9 Slice.png-3ed3fd2d16bb8e169
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
