@@ -8,7 +8,7 @@ public partial class Building : Node3D
     List<StandardMaterial3D> materials;
     bool fadingOut, fadingIn;
 
-    float alphaValueWhileTransparent = 0.25F;
+    float alphaValueWhileTransparent = 0.6F;
     public override void _Ready(){
         fadingOut = false;
         fadingIn = false;
@@ -20,7 +20,11 @@ public partial class Building : Node3D
             MeshInstance3D mesh = (MeshInstance3D)foundMesh;
             for(int i = 0; i < mesh.Mesh.GetSurfaceCount(); i++){
                 if(mesh.Mesh.SurfaceGetMaterial(i) is StandardMaterial3D){
-                    materials.Add((StandardMaterial3D)mesh.Mesh.SurfaceGetMaterial(i));
+                    mesh.Mesh = mesh.Mesh.Duplicate() as Mesh;
+                    StandardMaterial3D newMat = mesh.Mesh.SurfaceGetMaterial(i).Duplicate(false) as StandardMaterial3D;
+                    mesh.Mesh.SurfaceSetMaterial(i, newMat);
+                    //mesh.Mesh.SurfaceGetMaterial(i).Set("resourcelocalto_scene", true);
+                    materials.Add(newMat);
                 }else{
                     throw new Exception("Building Class doesn't support materials other than StandardMaterial3D presently!");
                 }

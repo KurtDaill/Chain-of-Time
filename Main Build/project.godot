@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Chain Of Time"
-run/main_scene="res://Prototyping/Camera Sees Through Buildings.tscn"
+run/main_scene="res://Levels/demo/Night Defense Test Scene.tscn"
 config/features=PackedStringArray("4.1", "C#")
 config/icon="res://icon.png"
 
