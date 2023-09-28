@@ -1,9 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwboa5m4bpu0l"]
+[gd_scene load_steps=20 format=3 uid="uid://dwboa5m4bpu0l"]
 
 [ext_resource type="Script" path="res://Explore Mode/ExploreMode.cs" id="1_0d25n"]
 [ext_resource type="Script" path="res://Explore Mode/ExploreHUD.cs" id="2_g0yfs"]
 [ext_resource type="Theme" uid="uid://c1puhashacgcm" path="res://GUI/Themes/QuestMenuTheme.tres" id="3_3xwqj"]
 [ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="4_3owk8"]
+[ext_resource type="Texture2D" uid="uid://pergqakjr06a" path="res://GUI/Light Latern.png" id="5_ky607"]
+[ext_resource type="Texture2D" uid="uid://dnqnwet1j31ob" path="res://Art/FX/Lamp Fire Big_26x45.png" id="6_2akgc"]
+[ext_resource type="Script" path="res://GUI/NightDefenseLanternGUI.cs" id="6_q8uv6"]
+[ext_resource type="Texture2D" uid="uid://wyubn3ygv6iv" path="res://Art/FX/Lamp Fire Mid_19x35.png" id="7_ow32m"]
+[ext_resource type="Texture2D" uid="uid://bdqkrtnsjro85" path="res://Art/FX/Lamp Fire Small_16x24.png" id="8_mc26a"]
+[ext_resource type="Texture2D" uid="uid://bj6o7cbx18sbv" path="res://GUI/Light Progress Bar.png" id="10_8ungl"]
+[ext_resource type="Texture2D" uid="uid://cpm05i27r4gjx" path="res://GUI/Light Progress Bar Reversed.png" id="11_j2ga0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jv6b5"]
 
@@ -14,10 +21,197 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
+[sub_resource type="Animation" id="Animation_06dum"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(775, 414)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qetew"]
+resource_name = "Burn High"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 239]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("6_2akgc")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(775, 414)]
+}
+
+[sub_resource type="Animation" id="Animation_sbnb1"]
+resource_name = "Burn Mid"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 239]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_ow32m")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(770, 426)]
+}
+
+[sub_resource type="Animation" id="Animation_nay83"]
+resource_name = "Burn Low"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 239]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_mc26a")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(770, 447)]
+}
+
+[sub_resource type="Animation" id="Animation_y882u"]
+resource_name = "No Torch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oeyrc"]
+_data = {
+"Burn High": SubResource("Animation_qetew"),
+"Burn Low": SubResource("Animation_nay83"),
+"Burn Mid": SubResource("Animation_sbnb1"),
+"No Torch": SubResource("Animation_y882u"),
+"RESET": SubResource("Animation_06dum")
+}
+
 [node name="ExploreMode" type="Node3D"]
 script = ExtResource("1_0d25n")
 
 [node name="ExploreHUD" type="Panel" parent="."]
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -27,6 +221,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_jv6b5")
 script = ExtResource("2_g0yfs")
 
 [node name="Quests" type="VBoxContainer" parent="ExploreHUD"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.026
@@ -61,6 +256,7 @@ text = "[u]Final Delivery[/u]
 fit_content = true
 
 [node name="Time Label" type="RichTextLabel" parent="ExploreHUD"]
+visible = false
 clip_contents = false
 layout_mode = 1
 anchors_preset = -1
@@ -77,3 +273,65 @@ theme_override_fonts/normal_font = ExtResource("4_3owk8")
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
 text = "[center]Morning"
+
+[node name="TextureRect" type="TextureRect" parent="ExploreHUD"]
+layout_mode = 0
+offset_left = 248.0
+offset_top = -232.0
+offset_right = 1784.0
+offset_bottom = 536.0
+texture = ExtResource("5_ky607")
+stretch_mode = 2
+script = ExtResource("6_q8uv6")
+
+[node name="Sprite2D" type="Sprite2D" parent="ExploreHUD/TextureRect"]
+position = Vector2(775, 414)
+scale = Vector2(3, 3)
+texture = ExtResource("6_2akgc")
+hframes = 16
+vframes = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ExploreHUD/TextureRect"]
+autoplay = "Burn High"
+libraries = {
+"": SubResource("AnimationLibrary_oeyrc")
+}
+
+[node name="Left Bar" type="TextureProgressBar" parent="ExploreHUD/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.146
+anchor_top = 0.302
+anchor_right = 0.525
+anchor_bottom = 0.644
+offset_left = 32.744
+offset_top = 62.064
+offset_right = -120.4
+offset_bottom = -191.592
+max_value = 1.0
+step = 0.002
+value = 1.0
+fill_mode = 1
+nine_patch_stretch = true
+stretch_margin_left = 9
+stretch_margin_right = 9
+texture_progress = ExtResource("10_8ungl")
+
+[node name="Right Bar" type="TextureProgressBar" parent="ExploreHUD/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.146
+anchor_top = 0.302
+anchor_right = 0.525
+anchor_bottom = 0.644
+offset_left = 624.744
+offset_top = 62.064
+offset_right = 471.6
+offset_bottom = -191.592
+max_value = 1.0
+step = 0.002
+value = 1.0
+nine_patch_stretch = true
+stretch_margin_left = 9
+stretch_margin_right = 9
+texture_progress = ExtResource("11_j2ga0")

@@ -28,8 +28,11 @@ public partial class ExplorePlayer : CharacterBody3D
 
 	GameplayMode nextMode;
 
+	AnimationPlayer torchAnim;
+
 	public override void _Ready(){
 		animPlay = this.GetNode<AnimationPlayer>("AnimationPlayer");
+		torchAnim = this.GetNode<AnimationPlayer>("Torchlight/AnimationPlayer");
 		areasWithin = new List<InteractZone>();
 	}
 
@@ -121,5 +124,21 @@ public partial class ExplorePlayer : CharacterBody3D
 
 	public void SetExploreMode(ExploreMode mode){
 		myExploreMode = mode;
+	}
+
+	//Sets the torchlight level for the player. 0 is off, 1 is low, 2 is medium, 3 is high;
+	public void SetTorchLight(int light){
+		switch(light){
+			case 0:
+				torchAnim.Play("No Torch"); break;
+			case 1:
+				torchAnim.Play("Burn Low"); break;
+			case 2:
+				torchAnim.Play("Burn Mid"); break;
+			case 3:
+				torchAnim.Play("Burn High"); break;
+			default:
+				throw new Exception("Player Torchlight set with invalid number: " + light);
+		}
 	}
 }

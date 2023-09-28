@@ -5,11 +5,11 @@ using static GameplayUtilities;
 using System.Dynamic;
 using static GameMaster;
 public partial class ExploreMode : GameplayMode{
-    ExploreCamera exploreCamera;
+    protected ExploreCamera exploreCamera;
     [Export]
-    ExplorePlayer explorePlayer;
+    protected ExplorePlayer explorePlayer;
     [Export]
-    bool CityExplore;
+    protected bool CityExplore;
 
     private GameplayMode modeOnDeck;
 

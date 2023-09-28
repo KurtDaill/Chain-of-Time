@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cenpkmy5h0ooq"]
+[gd_scene load_steps=21 format=3 uid="uid://cenpkmy5h0ooq"]
 
 [ext_resource type="Script" path="res://Explore Mode/ExplorePlayer.cs" id="1_rbmfy"]
 [ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Prod Sprite Sheets/Adventure Cato Sprite-Sheet.png" id="2_khbbt"]
@@ -140,6 +140,141 @@ radius = 0.64
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_n2j7n"]
 radius = 0.36
 
+[sub_resource type="Animation" id="Animation_yk4ge"]
+resource_name = "Burn High"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.74902, 0.160784, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [7.0]
+}
+
+[sub_resource type="Animation" id="Animation_ntvff"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.74902, 0.160784, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [7.0]
+}
+
+[sub_resource type="Animation" id="Animation_rcnjo"]
+resource_name = "Burn Mid"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:light_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.486275, 0.0392157, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vvw04"]
+resource_name = "Burn Low"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.788235, 0.262745, 0.0705882, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_dlmxo"]
+resource_name = "No Torch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r02hh"]
+_data = {
+"Burn High": SubResource("Animation_yk4ge"),
+"Burn Low": SubResource("Animation_vvw04"),
+"Burn Mid": SubResource("Animation_rcnjo"),
+"No Torch": SubResource("Animation_dlmxo"),
+"RESET": SubResource("Animation_ntvff")
+}
+
 [node name="ExplorePlayer" type="CharacterBody3D" node_paths=PackedStringArray("exploreCamera") groups=["Player"]]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 0.212, 0)
 floor_max_angle = 1.309
@@ -200,16 +335,21 @@ size = 120.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 7.53642e-15, 3.12168e-15, -7.53641e-15, 0.707107, 0.707107, 3.12169e-15, -0.707107, 0.707107, 0, 2.8125, 3.4375)
+visible = false
 light_energy = 0.2
 light_cull_mask = 4293918752
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="Torchlight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63863, 1.73842, 1.24652)
-visible = false
 light_color = Color(1, 0.74902, 0.160784, 1)
 light_energy = 7.0
 omni_range = 25.0
 omni_attenuation = 1.62451
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Torchlight"]
+libraries = {
+"": SubResource("AnimationLibrary_r02hh")
+}
 
 [connection signal="area_entered" from="Interaction Radius" to="." method="OnInteractionAreaEntered" flags=18]
 [connection signal="area_exited" from="Interaction Radius" to="." method="OnInteractionAreaExited" flags=18]

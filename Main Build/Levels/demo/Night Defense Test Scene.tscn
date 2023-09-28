@@ -1,8 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://cu4siw3uulnqt"]
+[gd_scene load_steps=30 format=3 uid="uid://cu4siw3uulnqt"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_360aq"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_15k8v"]
 [ext_resource type="PackedScene" uid="uid://cenpkmy5h0ooq" path="res://Explore Mode/explore_player.tscn" id="3_cvfsk"]
+[ext_resource type="Script" path="res://Explore Mode/NightDefense.cs" id="3_wu0hn"]
+[ext_resource type="Environment" uid="uid://g3vd25xum2jr" path="res://Night Defense/Night Environment.tres" id="4_i1lk0"]
 [ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="5_1illh"]
 [ext_resource type="Script" path="res://Explore Mode/Building.cs" id="8_wwxbo"]
 [ext_resource type="PackedScene" uid="uid://igkxtup3khij" path="res://Art/Complete Buildings/generic_house.tscn" id="10_skibf"]
@@ -72,16 +74,19 @@ size = Vector3(200, 1, 200)
 script = ExtResource("1_360aq")
 startingMode = NodePath("ExploreMode")
 
-[node name="ExploreMode" parent="." node_paths=PackedStringArray("explorePlayer") instance=ExtResource("2_15k8v")]
+[node name="ExploreMode" parent="." node_paths=PackedStringArray("lantern", "explorePlayer") instance=ExtResource("2_15k8v")]
+script = ExtResource("3_wu0hn")
+lightDurationInSeconds = 30
+lantern = NodePath("ExploreHUD/TextureRect")
 explorePlayer = NodePath("../ExplorePlayer")
 
 [node name="ExplorePlayer" parent="." instance=ExtResource("3_cvfsk")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_i1lk0")
 
 [node name="Night Moon" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.913226, 0.0952219, 0.396171, -0.228723, -0.684861, 0.691847, 0.337201, -0.722426, -0.603653, 0, 0, 0)
-visible = false
 light_energy = 0.025
 shadow_enabled = true
 
@@ -170,6 +175,7 @@ shadow_enabled = true
 
 [node name="Noon Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.711508, 0.476982, -0.515989, 0.656961, -0.19101, 0.729327, 0.249317, -0.857906, -0.449264, 0, 0, 0)
+visible = false
 shadow_enabled = true
 
 [node name="Morning Sun" type="DirectionalLight3D" parent="."]
