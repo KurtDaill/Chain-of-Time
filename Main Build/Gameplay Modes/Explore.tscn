@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dwboa5m4bpu0l"]
+[gd_scene load_steps=23 format=3 uid="uid://dwboa5m4bpu0l"]
 
 [ext_resource type="Script" path="res://Explore Mode/ExploreMode.cs" id="1_0d25n"]
 [ext_resource type="Script" path="res://Explore Mode/ExploreHUD.cs" id="2_g0yfs"]
@@ -9,8 +9,11 @@
 [ext_resource type="Script" path="res://GUI/NightDefenseLanternGUI.cs" id="6_q8uv6"]
 [ext_resource type="Texture2D" uid="uid://wyubn3ygv6iv" path="res://Art/FX/Lamp Fire Mid_19x35.png" id="7_ow32m"]
 [ext_resource type="Texture2D" uid="uid://bdqkrtnsjro85" path="res://Art/FX/Lamp Fire Small_16x24.png" id="8_mc26a"]
+[ext_resource type="Texture2D" uid="uid://c6dkxp1jhu6yn" path="res://GUI/Light Latern-Bright.png" id="9_ustfl"]
+[ext_resource type="Texture2D" uid="uid://heplbvn0lg03" path="res://GUI/Light Latern-Dark.png" id="10_5fbu1"]
 [ext_resource type="Texture2D" uid="uid://bj6o7cbx18sbv" path="res://GUI/Light Progress Bar.png" id="10_8ungl"]
 [ext_resource type="Texture2D" uid="uid://cpm05i27r4gjx" path="res://GUI/Light Progress Bar Reversed.png" id="11_j2ga0"]
+[ext_resource type="Texture2D" uid="uid://cpq2ctvpm6nuq" path="res://GUI/Light Latern-No Torch.png" id="12_643g6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jv6b5"]
 
@@ -20,45 +23,6 @@ corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
-
-[sub_resource type="Animation" id="Animation_06dum"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(775, 414)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_qetew"]
 resource_name = "Burn High"
@@ -100,46 +64,17 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(775, 414)]
 }
-
-[sub_resource type="Animation" id="Animation_sbnb1"]
-resource_name = "Burn Mid"
-length = 8.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 239]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_ow32m")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(770, 426)]
+"values": [ExtResource("9_ustfl")]
 }
 
 [sub_resource type="Animation" id="Animation_nay83"]
@@ -182,9 +117,75 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(770, 447)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_5fbu1")]
+}
+
+[sub_resource type="Animation" id="Animation_sbnb1"]
+resource_name = "Burn Mid"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 239]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_ow32m")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(770, 426)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_ky607")]
+}
 
 [sub_resource type="Animation" id="Animation_y882u"]
 resource_name = "No Torch"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -196,6 +197,69 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_643g6")]
+}
+
+[sub_resource type="Animation" id="Animation_06dum"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(775, 414)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_ky607")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oeyrc"]
@@ -287,7 +351,7 @@ script = ExtResource("6_q8uv6")
 [node name="Sprite2D" type="Sprite2D" parent="ExploreHUD/TextureRect"]
 position = Vector2(775, 414)
 scale = Vector2(3, 3)
-texture = ExtResource("6_2akgc")
+texture = ExtResource("7_ow32m")
 hframes = 16
 vframes = 16
 
@@ -316,6 +380,7 @@ nine_patch_stretch = true
 stretch_margin_left = 9
 stretch_margin_right = 9
 texture_progress = ExtResource("10_8ungl")
+tint_progress = Color(0.501961, 0.0705882, 0.0705882, 1)
 
 [node name="Right Bar" type="TextureProgressBar" parent="ExploreHUD/TextureRect"]
 layout_mode = 1
@@ -335,3 +400,4 @@ nine_patch_stretch = true
 stretch_margin_left = 9
 stretch_margin_right = 9
 texture_progress = ExtResource("11_j2ga0")
+tint_progress = Color(0.501961, 0.0705882, 0.0705882, 1)

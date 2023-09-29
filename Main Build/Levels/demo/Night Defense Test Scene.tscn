@@ -76,7 +76,7 @@ startingMode = NodePath("ExploreMode")
 
 [node name="ExploreMode" parent="." node_paths=PackedStringArray("lantern", "explorePlayer") instance=ExtResource("2_15k8v")]
 script = ExtResource("3_wu0hn")
-lightDurationInSeconds = 30
+lightDurationInSeconds = 15
 lantern = NodePath("ExploreHUD/TextureRect")
 explorePlayer = NodePath("../ExplorePlayer")
 
