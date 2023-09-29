@@ -8,21 +8,21 @@ public partial class EnemyGroup : CharacterBody3D
 {
     //TODO Handle Movement
     [Export]
-    private float minimumWaitTime;
+    protected float minimumWaitTime;
     [Export]
-    private float maximumWaitTime;
+    protected float maximumWaitTime;
     [Export]
-    private float wanderRange;
+    protected float wanderRange;
     [Export]
-    private float moveSpeed;
-    private int currentWaypoint;
-    private Timer waitBetweenWandersTimer;
-    private bool waiting;
-    private Vector3 startingPosition;
-    private Vector3[] navigationWaypoints;
-    private Vector3 targetWanderCoordinates;
-    private Rid navigationMap;
-    private Dictionary<BattlePosition, Combatant> encounterEnemies = new Dictionary<BattlePosition, Combatant>();
+    protected float moveSpeed;
+    protected int currentWaypoint;
+    protected Timer waitBetweenWandersTimer;
+    protected bool waiting;
+    protected Vector3 startingPosition;
+    protected Vector3[] navigationWaypoints;
+    protected Vector3 targetWanderCoordinates;
+    protected Rid navigationMap;
+    protected Dictionary<BattlePosition, Combatant> encounterEnemies = new Dictionary<BattlePosition, Combatant>();
 
     public async override void _Ready(){
         waiting = true;
@@ -33,7 +33,7 @@ public partial class EnemyGroup : CharacterBody3D
         GD.Load<PackedScene>("res://Battle Mode/Enemies/SkeletonGuard.tscn").Instantiate<EnemyCombatant>());
         startingPosition = GlobalPosition;
         await ToSignal(GetParent().GetNode("Navigation Setup Delay"), Timer.SignalName.Timeout);
-        StartWanderingTowardsNewPoint();
+        PickNewMovementPoint();
         waiting = false;
     }
 
@@ -49,7 +49,7 @@ public partial class EnemyGroup : CharacterBody3D
             waitBetweenWandersTimer.Start();
             waiting = true;
             await ToSignal(waitBetweenWandersTimer, Timer.SignalName.Timeout);
-            StartWanderingTowardsNewPoint();
+            PickNewMovementPoint();
             waiting = false;
         }
         if((GlobalPosition - navigationWaypoints[currentWaypoint]).Length() < 0.1){
@@ -80,7 +80,10 @@ public partial class EnemyGroup : CharacterBody3D
             Check if the thing that entered is a player
             If it is : Start Encounter
     */
-    private void StartWanderingTowardsNewPoint(){
+    protected virtual void PickNewMovementPoint(){
+        MoveTowardsRandomPointInRange();
+    }
+    protected void MoveTowardsRandomPointInRange(){
         var rand = new Random();
         //Generates a point in space within our wander range using some randomization math, then asks the server for the closest point on our navigation map
         navigationMap = GetWorld3D().NavigationMap;

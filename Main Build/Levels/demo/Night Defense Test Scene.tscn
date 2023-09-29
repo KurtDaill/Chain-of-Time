@@ -374,6 +374,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.4375, 0, -15.3125)
 [node name="Generic House22" parent="CitySetup" instance=ExtResource("10_skibf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.9375, 0, -15.3125)
 
+[node name="Fires" parent="CitySetup/Generic House22" index="5"]
+visible = true
+
 [node name="Generic House23" parent="CitySetup" instance=ExtResource("10_skibf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8125, 0, -15.3125)
 
@@ -438,3 +441,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.3125, 0, 72.1875)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.4375, 0, 72.1875)
 
 [connection signal="area_entered" from="NPC Navigation Region/City Defense Enemy/Encounter Radius" to="NPC Navigation Region/City Defense Enemy" method="OnEncounterZoneAreaEntered"]
+
+[editable path="CitySetup/Generic House22"]

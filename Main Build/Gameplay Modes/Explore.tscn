@@ -351,7 +351,7 @@ script = ExtResource("6_q8uv6")
 [node name="Sprite2D" type="Sprite2D" parent="ExploreHUD/TextureRect"]
 position = Vector2(775, 414)
 scale = Vector2(3, 3)
-texture = ExtResource("7_ow32m")
+texture = ExtResource("6_2akgc")
 hframes = 16
 vframes = 16
 

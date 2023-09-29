@@ -21,13 +21,13 @@ public partial class NightDefenseLanternGUI : TextureRect
             explorePlayer.SetTorchLight(0);
         }else if(lightRatio < 0.33F){
             lightAnimPlay.Play("Burn Low");
-            leftBar.TintProgress = new Color("#940606");
-            rightBar.TintProgress = new Color("#940606");
+            leftBar.TintProgress = new Color("#801212");
+            rightBar.TintProgress = new Color("#801212");
             explorePlayer.SetTorchLight(1);
         }else if (lightRatio < 0.66){
             lightAnimPlay.Play("Burn Mid");
-            leftBar.TintProgress = new Color("#c99595");
-            rightBar.TintProgress = new Color("#c99595");
+            leftBar.TintProgress = new Color("#e6a25e");
+            rightBar.TintProgress = new Color("#e6a25e");
             explorePlayer.SetTorchLight(2);
         }else{ //Light has to be between 66% and 100% remaining
             lightAnimPlay.Play("Burn High");
