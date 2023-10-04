@@ -51,7 +51,8 @@ public partial class ExplorePlayer : CharacterBody3D
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
-		
+
+		if(!this.Visible) inputDir = Vector2.Zero; //If we're invisible, we don't accept player input. Might need an upgrade later for different behaviors, but this solution works for now
 		direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
 		direction *= Speed;
 		velocity = new Vector3(direction.X, velocity.Y, direction.Z);

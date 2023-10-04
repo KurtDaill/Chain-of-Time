@@ -81,7 +81,6 @@ lantern = NodePath("ExploreHUD/TextureRect")
 explorePlayer = NodePath("../ExplorePlayer")
 
 [node name="ExplorePlayer" parent="." instance=ExtResource("3_cvfsk")]
-process_mode = 3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_i1lk0")
@@ -443,4 +442,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.4375, 0, 72.1875)
 
 [connection signal="area_entered" from="NPC Navigation Region/City Defense Enemy/Encounter Radius" to="NPC Navigation Region/City Defense Enemy" method="OnEncounterZoneAreaEntered"]
 
+[editable path="ExploreMode"]
 [editable path="CitySetup/Generic House22"]

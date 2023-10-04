@@ -15,6 +15,7 @@ public partial class ItemMenu : BattleMenu
             GetNode<TextureRect>("Item TabBar/Item Tab 3"),
             GetNode<TextureRect>("Item TabBar/Item Tab 4")
         };
+        this.Visible = false;
     }
     public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         base.OnOpen(character, caller, parentGUI);

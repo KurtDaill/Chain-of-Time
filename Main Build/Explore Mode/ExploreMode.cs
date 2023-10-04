@@ -12,6 +12,7 @@ public partial class ExploreMode : GameplayMode{
     protected bool CityExplore;
 
     private GameplayMode modeOnDeck;
+    protected Panel exploreGUI;
 
     public override void _Ready()
     {
@@ -21,11 +22,13 @@ public partial class ExploreMode : GameplayMode{
         exploreCamera.Current = false;
         explorePlayer.SetExploreMode(this);
         GetNode<GameMaster>("/root/GameMaster").TimeOfDayChanged += TimeChange;
+        exploreGUI = this.GetNode<Panel>("ExploreHUD");
     }
     public override Task StartUp(){
         explorePlayer.Visible = true;
         exploreCamera.Current = true;
         this.Visible = true;
+        exploreGUI.Visible = true;
         return Task.CompletedTask;
     }
 
@@ -42,6 +45,7 @@ public partial class ExploreMode : GameplayMode{
     public async override Task TransitionOut(){
         explorePlayer.Visible = false;
         this.Visible = false;
+        exploreGUI.Visible = false;
     }
 
     public override void HandleInput(PlayerInput input)
