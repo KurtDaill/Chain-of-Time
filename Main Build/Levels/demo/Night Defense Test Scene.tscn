@@ -1,11 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://cu4siw3uulnqt"]
+[gd_scene load_steps=29 format=3 uid="uid://cu4siw3uulnqt"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_360aq"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_15k8v"]
 [ext_resource type="PackedScene" uid="uid://cenpkmy5h0ooq" path="res://Explore Mode/explore_player.tscn" id="3_cvfsk"]
 [ext_resource type="Script" path="res://Explore Mode/NightDefense.cs" id="3_wu0hn"]
-[ext_resource type="Environment" uid="uid://g3vd25xum2jr" path="res://Night Defense/Night Environment.tres" id="4_i1lk0"]
 [ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="5_1illh"]
+[ext_resource type="PackedScene" uid="uid://b552gb1pijreh" path="res://Art/3D/Street_Piece Large.gltf" id="8_1s1kp"]
 [ext_resource type="Script" path="res://Explore Mode/Building.cs" id="8_wwxbo"]
 [ext_resource type="PackedScene" uid="uid://igkxtup3khij" path="res://Art/Complete Buildings/generic_house.tscn" id="10_skibf"]
 [ext_resource type="PackedScene" uid="uid://dhug2nx6h5r1g" path="res://Explore Mode/SceneTransitionZone.tscn" id="14_5pyj3"]
@@ -24,9 +24,6 @@ radius = 2.4375
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hy64r"]
 radius = 0.5625
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_jy6xw"]
-size = Vector2(20, 200)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a705"]
 albedo_color = Color(1, 0, 0.0156863, 1)
@@ -76,17 +73,17 @@ startingMode = NodePath("ExploreMode")
 
 [node name="ExploreMode" parent="." node_paths=PackedStringArray("lantern", "explorePlayer") instance=ExtResource("2_15k8v")]
 script = ExtResource("3_wu0hn")
-lightDurationInSeconds = 15
+lightDurationInSeconds = 60
 lantern = NodePath("ExploreHUD/TextureRect")
 explorePlayer = NodePath("../ExplorePlayer")
 
 [node name="ExplorePlayer" parent="." instance=ExtResource("3_cvfsk")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("4_i1lk0")
 
 [node name="Night Moon" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.913226, 0.0952219, 0.396171, -0.228723, -0.684861, 0.691847, 0.337201, -0.722426, -0.603653, 0, 0, 0)
+visible = false
 light_energy = 0.025
 shadow_enabled = true
 
@@ -146,25 +143,10 @@ light_energy = 0.1
 omni_range = 2.0
 omni_attenuation = 1.68179
 
-[node name="Streets" type="MeshInstance3D" parent="NPC Navigation Region"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4375, 0, 0)
-mesh = SubResource("PlaneMesh_jy6xw")
-skeleton = NodePath("../../CitySetup")
+[node name="Streets" type="Node3D" parent="NPC Navigation Region"]
 
-[node name="Streets2" type="MeshInstance3D" parent="NPC Navigation Region"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.4375, 0, 2.6875)
-mesh = SubResource("PlaneMesh_jy6xw")
-skeleton = NodePath("../../CitySetup")
-
-[node name="Streets3" type="MeshInstance3D" parent="NPC Navigation Region"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.4375, 0, 52.75)
-mesh = SubResource("PlaneMesh_jy6xw")
-skeleton = NodePath("../../CitySetup")
-
-[node name="Streets4" type="MeshInstance3D" parent="NPC Navigation Region"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.25, 0, 2.875)
-mesh = SubResource("PlaneMesh_jy6xw")
-skeleton = NodePath("../../CitySetup")
+[node name="Street_Piece Large" parent="NPC Navigation Region/Streets" instance=ExtResource("8_1s1kp")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.875, 0, 2.5)
 
 [node name="Sunset" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.994077, 0.00700554, -0.10845, -0.00751275, 0.991103, 0.132886, 0.108416, 0.132913, -0.98518, 0, 0, 0)
@@ -175,7 +157,6 @@ shadow_enabled = true
 
 [node name="Noon Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.711508, 0.476982, -0.515989, 0.656961, -0.19101, 0.729327, 0.249317, -0.857906, -0.449264, 0, 0, 0)
-visible = false
 shadow_enabled = true
 
 [node name="Morning Sun" type="DirectionalLight3D" parent="."]

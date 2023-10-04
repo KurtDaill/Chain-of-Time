@@ -202,10 +202,23 @@ public partial class Battle : GameplayMode
 		public BadCombatAnimationException(string message, Exception inner) : base(message, inner){}
 	}
 
-	public async override Task StartUp(){
+	public async override Task StartUp(GameplayMode oldMode){
 		this.Visible = true;
 		gui.Visible = true;
 		battleCamera.Current = true;
+		if(oldMode is NightDefense){
+			NightDefense nightMode = oldMode as NightDefense;
+			OmniLight3D lamp = nightMode.GetCatoLamp().Duplicate() as OmniLight3D;
+			lamp.Visible = true;
+			this.GetRoster().GetNode<Marker3D>("Night Light Marker").AddChild(lamp, true);
+			lamp.GlobalPosition = this.GetRoster().GetNode<Marker3D>("Night Light Marker").GlobalPosition;
+			//GetRoster().GetNode<OmniLight3D>("Night Light").Set((StringName)property, nightMode.GetCatoLamp().Get(property));
+			}
+		}
+
+	public override Task TransitionOut(){
+		this.QueueFree();
+		return Task.CompletedTask;
 	}
 }
 

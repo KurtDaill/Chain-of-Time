@@ -108,8 +108,9 @@ public partial class GameMaster : Node
     }
     public async void SetMode(GameplayMode newMode){
             if(currentMode != null) await currentMode.TransitionOut();
+            GameplayMode oldMode = currentMode;
             currentMode = newMode; 
-            await currentMode.StartUp();
+            await currentMode.StartUp(oldMode);
             EmitSignal(GameMaster.SignalName.GameModeBegin, new Variant[]{newMode});
     }
     public GameplayMode GetMode(){

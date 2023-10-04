@@ -346,7 +346,7 @@ public partial class CutsceneDirector : GameplayMode
         //TODO add in visual effects (or do those belong in Transition in?)
     }
 
-    public async override Task StartUp(){
+    public async override Task StartUp(GameplayMode oldMode){
         this.Visible = true;
         this.cutsceneCam.Current = true;
         this.dialogueBox.Visible = true;

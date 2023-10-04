@@ -24,7 +24,7 @@ public partial class ExploreMode : GameplayMode{
         GetNode<GameMaster>("/root/GameMaster").TimeOfDayChanged += TimeChange;
         exploreGUI = this.GetNode<Panel>("ExploreHUD");
     }
-    public override Task StartUp(){
+    public override Task StartUp(GameplayMode oldMode){
         explorePlayer.Visible = true;
         exploreCamera.Current = true;
         this.Visible = true;
@@ -87,4 +87,8 @@ public partial class ExploreMode : GameplayMode{
         }
         this.GetParent().GetNode<WorldEnvironment>("WorldEnvironment").Environment = GD.Load<Godot.Environment>(environmentPath);
     }
+
+    public OmniLight3D GetCatoLamp(){
+        return explorePlayer.GetNode<OmniLight3D>("Torchlight");
+    } 
 }
