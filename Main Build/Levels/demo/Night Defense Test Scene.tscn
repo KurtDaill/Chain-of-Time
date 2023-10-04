@@ -81,6 +81,7 @@ lantern = NodePath("ExploreHUD/TextureRect")
 explorePlayer = NodePath("../ExplorePlayer")
 
 [node name="ExplorePlayer" parent="." instance=ExtResource("3_cvfsk")]
+process_mode = 3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_i1lk0")
