@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cu4siw3uulnqt"]
+[gd_scene load_steps=32 format=3 uid="uid://cu4siw3uulnqt"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_360aq"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_15k8v"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Explore Mode/Building.cs" id="8_wwxbo"]
 [ext_resource type="PackedScene" uid="uid://igkxtup3khij" path="res://Art/Complete Buildings/generic_house.tscn" id="10_skibf"]
 [ext_resource type="Environment" uid="uid://cqpc6quc73qwr" path="res://Night Defense/Result Screen Environment.tres" id="12_os021"]
+[ext_resource type="Theme" uid="uid://dp5ux27rntx3l" path="res://Night Defense/Results Screen Theme.tres" id="13_bv0rh"]
 [ext_resource type="PackedScene" uid="uid://dhug2nx6h5r1g" path="res://Explore Mode/SceneTransitionZone.tscn" id="14_5pyj3"]
 [ext_resource type="Script" path="res://Night Defense/EnemyGroup.cs" id="15_1mpni"]
 [ext_resource type="Texture2D" uid="uid://dl2nhvu4ncgu0" path="res://Art/Prod Sprite Sheets/Skeleton Guard Combat Sprite-Sheet.png" id="15_t8qco"]
@@ -70,6 +71,8 @@ radius = 2.25
 [sub_resource type="BoxShape3D" id="BoxShape3D_acev5"]
 size = Vector3(200, 1, 200)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yetgj"]
+
 [node name="Scene Config" type="Node3D" node_paths=PackedStringArray("startingMode")]
 script = ExtResource("1_360aq")
 startingMode = NodePath("Night Defense")
@@ -79,6 +82,9 @@ script = ExtResource("3_wu0hn")
 lightDurationInSeconds = 60
 lantern = NodePath("ExploreHUD/TextureRect")
 explorePlayer = NodePath("../ExplorePlayer")
+
+[node name="ExploreHUD" parent="Night Defense" index="0"]
+visible = false
 
 [node name="ExplorePlayer" parent="." instance=ExtResource("3_cvfsk")]
 
@@ -184,19 +190,6 @@ transform = Transform3D(0.807866, 0.520092, -0.277232, -0.443844, 0.846361, 0.29
 visible = false
 light_color = Color(1, 0.976471, 0.721569, 1)
 light_energy = 1.2
-shadow_enabled = true
-
-[node name="Result Screen Light" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.529064, -0.198695, -0.824992, -0.571881, 0.801747, 0.173648, 0.626932, 0.563668, -0.537805, 0, 3.125, 0)
-light_color = Color(1, 0.666667, 0, 1)
-light_energy = 2.0
-shadow_enabled = true
-sky_mode = 1
-
-[node name="Result Screen Sky" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.461567, -0.293322, -0.837209, -0.580349, 0.81362, 0.0348995, 0.670932, 0.501982, -0.545769, 0, 3.125, 0)
-light_color = Color(1, 0.666667, 0, 1)
-light_energy = 2.0
 shadow_enabled = true
 
 [node name="CitySetup" type="Node3D" parent="."]
@@ -463,6 +456,69 @@ v_offset = 8.815
 projection = 1
 current = true
 size = 180.0
+
+[node name="Result Screen Light" type="DirectionalLight3D" parent="Results Screen"]
+transform = Transform3D(-0.64697, -0.310656, -0.696364, -0.571881, 0.801747, 0.173648, 0.504363, 0.510582, -0.696364, 0, 3.125, 0)
+light_color = Color(1, 0.666667, 0, 1)
+light_energy = 2.0
+shadow_enabled = true
+sky_mode = 1
+
+[node name="Result Screen Sky" type="DirectionalLight3D" parent="Results Screen"]
+transform = Transform3D(-0.589997, -0.390529, -0.706676, -0.580349, 0.81362, 0.0348995, 0.561336, 0.430709, -0.706676, 0, 3.125, 0)
+light_color = Color(1, 0.666667, 0, 1)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="Panel" type="Panel" parent="Results Screen"]
+texture_filter = 1
+anchors_preset = -1
+anchor_right = 0.339
+anchor_bottom = 0.555
+offset_right = 0.119995
+offset_bottom = -0.400024
+theme = ExtResource("13_bv0rh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Results Screen/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.009
+anchor_bottom = 1.222
+offset_left = 9.0
+offset_top = 11.0
+offset_right = 0.14093
+offset_bottom = -0.226013
+
+[node name="Label" type="Label" parent="Results Screen/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Results - Night 1"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Results Screen/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Enemies" type="RichTextLabel" parent="Results Screen/Panel/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "> Enemies Remaining : 2
+	>1 Wandering
+	[color=Red]>1 Raider[/color]"
+fit_content = true
+
+[node name="HSeparator2" type="HSeparator" parent="Results Screen/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yetgj")
+
+[node name="Homes" type="RichTextLabel" parent="Results Screen/Panel/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "> Homes Lost Tonight : 2
+
+> Homes Lost Overall : 6
+
+[color=Red] 4 Left Until City Surrenders[/color]"
+fit_content = true
 
 [connection signal="area_entered" from="NPC Navigation Region/City Defense Enemy/Encounter Radius" to="NPC Navigation Region/City Defense Enemy" method="OnEncounterZoneAreaEntered"]
 

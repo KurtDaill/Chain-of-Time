@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dp5ux27rntx3l"]
+
+[ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="1_0t7c8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qf5vi"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 2
+expand_margin_top = 2.0
+expand_margin_right = 3.0
+
+[resource]
+HSeparator/constants/separation = 80
+HSeparator/styles/separator = SubResource("StyleBoxFlat_qf5vi")
+Label/font_sizes/font_size = 48
+Label/fonts/font = ExtResource("1_0t7c8")
+RichTextLabel/font_sizes/normal_font_size = 32
+RichTextLabel/fonts/normal_font = ExtResource("1_0t7c8")
