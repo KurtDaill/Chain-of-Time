@@ -1,10 +1,10 @@
 [gd_scene load_steps=19 format=3 uid="uid://igkxtup3khij"]
 
 [ext_resource type="Script" path="res://Explore Mode/Building.cs" id="1_3eyrt"]
-[ext_resource type="Texture2D" uid="uid://dd1b3a33u3ul3" path="res://Art/3D/Oldtown House 1_0.png" id="2_h8e55"]
+[ext_resource type="Texture2D" uid="uid://b5jnkm205idmv" path="res://Art/3D/Oldtown House 1_0.png" id="2_h8e55"]
 [ext_resource type="Material" uid="uid://grcrjapavq0y" path="res://Art/3D/Old Town General Material.tres" id="3_yj1fh"]
-[ext_resource type="Texture2D" uid="uid://bpapsn1aqsswq" path="res://Art/FX/Lamp Fire Big_26x45.png" id="4_6nqx2"]
-[ext_resource type="Texture2D" uid="uid://b0y8ncddcf5x0" path="res://Art/FX/Build Fire Small 1_65x74.png" id="4_fjx7l"]
+[ext_resource type="Texture2D" uid="uid://dnqnwet1j31ob" path="res://Art/FX/Lamp Fire Big_26x45.png" id="4_6nqx2"]
+[ext_resource type="Texture2D" uid="uid://b3rgpx5jtihcj" path="res://Art/FX/Build Fire Small 1_65x74.png" id="4_fjx7l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07lb8"]
 resource_name = "texture_1"

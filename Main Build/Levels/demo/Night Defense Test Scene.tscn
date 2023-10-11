@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cu4siw3uulnqt"]
+[gd_scene load_steps=30 format=3 uid="uid://cu4siw3uulnqt"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_360aq"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_15k8v"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="5_1illh"]
 [ext_resource type="Script" path="res://Explore Mode/Building.cs" id="8_wwxbo"]
 [ext_resource type="PackedScene" uid="uid://igkxtup3khij" path="res://Art/Complete Buildings/generic_house.tscn" id="10_skibf"]
+[ext_resource type="Environment" uid="uid://cqpc6quc73qwr" path="res://Night Defense/Result Screen Environment.tres" id="12_os021"]
 [ext_resource type="PackedScene" uid="uid://dhug2nx6h5r1g" path="res://Explore Mode/SceneTransitionZone.tscn" id="14_5pyj3"]
 [ext_resource type="Script" path="res://Night Defense/EnemyGroup.cs" id="15_1mpni"]
 [ext_resource type="Texture2D" uid="uid://dl2nhvu4ncgu0" path="res://Art/Prod Sprite Sheets/Skeleton Guard Combat Sprite-Sheet.png" id="15_t8qco"]
@@ -71,9 +72,9 @@ size = Vector3(200, 1, 200)
 
 [node name="Scene Config" type="Node3D" node_paths=PackedStringArray("startingMode")]
 script = ExtResource("1_360aq")
-startingMode = NodePath("ExploreMode")
+startingMode = NodePath("Night Defense")
 
-[node name="ExploreMode" parent="." node_paths=PackedStringArray("lantern", "explorePlayer") instance=ExtResource("2_15k8v")]
+[node name="Night Defense" parent="." node_paths=PackedStringArray("lantern", "explorePlayer") instance=ExtResource("2_15k8v")]
 script = ExtResource("3_wu0hn")
 lightDurationInSeconds = 60
 lantern = NodePath("ExploreHUD/TextureRect")
@@ -175,6 +176,7 @@ shadow_enabled = true
 
 [node name="Noon Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.711508, 0.476982, -0.515989, 0.656961, -0.19101, 0.729327, 0.249317, -0.857906, -0.449264, 0, 0, 0)
+visible = false
 shadow_enabled = true
 
 [node name="Morning Sun" type="DirectionalLight3D" parent="."]
@@ -182,6 +184,19 @@ transform = Transform3D(0.807866, 0.520092, -0.277232, -0.443844, 0.846361, 0.29
 visible = false
 light_color = Color(1, 0.976471, 0.721569, 1)
 light_energy = 1.2
+shadow_enabled = true
+
+[node name="Result Screen Light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.529064, -0.198695, -0.824992, -0.571881, 0.801747, 0.173648, 0.626932, 0.563668, -0.537805, 0, 3.125, 0)
+light_color = Color(1, 0.666667, 0, 1)
+light_energy = 2.0
+shadow_enabled = true
+sky_mode = 1
+
+[node name="Result Screen Sky" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.461567, -0.293322, -0.837209, -0.580349, 0.81362, 0.0348995, 0.670932, 0.501982, -0.545769, 0, 3.125, 0)
+light_color = Color(1, 0.666667, 0, 1)
+light_energy = 2.0
 shadow_enabled = true
 
 [node name="CitySetup" type="Node3D" parent="."]
@@ -373,7 +388,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.4375, 0, -15.3125)
 [node name="Generic House22" parent="CitySetup" instance=ExtResource("10_skibf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.9375, 0, -15.3125)
 
-[node name="Fires" parent="CitySetup/Generic House22" index="5"]
+[node name="Fires" parent="CitySetup/Generic House22" index="6"]
 visible = true
 
 [node name="Generic House23" parent="CitySetup" instance=ExtResource("10_skibf")]
@@ -439,8 +454,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.3125, 0, 72.1875)
 [node name="Generic House43" parent="CitySetup" instance=ExtResource("10_skibf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.4375, 0, 72.1875)
 
+[node name="Results Screen" type="Node3D" parent="."]
+
+[node name="Orthgonal Camera" type="Camera3D" parent="Results Screen"]
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 40, 90, 150)
+environment = ExtResource("12_os021")
+v_offset = 8.815
+projection = 1
+current = true
+size = 180.0
+
 [connection signal="area_entered" from="NPC Navigation Region/City Defense Enemy/Encounter Radius" to="NPC Navigation Region/City Defense Enemy" method="OnEncounterZoneAreaEntered"]
 
-[editable path="ExploreMode"]
+[editable path="Night Defense"]
 [editable path="ExplorePlayer"]
 [editable path="CitySetup/Generic House22"]

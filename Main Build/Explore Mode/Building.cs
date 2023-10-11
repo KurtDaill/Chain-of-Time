@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class Building : Node3D
 {
@@ -12,6 +13,7 @@ public partial class Building : Node3D
 
     float alphaValueWhileTransparent = 0.6F;
     public override void _Ready(){
+        //Basic Setup, Assigning Objects to Data Structures
         fadingOut = false;
         fadingIn = false;
 
@@ -33,6 +35,21 @@ public partial class Building : Node3D
             }
             buildingMeshes.Add(mesh);
         }
+
+        //Validating that the Node has all required children, possibly running futher validations.
+        //We want to explicitly catch any setup issues with custom exception messages to ease later bug fixes.
+        Godot.Collections.Array<Node> children = this.GetChildren();
+        if(!children.Any(x => x.Name == "BuildingUndamaged")) throw new Exception("Building Object Missing Child Node: BuildingUndamaged");
+        if(!children.Any(x => x.Name == "BuildingDestroyed")) throw new Exception("Building Object Missing Child Node: BuildingDestroyed"); 
+        if(!children.Any(x => x.Name == "Fires")) throw new Exception("Building Object Missing Child Node: Fires"); 
+        if(!children.Any(x => x.Name == "Lights")) throw new Exception("Building Object Missing Child Node: Lights"); 
+    }
+
+    //This function is run everytime a night starts, and is used for updating and setting states properly.
+    public virtual void BeginNight(){
+        //If we're destroyed, make the destroyed model visible, otherwise make the normal model visible
+        this.GetNode<Node3D>("BuilidngUndamaged").Visible = !destroyed;
+        this.GetNode<Node3D>("BuildingDestroyed").Visible = destroyed;
     }
 
     public override void _Process(double delta){
