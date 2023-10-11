@@ -1,16 +1,18 @@
-[gd_scene load_steps=32 format=3 uid="uid://cu4siw3uulnqt"]
+[gd_scene load_steps=35 format=3 uid="uid://cu4siw3uulnqt"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_360aq"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_15k8v"]
 [ext_resource type="PackedScene" uid="uid://cenpkmy5h0ooq" path="res://Explore Mode/explore_player.tscn" id="3_cvfsk"]
 [ext_resource type="Script" path="res://Explore Mode/NightDefense.cs" id="3_wu0hn"]
 [ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="5_1illh"]
+[ext_resource type="Script" path="res://Night Defense/WandererEnemyGroup.cs" id="6_kqhtc"]
+[ext_resource type="Script" path="res://Night Defense/City.cs" id="8_pxr3m"]
 [ext_resource type="Script" path="res://Explore Mode/Building.cs" id="8_wwxbo"]
 [ext_resource type="PackedScene" uid="uid://igkxtup3khij" path="res://Art/Complete Buildings/generic_house.tscn" id="10_skibf"]
+[ext_resource type="Script" path="res://Night Defense/ResultsScreen.cs" id="12_2fo1s"]
 [ext_resource type="Environment" uid="uid://cqpc6quc73qwr" path="res://Night Defense/Result Screen Environment.tres" id="12_os021"]
 [ext_resource type="Theme" uid="uid://dp5ux27rntx3l" path="res://Night Defense/Results Screen Theme.tres" id="13_bv0rh"]
 [ext_resource type="PackedScene" uid="uid://dhug2nx6h5r1g" path="res://Explore Mode/SceneTransitionZone.tscn" id="14_5pyj3"]
-[ext_resource type="Script" path="res://Night Defense/EnemyGroup.cs" id="15_1mpni"]
 [ext_resource type="Texture2D" uid="uid://dl2nhvu4ncgu0" path="res://Art/Prod Sprite Sheets/Skeleton Guard Combat Sprite-Sheet.png" id="15_t8qco"]
 [ext_resource type="Script" path="res://Explore Mode/NPCNavigationRegion.cs" id="17_wq40a"]
 
@@ -71,6 +73,8 @@ radius = 2.25
 [sub_resource type="BoxShape3D" id="BoxShape3D_acev5"]
 size = Vector3(200, 1, 200)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n30o4"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yetgj"]
 
 [node name="Scene Config" type="Node3D" node_paths=PackedStringArray("startingMode")]
@@ -99,23 +103,20 @@ visible = false
 light_energy = 0.025
 shadow_enabled = true
 
-[node name="NPC Navigation Region" type="NavigationRegion3D" parent="."]
+[node name="Enemy Navigation Region" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_m5yur")
 script = ExtResource("17_wq40a")
 
-[node name="Navigation Setup Delay" type="Timer" parent="NPC Navigation Region"]
+[node name="Navigation Setup Delay" type="Timer" parent="Enemy Navigation Region"]
 wait_time = 0.5
 one_shot = true
 autostart = true
 
-[node name="City Defense Enemy" type="CharacterBody3D" parent="NPC Navigation Region"]
+[node name="City Defense Enemy" type="CharacterBody3D" parent="Enemy Navigation Region"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8125, 0, 39.75)
-script = ExtResource("15_1mpni")
-maximumWaitTime = 2.0
-wanderRange = 15.0
-moveSpeed = 7.0
+script = ExtResource("6_kqhtc")
 
-[node name="Sprite3D" type="Sprite3D" parent="NPC Navigation Region/City Defense Enemy"]
+[node name="Sprite3D" type="Sprite3D" parent="Enemy Navigation Region/City Defense Enemy"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1.8125, 0)
 layers = 33
 shaded = true
@@ -123,53 +124,53 @@ texture = ExtResource("15_t8qco")
 hframes = 10
 vframes = 4
 
-[node name="OmniLight3D" type="OmniLight3D" parent="NPC Navigation Region/City Defense Enemy/Sprite3D"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Enemy Navigation Region/City Defense Enemy/Sprite3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, -0.625, 0.75)
 light_energy = 0.05
 light_cull_mask = 4293918752
 omni_range = 2.0
 omni_attenuation = 0.0065695
 
-[node name="Encounter Radius" type="Area3D" parent="NPC Navigation Region/City Defense Enemy"]
+[node name="Encounter Radius" type="Area3D" parent="Enemy Navigation Region/City Defense Enemy"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/City Defense Enemy/Encounter Radius"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy Navigation Region/City Defense Enemy/Encounter Radius"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_7nlbq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC Navigation Region/City Defense Enemy"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy Navigation Region/City Defense Enemy"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, 1, 0.125)
 shape = SubResource("CylinderShape3D_hy64r")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="NPC Navigation Region/City Defense Enemy"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Enemy Navigation Region/City Defense Enemy"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.565244, 1.28677, 0.0415649)
 light_color = Color(0.784314, 0, 1, 1)
 light_energy = 0.2
 omni_range = 2.0
 omni_attenuation = 1.68179
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="NPC Navigation Region/City Defense Enemy"]
+[node name="OmniLight3D2" type="OmniLight3D" parent="Enemy Navigation Region/City Defense Enemy"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872413, 1.28677, 0.0415649)
 light_color = Color(0.784314, 0, 1, 1)
 light_energy = 0.1
 omni_range = 2.0
 omni_attenuation = 1.68179
 
-[node name="Streets" type="Node3D" parent="NPC Navigation Region"]
+[node name="Streets" type="Node3D" parent="Enemy Navigation Region"]
 
-[node name="Street" type="MeshInstance3D" parent="NPC Navigation Region/Streets"]
+[node name="Street" type="MeshInstance3D" parent="Enemy Navigation Region/Streets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.41279, 0, 0)
 mesh = SubResource("PlaneMesh_uvmgg")
 
-[node name="Street4" type="MeshInstance3D" parent="NPC Navigation Region/Streets"]
+[node name="Street4" type="MeshInstance3D" parent="Enemy Navigation Region/Streets"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.41279, 0, 54.3707)
 mesh = SubResource("PlaneMesh_uvmgg")
 
-[node name="Street2" type="MeshInstance3D" parent="NPC Navigation Region/Streets"]
+[node name="Street2" type="MeshInstance3D" parent="Enemy Navigation Region/Streets"]
 transform = Transform3D(-0.0104195, 0, -0.999946, 0, 1, 0, 0.999946, 0, -0.0104195, -3.41279, 0, 1.50269)
 mesh = SubResource("PlaneMesh_uvmgg")
 
-[node name="Street3" type="MeshInstance3D" parent="NPC Navigation Region/Streets"]
+[node name="Street3" type="MeshInstance3D" parent="Enemy Navigation Region/Streets"]
 transform = Transform3D(-0.999999, 0, -0.00144854, 0, 1, 0, 0.00144854, 0, -0.999999, -108.018, 0, 1.50269)
 mesh = SubResource("PlaneMesh_uvmgg")
 
@@ -193,6 +194,7 @@ light_energy = 1.2
 shadow_enabled = true
 
 [node name="CitySetup" type="Node3D" parent="."]
+script = ExtResource("8_pxr3m")
 
 [node name="Post Office" type="CSGBox3D" parent="CitySetup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.375, 5, 55.5625)
@@ -448,6 +450,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.3125, 0, 72.1875)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.4375, 0, 72.1875)
 
 [node name="Results Screen" type="Node3D" parent="."]
+script = ExtResource("12_2fo1s")
 
 [node name="Orthgonal Camera" type="Camera3D" parent="Results Screen"]
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 40, 90, 150)
@@ -472,32 +475,41 @@ shadow_enabled = true
 
 [node name="Panel" type="Panel" parent="Results Screen"]
 texture_filter = 1
-anchors_preset = -1
-anchor_right = 0.339
-anchor_bottom = 0.555
-offset_right = 0.119995
-offset_bottom = -0.400024
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("13_bv0rh")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n30o4")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Results Screen/Panel"]
+[node name="Panel" type="Panel" parent="Results Screen/Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.009
-anchor_bottom = 1.222
-offset_left = 9.0
-offset_top = 11.0
-offset_right = 0.14093
-offset_bottom = -0.226013
+anchor_right = 0.265
+anchor_bottom = 0.482
+offset_right = -0.800018
+offset_bottom = 0.440002
 
-[node name="Label" type="Label" parent="Results Screen/Panel/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Results Screen/Panel/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 29.0
+offset_right = -9.0
+offset_bottom = -129.0
+
+[node name="Label" type="Label" parent="Results Screen/Panel/Panel/VBoxContainer"]
 layout_mode = 2
 text = "Results - Night 1"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Results Screen/Panel/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Results Screen/Panel/Panel/VBoxContainer"]
 layout_mode = 2
 
-[node name="Enemies" type="RichTextLabel" parent="Results Screen/Panel/VBoxContainer"]
+[node name="Enemies" type="RichTextLabel" parent="Results Screen/Panel/Panel/VBoxContainer"]
 layout_mode = 2
 bbcode_enabled = true
 text = "> Enemies Remaining : 2
@@ -505,12 +517,12 @@ text = "> Enemies Remaining : 2
 	[color=Red]>1 Raider[/color]"
 fit_content = true
 
-[node name="HSeparator2" type="HSeparator" parent="Results Screen/Panel/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="Results Screen/Panel/Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 40
 theme_override_styles/separator = SubResource("StyleBoxEmpty_yetgj")
 
-[node name="Homes" type="RichTextLabel" parent="Results Screen/Panel/VBoxContainer"]
+[node name="Homes" type="RichTextLabel" parent="Results Screen/Panel/Panel/VBoxContainer"]
 layout_mode = 2
 bbcode_enabled = true
 text = "> Homes Lost Tonight : 2
@@ -520,7 +532,7 @@ text = "> Homes Lost Tonight : 2
 [color=Red] 4 Left Until City Surrenders[/color]"
 fit_content = true
 
-[connection signal="area_entered" from="NPC Navigation Region/City Defense Enemy/Encounter Radius" to="NPC Navigation Region/City Defense Enemy" method="OnEncounterZoneAreaEntered"]
+[connection signal="area_entered" from="Enemy Navigation Region/City Defense Enemy/Encounter Radius" to="Enemy Navigation Region/City Defense Enemy" method="OnEncounterZoneAreaEntered"]
 
 [editable path="Night Defense"]
 [editable path="ExplorePlayer"]

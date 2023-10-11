@@ -87,4 +87,8 @@ public partial class Building : Node3D
     public bool IsHidden(){
         return true;
     }
+
+    public bool IsDestroyed(){
+        return destroyed;
+    }
 }
