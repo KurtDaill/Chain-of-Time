@@ -8,6 +8,8 @@ public partial class Building : Node3D
     List<StandardMaterial3D> materials;
     bool fadingOut, fadingIn;
 
+    bool destroyed = false;
+
     float alphaValueWhileTransparent = 0.6F;
     public override void _Ready(){
         fadingOut = false;
