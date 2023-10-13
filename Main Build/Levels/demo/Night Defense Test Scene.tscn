@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://cenpkmy5h0ooq" path="res://Explore Mode/explore_player.tscn" id="3_cvfsk"]
 [ext_resource type="Script" path="res://Explore Mode/NightDefense.cs" id="3_wu0hn"]
 [ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="5_1illh"]
+[ext_resource type="Environment" uid="uid://g3vd25xum2jr" path="res://Night Defense/Night Environment.tres" id="5_e2ei3"]
 [ext_resource type="Script" path="res://Night Defense/WandererEnemyGroup.cs" id="6_kqhtc"]
 [ext_resource type="Script" path="res://Night Defense/City.cs" id="8_pxr3m"]
-[ext_resource type="Script" path="res://Explore Mode/Building.cs" id="8_wwxbo"]
 [ext_resource type="PackedScene" uid="uid://igkxtup3khij" path="res://Art/Complete Buildings/generic_house.tscn" id="10_skibf"]
 [ext_resource type="Script" path="res://Night Defense/ResultsScreen.cs" id="12_2fo1s"]
 [ext_resource type="Environment" uid="uid://cqpc6quc73qwr" path="res://Night Defense/Result Screen Environment.tres" id="12_os021"]
@@ -81,10 +81,13 @@ size = Vector3(200, 1, 200)
 script = ExtResource("1_360aq")
 startingMode = NodePath("Night Defense")
 
-[node name="Night Defense" parent="." node_paths=PackedStringArray("lantern", "explorePlayer") instance=ExtResource("2_15k8v")]
+[node name="Night Defense" parent="." node_paths=PackedStringArray("lantern", "myCity", "enemyNavigationRegion", "results", "explorePlayer") instance=ExtResource("2_15k8v")]
 script = ExtResource("3_wu0hn")
-lightDurationInSeconds = 60
+lightDurationInSeconds = 10
 lantern = NodePath("ExploreHUD/TextureRect")
+myCity = NodePath("../CitySetup")
+enemyNavigationRegion = NodePath("../Enemy Navigation Region")
+results = NodePath("../Results Screen")
 explorePlayer = NodePath("../ExplorePlayer")
 
 [node name="ExploreHUD" parent="Night Defense" index="0"]
@@ -96,10 +99,10 @@ visible = false
 transform = Transform3D(1, 2.40465e-08, -5.62842e-08, -1.39075e-08, 0.984808, 0.173648, 5.96047e-08, -0.173648, 0.984808, 0, 6, 14)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("5_e2ei3")
 
 [node name="Night Moon" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.913226, 0.0952219, 0.396171, -0.228723, -0.684861, 0.691847, 0.337201, -0.722426, -0.603653, 0, 0, 0)
-visible = false
 light_energy = 0.025
 shadow_enabled = true
 
@@ -200,7 +203,6 @@ script = ExtResource("8_pxr3m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.375, 5, 55.5625)
 size = Vector3(11.125, 10, 12.625)
 material = SubResource("StandardMaterial3D_0a705")
-script = ExtResource("8_wwxbo")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CitySetup/Post Office"]
 
@@ -220,7 +222,6 @@ shape = SubResource("BoxShape3D_mnp04")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.9375, 6.1875, 31.0625)
 size = Vector3(34.875, 14.25, 17.625)
 material = SubResource("StandardMaterial3D_ywo1y")
-script = ExtResource("8_wwxbo")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="CitySetup/Workshop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4375, 11.6875, 0)
@@ -270,7 +271,6 @@ shape = SubResource("BoxShape3D_mnp04")
 
 [node name="Temple" type="Node3D" parent="CitySetup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.25, 0, -13.8125)
-script = ExtResource("8_wwxbo")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="CitySetup/Temple"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2.375)
@@ -452,7 +452,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.4375, 0, 72.1875)
 [node name="Results Screen" type="Node3D" parent="."]
 script = ExtResource("12_2fo1s")
 
-[node name="Orthgonal Camera" type="Camera3D" parent="Results Screen"]
+[node name="Results Screen Camera" type="Camera3D" parent="Results Screen"]
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 40, 90, 150)
 environment = ExtResource("12_os021")
 v_offset = 8.815
@@ -462,6 +462,7 @@ size = 180.0
 
 [node name="Result Screen Light" type="DirectionalLight3D" parent="Results Screen"]
 transform = Transform3D(-0.64697, -0.310656, -0.696364, -0.571881, 0.801747, 0.173648, 0.504363, 0.510582, -0.696364, 0, 3.125, 0)
+visible = false
 light_color = Color(1, 0.666667, 0, 1)
 light_energy = 2.0
 shadow_enabled = true
@@ -469,11 +470,12 @@ sky_mode = 1
 
 [node name="Result Screen Sky" type="DirectionalLight3D" parent="Results Screen"]
 transform = Transform3D(-0.589997, -0.390529, -0.706676, -0.580349, 0.81362, 0.0348995, 0.561336, 0.430709, -0.706676, 0, 3.125, 0)
+visible = false
 light_color = Color(1, 0.666667, 0, 1)
 light_energy = 2.0
 shadow_enabled = true
 
-[node name="Panel" type="Panel" parent="Results Screen"]
+[node name="GUI" type="Panel" parent="Results Screen"]
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -483,7 +485,7 @@ grow_vertical = 2
 theme = ExtResource("13_bv0rh")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_n30o4")
 
-[node name="Panel" type="Panel" parent="Results Screen/Panel"]
+[node name="Background Element" type="Panel" parent="Results Screen/GUI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.265
@@ -491,7 +493,7 @@ anchor_bottom = 0.482
 offset_right = -0.800018
 offset_bottom = 0.440002
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Results Screen/Panel/Panel"]
+[node name="Results Text Container" type="VBoxContainer" parent="Results Screen/GUI/Background Element"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -501,35 +503,35 @@ offset_top = 29.0
 offset_right = -9.0
 offset_bottom = -129.0
 
-[node name="Label" type="Label" parent="Results Screen/Panel/Panel/VBoxContainer"]
+[node name="Title" type="Label" parent="Results Screen/GUI/Background Element/Results Text Container"]
 layout_mode = 2
 text = "Results - Night 1"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Results Screen/Panel/Panel/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Results Screen/GUI/Background Element/Results Text Container"]
 layout_mode = 2
 
-[node name="Enemies" type="RichTextLabel" parent="Results Screen/Panel/Panel/VBoxContainer"]
+[node name="Enemy Counts" type="RichTextLabel" parent="Results Screen/GUI/Background Element/Results Text Container"]
 layout_mode = 2
 bbcode_enabled = true
-text = "> Enemies Remaining : 2
-	>1 Wandering
-	[color=Red]>1 Raider[/color]"
+text = "> Enemies Remaining : [ALL]
+	>[WAN] Wandering
+	[color=Red]>[RAD] Raider[/color]"
 fit_content = true
 
-[node name="HSeparator2" type="HSeparator" parent="Results Screen/Panel/Panel/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="Results Screen/GUI/Background Element/Results Text Container"]
 layout_mode = 2
 theme_override_constants/separation = 40
 theme_override_styles/separator = SubResource("StyleBoxEmpty_yetgj")
 
-[node name="Homes" type="RichTextLabel" parent="Results Screen/Panel/Panel/VBoxContainer"]
+[node name="Home Counts" type="RichTextLabel" parent="Results Screen/GUI/Background Element/Results Text Container"]
 layout_mode = 2
 bbcode_enabled = true
-text = "> Homes Lost Tonight : 2
+text = "> Homes Lost Tonight : [TN]
 
-> Homes Lost Overall : 6
+> Homes Lost Overall : [OV]
 
-[color=Red] 4 Left Until City Surrenders[/color]"
+[color=Red] [US] Left Until City Surrenders[/color]"
 fit_content = true
 
 [connection signal="area_entered" from="Enemy Navigation Region/City Defense Enemy/Encounter Radius" to="Enemy Navigation Region/City Defense Enemy" method="OnEncounterZoneAreaEntered"]

@@ -9,7 +9,8 @@ public partial class GameMaster : Node
     public delegate void GameModeBeginEventHandler(GameplayMode beginningMode);
     [Export]
     StoryState state = new StoryState();
-
+    [Export]
+    int numberOfBuildingsDestroyedForGameOver;
     PlayerData[] partyData = new PlayerData[3];
     List<Item> inventory = new List<Item>();
 
@@ -125,6 +126,10 @@ public partial class GameMaster : Node
         }
         if(currentTime == TimeOfDay.Night) EmitSignal(GameMaster.SignalName.NightBegins);
         else EmitSignal(GameMaster.SignalName.TimeOfDayChanged, (int)currentTime);
+    }
+
+    public int GetNumberOfBuildingsDestroyedForGameOver(){
+        return numberOfBuildingsDestroyedForGameOver;
     }
 }
 
