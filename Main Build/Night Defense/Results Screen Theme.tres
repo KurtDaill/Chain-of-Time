@@ -1,6 +1,19 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dp5ux27rntx3l"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dp5ux27rntx3l"]
 
 [ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="1_0t7c8"]
+[ext_resource type="FontFile" uid="uid://cumxcbvw5u56y" path="res://Fonts/m5x7.ttf" id="1_iyq4e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dan36"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.176471, 0.254902, 0.431373, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qf5vi"]
 bg_color = Color(1, 1, 1, 1)
@@ -17,6 +30,10 @@ expand_margin_top = 2.0
 expand_margin_right = 3.0
 
 [resource]
+Button/colors/font_color = Color(0.235294, 0.235294, 0.235294, 1)
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_iyq4e")
+Button/styles/normal = SubResource("StyleBoxFlat_dan36")
 HSeparator/constants/separation = 80
 HSeparator/styles/separator = SubResource("StyleBoxFlat_qf5vi")
 Label/font_sizes/font_size = 32
