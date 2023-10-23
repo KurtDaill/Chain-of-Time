@@ -9,7 +9,6 @@
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_ywmr0")
 gui = NodePath("Camera3D/BattleGUI")
-defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
 battleCamera = NodePath("Camera3D")
 battleRoster = NodePath("Roster")
 

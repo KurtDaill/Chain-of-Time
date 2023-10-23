@@ -41,7 +41,7 @@ public partial class Battle : GameplayMode
 	public override void _Ready(){
         turnoverTimer = this.GetNode<Timer>("Turnover Timer");
 		betweenActionsTimer = this.GetNode<Timer>("Between Actions Timer");
-		if(defeatScreenPath != null) defeatScreen = GD.Load<PackedScene>(defeatScreenPath);
+		if(defeatScreenPath != null && defeatScreenPath != "") defeatScreen = GD.Load<PackedScene>(defeatScreenPath);
 		if(!startingScene){
 			GameMaster GM = GetNode<GameMaster>("/root/GameMaster");
 			GM.LoadPartyData(battleRoster);
@@ -150,8 +150,8 @@ public partial class Battle : GameplayMode
 				eventData[i].GetAction().Begin();
 				await ToSignal(eventData[i].GetAction(), CombatAction.SignalName.ActionComplete);
 				await CharactersGoDown();
-				betweenActionsTimer.Start();
-				await ToSignal(betweenActionsTimer, Timer.SignalName.Timeout);
+				//betweenActionsTimer.Start();
+				//await ToSignal(betweenActionsTimer, Timer.SignalName.Timeout);
 			}else{
 					GetTree().Quit();
 					throw new BadCombatAnimationException("Listed Animation (" + eventData[i].GetAnimationName() + ") not found on Combatant (" + eventData[i].GetCombatant().GetName() + ")");
@@ -186,9 +186,9 @@ public partial class Battle : GameplayMode
 	}
 
 	//YOU HAVE TO ADD THE BATTLE TO THE TREE AFTER INSTANCING
-	public static Battle InstanceBattle(Godot.Collections.Dictionary<BattlePosition, Combatant> intitialCombatants, GameplayMode postBattleMode, bool useNormalPlayerParty, Vector3 targetGlobalPosition){
+	public static Battle InstanceBattle(Dictionary<BattlePosition, Combatant> intitialCombatants, GameplayMode postBattleMode, bool useNormalPlayerParty, Vector3 targetGlobalPosition){
 		//HARDPATH
-		Battle instancedBattle = GD.Load<PackedScene>("res://Gameplay Modes/BattleInstanceTemplate.tscn").Instantiate<Battle>();
+		Battle instancedBattle = GD.Load<PackedScene>("res://Gameplay Modes/BattleInstanceTemplate.tscn").Instantiate() as Battle;
 		foreach(BattlePosition position in intitialCombatants.Keys){
 			intitialCombatants.TryGetValue(position, out Combatant newCom);
 			instancedBattle.GetRoster().SetStartingCharacter(newCom, position.GetRank(), position.GetLane());
@@ -362,7 +362,7 @@ public static class BattleUtilities
 	}
 }
 
-public partial class BattlePosition : GodotObject{
+public class BattlePosition{
 	[Export]
 	BattleLane lane;
 	[Export]

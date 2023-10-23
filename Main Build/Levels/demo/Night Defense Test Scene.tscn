@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Explore Mode/NightDefense.cs" id="3_wu0hn"]
 [ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="5_1illh"]
 [ext_resource type="Environment" uid="uid://g3vd25xum2jr" path="res://Night Defense/Night Environment.tres" id="5_56u67"]
-[ext_resource type="PackedScene" uid="uid://c8kb4lv4pi0fi" path="res://Night Defense/Generic Night Enemy Group.tscn" id="7_oxoxi"]
+[ext_resource type="PackedScene" path="res://Night Defense/Generic Night Enemy Group.tscn" id="7_oxoxi"]
 [ext_resource type="Script" path="res://Night Defense/City.cs" id="8_pxr3m"]
 [ext_resource type="PackedScene" uid="uid://igkxtup3khij" path="res://Art/Complete Buildings/generic_house.tscn" id="10_skibf"]
 [ext_resource type="Script" path="res://Night Defense/ResultsScreen.cs" id="12_2fo1s"]
@@ -78,7 +78,7 @@ startingMode = NodePath("Night Defense")
 
 [node name="Night Defense" parent="." node_paths=PackedStringArray("lantern", "myCity", "enemyNavigationRegion", "results", "explorePlayer") instance=ExtResource("2_15k8v")]
 script = ExtResource("3_wu0hn")
-lightDurationInSeconds = 10
+lightDurationInSeconds = 45
 lantern = NodePath("ExploreHUD/TextureRect")
 myCity = NodePath("../CitySetup")
 enemyNavigationRegion = NodePath("../Enemy Navigation Region")
@@ -132,7 +132,7 @@ mesh = SubResource("PlaneMesh_uvmgg")
 [node name="City Defense Enemy" parent="Enemy Navigation Region" instance=ExtResource("7_oxoxi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8125, 0, 5.75)
 positionsInOrder = Array[int]([1])
-enemyTypesInOrder = Array[int]([0])
+enemyTypesInOrder = Array[int]([1])
 
 [node name="Sunset" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.994077, 0.00700554, -0.10845, -0.00751275, 0.991103, 0.132886, 0.108416, 0.132913, -0.98518, 0, 0, 0)

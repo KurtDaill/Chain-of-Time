@@ -19,7 +19,7 @@ public abstract partial class EnemyGroup : CharacterBody3D
     [Export(PropertyHint.Enum)]
     private Godot.Collections.Array<EnemyType> enemyTypesInOrder;
     protected Godot.Collections.Dictionary<EnemyPositionsPortable, EnemyType> encounterEnemiesByTypeAndPosition = new Godot.Collections.Dictionary<EnemyPositionsPortable, EnemyType>();
-    protected Godot.Collections.Dictionary<BattlePosition, Combatant> encounterEnemies = new Godot.Collections.Dictionary<BattlePosition, Combatant>();
+    protected Dictionary<BattlePosition, Combatant> encounterEnemies = new Dictionary<BattlePosition, Combatant>();
 
     public override void _Ready()
     {
