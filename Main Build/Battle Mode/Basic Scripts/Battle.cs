@@ -130,7 +130,9 @@ public partial class Battle : GameplayMode
 				currentPhase = BattlePhase.StartOfTurn;
 				break;	
 		}
-		if(battleRoster.GetAllEnemyCombatants().Length == 0) return postBattleMode;
+		if(battleRoster.GetAllEnemyCombatants().Length == 0){
+			return postBattleMode;
+		}
 		return null;		
 	}
 
@@ -184,7 +186,7 @@ public partial class Battle : GameplayMode
 	}
 
 	//YOU HAVE TO ADD THE BATTLE TO THE TREE AFTER INSTANCING
-	public static Battle InstanceBattle(Dictionary<BattlePosition, Combatant> intitialCombatants, GameplayMode postBattleMode, bool useNormalPlayerParty, Vector3 targetGlobalPosition){
+	public static Battle InstanceBattle(Godot.Collections.Dictionary<BattlePosition, Combatant> intitialCombatants, GameplayMode postBattleMode, bool useNormalPlayerParty, Vector3 targetGlobalPosition){
 		//HARDPATH
 		Battle instancedBattle = GD.Load<PackedScene>("res://Gameplay Modes/BattleInstanceTemplate.tscn").Instantiate<Battle>();
 		foreach(BattlePosition position in intitialCombatants.Keys){
@@ -258,6 +260,7 @@ public static class BattleUtilities
 		Bottom = 2
 	}
 
+
 	public enum TargetingLogic{
 		Self,
 		SinlgeTargetPlayer,
@@ -279,10 +282,90 @@ public static class BattleUtilities
 		Magic,
 		Tech
 	}
+
+	public enum EnemyType{
+		Skeleton,
+		SkeletonGuard,
+		GhostMage
+	}
+	private static Dictionary<EnemyType, string> EnemyObjectPathByType = new Dictionary<EnemyType, string>(){
+		{EnemyType.Skeleton, "res://Battle Mode/Enemies/Skeleton.tscn"},
+		{EnemyType.SkeletonGuard, "res://Battle Mode/Enemies/SkeletonGuard.tscn"},
+		{EnemyType.GhostMage, "res://Battle Mode/Enemies/Ghost Mage.tscn"}
+	};
+
+	public static string GetPathForEnemyType(EnemyType type){
+		if(EnemyObjectPathByType.TryGetValue(type, out string path)){
+			return path;
+		}else{
+			throw new Exception("Enemy Type not captured in Battle Utilities! Check the dictionary EnemyObjectPathByType!");
+		}
+	}
+	public enum BattlePositionPortable{
+		HeroBackTop,
+		HeroBackCenter,
+		HeroBackBottom,
+		HeroMidTop,
+		HeroMidCenter,
+		HeroMidBottom,
+		HeroFrontTop,
+		HeroFrontCenter,
+		HeroFrontBottom,
+		EnemyFrontTop,
+		EnemyFrontCenter,
+		EnemyFrontBottom,
+		EnemyMidTop,
+		EnemyMidCenter,
+		EnemyMidBottom,
+		EnemyBackTop,
+		EnemyBackCenter,
+		EnemyBackBottom
+	}
+
+	public enum EnemyPositionsPortable{
+		EnemyFrontTop,
+		EnemyFrontCenter,
+		EnemyFrontBottom,
+		EnemyMidTop,
+		EnemyMidCenter,
+		EnemyMidBottom,
+		EnemyBackTop,
+		EnemyBackCenter,
+		EnemyBackBottom
+	}
+
+	public enum HeroPositionsPortable{
+		HeroBackTop,
+		HeroBackCenter,
+		HeroBackBottom,
+		HeroMidTop,
+		HeroMidCenter,
+		HeroMidBottom,
+		HeroFrontTop,
+		HeroFrontCenter,
+		HeroFrontBottom
+	}
+
+	public static BattlePosition ConvertPosition(EnemyPositionsPortable input){
+		switch(input){
+			case EnemyPositionsPortable.EnemyFrontTop : return new BattlePosition(BattleLane.Top, BattleRank.EnemyFront);
+			case EnemyPositionsPortable.EnemyFrontCenter : return new BattlePosition(BattleLane.Center, BattleRank.EnemyFront);
+			case EnemyPositionsPortable.EnemyFrontBottom : return new BattlePosition(BattleLane.Bottom, BattleRank.EnemyFront);
+			case EnemyPositionsPortable.EnemyMidTop : return new BattlePosition(BattleLane.Top, BattleRank.EnemyMid);
+			case EnemyPositionsPortable.EnemyMidCenter : return new BattlePosition(BattleLane.Center, BattleRank.EnemyMid);
+			case EnemyPositionsPortable.EnemyMidBottom : return new BattlePosition(BattleLane.Bottom, BattleRank.EnemyMid);
+			case EnemyPositionsPortable.EnemyBackTop : return new BattlePosition(BattleLane.Top, BattleRank.EnemyBack);
+			case EnemyPositionsPortable.EnemyBackCenter : return new BattlePosition(BattleLane.Center, BattleRank.EnemyBack);
+			case EnemyPositionsPortable.EnemyBackBottom : return new BattlePosition(BattleLane.Bottom, BattleRank.EnemyBack);
+			default: throw new Exception();
+		}
+	}
 }
 
-public class BattlePosition{
+public partial class BattlePosition : GodotObject{
+	[Export]
 	BattleLane lane;
+	[Export]
 	BattleRank rank;
 
 	public BattlePosition(BattleLane lane, BattleRank rank){

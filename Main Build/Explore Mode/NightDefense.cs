@@ -49,7 +49,8 @@ public partial class NightDefense : ExploreMode
 
         //Night Damage Logic
         Dictionary<string,int>enemies = GetRemainingEnemies();
-        if(enemies.Any()){
+        enemies.TryGetValue("All", out int totalEnemies);
+        if(totalEnemies != 0){
             myCity.DestroyRandomBuilding();
             buildingsDestoryedLastNight++;
         }
@@ -68,11 +69,11 @@ public partial class NightDefense : ExploreMode
     }
 
     public Dictionary<string, int> GetRemainingEnemies(){
-        Godot.Collections.Array<Node> enemyGroups = enemyNavigationRegion.FindChildren("*", "CharacterBody3D");
+        Node[] enemyGroups = enemyNavigationRegion.FindChildren("*", "CharacterBody3D").Where(x => IsInstanceValid(x)).ToArray();
         //If there's a non enemy in there, somethings gone wrong!
         if(enemyGroups.Any(x => !(x is EnemyGroup))) throw new Exception();
         Dictionary<string, int> result = new Dictionary<string, int>();
-        result.Add("All", enemyGroups.Count);
+        result.Add("All", enemyGroups.Length);
         result.Add("Wanderer", enemyGroups.Count(x => x is WandererEnemyGroup));
         result.Add("Vandal", enemyGroups.Count(x => x is VandalEnemyGroup));
         return result;

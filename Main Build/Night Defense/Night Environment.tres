@@ -16,6 +16,6 @@ sky = SubResource("Sky_r1ohp")
 ambient_light_source = 3
 ambient_light_sky_contribution = 0.0
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.04
+volumetric_fog_density = 0.03
 volumetric_fog_albedo = Color(0.533333, 0.533333, 0.533333, 1)
 volumetric_fog_ambient_inject = 15.0

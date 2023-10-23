@@ -13,7 +13,6 @@
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_td6wf")
 gui = NodePath("Camera3D/BattleGUI")
-nextBattlePath = "res://Levels/Combat Playtest One/Victory.tscn"
 defeatScreenPath = "res://Levels/Combat Playtest One/Defeat.tscn"
 battleCamera = NodePath("Camera3D")
 battleRoster = NodePath("Roster")
@@ -45,8 +44,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.52, 0, -0.0625001)
 [node name="HeroBack1" type="Node3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -1.0625)
 
-[node name="Silver" parent="Roster/HeroBack1" node_paths=PackedStringArray("readout") instance=ExtResource("4_uonwp")]
-readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Silver Readout")
+[node name="Silver" parent="Roster/HeroBack1" instance=ExtResource("4_uonwp")]
 
 [node name="HeroBack2" type="Node3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.48, 0, -2.0625)
@@ -57,8 +55,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, 0, -1.19209e-07)
 [node name="HeroMid1" type="Node3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 0, -1)
 
-[node name="Lucienne" parent="Roster/HeroMid1" node_paths=PackedStringArray("readout") instance=ExtResource("5_pssdd")]
-readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Luciene Readout")
+[node name="Lucienne" parent="Roster/HeroMid1" instance=ExtResource("5_pssdd")]
 
 [node name="HeroMid2" type="Node3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.08, 0, -2)
@@ -69,8 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56, 0, 0.0625)
 [node name="HeroFront1" type="Node3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -0.9375)
 
-[node name="Cato" parent="Roster/HeroFront1" node_paths=PackedStringArray("readout") instance=ExtResource("6_rmkmc")]
-readout = NodePath("../../../Camera3D/BattleGUI/Readouts/Cato Readout")
+[node name="Cato" parent="Roster/HeroFront1" instance=ExtResource("6_rmkmc")]
 
 [node name="HeroFront2" type="Node3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1.9375)

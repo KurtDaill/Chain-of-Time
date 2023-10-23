@@ -13,6 +13,7 @@ public partial class ResultsScreen : GameplayMode
         this.GetNode<DirectionalLight3D>("Result Screen Light").Visible = false;
         this.GetNode<DirectionalLight3D>("Result Screen Sky").Visible = false;
         resultsTextContainer = this.GetNode<VBoxContainer>("GUI/Background Element/Results Text Container");
+        //this.Visible = false;
     }
     public override Task StartUp(GameplayMode oldMode){
         if(oldMode is NightDefense){

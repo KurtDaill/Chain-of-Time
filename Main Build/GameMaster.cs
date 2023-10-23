@@ -10,7 +10,7 @@ public partial class GameMaster : Node
     [Export]
     StoryState state = new StoryState();
     [Export]
-    int numberOfBuildingsDestroyedForGameOver;
+    int numberOfBuildingsDestroyedForGameOver = 5;
     PlayerData[] partyData = new PlayerData[3];
     List<Item> inventory = new List<Item>();
 

@@ -19,6 +19,9 @@ script = ExtResource("2_k0wmx")
 positionPointer = NodePath("Pointer")
 Items = NodePath("Items")
 
+[node name="Night Light Marker" type="Marker3D" parent="Roster"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.30649e-08, 1.81756, 1.21398)
+
 [node name="Pointer" type="Node3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1)
 visible = false
