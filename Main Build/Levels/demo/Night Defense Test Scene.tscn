@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cu4siw3uulnqt"]
+[gd_scene load_steps=33 format=3 uid="uid://cu4siw3uulnqt"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_360aq"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_15k8v"]
@@ -6,7 +6,8 @@
 [ext_resource type="Script" path="res://Explore Mode/NightDefense.cs" id="3_wu0hn"]
 [ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="5_1illh"]
 [ext_resource type="Environment" uid="uid://g3vd25xum2jr" path="res://Night Defense/Night Environment.tres" id="5_56u67"]
-[ext_resource type="PackedScene" path="res://Night Defense/Generic Night Enemy Group.tscn" id="7_oxoxi"]
+[ext_resource type="PackedScene" uid="uid://c8kb4lv4pi0fi" path="res://Night Defense/Generic Night Enemy Group.tscn" id="7_oxoxi"]
+[ext_resource type="Script" path="res://Night Defense/VandalEnemyGroup.cs" id="8_4ele1"]
 [ext_resource type="Script" path="res://Night Defense/City.cs" id="8_pxr3m"]
 [ext_resource type="PackedScene" uid="uid://igkxtup3khij" path="res://Art/Complete Buildings/generic_house.tscn" id="10_skibf"]
 [ext_resource type="Script" path="res://Night Defense/ResultsScreen.cs" id="12_2fo1s"]
@@ -129,10 +130,13 @@ mesh = SubResource("PlaneMesh_uvmgg")
 transform = Transform3D(-0.999999, 0, -0.00144854, 0, 1, 0, 0.00144854, 0, -0.999999, -108.018, 0, 1.50269)
 mesh = SubResource("PlaneMesh_uvmgg")
 
-[node name="City Defense Enemy" parent="Enemy Navigation Region" instance=ExtResource("7_oxoxi")]
+[node name="City Defense Enemy" parent="Enemy Navigation Region" node_paths=PackedStringArray("myCity") instance=ExtResource("7_oxoxi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8125, 0, 5.75)
+script = ExtResource("8_4ele1")
+vandalismRange = 0
+myCity = NodePath("../../CitySetup")
 positionsInOrder = Array[int]([1])
-enemyTypesInOrder = Array[int]([1])
+enemyTypesInOrder = Array[int]([0])
 
 [node name="Sunset" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.994077, 0.00700554, -0.10845, -0.00751275, 0.991103, 0.132886, 0.108416, 0.132913, -0.98518, 0, 0, 0)
@@ -284,19 +288,19 @@ shape = SubResource("BoxShape3D_acev5")
 [node name="Generic House" parent="CitySetup" instance=ExtResource("10_skibf")]
 
 [node name="Generic House2" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5625, 0, 20.9375)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 83.0625, 0, 20.9375)
 
 [node name="Generic House3" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0625, 0, 20.9375)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 65.5625, 0, 20.9375)
 
 [node name="Generic House5" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.9375, 0, 20.9375)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 48.6875, 0, 20.9375)
 
 [node name="Generic House6" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4375, 0, 20.9375)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 31.1875, 0, 20.9375)
 
 [node name="Generic House7" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.5625, 0, 20.9375)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.0625, 0, 20.9375)
 
 [node name="Generic House9" parent="CitySetup" instance=ExtResource("10_skibf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5625, 0, 35.3125)
@@ -314,19 +318,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4375, 0, 35.3125)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.5625, 0, 35.3125)
 
 [node name="Generic House14" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.8125, 0, 18.4375)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21.3125, 0, 18.4375)
 
 [node name="Generic House15" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.3125, 0, 18.4375)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38.8125, 0, 18.4375)
 
 [node name="Generic House16" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.4375, 0, 18.4375)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -55.6875, 0, 18.4375)
 
 [node name="Generic House17" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.9375, 0, 18.4375)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -73.1875, 0, 18.4375)
 
 [node name="Generic House18" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8125, 0, 18.4375)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -91.3125, 0, 18.4375)
 
 [node name="Generic House19" parent="CitySetup" instance=ExtResource("10_skibf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.8125, 0, -15.3125)
@@ -344,19 +348,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.9375, 0, -15.3125)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8125, 0, -15.3125)
 
 [node name="Generic House24" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.8125, 0, 71.5625)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21.3125, 0, 71.5625)
 
 [node name="Generic House25" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.3125, 0, 71.5625)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38.8125, 0, 71.5625)
 
 [node name="Generic House26" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.4375, 0, 71.5625)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -55.6875, 0, 71.5625)
 
 [node name="Generic House27" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.9375, 0, 71.5625)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -73.1875, 0, 71.5625)
 
 [node name="Generic House28" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8125, 0, 71.5625)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -91.3125, 0, 71.5625)
 
 [node name="Generic House29" parent="CitySetup" instance=ExtResource("10_skibf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.8125, 0, 90.3125)
@@ -389,19 +393,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.3125, 0, 90.3125)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.4375, 0, 90.3125)
 
 [node name="Generic House39" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4375, 0, 72.1875)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 84.9375, 0, 72.1875)
 
 [node name="Generic House40" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9375, 0, 72.1875)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 67.4375, 0, 72.1875)
 
 [node name="Generic House41" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.8125, 0, 72.1875)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 50.5625, 0, 72.1875)
 
 [node name="Generic House42" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.3125, 0, 72.1875)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 33.0625, 0, 72.1875)
 
 [node name="Generic House43" parent="CitySetup" instance=ExtResource("10_skibf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.4375, 0, 72.1875)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.9375, 0, 72.1875)
 
 [node name="Results Screen" type="Node3D" parent="."]
 script = ExtResource("12_2fo1s")

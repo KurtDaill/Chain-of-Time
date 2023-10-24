@@ -45,6 +45,7 @@ public partial class Building : Node3D
         if(!children.Any(x => x.Name == "BuildingDestroyed")) throw new Exception("Building Object Missing Child Node: BuildingDestroyed"); 
         if(!children.Any(x => x.Name == "Fires")) throw new Exception("Building Object Missing Child Node: Fires"); 
         if(!children.Any(x => x.Name == "Lights")) throw new Exception("Building Object Missing Child Node: Lights"); 
+        if(!children.Any(x => x.Name == "VandalismPoint")) throw new Exception("Building Object Missing Child Node: VandalismPoint"); 
     }
 
     //This function is run everytime a night or day starts, and is used for updating and setting states properly.
@@ -74,6 +75,14 @@ public partial class Building : Node3D
                 }
             }
         }
+    }
+
+    public void StartVandalism(){
+        this.GetNode<Node3D>("Fires").Visible = true;
+    }
+
+    public Vector3 GetVandalismPoint(){
+        return this.GetNode<Marker3D>("VandalismPoint").GlobalPosition;
     }
 
     public void DestroyMe(){

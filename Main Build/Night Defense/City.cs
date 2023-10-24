@@ -23,18 +23,26 @@ public partial class City : Node3D
         return buildings.Count;
     }
 
-    public void DestroyRandomBuilding(){
+    public Building GetRandomBuilding(bool canBeDestroyed = false, bool canBeVandalized = false){
+        //Exceptions to prevent infinitely looping through some weird edge case...
+        if(!buildings.Any(x => !x.IsDestroyed())) throw new Exception("How the heck is every building destroyed and the game is still running enough to call Get Random Building? Fix that.");
+        if(!buildings.Any(x => !x.IsBeingVandalized())) throw new Exception("Every building in the city is being vandalized...what happened?!");
+        
         Random randomGen = new();
         while(true){
             int randy = randomGen.Next(0, buildings.Count - 1);
-            //Vandalized or Destroyed Buildings aren't valid targets for random destruction.
-            if(buildings[randy].IsDestroyed() || buildings[randy].IsBeingVandalized()){
-                continue;
+            if(!canBeDestroyed){ //If we don't want a destroyed building...
+                if(buildings[randy].IsDestroyed()) continue;
             }
-            //If we're here, the building's destruciton is 
-            buildings[randy].DestroyMe();
-            return;
+            if(!canBeVandalized){
+                if(buildings[randy].IsBeingVandalized()) continue;
+            }
+            return buildings[randy];
         }
+    }   
+
+    public void DestroyRandomBuilding(){
+        GetRandomBuilding().DestroyMe();
     }
 
     //Called from without when the night is over and we need to have all buildings under attack by vandals be destroyed
