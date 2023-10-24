@@ -1,10 +1,10 @@
 [gd_scene load_steps=19 format=3 uid="uid://igkxtup3khij"]
 
 [ext_resource type="Script" path="res://Explore Mode/Building.cs" id="1_3eyrt"]
-[ext_resource type="Texture2D" uid="uid://dd1b3a33u3ul3" path="res://Art/3D/Oldtown House 1_0.png" id="2_h8e55"]
+[ext_resource type="Texture2D" uid="uid://b5jnkm205idmv" path="res://Art/3D/Oldtown House 1_0.png" id="2_h8e55"]
 [ext_resource type="Material" uid="uid://grcrjapavq0y" path="res://Art/3D/Old Town General Material.tres" id="3_yj1fh"]
-[ext_resource type="Texture2D" uid="uid://bpapsn1aqsswq" path="res://Art/FX/Lamp Fire Big_26x45.png" id="4_6nqx2"]
-[ext_resource type="Texture2D" uid="uid://b0y8ncddcf5x0" path="res://Art/FX/Build Fire Small 1_65x74.png" id="4_fjx7l"]
+[ext_resource type="Texture2D" uid="uid://dnqnwet1j31ob" path="res://Art/FX/Lamp Fire Big_26x45.png" id="4_6nqx2"]
+[ext_resource type="Texture2D" uid="uid://b3rgpx5jtihcj" path="res://Art/FX/Build Fire Small 1_65x74.png" id="4_fjx7l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07lb8"]
 resource_name = "texture_1"
@@ -87,7 +87,7 @@ size = Vector3(8.125, 11.875, 14.375)
 size = Vector3(8.125, 11.875, 15.625)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4lvia"]
-size = Vector3(15, 15, 1)
+size = Vector3(15, 15, 9.375)
 
 [sub_resource type="Animation" id="Animation_qkw26"]
 resource_name = "BURN"
@@ -246,7 +246,7 @@ collision_layer = 4096
 collision_mask = 4096
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LoS Field"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.25, -16.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.25, -11.25)
 shape = SubResource("BoxShape3D_4lvia")
 
 [node name="Lights" type="Node3D" parent="."]

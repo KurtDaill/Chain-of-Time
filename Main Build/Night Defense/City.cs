@@ -7,6 +7,7 @@ public partial class City : Node3D
 {
     List<Building> buildings;
     int buildingsDestroyedAsOfLastNight;
+    private Building vandalizedBuildingBeingFoughtOver;
 
     public override void _Ready(){
         buildings = new List<Building>();
@@ -57,5 +58,16 @@ public partial class City : Node3D
 
     public void RunUpdates(){
         foreach(Building build in buildings) build.UpdateState();
+    }
+
+    public void SetBuildingBeingFoughtOver(Building build){
+        vandalizedBuildingBeingFoughtOver = build;
+    }
+
+    public void EndFightOverBuilding(){
+        if(vandalizedBuildingBeingFoughtOver != null){
+            vandalizedBuildingBeingFoughtOver.StopVandalism();
+        }
+        vandalizedBuildingBeingFoughtOver = null;
     }
 }

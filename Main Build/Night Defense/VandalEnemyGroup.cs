@@ -53,4 +53,11 @@ public partial class VandalEnemyGroup : EnemyGroup{
         currentWaypoint = 0;
     }
 
+    public override void OnEncounterZoneAreaEntered(Area3D area){
+        if(area.GetGroups().Contains("Player")){
+            myCity.SetBuildingBeingFoughtOver(targetBuildilng);
+        }
+        base.OnEncounterZoneAreaEntered(area);
+    }
+
 }

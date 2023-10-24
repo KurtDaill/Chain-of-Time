@@ -79,6 +79,12 @@ public partial class Building : Node3D
 
     public void StartVandalism(){
         this.GetNode<Node3D>("Fires").Visible = true;
+        this.beingVandalized = true;
+    }
+
+    public void StopVandalism(){
+        this.GetNode<Node3D>("Fires").Visible = false;
+        this.beingVandalized = false;
     }
 
     public Vector3 GetVandalismPoint(){
@@ -87,6 +93,7 @@ public partial class Building : Node3D
 
     public void DestroyMe(){
         this.destroyed = true;
+        StopVandalism();
     }
 
     public void HideBuilding(){

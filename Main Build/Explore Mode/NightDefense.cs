@@ -87,4 +87,10 @@ public partial class NightDefense : ExploreMode
         return result;
         //result.Add("remaining")
     }
+
+    public override Task StartUp(GameplayMode oldMode){
+        Task result = base.StartUp(oldMode);
+        if(oldMode is Battle) myCity.EndFightOverBuilding();
+        return result;
+    }
 }

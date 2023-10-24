@@ -31,7 +31,7 @@ public abstract partial class EnemyGroup : CharacterBody3D
             encounterEnemies.Add(BattleUtilities.ConvertPosition(pair.Key), GD.Load<PackedScene>(BattleUtilities.GetPathForEnemyType(pair.Value)).Instantiate<EnemyCombatant>());
         }
     }
-    public void OnEncounterZoneAreaEntered(Area3D area){
+    public virtual void OnEncounterZoneAreaEntered(Area3D area){
         if(area.GetGroups().Contains("Player")){
             Battle encounter = Battle.InstanceBattle(encounterEnemies, this.GetNode<GameMaster>("/root/GameMaster").GetMode(), true, GlobalPosition);
             GetNode("/root/Scene Config").AddChild(encounter);
