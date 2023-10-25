@@ -91,4 +91,8 @@ public partial class ExploreMode : GameplayMode{
     public OmniLight3D GetCatoLamp(){
         return explorePlayer.GetNode<OmniLight3D>("Torchlight");
     } 
+
+    public void SetExplorePlayerPosition(Vector3 globalPos){
+        explorePlayer.GlobalPosition = globalPos;
+    }
 }

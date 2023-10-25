@@ -1,20 +1,18 @@
-[gd_scene load_steps=33 format=3 uid="uid://cu4siw3uulnqt"]
+[gd_scene load_steps=33 format=3 uid="uid://c1ssu2u3lnww3"]
 
-[ext_resource type="Script" path="res://SceneConfig.cs" id="1_360aq"]
-[ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_15k8v"]
-[ext_resource type="PackedScene" uid="uid://cenpkmy5h0ooq" path="res://Explore Mode/explore_player.tscn" id="3_cvfsk"]
-[ext_resource type="Script" path="res://Explore Mode/NightDefense.cs" id="3_wu0hn"]
-[ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="5_1illh"]
-[ext_resource type="Environment" uid="uid://g3vd25xum2jr" path="res://Night Defense/Night Environment.tres" id="5_56u67"]
-[ext_resource type="PackedScene" uid="uid://c8kb4lv4pi0fi" path="res://Night Defense/Generic Night Enemy Group.tscn" id="7_oxoxi"]
-[ext_resource type="Script" path="res://Night Defense/VandalEnemyGroup.cs" id="8_4ele1"]
-[ext_resource type="Script" path="res://Night Defense/City.cs" id="8_pxr3m"]
-[ext_resource type="PackedScene" uid="uid://igkxtup3khij" path="res://Art/Complete Buildings/generic_house.tscn" id="10_skibf"]
-[ext_resource type="Script" path="res://Night Defense/ResultsScreen.cs" id="12_2fo1s"]
-[ext_resource type="Environment" uid="uid://cqpc6quc73qwr" path="res://Night Defense/Result Screen Environment.tres" id="12_os021"]
-[ext_resource type="Theme" uid="uid://dp5ux27rntx3l" path="res://Night Defense/Results Screen Theme.tres" id="13_bv0rh"]
-[ext_resource type="PackedScene" uid="uid://dhug2nx6h5r1g" path="res://Explore Mode/SceneTransitionZone.tscn" id="14_5pyj3"]
-[ext_resource type="Script" path="res://Explore Mode/NPCNavigationRegion.cs" id="17_wq40a"]
+[ext_resource type="Script" path="res://SceneConfig.cs" id="1_0dxlu"]
+[ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_liug8"]
+[ext_resource type="Script" path="res://Explore Mode/NightDefense.cs" id="3_7unpn"]
+[ext_resource type="PackedScene" uid="uid://cenpkmy5h0ooq" path="res://Explore Mode/explore_player.tscn" id="4_gvjqb"]
+[ext_resource type="Environment" uid="uid://dfxmywop1f353" path="res://Night Defense/Morning Environment.tres" id="5_7ku8a"]
+[ext_resource type="Script" path="res://Explore Mode/NPCNavigationRegion.cs" id="6_x8nir"]
+[ext_resource type="Script" path="res://Night Defense/City.cs" id="9_bisc6"]
+[ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="10_ux156"]
+[ext_resource type="PackedScene" uid="uid://dhug2nx6h5r1g" path="res://Explore Mode/SceneTransitionZone.tscn" id="11_4uc35"]
+[ext_resource type="PackedScene" uid="uid://igkxtup3khij" path="res://Art/Complete Buildings/generic_house.tscn" id="12_72wem"]
+[ext_resource type="Script" path="res://Night Defense/ResultsScreen.cs" id="13_yr3hr"]
+[ext_resource type="Environment" uid="uid://cqpc6quc73qwr" path="res://Night Defense/Result Screen Environment.tres" id="14_c660d"]
+[ext_resource type="Theme" uid="uid://dp5ux27rntx3l" path="res://Night Defense/Results Screen Theme.tres" id="15_q3tlf"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_m5yur"]
 vertices = PackedVector3Array(-3.41284, 0.5, -99.25, -11.6628, 0.5, -99.25, -11.6628, 0.5, -88, 5.08716, 0.5, -88, 5.08716, 0.5, -99.25, -3.41284, 0.5, -99.25, 5.08716, 0.5, -88, -3.41284, 0.5, -99.25, -11.6628, 0.5, -88, -11.6628, 0.5, -76.75, 5.08716, 0.5, -76.75, -11.6628, 0.5, -9.25, 5.08716, 0.5, -9, 5.08716, 0.5, -20.5, -11.6628, 0.5, -20.5, -11.6628, 0.5, -31.75, -11.6628, 0.5, -20.5, 5.08716, 0.5, -20.5, 5.08716, 0.5, -31.75, 5.08716, 0.5, -54.25, 5.08716, 0.5, -65.5, -11.6628, 0.5, -65.5, -11.6628, 0.5, -54.25, -11.6628, 0.5, -43, -11.6628, 0.5, -31.75, 5.08716, 0.5, -31.75, 5.08716, 0.5, -43, 5.08716, 0.5, -65.5, 5.08716, 0.5, -76.75, -11.6628, 0.5, -76.75, -11.6628, 0.5, -65.5, -11.6628, 0.5, -54.25, -11.6628, 0.5, -43, 5.08716, 0.5, -43, 5.08716, 0.5, -54.25, -99.6628, 0.5, -87, -99.6628, 0.5, -98, -106.163, 0.5, -98, -106.163, 0.5, -98, -116.413, 0.5, -97.75, -116.413, 0.5, -86.75, -99.6628, 0.5, -87, -106.163, 0.5, -98, -116.413, 0.5, -86.75, -116.413, 0.5, -75.75, -99.6628, 0.5, -76, -99.6628, 0.5, -43, -99.6628, 0.5, -54, -116.413, 0.5, -53.75, -116.413, 0.5, -42.75, -99.6628, 0.5, -9.75, -99.6628, 0.5, -21, -116.413, 0.5, -20.75, -116.413, 0.5, -9.5, -99.6628, 0.5, -65, -99.6628, 0.5, -76, -116.413, 0.5, -75.75, -116.413, 0.5, -64.75, -116.413, 0.5, -31.75, -116.413, 0.5, -20.75, -99.6628, 0.5, -21, -99.6628, 0.5, -32, -99.6628, 0.5, -54, -99.6628, 0.5, -65, -116.413, 0.5, -64.75, -116.413, 0.5, -53.75, -116.413, 0.5, -42.75, -116.413, 0.5, -31.75, -99.6628, 0.5, -32, -99.6628, 0.5, -43, -116.413, 0.5, 10.75, -99.6628, 0.5, 11, -99.6628, 0.5, 9.5, -116.413, 0.5, 0.5, -99.6628, 0.5, -8.25, -99.6628, 0.5, -9.75, -116.413, 0.5, -9.5, -99.1628, 0.5, 9, -97.4128, 0.5, 9, -97.4128, 0.5, -7.75, -99.1628, 0.5, -7.75, -99.6628, 0.5, 9.5, -99.1628, 0.5, 9, -99.1628, 0.5, -7.75, -99.6628, 0.5, -8.25, -116.413, 0.5, -9.5, -116.413, 0.5, 0.5, -11.6628, 0.5, 12, 5.08716, 0.5, 12.25, 5.08716, 0.5, 10.5, -11.6628, 0.5, 10.25, -11.6628, 0.5, 10.25, 5.08716, 0.5, 10.5, 5.58716, 0.5, 10, 5.08716, 0.5, -9, -11.6628, 0.5, -9.25, -11.6628, 0.5, -7.5, 5.08716, 0.5, -7.25, 5.08716, 0.5, -7.25, -11.6628, 0.5, -7.5, -12.1628, 0.5, -7, -13.9128, 0.5, -7, -13.9128, 0.5, 9.75, -12.1628, 0.5, 9.75, -12.1628, 0.5, -7, -11.6628, 0.5, 10.25, 5.58716, 0.5, 10, 5.58716, 0.5, -6.75, 5.08716, 0.5, -7.25, -12.1628, 0.5, -7, -12.1628, 0.5, 9.75, 5.58716, 0.5, 10, 7.33716, 0.5, 10, 7.33716, 0.5, -6.75, 5.58716, 0.5, -6.75, -86.9128, 0.5, -7.75, -97.4128, 0.5, -7.75, -97.4128, 0.5, 9, -86.9128, 0.5, 9, -24.6628, 0.5, 9.75, -13.9128, 0.5, 9.75, -13.9128, 0.5, -7, -24.6628, 0.5, -7, -76.4128, 0.5, -7.75, -86.9128, 0.5, -7.75, -86.9128, 0.5, 9, -76.4128, 0.5, 9, -34.9128, 0.5, 9.5, -24.6628, 0.5, 9.75, -24.6628, 0.5, -7, -34.9128, 0.5, -7.25, -66.1628, 0.5, -7.5, -76.4128, 0.5, -7.75, -76.4128, 0.5, 9, -66.1628, 0.5, 9.25, -55.6628, 0.5, 9.25, -45.4128, 0.5, 9.5, -45.4128, 0.5, -7.25, -55.6628, 0.5, -7.5, -55.6628, 0.5, -7.5, -66.1628, 0.5, -7.5, -66.1628, 0.5, 9.25, -55.6628, 0.5, 9.25, -34.9128, 0.5, -7.25, -45.4128, 0.5, -7.25, -45.4128, 0.5, 9.5, -34.9128, 0.5, 9.5, 84.8372, 0.5, 10.75, 95.8372, 0.5, 11, 95.8372, 0.5, 2.5, 95.8372, 0.5, 2.5, 95.8372, 0.5, -5.75, 84.8372, 0.5, -6, 73.5872, 0.5, -6, 73.5872, 0.5, 10.75, 84.8372, 0.5, 10.75, 40.5872, 0.5, -6.5, 29.3372, 0.5, -6.5, 29.3372, 0.5, 10.25, 40.5872, 0.5, 10.25, 18.3372, 0.5, -6.75, 7.33716, 0.5, -6.75, 7.33716, 0.5, 10, 18.3372, 0.5, 10, 51.5872, 0.5, -6.25, 40.5872, 0.5, -6.5, 40.5872, 0.5, 10.25, 51.5872, 0.5, 10.5, 29.3372, 0.5, -6.5, 18.3372, 0.5, -6.75, 18.3372, 0.5, 10, 29.3372, 0.5, 10.25, 51.5872, 0.5, 10.5, 62.5872, 0.5, 10.5, 62.5872, 0.5, -6.25, 51.5872, 0.5, -6.25, 62.5872, 0.5, 10.5, 73.5872, 0.5, 10.75, 73.5872, 0.5, -6, 62.5872, 0.5, -6.25, -99.6628, 0.5, 11, -116.413, 0.5, 10.75, -116.413, 0.5, 19, -99.6628, 0.5, 19.25, -99.6628, 0.5, 35.75, -99.6628, 0.5, 27.5, -116.413, 0.5, 27.5, -116.413, 0.5, 35.75, -99.6628, 0.5, 19.25, -116.413, 0.5, 19, -116.413, 0.5, 27.5, -99.6628, 0.5, 27.5, -116.413, 0.5, 35.75, -116.413, 0.5, 44.25, -99.6628, 0.5, 44, -99.6628, 0.5, 35.75, 5.08716, 0.5, 12.25, -11.6628, 0.5, 12, -11.6628, 0.5, 19.75, 5.08716, 0.5, 20, 5.08716, 0.5, 28, -11.6628, 0.5, 27.75, -11.6628, 0.5, 35.75, 5.08716, 0.5, 35.75, 5.08716, 0.5, 20, -11.6628, 0.5, 19.75, -11.6628, 0.5, 27.75, 5.08716, 0.5, 28, -11.6628, 0.5, 43.75, 5.08716, 0.5, 43.75, 5.08716, 0.5, 35.75, -11.6628, 0.5, 35.75, -12.1628, 0.5, 46, -13.9128, 0.5, 46, -13.9128, 0.5, 62.75, -12.1628, 0.5, 62.75, 5.08716, 0.5, 63.25, 5.58716, 0.5, 62.75, 5.58716, 0.5, 46, -11.6628, 0.5, 63.25, -11.6628, 0.5, 65, 5.08716, 0.5, 65, 5.08716, 0.5, 63.25, 5.58716, 0.5, 46, 5.08716, 0.5, 45.5, -11.6628, 0.5, 45.5, 5.58716, 0.5, 62.75, 7.33716, 0.5, 62.75, 7.33716, 0.5, 46, 5.58716, 0.5, 46, 5.08716, 0.5, 63.25, 5.58716, 0.5, 46, -11.6628, 0.5, 45.5, -12.1628, 0.5, 46, -12.1628, 0.5, 62.75, -11.6628, 0.5, 63.25, 5.08716, 0.5, 45.5, 5.08716, 0.5, 43.75, -11.6628, 0.5, 43.75, -11.6628, 0.5, 45.5, -116.413, 0.5, 64.5, -99.6628, 0.5, 64.75, -99.6628, 0.5, 63.25, -116.413, 0.5, 54.25, -99.6628, 0.5, 45.5, -99.6628, 0.5, 44, -116.413, 0.5, 44.25, -99.1628, 0.5, 62.75, -97.4128, 0.5, 62.75, -97.4128, 0.5, 46, -99.1628, 0.5, 46, -99.6628, 0.5, 63.25, -99.1628, 0.5, 62.75, -99.1628, 0.5, 46, -99.6628, 0.5, 45.5, -116.413, 0.5, 44.25, -116.413, 0.5, 54.25, -87.1628, 0.5, 46, -97.4128, 0.5, 46, -97.4128, 0.5, 62.75, -87.1628, 0.5, 62.75, -45.4128, 0.5, 46, -55.6628, 0.5, 46, -55.6628, 0.5, 62.75, -45.4128, 0.5, 62.75, -24.4128, 0.5, 62.75, -13.9128, 0.5, 62.75, -13.9128, 0.5, 46, -24.4128, 0.5, 46, -76.6628, 0.5, 46, -87.1628, 0.5, 46, -87.1628, 0.5, 62.75, -76.6628, 0.5, 62.75, -34.9128, 0.5, 62.75, -24.4128, 0.5, 62.75, -24.4128, 0.5, 46, -34.9128, 0.5, 46, -66.1628, 0.5, 46, -76.6628, 0.5, 46, -76.6628, 0.5, 62.75, -66.1628, 0.5, 62.75, -45.4128, 0.5, 62.75, -34.9128, 0.5, 62.75, -34.9128, 0.5, 46, -45.4128, 0.5, 46, -55.6628, 0.5, 46, -66.1628, 0.5, 46, -66.1628, 0.5, 62.75, -55.6628, 0.5, 62.75, 95.8372, 0.5, 54.25, 95.8372, 0.5, 46, 84.5872, 0.5, 46, 84.5872, 0.5, 62.75, 95.8372, 0.5, 62.75, 95.8372, 0.5, 54.25, 84.5872, 0.5, 62.75, 95.8372, 0.5, 54.25, 84.5872, 0.5, 46, 73.5872, 0.5, 46, 73.5872, 0.5, 62.75, 18.3372, 0.5, 46, 7.33716, 0.5, 46, 7.33716, 0.5, 62.75, 18.3372, 0.5, 62.75, 40.3372, 0.5, 62.75, 51.5872, 0.5, 62.75, 51.5872, 0.5, 46, 40.3372, 0.5, 46, 62.5872, 0.5, 62.75, 73.5872, 0.5, 62.75, 73.5872, 0.5, 46, 62.5872, 0.5, 46, 29.3372, 0.5, 62.75, 40.3372, 0.5, 62.75, 40.3372, 0.5, 46, 29.3372, 0.5, 46, 51.5872, 0.5, 62.75, 62.5872, 0.5, 62.75, 62.5872, 0.5, 46, 51.5872, 0.5, 46, 18.3372, 0.5, 62.75, 29.3372, 0.5, 62.75, 29.3372, 0.5, 46, 18.3372, 0.5, 46, -116.163, 0.5, 91.5, -116.163, 0.5, 100.75, -107.913, 0.5, 100.75, -107.913, 0.5, 100.75, -99.4128, 0.5, 100.75, -99.4128, 0.5, 91.5, -116.163, 0.5, 91.5, -107.913, 0.5, 100.75, -99.4128, 0.5, 91.5, -99.4128, 0.5, 82.5, -99.6628, 0.5, 73.75, -116.163, 0.5, 82.5, -116.413, 0.5, 64.5, -116.413, 0.5, 73.5, -116.163, 0.5, 82.5, -99.6628, 0.5, 73.75, -99.6628, 0.5, 64.75, -11.6628, 0.5, 90.5, -11.6628, 0.5, 99.25, -3.41284, 0.5, 99.25, -3.41284, 0.5, 99.25, 5.08716, 0.5, 99.25, 5.08716, 0.5, 90.5, -11.6628, 0.5, 90.5, -3.41284, 0.5, 99.25, 5.08716, 0.5, 90.5, 5.08716, 0.5, 82, -11.6628, 0.5, 82, 5.08716, 0.5, 65, -11.6628, 0.5, 65, -11.6628, 0.5, 73.5, 5.08716, 0.5, 73.5, 5.08716, 0.5, 82, 5.08716, 0.5, 73.5, -11.6628, 0.5, 73.5, -11.6628, 0.5, 82)
@@ -67,20 +65,26 @@ radius = 2.25
 [sub_resource type="BoxShape3D" id="BoxShape3D_acev5"]
 size = Vector3(200, 1, 200)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0poy4"]
+albedo_color = Color(0.211765, 0.419608, 0.219608, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rnuqq"]
+material = SubResource("StandardMaterial3D_0poy4")
+size = Vector2(400, 400)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n30o4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yetgj"]
 
-[node name="Scene Config" type="Node3D" node_paths=PackedStringArray("startingMode")]
-script = ExtResource("1_360aq")
-startingMode = NodePath("Night Defense")
+[node name="Scene Config" type="Node3D" node_paths=PackedStringArray("startingMode", "spawnPointDirectory")]
+script = ExtResource("1_0dxlu")
+startingMode = NodePath("ExploreMode")
+spawnPointDirectory = NodePath("CitySetup/Door Directory")
 
-[node name="Node3D" type="Node3D" parent="."]
-
-[node name="Night Defense" parent="." node_paths=PackedStringArray("lantern", "myCity", "enemyNavigationRegion", "results", "explorePlayer") instance=ExtResource("2_15k8v")]
-script = ExtResource("3_wu0hn")
+[node name="Night Defense" parent="." node_paths=PackedStringArray("myCity", "enemyNavigationRegion", "results", "explorePlayer") instance=ExtResource("2_liug8")]
+visible = false
+script = ExtResource("3_7unpn")
 lightDurationInSeconds = 45
-lantern = NodePath("ExploreHUD/TextureRect")
 myCity = NodePath("../CitySetup")
 enemyNavigationRegion = NodePath("../Enemy Navigation Region")
 results = NodePath("../Results Screen")
@@ -89,7 +93,8 @@ explorePlayer = NodePath("../ExplorePlayer")
 [node name="ExploreHUD" parent="Night Defense" index="0"]
 visible = false
 
-[node name="ExplorePlayer" parent="." instance=ExtResource("3_cvfsk")]
+[node name="ExplorePlayer" parent="." instance=ExtResource("4_gvjqb")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -29, 0.212, 49)
 
 [node name="Explore Camera" parent="ExplorePlayer" index="5"]
 transform = Transform3D(1, 2.40465e-08, -5.62842e-08, -1.39075e-08, 0.984808, 0.173648, 5.96047e-08, -0.173648, 0.984808, 0, 6, 14)
@@ -98,8 +103,11 @@ current = false
 [node name="Map Camera" parent="ExplorePlayer/Map Handle" index="0"]
 current = false
 
+[node name="Torchlight" parent="ExplorePlayer" index="8"]
+visible = false
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("5_56u67")
+environment = ExtResource("5_7ku8a")
 
 [node name="Night Moon" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.913226, 0.0952219, 0.396171, -0.228723, -0.684861, 0.691847, 0.337201, -0.722426, -0.603653, 0, 0, 0)
@@ -109,7 +117,7 @@ shadow_enabled = true
 
 [node name="Enemy Navigation Region" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_m5yur")
-script = ExtResource("17_wq40a")
+script = ExtResource("6_x8nir")
 
 [node name="Navigation Setup Delay" type="Timer" parent="Enemy Navigation Region"]
 wait_time = 0.5
@@ -134,14 +142,6 @@ mesh = SubResource("PlaneMesh_uvmgg")
 transform = Transform3D(-0.999999, 0, -0.00144854, 0, 1, 0, 0.00144854, 0, -0.999999, -108.018, 0, 1.50269)
 mesh = SubResource("PlaneMesh_uvmgg")
 
-[node name="City Defense Enemy" parent="Enemy Navigation Region" node_paths=PackedStringArray("myCity") instance=ExtResource("7_oxoxi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8125, 0, 5.75)
-script = ExtResource("8_4ele1")
-vandalismRange = 0
-myCity = NodePath("../../CitySetup")
-positionsInOrder = Array[int]([1])
-enemyTypesInOrder = Array[int]([0])
-
 [node name="Sunset" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.994077, 0.00700554, -0.10845, -0.00751275, 0.991103, 0.132886, 0.108416, 0.132913, -0.98518, 0, 0, 0)
 visible = false
@@ -156,13 +156,17 @@ shadow_enabled = true
 
 [node name="Morning Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.807866, 0.520092, -0.277232, -0.443844, 0.846361, 0.294409, 0.387757, -0.114795, 0.914585, 0, 0, 0)
-visible = false
 light_color = Color(1, 0.976471, 0.721569, 1)
 light_energy = 1.2
 shadow_enabled = true
 
 [node name="CitySetup" type="Node3D" parent="."]
-script = ExtResource("8_pxr3m")
+script = ExtResource("9_bisc6")
+
+[node name="Door Directory" type="Node3D" parent="CitySetup"]
+
+[node name="Workshop" type="Marker3D" parent="CitySetup/Door Directory"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.6854, 0, 45.2922)
 
 [node name="Post Office" type="CSGBox3D" parent="CitySetup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.375, 5, 55.5625)
@@ -213,7 +217,7 @@ shape = SubResource("BoxShape3D_acq60")
 
 [node name="Door" type="Area3D" parent="CitySetup/Workshop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1875, -6.6875, 8.5)
-script = ExtResource("5_1illh")
+script = ExtResource("10_ux156")
 targetScene = "res://Levels/demo/Workshop Scene.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CitySetup/Workshop/Door"]
@@ -271,7 +275,7 @@ shape = SubResource("CylinderShape3D_7lpox")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3125, 0, -5)
 shape = SubResource("CylinderShape3D_jfth4")
 
-[node name="Door" parent="CitySetup/Temple" instance=ExtResource("14_5pyj3")]
+[node name="Door" parent="CitySetup/Temple" instance=ExtResource("11_4uc35")]
 
 [node name="LoS Field" type="Area3D" parent="CitySetup/Temple"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.34567, 8.84727)
@@ -289,134 +293,138 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26.75)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.506504, -26.875)
 shape = SubResource("BoxShape3D_acev5")
 
-[node name="Generic House" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House" parent="CitySetup" instance=ExtResource("12_72wem")]
 
-[node name="Generic House2" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House2" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 83.0625, 0, 20.9375)
 
-[node name="Generic House3" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House3" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 65.5625, 0, 20.9375)
 
-[node name="Generic House5" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House5" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 48.6875, 0, 20.9375)
 
-[node name="Generic House6" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House6" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 31.1875, 0, 20.9375)
 
-[node name="Generic House7" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House7" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.0625, 0, 20.9375)
 
-[node name="Generic House9" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House9" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5625, 0, 35.3125)
 
-[node name="Generic House10" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House10" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0625, 0, 35.3125)
 
-[node name="Generic House11" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House11" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.9375, 0, 35.3125)
 
-[node name="Generic House12" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House12" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4375, 0, 35.3125)
 
-[node name="Generic House13" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House13" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.5625, 0, 35.3125)
 
-[node name="Generic House14" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House14" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21.3125, 0, 18.4375)
 
-[node name="Generic House15" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House15" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38.8125, 0, 18.4375)
 
-[node name="Generic House16" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House16" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -55.6875, 0, 18.4375)
 
-[node name="Generic House17" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House17" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -73.1875, 0, 18.4375)
 
-[node name="Generic House18" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House18" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -91.3125, 0, 18.4375)
 
-[node name="Generic House19" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House19" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.8125, 0, -15.3125)
 
-[node name="Generic House20" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House20" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.3125, 0, -15.3125)
 
-[node name="Generic House21" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House21" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.4375, 0, -15.3125)
 
-[node name="Generic House22" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House22" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.9375, 0, -15.3125)
 
-[node name="Generic House23" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House23" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8125, 0, -15.3125)
 
-[node name="Generic House24" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House24" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21.3125, 0, 71.5625)
 
-[node name="Generic House25" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House25" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38.8125, 0, 71.5625)
 
-[node name="Generic House26" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House26" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -55.6875, 0, 71.5625)
 
-[node name="Generic House27" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House27" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -73.1875, 0, 71.5625)
 
-[node name="Generic House28" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House28" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -91.3125, 0, 71.5625)
 
-[node name="Generic House29" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House29" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.8125, 0, 90.3125)
 
-[node name="Generic House30" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House30" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.3125, 0, 90.3125)
 
-[node name="Generic House31" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House31" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.4375, 0, 90.3125)
 
-[node name="Generic House32" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House32" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.9375, 0, 90.3125)
 
-[node name="Generic House33" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House33" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8125, 0, 90.3125)
 
-[node name="Generic House34" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House34" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4375, 0, 90.3125)
 
-[node name="Generic House35" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House35" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9375, 0, 90.3125)
 
-[node name="Generic House36" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House36" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.8125, 0, 90.3125)
 
-[node name="Generic House37" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House37" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.3125, 0, 90.3125)
 
-[node name="Generic House38" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House38" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.4375, 0, 90.3125)
 
-[node name="Generic House39" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House39" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 84.9375, 0, 72.1875)
 
-[node name="Generic House40" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House40" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 67.4375, 0, 72.1875)
 
-[node name="Generic House41" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House41" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 50.5625, 0, 72.1875)
 
-[node name="Generic House42" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House42" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 33.0625, 0, 72.1875)
 
-[node name="Generic House43" parent="CitySetup" instance=ExtResource("10_skibf")]
+[node name="Generic House43" parent="CitySetup" instance=ExtResource("12_72wem")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.9375, 0, 72.1875)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CitySetup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04, 0)
+mesh = SubResource("PlaneMesh_rnuqq")
+
 [node name="Results Screen" type="Node3D" parent="."]
-script = ExtResource("12_2fo1s")
+script = ExtResource("13_yr3hr")
 
 [node name="Results Screen Camera" type="Camera3D" parent="Results Screen"]
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 40, 90, 150)
-environment = ExtResource("12_os021")
+environment = ExtResource("14_c660d")
 v_offset = 8.815
 projection = 1
 current = true
@@ -445,7 +453,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("13_bv0rh")
+theme = ExtResource("15_q3tlf")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_n30o4")
 
 [node name="Background Element" type="Panel" parent="Results Screen/GUI"]
@@ -496,6 +504,10 @@ text = "> Homes Lost Tonight : [TN]
 
 [color=Red] [US] Left Until City Surrenders[/color]"
 fit_content = true
+
+[node name="ExploreMode" parent="." node_paths=PackedStringArray("explorePlayer") instance=ExtResource("2_liug8")]
+explorePlayer = NodePath("../ExplorePlayer")
+CityExplore = true
 
 [editable path="Night Defense"]
 [editable path="ExplorePlayer"]

@@ -16,6 +16,8 @@ public partial class GameMaster : Node
 
     PlayerData[] bookmark = new PlayerData[3];
 
+    private string spawnPoint = "";
+
     GameplayMode currentMode;
     TimeOfDay currentTime;
     public enum TimeOfDay{
@@ -108,7 +110,7 @@ public partial class GameMaster : Node
         state.TrySetFlag(flag, value);
     }
     public async void SetMode(GameplayMode newMode){
-            if(currentMode != null) await currentMode.TransitionOut();
+            if(currentMode != null && IsInstanceValid(currentMode)) await currentMode.TransitionOut();
             GameplayMode oldMode = currentMode;
             currentMode = newMode; 
             await currentMode.StartUp(oldMode);
@@ -130,6 +132,18 @@ public partial class GameMaster : Node
 
     public int GetNumberOfBuildingsDestroyedForGameOver(){
         return numberOfBuildingsDestroyedForGameOver;
+    }
+
+    public void SetSpawnPoint(string spawn){
+        spawnPoint = spawn;
+    }
+
+    public string GetSpawnPoint(){
+        return spawnPoint;
+    }
+
+    public void ClearSpawnPoint(){
+        spawnPoint = "";
     }
 }
 
