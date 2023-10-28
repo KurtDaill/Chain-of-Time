@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://d31imjbtaeidb"]
+[gd_scene load_steps=9 format=3 uid="uid://d31imjbtaeidb"]
 
 [ext_resource type="Texture2D" uid="uid://bbtxfdtxop34o" path="res://GUI/Warp Time.png" id="1_c70nt"]
 [ext_resource type="Script" path="res://Explore Mode/DialoguePrompt.cs" id="1_dbhct"]
-[ext_resource type="Texture2D" uid="uid://etr2afqwulfg" path="res://Old/Art/Speech Bubble.png" id="2_8lvuo"]
 [ext_resource type="FontFile" uid="uid://by3oeeep2oy71" path="res://Fonts/lunchtime-doubly-so.regular.ttf" id="2_nntay"]
 
 [sub_resource type="Animation" id="Animation_hya1g"]
@@ -638,7 +637,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 3.08, 0.12)
 shaded = true
 no_depth_test = true
 alpha_cut = 2
-texture = ExtResource("2_8lvuo")
 
 [node name="Label" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.56, -9.68575e-08)

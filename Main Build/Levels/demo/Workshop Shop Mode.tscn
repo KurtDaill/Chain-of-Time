@@ -1,0 +1,341 @@
+[gd_scene load_steps=24 format=3 uid="uid://b4c681u22rx0r"]
+
+[ext_resource type="Script" path="res://SceneConfig.cs" id="1_o2ers"]
+[ext_resource type="PackedScene" uid="uid://dr361q8qnxwf2" path="res://Art/3D/Workshop Rough Render.gltf" id="2_78sc7"]
+[ext_resource type="Texture2D" uid="uid://h8n352cmobuq" path="res://GUI/Test Shop GUI Button.png" id="3_6chm1"]
+[ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="4_o83dl"]
+[ext_resource type="Texture2D" uid="uid://bd043pc138ptl" path="res://GUI/Test Shop GUI Big Panel.png" id="5_j6fl8"]
+[ext_resource type="Texture2D" uid="uid://be8sqqq24swl" path="res://GUI/Test Shop GUI Button Highlight.png" id="5_n52f2"]
+[ext_resource type="Texture2D" uid="uid://dpus4m4b7u7dm" path="res://Art/Prod Sprite Sheets/Boss Percy Cinematic Sprite-Sheet.png" id="14_8t2og"]
+[ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="15_cbpgh"]
+[ext_resource type="Script" path="res://Explore Mode/CutsceneInteractZone.cs" id="16_mlb51"]
+[ext_resource type="PackedScene" uid="uid://d31imjbtaeidb" path="res://Explore Mode/DialoguePrompt.tscn" id="17_bwqev"]
+[ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="18_a32mf"]
+[ext_resource type="PackedScene" uid="uid://cenpkmy5h0ooq" path="res://Explore Mode/explore_player.tscn" id="19_i670e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j0s8a"]
+size = Vector3(33.6875, 1, 32.4375)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sngcc"]
+size = Vector3(10, 3, 3.0625)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ur2r1"]
+size = Vector3(2.6875, 9.0625, 1.9375)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hjwyd"]
+size = Vector3(1, 4.0625, 0.875)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3g82x"]
+size = Vector3(1, 15.75, 13.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gt51k"]
+size = Vector3(1, 15.75, 48.875)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dnmrb"]
+size = Vector3(1, 15.75, 9.8125)
+
+[sub_resource type="Environment" id="Environment_r816u"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.560784, 0.709804, 0.815686, 1)
+ambient_light_energy = 0.4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_281qp"]
+radius = 2.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8t6vw"]
+size = Vector3(4.375, 7.875, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhxjh"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.756863)
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("startingMode")]
+script = ExtResource("1_o2ers")
+startingMode = NodePath("ExploreMode")
+
+[node name="Workshop Rough Render" parent="." instance=ExtResource("2_78sc7")]
+
+[node name="Lights" type="Node3D" parent="Workshop Rough Render"]
+
+[node name="Window" type="SpotLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(-1, 5.0243e-15, -8.74228e-08, -7.57103e-08, 0.5, 0.866025, 4.37114e-08, 0.866025, -0.5, -9.9375, 12.3125, -7.8125)
+light_color = Color(0.729412, 0.784314, 0.870588, 1)
+light_energy = 2.0
+light_size = 1.0
+shadow_enabled = true
+spot_range = 35.3125
+spot_attenuation = 1.41421
+spot_angle = 26.913
+
+[node name="Window2" type="SpotLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(-1, 5.0243e-15, -8.74228e-08, -7.57103e-08, 0.5, 0.866025, 4.37114e-08, 0.866025, -0.5, 10.125, 12.3125, -7.8125)
+light_color = Color(0.729412, 0.784314, 0.870588, 1)
+light_energy = 6.0
+light_size = 1.0
+shadow_enabled = true
+spot_range = 35.3125
+spot_attenuation = 1.56917
+spot_angle = 26.913
+
+[node name="Window3" type="SpotLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(-1, 5.0243e-15, -8.74228e-08, -7.57103e-08, 0.5, 0.866025, 4.37114e-08, 0.866025, -0.5, 8.5, 4.875, -7.8125)
+light_color = Color(0.729412, 0.784314, 0.870588, 1)
+light_energy = 6.0
+light_size = 3.0
+shadow_enabled = true
+spot_range = 10.75
+spot_attenuation = 1.1487
+spot_angle = 36.5759
+
+[node name="Shop Light" type="SpotLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, -7.25, 11.875, 0.8125)
+light_color = Color(1, 0.847059, 0.580392, 1)
+light_energy = 10.0
+shadow_enabled = true
+spot_range = 14.5625
+spot_attenuation = 0.63728
+spot_angle = 33.6841
+
+[node name="Shop Light2" type="SpotLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 5, 11.875, 0.8125)
+light_color = Color(1, 0.847059, 0.580392, 1)
+light_energy = 10.0
+shadow_enabled = true
+spot_range = 14.5625
+spot_attenuation = 0.63728
+spot_angle = 33.6841
+
+[node name="Shop Light3" type="SpotLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 5, 11.875, -3.1875)
+light_color = Color(1, 0.847059, 0.580392, 1)
+light_energy = 10.0
+shadow_enabled = true
+spot_range = 14.5625
+spot_attenuation = 0.63728
+spot_angle = 33.6841
+
+[node name="OmniLight" type="OmniLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 6, -13.0625)
+light_color = Color(1, 0.913725, 0.611765, 1)
+light_energy = 7.812
+omni_range = 13.099
+
+[node name="OmniLight2" type="OmniLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3.6875, -3.5625)
+light_color = Color(1, 0.913725, 0.611765, 1)
+light_energy = 5.286
+shadow_enabled = true
+omni_range = 12.124
+omni_attenuation = 1.86607
+
+[node name="Furnace" type="OmniLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.625, -1.75)
+light_color = Color(1, 0.592157, 0.258824, 1)
+shadow_enabled = true
+omni_attenuation = 3.13834
+
+[node name="Furance" type="OmniLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5625, 0.625, -1.75)
+light_color = Color(1, 0.592157, 0.258824, 1)
+shadow_enabled = true
+omni_attenuation = 3.13834
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Workshop Rough Render"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_j0s8a")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.5, -4)
+shape = SubResource("BoxShape3D_sngcc")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.375, -0.5, 1.9375)
+shape = SubResource("BoxShape3D_ur2r1")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.5, 1.4375)
+shape = SubResource("BoxShape3D_hjwyd")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -0.5, -2.5625)
+shape = SubResource("BoxShape3D_hjwyd")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, -0.5, -2.5625)
+shape = SubResource("BoxShape3D_hjwyd")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.25, -3.625)
+shape = SubResource("BoxShape3D_3g82x")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.75, 4.25, -8.5)
+shape = SubResource("BoxShape3D_gt51k")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.75, 4.25, 3.5625)
+shape = SubResource("BoxShape3D_gt51k")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 13.5, 4.25, -4.4375)
+shape = SubResource("BoxShape3D_dnmrb")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 11.9375, 4.25, -0.5)
+shape = SubResource("BoxShape3D_dnmrb")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 7.5625, 4.25, 3.9375)
+shape = SubResource("BoxShape3D_dnmrb")
+
+[node name="Shop Interface" type="Node3D" parent="Workshop Rough Render"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6875, 1, -2.5)
+
+[node name="Shop Button" type="Sprite3D" parent="Workshop Rough Render/Shop Interface"]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, -2.1375, 0.313, -0.5)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture = ExtResource("3_6chm1")
+
+[node name="Label3D" type="Label3D" parent="Workshop Rough Render/Shop Interface/Shop Button"]
+transform = Transform3D(1, 0, 0, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 0.0625, 2.38419e-07, 0.0624996)
+pixel_size = 0.0125
+render_priority = 2
+outline_render_priority = 1
+text = "Find an Item"
+font = ExtResource("4_o83dl")
+font_size = 24
+outline_size = 8
+
+[node name="Highlight" type="Sprite3D" parent="Workshop Rough Render/Shop Interface/Shop Button"]
+pixel_size = 0.0125
+alpha_cut = 2
+texture = ExtResource("5_n52f2")
+
+[node name="Shop Button2" type="Sprite3D" parent="Workshop Rough Render/Shop Interface"]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, -2.1375, 0.313, -1.5625)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture = ExtResource("3_6chm1")
+
+[node name="Label3D" type="Label3D" parent="Workshop Rough Render/Shop Interface/Shop Button2"]
+transform = Transform3D(1, 0, 0, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 0.0625, 2.38419e-07, 0.0624996)
+pixel_size = 0.0125
+render_priority = 2
+outline_render_priority = 1
+text = "Get Equipment [2TU]"
+font = ExtResource("4_o83dl")
+font_size = 24
+outline_size = 8
+
+[node name="Shop Button3" type="Sprite3D" parent="Workshop Rough Render/Shop Interface"]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, -2.1375, 0.313, -2.625)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture = ExtResource("3_6chm1")
+
+[node name="Label3D" type="Label3D" parent="Workshop Rough Render/Shop Interface/Shop Button3"]
+transform = Transform3D(1, 0, 0, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 0.0625, 2.38419e-07, 0.0624996)
+pixel_size = 0.0125
+render_priority = 2
+outline_render_priority = 1
+text = "Repair House [3TU]"
+font = ExtResource("4_o83dl")
+font_size = 24
+outline_size = 8
+
+[node name="Sprite3D" type="Sprite3D" parent="Workshop Rough Render/Shop Interface"]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 2.1875, 0.125, -0.75)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 3
+texture = ExtResource("5_j6fl8")
+
+[node name="TitleBar" type="Label3D" parent="Workshop Rough Render/Shop Interface/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0.125, 1.62501, 0.0624991)
+pixel_size = 0.0125
+render_priority = 2
+outline_render_priority = 1
+text = "[Buy an Item]"
+font = ExtResource("4_o83dl")
+font_size = 24
+outline_size = 8
+
+[node name="TitleBar2" type="Label3D" parent="Workshop Rough Render/Shop Interface/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.72529e-08, 0, 3.72529e-08, 1, -1.8125, 1.37501, 0.062499)
+pixel_size = 0.0125
+render_priority = 2
+outline_render_priority = 1
+text = "Get 1 Random Consumable Item
+----------------
+\"I'm sure we can find something for ya. . .\""
+font = ExtResource("4_o83dl")
+font_size = 24
+outline_size = 8
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 2
+width = 300.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r816u")
+
+[node name="ExploreMode" parent="." node_paths=PackedStringArray("explorePlayer") instance=ExtResource("15_cbpgh")]
+explorePlayer = NodePath("../ExplorePlayer")
+
+[node name="Sprite3D" type="Sprite3D" parent="ExploreMode"]
+transform = Transform3D(0.999997, 0, 3.75111e-06, 0, 1, 0, -3.75111e-06, 0, 0.999997, -7.87286, 4.13295, -5.43197)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("14_8t2og")
+hframes = 10
+frame = 2
+
+[node name="Dialogue Trigger Zone" type="Area3D" parent="ExploreMode" node_paths=PackedStringArray("prompt", "targetMode")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4301, 0, -1)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("16_mlb51")
+prompt = NodePath("DialoguePrompt")
+targetMode = NodePath("")
+
+[node name="DialoguePrompt" parent="ExploreMode/Dialogue Trigger Zone" instance=ExtResource("17_bwqev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0625, 0.125, -4.375)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExploreMode/Dialogue Trigger Zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.42388, 0, -1.3125)
+shape = SubResource("CylinderShape3D_281qp")
+
+[node name="Door" type="Area3D" parent="ExploreMode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.625, -0.625, 1.9375)
+script = ExtResource("18_a32mf")
+targetScene = "res://Levels/demo/Night Defense Day Mode Test Scene.tscn"
+targetLocationInScene = "Workshop"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExploreMode/Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5625)
+shape = SubResource("BoxShape3D_8t6vw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="ExploreMode/Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1875, 0.5625)
+size = Vector3(2, 3.5, 1)
+material = SubResource("StandardMaterial3D_mhxjh")
+
+[node name="ExplorePlayer" parent="." instance=ExtResource("19_i670e")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -7, 0.212, 0)
+
+[node name="Torchlight" parent="ExplorePlayer" index="8"]
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, -8.517, 4.199, -1.211)
+
+[editable path="ExplorePlayer"]
