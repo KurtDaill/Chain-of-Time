@@ -1,9 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://b4c681u22rx0r"]
+[gd_scene load_steps=26 format=3 uid="uid://b4c681u22rx0r"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_o2ers"]
 [ext_resource type="PackedScene" uid="uid://dr361q8qnxwf2" path="res://Art/3D/Workshop Rough Render.gltf" id="2_78sc7"]
 [ext_resource type="Texture2D" uid="uid://h8n352cmobuq" path="res://GUI/Test Shop GUI Button.png" id="3_6chm1"]
+[ext_resource type="Script" path="res://Explore Mode/Shops/ShopInterface.cs" id="3_e7man"]
 [ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="4_o83dl"]
+[ext_resource type="Script" path="res://Explore Mode/Shops/ShopButton.cs" id="4_w75qn"]
 [ext_resource type="Texture2D" uid="uid://bd043pc138ptl" path="res://GUI/Test Shop GUI Big Panel.png" id="5_j6fl8"]
 [ext_resource type="Texture2D" uid="uid://be8sqqq24swl" path="res://GUI/Test Shop GUI Button Highlight.png" id="5_n52f2"]
 [ext_resource type="Texture2D" uid="uid://dpus4m4b7u7dm" path="res://Art/Prod Sprite Sheets/Boss Percy Cinematic Sprite-Sheet.png" id="14_8t2og"]
@@ -50,9 +52,9 @@ size = Vector3(4.375, 7.875, 1)
 transparency = 1
 albedo_color = Color(0, 0, 0, 0.756863)
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("startingMode")]
+[node name="SceneConfig" type="Node3D" node_paths=PackedStringArray("startingMode")]
 script = ExtResource("1_o2ers")
-startingMode = NodePath("ExploreMode")
+startingMode = NodePath("Workshop Rough Render/Shop Interface")
 
 [node name="Workshop Rough Render" parent="." instance=ExtResource("2_78sc7")]
 
@@ -191,39 +193,49 @@ shape = SubResource("BoxShape3D_dnmrb")
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 7.5625, 4.25, 3.9375)
 shape = SubResource("BoxShape3D_dnmrb")
 
-[node name="Shop Interface" type="Node3D" parent="Workshop Rough Render"]
+[node name="Shop Interface" type="Node3D" parent="Workshop Rough Render" node_paths=PackedStringArray("shopCam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6875, 1, -2.5)
+script = ExtResource("3_e7man")
+defaultButtonY = 2
+shopCam = NodePath("Camera3D")
 
-[node name="Shop Button" type="Sprite3D" parent="Workshop Rough Render/Shop Interface"]
-transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, -2.1375, 0.313, -0.5)
+[node name="ButtonMap" type="Node3D" parent="Workshop Rough Render/Shop Interface"]
+
+[node name="Column0" type="Node3D" parent="Workshop Rough Render/Shop Interface/ButtonMap"]
+
+[node name="Shop Button3" type="Sprite3D" parent="Workshop Rough Render/Shop Interface/ButtonMap/Column0"]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, -2.1375, 0.313, -2.625)
 pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture = ExtResource("3_6chm1")
+script = ExtResource("4_w75qn")
 
-[node name="Label3D" type="Label3D" parent="Workshop Rough Render/Shop Interface/Shop Button"]
+[node name="Text" type="Label3D" parent="Workshop Rough Render/Shop Interface/ButtonMap/Column0/Shop Button3"]
 transform = Transform3D(1, 0, 0, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 0.0625, 2.38419e-07, 0.0624996)
 pixel_size = 0.0125
 render_priority = 2
 outline_render_priority = 1
-text = "Find an Item"
+text = "Repair House [3TU]"
 font = ExtResource("4_o83dl")
 font_size = 24
 outline_size = 8
 
-[node name="Highlight" type="Sprite3D" parent="Workshop Rough Render/Shop Interface/Shop Button"]
+[node name="Highlight" type="Sprite3D" parent="Workshop Rough Render/Shop Interface/ButtonMap/Column0/Shop Button3"]
+visible = false
 pixel_size = 0.0125
 alpha_cut = 2
 texture = ExtResource("5_n52f2")
 
-[node name="Shop Button2" type="Sprite3D" parent="Workshop Rough Render/Shop Interface"]
+[node name="Shop Button2" type="Sprite3D" parent="Workshop Rough Render/Shop Interface/ButtonMap/Column0"]
 transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, -2.1375, 0.313, -1.5625)
 pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture = ExtResource("3_6chm1")
+script = ExtResource("4_w75qn")
 
-[node name="Label3D" type="Label3D" parent="Workshop Rough Render/Shop Interface/Shop Button2"]
+[node name="Text" type="Label3D" parent="Workshop Rough Render/Shop Interface/ButtonMap/Column0/Shop Button2"]
 transform = Transform3D(1, 0, 0, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 0.0625, 2.38419e-07, 0.0624996)
 pixel_size = 0.0125
 render_priority = 2
@@ -233,22 +245,35 @@ font = ExtResource("4_o83dl")
 font_size = 24
 outline_size = 8
 
-[node name="Shop Button3" type="Sprite3D" parent="Workshop Rough Render/Shop Interface"]
-transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, -2.1375, 0.313, -2.625)
+[node name="Highlight" type="Sprite3D" parent="Workshop Rough Render/Shop Interface/ButtonMap/Column0/Shop Button2"]
+visible = false
+pixel_size = 0.0125
+alpha_cut = 2
+texture = ExtResource("5_n52f2")
+
+[node name="Shop Button" type="Sprite3D" parent="Workshop Rough Render/Shop Interface/ButtonMap/Column0"]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, -2.1375, 0.313, -0.5)
 pixel_size = 0.0125
 shaded = true
 alpha_cut = 2
 texture = ExtResource("3_6chm1")
+script = ExtResource("4_w75qn")
 
-[node name="Label3D" type="Label3D" parent="Workshop Rough Render/Shop Interface/Shop Button3"]
+[node name="Text" type="Label3D" parent="Workshop Rough Render/Shop Interface/ButtonMap/Column0/Shop Button"]
 transform = Transform3D(1, 0, 0, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 0.0625, 2.38419e-07, 0.0624996)
 pixel_size = 0.0125
 render_priority = 2
 outline_render_priority = 1
-text = "Repair House [3TU]"
+text = "Find an Item"
 font = ExtResource("4_o83dl")
 font_size = 24
 outline_size = 8
+
+[node name="Highlight" type="Sprite3D" parent="Workshop Rough Render/Shop Interface/ButtonMap/Column0/Shop Button"]
+visible = false
+pixel_size = 0.0125
+alpha_cut = 2
+texture = ExtResource("5_n52f2")
 
 [node name="Sprite3D" type="Sprite3D" parent="Workshop Rough Render/Shop Interface"]
 transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 2.1875, 0.125, -0.75)
@@ -283,6 +308,9 @@ vertical_alignment = 0
 autowrap_mode = 2
 width = 300.0
 
+[node name="Camera3D" type="Camera3D" parent="Workshop Rough Render/Shop Interface"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0.1705, 3.199, 1.289)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r816u")
 
@@ -299,13 +327,12 @@ texture = ExtResource("14_8t2og")
 hframes = 10
 frame = 2
 
-[node name="Dialogue Trigger Zone" type="Area3D" parent="ExploreMode" node_paths=PackedStringArray("prompt", "targetMode")]
+[node name="Dialogue Trigger Zone" type="Area3D" parent="ExploreMode" node_paths=PackedStringArray("prompt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4301, 0, -1)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("16_mlb51")
 prompt = NodePath("DialoguePrompt")
-targetMode = NodePath("")
 
 [node name="DialoguePrompt" parent="ExploreMode/Dialogue Trigger Zone" instance=ExtResource("17_bwqev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0625, 0.125, -4.375)
@@ -334,8 +361,5 @@ transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -7, 0.21
 
 [node name="Torchlight" parent="ExplorePlayer" index="8"]
 visible = false
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, -8.517, 4.199, -1.211)
 
 [editable path="ExplorePlayer"]
