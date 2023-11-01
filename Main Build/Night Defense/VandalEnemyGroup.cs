@@ -4,7 +4,6 @@ using System;
 public partial class VandalEnemyGroup : EnemyGroup{
     [Export]
     int vandalismRange;
-    [Export]
     City myCity;
     Building targetBuildilng;
     Vector3 targetPosition;
@@ -19,6 +18,7 @@ public partial class VandalEnemyGroup : EnemyGroup{
         await ToSignal(startTimer, Timer.SignalName.Timeout);
         PickNewMovementPoint();
         waiting = false;
+        myCity = GetNode<CityState>("/root/CityState").GetCity();
     }
     public override void _Process(double delta)
     {

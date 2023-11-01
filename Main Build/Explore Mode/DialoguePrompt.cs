@@ -37,7 +37,7 @@ public partial class DialoguePrompt : Node3D
 		animPlay.Play("HidePrompt");
 		animPlay.Seek(animPlay.GetAnimation("HidePrompt").Length);
 		this.Visible = false;
-		cutscene.CutsceneComplete += MakeSelfVisible;
+		if(cutscene != null) cutscene.CutsceneComplete += MakeSelfVisible;
 	}
 
 	private void MakeSelfVisible(string cutsceneName){

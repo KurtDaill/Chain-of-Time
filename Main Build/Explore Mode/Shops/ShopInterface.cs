@@ -22,6 +22,10 @@ public partial class ShopInterface : GameplayMode{
     protected GameplayMode backOutMode;
     [Export]
     protected GameplayMode DebugBackOutMode = null;
+    [Export]
+    protected string defaultBoxTitle;
+    [Export]
+    protected string defaultBoxText;
     protected GameMaster gm;
 
     public override void _Ready()
@@ -42,6 +46,7 @@ public partial class ShopInterface : GameplayMode{
         }
         if(DebugBackOutMode != null) backOutMode = DebugBackOutMode;
         gm = this.GetNode<GameMaster>("/root/GameMaster");
+        this.Visible = false;
     }
 
     public override Task StartUp(GameplayMode oldMode){
@@ -49,6 +54,9 @@ public partial class ShopInterface : GameplayMode{
         selectButtonY = defaultButtonY;
         shopCam.Current = true;
         returnMode = null;
+        this.Visible = true;
+        descritpionTextBox.Text = defaultBoxText;
+        descriptionTitleBox.Text = defaultBoxTitle;
         return Task.CompletedTask;
     }
 
@@ -62,19 +70,31 @@ public partial class ShopInterface : GameplayMode{
     public override void HandleInput(PlayerInput input)
     {
         base.HandleInput(input);
-        //Turn off the old button
-        shopButton[selectButtonX][selectButtonY].SetSelect(false);
-        int oldX = selectButtonX;
-        int oldY = selectButtonY;
         switch(input){
             case PlayerInput.Down:
-                if(selectButtonY < shopButton[0].Length) selectButtonY++; break;
+                if(selectButtonY < shopButton[0].Length-1){
+                    shopButton[selectButtonX][selectButtonY].SetSelect(false);
+                    selectButtonY++; 
+                }
+                break;
             case PlayerInput.Up:
-                if(selectButtonY > 0) selectButtonY--; break;
+                if(selectButtonY > 0){
+                    shopButton[selectButtonX][selectButtonY].SetSelect(false);
+                    selectButtonY--; 
+                }    
+                break;
             case PlayerInput.Right:
-                if(selectButtonY < shopButton.Rank) selectButtonX++; break;
+                if(selectButtonY < shopButton.Rank){
+                    shopButton[selectButtonX][selectButtonY].SetSelect(false); 
+                    selectButtonX++;
+                } 
+                break;
             case PlayerInput.Left:
-                if(selectButtonY > 0) selectButtonX--; break;
+                if(selectButtonY > 0){
+                    shopButton[selectButtonX][selectButtonY].SetSelect(false);
+                    selectButtonX--;
+                }    
+                break;
             case PlayerInput.Select:
                 returnMode = ProcessButtonPress(shopButton[selectButtonX][selectButtonY].GetActivateString());
                 break;
@@ -82,12 +102,18 @@ public partial class ShopInterface : GameplayMode{
                 returnMode = backOutMode;
                 break;
         }
-        shopButton[selectButtonX][selectButtonY].SetSelect(true);
-        if(selectButtonY != oldY || selectButtonX != oldX){
+        if(input != PlayerInput.None && input != PlayerInput.Select){
+            shopButton[selectButtonX][selectButtonY].SetSelect(true);
             descritpionTextBox.Text = shopButton[selectButtonX][selectButtonY].GetDescriptionText();
             descriptionTitleBox.Text = shopButton[selectButtonX][selectButtonY].GetTitleText();
         }
         //Whatever the current button is gets to be visible
+    }
+
+    public override Task TransitionOut(){
+        this.Visible = false;
+        shopButton[selectButtonX][selectButtonY].SetSelect(false);
+        return Task.CompletedTask;
     }
 
     //Return null unless you want to immediately change what GameplayMode we're in...

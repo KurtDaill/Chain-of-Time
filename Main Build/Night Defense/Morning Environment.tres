@@ -14,9 +14,9 @@ color_ramp = SubResource("Gradient_ee68i")
 noise = SubResource("FastNoiseLite_5eld0")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vualq"]
-sky_top_color = Color(0.0509804, 0.447059, 0.74902, 1)
-sky_horizon_color = Color(1, 0.941176, 0.501961, 1)
-sky_curve = 0.109807
+sky_top_color = Color(0.0666667, 0.258824, 0.670588, 1)
+sky_horizon_color = Color(1, 0.529412, 0.529412, 1)
+sky_curve = 0.0832183
 sky_energy_multiplier = 0.8
 sky_cover = SubResource("NoiseTexture2D_ssyqf")
 sky_cover_modulate = Color(1, 1, 1, 0.0784314)
@@ -37,5 +37,5 @@ ambient_light_source = 3
 ambient_light_sky_contribution = 0.5
 ambient_light_energy = 0.0
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.005
+volumetric_fog_density = 0.01
 volumetric_fog_albedo = Color(0.811765, 0.976471, 1, 1)

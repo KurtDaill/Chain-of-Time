@@ -1,16 +1,16 @@
 [gd_scene load_steps=26 format=3 uid="uid://b4c681u22rx0r"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_o2ers"]
-[ext_resource type="PackedScene" uid="uid://dr361q8qnxwf2" path="res://Art/3D/Workshop Rough Render.gltf" id="2_78sc7"]
-[ext_resource type="Texture2D" uid="uid://h8n352cmobuq" path="res://GUI/Test Shop GUI Button.png" id="3_6chm1"]
+[ext_resource type="PackedScene" uid="uid://5jx00metklxj" path="res://Art/3D/Workshop Rough Render.gltf" id="2_78sc7"]
+[ext_resource type="Texture2D" uid="uid://d14c3vjjftgyh" path="res://GUI/Test Shop GUI Button.png" id="3_6chm1"]
 [ext_resource type="Script" path="res://Explore Mode/Shops/WorkshopShopInterface.cs" id="3_ae0i0"]
 [ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="4_o83dl"]
 [ext_resource type="Script" path="res://Explore Mode/Shops/ShopButton.cs" id="4_w75qn"]
-[ext_resource type="Texture2D" uid="uid://bd043pc138ptl" path="res://GUI/Test Shop GUI Big Panel.png" id="5_j6fl8"]
-[ext_resource type="Texture2D" uid="uid://be8sqqq24swl" path="res://GUI/Test Shop GUI Button Highlight.png" id="5_n52f2"]
-[ext_resource type="Texture2D" uid="uid://dpus4m4b7u7dm" path="res://Art/Prod Sprite Sheets/Boss Percy Cinematic Sprite-Sheet.png" id="14_8t2og"]
+[ext_resource type="Texture2D" uid="uid://cqel5xxctuld8" path="res://GUI/Test Shop GUI Big Panel.png" id="5_j6fl8"]
+[ext_resource type="Texture2D" uid="uid://b5ktneesxbqk3" path="res://GUI/Test Shop GUI Button Highlight.png" id="5_n52f2"]
+[ext_resource type="Script" path="res://Explore Mode/DialogueInteractZone.cs" id="11_k7hht"]
+[ext_resource type="Texture2D" uid="uid://dja0hpdwnd44i" path="res://Art/Prod Sprite Sheets/Boss Percy Cinematic Sprite-Sheet.png" id="14_8t2og"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="15_cbpgh"]
-[ext_resource type="Script" path="res://Explore Mode/CutsceneInteractZone.cs" id="16_mlb51"]
 [ext_resource type="PackedScene" uid="uid://d31imjbtaeidb" path="res://Explore Mode/DialoguePrompt.tscn" id="17_bwqev"]
 [ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="18_a32mf"]
 [ext_resource type="PackedScene" uid="uid://cenpkmy5h0ooq" path="res://Explore Mode/explore_player.tscn" id="19_i670e"]
@@ -54,7 +54,7 @@ albedo_color = Color(0, 0, 0, 0.756863)
 
 [node name="SceneConfig" type="Node3D" node_paths=PackedStringArray("startingMode")]
 script = ExtResource("1_o2ers")
-startingMode = NodePath("Workshop Rough Render/Shop Interface")
+startingMode = NodePath("ExploreMode")
 
 [node name="Workshop Rough Render" parent="." instance=ExtResource("2_78sc7")]
 
@@ -195,11 +195,15 @@ shape = SubResource("BoxShape3D_dnmrb")
 
 [node name="Shop Interface" type="Node3D" parent="Workshop Rough Render" node_paths=PackedStringArray("shopCam", "descritpionTextBox", "descriptionTitleBox", "DebugBackOutMode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6875, 1, -2.5)
+visible = false
 script = ExtResource("3_ae0i0")
+defaultButtonY = 2
 shopCam = NodePath("Camera3D")
 descritpionTextBox = NodePath("Sprite3D/Body")
 descriptionTitleBox = NodePath("Sprite3D/TitleBar")
 DebugBackOutMode = NodePath("../../ExploreMode")
+defaultBoxTitle = "[Workshop]"
+defaultBoxText = "\"Hiya lad, what can we workin' folk do for you?\""
 
 [node name="ButtonMap" type="Node3D" parent="Workshop Rough Render/Shop Interface"]
 
@@ -318,6 +322,16 @@ width = 300.0
 [node name="Camera3D" type="Camera3D" parent="Workshop Rough Render/Shop Interface"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0.1705, 3.199, 1.289)
 
+[node name="Sprite3D2" type="Sprite3D" parent="Workshop Rough Render/Shop Interface"]
+transform = Transform3D(0.999997, 0, 3.75111e-06, 0, 1, 0, -3.75111e-06, 0, 0.999997, 0.817551, 3.14152, -2.93868)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("14_8t2og")
+hframes = 10
+frame = 2
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r816u")
 
@@ -334,12 +348,13 @@ texture = ExtResource("14_8t2og")
 hframes = 10
 frame = 2
 
-[node name="Dialogue Trigger Zone" type="Area3D" parent="ExploreMode" node_paths=PackedStringArray("prompt")]
+[node name="Dialogue Trigger Zone" type="Area3D" parent="ExploreMode" node_paths=PackedStringArray("prompt", "targetMode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4301, 0, -1)
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("16_mlb51")
+script = ExtResource("11_k7hht")
 prompt = NodePath("DialoguePrompt")
+targetMode = NodePath("../../Workshop Rough Render/Shop Interface")
 
 [node name="DialoguePrompt" parent="ExploreMode/Dialogue Trigger Zone" instance=ExtResource("17_bwqev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0625, 0.125, -4.375)
@@ -351,7 +366,7 @@ shape = SubResource("CylinderShape3D_281qp")
 [node name="Door" type="Area3D" parent="ExploreMode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.625, -0.625, 1.9375)
 script = ExtResource("18_a32mf")
-targetScene = "res://Levels/demo/Night Defense Day Mode Test Scene.tscn"
+targetScene = "res://Levels/demo/AllModesCityScene.tscn"
 targetLocationInScene = "Workshop"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExploreMode/Door"]

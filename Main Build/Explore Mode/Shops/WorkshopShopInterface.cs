@@ -12,6 +12,8 @@ public partial class WorkshopShopInterface : ShopInterface{
                     gm.SpendTU(1);
                     gm.GainItem(item);
                     descritpionTextBox.Text = "Got " + item.GetDisplayName();
+                }else{
+                    //TODO Add A "There is no Time" Message
                 }
                 return null;
             case "GetEquipment":

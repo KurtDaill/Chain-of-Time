@@ -1,0 +1,137 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1ssu2u3lnww3"]
+
+[ext_resource type="Script" path="res://SceneConfig.cs" id="1_0dxlu"]
+[ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_liug8"]
+[ext_resource type="Script" path="res://Explore Mode/NightDefense.cs" id="3_7unpn"]
+[ext_resource type="PackedScene" uid="uid://cenpkmy5h0ooq" path="res://Explore Mode/explore_player.tscn" id="4_gvjqb"]
+[ext_resource type="Script" path="res://Night Defense/ResultsScreen.cs" id="13_yr3hr"]
+[ext_resource type="Environment" uid="uid://cqpc6quc73qwr" path="res://Night Defense/Result Screen Environment.tres" id="14_c660d"]
+[ext_resource type="Theme" uid="uid://dp5ux27rntx3l" path="res://Night Defense/Results Screen Theme.tres" id="15_q3tlf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n30o4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yetgj"]
+
+[node name="Scene Config" type="Node3D" node_paths=PackedStringArray("startingMode", "citySpawnPoint")]
+script = ExtResource("1_0dxlu")
+startingMode = NodePath("ExploreMode")
+citySpawnPoint = NodePath("CityMarker")
+doILoadTheCity = true
+
+[node name="Night Defense" parent="." node_paths=PackedStringArray("results", "explorePlayer") instance=ExtResource("2_liug8")]
+visible = false
+script = ExtResource("3_7unpn")
+lightDurationInSeconds = 45
+results = NodePath("../Results Screen")
+explorePlayer = NodePath("../ExplorePlayer")
+
+[node name="ExploreHUD" parent="Night Defense" index="0"]
+visible = false
+
+[node name="ExplorePlayer" parent="." instance=ExtResource("4_gvjqb")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -29, 0.212, 49)
+
+[node name="Explore Camera" parent="ExplorePlayer" index="5"]
+transform = Transform3D(1, 2.40465e-08, -5.62842e-08, -1.39075e-08, 0.984808, 0.173648, 5.96047e-08, -0.173648, 0.984808, 0, 6, 14)
+current = false
+
+[node name="Map Camera" parent="ExplorePlayer/Map Handle" index="0"]
+current = false
+
+[node name="Torchlight" parent="ExplorePlayer" index="8"]
+visible = false
+
+[node name="Results Screen" type="Node3D" parent="."]
+script = ExtResource("13_yr3hr")
+
+[node name="Results Screen Camera" type="Camera3D" parent="Results Screen"]
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 40, 90, 150)
+environment = ExtResource("14_c660d")
+v_offset = 8.815
+projection = 1
+current = true
+size = 180.0
+
+[node name="Result Screen Light" type="DirectionalLight3D" parent="Results Screen"]
+transform = Transform3D(-0.64697, -0.310656, -0.696364, -0.571881, 0.801747, 0.173648, 0.504363, 0.510582, -0.696364, 0, 3.125, 0)
+visible = false
+light_color = Color(1, 0.666667, 0, 1)
+light_energy = 2.0
+shadow_enabled = true
+sky_mode = 1
+
+[node name="Result Screen Sky" type="DirectionalLight3D" parent="Results Screen"]
+transform = Transform3D(-0.589997, -0.390529, -0.706676, -0.580349, 0.81362, 0.0348995, 0.561336, 0.430709, -0.706676, 0, 3.125, 0)
+visible = false
+light_color = Color(1, 0.666667, 0, 1)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="GUI" type="Panel" parent="Results Screen"]
+visible = false
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("15_q3tlf")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n30o4")
+
+[node name="Background Element" type="Panel" parent="Results Screen/GUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.265
+anchor_bottom = 0.482
+offset_right = -0.800018
+offset_bottom = 0.440002
+
+[node name="Results Text Container" type="VBoxContainer" parent="Results Screen/GUI/Background Element"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 29.0
+offset_right = -9.0
+offset_bottom = -129.0
+
+[node name="Title" type="Label" parent="Results Screen/GUI/Background Element/Results Text Container"]
+layout_mode = 2
+text = "Results - Night 1"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Results Screen/GUI/Background Element/Results Text Container"]
+layout_mode = 2
+
+[node name="Enemy Counts" type="RichTextLabel" parent="Results Screen/GUI/Background Element/Results Text Container"]
+layout_mode = 2
+bbcode_enabled = true
+text = "> Enemies Remaining : [ALL]
+	>[WAN] Wandering
+	[color=Red]>[RAD] Raider[/color]"
+fit_content = true
+
+[node name="HSeparator2" type="HSeparator" parent="Results Screen/GUI/Background Element/Results Text Container"]
+layout_mode = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yetgj")
+
+[node name="Home Counts" type="RichTextLabel" parent="Results Screen/GUI/Background Element/Results Text Container"]
+layout_mode = 2
+bbcode_enabled = true
+text = "> Homes Lost Tonight : [TN]
+
+> Homes Lost Overall : [OV]
+
+[color=Red] [US] Left Until City Surrenders[/color]"
+fit_content = true
+
+[node name="ExploreMode" parent="." node_paths=PackedStringArray("explorePlayer") instance=ExtResource("2_liug8")]
+explorePlayer = NodePath("../ExplorePlayer")
+CityExplore = true
+
+[node name="CityMarker" type="Marker3D" parent="."]
+
+[editable path="Night Defense"]
+[editable path="ExplorePlayer"]

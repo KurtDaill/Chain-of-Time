@@ -98,9 +98,9 @@ public partial class ExplorePlayer : CharacterBody3D
 	}
 
 	public void OnInteractionAreaEntered(Area3D area){
-		if(area is CutsceneInteractZone){
+		if(area is DialogueInteractZone){
 			areasWithin.Add(area as InteractZone);
-			zoneOnDeck = area as CutsceneInteractZone;
+			zoneOnDeck = area as DialogueInteractZone;
 		}
 	}
 

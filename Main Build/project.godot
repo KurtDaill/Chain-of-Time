@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 
 GameMaster="*res://GameMaster.cs"
 QuestMaster="*res://Explore Mode/Quest System/QuestMaster.tscn"
+CityState="*res://CityState.cs"
 
 [display]
 

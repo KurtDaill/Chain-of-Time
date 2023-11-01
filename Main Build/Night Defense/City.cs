@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.VisualBasic;
 
 public partial class City : Node3D
 {
@@ -9,10 +10,37 @@ public partial class City : Node3D
     int buildingsDestroyedAsOfLastNight;
     private Building vandalizedBuildingBeingFoughtOver;
 
+    [Export]
+    Node3D spawnPointDirectory;
+    [Export]
+    DirectionalLight3D morningSun, noonSun, eveningSun, nightMoon;
+    [Export]
+    Godot.Environment morningEnv, noonEnv, eveningEnv, nightEnv;
+    [Export]
+    Godot.WorldEnvironment worldEnv;
     public override void _Ready(){
         buildings = new List<Building>();
-        foreach(Node node in this.FindChildren("*", "StaticBody3D")){
+        foreach(Node node in this.GetNode("Buildings").FindChildren("*", "StaticBody3D")){
             if(node is Building) buildings.Add(node as Building);
+        }
+        morningSun.Visible = false;
+        noonSun.Visible = false;
+        eveningSun.Visible = false;
+        nightMoon.Visible = false;
+        switch(GetNode<GameMaster>("/root/GameMaster").GetCurrentTU()){
+            case 3:
+                morningSun.Visible = true;
+                worldEnv.Environment = morningEnv;
+                break;
+            case 2:
+                noonSun.Visible = true;
+                worldEnv.Environment = noonEnv;
+                break;
+            case 1 : case 0:
+                eveningSun.Visible = true;
+                worldEnv.Environment = eveningEnv;
+                break;
+            default: nightMoon.Visible = true; worldEnv.Environment = nightEnv; break;
         }
     }
 
@@ -40,7 +68,9 @@ public partial class City : Node3D
             }
             return buildings[randy];
         }
-    }   
+    }
+
+    public Node3D GetSpawnPointDirectory(){return spawnPointDirectory;}
 
     public void DestroyRandomBuilding(){
         GetRandomBuilding().DestroyMe();
