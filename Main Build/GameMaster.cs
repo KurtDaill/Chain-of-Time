@@ -18,6 +18,8 @@ public partial class GameMaster : Node
 
     private string spawnPoint = "";
 
+    private int DayTimeUnitsRemaining = 3;
+
     GameplayMode currentMode;
     TimeOfDay currentTime;
     public enum TimeOfDay{
@@ -76,6 +78,10 @@ public partial class GameMaster : Node
         }
     }
 
+    public void GainItem(Item item){
+        inventory.Add(item);
+    }
+
     public void RestorePartyHPAndSP(){
         foreach(PlayerData data in partyData.Where(x => x != null)){
             data.RestoreHP();
@@ -128,6 +134,18 @@ public partial class GameMaster : Node
         }
         if(currentTime == TimeOfDay.Night) EmitSignal(GameMaster.SignalName.NightBegins);
         else EmitSignal(GameMaster.SignalName.TimeOfDayChanged, (int)currentTime);
+    }
+
+    public int GetCurrentTU(){
+        return DayTimeUnitsRemaining;
+    }
+
+    public void SpendTU(int spend){
+        if(DayTimeUnitsRemaining < spend){
+            GetTree().Quit();
+            throw new ArgumentException("Not enough Time Units to Spend!");
+        }
+        DayTimeUnitsRemaining -= spend;
     }
 
     public int GetNumberOfBuildingsDestroyedForGameOver(){

@@ -4,6 +4,13 @@ using Godot;
 public partial class ShopButton: Sprite3D{
     private Sprite3D highlightSprite;
     private Label3D text;
+    
+    [Export]
+    private string titleText;
+    [Export]
+    private string descriptionText;
+    [Export]
+    private string activateString;
 
     public override void _Ready()
     {
@@ -16,5 +23,15 @@ public partial class ShopButton: Sprite3D{
 
     public void SetSelect(bool selected){
         this.highlightSprite.Visible = selected;
+    }
+
+    public string GetActivateString(){
+        return activateString;
+    }
+    public string GetDescriptionText(){
+        return descriptionText;
+    }
+    public string GetTitleText(){
+        return titleText;
     }
 }

@@ -1,18 +1,28 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Godot;
 using static GameplayUtilities;
 public partial class ShopInterface : GameplayMode{
     public ShopButton[][] shopButton;
-    private int selectButtonX, selectButtonY;
+    protected int selectButtonX, selectButtonY;
     [Export]
-    private int defaultButtonX = 0;
+    protected int defaultButtonX = 0;
     [Export]
-    private int defaultButtonY = 0;
-    public Label3D descriptionBoxTitleLine, descriptionBoxBody;
+    protected int defaultButtonY = 0;
     [Export]
-    private Camera3D shopCam;
+    protected Camera3D shopCam;
+    [Export]
+    protected Label3D descritpionTextBox;
+    [Export]
+    protected Label3D descriptionTitleBox;
+
+    protected GameplayMode returnMode = null;
+    protected GameplayMode backOutMode;
+    [Export]
+    protected GameplayMode DebugBackOutMode = null;
+    protected GameMaster gm;
 
     public override void _Ready()
     {
@@ -30,20 +40,23 @@ public partial class ShopInterface : GameplayMode{
                 shopButton[i][j] = (ShopButton) currentColumn[j];
             }
         }
+        if(DebugBackOutMode != null) backOutMode = DebugBackOutMode;
+        gm = this.GetNode<GameMaster>("/root/GameMaster");
     }
 
     public override Task StartUp(GameplayMode oldMode){
         selectButtonX = defaultButtonX;
         selectButtonY = defaultButtonY;
         shopCam.Current = true;
+        returnMode = null;
         return Task.CompletedTask;
     }
 
     public override async Task<GameplayMode> RemoteProcess(double delta)
     {
         //TODO - Have the system respond to different selectButton values!
-        
-        return null;
+        //Will be null until someone sets it
+        return returnMode;
     }
 
     public override void HandleInput(PlayerInput input)
@@ -51,6 +64,8 @@ public partial class ShopInterface : GameplayMode{
         base.HandleInput(input);
         //Turn off the old button
         shopButton[selectButtonX][selectButtonY].SetSelect(false);
+        int oldX = selectButtonX;
+        int oldY = selectButtonY;
         switch(input){
             case PlayerInput.Down:
                 if(selectButtonY < shopButton[0].Length) selectButtonY++; break;
@@ -60,8 +75,23 @@ public partial class ShopInterface : GameplayMode{
                 if(selectButtonY < shopButton.Rank) selectButtonX++; break;
             case PlayerInput.Left:
                 if(selectButtonY > 0) selectButtonX--; break;
+            case PlayerInput.Select:
+                returnMode = ProcessButtonPress(shopButton[selectButtonX][selectButtonY].GetActivateString());
+                break;
+            case PlayerInput.Back:
+                returnMode = backOutMode;
+                break;
+        }
+        shopButton[selectButtonX][selectButtonY].SetSelect(true);
+        if(selectButtonY != oldY || selectButtonX != oldX){
+            descritpionTextBox.Text = shopButton[selectButtonX][selectButtonY].GetDescriptionText();
+            descriptionTitleBox.Text = shopButton[selectButtonX][selectButtonY].GetTitleText();
         }
         //Whatever the current button is gets to be visible
-        shopButton[selectButtonX][selectButtonY].SetSelect(true);
+    }
+
+    //Return null unless you want to immediately change what GameplayMode we're in...
+    protected virtual GameplayMode ProcessButtonPress(string buttonText){
+        return null;
     }
 }
