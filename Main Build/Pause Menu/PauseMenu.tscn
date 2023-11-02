@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq7dy5kfxlwfc"]
+
+[ext_resource type="Script" path="res://Pause Menu/PauseMenu.cs" id="1_7e165"]
+[ext_resource type="Script" path="res://Pause Menu/PauseMenuGUI.cs" id="2_7dlw4"]
+
+[node name="PauseMenu" type="Node3D"]
+script = ExtResource("1_7e165")
+
+[node name="PauseMenuGUI" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("2_7dlw4")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenuGUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseMenuGUI/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 195.0
+offset_top = 129.0
+offset_right = -653.0
+offset_bottom = -638.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "DINGUS"

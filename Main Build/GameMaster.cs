@@ -39,6 +39,7 @@ public partial class GameMaster : Node
         partyData = new PlayerData[1]{new PlayerData("Cato", "res://Battle Mode/Player Characters/Cato Combatant.tscn", 6, 6, 2, 2, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroFront))};
         inventory = new List<Item>{GD.Load<PackedScene>("res://Battle Mode/Items/OrcishFireBrew.tscn").Instantiate<OrcishFireBrew>(), GD.Load<PackedScene>("res://Battle Mode/Items/OrcishFireBrew.tscn").Instantiate<OrcishFireBrew>()};
         currentTime = TimeOfDay.Morning;
+        ProcessMode = ProcessModeEnum.Always;
     }
 
 
@@ -59,6 +60,7 @@ public partial class GameMaster : Node
         if(Input.IsActionJustPressed("ui_right")){return PlayerInput.Right;}
         if(Input.IsActionJustPressed("ui_accept")){return PlayerInput.Select;}
         if(Input.IsActionJustPressed("ui_back")){return PlayerInput.Back;}
+        if(Input.IsActionJustPressed("ui_start")){return PlayerInput.Start;}
         return PlayerInput.None;
     }
 
@@ -205,6 +207,7 @@ public static class GameplayUtilities{
         Left,
         Select,
         Back,
+        Start,
         None,
     }
 }

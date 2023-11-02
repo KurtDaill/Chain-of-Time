@@ -51,8 +51,8 @@ public partial class ExploreMode : GameplayMode{
     public override void HandleInput(PlayerInput input)
     {
         explorePlayer.HandleInput(input);
-        if(input == PlayerInput.Select){
-            GetNode<GameMaster>("/root/GameMaster").AdvanceClock();
+        if(input == PlayerInput.Start){
+            GetNode<GameMaster>("/root/GameMaster").SetMode(GetNode<PauseMenu>("/root/PauseMenu"));
         }
     }
 
