@@ -35,9 +35,6 @@ transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -29, 0.2
 transform = Transform3D(1, 2.40465e-08, -5.62842e-08, -1.39075e-08, 0.984808, 0.173648, 5.96047e-08, -0.173648, 0.984808, 0, 6, 14)
 current = false
 
-[node name="Map Camera" parent="ExplorePlayer/Map Handle" index="0"]
-current = false
-
 [node name="Torchlight" parent="ExplorePlayer" index="8"]
 visible = false
 

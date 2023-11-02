@@ -217,7 +217,8 @@ alpha_cut = 2
 texture = ExtResource("3_6chm1")
 script = ExtResource("4_w75qn")
 titleText = "[Repair House]"
-descriptionText = "rEBUILD A hOUSE dUMMY"
+descriptionText = "Rebuild a House, Takes a Long Time"
+activateString = "RepairHouse"
 
 [node name="Text" type="Label3D" parent="Workshop Rough Render/Shop Interface/ButtonMap/Column0/Repair House"]
 transform = Transform3D(1, 0, 0, 0, 1, -8.9407e-08, 0, 8.9407e-08, 1, 0.0625, 2.38419e-07, 0.0624996)

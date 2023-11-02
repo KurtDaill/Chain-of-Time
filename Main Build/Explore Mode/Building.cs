@@ -8,7 +8,7 @@ public partial class Building : Node3D
     bool hidden = false;
     List<StandardMaterial3D> materials;
     bool fadingOut, fadingIn;
-
+    [Export]
     bool destroyed = false;
 
     bool beingVandalized = false;
@@ -94,6 +94,12 @@ public partial class Building : Node3D
     public void DestroyMe(){
         this.destroyed = true;
         StopVandalism();
+    }
+
+    public void RepairMe(){
+        this.destroyed = false;
+        StopVandalism();
+        UpdateState();
     }
 
     public void HideBuilding(){

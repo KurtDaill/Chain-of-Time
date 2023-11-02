@@ -42,6 +42,7 @@ public partial class City : Node3D
                 break;
             default: nightMoon.Visible = true; worldEnv.Environment = nightEnv; break;
         }
+        RunUpdates();
     }
 
     public int GetNumberOfBuildingsDestroyed(){
@@ -74,6 +75,20 @@ public partial class City : Node3D
 
     public void DestroyRandomBuilding(){
         GetRandomBuilding().DestroyMe();
+    }
+
+    //Returns false if there was no building to repair.
+    public bool RepairRandomBuilding(){
+        buildings = new List<Building>();
+        foreach(Node node in this.GetNode("Buildings").FindChildren("*", "StaticBody3D")){
+            if(node is Building) buildings.Add(node as Building);
+        }
+        if(buildings.Any(x => x.IsDestroyed())){
+            ((Building)buildings.Where(x=> x.IsDestroyed()).ToArray()[0]).RepairMe();
+            return true;
+        }else{
+            return false;
+        }
     }
 
     //Called from without when the night is over and we need to have all buildings under attack by vandals be destroyed

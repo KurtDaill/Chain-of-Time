@@ -19,6 +19,14 @@ public partial class WorkshopShopInterface : ShopInterface{
             case "GetEquipment":
 
                 return null;
+            case "RepairHouse":
+                if(gm.GetCurrentTU() >= 3){
+                    if(GetNode<CityState>("/root/CityState").RepairBuildingOutsideOfCityScene()){
+                        gm.SpendTU(3);
+                        descritpionTextBox.Text = "Took a while, but one more family oughta sleep soundly now.";
+                    }
+                }
+                return null;
             default: throw new ArgumentException("Button Activation String Error. Button Activated String: " + activateString + " not recognized by Shop Interface: " + Name + ".");
         }
         return null;
