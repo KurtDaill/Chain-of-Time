@@ -17,7 +17,7 @@ public partial class WandererEnemyGroup : EnemyGroup{
         waitBetweenWandersTimer = new Timer();
         this.AddChild(waitBetweenWandersTimer);
         startingPosition = GlobalPosition;
-        await ToSignal(GetParent().GetNode("Navigation Setup Delay"), Timer.SignalName.Timeout);
+        //await ToSignal(GetParent().GetNode("Navigation Setup Delay"), Timer.SignalName.Timeout);
         PickNewMovementPoint();
         waiting = false;
     }

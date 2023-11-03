@@ -84,7 +84,7 @@ public partial class NightDefense : ExploreMode
         //Go through list of enemy groups
         List<EnemyGroup> thisNightsEnemies = new List<EnemyGroup>();
         foreach(string enemyGroupFilePath in enemyGroupsToLoad){
-            thisNightsEnemies.Add(GD.Load<PackedScene>(enemyGroupFilePath).Instantiate() as EnemyGroup);
+            thisNightsEnemies.Add((EnemyGroup)GD.Load<PackedScene>(enemyGroupFilePath).Instantiate());
         }
         //Copy the List of Spawn Points & Randomize the list order
         Random rng = new Random();
