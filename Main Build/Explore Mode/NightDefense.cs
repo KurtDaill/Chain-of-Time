@@ -75,8 +75,8 @@ public partial class NightDefense : ExploreMode
         buildingsDestoryedLastNight += myCity.RegisterVandals();
 
         //Clean Up Enemy Groups
-        foreach(Node node in enemyNavigationRegion.FindChildren("*", "EnemyGroup")){
-            node.QueueFree();
+        foreach(EnemyGroup enemy in enemyGroupsInCity){
+            enemy.QueueFree();
         }
         //TODO Check for Game Over!
     }
