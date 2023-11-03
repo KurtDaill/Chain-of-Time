@@ -4,22 +4,33 @@ using static GameplayUtilities;
 public partial class PauseMenuGUI : CanvasLayer
 {
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _EnterTree()
-	{
+	[Export]
+	ItemMenu itemSubMenu;
 
+	[Export]
+	ReadoutContainer readouts;
+	public void Open()
+	{
+		itemSubMenu.Visible = true;
+		itemSubMenu.OnOpenInsidePauseMenu();
+		//Populate Readouts
+		var party = this.GetNode<GameMaster>("/root/GameMaster").LoadPartyData();
+		readouts.SetReadoutsPauseMenu(party);
 	}
 
 	//returns true if we should switch back to the earlier gameplaymode
 	public bool HandleInput(PlayerInput input){
 		if(input == PlayerInput.Start){
 			return true;	
-		}	
+		}
+		itemSubMenu.HandleInputPauseMenu(input);	
 		return false;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _ExitTree()
+	public void OnPressQuit(){
+		GetTree().Quit();
+	}
+	public void Close()
 	{
 
 	}

@@ -37,7 +37,7 @@ public partial class GameMaster : Node
         state = GD.Load<StoryState>("res://ExampleStoryState.tres");
         //Default Party Data
         partyData = new PlayerData[1]{new PlayerData("Cato", "res://Battle Mode/Player Characters/Cato Combatant.tscn", 6, 6, 2, 2, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroFront))};
-        inventory = new List<Item>{GD.Load<PackedScene>("res://Battle Mode/Items/OrcishFireBrew.tscn").Instantiate<OrcishFireBrew>(), GD.Load<PackedScene>("res://Battle Mode/Items/OrcishFireBrew.tscn").Instantiate<OrcishFireBrew>()};
+        inventory = new List<Item>();
         currentTime = TimeOfDay.Morning;
         ProcessMode = ProcessModeEnum.Always;
     }
@@ -66,6 +66,10 @@ public partial class GameMaster : Node
 
     public void SavePlayerParty(Roster roster){
         PlayerCombatant[] currentParty = roster.GetAllPlayerCombatants();
+        SavePlayerParty(currentParty);
+    }
+
+    public void SavePlayerParty(PlayerCombatant[] currentParty){
         for(int i = 0; i < currentParty.Length; i++){partyData[i] = currentParty[i].GetPlayerData();} 
     }
 
@@ -74,10 +78,20 @@ public partial class GameMaster : Node
             var playerCharacter = GD.Load<PackedScene>(playerCombatantData.GetPath()).Instantiate<PlayerCombatant>();
             playerCharacter.LoadPlayerData(playerCombatantData);
             roster.SetPositionNewCharacter(playerCharacter, playerCombatantData.GetStartingPosition());
-            foreach(Item item in inventory){
-                roster.GetNode("Items").AddChild(item);
-            }
         }
+        foreach(Item item in inventory){
+            roster.GetNode("Items").AddChild(item);
+        }
+    }
+
+    public PlayerCombatant[] LoadPartyData(){
+        List<PlayerCombatant> currentParty = new();
+        foreach(PlayerData playerCombatantData in partyData){
+            var playerCharacter = GD.Load<PackedScene>(playerCombatantData.GetPath()).Instantiate<PlayerCombatant>();
+            playerCharacter.LoadPlayerData(playerCombatantData);
+            currentParty.Add(playerCharacter);
+        }
+        return currentParty.ToArray();
     }
 
     public void GainItem(Item item){
@@ -164,6 +178,10 @@ public partial class GameMaster : Node
 
     public void ClearSpawnPoint(){
         spawnPoint = "";
+    }
+
+    public List<Item> GetInventory(){
+        return inventory;
     }
 }
 

@@ -23,6 +23,7 @@ public partial class PauseMenu : GameplayMode
         GetTree().Paused = true;
 		returnMode = oldMode;
 		gui.Visible = true;
+		gui.Open();
 		return Task.CompletedTask;
 	}
 
@@ -45,6 +46,7 @@ public partial class PauseMenu : GameplayMode
 		//GetTree().Root.RemoveChild(gui);
 		//this.AddChild(gui);
 		gui.Visible = false;
+		gui.Close();
 		GetTree().Paused = false;
         return base.TransitionOut();
     }

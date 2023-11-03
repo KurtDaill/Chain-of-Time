@@ -21,6 +21,7 @@ GameMaster="*res://GameMaster.cs"
 QuestMaster="*res://Explore Mode/Quest System/QuestMaster.tscn"
 CityState="*res://CityState.cs"
 PauseMenu="*res://Pause Menu/PauseMenu.tscn"
+TimeUI="*res://Pause Menu/TimeUI.tscn"
 
 [display]
 

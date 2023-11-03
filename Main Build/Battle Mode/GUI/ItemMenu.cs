@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using static GameplayUtilities;
 public partial class ItemMenu : BattleMenu
@@ -37,6 +38,43 @@ public partial class ItemMenu : BattleMenu
         }
     }
 
+    public void OnOpenInsidePauseMenu(){
+        var temp = this.GetNode<GameMaster>("/root/GameMaster").GetInventory().Where(x => x is ConsumableItem).ToList();
+        itemsAvailable = new ConsumableItem[temp.Count];
+        for(int i = 0; i < temp.Count; i ++){
+            itemsAvailable[i] = (ConsumableItem)temp[i];
+        }
+        //Set our Display to reflect that
+        for(int i = 0; i < itemTabs.Length; i++){
+            if(itemsAvailable.Length > i){
+                itemTabs[i].Visible = true;   
+                itemTabs[i].GetNode<Label>("Name").Text = itemsAvailable[i].GetDisplayName();
+            }else{
+                itemTabs[i].Visible = false;
+            }
+        }
+    }
+
+    public void HandleInputPauseMenu(PlayerInput input){
+        switch(input){
+            case PlayerInput.Up:
+                if(currentItem > 0) currentItem--;
+                break;
+            case PlayerInput.Down:
+                if(currentItem < itemsAvailable.Length - 1) currentItem++;
+                break;
+        }
+        if(input != PlayerInput.None){
+            SetHighlight();
+        }
+    }
+
+    private void SetHighlight(){
+        for(int i = 0; i < itemTabs.Length; i++){
+            itemTabs[i].GetNode<TextureRect>("Highlight").Visible = i == currentItem;
+        }
+    }
+
     public override PlayerAbility HandleInput(PlayerInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         switch(input){
             case PlayerInput.Up:
@@ -59,12 +97,6 @@ public partial class ItemMenu : BattleMenu
             SetHighlight();
         }
         return null;
-    }
-
-    private void SetHighlight(){
-        for(int i = 0; i < itemTabs.Length; i++){
-            itemTabs[i].GetNode<TextureRect>("Highlight").Visible = i == currentItem;
-        }
     }
 }
 

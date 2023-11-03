@@ -71,4 +71,13 @@ public partial class ReadoutContainer : BoxContainer
 			this.AddChild(pCom.GetReadoutInstanced());			
 		}
 	}
+
+	public void SetReadoutsPauseMenu(PlayerCombatant[] playerCombatants){
+		foreach(Node child in this.GetChildren()){
+			this.RemoveChild(child);
+		}
+		foreach(PlayerCombatant pCom in playerCombatants){
+			this.AddChild(pCom.GetReadoutInstanced());			
+		}
+	}
 }

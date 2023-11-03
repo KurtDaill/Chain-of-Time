@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://2ioopnpnw17n"]
+
+[ext_resource type="Script" path="res://Pause Menu/TimeUI.cs" id="1_lb106"]
+[ext_resource type="Theme" uid="uid://ou56iexl4qsg" path="res://Pause Menu/TimeUnitUITheme.tres" id="1_s8rar"]
+
+[node name="Time UI" type="Control" node_paths=PackedStringArray("timeOfDay", "timeUnits")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lb106")
+timeOfDay = NodePath("Time of Day")
+timeUnits = NodePath("Time Units")
+
+[node name="Time Units" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1433.0
+offset_top = 79.0
+offset_right = 1895.0
+offset_bottom = 151.0
+theme = ExtResource("1_s8rar")
+text = "3 Time Units Remaining"
+
+[node name="Time of Day" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1432.0
+offset_top = 31.0
+offset_right = 1696.0
+offset_bottom = 103.0
+theme = ExtResource("1_s8rar")
+theme_override_font_sizes/font_size = 32
+text = "Morning"
