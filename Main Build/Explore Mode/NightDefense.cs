@@ -12,14 +12,13 @@ public partial class NightDefense : ExploreMode
     private int lightDurationInSeconds;
     [Export]
     NightDefenseLanternGUI lantern;
-    [Export]
     City myCity;
-    [Export]
     NavigationRegion3D enemyNavigationRegion;
     [Export]
     ResultsScreen results;
     [Export]
     Marker3D playerNightStartPosition;
+    Control hud;
     private float remainingLight;
     private float playerLampStartingBrightness;
 
@@ -30,6 +29,9 @@ public partial class NightDefense : ExploreMode
         remainingLight = lightDurationInSeconds;
         playerLampStartingBrightness = explorePlayer.GetNode<OmniLight3D>("Torchlight").LightEnergy;
         myCity = GetNode<CityState>("/root/CityState").GetCity();
+        enemyNavigationRegion = myCity.GetEnemyNavRegion();
+        hud = this.GetNode<Control>("HUD");
+        hud.Visible = false;
     }
     public override async Task<GameplayMode> RemoteProcess(double delta){
         //Mark time, reduce torch count
@@ -93,10 +95,16 @@ public partial class NightDefense : ExploreMode
 
     public override Task StartUp(GameplayMode oldMode){
         Task result = base.StartUp(oldMode);
+        hud.Visible = true;
         if(oldMode is Battle) myCity.EndFightOverBuilding();
         else if(oldMode is ExploreMode || oldMode is PauseMenu){ //Night is beginning from day phase
             explorePlayer.GlobalPosition = playerNightStartPosition.GlobalPosition;
         }
         return result;
+    }
+
+    public override Task TransitionOut(){
+        hud.Visible = false;
+        return Task.CompletedTask;
     }
 }

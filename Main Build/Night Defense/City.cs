@@ -18,6 +18,8 @@ public partial class City : Node3D
     Godot.Environment morningEnv, noonEnv, eveningEnv, nightEnv;
     [Export]
     Godot.WorldEnvironment worldEnv;
+    [Export]
+    NavigationRegion3D enemyNavRegion;
 
     bool nightMode = false;
     public override void _Ready(){
@@ -141,5 +143,9 @@ public partial class City : Node3D
         eveningSun.Visible = false;
         morningSun.Visible = false;
         worldEnv.Environment = morningEnv;
+    }
+
+    public NavigationRegion3D GetEnemyNavRegion(){
+        return enemyNavRegion;
     }
 }
