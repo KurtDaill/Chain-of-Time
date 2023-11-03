@@ -12,16 +12,17 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yetgj"]
 
-[node name="Scene Config" type="Node3D" node_paths=PackedStringArray("startingMode", "citySpawnPoint", "myNightDefenseMode")]
+[node name="SceneConfig" type="Node3D" node_paths=PackedStringArray("startingMode", "citySpawnPoint", "myNightDefenseMode")]
 script = ExtResource("1_0dxlu")
 startingMode = NodePath("ExploreMode")
 citySpawnPoint = NodePath("CityMarker")
-doILoadTheCity = true
+cityScene = true
 myNightDefenseMode = NodePath("Night Defense")
 
 [node name="Night Defense" parent="." node_paths=PackedStringArray("results", "playerNightStartPosition", "explorePlayer") instance=ExtResource("2_pjbcb")]
 results = NodePath("../Results Screen")
 playerNightStartPosition = NodePath("../Night Marker")
+enemyGroupsToLoad = Array[String](["res://Night Defense/Generic Night Enemy Group.tscn", "res://Night Defense/Generic Night Enemy Group.tscn"])
 explorePlayer = NodePath("../ExplorePlayer")
 
 [node name="ExplorePlayer" parent="." instance=ExtResource("4_gvjqb")]

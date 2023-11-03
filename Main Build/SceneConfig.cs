@@ -14,7 +14,7 @@ public partial class SceneConfig : Node
 	[Export]
 	Marker3D citySpawnPoint;
 	[Export]
-	bool doILoadTheCity = false;
+	bool cityScene = false;
 	[Export]
 	NightDefense myNightDefenseMode;
 
@@ -25,7 +25,7 @@ public partial class SceneConfig : Node
 		gm = GetNode<GameMaster>("/root/GameMaster");
 		gm.SetMode(startingMode);
 		cs = GetNode<CityState>("/root/CityState");
-		if(doILoadTheCity){
+		if(cityScene){
 			if(citySpawnPoint == null) throw new ArgumentException("There has to be a citySpawnPoint if you want to spawn the city!");
 			cs.InstantiateSavedCityAtPoint(citySpawnPoint);
 			spawnPointDirectory = cs.GetCity().GetSpawnPointDirectory();
@@ -49,6 +49,15 @@ public partial class SceneConfig : Node
 
 	public NightDefense GetMyNightDefenseMode(){
 		return myNightDefenseMode;
+	}
+
+	public void TransitionToNewScene(string spawnPoint, string targetScene){
+		if(cityScene){
+			this.GetNode<CityState>("/root/CityState").SaveCity(this.GetNode<CityState>("/root/CityState").GetCity());
+			this.GetNode<CityState>("/root/CityState").DespawnCity();
+		}
+        if(spawnPoint != "") this.GetNode<GameMaster>("/root/GameMaster").SetSpawnPoint(spawnPoint);
+        GetTree().ChangeSceneToFile(targetScene);
 	}
 }
 

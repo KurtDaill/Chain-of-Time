@@ -31,11 +31,16 @@ public partial class CityState : Node
         return currentCityWithinScene;
     }
 
+    public void DespawnCity(){
+        currentCityWithinScene.QueueFree();
+        currentCityWithinScene = null;
+    }
+
     public bool RepairBuildingOutsideOfCityScene(){
         currentCityWithinScene = savedCity.Instantiate() as City;
         bool result = currentCityWithinScene.RepairRandomBuilding();
         SaveCity(currentCityWithinScene);
-        currentCityWithinScene.Free();
+        DespawnCity();
         return result;
     }
 }

@@ -1,6 +1,6 @@
 using Godot;
-using Godot.Collections;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.Metrics;
 using System.Linq;
@@ -18,7 +18,11 @@ public partial class NightDefense : ExploreMode
     ResultsScreen results;
     [Export]
     Marker3D playerNightStartPosition;
-    Control hud;
+
+    //TODO Make this value load per-night from some kind of central plan?
+    [Export(PropertyHint.File)]
+    Godot.Collections.Array<string> enemyGroupsToLoad;
+    List<Marker3D> spawnPoints;
     private float remainingLight;
     private float playerLampStartingBrightness;
 
@@ -34,9 +38,12 @@ public partial class NightDefense : ExploreMode
             myCity = GetNode<CityState>("/root/CityState").GetCity();
         }
         enemyNavigationRegion = myCity.GetEnemyNavRegion();
+        spawnPoints = myCity.GetEnemySpawnPoints();
+        
         hud = this.GetNode<Control>("HUD");
         hud.Visible = false;
     }
+
     public override async Task<GameplayMode> RemoteProcess(double delta){
         //Mark time, reduce torch count
         remainingLight -= (float)delta;
@@ -57,7 +64,7 @@ public partial class NightDefense : ExploreMode
         buildingsDestoryedLastNight = 0;
 
         //Night Damage Logic
-        Dictionary<string,int>enemies = GetRemainingEnemies();
+        System.Collections.Generic.Dictionary<string,int>enemies = GetRemainingEnemies();
         enemies.TryGetValue("All", out int totalEnemies);
         if(totalEnemies != 0){
             myCity.DestroyRandomBuilding();
@@ -69,12 +76,31 @@ public partial class NightDefense : ExploreMode
         foreach(Node node in enemyNavigationRegion.FindChildren("*", "EnemyGroup")){
             node.QueueFree();
         }
-
         //TODO Check for Game Over!
     }
 
     public void BeginNight(){
+        explorePlayer.GlobalPosition = playerNightStartPosition.GlobalPosition;
+        //Go through list of enemy groups
+        List<EnemyGroup> thisNightsEnemies = new List<EnemyGroup>();
+        foreach(string enemyGroupFilePath in enemyGroupsToLoad){
+            thisNightsEnemies.Add(GD.Load<PackedScene>(enemyGroupFilePath).Instantiate() as EnemyGroup);
+        }
+        //Copy the List of Spawn Points & Randomize the list order
+        Random rng = new Random();
+        List<Marker3D> spawnPointsRandomized = spawnPoints.OrderBy(x => rng.Next()).ToList();
+        
+        //throw any error if there aren't enough spawn points
+        if(spawnPointsRandomized.Count < thisNightsEnemies.Count){
+            GetTree().Quit();
+            throw new Exception ("There are less spawn points than enemy groups! This city needs more gottdamn enemy groups!");
+        }
 
+        //Assign enemy groups to spawn points
+        for(int i = 0; i < thisNightsEnemies.Count; i++){
+            enemyNavigationRegion.AddChild(thisNightsEnemies[i]);
+            thisNightsEnemies[i].GlobalPosition = spawnPointsRandomized[i].GlobalPosition;
+        }
     }
 
     public Dictionary<string, int> GetRemainingEnemies(){
@@ -102,7 +128,7 @@ public partial class NightDefense : ExploreMode
         hud.Visible = true;
         if(oldMode is Battle) myCity.EndFightOverBuilding();
         else if(oldMode is ExploreMode || oldMode is PauseMenu){ //Night is beginning from day phase
-            explorePlayer.GlobalPosition = playerNightStartPosition.GlobalPosition;
+            BeginNight();
         }
         return result;
     }

@@ -20,6 +20,8 @@ public partial class City : Node3D
     Godot.WorldEnvironment worldEnv;
     [Export]
     NavigationRegion3D enemyNavRegion;
+    [Export]
+    Godot.Collections.Array<Marker3D> enemySpawnPoints;
 
     bool nightMode = false;
     public override void _Ready(){
@@ -133,7 +135,7 @@ public partial class City : Node3D
         eveningSun.Visible = false;
         nightMoon.Visible = true;
         worldEnv.Environment = nightEnv;
-        this.GetNode<GameMaster>("/root/GameMaster").SetMode(this.GetNode<SceneConfig>("/root/Scene Config").GetMyNightDefenseMode());
+        this.GetNode<GameMaster>("/root/GameMaster").SetMode(this.GetNode<SceneConfig>("/root/SceneConfig").GetMyNightDefenseMode());
     }
     public void EndNight(){
         nightMode = 
@@ -147,5 +149,9 @@ public partial class City : Node3D
 
     public NavigationRegion3D GetEnemyNavRegion(){
         return enemyNavRegion;
+    }
+
+    public List<Marker3D> GetEnemySpawnPoints(){
+        return enemySpawnPoints.ToList();
     }
 }

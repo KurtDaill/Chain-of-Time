@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Diagnostics.Metrics;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 public partial class ResultsScreen : GameplayMode
 {
@@ -21,7 +22,7 @@ public partial class ResultsScreen : GameplayMode
             NightDefense previousDefMode = oldMode as NightDefense;
             previousDefMode.EndNight();
             //TODO Add in some code to correctly write what night it is.
-            Godot.Collections.Dictionary<string, int> enemyCounts = previousDefMode.GetRemainingEnemies();
+            Dictionary<string, int> enemyCounts = previousDefMode.GetRemainingEnemies();
             enemyCounts.TryGetValue("All", out int all);
             enemyCounts.TryGetValue("Wanderer", out int wanderer);
             enemyCounts.TryGetValue("Vandal", out int vandal);
@@ -29,7 +30,7 @@ public partial class ResultsScreen : GameplayMode
             resultsTextContainer.GetNode<RichTextLabel>("Enemy Counts").Text = resultsTextContainer.GetNode<RichTextLabel>("Enemy Counts").Text.Replace("[WAN]", "" + wanderer);
             resultsTextContainer.GetNode<RichTextLabel>("Enemy Counts").Text = resultsTextContainer.GetNode<RichTextLabel>("Enemy Counts").Text.Replace("[RAD]", "" + vandal);
             
-            Godot.Collections.Dictionary<string, int> houseCounts = previousDefMode.GetHomeDestructionReport();
+            Dictionary<string, int> houseCounts = previousDefMode.GetHomeDestructionReport();
             houseCounts.TryGetValue("Overall", out int overall);
             houseCounts.TryGetValue("Tonight", out int tonight);
             houseCounts.TryGetValue("Remaining", out int remaining);
