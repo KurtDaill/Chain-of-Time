@@ -77,17 +77,13 @@ startingMode = NodePath("Night Defense")
 
 [node name="Node3D" type="Node3D" parent="."]
 
-[node name="Night Defense" parent="." node_paths=PackedStringArray("lantern", "myCity", "enemyNavigationRegion", "results", "explorePlayer") instance=ExtResource("2_15k8v")]
+[node name="Night Defense" parent="." node_paths=PackedStringArray("myCity", "enemyNavigationRegion", "results", "explorePlayer") instance=ExtResource("2_15k8v")]
 script = ExtResource("3_wu0hn")
 lightDurationInSeconds = 45
-lantern = NodePath("ExploreHUD/TextureRect")
 myCity = NodePath("../CitySetup")
 enemyNavigationRegion = NodePath("../Enemy Navigation Region")
 results = NodePath("../Results Screen")
 explorePlayer = NodePath("../ExplorePlayer")
-
-[node name="ExploreHUD" parent="Night Defense" index="0"]
-visible = false
 
 [node name="ExplorePlayer" parent="." instance=ExtResource("3_cvfsk")]
 
@@ -134,11 +130,10 @@ mesh = SubResource("PlaneMesh_uvmgg")
 transform = Transform3D(-0.999999, 0, -0.00144854, 0, 1, 0, 0.00144854, 0, -0.999999, -108.018, 0, 1.50269)
 mesh = SubResource("PlaneMesh_uvmgg")
 
-[node name="City Defense Enemy" parent="Enemy Navigation Region" node_paths=PackedStringArray("myCity") instance=ExtResource("7_oxoxi")]
+[node name="City Defense Enemy" parent="Enemy Navigation Region" instance=ExtResource("7_oxoxi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8125, 0, 5.75)
 script = ExtResource("8_4ele1")
 vandalismRange = 0
-myCity = NodePath("../../CitySetup")
 positionsInOrder = Array[int]([1])
 enemyTypesInOrder = Array[int]([0])
 

@@ -18,6 +18,8 @@ public partial class NightDefense : ExploreMode
     NavigationRegion3D enemyNavigationRegion;
     [Export]
     ResultsScreen results;
+    [Export]
+    Marker3D playerNightStartPosition;
     private float remainingLight;
     private float playerLampStartingBrightness;
 
@@ -92,6 +94,9 @@ public partial class NightDefense : ExploreMode
     public override Task StartUp(GameplayMode oldMode){
         Task result = base.StartUp(oldMode);
         if(oldMode is Battle) myCity.EndFightOverBuilding();
+        else if(oldMode is ExploreMode || oldMode is PauseMenu){ //Night is beginning from day phase
+            explorePlayer.GlobalPosition = playerNightStartPosition.GlobalPosition;
+        }
         return result;
     }
 }

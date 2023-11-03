@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://johbf16mwra8"]
+[gd_scene load_steps=10 format=3 uid="uid://c1ssu2u3lnww3"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_0dxlu"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_liug8"]
@@ -19,7 +19,6 @@ citySpawnPoint = NodePath("CityMarker")
 doILoadTheCity = true
 
 [node name="Night Defense" parent="." node_paths=PackedStringArray("results", "explorePlayer") instance=ExtResource("2_liug8")]
-visible = false
 script = ExtResource("3_7unpn")
 lightDurationInSeconds = 45
 results = NodePath("../Results Screen")
@@ -129,6 +128,9 @@ explorePlayer = NodePath("../ExplorePlayer")
 CityExplore = true
 
 [node name="CityMarker" type="Marker3D" parent="."]
+
+[node name="Night Marker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94695, 0, 55.9744)
 
 [editable path="Night Defense"]
 [editable path="ExplorePlayer"]

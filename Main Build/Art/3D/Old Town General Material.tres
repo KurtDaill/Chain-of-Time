@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://grcrjapavq0y"]
 
-[ext_resource type="Texture2D" uid="uid://c0dwbt7bvwtqp" path="res://Art/3D/New Old Town Tiles.png" id="1_7lax6"]
+[ext_resource type="Texture2D" uid="uid://hi6vh7t8q70q" path="res://Art/3D/New Old Town Tiles.png" id="1_7lax6"]
 
 [resource]
 transparency = 4

@@ -18,6 +18,8 @@ public partial class City : Node3D
     Godot.Environment morningEnv, noonEnv, eveningEnv, nightEnv;
     [Export]
     Godot.WorldEnvironment worldEnv;
+
+    bool nightMode = false;
     public override void _Ready(){
         buildings = new List<Building>();
         foreach(Node node in this.GetNode("Buildings").FindChildren("*", "StaticBody3D")){
@@ -27,20 +29,25 @@ public partial class City : Node3D
         noonSun.Visible = false;
         eveningSun.Visible = false;
         nightMoon.Visible = false;
-        switch(GetNode<GameMaster>("/root/GameMaster").GetCurrentTU()){
-            case 3:
-                morningSun.Visible = true;
-                worldEnv.Environment = morningEnv;
-                break;
-            case 2:
-                noonSun.Visible = true;
-                worldEnv.Environment = noonEnv;
-                break;
-            case 1 : case 0:
-                eveningSun.Visible = true;
-                worldEnv.Environment = eveningEnv;
-                break;
-            default: nightMoon.Visible = true; worldEnv.Environment = nightEnv; break;
+        if(nightMode){
+            nightMoon.Visible = true;
+            worldEnv.Environment = nightEnv;
+        }else{
+            switch(GetNode<GameMaster>("/root/GameMaster").GetCurrentTU()){
+                case 3:
+                    morningSun.Visible = true;
+                    worldEnv.Environment = morningEnv;
+                    break;
+                case 2:
+                    noonSun.Visible = true;
+                    worldEnv.Environment = noonEnv;
+                    break;
+                case 1 : case 0:
+                    eveningSun.Visible = true;
+                    worldEnv.Environment = eveningEnv;
+                    break;
+                default: nightMoon.Visible = true; worldEnv.Environment = nightEnv; break;
+            }
         }
         RunUpdates();
     }
@@ -114,5 +121,25 @@ public partial class City : Node3D
             vandalizedBuildingBeingFoughtOver.StopVandalism();
         }
         vandalizedBuildingBeingFoughtOver = null;
+    }
+
+    public void StartNight(){
+        nightMode = true;
+
+        morningSun.Visible = false;
+        noonSun.Visible = false;
+        eveningSun.Visible = false;
+        morningSun.Visible = true;
+        worldEnv.Environment = nightEnv;
+        this.GetNode<GameMaster>("/root/GameMaster").SetMode(this.GetNode<SceneConfig>("/root/Scene Config").GetMyNightDefenseMode());
+    }
+    public void EndNight(){
+        nightMode = 
+
+        morningSun.Visible = true;
+        noonSun.Visible = false;
+        eveningSun.Visible = false;
+        morningSun.Visible = false;
+        worldEnv.Environment = morningEnv;
     }
 }

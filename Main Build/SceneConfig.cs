@@ -15,6 +15,8 @@ public partial class SceneConfig : Node
 	Marker3D citySpawnPoint;
 	[Export]
 	bool doILoadTheCity = false;
+	[Export]
+	NightDefense myNightDefenseMode;
 
 	GameMaster gm;
 	CityState cs;
@@ -43,6 +45,10 @@ public partial class SceneConfig : Node
 
 	public void StartMusic(){
 		bgMusic.Play();
+	}
+
+	public NightDefense GetMyNightDefenseMode(){
+		return myNightDefenseMode;
 	}
 }
 

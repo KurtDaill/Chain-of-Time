@@ -28,9 +28,8 @@ public partial class CityState : Node
     }
 
     public bool RepairBuildingOutsideOfCityScene(){
-        bool result = false;
         currentCityWithinScene = savedCity.Instantiate() as City;
-        result = currentCityWithinScene.RepairRandomBuilding();
+        bool result = currentCityWithinScene.RepairRandomBuilding();
         SaveCity(currentCityWithinScene);
         currentCityWithinScene.Free();
         return result;
