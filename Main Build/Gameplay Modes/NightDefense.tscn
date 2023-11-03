@@ -1,17 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://b5ieagokvk2r6"]
+[gd_scene load_steps=19 format=3 uid="uid://bjan84vglc716"]
 
 [ext_resource type="Script" path="res://Explore Mode/NightDefense.cs" id="1_qaaw4"]
-[ext_resource type="Script" path="res://Explore Mode/ExploreHUD.cs" id="2_ckspt"]
-[ext_resource type="Texture2D" uid="uid://pergqakjr06a" path="res://GUI/Light Latern.png" id="5_ij7en"]
+[ext_resource type="Texture2D" uid="uid://bctv2aiw7nxlk" path="res://GUI/Light Latern.png" id="5_ij7en"]
 [ext_resource type="Script" path="res://GUI/NightDefenseLanternGUI.cs" id="6_cx8vv"]
-[ext_resource type="Texture2D" uid="uid://dnqnwet1j31ob" path="res://Art/FX/Lamp Fire Big_26x45.png" id="7_l2rsb"]
-[ext_resource type="Texture2D" uid="uid://c6dkxp1jhu6yn" path="res://GUI/Light Latern-Bright.png" id="8_km6av"]
-[ext_resource type="Texture2D" uid="uid://bdqkrtnsjro85" path="res://Art/FX/Lamp Fire Small_16x24.png" id="9_leqcu"]
-[ext_resource type="Texture2D" uid="uid://heplbvn0lg03" path="res://GUI/Light Latern-Dark.png" id="10_a2nmp"]
-[ext_resource type="Texture2D" uid="uid://wyubn3ygv6iv" path="res://Art/FX/Lamp Fire Mid_19x35.png" id="11_bre20"]
-[ext_resource type="Texture2D" uid="uid://cpq2ctvpm6nuq" path="res://GUI/Light Latern-No Torch.png" id="12_hsnva"]
-[ext_resource type="Texture2D" uid="uid://bj6o7cbx18sbv" path="res://GUI/Light Progress Bar.png" id="13_ljinf"]
-[ext_resource type="Texture2D" uid="uid://cpm05i27r4gjx" path="res://GUI/Light Progress Bar Reversed.png" id="14_paglt"]
+[ext_resource type="Texture2D" uid="uid://bpapsn1aqsswq" path="res://Art/FX/Lamp Fire Big_26x45.png" id="7_l2rsb"]
+[ext_resource type="Texture2D" uid="uid://lwvwlq1jetkl" path="res://GUI/Light Latern-Bright.png" id="8_km6av"]
+[ext_resource type="Texture2D" uid="uid://cmiqwllfqqti5" path="res://Art/FX/Lamp Fire Small_16x24.png" id="9_leqcu"]
+[ext_resource type="Texture2D" uid="uid://j3u6234a4y6b" path="res://GUI/Light Latern-Dark.png" id="10_a2nmp"]
+[ext_resource type="Texture2D" uid="uid://cdl0vr4idsi1a" path="res://Art/FX/Lamp Fire Mid_19x35.png" id="11_bre20"]
+[ext_resource type="Texture2D" uid="uid://ct227r010xh28" path="res://GUI/Light Latern-No Torch.png" id="12_hsnva"]
+[ext_resource type="Texture2D" uid="uid://cuslwo5cso0fd" path="res://GUI/Light Progress Bar.png" id="13_ljinf"]
+[ext_resource type="Texture2D" uid="uid://dkojhksjsalti" path="res://GUI/Light Progress Bar Reversed.png" id="14_paglt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jv6b5"]
 
@@ -262,10 +261,11 @@ _data = {
 "RESET": SubResource("Animation_06dum")
 }
 
-[node name="Night Defense" type="Node3D" node_paths=PackedStringArray("lantern")]
+[node name="Night Defense" type="Node3D" node_paths=PackedStringArray("lantern", "hud")]
 script = ExtResource("1_qaaw4")
 lightDurationInSeconds = 30
 lantern = NodePath("HUD/TextureRect")
+hud = NodePath("HUD")
 
 [node name="HUD" type="Panel" parent="."]
 visible = false
@@ -276,7 +276,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_jv6b5")
-script = ExtResource("2_ckspt")
 
 [node name="TextureRect" type="TextureRect" parent="HUD"]
 layout_mode = 0

@@ -24,11 +24,15 @@ public partial class NightDefense : ExploreMode
 
     private int buildingsDestoryedLastNight = 0;
 
-    public override void _Ready(){
+    public override async void _Ready(){
         base._Ready();
         remainingLight = lightDurationInSeconds;
         playerLampStartingBrightness = explorePlayer.GetNode<OmniLight3D>("Torchlight").LightEnergy;
         myCity = GetNode<CityState>("/root/CityState").GetCity();
+        if(myCity == null){ //We failed a load because CityState hasn't been told to load the city yet, let's wait for it.
+            await ToSignal(GetNode<CityState>("/root/CityState"), CityState.SignalName.CityLoaded);
+            myCity = GetNode<CityState>("/root/CityState").GetCity();
+        }
         enemyNavigationRegion = myCity.GetEnemyNavRegion();
         hud = this.GetNode<Control>("HUD");
         hud.Visible = false;

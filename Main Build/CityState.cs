@@ -5,6 +5,9 @@ public partial class CityState : Node
 {
     PackedScene savedCity;
     City currentCityWithinScene;
+	
+    [Signal]
+	public delegate void CityLoadedEventHandler();
 
     public override void _Ready(){
         savedCity = GD.Load<PackedScene>("res://Explore Mode/DefaultCity.tscn");
@@ -21,6 +24,7 @@ public partial class CityState : Node
         instancePoint.GetParent().AddChild(currentCityWithinScene);
         currentCityWithinScene.Transform = instancePoint.Transform;
         GD.Print("City Spawned in Successfully");
+        EmitSignal(SignalName.CityLoaded);
     }
 
     public City GetCity(){

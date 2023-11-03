@@ -131,7 +131,7 @@ public partial class City : Node3D
         morningSun.Visible = false;
         noonSun.Visible = false;
         eveningSun.Visible = false;
-        morningSun.Visible = true;
+        nightMoon.Visible = true;
         worldEnv.Environment = nightEnv;
         this.GetNode<GameMaster>("/root/GameMaster").SetMode(this.GetNode<SceneConfig>("/root/Scene Config").GetMyNightDefenseMode());
     }

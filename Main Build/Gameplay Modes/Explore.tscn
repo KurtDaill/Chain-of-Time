@@ -1,14 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwboa5m4bpu0l"]
+[gd_scene load_steps=3 format=3 uid="uid://dwboa5m4bpu0l"]
 
 [ext_resource type="Script" path="res://Explore Mode/ExploreMode.cs" id="1_0d25n"]
-[ext_resource type="Script" path="res://Explore Mode/ExploreHUD.cs" id="2_g0yfs"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jv6b5"]
 
-[node name="ExploreMode" type="Node3D"]
+[node name="ExploreMode" type="Node3D" node_paths=PackedStringArray("hud")]
 script = ExtResource("1_0d25n")
+hud = NodePath("HUD")
 
-[node name="ExploreHUD" type="Panel" parent="."]
+[node name="HUD" type="Panel" parent="."]
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,4 +16,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_jv6b5")
-script = ExtResource("2_g0yfs")
