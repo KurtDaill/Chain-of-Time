@@ -28,6 +28,8 @@ public partial class NightDefense : ExploreMode
 
     private int buildingsDestoryedLastNight = 0;
 
+    protected EnemyGroup[] enemyGroupsInCity;
+
     public override async void _Ready(){
         base._Ready();
         remainingLight = lightDurationInSeconds;
@@ -80,6 +82,8 @@ public partial class NightDefense : ExploreMode
     }
 
     public void BeginNight(){
+        myCity = this.GetNode<CityState>("/root/CityState").GetCity();
+        enemyNavigationRegion = myCity.GetEnemyNavRegion();
         explorePlayer.GlobalPosition = playerNightStartPosition.GlobalPosition;
         //Go through list of enemy groups
         List<EnemyGroup> thisNightsEnemies = new List<EnemyGroup>();
@@ -98,19 +102,19 @@ public partial class NightDefense : ExploreMode
 
         //Assign enemy groups to spawn points
         for(int i = 0; i < thisNightsEnemies.Count; i++){
-            enemyNavigationRegion.AddChild(thisNightsEnemies[i]);
+            enemyNavigationRegion.AddChild(thisNightsEnemies[i], true);
             thisNightsEnemies[i].GlobalPosition = spawnPointsRandomized[i].GlobalPosition;
         }
+        enemyGroupsInCity = thisNightsEnemies.ToArray();
     }
 
     public Dictionary<string, int> GetRemainingEnemies(){
-        Node[] enemyGroups = enemyNavigationRegion.FindChildren("*", "CharacterBody3D").Where(x => IsInstanceValid(x)).ToArray();
         //If there's a non enemy in there, somethings gone wrong!
-        if(enemyGroups.Any(x => !(x is EnemyGroup))) throw new Exception();
+        enemyGroupsInCity = enemyGroupsInCity.Where(x => IsInstanceValid(x)).ToArray();
         Dictionary<string, int> result = new Dictionary<string, int>();
-        result.Add("All", enemyGroups.Length);
-        result.Add("Wanderer", enemyGroups.Count(x => x is WandererEnemyGroup));
-        result.Add("Vandal", enemyGroups.Count(x => x is VandalEnemyGroup));
+        result.Add("All", enemyGroupsInCity.Length);
+        result.Add("Wanderer", enemyGroupsInCity.Count(x => x is WandererEnemyGroup));
+        result.Add("Vandal", enemyGroupsInCity.Count(x => x is VandalEnemyGroup));
         return result;
     }
 
@@ -135,6 +139,6 @@ public partial class NightDefense : ExploreMode
 
     public override Task TransitionOut(){
         hud.Visible = false;
-        return Task.CompletedTask;
+        return base.TransitionOut();
     }
 }
