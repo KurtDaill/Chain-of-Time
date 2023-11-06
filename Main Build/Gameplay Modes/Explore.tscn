@@ -4,9 +4,8 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jv6b5"]
 
-[node name="ExploreMode" type="Node3D" node_paths=PackedStringArray("hud")]
+[node name="ExploreMode" type="Node3D"]
 script = ExtResource("1_0d25n")
-hud = NodePath("HUD")
 
 [node name="HUD" type="Panel" parent="."]
 texture_filter = 1

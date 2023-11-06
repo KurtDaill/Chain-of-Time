@@ -23,7 +23,7 @@ myNightDefenseMode = NodePath("Night Defense")
 lightDurationInSeconds = 2
 results = NodePath("../Results Screen")
 playerNightStartPosition = NodePath("../Night Marker")
-enemyGroupsToLoad = Array[String](["res://Night Defense/Generic Night Enemy Group.tscn", "res://Night Defense/Generic Night Enemy Group.tscn"])
+enemyGroupsToLoad = Array[String](["res://Night Defense/Generic Night Enemy Group.tscn"])
 explorePlayer = NodePath("../ExplorePlayer")
 
 [node name="ExplorePlayer" parent="." instance=ExtResource("4_gvjqb")]
