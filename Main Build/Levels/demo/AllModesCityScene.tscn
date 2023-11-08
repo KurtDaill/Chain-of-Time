@@ -19,12 +19,10 @@ citySpawnPoint = NodePath("CityMarker")
 cityScene = true
 myNightDefenseMode = NodePath("Night Defense")
 
-[node name="Night Defense" parent="." node_paths=PackedStringArray("results", "playerNightStartPosition", "explorePlayer") instance=ExtResource("2_pjbcb")]
+[node name="Night Defense" parent="." node_paths=PackedStringArray("results", "playerNightStartPosition") instance=ExtResource("2_pjbcb")]
 lightDurationInSeconds = 2
 results = NodePath("../Results Screen")
 playerNightStartPosition = NodePath("../Night Marker")
-enemyGroupsToLoad = Array[String](["res://Night Defense/Generic Night Enemy Group.tscn"])
-explorePlayer = NodePath("../ExplorePlayer")
 
 [node name="ExplorePlayer" parent="." instance=ExtResource("4_gvjqb")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -29, 0.212, 49)
@@ -122,8 +120,7 @@ text = "> Homes Lost Tonight : [TN]
 [color=Red] [US] Left Until City Surrenders[/color]"
 fit_content = true
 
-[node name="ExploreMode" parent="." node_paths=PackedStringArray("explorePlayer") instance=ExtResource("2_liug8")]
-explorePlayer = NodePath("../ExplorePlayer")
+[node name="ExploreMode" parent="." instance=ExtResource("2_liug8")]
 CityExplore = true
 
 [node name="CityMarker" type="Marker3D" parent="."]

@@ -78,6 +78,7 @@ public partial class NightDefense : ExploreMode
         foreach(EnemyGroup enemy in enemyGroupsInCity){
             enemy.QueueFree();
         }
+        explorePlayer.GetNode<OmniLight3D>("Torchlight").Visible = false;
         //TODO Check for Game Over!
     }
 
@@ -106,6 +107,9 @@ public partial class NightDefense : ExploreMode
             thisNightsEnemies[i].GlobalPosition = spawnPointsRandomized[i].GlobalPosition;
         }
         enemyGroupsInCity = thisNightsEnemies.ToArray();
+
+        
+        explorePlayer.GetNode<OmniLight3D>("Torchlight").Visible = true;
     }
 
     public Dictionary<string, int> GetRemainingEnemies(){
