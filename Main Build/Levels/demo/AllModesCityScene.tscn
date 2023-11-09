@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://johbf16mwra8"]
+[gd_scene load_steps=11 format=3 uid="uid://johbf16mwra8"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_0dxlu"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_liug8"]
 [ext_resource type="PackedScene" uid="uid://bjan84vglc716" path="res://Gameplay Modes/NightDefense.tscn" id="2_pjbcb"]
+[ext_resource type="Resource" uid="uid://c6innrm4p7fpn" path="res://Night Defense/NightAttacks/NightOne.tres" id="3_xtw4k"]
 [ext_resource type="PackedScene" uid="uid://cenpkmy5h0ooq" path="res://Explore Mode/explore_player.tscn" id="4_gvjqb"]
 [ext_resource type="Script" path="res://Night Defense/ResultsScreen.cs" id="13_yr3hr"]
 [ext_resource type="Environment" uid="uid://cqpc6quc73qwr" path="res://Night Defense/Result Screen Environment.tres" id="14_c660d"]
@@ -19,10 +20,12 @@ citySpawnPoint = NodePath("CityMarker")
 cityScene = true
 myNightDefenseMode = NodePath("Night Defense")
 
-[node name="Night Defense" parent="." node_paths=PackedStringArray("results", "playerNightStartPosition") instance=ExtResource("2_pjbcb")]
-lightDurationInSeconds = 2
+[node name="Night Defense" parent="." node_paths=PackedStringArray("results", "playerNightStartPosition", "explorePlayer") instance=ExtResource("2_pjbcb")]
+lightDurationInSeconds = 60
 results = NodePath("../Results Screen")
 playerNightStartPosition = NodePath("../Night Marker")
+nights = Array[Resource]([ExtResource("3_xtw4k")])
+explorePlayer = NodePath("../ExplorePlayer")
 
 [node name="ExplorePlayer" parent="." instance=ExtResource("4_gvjqb")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -29, 0.212, 49)
@@ -34,8 +37,9 @@ current = false
 [node name="Torchlight" parent="ExplorePlayer" index="8"]
 visible = false
 
-[node name="Results Screen" type="Node3D" parent="."]
+[node name="Results Screen" type="Node3D" parent="." node_paths=PackedStringArray("nextDayMode")]
 script = ExtResource("13_yr3hr")
+nextDayMode = NodePath("../ExploreMode")
 
 [node name="Results Screen Camera" type="Camera3D" parent="Results Screen"]
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 40, 90, 150)
@@ -61,7 +65,6 @@ light_energy = 2.0
 shadow_enabled = true
 
 [node name="GUI" type="Panel" parent="Results Screen"]
-visible = false
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,7 +123,24 @@ text = "> Homes Lost Tonight : [TN]
 [color=Red] [US] Left Until City Surrenders[/color]"
 fit_content = true
 
-[node name="ExploreMode" parent="." instance=ExtResource("2_liug8")]
+[node name="Label" type="Label" parent="Results Screen/GUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.899
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = 26.08
+offset_right = -33.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Press Start to Continue. . ."
+
+[node name="ExploreMode" parent="." node_paths=PackedStringArray("explorePlayer") instance=ExtResource("2_liug8")]
+explorePlayer = NodePath("../ExplorePlayer")
 CityExplore = true
 
 [node name="CityMarker" type="Marker3D" parent="."]

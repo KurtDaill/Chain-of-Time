@@ -142,14 +142,9 @@ public partial class GameMaster : Node
         return currentMode;
     }
 
-    public void AdvanceClock(){
-        if(currentTime == TimeOfDay.Night) throw new IndexOutOfRangeException("Can't advance time when already in night!");
-        switch(currentTime){
-            case TimeOfDay.Morning : currentTime = TimeOfDay.Noon; break;
-            case TimeOfDay.Noon : currentTime = TimeOfDay.Evening ; break;
-        }
-        if(currentTime == TimeOfDay.Night) EmitSignal(GameMaster.SignalName.NightBegins);
-        else EmitSignal(GameMaster.SignalName.TimeOfDayChanged, (int)currentTime);
+    public void NewDay(){
+        DayTimeUnitsRemaining = 3;
+        EmitSignal(GameMaster.SignalName.TimeOfDayChanged, DayTimeUnitsRemaining);
     }
 
     public int GetCurrentTU(){
@@ -162,6 +157,7 @@ public partial class GameMaster : Node
             throw new ArgumentException("Not enough Time Units to Spend!");
         }
         DayTimeUnitsRemaining -= spend;
+        EmitSignal(GameMaster.SignalName.TimeOfDayChanged, DayTimeUnitsRemaining);
     }
 
     public int GetNumberOfBuildingsDestroyedForGameOver(){

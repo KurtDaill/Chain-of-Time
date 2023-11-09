@@ -33,27 +33,20 @@ public partial class City : Node3D
         noonSun.Visible = false;
         eveningSun.Visible = false;
         nightMoon.Visible = false;
+        this.GetNode<GameMaster>("/root/GameMaster").TimeOfDayChanged += UpdateTime;
+        UpdateTime(this.GetNode<GameMaster>("/root/GameMaster").GetCurrentTU());
+        //TODO Integrate night into this setup cleanly
         if(nightMode){
             nightMoon.Visible = true;
             worldEnv.Environment = nightEnv;
-        }else{
-            switch(GetNode<GameMaster>("/root/GameMaster").GetCurrentTU()){
-                case 3:
-                    morningSun.Visible = true;
-                    worldEnv.Environment = morningEnv;
-                    break;
-                case 2:
-                    noonSun.Visible = true;
-                    worldEnv.Environment = noonEnv;
-                    break;
-                case 1 : case 0:
-                    eveningSun.Visible = true;
-                    worldEnv.Environment = eveningEnv;
-                    break;
-                default: nightMoon.Visible = true; worldEnv.Environment = nightEnv; break;
-            }
         }
         RunUpdates();
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        this.GetNode<GameMaster>("/root/GameMaster").TimeOfDayChanged -= UpdateTime;
     }
 
     public int GetNumberOfBuildingsDestroyed(){
@@ -153,5 +146,27 @@ public partial class City : Node3D
 
     public List<Marker3D> GetEnemySpawnPoints(){
         return enemySpawnPoints.ToList();
+    }
+
+    private void UpdateTime(int timeUnitValue){
+        morningSun.Visible = false;
+        noonSun.Visible = false;
+        eveningSun.Visible = false;
+        nightMoon.Visible = false;
+        switch(timeUnitValue){
+                case 3:
+                    morningSun.Visible = true;
+                    worldEnv.Environment = morningEnv;
+                    break;
+                case 2:
+                    noonSun.Visible = true;
+                    worldEnv.Environment = noonEnv;
+                    break;
+                case 1 : case 0:
+                    eveningSun.Visible = true;
+                    worldEnv.Environment = eveningEnv;
+                    break;
+                default: nightMoon.Visible = true; worldEnv.Environment = nightEnv; break;
+        }
     }
 }

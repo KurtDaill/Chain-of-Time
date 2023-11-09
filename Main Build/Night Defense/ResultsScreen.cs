@@ -8,6 +8,9 @@ public partial class ResultsScreen : GameplayMode
 {
     [Export]
     private VBoxContainer resultsTextContainer;
+    [Export]
+    private ExploreMode nextDayMode;
+    private GameplayMode nextMode;
 
     public override void _Ready(){
         this.GetNode<Panel>("GUI").Visible = false;
@@ -16,7 +19,27 @@ public partial class ResultsScreen : GameplayMode
         resultsTextContainer = this.GetNode<VBoxContainer>("GUI/Background Element/Results Text Container");
         //this.Visible = false;
     }
+
+
+
+    public override void HandleInput(GameplayUtilities.PlayerInput input)
+    {
+        base.HandleInput(input);
+        if(input == GameplayUtilities.PlayerInput.Start){
+            nextMode = nextDayMode;
+        }
+    }
+
+    public override async Task<GameplayMode> RemoteProcess(double delta)
+    {
+        if(nextMode != null){
+            this.GetNode<GameMaster>("/root/GameMaster").NewDay();
+        }
+        return nextMode;
+    }
+
     public override Task StartUp(GameplayMode oldMode){
+        nextMode = null;
         if(oldMode is NightDefense){
             //Setup The Results Screen Reports!!
             NightDefense previousDefMode = oldMode as NightDefense;
@@ -52,6 +75,9 @@ public partial class ResultsScreen : GameplayMode
 
     public override Task TransitionOut()
     {
+        this.GetNode<Panel>("GUI").Visible = false;
+        this.GetNode<DirectionalLight3D>("Result Screen Light").Visible = false;
+        this.GetNode<DirectionalLight3D>("Result Screen Sky").Visible = false;
         return Task.CompletedTask;
     }
 }

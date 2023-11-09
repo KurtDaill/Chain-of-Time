@@ -21,7 +21,7 @@ public partial class NightDefense : ExploreMode
 
     //TODO Make this value load per-night from some kind of central plan?
     [Export(PropertyHint.File)]
-    Godot.Collections.Array<string> enemyGroupsToLoad;
+    Godot.Collections.Array<NightAttack> nights;
     List<Marker3D> spawnPoints;
     private float remainingLight;
     private float playerLampStartingBrightness;
@@ -88,8 +88,8 @@ public partial class NightDefense : ExploreMode
         explorePlayer.GlobalPosition = playerNightStartPosition.GlobalPosition;
         //Go through list of enemy groups
         List<EnemyGroup> thisNightsEnemies = new List<EnemyGroup>();
-        foreach(string enemyGroupFilePath in enemyGroupsToLoad){
-            thisNightsEnemies.Add((EnemyGroup)GD.Load<PackedScene>(enemyGroupFilePath).Instantiate());
+        foreach(PackedScene group in nights[0].GetEnemyGroups()){
+            thisNightsEnemies.Add((EnemyGroup)group.Instantiate());
         }
         //Copy the List of Spawn Points & Randomize the list order
         Random rng = new Random();
