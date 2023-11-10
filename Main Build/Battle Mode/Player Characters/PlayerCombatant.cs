@@ -18,7 +18,7 @@ public partial class PlayerCombatant : Combatant
 	protected string ReadoutPrefabPath;
 	protected PlayerCharacterReadout readout;
 	[Export]
-	protected Texture2D displayPortrait;
+	protected Texture2D readoutTexture;
 	protected PlayerSkill[] readySkills;
 	[Export]
 	protected PlayerSwap swapAbility;
@@ -75,11 +75,7 @@ public partial class PlayerCombatant : Combatant
 	public PlayerSkill[] GetSkills(){
 		return readySkills.Where(x => x != null).ToArray();
 	}
-
-	public Texture2D GetPortrait(){
-		return displayPortrait;
-	}
-
+	
 	public PlayerData GetPlayerData(){
 		string path;
 		switch(name){
@@ -116,9 +112,18 @@ public partial class PlayerCombatant : Combatant
 
 	public PlayerCharacterReadout GetReadoutInstanced(){
 		readout = GD.Load<PackedScene>(ReadoutPrefabPath).Instantiate<PlayerCharacterReadout>();
+		readout.Texture = readoutTexture;
 		readout.character = this;
 		readout.UpdateHP(hp, maxHP);
 		readout.UpdateSP(sp, maxSP);
 		return readout;
+	}
+	public PlayerCharacterReadoutPauseMenu GetReadoutInstacedPauseMenu(){
+		readout = GD.Load<PackedScene>("res://Pause Menu/PlayerCharacterReadoutPauseMenu.tscn").Instantiate<PlayerCharacterReadoutPauseMenu>();
+		readout.Texture = readoutTexture;
+		readout.character = this;
+		readout.UpdateHP(hp, maxHP);
+		readout.UpdateSP(sp, maxSP);
+		return (PlayerCharacterReadoutPauseMenu) readout;
 	}
 }

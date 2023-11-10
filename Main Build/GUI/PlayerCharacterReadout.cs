@@ -5,20 +5,20 @@ using System.Collections.Generic;
 public partial class PlayerCharacterReadout : TextureRect
 {
 	[Export]
-	Label HP;
+	protected Label HP;
 	[Export]
-	Label SP;
+	protected Label SP;
 	[Export]
-	Label maxHPLabel;
+	protected Label maxHPLabel;
 	[Export]
-	Label maxSPLabel;
+	protected Label maxSPLabel;
 	[Export]
-	TextureProgressBar hpBar;
+	protected TextureProgressBar hpBar;
 	[Export]
-	TextureProgressBar spBar;
+	protected TextureProgressBar spBar;
 	public PlayerCombatant character;
 	[Export]
-	TextureRect highlight;
+	protected TextureRect highlight;
     public override void _Ready()
 	{
 		highlight.Visible = false;
@@ -54,12 +54,12 @@ public partial class PlayerCharacterReadout : TextureRect
 		}*/
 	}
 
-	public void Select(){
+	public virtual void Select(){
 		highlight.Visible = true;
 		SizeFlagsVertical = Control.SizeFlags.ShrinkBegin;
 	}
 
-	public void Deselect(){
+	public virtual void Deselect(){
 		highlight.Visible = false;
 		SizeFlagsVertical = Control.SizeFlags.ShrinkEnd;
 	}

@@ -77,12 +77,11 @@ startingMode = NodePath("Night Defense")
 
 [node name="Node3D" type="Node3D" parent="."]
 
-[node name="Night Defense" parent="." node_paths=PackedStringArray("myCity", "enemyNavigationRegion", "results", "explorePlayer") instance=ExtResource("2_15k8v")]
+[node name="Night Defense" parent="." node_paths=PackedStringArray("results", "explorePlayer") instance=ExtResource("2_15k8v")]
 script = ExtResource("3_wu0hn")
 lightDurationInSeconds = 45
-myCity = NodePath("../CitySetup")
-enemyNavigationRegion = NodePath("../Enemy Navigation Region")
 results = NodePath("../Results Screen")
+nights = null
 explorePlayer = NodePath("../ExplorePlayer")
 
 [node name="ExplorePlayer" parent="." instance=ExtResource("3_cvfsk")]
@@ -134,8 +133,6 @@ mesh = SubResource("PlaneMesh_uvmgg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8125, 0, 5.75)
 script = ExtResource("8_4ele1")
 vandalismRange = 0
-positionsInOrder = Array[int]([1])
-enemyTypesInOrder = Array[int]([0])
 
 [node name="Sunset" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.994077, 0.00700554, -0.10845, -0.00751275, 0.991103, 0.132886, 0.108416, 0.132913, -0.98518, 0, 0, 0)
@@ -156,8 +153,9 @@ light_color = Color(1, 0.976471, 0.721569, 1)
 light_energy = 1.2
 shadow_enabled = true
 
-[node name="CitySetup" type="Node3D" parent="."]
+[node name="CitySetup" type="Node3D" parent="." node_paths=PackedStringArray("enemySpawnPoints")]
 script = ExtResource("8_pxr3m")
+enemySpawnPoints = []
 
 [node name="Post Office" type="CSGBox3D" parent="CitySetup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.375, 5, 55.5625)

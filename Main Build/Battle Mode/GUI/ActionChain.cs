@@ -51,7 +51,7 @@ public partial class ActionChain : Control
 		}
 		for(int i = 0; i < players.Length; i++){
 			actions[i].GetNode<Label>("Label").Text = "???";
-			characterPortraits[i].Texture = players[i].GetPortrait();
+			//characterPortraits[i].Texture = players[i].GetPortrait();
 			actions[i].Visible = true;
 			if(i == 1) chainGraphics[0].Visible = true;
 			if(i == 2) chainGraphics[1].Visible = true;

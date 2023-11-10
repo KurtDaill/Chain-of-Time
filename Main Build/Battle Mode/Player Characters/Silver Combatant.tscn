@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://234suufiqv8c"]
 
 [ext_resource type="Script" path="res://Battle Mode/Player Characters/SilverCombatant.cs" id="1_vos4e"]
-[ext_resource type="Texture2D" uid="uid://x8jh7q2a2twq" path="res://Art/Silver Portrait.png" id="2_kja07"]
+[ext_resource type="Texture2D" uid="uid://11jtdp6q46k4" path="res://GUI/Battle Menu Assets/Readouts/Silver Readout.png" id="2_j3rqh"]
 [ext_resource type="Texture2D" uid="uid://d7pbriigo4aj" path="res://Art/Prod Sprite Sheets/Silver Combat Sprite-Sheet.png" id="3_568ne"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="4_kc02e"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/SilverBasicAttack.cs" id="5_ems5m"]
@@ -417,7 +417,8 @@ script = ExtResource("1_vos4e")
 sp = 4
 maxSP = 4
 basicAttack = NodePath("SilverBasicAttack")
-displayPortrait = ExtResource("2_kja07")
+ReadoutPrefabPath = "res://Battle Mode/GUI/PlayerReadout.tscn"
+readoutTexture = ExtResource("2_j3rqh")
 swapAbility = NodePath("SwapPositions")
 hp = 10
 maxHP = 10

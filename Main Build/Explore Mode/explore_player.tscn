@@ -341,6 +341,7 @@ light_cull_mask = 4293918752
 
 [node name="Torchlight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63863, 1.73842, 1.24652)
+visible = false
 light_color = Color(1, 0.74902, 0.160784, 1)
 light_energy = 7.0
 omni_range = 25.0

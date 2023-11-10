@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dcx8w1vq0hb3v"]
+
+[ext_resource type="Texture2D" uid="uid://6tr7cmev7k5r" path="res://Art/3D/Temple Rough Render 2_2.png" id="1_yh4kj"]
+
+[resource]
+resource_name = "Temple Rough Render 2_2"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_yh4kj")
+texture_filter = 0

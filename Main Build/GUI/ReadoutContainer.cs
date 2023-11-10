@@ -36,6 +36,20 @@ public partial class ReadoutContainer : BoxContainer
 			}
 		}
 	}
+
+	public void SetSelectedByIndex(int index){
+		for(int i = 0; i < readouts.Count; i++){
+			if(i == index){
+				readouts[i].Select();
+				//PositionTopMenu(i);
+			}else{
+				readouts[i].Deselect();
+			}
+		}
+	}
+	public string GetCharacterNameAtIndex(int index){
+		return readouts[index].character.GetName();
+	}
 	public void Reorder(){ //TODO Actually Make this work with any number of players
 		var readouts = this.GetChildren();
 		foreach(Node element in readouts){
@@ -76,8 +90,15 @@ public partial class ReadoutContainer : BoxContainer
 		foreach(Node child in this.GetChildren()){
 			this.RemoveChild(child);
 		}
+		readouts = new Godot.Collections.Array<PlayerCharacterReadout>();
 		foreach(PlayerCombatant pCom in playerCombatants){
-			this.AddChild(pCom.GetReadoutInstanced());			
+			PlayerCharacterReadoutPauseMenu readout = pCom.GetReadoutInstacedPauseMenu();
+			this.AddChild(readout);
+			readouts.Add(readout);			
 		}
+	}
+
+	public int Length(){
+		return readouts.Count;
 	}
 }

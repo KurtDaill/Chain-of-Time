@@ -36,7 +36,11 @@ public partial class GameMaster : Node
     {
         state = GD.Load<StoryState>("res://ExampleStoryState.tres");
         //Default Party Data
-        partyData = new PlayerData[1]{new PlayerData("Cato", "res://Battle Mode/Player Characters/Cato Combatant.tscn", 6, 6, 2, 2, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroFront))};
+        partyData = new PlayerData[3]{
+            new PlayerData("Cato", "res://Battle Mode/Player Characters/Cato Combatant.tscn", 2, 6, 2, 2, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroFront)),
+            new PlayerData("Luciene", "res://Battle Mode/Player Characters/Lucienne Combatant.tscn", 5,5, 3,3, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroMid)),
+            new PlayerData("Silver", "res://Battle Mode/Player Characters/Silver Combatant.tscn", 4,4, 4,4, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroBack))
+            };
         inventory = new List<Item>();
         currentTime = TimeOfDay.Morning;
         ProcessMode = ProcessModeEnum.Always;
@@ -103,6 +107,23 @@ public partial class GameMaster : Node
             data.RestoreHP();
             data.RestoreSP();
         }
+    }
+
+    public void RestorePartyHP(){
+        foreach(PlayerData data in partyData.Where(x => x != null)){
+            data.RestoreHP();
+        }
+    }
+
+    public void RestoreCharacterHP(string characterName){
+        foreach(PlayerData data in partyData.Where(x => x != null)){
+            if(data.GetName() == characterName){
+                data.RestoreHP();
+                return;
+            }
+        }
+        GetTree().Quit();
+        throw new ArgumentException("Character Name: " + characterName + " not found in current party...");
     }
 
     public void BookmarkCurrentParty(){

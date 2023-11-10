@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://ck78k6iju4ldb"]
 
 [ext_resource type="Script" path="res://Battle Mode/Player Characters/CatoCombatant.cs" id="1_r8uo0"]
-[ext_resource type="Texture2D" uid="uid://buymnk3wkjnd3" path="res://GUI/Cato Head Thing.png" id="2_kpxx0"]
+[ext_resource type="Texture2D" uid="uid://c14mksckjeov6" path="res://GUI/Battle Menu Assets/Readouts/Cato Readout.png" id="2_56gmb"]
 [ext_resource type="Texture2D" uid="uid://d054fqnoqr0oo" path="res://Art/Prod Sprite Sheets/Cato Combat Sprite-Sheet.png" id="3_ft434"]
 [ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="3_oduca"]
 [ext_resource type="Script" path="res://Battle Mode/Abilities/CatoBasicAttack.cs" id="4_qgcm6"]
@@ -55,6 +55,24 @@ tracks/2/keys = {
 "values": [{
 "args": [0.0],
 "method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ogaq5"]
+resource_name = "DrinkPotion"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
 }]
 }
 
@@ -385,24 +403,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_ogaq5"]
-resource_name = "DrinkPotion"
-length = 0.5
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0],
-"method": &"ActivateReadyAction"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s6heb"]
 _data = {
 "CatoBasicAttack": SubResource("Animation_xplvf"),
@@ -424,7 +424,7 @@ sp = 2
 maxSP = 2
 basicAttack = NodePath("CatoBasicAttack")
 ReadoutPrefabPath = "res://Battle Mode/GUI/PlayerReadout.tscn"
-displayPortrait = ExtResource("2_kpxx0")
+readoutTexture = ExtResource("2_56gmb")
 swapAbility = NodePath("SwapPositions")
 hp = 10
 maxHP = 10

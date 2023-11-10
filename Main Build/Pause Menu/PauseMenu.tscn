@@ -1,14 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://cq7dy5kfxlwfc"]
+[gd_scene load_steps=15 format=3 uid="uid://cq7dy5kfxlwfc"]
 
 [ext_resource type="Script" path="res://Pause Menu/PauseMenu.cs" id="1_7e165"]
 [ext_resource type="Script" path="res://Pause Menu/PauseMenuGUI.cs" id="2_7dlw4"]
 [ext_resource type="Theme" uid="uid://d085dk15hia1x" path="res://Pause Menu/TabTheme.tres" id="3_v4jm7"]
-[ext_resource type="PackedScene" uid="uid://m361tvnjb22d" path="res://Battle Mode/GUI/PlayerReadout.tscn" id="4_h4668"]
 [ext_resource type="Script" path="res://GUI/ReadoutContainer.cs" id="4_rup4g"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/ItemMenu.cs" id="5_qptq7"]
 [ext_resource type="Texture2D" uid="uid://cenqt4ms2eal0" path="res://GUI/Battle Menu Assets/Item Menu/Item Tab.png" id="6_8271n"]
 [ext_resource type="Theme" uid="uid://dq2wt80l1hcrn" path="res://GUI/Themes/Battle Menu Themes/Skill Card Normal.tres" id="7_ejgvf"]
-[ext_resource type="Texture2D" uid="uid://cty2ypy6s8s6b" path="res://GUI/Battle Menu Assets/Item Menu/Item Tab Highlight.png" id="8_2sxiq"]
+[ext_resource type="Texture2D" uid="uid://bgoaxdjnxdv7" path="res://GUI/Battle Menu Assets/Item Menu/Item Tab Highlight.png" id="8_2sxiq"]
 [ext_resource type="Texture2D" uid="uid://d145f3ww0wx4r" path="res://GUI/Battle Menu Assets/Item Menu/Item Description Box.png" id="9_mo1bk"]
 
 [sub_resource type="Animation" id="22"]
@@ -381,16 +380,7 @@ offset_top = -0.360001
 offset_right = 1345.76
 offset_bottom = -0.0800781
 script = ExtResource("4_rup4g")
-readouts = []
-
-[node name="Cato Readout" parent="PauseMenuGUI/Readouts" instance=ExtResource("4_h4668")]
-layout_mode = 2
-
-[node name="Cato Readout2" parent="PauseMenuGUI/Readouts" instance=ExtResource("4_h4668")]
-layout_mode = 2
-
-[node name="Cato Readout3" parent="PauseMenuGUI/Readouts" instance=ExtResource("4_h4668")]
-layout_mode = 2
+readouts = [null, NodePath(""), NodePath("")]
 
 [node name="Item Menu" type="Control" parent="PauseMenuGUI"]
 layout_mode = 3

@@ -50,4 +50,19 @@ public partial class PauseMenu : GameplayMode
 		GetTree().Paused = false;
         return base.TransitionOut();
     }
+
+	public void SetMenuTypeOnTransitionIn(string mode){
+		switch (mode)
+		{
+			case "Select-a-Character":
+				gui.SetMode(PauseMenuGUI.PauseMenuMode.SelectACharacter);
+				break;
+			default:
+				break;
+		}
+	}
+
+	public PauseMenuGUI GetGUI(){
+		return gui;
+	}
 }
