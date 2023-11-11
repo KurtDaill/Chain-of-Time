@@ -51,6 +51,7 @@ public partial class ExploreMode : GameplayMode{
     {
         explorePlayer.HandleInput(input);
         if(input == PlayerInput.Start){
+            GetNode<PauseMenu>("/root/PauseMenu").SetMenuTypeOnTransitionIn("NormalPause");
             GetNode<GameMaster>("/root/GameMaster").SetMode(GetNode<PauseMenu>("/root/PauseMenu"));
         }
     }

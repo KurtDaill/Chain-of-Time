@@ -4,7 +4,8 @@ using static GameplayUtilities;
 public partial class PauseMenuGUI : CanvasLayer
 {
 	public enum PauseMenuMode{
-		SelectACharacter
+		SelectACharacter,
+		NormalPause
 	}
 	PauseMenuMode currentMode;
 	[Export]
@@ -41,7 +42,7 @@ public partial class PauseMenuGUI : CanvasLayer
 		}
 		switch(currentMode){
 			case PauseMenuMode.SelectACharacter:
-				MoveSelection(0,0, 0, readouts.Length(), input);
+				MoveSelectionInvertY(0,0, 0, readouts.Length(), input);
 				readouts.SetSelectedByIndex(selectY);
 				if(input == PlayerInput.Select){
 					EmitSignal(PauseMenuGUI.SignalName.CharacterSelectedInPauseMenu,
@@ -49,10 +50,11 @@ public partial class PauseMenuGUI : CanvasLayer
 					return true;
 				}
 				break;
+			case PauseMenuMode.NormalPause: 
+				//Include Stuff for the Default Pause Menu Here
+				break;
 		}
-		
 		itemSubMenu.HandleInputPauseMenu(input);	
-		
 		return false;
 	}
 
@@ -67,7 +69,7 @@ public partial class PauseMenuGUI : CanvasLayer
 	}
 	public void Close()
 	{
-
+		readouts.SetSelectedByIndex(-1);
 	}
 
 	public void SetMode(PauseMenuMode mode){
@@ -80,6 +82,14 @@ public partial class PauseMenuGUI : CanvasLayer
 		switch(input){
 			case PlayerInput.Up : if(selectY < maxY) selectY++; break;
 			case PlayerInput.Down : if(selectY > minY) selectY--; break;
+			case PlayerInput.Left : if(selectX > minX) selectY++; break;
+			case PlayerInput.Right : if(selectX < maxX) selectY--; break;
+		}
+	}
+	public void MoveSelectionInvertY(int minX, int maxX, int minY, int maxY, PlayerInput input){
+		switch(input){
+			case PlayerInput.Down : if(selectY < maxY) selectY++; break;
+			case PlayerInput.Up : if(selectY > minY) selectY--; break;
 			case PlayerInput.Left : if(selectX > minX) selectY++; break;
 			case PlayerInput.Right : if(selectX < maxX) selectY--; break;
 		}

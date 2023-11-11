@@ -279,7 +279,7 @@ _data = {
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 0.212, 0)
 floor_max_angle = 1.309
 script = ExtResource("1_rbmfy")
-Speed = 8.0
+Speed = 10.0
 exploreCamera = NodePath("Explore Camera")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

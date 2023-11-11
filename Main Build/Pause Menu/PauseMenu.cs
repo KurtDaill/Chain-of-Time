@@ -31,6 +31,7 @@ public partial class PauseMenu : GameplayMode
     {
         if(goBack){
 			goBack = false;
+			gui.Close();
 			return returnMode;
 		}
 		return null;
@@ -46,7 +47,6 @@ public partial class PauseMenu : GameplayMode
 		//GetTree().Root.RemoveChild(gui);
 		//this.AddChild(gui);
 		gui.Visible = false;
-		gui.Close();
 		GetTree().Paused = false;
         return base.TransitionOut();
     }
@@ -56,6 +56,9 @@ public partial class PauseMenu : GameplayMode
 		{
 			case "Select-a-Character":
 				gui.SetMode(PauseMenuGUI.PauseMenuMode.SelectACharacter);
+				break;
+			case "NormalPause":
+				gui.SetMode(PauseMenuGUI.PauseMenuMode.NormalPause);
 				break;
 			default:
 				break;
