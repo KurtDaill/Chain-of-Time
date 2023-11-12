@@ -88,10 +88,9 @@ public partial class BattleGUI : Control
 		lastMenu = currentMenu;
 		currentMenu = (BattleMenu) GetNode("Readouts/Top Menu");
 		currentMenu.OnOpen(playersInQuestion[abilitiesQueued.Count(x => x != null)], parentBattle, this);
+		playerCharacterReadouts.SetCharacterReadouts(characters);
 		playerCharacterReadouts.SetSelectedCharacter(playersInQuestion[0]);
-		//chainGUI.ResetActionChain(playersInQuestion);
 		ShowGUI();
-		playerCharacterReadouts.Reorder();
 		active = true;
 		return true;
 	}

@@ -12,7 +12,7 @@ public partial class PauseMenuGUI : CanvasLayer
 	ItemMenu itemSubMenu;
 
 	[Export]
-	ReadoutContainer readouts;
+	ReadoutContainerPauseMenu readouts;
 	[Export]
 	Button startNightButton;
 	int selectX, selectY;

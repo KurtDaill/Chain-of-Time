@@ -49,7 +49,6 @@ public partial class Battle : GameplayMode
 		Visible = false;
 		gui.Visible = false;
 		this.battleCamera.Current = false;
-		GetNode<ReadoutContainer>("Camera3D/BattleGUI/Readouts").SetReadouts(battleRoster.GetAllPlayerCombatants().ToArray());
 	}
 
 	public override async Task<GameplayMode> RemoteProcess(double delta){ //TO-DO can we implement "waiting" in a better way?
@@ -219,6 +218,7 @@ public partial class Battle : GameplayMode
 		}
 
 	public override Task TransitionOut(){
+		GetNode<GameMaster>("/root/GameMaster").SavePlayerParty(battleRoster);
 		this.QueueFree();
 		return Task.CompletedTask;
 	}

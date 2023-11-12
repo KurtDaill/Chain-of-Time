@@ -18,7 +18,7 @@ public partial class GameMaster : Node
 
     private string spawnPoint = "";
 
-    private int DayTimeUnitsRemaining = 3;
+    private int DayTimeUnitsRemaining = 0;
 
     GameplayMode currentMode;
     TimeOfDay currentTime;

@@ -85,7 +85,7 @@ public partial class PlayerCombatant : Combatant
 			case "Silver":
 				path = "res://Battle Mode/Player Characters/Silver Combatant.tscn";
 				break;
-			case "Luciene":
+			case "Lucienne":
 				path = "res://Battle Mode/Player Characters/Lucienne Combatant.tscn";
 				break;
 			default :

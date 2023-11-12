@@ -6,8 +6,10 @@ public partial class ReadoutContainer : BoxContainer
 
 	[Signal]
 	public delegate void ReadyToPopulateReadoutsEventHandler(); 
-	[Export]
-	Godot.Collections.Array<PlayerCharacterReadout> readouts;
+
+	//The array stores the character position inately in the readout's place in the array. The data is ordered as [Rank,Lane]
+	PlayerCharacterReadout[,] myReadouts;
+	int numberOfActiveReadouts;
 	[Export]
 	TopMenu topMenu;
 
@@ -18,87 +20,53 @@ public partial class ReadoutContainer : BoxContainer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		myReadouts = new PlayerCharacterReadout[3,3];
 	}
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(double delta)
-//  {
-//      
-//  }
-	
 	public void SetSelectedCharacter(PlayerCombatant com){
-		for(int i = 0; i < readouts.Count; i++){
-			if(readouts[i].character == com){
-				readouts[i].Select();
-				PositionTopMenu(i);
-			}else{
-				readouts[i].Deselect();
-			}
-		}
-	}
-
-	public void SetSelectedByIndex(int index){
-		for(int i = 0; i < readouts.Count; i++){
-			if(i == index){
-				readouts[i].Select();
-				//PositionTopMenu(i);
-			}else{
-				readouts[i].Deselect();
-			}
-		}
-	}
-	public string GetCharacterNameAtIndex(int index){
-		return readouts[index].character.GetName();
-	}
-	public void Reorder(){ //TODO Actually Make this work with any number of players
-		var readouts = this.GetChildren();
-		foreach(Node element in readouts){
-			if(element != null && element is PlayerCharacterReadout){
-				var read = (PlayerCharacterReadout) element; //TODO Better handling of...all of this...
-				if(read.character == null) continue;
-				switch(read.character.GetPosition().GetRank()){
-					case BattleRank.HeroFront :
-						MoveChild(read, 1);
-						break;
-					case BattleRank.HeroMid :
-						MoveChild(read, 0);
-						break;
-					case BattleRank.HeroBack :
-						MoveChild(read, 0);
-						break;
+		for(int i = 0; i < 3; i++){
+			for(int j = 0; j < 3; j++){
+				if(myReadouts[i,j] != null){
+					if(myReadouts[i,j].character == com){
+						myReadouts[i,j].Select();
+						Reorder(myReadouts[i,j].GetIndex());
+					}else{
+						myReadouts[i,j].Deselect();
+					}
 				}
 			}
-			//else readouts.Remove(element);
 		}
+	}
+
+	public void SetCharacterReadouts(PlayerCombatant[] playerCombatants){
+		numberOfActiveReadouts = 0;
+		foreach(PlayerCharacterReadout readout in myReadouts){
+			if(IsInstanceValid(readout) && readout != null){
+				readout.Free();
+			}
+		}
+		myReadouts = new PlayerCharacterReadout[3,3];
+		foreach(PlayerCombatant com in playerCombatants){
+			myReadouts[(int)com.GetPosition().GetRank(), (int)com.GetPosition().GetLane()] = com.GetReadoutInstanced();
+			this.AddChild(myReadouts[(int)com.GetPosition().GetRank(), (int)com.GetPosition().GetLane()]);
+			numberOfActiveReadouts++;	
+		}
+		Reorder();
+	}
+	public void Reorder(int currentCharacter = -1){ //TODO Actually Make this work with any number of players
+		int index = 0;
+		for(int i = 0; i < 3; i++){
+			for(int j = 0; j < 3; j++){
+				if(myReadouts[i,j] != null){
+					this.MoveChild(myReadouts[i,j], index);
+					index++;
+				}
+			}
+		}
+		if(currentCharacter != -1) PositionTopMenu(currentCharacter);
 	}
 
 	private void PositionTopMenu(int currentCharacter){
-		this.MoveChild(topMenu, (readouts.Count - currentCharacter));
-	}
-
-	public void SetReadouts(PlayerCombatant[] playerCombatants){
-		foreach(Node child in this.GetChildren()){
-			this.RemoveChild(child);
-		}
-		this.AddChild(topMenu);
-		foreach(PlayerCombatant pCom in playerCombatants){
-			this.AddChild(pCom.GetReadoutInstanced());			
-		}
-	}
-
-	public void SetReadoutsPauseMenu(PlayerCombatant[] playerCombatants){
-		foreach(Node child in this.GetChildren()){
-			this.RemoveChild(child);
-		}
-		readouts = new Godot.Collections.Array<PlayerCharacterReadout>();
-		foreach(PlayerCombatant pCom in playerCombatants){
-			PlayerCharacterReadoutPauseMenu readout = pCom.GetReadoutInstacedPauseMenu();
-			this.AddChild(readout);
-			readouts.Add(readout);			
-		}
-	}
-
-	public int Length(){
-		return readouts.Count;
+		this.MoveChild(topMenu, currentCharacter + 1);
 	}
 }

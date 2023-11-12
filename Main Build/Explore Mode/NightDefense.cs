@@ -64,7 +64,6 @@ public partial class NightDefense : ExploreMode
     //We End the Night.
     public void EndNight(){
         buildingsDestoryedLastNight = 0;
-
         //Night Damage Logic
         System.Collections.Generic.Dictionary<string,int>enemies = GetRemainingEnemies();
         enemies.TryGetValue("All", out int totalEnemies);
@@ -93,7 +92,7 @@ public partial class NightDefense : ExploreMode
         }
         //Copy the List of Spawn Points & Randomize the list order
         Random rng = new Random();
-        List<Marker3D> spawnPointsRandomized = spawnPoints.OrderBy(x => rng.Next()).ToList();
+        List<Marker3D> spawnPointsRandomized = spawnPoints.Where(x => x != null).OrderBy(x => rng.Next()).ToList();
         
         //throw any error if there aren't enough spawn points
         if(spawnPointsRandomized.Count < thisNightsEnemies.Count){
@@ -113,12 +112,18 @@ public partial class NightDefense : ExploreMode
     }
 
     public Dictionary<string, int> GetRemainingEnemies(){
-        //If there's a non enemy in there, somethings gone wrong!
-        enemyGroupsInCity = enemyGroupsInCity.Where(x => IsInstanceValid(x)).ToArray();
         Dictionary<string, int> result = new Dictionary<string, int>();
-        result.Add("All", enemyGroupsInCity.Length);
-        result.Add("Wanderer", enemyGroupsInCity.Count(x => x is WandererEnemyGroup));
-        result.Add("Vandal", enemyGroupsInCity.Count(x => x is VandalEnemyGroup));
+        //If there's a non enemy in there, somethings gone wrong!
+        if(enemyGroupsInCity.Where(IsInstanceValid).Any()){
+            enemyGroupsInCity = enemyGroupsInCity.Where(IsInstanceValid).ToArray();
+            result.Add("All", enemyGroupsInCity.Length);
+            result.Add("Wanderer", enemyGroupsInCity.Count(x => x is WandererEnemyGroup));
+            result.Add("Vandal", enemyGroupsInCity.Count(x => x is VandalEnemyGroup));
+        }else{
+            result.Add("All", 0);
+            result.Add("Wanderer", 0);
+            result.Add("Vandal", 0);
+        }
         return result;
     }
 
@@ -134,7 +139,18 @@ public partial class NightDefense : ExploreMode
     public override Task StartUp(GameplayMode oldMode){
         Task result = base.StartUp(oldMode);
         hud.Visible = true;
-        if(oldMode is Battle) myCity.EndFightOverBuilding();
+        if(oldMode is Battle){
+            myCity.EndFightOverBuilding();
+            enemyGroupsInCity = enemyGroupsInCity.Where(IsInstanceValid).ToArray();
+        }
+        if(enemyGroupsInCity != null){
+            if(enemyGroupsInCity.Any(x => x != null)){
+                foreach(EnemyGroup group in enemyGroupsInCity){
+                    //Unpauses All Enemny Groups that might've been paused by exiting the night mode
+                    group.ProcessMode = ProcessModeEnum.Always;
+                }
+            }
+        }
         else if(oldMode is ExploreMode || oldMode is PauseMenu){ //Night is beginning from day phase
             BeginNight();
         }
@@ -143,6 +159,14 @@ public partial class NightDefense : ExploreMode
 
     public override Task TransitionOut(){
         hud.Visible = false;
+        if(enemyGroupsInCity != null){
+            if(enemyGroupsInCity.Any(x => x != null)){
+                foreach(EnemyGroup group in enemyGroupsInCity){
+                    //Pauses All Enemy Groups while we're focusing on something else (i.e. Combat)
+                    group.ProcessMode = ProcessModeEnum.Disabled;
+                }
+            }
+        }
         return base.TransitionOut();
     }
 }

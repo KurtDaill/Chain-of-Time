@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://ctkjn6qaseru7"]
+[gd_scene load_steps=51 format=3 uid="uid://ctkjn6qaseru7"]
 
 [ext_resource type="Theme" uid="uid://d4kx000io04gf" path="res://GUI/Themes/Battle Menu Themes/Skill Card Normal Small.tres" id="3"]
 [ext_resource type="Theme" uid="uid://dq2wt80l1hcrn" path="res://GUI/Themes/Battle Menu Themes/Skill Card Normal.tres" id="5"]
@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://doe0fcor7214h" path="res://GUI/Battle Menu Assets/Skill Menu/Skill Card.png" id="33_011xl"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/SkillCard.cs" id="34_dir1l"]
 [ext_resource type="Theme" uid="uid://lcud6pbsl6dn" path="res://GUI/Themes/Battle Menu Themes/UI Impact.tres" id="35_wu077"]
-[ext_resource type="Texture2D" uid="uid://7wtuchgydm3u" path="res://GUI/Battle Menu Assets/Readouts/Lucienne Reaodut.png" id="36_1ny30"]
 [ext_resource type="Texture2D" uid="uid://dbuhrp5s28xww" path="res://GUI/Battle Menu Assets/Top Menu/AttackButton.png" id="36_70wny"]
 [ext_resource type="Texture2D" uid="uid://diafuti26x647" path="res://GUI/Battle Menu Assets/Skill Menu/FriendlyPip.png" id="36_wc611"]
 [ext_resource type="Texture2D" uid="uid://l6unyyb4maph" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonRun!.tres" id="37"]
@@ -35,9 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://ciiw36ypj5j34" path="res://Audio/MenuReminderClicker.wav" id="40_oqcwa"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/SwapMenu.cs" id="42"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/ItemMenu.cs" id="43"]
-[ext_resource type="PackedScene" uid="uid://m361tvnjb22d" path="res://Battle Mode/GUI/PlayerReadout.tscn" id="43_0yoje"]
 [ext_resource type="Texture2D" uid="uid://k1c0luw6jqjc" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonSwap.tres" id="44"]
-[ext_resource type="Texture2D" uid="uid://11jtdp6q46k4" path="res://GUI/Battle Menu Assets/Readouts/Silver Readout.png" id="44_o5nwl"]
 [ext_resource type="Texture2D" uid="uid://yh4kccmuodkm" path="res://GUI/Battle Menu Assets/Party Menu/PartyButtonCombo.tres" id="45"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/AttackMenu.cs" id="47"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/PartyMenu.cs" id="48"]
@@ -1327,7 +1324,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("42")
 
-[node name="Readouts" type="HBoxContainer" parent="." node_paths=PackedStringArray("readouts")]
+[node name="Readouts" type="HBoxContainer" parent="." node_paths=PackedStringArray("topMenu")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -1339,19 +1336,7 @@ offset_top = 130.68
 offset_right = -1093.0
 offset_bottom = -9.0
 script = ExtResource("40_jh205")
-readouts = [NodePath("Cato Readout"), NodePath("Silver Readout"), NodePath("Luciene Readout")]
-
-[node name="Silver Readout" parent="Readouts" instance=ExtResource("43_0yoje")]
-layout_mode = 2
-texture = ExtResource("44_o5nwl")
-
-[node name="Luciene Readout" parent="Readouts" instance=ExtResource("43_0yoje")]
-layout_mode = 2
-texture = ExtResource("36_1ny30")
-
-[node name="Cato Readout" parent="Readouts" instance=ExtResource("43_0yoje")]
-layout_mode = 2
-size_flags_vertical = 0
+topMenu = NodePath("Top Menu")
 
 [node name="Top Menu" type="VBoxContainer" parent="Readouts"]
 visible = false

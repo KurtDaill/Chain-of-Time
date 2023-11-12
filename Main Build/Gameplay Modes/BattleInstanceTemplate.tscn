@@ -127,16 +127,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 step = 1.0
 
-[node name="Readouts" parent="Camera3D/BattleGUI" index="6" node_paths=PackedStringArray("readouts", "topMenu")]
-readouts = []
-topMenu = NodePath("Top Menu")
-
-[node name="Silver Readout" parent="Camera3D/BattleGUI/Readouts" index="0"]
-visible = false
-
-[node name="Luciene Readout" parent="Camera3D/BattleGUI/Readouts" index="1"]
-visible = false
-
 [node name="Turnover Timer" type="Timer" parent="."]
 wait_time = 0.4
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Pause Menu/PauseMenu.cs" id="1_7e165"]
 [ext_resource type="Script" path="res://Pause Menu/PauseMenuGUI.cs" id="2_7dlw4"]
 [ext_resource type="Theme" uid="uid://d085dk15hia1x" path="res://Pause Menu/TabTheme.tres" id="3_v4jm7"]
-[ext_resource type="Script" path="res://GUI/ReadoutContainer.cs" id="4_rup4g"]
+[ext_resource type="Script" path="res://Pause Menu/ReadoutContainerPauseMenu.cs" id="4_gcwmq"]
 [ext_resource type="Script" path="res://Battle Mode/GUI/ItemMenu.cs" id="5_qptq7"]
 [ext_resource type="Texture2D" uid="uid://cenqt4ms2eal0" path="res://GUI/Battle Menu Assets/Item Menu/Item Tab.png" id="6_8271n"]
 [ext_resource type="Theme" uid="uid://dq2wt80l1hcrn" path="res://GUI/Themes/Battle Menu Themes/Skill Card Normal.tres" id="7_ejgvf"]
@@ -371,7 +371,7 @@ layout_mode = 2
 theme = ExtResource("3_v4jm7")
 text = "Party Menu"
 
-[node name="Readouts" type="VBoxContainer" parent="PauseMenuGUI" node_paths=PackedStringArray("readouts")]
+[node name="Readouts" type="VBoxContainer" parent="PauseMenuGUI"]
 anchors_preset = -1
 anchor_top = 0.142
 anchor_right = 0.297
@@ -379,8 +379,7 @@ anchor_bottom = 1.001
 offset_top = -0.360001
 offset_right = 1345.76
 offset_bottom = -0.0800781
-script = ExtResource("4_rup4g")
-readouts = [null, NodePath(""), NodePath("")]
+script = ExtResource("4_gcwmq")
 
 [node name="Item Menu" type="Control" parent="PauseMenuGUI"]
 layout_mode = 3
