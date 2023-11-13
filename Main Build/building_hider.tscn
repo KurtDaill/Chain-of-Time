@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtj5ljo1lwad6"]
+
+[ext_resource type="Script" path="res://Explore Mode/BuildingHider.cs" id="1_obvqs"]
+
+[node name="Building Hider" type="Node3D" node_paths=PackedStringArray("viewTarget")]
+script = ExtResource("1_obvqs")
+viewTarget = NodePath("")

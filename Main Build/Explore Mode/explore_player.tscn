@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://cenpkmy5h0ooq"]
+[gd_scene load_steps=22 format=3 uid="uid://cenpkmy5h0ooq"]
 
 [ext_resource type="Script" path="res://Explore Mode/ExplorePlayer.cs" id="1_rbmfy"]
 [ext_resource type="Texture2D" uid="uid://ccgn55o0b1jo6" path="res://Art/Prod Sprite Sheets/Adventure Cato Sprite-Sheet.png" id="2_khbbt"]
 [ext_resource type="Script" path="res://Explore Mode/ExploreCamera.cs" id="3_xwmoa"]
+[ext_resource type="PackedScene" uid="uid://dtj5ljo1lwad6" path="res://building_hider.tscn" id="4_xf63r"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sstrf"]
 radius = 0.52
@@ -323,6 +324,9 @@ current = true
 size = 0.1
 near = 1.0
 script = ExtResource("3_xwmoa")
+
+[node name="Building Hider" parent="Explore Camera" node_paths=PackedStringArray("viewTarget") instance=ExtResource("4_xf63r")]
+viewTarget = NodePath("../..")
 
 [node name="Map Handle" type="Node3D" parent="."]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 4.25)

@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bwe01xbqhllo0"]
+[gd_scene load_steps=10 format=3 uid="uid://bwe01xbqhllo0"]
 
 [ext_resource type="PackedScene" uid="uid://cenpkmy5h0ooq" path="res://Explore Mode/explore_player.tscn" id="1_ctnha"]
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_gd87j"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="3_pissf"]
-[ext_resource type="Script" path="res://Explore Mode/Building.cs" id="4_el5ww"]
-[ext_resource type="PackedScene" uid="uid://bommq0mkyljqw" path="res://Art/3D/Little House A.gltf" id="5_2y446"]
+[ext_resource type="PackedScene" uid="uid://igkxtup3khij" path="res://Explore Mode/Complete Buildings/generic_house.tscn" id="4_oldkv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hynfg"]
 size = Vector2(40, 40)
@@ -21,17 +20,12 @@ sky_material = SubResource("ProceduralSkyMaterial_84afc")
 background_mode = 2
 sky = SubResource("Sky_200ly")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7k18n"]
-size = Vector3(8, 6, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3spwa"]
-size = Vector3(8, 8, 8)
-
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("startingMode")]
 script = ExtResource("1_gd87j")
 startingMode = NodePath("ExploreMode")
 
 [node name="ExplorePlayer" parent="." instance=ExtResource("1_ctnha")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 0, 0.212, -20)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -49,20 +43,14 @@ environment = SubResource("Environment_s0f3k")
 explorePlayer = NodePath("../ExplorePlayer")
 CityExplore = true
 
-[node name="Building" type="StaticBody3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7, 0, 10)
-script = ExtResource("4_el5ww")
+[node name="Generic House" parent="." instance=ExtResource("4_oldkv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.2394, 0, 11.4644)
 
-[node name="Little House A" parent="Building" instance=ExtResource("5_2y446")]
+[node name="Generic House3" parent="." instance=ExtResource("4_oldkv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.2394, 0, 27.4644)
 
-[node name="LoS Field" type="Area3D" parent="Building"]
-collision_layer = 4096
-collision_mask = 4096
+[node name="Generic House2" parent="." instance=ExtResource("4_oldkv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.7606, 0, 11.4644)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Building/LoS Field"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-07, 3, 4)
-shape = SubResource("BoxShape3D_7k18n")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Building"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-shape = SubResource("BoxShape3D_3spwa")
+[node name="Generic House4" parent="." instance=ExtResource("4_oldkv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.7606, 0, 27.4644)

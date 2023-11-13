@@ -10,7 +10,9 @@ public partial class Building : Node3D
     bool fadingOut, fadingIn;
     [Export]
     bool destroyed = false;
-
+    [Export]
+    float timeDelayBeforeShowOrHide = 0.1F;
+    Timer delayTimer;
     bool beingVandalized = false;
 
     float alphaValueWhileTransparent = 0.6F;
@@ -18,7 +20,9 @@ public partial class Building : Node3D
         //Basic Setup, Assigning Objects to Data Structures
         fadingOut = false;
         fadingIn = false;
-
+        
+        delayTimer = new();
+        delayTimer.WaitTime = timeDelayBeforeShowOrHide;
         materials = new List<StandardMaterial3D>();
         var buildingMeshes = new List<MeshInstance3D>();
         var foundMeshes = this.FindChildren("*", "MeshInstance3D");
@@ -57,21 +61,24 @@ public partial class Building : Node3D
 
     public override void _Process(double delta){
         if(fadingOut && fadingIn) throw new Exception("Error in Building Class: Building set to lose and gain transparency at the same time.");
-        if(fadingOut){
-            foreach(StandardMaterial3D mat in materials){
-                //We Fade out the albedo values every frame until it hits a certain threshold, then we stop fading out.
-                mat.AlbedoColor =  new Color(mat.AlbedoColor.R, mat.AlbedoColor.G, mat.AlbedoColor.B, mat.AlbedoColor.A - 0.02F);
-                if(mat.AlbedoColor.A <= alphaValueWhileTransparent){
-                    mat.AlbedoColor =  new Color(mat.AlbedoColor.R, mat.AlbedoColor.G, mat.AlbedoColor.B, alphaValueWhileTransparent);
-                    fadingOut = false;
+        //We only check for fade in/fade out when the delay timer for changes isn't running
+        if(delayTimer.TimeLeft == 0){ 
+            if(fadingOut){
+                foreach(StandardMaterial3D mat in materials){
+                    //We Fade out the albedo values every frame until it hits a certain threshold, then we stop fading out.
+                    mat.AlbedoColor =  new Color(mat.AlbedoColor.R, mat.AlbedoColor.G, mat.AlbedoColor.B, mat.AlbedoColor.A - 0.02F);
+                    if(mat.AlbedoColor.A <= alphaValueWhileTransparent){
+                        mat.AlbedoColor =  new Color(mat.AlbedoColor.R, mat.AlbedoColor.G, mat.AlbedoColor.B, alphaValueWhileTransparent);
+                        fadingOut = false;
+                    }
                 }
-            }
-        }else if(fadingIn){
-            foreach(StandardMaterial3D mat in materials){
-                //We Fade out the albedo values every frame until it hits a certain threshold, then we stop fading out.
-                mat.AlbedoColor =  new Color(mat.AlbedoColor.R, mat.AlbedoColor.G, mat.AlbedoColor.B, Math.Min(mat.AlbedoColor.A * 1.03F, 1));
-                if(mat.AlbedoColor.A == 1){
-                    fadingIn = false;
+            }else if(fadingIn){
+                foreach(StandardMaterial3D mat in materials){
+                    //We Fade out the albedo values every frame until it hits a certain threshold, then we stop fading out.
+                    mat.AlbedoColor =  new Color(mat.AlbedoColor.R, mat.AlbedoColor.G, mat.AlbedoColor.B, Math.Min(mat.AlbedoColor.A * 1.03F, 1));
+                    if(mat.AlbedoColor.A == 1){
+                        fadingIn = false;
+                    }
                 }
             }
         }
