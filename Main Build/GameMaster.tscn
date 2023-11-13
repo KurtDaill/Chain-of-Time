@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://u1belilpea08"]
+
+[ext_resource type="Script" path="res://GameMaster.cs" id="1_36kfu"]
+[ext_resource type="PackedScene" uid="uid://johbf16mwra8" path="res://Levels/demo/AllModesCityScene.tscn" id="2_r1ntn"]
+
+[node name="GameMaster" type="Node"]
+script = ExtResource("1_36kfu")
+mainScene = ExtResource("2_r1ntn")
+DayTimeUnitsRemaining = 0

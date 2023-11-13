@@ -17,9 +17,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GameMaster="*res://GameMaster.cs"
+GameMaster="*res://GameMaster.tscn"
 QuestMaster="*res://Explore Mode/Quest System/QuestMaster.tscn"
-CityState="*res://CityState.cs"
+CityState="*res://CityState.tscn"
 PauseMenu="*res://Pause Menu/PauseMenu.tscn"
 TimeUI="*res://Pause Menu/TimeUI.tscn"
 

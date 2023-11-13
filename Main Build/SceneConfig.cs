@@ -59,6 +59,10 @@ public partial class SceneConfig : Node
         if(spawnPoint != "") this.GetNode<GameMaster>("/root/GameMaster").SetSpawnPoint(spawnPoint);
         GetTree().ChangeSceneToFile(targetScene);
 	}
+
+	public bool IsCityScene(){
+		return cityScene;
+	}
 }
 
 

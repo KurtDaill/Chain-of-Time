@@ -11,6 +11,8 @@ public partial class GameMaster : Node
     StoryState state = new StoryState();
     [Export]
     int numberOfBuildingsDestroyedForGameOver = 5;
+	[Export]
+	PackedScene mainScene;
     PlayerData[] partyData = new PlayerData[3];
     List<Item> inventory = new List<Item>();
 
@@ -18,7 +20,8 @@ public partial class GameMaster : Node
 
     private string spawnPoint = "";
 
-    private int DayTimeUnitsRemaining = 0;
+    [Export(PropertyHint.Range, "0,3")]
+    private int DayTimeUnitsRemaining = 3;
 
     GameplayMode currentMode;
     TimeOfDay currentTime;
@@ -200,6 +203,9 @@ public partial class GameMaster : Node
     public List<Item> GetInventory(){
         return inventory;
     }
+    public PackedScene GetMainScenePacked(){
+        return mainScene;
+    }
 }
 
 public class PlayerData{
@@ -231,6 +237,7 @@ public class PlayerData{
     public BattlePosition GetStartingPosition(){
         return position;
     }
+
 }
 
 public static class GameplayUtilities{

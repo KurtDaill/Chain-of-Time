@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://i26rqckrls7g"]
+
+[ext_resource type="Script" path="res://CityState.cs" id="1_5m6cg"]
+[ext_resource type="PackedScene" uid="uid://5k3thtf62of4" path="res://Explore Mode/DefaultCity.tscn" id="2_ftg4x"]
+
+[node name="CityState" type="Node"]
+script = ExtResource("1_5m6cg")
+cityPrefab = ExtResource("2_ftg4x")

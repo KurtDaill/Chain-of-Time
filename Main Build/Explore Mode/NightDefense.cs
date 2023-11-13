@@ -40,7 +40,6 @@ public partial class NightDefense : ExploreMode
             myCity = GetNode<CityState>("/root/CityState").GetCity();
         }
         enemyNavigationRegion = myCity.GetEnemyNavRegion();
-        spawnPoints = myCity.GetEnemySpawnPoints();
         
         hud = this.GetNode<Control>("HUD");
         hud.Visible = false;
@@ -83,6 +82,7 @@ public partial class NightDefense : ExploreMode
 
     public void BeginNight(){
         myCity = this.GetNode<CityState>("/root/CityState").GetCity();
+        spawnPoints = myCity.GetEnemySpawnPoints();
         enemyNavigationRegion = myCity.GetEnemyNavRegion();
         explorePlayer.GlobalPosition = playerNightStartPosition.GlobalPosition;
         //Go through list of enemy groups

@@ -64,7 +64,15 @@ public partial class PauseMenuGUI : CanvasLayer
 
 	public void StartNight(){
 		if(startNightButton.Disabled != true){
-			this.GetNode<CityState>("/root/CityState").GetCity().StartNight();
+			if(this.GetNode<SceneConfig>("/root/SceneConfig").IsCityScene()){
+				//If we're in a city scene, we can just switch where we're at.
+				this.GetNode<CityState>("/root/CityState").GetCity().StartNight();
+			}else{
+				//If we're not in a city scene, we'll have to manually load the main scene.
+				//This function call forces the next load of the city to go to Night Defense
+				this.GetNode<CityState>("/root/CityState").SetNextCityLoadToBeNightDefesnse();
+				GetTree().ChangeSceneToPacked(GetNode<GameMaster>("/root/GameMaster").GetMainScenePacked());
+			}
 		}
 	}
 	public void Close()

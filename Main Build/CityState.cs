@@ -3,6 +3,8 @@ using System;
 
 public partial class CityState : Node
 {
+    [Export]
+    PackedScene cityPrefab;
     PackedScene savedCity;
     City currentCityWithinScene;
 	
@@ -10,7 +12,7 @@ public partial class CityState : Node
 	public delegate void CityLoadedEventHandler();
 
     public override void _Ready(){
-        savedCity = GD.Load<PackedScene>("res://Explore Mode/DefaultCity.tscn");
+        savedCity = cityPrefab;
     }
 
     public void SaveCity(City city){
@@ -31,6 +33,11 @@ public partial class CityState : Node
         return currentCityWithinScene;
     }
 
+    //Returns whether or not there's a city properly loaded inside of this scene. Used by functions that need to tell whether they can start working with the city
+    public bool IsCityLoaded(){
+        return IsInstanceValid(currentCityWithinScene) && currentCityWithinScene != null;
+    }
+
     public void DespawnCity(){
         currentCityWithinScene.QueueFree();
         currentCityWithinScene = null;
@@ -42,5 +49,16 @@ public partial class CityState : Node
         SaveCity(currentCityWithinScene);
         DespawnCity();
         return result;
+    }
+
+    //Used in scene transitions that should also kick the game into the night defense mode
+    public void SetNextCityLoadToBeNightDefesnse(){
+        this.CityLoaded += ForceNightDefense;
+    }
+
+    private void ForceNightDefense(){
+        currentCityWithinScene.StartNight();
+        //We have to keep this line here to ensure that every new load of the city doesn't force night. Simmilar Signal rigging would require this kind of post-function decoupling.
+        this.CityLoaded -= ForceNightDefense;
     }
 }

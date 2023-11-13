@@ -217,7 +217,7 @@ filter_ledge_spans = true
 filter_walkable_low_height_spans = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_uvmgg"]
-size = Vector2(18, 160)
+size = Vector2(18, 170)
 
 [node name="City" type="Node3D" node_paths=PackedStringArray("spawnPointDirectory", "morningSun", "noonSun", "eveningSun", "nightMoon", "worldEnv", "enemyNavRegion", "enemySpawnPoints")]
 script = ExtResource("1_dnahd")
@@ -232,7 +232,7 @@ eveningEnv = ExtResource("4_5utbk")
 nightEnv = ExtResource("5_r4iu0")
 worldEnv = NodePath("EnvironmentalNodes/WorldEnvironment")
 enemyNavRegion = NodePath("Enemy Navigation Region")
-enemySpawnPoints = [NodePath("Enemy Spawns/EnemySpawn1"), NodePath("Enemy Spawns/EnemySpawn2"), null]
+enemySpawnPoints = [NodePath("Enemy Spawns/EnemySpawn1"), NodePath("Enemy Spawns/EnemySpawn2")]
 
 [node name="Door Directory" type="Node3D" parent="."]
 
@@ -639,6 +639,11 @@ mesh = SubResource("PlaneMesh_uvmgg")
 
 [node name="Street4" type="MeshInstance3D" parent="Enemy Navigation Region/Streets"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.41279, 0, 54.3707)
+sorting_offset = 1.0
+mesh = SubResource("PlaneMesh_uvmgg")
+
+[node name="Street5" type="MeshInstance3D" parent="Enemy Navigation Region/Streets"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.41279, 0, 106.884)
 sorting_offset = 1.0
 mesh = SubResource("PlaneMesh_uvmgg")
 
