@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnw71lb7ouxg4"]
+[gd_scene load_steps=6 format=3 uid="uid://cnw71lb7ouxg4"]
 
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Battle.cs" id="1_ywmr0"]
 [ext_resource type="Script" path="res://Battle Mode/Basic Scripts/Roster.cs" id="2_k0wmx"]
 [ext_resource type="Texture2D" uid="uid://bkdgvs1hqa6nu" path="res://GUI/Point-export.png" id="3_kwh0g"]
 [ext_resource type="PackedScene" uid="uid://ctkjn6qaseru7" path="res://Battle Mode/BattleGUI.tscn" id="8_34yqp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hsfin"]
+size = Vector3(22.9257, 1, 4.51054)
 
 [node name="Battle" type="Node3D" node_paths=PackedStringArray("gui", "battleCamera", "battleRoster")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -21,6 +24,13 @@ Items = NodePath("Items")
 [node name="Night Light Marker" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.30649e-08, 1.81756, 1.21398)
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Roster/Night Light Marker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3197e-07, 0, 3.01911)
+light_color = Color(0.709804, 0.811765, 1, 1)
+light_energy = 0.2
+light_volumetric_fog_energy = 0.0
+sky_mode = 1
+
 [node name="Pointer" type="Node3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -1)
 visible = false
@@ -36,59 +46,77 @@ light_color = Color(1, 0.984314, 0.701961, 1)
 light_energy = 32.0
 spot_angle = 15.0
 
-[node name="HeroBack0" type="Node3D" parent="Roster"]
+[node name="HeroBack0" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.52, 0, -0.0625001)
+gizmo_extents = 0.5
 
-[node name="HeroBack1" type="Node3D" parent="Roster"]
+[node name="HeroBack1" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -1.0625)
+gizmo_extents = 0.5
 
-[node name="HeroBack2" type="Node3D" parent="Roster"]
+[node name="HeroBack2" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.48, 0, -2.0625)
+gizmo_extents = 0.5
 
-[node name="HeroMid0" type="Node3D" parent="Roster"]
+[node name="HeroMid0" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, 0, -1.19209e-07)
+gizmo_extents = 0.5
 
-[node name="HeroMid1" type="Node3D" parent="Roster"]
+[node name="HeroMid1" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 0, -1)
+gizmo_extents = 0.5
 
-[node name="HeroMid2" type="Node3D" parent="Roster"]
+[node name="HeroMid2" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.08, 0, -2)
+gizmo_extents = 0.5
 
-[node name="HeroFront0" type="Node3D" parent="Roster"]
+[node name="HeroFront0" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56, 0, 0.0625)
+gizmo_extents = 0.5
 
-[node name="HeroFront1" type="Node3D" parent="Roster"]
+[node name="HeroFront1" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, -0.9375)
+gizmo_extents = 0.5
 
-[node name="HeroFront2" type="Node3D" parent="Roster"]
+[node name="HeroFront2" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1.9375)
+gizmo_extents = 0.5
 
-[node name="EnemyFront0" type="Node3D" parent="Roster"]
+[node name="EnemyFront0" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0, 0.0625)
+gizmo_extents = 0.5
 
-[node name="EnemyFront1" type="Node3D" parent="Roster"]
+[node name="EnemyFront1" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, -0.9375)
+gizmo_extents = 0.5
 
-[node name="EnemyFront2" type="Node3D" parent="Roster"]
+[node name="EnemyFront2" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1.9375)
+gizmo_extents = 0.5
 
-[node name="EnemyMid0" type="Node3D" parent="Roster"]
+[node name="EnemyMid0" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2, 0, 0)
+gizmo_extents = 0.5
 
-[node name="EnemyMid1" type="Node3D" parent="Roster"]
+[node name="EnemyMid1" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 0, -1)
+gizmo_extents = 0.5
 
-[node name="EnemyMid2" type="Node3D" parent="Roster"]
+[node name="EnemyMid2" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -2)
+gizmo_extents = 0.5
 
-[node name="EnemyBack0" type="Node3D" parent="Roster"]
+[node name="EnemyBack0" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.52, 0, -0.0625)
+gizmo_extents = 0.5
 
-[node name="EnemyBack1" type="Node3D" parent="Roster"]
+[node name="EnemyBack1" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -3.0625)
+gizmo_extents = 0.5
 
-[node name="EnemyBack2" type="Node3D" parent="Roster"]
+[node name="EnemyBack2" type="Marker3D" parent="Roster"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.48, 0, -2.0625)
+gizmo_extents = 0.5
 
 [node name="Items" type="Node" parent="Roster"]
 
@@ -132,5 +160,12 @@ wait_time = 0.4
 
 [node name="Between Actions Timer" type="Timer" parent="."]
 wait_time = 0.2
+
+[node name="Area3D" type="Area3D" parent="."]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0576897, 0, 0.669655)
+shape = SubResource("BoxShape3D_hsfin")
 
 [editable path="Camera3D/BattleGUI"]

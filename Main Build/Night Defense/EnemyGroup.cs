@@ -34,6 +34,7 @@ public abstract partial class EnemyGroup : CharacterBody3D
     public virtual void OnEncounterZoneAreaEntered(Area3D area){
         if(area.GetGroups().Contains("Player")){
             Battle encounter = Battle.InstanceBattle(encounterEnemies, this.GetNode<GameMaster>("/root/GameMaster").GetMode(), true, GlobalPosition);
+            encounter.GlobalTransform = this.GetNode<CityState>("/root/CityState").GetCity().GetBattlePointMap().GetClosestBattlePoint(this.GlobalPosition).Transform;
             GetNode("/root/SceneConfig").AddChild(encounter);
             this.GetNode<GameMaster>("/root/GameMaster").SetMode(encounter);
             this.QueueFree();

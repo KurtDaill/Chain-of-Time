@@ -157,6 +157,11 @@ public partial class NightDefense : ExploreMode
         return result;
     }
 
+    public override OmniLight3D GetCatoLamp()
+    {
+        return base.GetCatoLamp();
+    }
+
     public override Task TransitionOut(){
         hud.Visible = false;
         if(enemyGroupsInCity != null){

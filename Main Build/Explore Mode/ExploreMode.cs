@@ -60,7 +60,7 @@ public partial class ExploreMode : GameplayMode{
         modeOnDeck = mode;
     }
 
-    public OmniLight3D GetCatoLamp(){
+    public virtual OmniLight3D GetCatoLamp(){
         return explorePlayer.GetNode<OmniLight3D>("Torchlight");
     } 
 

@@ -1,16 +1,16 @@
 [gd_scene load_steps=19 format=3 uid="uid://bjan84vglc716"]
 
 [ext_resource type="Script" path="res://Explore Mode/NightDefense.cs" id="1_qaaw4"]
-[ext_resource type="Texture2D" uid="uid://br5ajqljpwy0y" path="res://GUI/Light Latern.png" id="5_ij7en"]
+[ext_resource type="Texture2D" uid="uid://bctv2aiw7nxlk" path="res://GUI/Light Latern.png" id="5_ij7en"]
 [ext_resource type="Script" path="res://GUI/NightDefenseLanternGUI.cs" id="6_cx8vv"]
-[ext_resource type="Texture2D" uid="uid://cjtjhaebgmxh3" path="res://Art/FX/Lamp Fire Big_26x45.png" id="7_l2rsb"]
-[ext_resource type="Texture2D" uid="uid://hejpaie0wcib" path="res://GUI/Light Latern-Bright.png" id="8_km6av"]
-[ext_resource type="Texture2D" uid="uid://bji1ld8qpt57w" path="res://Art/FX/Lamp Fire Small_16x24.png" id="9_leqcu"]
-[ext_resource type="Texture2D" uid="uid://bysnqljdu6yy3" path="res://GUI/Light Latern-Dark.png" id="10_a2nmp"]
-[ext_resource type="Texture2D" uid="uid://dsbggofoliiyw" path="res://Art/FX/Lamp Fire Mid_19x35.png" id="11_bre20"]
-[ext_resource type="Texture2D" uid="uid://dr17ddd27daho" path="res://GUI/Light Latern-No Torch.png" id="12_hsnva"]
-[ext_resource type="Texture2D" uid="uid://dqccu338ef7ci" path="res://GUI/Light Progress Bar.png" id="13_ljinf"]
-[ext_resource type="Texture2D" uid="uid://b85khgxc4idlg" path="res://GUI/Light Progress Bar Reversed.png" id="14_paglt"]
+[ext_resource type="Texture2D" uid="uid://bpapsn1aqsswq" path="res://Art/FX/Lamp Fire Big_26x45.png" id="7_l2rsb"]
+[ext_resource type="Texture2D" uid="uid://lwvwlq1jetkl" path="res://GUI/Light Latern-Bright.png" id="8_km6av"]
+[ext_resource type="Texture2D" uid="uid://cmiqwllfqqti5" path="res://Art/FX/Lamp Fire Small_16x24.png" id="9_leqcu"]
+[ext_resource type="Texture2D" uid="uid://j3u6234a4y6b" path="res://GUI/Light Latern-Dark.png" id="10_a2nmp"]
+[ext_resource type="Texture2D" uid="uid://cdl0vr4idsi1a" path="res://Art/FX/Lamp Fire Mid_19x35.png" id="11_bre20"]
+[ext_resource type="Texture2D" uid="uid://ct227r010xh28" path="res://GUI/Light Latern-No Torch.png" id="12_hsnva"]
+[ext_resource type="Texture2D" uid="uid://cuslwo5cso0fd" path="res://GUI/Light Progress Bar.png" id="13_ljinf"]
+[ext_resource type="Texture2D" uid="uid://dkojhksjsalti" path="res://GUI/Light Progress Bar Reversed.png" id="14_paglt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jv6b5"]
 
@@ -265,7 +265,6 @@ _data = {
 script = ExtResource("1_qaaw4")
 lightDurationInSeconds = 30
 lantern = NodePath("HUD/TextureRect")
-enemyGroupsToLoad = Array[String](["res://Night Defense/Generic Night Enemy Group.tscn"])
 
 [node name="HUD" type="Panel" parent="."]
 visible = false

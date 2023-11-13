@@ -22,6 +22,8 @@ public partial class City : Node3D
     NavigationRegion3D enemyNavRegion;
     [Export]
     Godot.Collections.Array<Marker3D> enemySpawnPoints;
+    [Export]
+    BattlePointMap battleMap;
 
     bool nightMode = false;
     public override void _Ready(){
@@ -118,6 +120,10 @@ public partial class City : Node3D
             vandalizedBuildingBeingFoughtOver.StopVandalism();
         }
         vandalizedBuildingBeingFoughtOver = null;
+    }
+
+    public BattlePointMap GetBattlePointMap(){
+        return battleMap;
     }
 
     public void StartNight(){

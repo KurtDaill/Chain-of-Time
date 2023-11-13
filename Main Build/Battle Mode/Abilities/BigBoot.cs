@@ -45,7 +45,7 @@ public partial class BigBoot : PlayerSkill
 		flagsRequiredToComplete[1] = true;
 	}
 
-	public override (Combatant, BattlePosition)[] GetPositionSwaps(){
+    public override (Combatant, BattlePosition)[] GetPositionSwaps(){
 		return new (Combatant, BattlePosition)[]{(source, new BattlePosition(source.GetPosition().GetLane(), BattleRank.HeroMid))};	
 	}
 }

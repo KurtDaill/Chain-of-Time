@@ -131,7 +131,7 @@ public partial class BattleGUI : Control
 			playersInQuestion[abilitiesQueued.Count(x => x != null)].GainSP(spSpentByEachCombatant[abilitiesQueued.Count(x=> x != null)], false);
 			spSpentByEachCombatant[abilitiesQueued.Count(x=> x != null)] = 0;
 			playerCharacterReadouts.SetSelectedCharacter(playersInQuestion[abilitiesQueued.Count(x => x != null)]);
-			chainGUI.StepBack();
+			
 			ChangeMenu(0, playersInQuestion[abilitiesQueued.Count(x => x != null)]);
 		}
 	}
