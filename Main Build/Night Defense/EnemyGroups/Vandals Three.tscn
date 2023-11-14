@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmiqrn136cowf"]
+
+[ext_resource type="Script" path="res://Night Defense/VandalEnemyGroup.cs" id="1_2a33c"]
+[ext_resource type="Texture2D" uid="uid://bn4bfkbryseop" path="res://Art/Skeleton.png" id="2_8wufb"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7nlbq"]
+radius = 2.4375
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hy64r"]
+radius = 1.25037
+
+[node name="City Defense Enemy" type="CharacterBody3D"]
+script = ExtResource("1_2a33c")
+moveSpeed = 6.0
+positionsInOrder = Array[int]([0, 1, 2])
+enemyTypesInOrder = Array[int]([0, 0, 0])
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1.8125, 0)
+layers = 33
+offset = Vector2(0, 140)
+shaded = true
+texture = ExtResource("2_8wufb")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056317, -0.52573, 0.0415649)
+light_color = Color(1, 0.0509804, 0, 1)
+light_energy = 0.04
+omni_range = 2.0
+omni_attenuation = 1.68179
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36349, -0.52573, 0.0415649)
+light_color = Color(1, 0.0509804, 0, 1)
+light_energy = 0.04
+omni_range = 2.0
+omni_attenuation = 1.68179
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.901102, 1.8125, 0.400471)
+layers = 33
+offset = Vector2(0, 140)
+shaded = true
+texture = ExtResource("2_8wufb")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Sprite3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056317, -0.52573, 0.0415649)
+light_color = Color(1, 0.0509804, 0, 1)
+light_energy = 0.04
+omni_range = 2.0
+omni_attenuation = 1.68179
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Sprite3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36349, -0.52573, 0.0415649)
+light_color = Color(1, 0.0509804, 0, 1)
+light_energy = 0.04
+omni_range = 2.0
+omni_attenuation = 1.68179
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 1.8125, -0.655721)
+layers = 33
+offset = Vector2(0, 140)
+shaded = true
+texture = ExtResource("2_8wufb")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Sprite3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056317, -0.52573, 0.0415649)
+light_color = Color(1, 0.0509804, 0, 1)
+light_energy = 0.04
+omni_range = 2.0
+omni_attenuation = 1.68179
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Sprite3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36349, -0.52573, 0.0415649)
+light_color = Color(1, 0.0509804, 0, 1)
+light_energy = 0.04
+omni_range = 2.0
+omni_attenuation = 1.68179
+
+[node name="Encounter Radius" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Encounter Radius"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_7nlbq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0295085, 1, -0.0190188)
+shape = SubResource("CylinderShape3D_hy64r")
+
+[connection signal="area_entered" from="Encounter Radius" to="." method="OnEncounterZoneAreaEntered" flags=18]

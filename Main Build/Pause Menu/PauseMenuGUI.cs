@@ -15,6 +15,7 @@ public partial class PauseMenuGUI : CanvasLayer
 	ReadoutContainerPauseMenu readouts;
 	[Export]
 	Button startNightButton;
+	bool inNightMode;
 	int selectX, selectY;
 
 	[Signal]
@@ -29,6 +30,15 @@ public partial class PauseMenuGUI : CanvasLayer
 		selectX = 0;
 		selectY = 0;
 		readouts.SetReadoutsPauseMenu(party);
+		if(inNightMode){
+			startNightButton.Text = "End Night";
+			startNightButton.Pressed -= StartNight;
+			startNightButton.Pressed += this.GetParent<PauseMenu>().PlayerEndsNightEarly;
+		}else{
+			startNightButton.Text = "Start Night";
+			startNightButton.Pressed -= this.GetParent<PauseMenu>().PlayerEndsNightEarly;
+			startNightButton.Pressed += StartNight;
+		}
 	}
 
 	public override void _Process(double delta){
@@ -75,6 +85,7 @@ public partial class PauseMenuGUI : CanvasLayer
 			}
 		}
 	}
+
 	public void Close()
 	{
 		readouts.SetSelectedByIndex(-1);
@@ -101,5 +112,9 @@ public partial class PauseMenuGUI : CanvasLayer
 			case PlayerInput.Left : if(selectX > minX) selectY++; break;
 			case PlayerInput.Right : if(selectX < maxX) selectY--; break;
 		}
+	}
+
+	public void SetNightOrDayMode(bool isNight){
+		inNightMode = isNight;
 	}
 }

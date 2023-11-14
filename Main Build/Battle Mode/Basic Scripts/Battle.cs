@@ -180,6 +180,7 @@ public partial class Battle : GameplayMode
 		return battleRoster;
 	}
 
+	//TO-DO - Make this work with the current city/mode based game.
 	public void DefeatPlayers(){
 		GetTree().ChangeSceneToPacked(defeatScreen);
 	}

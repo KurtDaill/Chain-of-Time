@@ -84,13 +84,13 @@ public partial class ShopInterface : GameplayMode{
                 }    
                 break;
             case PlayerInput.Right:
-                if(selectButtonY < shopButton.Rank){
+                if(selectButtonX < shopButton.Rank-1){
                     shopButton[selectButtonX][selectButtonY].SetSelect(false); 
                     selectButtonX++;
                 } 
                 break;
             case PlayerInput.Left:
-                if(selectButtonY > 0){
+                if(selectButtonX > 0){
                     shopButton[selectButtonX][selectButtonY].SetSelect(false);
                     selectButtonX--;
                 }    

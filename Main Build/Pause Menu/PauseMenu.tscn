@@ -347,7 +347,7 @@ script = ExtResource("1_7e165")
 script = ExtResource("2_7dlw4")
 itemSubMenu = NodePath("Item Menu")
 readouts = NodePath("Readouts")
-startNightButton = NodePath("Start Night")
+startNightButton = NodePath("Start Night And Stop Night")
 
 [node name="ColorRect" type="ColorRect" parent="PauseMenuGUI"]
 anchors_preset = 15
@@ -602,7 +602,7 @@ theme = ExtResource("3_v4jm7")
 action_mode = 0
 text = "Quit"
 
-[node name="Start Night" type="Button" parent="PauseMenuGUI"]
+[node name="Start Night And Stop Night" type="Button" parent="PauseMenuGUI"]
 anchors_preset = -1
 anchor_top = 0.769
 anchor_right = 0.196
@@ -617,4 +617,4 @@ action_mode = 0
 text = "Start Night"
 
 [connection signal="pressed" from="PauseMenuGUI/Quit" to="PauseMenuGUI" method="OnPressQuit"]
-[connection signal="pressed" from="PauseMenuGUI/Start Night" to="PauseMenuGUI" method="StartNight"]
+[connection signal="pressed" from="PauseMenuGUI/Start Night And Stop Night" to="PauseMenuGUI" method="StartNight"]

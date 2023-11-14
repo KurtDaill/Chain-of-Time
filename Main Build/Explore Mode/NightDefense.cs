@@ -87,7 +87,7 @@ public partial class NightDefense : ExploreMode
         explorePlayer.GlobalPosition = playerNightStartPosition.GlobalPosition;
         //Go through list of enemy groups
         List<EnemyGroup> thisNightsEnemies = new List<EnemyGroup>();
-        foreach(PackedScene group in nights[0].GetEnemyGroups()){
+        foreach(PackedScene group in nights[GetNode<GameMaster>("/root/GameMaster").GetNightNumber()-1].GetEnemyGroups()){
             thisNightsEnemies.Add((EnemyGroup)group.Instantiate());
         }
         //Copy the List of Spawn Points & Randomize the list order
@@ -173,5 +173,10 @@ public partial class NightDefense : ExploreMode
             }
         }
         return base.TransitionOut();
+    }
+
+    //Called by any mode that's going to transition back to a running Night Defense Mode, used to tell the mode to end the night early in certain situations: i.e. Losing Combat, hit the End Night button, etc.
+    public void SetNightToEndImmediatelyOnLoad(){
+        remainingLight = 0;
     }
 }

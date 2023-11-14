@@ -23,6 +23,7 @@ public partial class PauseMenu : GameplayMode
         GetTree().Paused = true;
 		returnMode = oldMode;
 		gui.Visible = true;
+		gui.SetNightOrDayMode(oldMode is NightDefense);
 		gui.Open();
 		return Task.CompletedTask;
 	}
@@ -36,6 +37,12 @@ public partial class PauseMenu : GameplayMode
 		}
 		return null;
     }
+
+	public void PlayerEndsNightEarly(){
+		if(returnMode is not NightDefense) throw new Exception("Somehow you're trying to end the night when it isn't currently night. Genuinely surprised the game is this busted.");
+		((NightDefense)returnMode).SetNightToEndImmediatelyOnLoad();
+		goBack = true;
+	}
 
     public override void HandleInput(GameplayUtilities.PlayerInput input)
     {

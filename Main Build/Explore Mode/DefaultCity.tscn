@@ -239,10 +239,10 @@ battleMap = NodePath("Battle Point Map")
 [node name="Door Directory" type="Node3D" parent="."]
 
 [node name="Workshop" type="Marker3D" parent="Door Directory"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.6854, 0, 45.2922)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.6854, 0, 55.2922)
 
 [node name="Temple" type="Marker3D" parent="Door Directory"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.2521, 0, -0.957802)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.2521, 0, 2.0422)
 
 [node name="Buildings" type="Node3D" parent="."]
 

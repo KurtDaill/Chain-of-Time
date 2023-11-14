@@ -18,6 +18,9 @@ public partial class GameMaster : Node
 
     PlayerData[] bookmark = new PlayerData[3];
 
+    [Export]
+    int nightNumber = 1;
+
     private string spawnPoint = "";
 
     [Export(PropertyHint.Range, "0,3")]
@@ -118,6 +121,12 @@ public partial class GameMaster : Node
         }
     }
 
+    public void RestorePartySP(){
+        foreach(PlayerData data in partyData.Where(x => x != null)){
+            data.RestoreSP();
+        }
+    }
+
     public void RestoreCharacterHP(string characterName){
         foreach(PlayerData data in partyData.Where(x => x != null)){
             if(data.GetName() == characterName){
@@ -141,6 +150,14 @@ public partial class GameMaster : Node
 
     public StoryState GetStoryState(){
         return state;
+    }
+
+    public int GetNightNumber(){
+        return nightNumber;
+    }
+
+    private void IncrementNight(){
+
     }
 
     public bool GetFlagValue(string flag){
@@ -168,6 +185,8 @@ public partial class GameMaster : Node
 
     public void NewDay(){
         DayTimeUnitsRemaining = 3;
+        IncrementNight();
+        RestorePartySP();
         EmitSignal(GameMaster.SignalName.TimeOfDayChanged, DayTimeUnitsRemaining);
     }
 
