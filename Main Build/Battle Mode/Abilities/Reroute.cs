@@ -40,7 +40,7 @@ public partial class Reroute : PlayerSkill
 				}
 				else
 				{
-					parentBattle.GetRoster().SwapCharacters(target[0], new BattlePosition(target[0].GetPosition().GetLane(), BattleRank.HeroMid));
+					parentBattle.GetRoster().SwapCharacters(target[0], new BattlePosition(target[0].GetPosition().GetLane(), BattleRank.HeroFront));
 				}
 				WaitForSwap();
 				break;

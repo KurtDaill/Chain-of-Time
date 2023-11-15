@@ -27,8 +27,9 @@ public partial class TempleShopInterface : ShopInterface
     }
 
     private void OnCharacterSelectedForHealing(StringName characterSelected){
+        this.GetNode<PauseMenu>("/root/PauseMenu").GetGUI().CharacterSelectedInPauseMenu -= OnCharacterSelectedForHealing;
         gm.RestoreCharacterHP(characterSelected);
         gm.SpendTU(1);
-        descritpionTextBox.Text = characterSelected + " Healed.";
+        descritpionTextBox.Text = characterSelected + " Healed.";   
     }
 }

@@ -11,6 +11,8 @@ public abstract partial class Item : Node
     protected Texture2D icon;
     [Export]
     protected string rulesText;
+    [Export]
+    protected string flavorText;
 
     public string GetDisplayName(){
         return displayName;
@@ -23,6 +25,12 @@ public abstract partial class Item : Node
     }
     public Texture2D GetIcon(){
         return icon;
+    }
+    public string GetRulesText(){
+        return rulesText;
+    }
+    public string GetFlavorText(){
+        return flavorText;
     }
 }
 

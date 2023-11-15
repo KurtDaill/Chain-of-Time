@@ -42,7 +42,7 @@ public partial class PauseMenuGUI : CanvasLayer
 	}
 
 	public override void _Process(double delta){
-		startNightButton.Disabled = this.GetNode<GameMaster>("/root/GameMaster").GetCurrentTU() != 0;
+		startNightButton.Disabled = this.GetNode<GameMaster>("/root/GameMaster").GetCurrentTU() == 3;//TODO: I don't like this magic number to be honest.
 	}
 
 	//returns true if we should switch back to the earlier gameplaymode

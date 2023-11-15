@@ -9,6 +9,9 @@ public partial class ItemMenu : BattleMenu
     private ConsumableItem[] itemsAvailable;
     private TextureRect[] itemTabs;
     private int currentItem;
+
+    private TextureRect itemIcon;
+    private RichTextLabel titleLineLabel, descriptionLabel;
     public override void _Ready(){
         itemTabs = new TextureRect[4]{
             GetNode<TextureRect>("Item TabBar/Item Tab 1"),
@@ -16,6 +19,9 @@ public partial class ItemMenu : BattleMenu
             GetNode<TextureRect>("Item TabBar/Item Tab 3"),
             GetNode<TextureRect>("Item TabBar/Item Tab 4")
         };
+        itemIcon = this.GetNode<TextureRect>("Item Description Box/Item Icon");
+        descriptionLabel = this.GetNode<RichTextLabel>("Item Description Box/Description Label");
+        titleLineLabel = this.GetNode<RichTextLabel>("Item Description Box/Title Line Label");
         this.Visible = false;
     }
     public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI){
@@ -66,6 +72,7 @@ public partial class ItemMenu : BattleMenu
         }
         if(input != PlayerInput.None){
             SetHighlight();
+            SetDescriptionBox(itemsAvailable[currentItem]);
         }
     }
 
@@ -73,6 +80,11 @@ public partial class ItemMenu : BattleMenu
         for(int i = 0; i < itemTabs.Length; i++){
             itemTabs[i].GetNode<TextureRect>("Highlight").Visible = i == currentItem;
         }
+    }
+    private void SetDescriptionBox(Item descItem){
+        itemIcon.Texture = descItem.GetIcon();
+        titleLineLabel.Text = "[b]" + descItem.GetDisplayName() + "[/b]\n[center]Item - Consumable[/center]";
+        descriptionLabel.Text = descItem.GetRulesText() + "\n\n[i]" + descItem.GetFlavorText() + "[/i]";
     }
 
     public override PlayerAbility HandleInput(PlayerInput input, PlayerCombatant character, Battle caller, BattleGUI parentGUI){

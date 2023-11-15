@@ -32,7 +32,7 @@ public partial class AttackMenu : BattleMenu
                 attackBackboardTexture = GD.Load<Texture2D>(silverCardTexture);
                 attackMenuTheme = GD.Load<Theme>(silverCardTheme); 
                 break;
-            case "Luciene" :
+            case "Lucienne" :
                 attackBackboardTexture = GD.Load<Texture2D>(lucieneCardTexture); 
                 attackMenuTheme = GD.Load<Theme>(lucieneCardTheme); 
                 break;

@@ -7,4 +7,5 @@ script = ExtResource("1_th6pb")
 spGained = 3
 damageTaken = 2
 displayName = "Orcish Fire Brew"
-rulesText = "Gain 3 SP\\nTake 2 Damage"
+rulesText = "Gain 3 SP, Take 2 Damage"
+flavorText = "\"It'll cure what ails you, but not what it does to you after.\""
