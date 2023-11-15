@@ -43,9 +43,9 @@ public partial class GameMaster : Node
         state = GD.Load<StoryState>("res://ExampleStoryState.tres");
         //Default Party Data
         partyData = new PlayerData[3]{
-            new PlayerData("Cato", "res://Battle Mode/Player Characters/Cato Combatant.tscn", 1, 6, 2, 2, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroFront)),
-            new PlayerData("Luciene", "res://Battle Mode/Player Characters/Lucienne Combatant.tscn", 1,5, 3,3, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroMid)),
-            new PlayerData("Silver", "res://Battle Mode/Player Characters/Silver Combatant.tscn", 1,4, 4,4, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroBack))
+            new PlayerData("Cato", "res://Battle Mode/Player Characters/Cato Combatant.tscn", 2, 6, 2, 2, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroFront)),
+            new PlayerData("Luciene", "res://Battle Mode/Player Characters/Lucienne Combatant.tscn", 5,5, 3,3, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroMid)),
+            new PlayerData("Silver", "res://Battle Mode/Player Characters/Silver Combatant.tscn", 4,4, 4,4, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroBack))
             };
         inventory = new List<Item>();
         currentTime = TimeOfDay.Morning;

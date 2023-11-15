@@ -538,9 +538,11 @@ pivot_offset = Vector2(33.3853, 306.31)
 texture = ExtResource("5_seqwv")
 
 [node name="Item Icon" type="TextureRect" parent="Item Description Box"]
+show_behind_parent = true
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 6.0
+offset_right = 108.0
+offset_bottom = 102.0
 
 [node name="Description Label" type="RichTextLabel" parent="Item Description Box"]
 layout_mode = 0

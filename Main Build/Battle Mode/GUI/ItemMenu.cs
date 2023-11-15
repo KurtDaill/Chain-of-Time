@@ -59,6 +59,12 @@ public partial class ItemMenu : BattleMenu
                 itemTabs[i].Visible = false;
             }
         }
+        if(itemsAvailable.Length > 0){
+            SetDescriptionBox(itemsAvailable[0]);
+        }else{
+            descriptionLabel.Text = "...";
+            titleLineLabel.Text = "-";
+        }
     }
 
     public void HandleInputPauseMenu(PlayerInput input){

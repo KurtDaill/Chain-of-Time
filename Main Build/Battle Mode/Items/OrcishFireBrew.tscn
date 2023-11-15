@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://w5v17kl23qxm"]
+[gd_scene load_steps=3 format=3 uid="uid://w5v17kl23qxm"]
 
 [ext_resource type="Script" path="res://Battle Mode/Items/OrcishFireBrew.cs" id="1_th6pb"]
+[ext_resource type="Texture2D" uid="uid://04hplcuci6eb" path="res://GUI/Battle Menu Assets/Item Menu/Orcish Fire Brew.png" id="2_frhia"]
 
 [node name="OrcishFireBrew" type="Node"]
 script = ExtResource("1_th6pb")
 spGained = 3
 damageTaken = 2
 displayName = "Orcish Fire Brew"
+icon = ExtResource("2_frhia")
 rulesText = "Gain 3 SP, Take 2 Damage"
 flavorText = "\"It'll cure what ails you, but not what it does to you after.\""
