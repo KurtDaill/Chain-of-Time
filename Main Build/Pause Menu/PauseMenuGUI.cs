@@ -62,9 +62,9 @@ public partial class PauseMenuGUI : CanvasLayer
 				break;
 			case PauseMenuMode.NormalPause: 
 				//Include Stuff for the Default Pause Menu Here
+				itemSubMenu.HandleInputPauseMenu(input);	
 				break;
 		}
-		itemSubMenu.HandleInputPauseMenu(input);	
 		return false;
 	}
 

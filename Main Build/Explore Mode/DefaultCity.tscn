@@ -10,10 +10,10 @@
 [ext_resource type="Environment" uid="uid://dfxmywop1f353" path="res://Night Defense/Morning Environment.tres" id="6_idto4"]
 [ext_resource type="PackedScene" uid="uid://igkxtup3khij" path="res://Explore Mode/Complete Buildings/generic_house.tscn" id="6_ofnwb"]
 [ext_resource type="Script" path="res://Explore Mode/Building.cs" id="7_0vjff"]
-[ext_resource type="Texture2D" uid="uid://dd1b3a33u3ul3" path="res://Art/3D/Oldtown House 1_0.png" id="8_d2336"]
+[ext_resource type="Texture2D" uid="uid://bpwi8dkobmnq4" path="res://Art/3D/Oldtown House 1_0.png" id="8_d2336"]
 [ext_resource type="Material" uid="uid://grcrjapavq0y" path="res://Art/3D/Old Town General Material.tres" id="9_yw83p"]
-[ext_resource type="Texture2D" uid="uid://b0y8ncddcf5x0" path="res://Art/FX/Build Fire Small 1_65x74.png" id="10_ec0wk"]
-[ext_resource type="Texture2D" uid="uid://bpapsn1aqsswq" path="res://Art/FX/Lamp Fire Big_26x45.png" id="11_10tgn"]
+[ext_resource type="Texture2D" uid="uid://4vh6nv7qourd" path="res://Art/FX/Build Fire Small 1_65x74.png" id="10_ec0wk"]
+[ext_resource type="Texture2D" uid="uid://bq7cieu1omohi" path="res://Art/FX/Lamp Fire Big_26x45.png" id="11_10tgn"]
 [ext_resource type="Script" path="res://Night Defense/BattlePointMap.cs" id="15_xau58"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07lb8"]

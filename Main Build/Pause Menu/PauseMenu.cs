@@ -61,7 +61,7 @@ public partial class PauseMenu : GameplayMode
 	public void SetMenuTypeOnTransitionIn(string mode){
 		switch (mode)
 		{
-			case "Select-a-Character":
+			case "Select-A-Character":
 				gui.SetMode(PauseMenuGUI.PauseMenuMode.SelectACharacter);
 				break;
 			case "NormalPause":

@@ -6,4 +6,3 @@
 [node name="GameMaster" type="Node"]
 script = ExtResource("1_36kfu")
 mainScene = ExtResource("2_r1ntn")
-nightNumber = 2

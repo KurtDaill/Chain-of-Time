@@ -8,7 +8,7 @@ public partial class TempleShopInterface : ShopInterface
             case "HealCharacter":
                 if(gm.GetCurrentTU() >= 1){
                     //Set the Pause Menu to be in Select Mode
-                    this.GetNode<PauseMenu>("/root/PauseMenu").SetMenuTypeOnTransitionIn("Select-A-Characer");
+                    this.GetNode<PauseMenu>("/root/PauseMenu").SetMenuTypeOnTransitionIn("Select-A-Character");
                     //Link OnCharacterSelectedForHealing (which wil take it from here)
                     this.GetNode<PauseMenu>("/root/PauseMenu").GetGUI().CharacterSelectedInPauseMenu += OnCharacterSelectedForHealing;
                     //Set the Game to be in the Pause Menu (In the Select Mode)

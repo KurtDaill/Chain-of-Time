@@ -128,34 +128,6 @@ fov = 60.0
 
 [node name="BattleGUI" parent="Camera3D" instance=ExtResource("8_34yqp")]
 
-[node name="_VScrollBar_54692" type="VScrollBar" parent="Camera3D/BattleGUI/Attack Menu/Backboard/Rules Text" index="1"]
-visible = false
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-step = 1.0
-
-[node name="_VScrollBar_54699" type="VScrollBar" parent="Camera3D/BattleGUI/Targeting Menu/Basic Attack/Rules Text" index="1"]
-visible = false
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-step = 1.0
-
-[node name="_VScrollBar_54700" type="VScrollBar" parent="Camera3D/BattleGUI/Targeting Menu/Skill/Name" index="1"]
-visible = false
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-step = 1.0
-
-[node name="_VScrollBar_54701" type="VScrollBar" parent="Camera3D/BattleGUI/Targeting Menu/Skill/Rules Text" index="1"]
-visible = false
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-step = 1.0
-
 [node name="Building Hider" parent="Camera3D" node_paths=PackedStringArray("viewTarget") instance=ExtResource("5_0x4po")]
 transform = Transform3D(1, 0, 0, 0, 1, -4.77672e-16, 0, -4.77671e-16, 1, 0, 0, 0)
 viewTarget = NodePath("../../Roster/HeroBack2")
@@ -176,5 +148,3 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0576897, 0, 0.669655)
 shape = SubResource("BoxShape3D_hsfin")
-
-[editable path="Camera3D/BattleGUI"]

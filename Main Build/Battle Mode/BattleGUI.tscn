@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://d4kx000io04gf" path="res://GUI/Themes/Battle Menu Themes/Skill Card Normal Small.tres" id="3"]
 [ext_resource type="Theme" uid="uid://dq2wt80l1hcrn" path="res://GUI/Themes/Battle Menu Themes/Skill Card Normal.tres" id="5"]
-[ext_resource type="Texture2D" uid="uid://bgoaxdjnxdv7" path="res://GUI/Battle Menu Assets/Item Menu/Item Tab Highlight.png" id="15_lcn4c"]
+[ext_resource type="Texture2D" uid="uid://bbre1k12a2lw3" path="res://GUI/Battle Menu Assets/Item Menu/Item Tab Highlight.png" id="15_lcn4c"]
 [ext_resource type="Texture2D" uid="uid://bjukb2viqs36y" path="res://GUI/Battle Menu Assets/Attack Menu/Normal Attack.png" id="17_o7fhh"]
 [ext_resource type="Texture2D" uid="uid://8iltg8hieg8a" path="res://GUI/Battle Menu Assets/Party Menu/PartyMenuRunHighlight.png" id="20"]
 [ext_resource type="AudioStream" uid="uid://vrcv026r88aw" path="res://Audio/UI_No.wav" id="21"]

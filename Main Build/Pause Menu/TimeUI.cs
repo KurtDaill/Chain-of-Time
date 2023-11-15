@@ -13,6 +13,11 @@ public partial class TimeUI : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(this.GetNode<GameMaster>("/root/GameMaster").GetMode() is NightDefense){
+			this.Visible = false;
+		}else{
+			this.Visible = true;
+		}
 		switch(this.GetNode<GameMaster>("/root/GameMaster").GetCurrentTU()){
 			case 3:
 				timeOfDay.Text = "Morning";

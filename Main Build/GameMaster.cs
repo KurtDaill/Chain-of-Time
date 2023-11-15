@@ -157,7 +157,7 @@ public partial class GameMaster : Node
     }
 
     private void IncrementNight(){
-
+        nightNumber++;
     }
 
     public bool GetFlagValue(string flag){
