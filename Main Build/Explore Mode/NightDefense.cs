@@ -30,6 +30,8 @@ public partial class NightDefense : ExploreMode
 
     protected EnemyGroup[] enemyGroupsInCity;
 
+    private bool totalPartyKill = false;
+
     public override async void _Ready(){
         base._Ready();
         remainingLight = lightDurationInSeconds;
@@ -63,15 +65,17 @@ public partial class NightDefense : ExploreMode
     //We End the Night.
     public void EndNight(){
         buildingsDestoryedLastNight = 0;
-        //Night Damage Logic
-        System.Collections.Generic.Dictionary<string,int>enemies = GetRemainingEnemies();
-        enemies.TryGetValue("All", out int totalEnemies);
-        if(totalEnemies != 0){
+        buildingsDestoryedLastNight += myCity.RegisterVandals();
+        if(totalPartyKill){
             myCity.DestroyRandomBuilding();
             buildingsDestoryedLastNight++;
+            foreach(VandalEnemyGroup vandal in enemyGroupsInCity.Where(x => x is VandalEnemyGroup)){ //This handles vandals who never made it to their targets because the player died to quickly.
+                if(!vandal.AmIVandalizing()){
+                    myCity.DestroyRandomBuilding();
+                    buildingsDestoryedLastNight++;
+                }
+            }
         }
-        buildingsDestoryedLastNight += myCity.RegisterVandals();
-
         //Clean Up Enemy Groups
         foreach(EnemyGroup enemy in enemyGroupsInCity){
             enemy.QueueFree();
@@ -81,6 +85,7 @@ public partial class NightDefense : ExploreMode
     }
 
     public void BeginNight(){
+        totalPartyKill = false;
         myCity = this.GetNode<CityState>("/root/CityState").GetCity();
         spawnPoints = myCity.GetEnemySpawnPoints();
         enemyNavigationRegion = myCity.GetEnemyNavRegion();
@@ -139,7 +144,7 @@ public partial class NightDefense : ExploreMode
     public override Task StartUp(GameplayMode oldMode){
         Task result = base.StartUp(oldMode);
         hud.Visible = true;
-        if(oldMode is Battle){
+        if(oldMode is Battle && !totalPartyKill){ //None of this logic is required if the players are dead.
             myCity.EndFightOverBuilding();
             enemyGroupsInCity = enemyGroupsInCity.Where(IsInstanceValid).ToArray();
         }
@@ -175,8 +180,17 @@ public partial class NightDefense : ExploreMode
         return base.TransitionOut();
     }
 
+    public bool GetTotalPartyKill(){
+        return totalPartyKill;
+    }
+
     //Called by any mode that's going to transition back to a running Night Defense Mode, used to tell the mode to end the night early in certain situations: i.e. Losing Combat, hit the End Night button, etc.
     public void SetNightToEndImmediatelyOnLoad(){
         remainingLight = 0;
+    }
+
+    public void LogTotalPartyKill(){
+        SetNightToEndImmediatelyOnLoad();
+        totalPartyKill = true;
     }
 }

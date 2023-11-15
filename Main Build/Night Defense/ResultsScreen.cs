@@ -11,6 +11,8 @@ public partial class ResultsScreen : GameplayMode
     [Export]
     private ExploreMode nextDayMode;
     private GameplayMode nextMode;
+    private bool gameOver = false;
+    private bool readyToQuit = false;
 
     public override void _Ready(){
         this.GetNode<Panel>("GUI").Visible = false;
@@ -25,7 +27,13 @@ public partial class ResultsScreen : GameplayMode
     public override void HandleInput(GameplayUtilities.PlayerInput input)
     {
         base.HandleInput(input);
-        if(input == GameplayUtilities.PlayerInput.Start){
+        if(gameOver){
+            if(readyToQuit){
+                if(input == GameplayUtilities.PlayerInput.Start){
+                    GetTree().Quit();
+                }
+            }
+        }else if(input == GameplayUtilities.PlayerInput.Start){
             nextMode = nextDayMode;
         }
     }
@@ -59,8 +67,15 @@ public partial class ResultsScreen : GameplayMode
             houseCounts.TryGetValue("Remaining", out int remaining);
             resultsTextContainer.GetNode<RichTextLabel>("Home Counts").Text = resultsTextContainer.GetNode<RichTextLabel>("Home Counts").Text.Replace("[TN]", "" + tonight);
             resultsTextContainer.GetNode<RichTextLabel>("Home Counts").Text = resultsTextContainer.GetNode<RichTextLabel>("Home Counts").Text.Replace("[OV]", "" + overall);
-            resultsTextContainer.GetNode<RichTextLabel>("Home Counts").Text = resultsTextContainer.GetNode<RichTextLabel>("Home Counts").Text.Replace("[US]", "" + remaining);
             
+            if(remaining >= 0){
+                resultsTextContainer.GetNode<RichTextLabel>("Home Counts").Text = resultsTextContainer.GetNode<RichTextLabel>("Home Counts").Text.Replace("[US]", "" + remaining); 
+            }else{ //Game over man, game over!
+                resultsTextContainer.GetNode<RichTextLabel>("Home Counts").Text = resultsTextContainer.GetNode<RichTextLabel>("Home Counts").Text.Replace("[US]", "No");
+                GameOver();
+            }
+            resultsTextContainer.GetNode<RichTextLabel>("Total Party Kill").Visible = previousDefMode.GetTotalPartyKill();
+            resultsTextContainer.GetNode<RichTextLabel>("House Abandoned").Visible = previousDefMode.GetTotalPartyKill();
             
             //Setup the Scene's Aethstetics!
             this.GetNode<Camera3D>("Results Screen Camera").Current = true;
@@ -79,6 +94,16 @@ public partial class ResultsScreen : GameplayMode
         this.GetNode<DirectionalLight3D>("Result Screen Light").Visible = false;
         this.GetNode<DirectionalLight3D>("Result Screen Sky").Visible = false;
         return Task.CompletedTask;
+    }
+
+    private void GameOver(){
+        this.gameOver = true;
+        this.GetNode<AnimationPlayer>("GUI/AnimationPlayer").Play("GameOver");
+        this.GetNode<Label>("GUI/PressStart").Visible = false;
+    }
+
+    public void OnGameOverAnimationComplete(){
+        this.readyToQuit = true;
     }
 }
  

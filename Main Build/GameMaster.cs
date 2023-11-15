@@ -43,9 +43,9 @@ public partial class GameMaster : Node
         state = GD.Load<StoryState>("res://ExampleStoryState.tres");
         //Default Party Data
         partyData = new PlayerData[3]{
-            new PlayerData("Cato", "res://Battle Mode/Player Characters/Cato Combatant.tscn", 2, 6, 2, 2, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroFront)),
-            new PlayerData("Luciene", "res://Battle Mode/Player Characters/Lucienne Combatant.tscn", 5,5, 3,3, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroMid)),
-            new PlayerData("Silver", "res://Battle Mode/Player Characters/Silver Combatant.tscn", 4,4, 4,4, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroBack))
+            new PlayerData("Cato", "res://Battle Mode/Player Characters/Cato Combatant.tscn", 1, 6, 2, 2, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroFront)),
+            new PlayerData("Luciene", "res://Battle Mode/Player Characters/Lucienne Combatant.tscn", 1,5, 3,3, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroMid)),
+            new PlayerData("Silver", "res://Battle Mode/Player Characters/Silver Combatant.tscn", 1,4, 4,4, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroBack))
             };
         inventory = new List<Item>();
         currentTime = TimeOfDay.Morning;
@@ -138,6 +138,14 @@ public partial class GameMaster : Node
         throw new ArgumentException("Character Name: " + characterName + " not found in current party...");
     }
 
+    public void SetPartyHPToMinimumOfOne(){
+        foreach(PlayerData data in partyData.Where(x => x != null)){
+            if(data.GetHP() <= 0){
+                data.SetHPToMinimumOfOne();
+            }
+        }
+    }
+
     public void BookmarkCurrentParty(){
         bookmark = partyData;
 ;
@@ -187,6 +195,7 @@ public partial class GameMaster : Node
         DayTimeUnitsRemaining = 3;
         IncrementNight();
         RestorePartySP();
+        SetPartyHPToMinimumOfOne(); //TODO - Make characters who were downed have only half max hp?
         EmitSignal(GameMaster.SignalName.TimeOfDayChanged, DayTimeUnitsRemaining);
     }
 
@@ -248,6 +257,7 @@ public class PlayerData{
     public void RestoreSP(){sp = maxSP;}
 
     public int GetHP(){return hp;}
+    public void SetHPToMinimumOfOne(){hp = Math.Max(1, hp);}
     public int GetMaxHP(){return maxHP;}
     public int GetSP(){return sp;}
     public int GetMaxSP(){return maxSP;}

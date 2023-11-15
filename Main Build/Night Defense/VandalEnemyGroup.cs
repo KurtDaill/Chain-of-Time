@@ -6,6 +6,8 @@ public partial class VandalEnemyGroup : EnemyGroup{
     Building targetBuildilng;
     Vector3 targetPosition;
 
+    private bool isVandalizingABuilding;
+
     public override async void _Ready()
     {
         base._Ready();
@@ -28,10 +30,11 @@ public partial class VandalEnemyGroup : EnemyGroup{
         this.MoveAndSlide();
 
         //
-        if((GlobalPosition - targetPosition).Length() < 0.2){
+        if(!isVandalizingABuilding && (GlobalPosition - targetPosition).Length() < 0.2){
             //Stop and vandalize!
             waiting = true;
             targetBuildilng.StartVandalism();
+            isVandalizingABuilding = true;
         }
 
         //Moves the Enemy From Waypoint to Waypoint.
@@ -58,4 +61,7 @@ public partial class VandalEnemyGroup : EnemyGroup{
         base.OnEncounterZoneAreaEntered(area);
     }
 
+    public bool AmIVandalizing(){
+        return isVandalizingABuilding;
+    }
 }

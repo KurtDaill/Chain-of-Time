@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://johbf16mwra8"]
+[gd_scene load_steps=16 format=3 uid="uid://johbf16mwra8"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_0dxlu"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_liug8"]
@@ -12,7 +12,199 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n30o4"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lld5j"]
+bg_color = Color(0, 0, 0, 0)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yetgj"]
+
+[sub_resource type="Animation" id="Animation_xiira"]
+resource_name = "GameOver"
+length = 6.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverScreen:theme_override_styles/panel:bg_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2, 6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverScreen:theme_override_styles/panel:bg_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2, 6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverScreen:theme_override_styles/panel:bg_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2, 6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOverScreen:theme_override_styles/panel:bg_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2, 6)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameOverScreen/Label:theme_override_colors/font_color:r")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.737255, -0.25, 0, 0.25, 0, 0.737255, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2, 6)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GameOverScreen/Label:theme_override_colors/font_color:g")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2, 6)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GameOverScreen/Label:theme_override_colors/font_color:b")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2, 6)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GameOverScreen/Label:theme_override_colors/font_color:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2, 6)
+}
+
+[sub_resource type="Animation" id="Animation_r7vp5"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOverScreen:theme_override_styles/panel:bg_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOverScreen:theme_override_styles/panel:bg_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOverScreen:theme_override_styles/panel:bg_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOverScreen:theme_override_styles/panel:bg_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameOverScreen/Label:theme_override_colors/font_color:r")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.737255, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GameOverScreen/Label:theme_override_colors/font_color:g")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GameOverScreen/Label:theme_override_colors/font_color:b")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GameOverScreen/Label:theme_override_colors/font_color:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i85e8"]
+_data = {
+"GameOver": SubResource("Animation_xiira"),
+"RESET": SubResource("Animation_r7vp5")
+}
 
 [node name="SceneConfig" type="Node3D" node_paths=PackedStringArray("startingMode", "citySpawnPoint", "myNightDefenseMode")]
 script = ExtResource("1_0dxlu")
@@ -73,13 +265,39 @@ grow_vertical = 2
 theme = ExtResource("15_q3tlf")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_n30o4")
 
+[node name="GameOverScreen" type="Panel" parent="Results Screen/GUI"]
+z_index = 1
+layout_mode = 0
+offset_right = 1926.0
+offset_bottom = 1082.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lld5j")
+
+[node name="Label" type="Label" parent="Results Screen/GUI/GameOverScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -317.0
+offset_top = -177.0
+offset_right = 317.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.737255, 0, 0, 0)
+theme_override_font_sizes/font_size = 64
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Background Element" type="Panel" parent="Results Screen/GUI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.265
-anchor_bottom = 0.482
-offset_right = -0.800018
-offset_bottom = 0.440002
+anchor_bottom = 0.512
+offset_right = -0.799988
+offset_bottom = 0.039978
 
 [node name="Results Text Container" type="VBoxContainer" parent="Results Screen/GUI/Background Element"]
 layout_mode = 1
@@ -112,6 +330,24 @@ layout_mode = 2
 theme_override_constants/separation = 40
 theme_override_styles/separator = SubResource("StyleBoxEmpty_yetgj")
 
+[node name="Total Party Kill" type="RichTextLabel" parent="Results Screen/GUI/Background Element/Results Text Container"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[color=DarkRed]-All Heroes Defeated!-[/color]"
+fit_content = true
+
+[node name="House Abandoned" type="RichTextLabel" parent="Results Screen/GUI/Background Element/Results Text Container"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=DarkRed][center] Another House was Abandoned!"
+fit_content = true
+
+[node name="HSeparator3" type="HSeparator" parent="Results Screen/GUI/Background Element/Results Text Container"]
+layout_mode = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yetgj")
+
 [node name="Home Counts" type="RichTextLabel" parent="Results Screen/GUI/Background Element/Results Text Container"]
 layout_mode = 2
 bbcode_enabled = true
@@ -122,7 +358,7 @@ text = "> Homes Lost Tonight : [TN]
 [color=Red] [US] Left Until City Surrenders[/color]"
 fit_content = true
 
-[node name="Label" type="Label" parent="Results Screen/GUI"]
+[node name="PressStart" type="Label" parent="Results Screen/GUI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -138,6 +374,11 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 48
 text = "Press Start to Continue. . ."
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Results Screen/GUI"]
+libraries = {
+"": SubResource("AnimationLibrary_i85e8")
+}
+
 [node name="ExploreMode" parent="." node_paths=PackedStringArray("explorePlayer") instance=ExtResource("2_liug8")]
 explorePlayer = NodePath("../ExplorePlayer")
 CityExplore = true
@@ -146,5 +387,7 @@ CityExplore = true
 
 [node name="Night Marker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94695, 0, 55.9744)
+
+[connection signal="animation_finished" from="Results Screen/GUI/AnimationPlayer" to="Results Screen" method="OnGameOverAnimationComplete"]
 
 [editable path="ExplorePlayer"]

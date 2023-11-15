@@ -22,6 +22,7 @@ public partial class Battle : GameplayMode
 	Camera3D battleCamera;
 	[Export]
 	GameplayMode postBattleMode;
+	EnemyGroup enemiesThatStartedThisEncounter;
 	//private eventChain theChain = new eventChain();
 
 	//private List<StatusEffect> Effects;
@@ -130,7 +131,19 @@ public partial class Battle : GameplayMode
 				break;	
 		}
 		if(battleRoster.GetAllEnemyCombatants().Length == 0){
+			//Have to actually despawn the overworld enemies that started this!
+			enemiesThatStartedThisEncounter.Free();
 			return postBattleMode;
+		}
+		if(!battleRoster.GetAllPlayerCombatants().Any(x => x.GetHP() > 0)){
+			if(postBattleMode is NightDefense){
+				NightDefense failedNight = postBattleMode as NightDefense;
+				failedNight.LogTotalPartyKill();
+				return postBattleMode;
+			}else{
+				GetTree().Quit();
+				throw new NotImplementedException("There isn't a non-night mode scenario for defeats yet...");
+			}
 		}
 		return null;		
 	}
@@ -180,13 +193,8 @@ public partial class Battle : GameplayMode
 		return battleRoster;
 	}
 
-	//TO-DO - Make this work with the current city/mode based game.
-	public void DefeatPlayers(){
-		GetTree().ChangeSceneToPacked(defeatScreen);
-	}
-
 	//YOU HAVE TO ADD THE BATTLE TO THE TREE AFTER INSTANCING
-	public static Battle InstanceBattle(Dictionary<BattlePosition, Combatant> intitialCombatants, GameplayMode postBattleMode, bool useNormalPlayerParty, Vector3 targetGlobalPosition){
+	public static Battle InstanceBattle(Dictionary<BattlePosition, Combatant> intitialCombatants, GameplayMode postBattleMode, bool useNormalPlayerParty, Vector3 targetGlobalPosition, EnemyGroup enemiesEncounteredToStartcombat){
 		//HARDPATH
 		Battle instancedBattle = GD.Load<PackedScene>("res://Gameplay Modes/BattleInstanceTemplate.tscn").Instantiate() as Battle;
 		foreach(BattlePosition position in intitialCombatants.Keys){
@@ -195,6 +203,7 @@ public partial class Battle : GameplayMode
 		}
 		instancedBattle.GlobalPosition = targetGlobalPosition;
 		instancedBattle.postBattleMode = postBattleMode;
+		instancedBattle.enemiesThatStartedThisEncounter = enemiesEncounteredToStartcombat;
 		return instancedBattle;
 	}
 
