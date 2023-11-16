@@ -22,6 +22,7 @@ public partial class IronsoulTablet : ConsumableItem
         firstEffectTimer.Start(1);
         await ToSignal(firstEffectTimer, Timer.SignalName.Timeout);
         user.Heal(drain);
+        this.QueueFree();
         return;
     }
 }

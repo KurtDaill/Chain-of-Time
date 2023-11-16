@@ -31,4 +31,8 @@ public partial class UseItemAction : PlayerAbility
         animation = item.GetAnimation();
         AbilityTargetingLogic = item.GetTargetingLogic();
     }
+
+    public ConsumableItem GetItem(){
+        return itemBeingUsed;
+    }
 }

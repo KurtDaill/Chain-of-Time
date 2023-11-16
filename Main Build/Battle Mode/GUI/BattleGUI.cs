@@ -120,11 +120,12 @@ public partial class BattleGUI : Control
 	public void GotoPreviousCharacter(){
 		if(abilitiesQueued.Count(x => x != null) > 0){
 			playersInQuestion[abilitiesQueued.Count(x => x != null)].UnselectMe();
+			//Set the item that was going to be used as no longer set for use
+			if(abilitiesQueued[abilitiesQueued.Count(x => x != null) - 1].GetAction() is UseItemAction){
+				((UseItemAction)abilitiesQueued[abilitiesQueued.Count(x => x != null) - 1].GetAction()).GetItem().SetAsUnused();
+			}
 			abilitiesQueued[abilitiesQueued.Count(x => x != null) - 1] = null;
 			parentBattle.GetRoster().RollBackVirtualPositionSwap(abilitiesQueued.Count(x => x != null));
-			//var resetQueue = abilitiesQueued.ToList<CombatEventData>().Where(x => x != null).ToList();
-			//resetQueue.Remove(resetQueue.Last<CombatEventData>());
-			//abilitiesQueued = resetQueue.ToArray();
 			
 			playersInQuestion[abilitiesQueued.Count(x => x != null)].SelectMe();
 			//Regains SP spent when they selected their ability this turn

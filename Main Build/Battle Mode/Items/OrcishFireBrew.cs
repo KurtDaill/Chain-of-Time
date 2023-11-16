@@ -27,6 +27,7 @@ public partial class OrcishFireBrew : ConsumableItem
         user.TakeDamage(damageTaken);
         secondEffectTimer.Start(1);
         await ToSignal(secondEffectTimer, Timer.SignalName.Timeout);
+        this.QueueFree();
         return;
     }
 }

@@ -16,6 +16,7 @@ public partial class WhiteStoneSigil : ConsumableItem
 
     public async override Task Consume(PlayerCombatant user, Combatant[] targets){
         targets[0].TakeDamage(999); //Need to have some cool effect here, but that's beside the point.
+        this.QueueFree();
         return;
     }
 }

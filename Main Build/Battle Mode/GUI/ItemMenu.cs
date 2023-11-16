@@ -26,7 +26,7 @@ public partial class ItemMenu : BattleMenu
     }
     public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         base.OnOpen(character, caller, parentGUI);
-        var temp = this.GetNode<GameMaster>("/root/GameMaster").GetInventory().Where(x => x is ConsumableItem).ToList();
+        var temp = this.GetNode<GameMaster>("/root/GameMaster").GetInventory().Where(x => x is ConsumableItem && !((ConsumableItem)x).IsThisInUse()).ToList();
         itemsAvailable = new ConsumableItem[temp.Count];
         for(int i = 0; i < temp.Count; i ++){
             itemsAvailable[i] = (ConsumableItem)temp[i];
@@ -112,6 +112,7 @@ public partial class ItemMenu : BattleMenu
                 character.GetNode<UseItemAction>("Use Item").SetItemAndDetails(itemsAvailable[currentItem]);
                 NewTargetingMenu tMenu = (NewTargetingMenu) parentGUI.menus[5];
                 tMenu.SetAbilityForTargeting(character.GetNode<UseItemAction>("Use Item"), character, caller, parentGUI);
+                itemsAvailable[currentItem].SetForUse();
                 parentGUI.ChangeMenu(5, character);
                 break;
         }
