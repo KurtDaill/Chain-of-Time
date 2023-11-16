@@ -338,6 +338,7 @@ _data = {
 }
 
 [node name="Item Menu" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = 753.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://234suufiqv8c"]
+[gd_scene load_steps=26 format=3 uid="uid://234suufiqv8c"]
 
 [ext_resource type="Script" path="res://Battle Mode/Player Characters/SilverCombatant.cs" id="1_vos4e"]
 [ext_resource type="Texture2D" uid="uid://11jtdp6q46k4" path="res://GUI/Battle Menu Assets/Readouts/Silver Readout.png" id="2_j3rqh"]
@@ -60,6 +60,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [38, 0]
+}
+
+[sub_resource type="Animation" id="Animation_bxsio"]
+resource_name = "DrinkPotion"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_6ckd0"]
@@ -402,6 +419,7 @@ tracks/3/keys = {
 _data = {
 "Big Boot": SubResource("Animation_goue6"),
 "Big Boot Recovery": SubResource("Animation_7h6vr"),
+"DrinkPotion": SubResource("Animation_bxsio"),
 "GoDown": SubResource("Animation_6ckd0"),
 "HitReact": SubResource("Animation_g5ty1"),
 "Idle": SubResource("Animation_mwj43"),
@@ -469,7 +487,7 @@ enabledRanks = Array[int]([2, 3])
 
 [node name="Use Item" type="Node" parent="."]
 script = ExtResource("9_deloy")
-enabledRanks = Array[int]([0, 1, 2])
+enabledRanks = Array[int]([0, 1, 2, 3, 4, 5])
 
 [node name="Combat Text" parent="." instance=ExtResource("7_4stcv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.876529, 2.26561, -0.0799999)

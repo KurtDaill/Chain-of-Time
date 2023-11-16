@@ -126,4 +126,7 @@ public partial class PlayerCombatant : Combatant
 		readout.UpdateSP(sp, maxSP);
 		return (PlayerCharacterReadoutPauseMenu) readout;
 	}
+	public int GetSP(){
+		return sp;
+	}
 }

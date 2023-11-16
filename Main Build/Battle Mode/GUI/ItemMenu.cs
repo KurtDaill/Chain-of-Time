@@ -26,13 +26,11 @@ public partial class ItemMenu : BattleMenu
     }
     public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         base.OnOpen(character, caller, parentGUI);
-        //Load in all the items the party has
-        //itemsAvailable = new ConsumableItem[caller.GetRoster().GetChildren().Where(x => x is ConsumableItem).ToArray().Length];
-        var temp = new List<ConsumableItem>();
-        foreach(Node node in caller.GetRoster().GetNode("Items").GetChildren().Where(x => x is ConsumableItem).ToArray()){
-            temp.Add((ConsumableItem) node);
+        var temp = this.GetNode<GameMaster>("/root/GameMaster").GetInventory().Where(x => x is ConsumableItem).ToList();
+        itemsAvailable = new ConsumableItem[temp.Count];
+        for(int i = 0; i < temp.Count; i ++){
+            itemsAvailable[i] = (ConsumableItem)temp[i];
         }
-        itemsAvailable = temp.ToArray();
         //Set our Display to reflect that
         for(int i = 0; i < itemTabs.Length; i++){
             if(itemsAvailable.Length > i){
@@ -41,6 +39,12 @@ public partial class ItemMenu : BattleMenu
             }else{
                 itemTabs[i].Visible = false;
             }
+        }
+        if(itemsAvailable.Length > 0){
+            SetDescriptionBox(itemsAvailable[0]);
+        }else{
+            descriptionLabel.Text = "...";
+            titleLineLabel.Text = "-";
         }
     }
 
@@ -113,6 +117,7 @@ public partial class ItemMenu : BattleMenu
         }
         if(input != PlayerInput.None){
             SetHighlight();
+            SetDescriptionBox(itemsAvailable[currentItem]);
         }
         return null;
     }

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://k0rrrc2mmur2"]
+
+[ext_resource type="Script" path="res://Battle Mode/Items/IronsoulTablet.cs" id="1_s724m"]
+[ext_resource type="Texture2D" uid="uid://dekmxcsrj3pgp" path="res://GUI/Battle Menu Assets/Item Menu/Iron Soul Tablet.png" id="2_jj8w2"]
+
+[node name="Iron Soul Tablet" type="Node"]
+script = ExtResource("1_s724m")
+displayName = "Iron Soul Tablet"
+icon = ExtResource("2_jj8w2")
+rulesText = "Drains ALL of a characters [color=blue]Spell Points[/color], then restores that many [color=red]Hit Points[/color]"
+flavorText = "\"Magic is life by another name\""

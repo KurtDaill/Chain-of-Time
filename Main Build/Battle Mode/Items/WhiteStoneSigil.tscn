@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3ffyymjbnpfu"]
+
+[ext_resource type="Script" path="res://Battle Mode/Items/WhiteStoneSigil.cs" id="1_tdo54"]
+[ext_resource type="Texture2D" uid="uid://jqt76wv578wp" path="res://GUI/Battle Menu Assets/Item Menu/White Stone Sigil.png" id="2_krqoq"]
+
+[node name="White Stone Sigil" type="Node"]
+script = ExtResource("1_tdo54")
+displayName = "White Stone Sigil"
+icon = ExtResource("2_krqoq")
+rulesText = "Destroy any one [color=purple]Undead[/color] enemy"
+flavorText = "\"Ancient and Wretched, does Death still guard his door\"  -Book of the Second Circle"

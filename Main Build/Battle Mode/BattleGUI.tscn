@@ -467,6 +467,7 @@ offset_bottom = 92.6026
 texture = ExtResource("26")
 
 [node name="Item Menu" parent="." instance=ExtResource("12_jbq4i")]
+visible = false
 
 [node name="Attack Menu" type="Control" parent="."]
 visible = false

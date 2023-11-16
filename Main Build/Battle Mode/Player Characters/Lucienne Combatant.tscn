@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d23io6jp617dx"]
+[gd_scene load_steps=23 format=3 uid="uid://d23io6jp617dx"]
 
 [ext_resource type="Script" path="res://Battle Mode/Player Characters/LucienneCombatant.cs" id="1_dqppg"]
 [ext_resource type="Texture2D" uid="uid://7wtuchgydm3u" path="res://GUI/Battle Menu Assets/Readouts/Lucienne Reaodut.png" id="2_sn0ce"]
@@ -11,6 +11,23 @@
 [ext_resource type="Script" path="res://Battle Mode/Player Characters/UseItemAction.cs" id="8_cb5t6"]
 [ext_resource type="PackedScene" uid="uid://boneh1axl0j65" path="res://Battle Mode/Combat Text.tscn" id="9_mkjul"]
 [ext_resource type="AudioStream" uid="uid://cfj5vrhlk6arb" path="res://Audio/HitSound.wav" id="10_21crq"]
+
+[sub_resource type="Animation" id="Animation_mjhbc"]
+resource_name = "Drink Potion"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_6ckd0"]
 resource_name = "GoDown"
@@ -380,8 +397,9 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8eygt"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qmkyh"]
 _data = {
+"DrinkPotion": SubResource("Animation_mjhbc"),
 "GoDown": SubResource("Animation_6ckd0"),
 "HitReact": SubResource("Animation_g5ty1"),
 "Idle": SubResource("Animation_mwj43"),
@@ -424,7 +442,7 @@ texture_filter = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_8eygt")
+"": SubResource("AnimationLibrary_qmkyh")
 }
 
 [node name="SwapPositions" type="Node" parent="."]
@@ -451,7 +469,7 @@ enabledRanks = Array[int]([1, 2, 3, 4, 5])
 
 [node name="Use Item" type="Node" parent="."]
 script = ExtResource("8_cb5t6")
-enabledRanks = Array[int]([0, 1, 2])
+enabledRanks = Array[int]([0, 1, 2, 3, 4, 5])
 
 [node name="Combat Text" parent="." instance=ExtResource("9_mkjul")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.876529, 2.26561, -0.0799999)

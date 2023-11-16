@@ -6,12 +6,19 @@ public partial class WorkshopShopInterface : ShopInterface{
         switch(activateString){
             case "FindItem":
             //TODO actually pick a random item instead of just spawning in the Bru
-                Item item = GD.Load<PackedScene>("res://Battle Mode/Items/OrcishFireBrew.tscn").Instantiate() as Item;
+                Item[] items = new Item[10];
+                for(int i = 0; i < 10; i++){
+                    if(i < 4) items[i] = GD.Load<PackedScene>("res://Battle Mode/Items/OrcishFireBrew.tscn").Instantiate() as Item;
+                    else if(i < 8) items[i] = GD.Load<PackedScene>("res://Battle Mode/Items/IronSoulTablet.tscn").Instantiate() as Item;
+                    else items[i] = GD.Load<PackedScene>("res://Battle Mode/Items/WhiteStoneSigil.tscn").Instantiate() as Item;
+                }
+                Random rando = new();
+                int dieRoll = rando.Next(0,9);    
                 
                 if(gm.GetCurrentTU() > 0){
                     gm.SpendTU(1);
-                    gm.GainItem(item);
-                    descritpionTextBox.Text = "Got " + item.GetDisplayName();
+                    gm.GainItem(items[dieRoll]);
+                    descritpionTextBox.Text = "Got " + items[dieRoll].GetDisplayName();
                 }else{
                     //TODO Add A "There is no Time" Message
                 }

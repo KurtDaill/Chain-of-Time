@@ -29,5 +29,6 @@ public partial class UseItemAction : PlayerAbility
         itemBeingUsed = item;
         name = item.GetDisplayName();
         animation = item.GetAnimation();
+        AbilityTargetingLogic = item.GetTargetingLogic();
     }
 }

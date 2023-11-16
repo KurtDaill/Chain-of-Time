@@ -128,13 +128,13 @@ fov = 60.0
 
 [node name="BattleGUI" parent="Camera3D" instance=ExtResource("8_34yqp")]
 
-[node name="Building Hider" parent="Camera3D" node_paths=PackedStringArray("viewTarget") instance=ExtResource("5_0x4po")]
-transform = Transform3D(1, 0, 0, 0, 1, -4.77672e-16, 0, -4.77671e-16, 1, 0, 0, 0)
-viewTarget = NodePath("../../Roster/HeroBack2")
-
 [node name="Building Hider2" parent="Camera3D" node_paths=PackedStringArray("viewTarget") instance=ExtResource("5_0x4po")]
 transform = Transform3D(1, 0, 0, 0, 1, -4.77672e-16, 0, -4.77671e-16, 1, 0, 0, 0)
 viewTarget = NodePath("../../Roster/EnemyBack2")
+
+[node name="Building Hider" parent="Camera3D" node_paths=PackedStringArray("viewTarget") instance=ExtResource("5_0x4po")]
+transform = Transform3D(1, 0, 0, 0, 1, -4.77672e-16, 0, -4.77671e-16, 1, 0, 0, 0)
+viewTarget = NodePath("../../Roster/HeroBack2")
 
 [node name="Turnover Timer" type="Timer" parent="."]
 wait_time = 0.4
