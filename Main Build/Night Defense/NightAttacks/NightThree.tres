@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://c321sur8pr4i"]
+
+[ext_resource type="PackedScene" uid="uid://bmiqrn136cowf" path="res://Night Defense/EnemyGroups/Vandals Three.tscn" id="2_5n8m3"]
+[ext_resource type="PackedScene" uid="uid://ca55s1avw4vw3" path="res://Night Defense/EnemyGroups/Vandals with Muscle.tscn" id="2_w2qw1"]
+[ext_resource type="Script" path="res://Night Defense/NightAttack.cs" id="3_fho8u"]
+[ext_resource type="PackedScene" uid="uid://ir8nxufxaaa6" path="res://Night Defense/EnemyGroups/Rogue Vandal.tscn" id="3_r82ut"]
+
+[resource]
+script = ExtResource("3_fho8u")
+definiteEnemyEncounters = Array[PackedScene]([ExtResource("2_w2qw1"), ExtResource("2_5n8m3"), ExtResource("3_r82ut")])
+randomChanceEncounters = {}

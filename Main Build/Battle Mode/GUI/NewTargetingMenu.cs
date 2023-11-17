@@ -212,11 +212,11 @@ public partial class NewTargetingMenu : BattleMenu {
             switch(currentAbility.GetTargetingLogic()){
 
                 case TargetingLogic.SinlgeTargetPlayer : //Check Range & valid type (Enemy v Player)
-                    if(currentAbility.GetenabledRanks().Contains(target.GetPosition().GetRank()) && target is PlayerCombatant) actualTargets.Add(target);
+                    if(currentAbility.GetEnabledRanks().Contains(target.GetPosition().GetRank()) && target is PlayerCombatant) actualTargets.Add(target);
                     break;
                 
                 case TargetingLogic.SingleTargetEnemy : //Check Range & valid type (Enemy v Player)
-                    if(currentAbility.GetenabledRanks().Contains(target.GetPosition().GetRank()) && target is EnemyCombatant) actualTargets.Add(target);
+                    if(currentAbility.GetEnabledRanks().Contains(target.GetPosition().GetRank()) && target is EnemyCombatant) actualTargets.Add(target);
                     break;
 
                 case TargetingLogic.MyLanePlayers : //Checks targets are in the correct lane & valid type (Enemy v Player)

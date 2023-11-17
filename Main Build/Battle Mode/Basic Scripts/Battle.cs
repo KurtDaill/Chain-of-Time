@@ -132,7 +132,7 @@ public partial class Battle : GameplayMode
 		}
 		if(battleRoster.GetAllEnemyCombatants().Length == 0){
 			//Have to actually despawn the overworld enemies that started this!
-			enemiesThatStartedThisEncounter.Free();
+			enemiesThatStartedThisEncounter.Free(); //There was some kind of failure to exit a battle that had an exception around here...TODO figure that out?
 			return postBattleMode;
 		}
 		if(!battleRoster.GetAllPlayerCombatants().Any(x => x.GetHP() > 0)){
@@ -228,7 +228,7 @@ public partial class Battle : GameplayMode
 		}
 
 	public override Task TransitionOut(){
-		GetNode<GameMaster>("/root/GameMaster").SavePlayerParty(battleRoster);
+		GetNode<GameMaster>("/root/GameMaster").SavePartyData(battleRoster);
 		this.QueueFree();
 		return Task.CompletedTask;
 	}

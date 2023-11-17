@@ -221,8 +221,7 @@ sky = SubResource("Sky_r1ohp")
 script = ExtResource("1_mg7wy")
 startingMode = NodePath("ExploreMode")
 
-[node name="ExploreMode" parent="." node_paths=PackedStringArray("exploreCamera", "explorePlayer") instance=ExtResource("2_u843o")]
-exploreCamera = NodePath("../ExplorePlayer/Explore Camera")
+[node name="ExploreMode" parent="." node_paths=PackedStringArray("explorePlayer") instance=ExtResource("2_u843o")]
 explorePlayer = NodePath("../ExplorePlayer")
 
 [node name="ExplorePlayer" type="CharacterBody3D" parent="."]

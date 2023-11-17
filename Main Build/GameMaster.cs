@@ -48,9 +48,7 @@ public partial class GameMaster : Node
             new PlayerData("Silver", "res://Battle Mode/Player Characters/Silver Combatant.tscn", 4,4, 4,4, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroBack))
             };
         inventory = new List<Item>(){
-            GD.Load<PackedScene>("res://Battle Mode/Items/OrcishFireBrew.tscn").Instantiate() as Item,
-            GD.Load<PackedScene>("res://Battle Mode/Items/IronSoulTablet.tscn").Instantiate() as Item,
-            GD.Load<PackedScene>("res://Battle Mode/Items/WhiteStoneSigil.tscn").Instantiate() as Item
+            GD.Load<PackedScene>("res://Battle Mode/Items/IronSoulTablet.tscn").Instantiate() as Item
         };
         currentTime = TimeOfDay.Morning;
         ProcessMode = ProcessModeEnum.Always;
@@ -60,7 +58,7 @@ public partial class GameMaster : Node
     public override async void _Process(double delta)
     {
         base._Process(delta);
-        GameplayMode returnedMode = await currentMode.RemoteProcess(delta);
+        GameplayMode returnedMode = await currentMode.RemoteProcess(delta); //There was some kind of failure to exit a battle that had an exception around here...TODO figure that out?
         currentMode.HandleInput(ReadInput());
         if(returnedMode != null){
             SetMode(returnedMode);
@@ -78,12 +76,18 @@ public partial class GameMaster : Node
         return PlayerInput.None;
     }
 
-    public void SavePlayerParty(Roster roster){
+    public void SavePartyData(Roster roster){
         PlayerCombatant[] currentParty = roster.GetAllPlayerCombatants();
         SavePlayerParty(currentParty);
+        var tempInv = roster.GetNode("Items").GetChildren().Where(x => x is Item).Cast<Item>().ToList();
+        inventory = new List<Item>();
+        //We have to dupe the items to get around an issue with Battle deleting the items attached to it
+        foreach(Item item in tempInv){
+            inventory.Add(item.Duplicate() as Item);
+        }
     }
 
-    public void SavePlayerParty(PlayerCombatant[] currentParty){
+    private void SavePlayerParty(PlayerCombatant[] currentParty){
         for(int i = 0; i < currentParty.Length; i++){partyData[i] = currentParty[i].GetPlayerData();} 
     }
 
@@ -94,7 +98,7 @@ public partial class GameMaster : Node
             roster.SetPositionNewCharacter(playerCharacter, playerCombatantData.GetStartingPosition());
         }
         foreach(Item item in inventory){
-            roster.GetNode("Items").AddChild(item);
+            roster.GetNode("Items").AddChild(item.Duplicate());
         }
     }
 

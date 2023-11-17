@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Reflection;
 using static GameplayUtilities;
 public partial class PauseMenuGUI : CanvasLayer
 {
@@ -32,11 +33,17 @@ public partial class PauseMenuGUI : CanvasLayer
 		readouts.SetReadoutsPauseMenu(party);
 		if(inNightMode){
 			startNightButton.Text = "End Night";
-			startNightButton.Pressed -= StartNight;
+			//Checks whether there's the other signal still connected, and if so: scrubs it.
+			if(startNightButton.IsConnected(Button.SignalName.Pressed, new Callable(this, nameof(StartNight)))){
+				startNightButton.Pressed -= this.StartNight;
+			}
 			startNightButton.Pressed += this.GetParent<PauseMenu>().PlayerEndsNightEarly;
 		}else{
 			startNightButton.Text = "Start Night";
-			startNightButton.Pressed -= this.GetParent<PauseMenu>().PlayerEndsNightEarly;
+			//Checks whether there's the other signal still connected, and if so: scrubs it.
+			if(startNightButton.IsConnected(Button.SignalName.Pressed, new Callable(GetParent<PauseMenu>(), nameof(PauseMenu.PlayerEndsNightEarly)))){
+				startNightButton.Pressed -= this.GetParent<PauseMenu>().PlayerEndsNightEarly;
+			}
 			startNightButton.Pressed += StartNight;
 		}
 	}

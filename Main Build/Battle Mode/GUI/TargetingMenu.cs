@@ -98,10 +98,10 @@ public partial class TargetingMenu : BattleMenu {
 				skillCardGUI.Visible = true;
 				attackBackboard.Visible = false;
 				PlayerSkill skill = (PlayerSkill)abilityInQuestion;
-				if(!skill.GetenabledRanks().Contains(character.GetPosition())){
-					skillCardGUI.SetDisplay(skill.Name, "Out of Position!", skill.GetSkilType(), skill.GetAbilityAlignment(), skill.GetSPCost(), skill.GetenabledRanks());
+				if(!skill.GetEnabledRanks().Contains(character.GetPosition())){
+					skillCardGUI.SetDisplay(skill.Name, "Out of Position!", skill.GetSkilType(), skill.GetAbilityAlignment(), skill.GetSPCost(), skill.GetEnabledRanks());
 				}
-				skillCardGUI.SetDisplay(skill.Name, skill.GetRulesText(), skill.GetSkilType(), skill.GetAbilityAlignment(), skill.GetSPCost(), skill.GetenabledRanks());
+				skillCardGUI.SetDisplay(skill.Name, skill.GetRulesText(), skill.GetSkilType(), skill.GetAbilityAlignment(), skill.GetSPCost(), skill.GetEnabledRanks());
 			}else{
 				skillCardGUI.Visible = false;
 				attackBackboard.Visible = true;

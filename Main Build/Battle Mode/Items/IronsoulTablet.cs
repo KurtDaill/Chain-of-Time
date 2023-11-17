@@ -8,19 +8,24 @@ public partial class IronsoulTablet : ConsumableItem
 
     [Export]
     int maxDrain = 100;
-    Timer firstEffectTimer;
+    Timer myTimer;
     public override void _Ready(){
         base._Ready();
         onCharacterAnimation = "DrinkPotion";
-        firstEffectTimer = new Timer();
-        this.AddChild(firstEffectTimer);
+    }
+
+    public override void _EnterTree()
+    {
+        base._EnterTree();
+        myTimer = new Timer();
+        this.AddChild(myTimer);
     }
 
     public async override Task Consume(PlayerCombatant user, Combatant[] targets){
         int drain = Math.Min(user.GetSP(), maxDrain);
         user.ChargeSP(drain); // TODO Make an animation for SP drain that gets called up here.
-        firstEffectTimer.Start(1);
-        await ToSignal(firstEffectTimer, Timer.SignalName.Timeout);
+        myTimer.Start(1);
+        await ToSignal(myTimer, Timer.SignalName.Timeout);
         user.Heal(drain);
         this.QueueFree();
         return;

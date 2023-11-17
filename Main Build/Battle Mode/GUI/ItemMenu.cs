@@ -26,10 +26,11 @@ public partial class ItemMenu : BattleMenu
     }
     public override void OnOpen(PlayerCombatant character, Battle caller, BattleGUI parentGUI){
         base.OnOpen(character, caller, parentGUI);
-        var temp = this.GetNode<GameMaster>("/root/GameMaster").GetInventory().Where(x => x is ConsumableItem && !((ConsumableItem)x).IsThisInUse()).ToList();
+        currentItem = 0;
+        var temp = caller.GetRoster().GetNode("Items").GetChildren().Where(x => x is ConsumableItem && !((ConsumableItem)x).IsThisInUse()).Cast<ConsumableItem>().ToList();
         itemsAvailable = new ConsumableItem[temp.Count];
         for(int i = 0; i < temp.Count; i ++){
-            itemsAvailable[i] = (ConsumableItem)temp[i];
+            itemsAvailable[i] = temp[i];
         }
         //Set our Display to reflect that
         for(int i = 0; i < itemTabs.Length; i++){

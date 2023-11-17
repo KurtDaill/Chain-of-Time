@@ -194,7 +194,7 @@ public partial class Roster : Node
 		for(int i = 0; i < 3; i++){
 			bool[] laneState = new bool[3];
 			for(int e = 3; e < 6; e++){if(positionData[i,e] != null && positionData[i,e].GetHP() > 0)laneState[e - 3] = true; else laneState[e - 3] = false;}
-			if(!laneState.Any(x => x == true)){
+			if(laneState.Any(x => x == true)){
 				//We don't run this logic if there's nothing in the lane, its messy and risks an inifite loop of swapping characters 
 				if(!laneState[0]) SwapCharacters((BattleLane)i, BattleRank.EnemyMid, (BattleLane)i, BattleRank.EnemyFront);
 				if(!laneState[1] && laneState[2]) SwapCharacters((BattleLane)i, BattleRank.EnemyBack, (BattleLane)i, BattleRank.EnemyMid);

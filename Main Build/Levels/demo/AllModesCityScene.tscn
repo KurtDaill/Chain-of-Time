@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://johbf16mwra8"]
+[gd_scene load_steps=17 format=3 uid="uid://johbf16mwra8"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_0dxlu"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_liug8"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://c6innrm4p7fpn" path="res://Night Defense/NightAttacks/NightOne.tres" id="3_xtw4k"]
 [ext_resource type="PackedScene" uid="uid://cenpkmy5h0ooq" path="res://Explore Mode/explore_player.tscn" id="4_gvjqb"]
 [ext_resource type="Resource" uid="uid://doooy2cygnv6i" path="res://Night Defense/NightAttacks/NightTwo.tres" id="4_j3x6o"]
+[ext_resource type="Resource" uid="uid://c321sur8pr4i" path="res://Night Defense/NightAttacks/NightThree.tres" id="5_lwwdg"]
 [ext_resource type="Script" path="res://Night Defense/ResultsScreen.cs" id="13_yr3hr"]
 [ext_resource type="Environment" uid="uid://cqpc6quc73qwr" path="res://Night Defense/Result Screen Environment.tres" id="14_c660d"]
 [ext_resource type="Theme" uid="uid://dp5ux27rntx3l" path="res://Night Defense/Results Screen Theme.tres" id="15_q3tlf"]
@@ -214,10 +215,10 @@ cityScene = true
 myNightDefenseMode = NodePath("Night Defense")
 
 [node name="Night Defense" parent="." node_paths=PackedStringArray("results", "playerNightStartPosition", "explorePlayer") instance=ExtResource("2_pjbcb")]
-lightDurationInSeconds = 60
+lightDurationInSeconds = 90
 results = NodePath("../Results Screen")
 playerNightStartPosition = NodePath("../Night Marker")
-nights = Array[Resource]([ExtResource("3_xtw4k"), ExtResource("4_j3x6o")])
+nights = Array[Resource]([ExtResource("3_xtw4k"), ExtResource("4_j3x6o"), ExtResource("5_lwwdg"), null])
 explorePlayer = NodePath("../ExplorePlayer")
 
 [node name="ExplorePlayer" parent="." instance=ExtResource("4_gvjqb")]

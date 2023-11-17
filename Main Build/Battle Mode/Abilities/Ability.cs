@@ -66,7 +66,7 @@ public partial class Ability : CombatAction
         ListenForAnimationFinished();
     }
 
-    public Godot.Collections.Array<BattleRank> GetenabledRanks(){
+    public Godot.Collections.Array<BattleRank> GetEnabledRanks(){
         return enabledRanks;
     }
 

@@ -18,7 +18,7 @@ public partial class SkeletonGuard : EnemyCombatant
 
 
 	public override CombatEventData DecideAction(Battle parentBattle){
-		if(taunt.GetenabledRanks().Contains(this.GetPosition().GetRank()) && activeStatuses.Where(x => x is StatusTaunting).Count() == 0){ //If we're not taunting and in the front
+		if(taunt.GetEnabledRanks().Contains(this.GetPosition().GetRank()) && activeStatuses.Where(x => x is StatusTaunting).Count() == 0){ //If we're not taunting and in the front
 			return taunt.GetEventData();
 		}
         attack.SetTargets(parentBattle.GetRoster().GetAllPlayerCombatants());
