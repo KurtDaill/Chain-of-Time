@@ -23,6 +23,8 @@ public partial class PauseMenuGUI : CanvasLayer
 
 	[Signal]
 	public delegate void CharacterSelectedInPauseMenuEventHandler(StringName name);
+	[Signal]
+	public delegate void PlayerClosesMenuEventHandler();
 
 	public void Open()
 	{
@@ -57,6 +59,7 @@ public partial class PauseMenuGUI : CanvasLayer
 	//returns true if we should switch back to the earlier gameplaymode
 	public bool HandleInput(PlayerInput input){
 		if(input == PlayerInput.Start || input == PlayerInput.Back){
+			EmitSignal(SignalName.PlayerClosesMenu);
 			return true;	
 		}
 		switch(currentMode){

@@ -449,7 +449,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.9375, 0, -12.5625)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8125, 0, -12.5625)
 
 [node name="Generic House24" parent="Buildings" instance=ExtResource("6_ofnwb")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.75, 0, 67.625)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.75, 0, 67.625)
 
 [node name="Generic House25" parent="Buildings" instance=ExtResource("6_ofnwb")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38.8125, 0, 67.625)
@@ -458,10 +458,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38.81
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -55.6875, 0, 67.625)
 
 [node name="Generic House27" parent="Buildings" instance=ExtResource("6_ofnwb")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -80.125, 0, 67.625)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -79.125, 0, 67.625)
 
 [node name="Generic House30" parent="Buildings" instance=ExtResource("6_ofnwb")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -80.875, 0, 93.9375)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -78.875, 0, 93.9375)
 
 [node name="Generic House31" parent="Buildings" instance=ExtResource("6_ofnwb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.4375, 0, 93.9375)
@@ -473,16 +473,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.9375, 0, 93.9375)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.75, 0, 93.9375)
 
 [node name="Generic House34" parent="Buildings" instance=ExtResource("6_ofnwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4375, 0, 94.6875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4375, 0, 93.6875)
 
 [node name="Generic House35" parent="Buildings" instance=ExtResource("6_ofnwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9375, 0, 94.6875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9375, 0, 93.6875)
 
 [node name="Generic House36" parent="Buildings" instance=ExtResource("6_ofnwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.8125, 0, 94.6875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.8125, 0, 93.6875)
 
 [node name="Generic House37" parent="Buildings" instance=ExtResource("6_ofnwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.3125, 0, 94.6875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.3125, 0, 93.6875)
 
 [node name="Generic House40" parent="Buildings" instance=ExtResource("6_ofnwb")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 77.5625, 0, 68.125)
