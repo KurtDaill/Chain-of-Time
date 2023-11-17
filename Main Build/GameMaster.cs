@@ -48,7 +48,15 @@ public partial class GameMaster : Node
             new PlayerData("Silver", "res://Battle Mode/Player Characters/Silver Combatant.tscn", 4,4, 4,4, new BattlePosition(BattleUtilities.BattleLane.Center, BattleUtilities.BattleRank.HeroBack))
             };
         inventory = new List<Item>(){
-            GD.Load<PackedScene>("res://Battle Mode/Items/IronSoulTablet.tscn").Instantiate() as Item
+            GD.Load<PackedScene>("res://Battle Mode/Items/IronSoulTablet.tscn").Instantiate() as Item,
+            GD.Load<PackedScene>("res://Battle Mode/Items/OrcishFireBrew.tscn").Instantiate() as Item,
+            GD.Load<PackedScene>("res://Battle Mode/Items/WhiteStoneSigil.tscn").Instantiate() as Item,
+            GD.Load<PackedScene>("res://Battle Mode/Items/IronSoulTablet.tscn").Instantiate() as Item,
+            GD.Load<PackedScene>("res://Battle Mode/Items/OrcishFireBrew.tscn").Instantiate() as Item,
+            GD.Load<PackedScene>("res://Battle Mode/Items/WhiteStoneSigil.tscn").Instantiate() as Item,
+            GD.Load<PackedScene>("res://Battle Mode/Items/IronSoulTablet.tscn").Instantiate() as Item,
+            GD.Load<PackedScene>("res://Battle Mode/Items/OrcishFireBrew.tscn").Instantiate() as Item,
+            GD.Load<PackedScene>("res://Battle Mode/Items/WhiteStoneSigil.tscn").Instantiate() as Item
         };
         currentTime = TimeOfDay.Morning;
         ProcessMode = ProcessModeEnum.Always;

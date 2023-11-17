@@ -31,6 +31,7 @@ public partial class NightDefense : ExploreMode
     protected EnemyGroup[] enemyGroupsInCity;
 
     private bool totalPartyKill = false;
+    private bool quitEarly = false;
 
     public override async void _Ready(){
         base._Ready();
@@ -69,7 +70,9 @@ public partial class NightDefense : ExploreMode
         if(totalPartyKill){
             myCity.DestroyRandomBuilding();
             buildingsDestoryedLastNight++;
-            foreach(VandalEnemyGroup vandal in enemyGroupsInCity.Where(x => x is VandalEnemyGroup)){ //This handles vandals who never made it to their targets because the player died to quickly.
+        }
+        if(quitEarly){
+            foreach(VandalEnemyGroup vandal in enemyGroupsInCity.Where(x => x is VandalEnemyGroup)){ //This handles vandals who never made it to their targets because the player died too quickly or quit early.
                 if(!vandal.AmIVandalizing()){
                     myCity.DestroyRandomBuilding();
                     buildingsDestoryedLastNight++;
@@ -86,6 +89,7 @@ public partial class NightDefense : ExploreMode
 
     public void BeginNight(){
         totalPartyKill = false;
+        quitEarly = false;
         myCity = this.GetNode<CityState>("/root/CityState").GetCity();
         spawnPoints = myCity.GetEnemySpawnPoints();
         enemyNavigationRegion = myCity.GetEnemyNavRegion();
@@ -187,10 +191,12 @@ public partial class NightDefense : ExploreMode
     //Called by any mode that's going to transition back to a running Night Defense Mode, used to tell the mode to end the night early in certain situations: i.e. Losing Combat, hit the End Night button, etc.
     public void SetNightToEndImmediatelyOnLoad(){
         remainingLight = 0;
+        quitEarly = true;
     }
 
     public void LogTotalPartyKill(){
         SetNightToEndImmediatelyOnLoad();
+        quitEarly = true;
         totalPartyKill = true;
     }
 }

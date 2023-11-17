@@ -57,6 +57,7 @@ public partial class ResultsScreen : GameplayMode
             enemyCounts.TryGetValue("All", out int all);
             enemyCounts.TryGetValue("Wanderer", out int wanderer);
             enemyCounts.TryGetValue("Vandal", out int vandal);
+            resultsTextContainer.GetNode<Label>("Title").Text = "Results - Night " + GetNode<GameMaster>("/root/GameMaster").GetNightNumber();
             resultsTextContainer.GetNode<RichTextLabel>("Enemy Counts").Text = resultsTextContainer.GetNode<RichTextLabel>("Enemy Counts").Text.Replace("[ALL]", "" + all);
             resultsTextContainer.GetNode<RichTextLabel>("Enemy Counts").Text = resultsTextContainer.GetNode<RichTextLabel>("Enemy Counts").Text.Replace("[WAN]", "" + wanderer);
             resultsTextContainer.GetNode<RichTextLabel>("Enemy Counts").Text = resultsTextContainer.GetNode<RichTextLabel>("Enemy Counts").Text.Replace("[RAD]", "" + vandal);

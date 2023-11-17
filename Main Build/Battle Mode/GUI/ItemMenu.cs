@@ -9,7 +9,7 @@ public partial class ItemMenu : BattleMenu
     private ConsumableItem[] itemsAvailable;
     private TextureRect[] itemTabs;
     private int currentItem;
-
+    private int currentTopTab;
     private TextureRect itemIcon;
     private RichTextLabel titleLineLabel, descriptionLabel;
     public override void _Ready(){
@@ -32,21 +32,7 @@ public partial class ItemMenu : BattleMenu
         for(int i = 0; i < temp.Count; i ++){
             itemsAvailable[i] = temp[i];
         }
-        //Set our Display to reflect that
-        for(int i = 0; i < itemTabs.Length; i++){
-            if(itemsAvailable.Length > i){
-                itemTabs[i].Visible = true;   
-                itemTabs[i].GetNode<Label>("Name").Text = itemsAvailable[i].GetDisplayName();
-            }else{
-                itemTabs[i].Visible = false;
-            }
-        }
-        if(itemsAvailable.Length > 0){
-            SetDescriptionBox(itemsAvailable[0]);
-        }else{
-            descriptionLabel.Text = "...";
-            titleLineLabel.Text = "-";
-        }
+        SetTabs(0);
     }
 
     public void OnOpenInsidePauseMenu(){
@@ -76,9 +62,15 @@ public partial class ItemMenu : BattleMenu
         switch(input){
             case PlayerInput.Up:
                 if(currentItem > 0) currentItem--;
+                if(currentItem <= 3){
+                    SetTabs(0);
+                }
                 break;
             case PlayerInput.Down:
                 if(currentItem < itemsAvailable.Length - 1) currentItem++;
+                if(currentItem > 3){
+                    SetTabs(currentItem -3);
+                }
                 break;
         }
         if(input != PlayerInput.None){
@@ -89,7 +81,7 @@ public partial class ItemMenu : BattleMenu
 
     private void SetHighlight(){
         for(int i = 0; i < itemTabs.Length; i++){
-            itemTabs[i].GetNode<TextureRect>("Highlight").Visible = i == currentItem;
+            itemTabs[i].GetNode<TextureRect>("Highlight").Visible = i == (currentItem - currentTopTab);
         }
     }
     private void SetDescriptionBox(Item descItem){
@@ -102,9 +94,15 @@ public partial class ItemMenu : BattleMenu
         switch(input){
             case PlayerInput.Up:
                 if(currentItem > 0) currentItem--;
+                if(currentItem <= 3){
+                    SetTabs(0);
+                }
                 break;
             case PlayerInput.Down:
                 if(currentItem < itemsAvailable.Length - 1) currentItem++;
+                if(currentItem > 3){
+                    SetTabs(currentItem -3);
+                }
                 break;
             case PlayerInput.Back:
                 parentGUI.ChangeMenu(0, character); //Goes back to top menu
@@ -122,6 +120,25 @@ public partial class ItemMenu : BattleMenu
             SetDescriptionBox(itemsAvailable[currentItem]);
         }
         return null;
+    }
+    
+    public void SetTabs(int topEntry){
+        //Set our Display to reflect that
+        for(int i = 0; i < itemTabs.Length; i++){
+            if(itemsAvailable.Length > i){
+                itemTabs[i].Visible = true;   
+                itemTabs[i].GetNode<Label>("Name").Text = itemsAvailable[i+topEntry].GetDisplayName();
+            }else{
+                itemTabs[i].Visible = false;
+            }
+        }
+        if(itemsAvailable.Length > 0){
+            SetDescriptionBox(itemsAvailable[topEntry]);
+        }else{
+            descriptionLabel.Text = "...";
+            titleLineLabel.Text = "-";
+        }
+        currentTopTab = topEntry;
     }
 }
 

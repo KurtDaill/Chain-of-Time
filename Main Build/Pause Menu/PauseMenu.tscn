@@ -9,11 +9,12 @@
 [node name="PauseMenu" type="Node3D"]
 script = ExtResource("1_7e165")
 
-[node name="PauseMenuGUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("itemSubMenu", "readouts", "startNightButton")]
+[node name="PauseMenuGUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("itemSubMenu", "readouts", "startNightButton", "bottomRack")]
 script = ExtResource("2_7dlw4")
 itemSubMenu = NodePath("Item Menu")
 readouts = NodePath("Readouts")
 startNightButton = NodePath("Start Night And Stop Night")
+bottomRack = [NodePath("Start Night And Stop Night"), NodePath("Quit")]
 
 [node name="ColorRect" type="ColorRect" parent="PauseMenuGUI"]
 anchors_preset = 15
@@ -80,6 +81,7 @@ offset_left = 740.0
 offset_top = -548.0
 offset_right = 780.0
 offset_bottom = -508.0
+focus_mode = 2
 
 [connection signal="pressed" from="PauseMenuGUI/Quit" to="PauseMenuGUI" method="OnPressQuit"]
 [connection signal="pressed" from="PauseMenuGUI/Start Night And Stop Night" to="PauseMenuGUI" method="StartNight"]

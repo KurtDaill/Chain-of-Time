@@ -18,6 +18,8 @@ public partial class PauseMenuGUI : CanvasLayer
 	Button startNightButton;
 	bool inNightMode;
 	int selectX, selectY;
+	[Export]
+	Godot.Collections.Array<Button> bottomRack;
 
 	[Signal]
 	public delegate void CharacterSelectedInPauseMenuEventHandler(StringName name);
@@ -69,7 +71,25 @@ public partial class PauseMenuGUI : CanvasLayer
 				break;
 			case PauseMenuMode.NormalPause: 
 				//Include Stuff for the Default Pause Menu Here
-				itemSubMenu.HandleInputPauseMenu(input);	
+				if(selectX == bottomRack.Count){
+					itemSubMenu.GrabFocus();
+					if(input == PlayerInput.Left){
+						selectX --;
+					} else {
+						itemSubMenu.HandleInputPauseMenu(input);
+					}	
+				}else{
+						bottomRack[selectX].GrabFocus();
+					if(input == PlayerInput.Select){
+						bottomRack[selectX]._Pressed();
+					}
+					if(input == PlayerInput.Right){
+						selectX++;
+					}
+					if(input == PlayerInput.Left){
+						if(selectX > 0) selectX--;
+					}
+				}
 				break;
 		}
 		return false;

@@ -23,7 +23,7 @@ public partial class IronsoulTablet : ConsumableItem
 
     public async override Task Consume(PlayerCombatant user, Combatant[] targets){
         int drain = Math.Min(user.GetSP(), maxDrain);
-        user.ChargeSP(drain); // TODO Make an animation for SP drain that gets called up here.
+        user.ChargeSP(drain); // TODO Make an animation for SP drain that gets called up here. 
         myTimer.Start(1);
         await ToSignal(myTimer, Timer.SignalName.Timeout);
         user.Heal(drain);

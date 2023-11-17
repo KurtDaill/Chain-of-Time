@@ -52,4 +52,15 @@ public partial class BuildingHider : Node3D
         }
 
 	}
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        foreach(Building build in buildingsHiddenByThisCamera){
+            build.ShowBuilding();
+        }
+        foreach(Building build in buildingsToShowThisFrame){
+            build.ShowBuilding();        
+        }
+    }
 }
