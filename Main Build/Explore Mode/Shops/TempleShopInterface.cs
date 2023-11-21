@@ -38,4 +38,5 @@ public partial class TempleShopInterface : ShopInterface
         this.GetNode<PauseMenu>("/root/PauseMenu").GetGUI().CharacterSelectedInPauseMenu -= OnCharacterSelectedForHealing;
         this.GetNode<PauseMenu>("/root/PauseMenu").GetGUI().PlayerClosesMenu -= QuitOutOfHealing;
     }
+    
 }
