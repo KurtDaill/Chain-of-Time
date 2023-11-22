@@ -222,6 +222,7 @@ itemDescriptionBox = NodePath("Item Text/SubViewport/Panel/RichTextLabel")
 junkItems = Array[PackedScene]([ExtResource("4_6m1ie")])
 commonItems = Array[PackedScene]([ExtResource("5_46peh")])
 rareItems = Array[PackedScene]([ExtResource("6_bqc8m")])
+chaceToGetaRare = 0.3
 itemRackFrontMarker = NodePath("Select Consumable Sub Screen/Item Icons/Front Position")
 itemRackBackMarker = NodePath("Select Consumable Sub Screen/Item Icons/Back Position")
 itemSelectSpotLight = NodePath("Select Consumable Sub Screen/SpotLight3D")

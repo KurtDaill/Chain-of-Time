@@ -1,9 +1,9 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://c6innrm4p7fpn"]
 
-[ext_resource type="PackedScene" uid="uid://bba5j464igulr" path="res://Night Defense/EnemyGroups/Vandal Enemy Group.tscn" id="1_b35vj"]
+[ext_resource type="PackedScene" uid="uid://0nedskyjjbkw" path="res://Night Defense/EnemyGroups/Vandal with Ranged Enemy Group.tscn" id="1_rbqcb"]
 [ext_resource type="Script" path="res://Night Defense/NightAttack.cs" id="2_gxrlk"]
 
 [resource]
 script = ExtResource("2_gxrlk")
-definiteEnemyEncounters = Array[PackedScene]([ExtResource("1_b35vj")])
+definiteEnemyEncounters = Array[PackedScene]([ExtResource("1_rbqcb")])
 randomChanceEncounters = {}

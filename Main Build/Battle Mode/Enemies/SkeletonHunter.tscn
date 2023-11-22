@@ -1,0 +1,453 @@
+[gd_scene load_steps=21 format=3 uid="uid://b55dbuh8wtexg"]
+
+[ext_resource type="Script" path="res://Battle Mode/Enemies/SkeletonHunter.cs" id="1_lrx80"]
+[ext_resource type="Texture2D" uid="uid://kxudw24ep3lr" path="res://Art/Skeleton Archer Test-Sheet.png" id="2_gw323"]
+[ext_resource type="Script" path="res://Battle Mode/Abilities/BasicEnemyMelee.cs" id="3_qu8eb"]
+[ext_resource type="AudioStream" uid="uid://cfj5vrhlk6arb" path="res://Audio/HitSound.wav" id="4_7t3jr"]
+[ext_resource type="AudioStream" uid="uid://ciouvtx1se17d" path="res://Audio/Skeleton Taunt.wav" id="5_11v4o"]
+[ext_resource type="AudioStream" uid="uid://uo20buou3jxx" path="res://Audio/Melee Attack.wav" id="6_4qb40"]
+[ext_resource type="PackedScene" uid="uid://drrypbsjxq7n1" path="res://Battle Mode/Pointer.tscn" id="7_jq2lr"]
+[ext_resource type="PackedScene" uid="uid://bhh44xrbceu6a" path="res://Battle Mode/GUI/enemy_nameplate.tscn" id="8_ygq72"]
+[ext_resource type="PackedScene" uid="uid://boneh1axl0j65" path="res://Battle Mode/Combat Text.tscn" id="9_0avgu"]
+[ext_resource type="PackedScene" uid="uid://yqwlafpgpp3" path="res://Battle Mode/GUI/EnemyHealthBar.tscn" id="10_pa7wt"]
+
+[sub_resource type="Animation" id="Animation_otcst"]
+resource_name = "GoDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8bfdd"]
+resource_name = "HitReact"
+length = 0.8
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.6875, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.6)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hit Sound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite3D:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 11, 0]
+}
+
+[sub_resource type="Animation" id="Animation_pytuy"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tt5xp"]
+resource_name = "MeleeAttack"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.1, -0.0565425, -0.8125, -0.1, -0.003, 0.3, 0.0207753, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 1)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tow5y"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite3D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite3D:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_4fqd5"]
+resource_name = "RangedAttack"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.5, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0]
+}
+
+[sub_resource type="Animation" id="Animation_tgpno"]
+resource_name = "Taunt"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [21, 36]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Taunt Sound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_e7tbg"]
+resource_name = "TauntAttack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [11, 20]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"ActivateReadyAction"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sword Swing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_iupia"]
+resource_name = "TauntIdle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [36]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ynth"]
+_data = {
+"GoDown": SubResource("Animation_otcst"),
+"HitReact": SubResource("Animation_8bfdd"),
+"Idle": SubResource("Animation_pytuy"),
+"MeleeAttack": SubResource("Animation_tt5xp"),
+"RESET": SubResource("Animation_tow5y"),
+"RangedAttack": SubResource("Animation_4fqd5"),
+"Taunt": SubResource("Animation_tgpno"),
+"TauntAttack": SubResource("Animation_e7tbg"),
+"TauntIdle": SubResource("Animation_iupia")
+}
+
+[node name="Skeleton Hunter" type="Node3D" node_paths=PackedStringArray("rangedAttack", "meleeAttack", "nameplate", "healthBar", "displayText", "pointer")]
+script = ExtResource("1_lrx80")
+rangedAttack = NodePath("Ranged")
+meleeAttack = NodePath("Melee")
+nameplate = NodePath("Nameplate Adjuster/Enemy Nameplate")
+healthBar = NodePath("EnemyHealthBar")
+hp = 3
+maxHP = 3
+displayText = NodePath("Combat Text")
+pointer = NodePath("Pointer Adjuster/Pointer")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+offset = Vector2(-30, 120)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 2
+texture_filter = 1
+texture = ExtResource("2_gw323")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1ynth")
+}
+
+[node name="Melee" type="Node" parent="."]
+script = ExtResource("3_qu8eb")
+setAnimation = "MeleeAttack"
+setName = "Knife 'Em!"
+damage = PackedInt32Array(1)
+damageProbs = PackedFloat64Array(1)
+enabledRanks = Array[int]([2, 3, 1])
+
+[node name="Ranged" type="Node" parent="."]
+script = ExtResource("3_qu8eb")
+setAnimation = "RangedAttack"
+setName = "Bow"
+damage = PackedInt32Array(1, 2)
+damageProbs = PackedFloat64Array(0.75, 0.25)
+enabledRanks = Array[int]([4, 3, 2, 1, 0])
+
+[node name="Hit Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7t3jr")
+
+[node name="Taunt Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_11v4o")
+
+[node name="Sword Swing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4qb40")
+
+[node name="Pointer Adjuster" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175, 0.29, 0)
+
+[node name="Pointer" parent="Pointer Adjuster" instance=ExtResource("7_jq2lr")]
+texture_filter = 0
+frame = 1
+
+[node name="Nameplate Adjuster" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.446726, -0.337487, 0)
+
+[node name="Enemy Nameplate" parent="Nameplate Adjuster" node_paths=PackedStringArray("parent") instance=ExtResource("8_ygq72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48, 4.395, 0)
+visible = false
+parent = NodePath("../..")
+
+[node name="Name" parent="Nameplate Adjuster/Enemy Nameplate" index="2"]
+text = "Polymorphor"
+
+[node name="Combat Text" parent="." instance=ExtResource("9_0avgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3575, 1.41811, -0.0799999)
+
+[node name="BodyRef" type="Node3D" parent="."]
+
+[node name="Head" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.782151, 1.32306, 0)
+
+[node name="Core" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76, 0.745088, 0)
+
+[node name="Weapon" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.797603, 1.0428, 0)
+
+[node name="Feet" type="Node3D" parent="BodyRef"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.720737, 0, 0)
+
+[node name="EnemyHealthBar" parent="." instance=ExtResource("10_pa7wt")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.322, 0)
+
+[editable path="Nameplate Adjuster/Enemy Nameplate"]
+[editable path="Combat Text"]

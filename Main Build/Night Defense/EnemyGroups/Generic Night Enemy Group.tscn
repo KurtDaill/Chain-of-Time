@@ -15,8 +15,8 @@ minimumWaitTime = 1.0
 maximumWaitTime = 3.0
 wanderRange = 30.0
 moveSpeed = 6.0
-positionsInOrder = Array[int]([1, 2])
-enemyTypesInOrder = Array[int]([1, 0])
+positionsInOrder = Array[int]([1, 4])
+enemyTypesInOrder = Array[int]([1, 3])
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.875, 1.8125, 0)

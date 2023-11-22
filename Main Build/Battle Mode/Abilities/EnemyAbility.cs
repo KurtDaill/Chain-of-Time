@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Godot;
 
 public partial class EnemyAbility : Ability
@@ -11,5 +12,9 @@ public partial class EnemyAbility : Ability
             return (PlayerCombatant) com;
         }
         throw new ArgumentException("Battle has no player character in the front rank...WHAT?!");
+    }
+
+    public PlayerCombatant GetRangedTargetWithLowestHP(Battle battle){
+        return battle.GetRoster().GetAllPlayerCombatants().OrderByDescending(x => x.GetHP()).ToArray()[0];
     }
 }

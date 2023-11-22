@@ -296,12 +296,14 @@ public static class BattleUtilities
 	public enum EnemyType{
 		Skeleton,
 		SkeletonGuard,
-		GhostMage
+		GhostMage,
+		SkeletonHunter
 	}
 	private static Dictionary<EnemyType, string> EnemyObjectPathByType = new Dictionary<EnemyType, string>(){
 		{EnemyType.Skeleton, "res://Battle Mode/Enemies/Skeleton.tscn"},
 		{EnemyType.SkeletonGuard, "res://Battle Mode/Enemies/SkeletonGuard.tscn"},
-		{EnemyType.GhostMage, "res://Battle Mode/Enemies/Ghost Mage.tscn"}
+		{EnemyType.GhostMage, "res://Battle Mode/Enemies/Ghost Mage.tscn"},
+		{EnemyType.SkeletonHunter, "res://Battle Mode/Enemies/SkeletonHunter.tscn"}
 	};
 
 	public static string GetPathForEnemyType(EnemyType type){
