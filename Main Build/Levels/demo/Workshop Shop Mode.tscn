@@ -1,13 +1,17 @@
-[gd_scene load_steps=26 format=3 uid="uid://b4c681u22rx0r"]
+[gd_scene load_steps=30 format=3 uid="uid://b4c681u22rx0r"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_o2ers"]
 [ext_resource type="PackedScene" uid="uid://dr361q8qnxwf2" path="res://Art/3D/Workshop Rough Render.gltf" id="2_78sc7"]
 [ext_resource type="Texture2D" uid="uid://h8n352cmobuq" path="res://GUI/Test Shop GUI Button.png" id="3_6chm1"]
 [ext_resource type="Script" path="res://Explore Mode/Shops/WorkshopShopInterface.cs" id="3_ae0i0"]
+[ext_resource type="PackedScene" uid="uid://w5v17kl23qxm" path="res://Battle Mode/Items/OrcishFireBrew.tscn" id="4_6m1ie"]
 [ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="4_o83dl"]
 [ext_resource type="Script" path="res://Explore Mode/Shops/ShopButton.cs" id="4_w75qn"]
+[ext_resource type="PackedScene" uid="uid://k0rrrc2mmur2" path="res://Battle Mode/Items/IronSoulTablet.tscn" id="5_46peh"]
 [ext_resource type="Texture2D" uid="uid://bd043pc138ptl" path="res://GUI/Test Shop GUI Big Panel.png" id="5_j6fl8"]
 [ext_resource type="Texture2D" uid="uid://be8sqqq24swl" path="res://GUI/Test Shop GUI Button Highlight.png" id="5_n52f2"]
+[ext_resource type="PackedScene" uid="uid://d3ffyymjbnpfu" path="res://Battle Mode/Items/WhiteStoneSigil.tscn" id="6_bqc8m"]
+[ext_resource type="Texture2D" uid="uid://tvqwkhbcukgy" path="res://GUI/Battle Menu Assets/Item Menu/White Stone Sigil-export.png" id="10_xnpog"]
 [ext_resource type="Script" path="res://Explore Mode/DialogueInteractZone.cs" id="11_k7hht"]
 [ext_resource type="Texture2D" uid="uid://dpus4m4b7u7dm" path="res://Art/Prod Sprite Sheets/Boss Percy Cinematic Sprite-Sheet.png" id="14_8t2og"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="15_cbpgh"]
@@ -41,6 +45,8 @@ background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(0.560784, 0.709804, 0.815686, 1)
 ambient_light_energy = 0.4
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_281qp"]
 radius = 2.0
@@ -143,6 +149,14 @@ light_color = Color(1, 0.592157, 0.258824, 1)
 shadow_enabled = true
 omni_attenuation = 3.13834
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Workshop Rough Render/Lights"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -9, 5.8125, -5.375)
+visible = false
+light_energy = 4.0
+shadow_enabled = true
+spot_range = 5.3125
+spot_angle = 78.206
+
 [node name="StaticBody3D" type="StaticBody3D" parent="Workshop Rough Render"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Workshop Rough Render/StaticBody3D"]
@@ -193,12 +207,23 @@ shape = SubResource("BoxShape3D_dnmrb")
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 7.5625, 4.25, 3.9375)
 shape = SubResource("BoxShape3D_dnmrb")
 
-[node name="Shop Interface" type="Node3D" parent="Workshop Rough Render" node_paths=PackedStringArray("shopCam", "descritpionTextBox", "descriptionTitleBox", "DebugBackOutMode")]
+[node name="Shop Interface" type="Node3D" parent="Workshop Rough Render" node_paths=PackedStringArray("itemSelectSubMenu", "itemSelectIcons", "selectedItemName", "selectedItemDescription", "itemRackFrontMarker", "itemRackBackMarker", "itemSelectSpotLight", "itemSelectCam", "shopCam", "descritpionTextBox", "descriptionTitleBox", "DebugBackOutMode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6875, 1, -2.5)
-visible = false
 script = ExtResource("3_ae0i0")
+itemSelectSubMenu = NodePath("Select Consumable Sub Screen")
+itemSelectIcons = [NodePath("Select Consumable Sub Screen/Item Icons/Left"), NodePath("Select Consumable Sub Screen/Item Icons/Center"), NodePath("Select Consumable Sub Screen/Item Icons/Right")]
+selectedItemName = NodePath("Select Consumable Sub Screen/Text Box/TitleBar")
+selectedItemDescription = NodePath("Select Consumable Sub Screen/Text Box/Body")
+junkItems = Array[PackedScene]([ExtResource("4_6m1ie")])
+commonItems = Array[PackedScene]([ExtResource("5_46peh")])
+rareItems = Array[PackedScene]([ExtResource("6_bqc8m")])
+chaceToGetaRare = 0.4
+itemRackFrontMarker = NodePath("Select Consumable Sub Screen/Item Icons/Front Position")
+itemRackBackMarker = NodePath("Select Consumable Sub Screen/Item Icons/Back Position")
+itemSelectSpotLight = NodePath("Select Consumable Sub Screen/SpotLight3D")
+itemSelectCam = NodePath("Select Consumable Sub Screen/Select Consumable Cam")
 defaultButtonY = 2
-shopCam = NodePath("Camera3D")
+shopCam = NodePath("Main Cam")
 descritpionTextBox = NodePath("Sprite3D/Body")
 descriptionTitleBox = NodePath("Sprite3D/TitleBar")
 DebugBackOutMode = NodePath("../../ExploreMode")
@@ -320,7 +345,7 @@ vertical_alignment = 0
 autowrap_mode = 2
 width = 300.0
 
-[node name="Camera3D" type="Camera3D" parent="Workshop Rough Render/Shop Interface"]
+[node name="Main Cam" type="Camera3D" parent="Workshop Rough Render/Shop Interface"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0.1705, 3.199, 1.289)
 
 [node name="Sprite3D2" type="Sprite3D" parent="Workshop Rough Render/Shop Interface"]
@@ -332,6 +357,80 @@ texture_filter = 1
 texture = ExtResource("14_8t2og")
 hframes = 10
 frame = 2
+
+[node name="Select Consumable Sub Screen" type="Node3D" parent="Workshop Rough Render/Shop Interface"]
+
+[node name="Item Icons" type="Node3D" parent="Workshop Rough Render/Shop Interface/Select Consumable Sub Screen"]
+
+[node name="Left" type="Sprite3D" parent="Workshop Rough Render/Shop Interface/Select Consumable Sub Screen/Item Icons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4375, 3.5625, -5.3125)
+pixel_size = 0.0104
+shaded = true
+texture_filter = 0
+texture = ExtResource("10_xnpog")
+
+[node name="Center" type="Sprite3D" parent="Workshop Rough Render/Shop Interface/Select Consumable Sub Screen/Item Icons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3125, 3.5625, -4.1875)
+pixel_size = 0.0104
+shaded = true
+texture_filter = 0
+texture = ExtResource("10_xnpog")
+
+[node name="Right" type="Sprite3D" parent="Workshop Rough Render/Shop Interface/Select Consumable Sub Screen/Item Icons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 3.5625, -5.3125)
+pixel_size = 0.0104
+shaded = true
+texture_filter = 0
+texture = ExtResource("10_xnpog")
+
+[node name="Front Position" type="Marker3D" parent="Workshop Rough Render/Shop Interface/Select Consumable Sub Screen/Item Icons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3125, 3, -4.1875)
+
+[node name="Back Position" type="Marker3D" parent="Workshop Rough Render/Shop Interface/Select Consumable Sub Screen/Item Icons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3125, 3, -5.3125)
+
+[node name="Select Consumable Cam" type="Camera3D" parent="Workshop Rough Render/Shop Interface/Select Consumable Sub Screen"]
+transform = Transform3D(1, 0, 0, 0, 0.965925, 0.258819, 0, -0.258819, 0.965925, 0.17, 3.564, 0.2)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Workshop Rough Render/Shop Interface/Select Consumable Sub Screen"]
+transform = Transform3D(1, 0, 0, 0, 0.764978, 0.644057, 0, -0.644057, 0.764978, -0.3125, 4.6875, -3.3125)
+light_energy = 2.0
+light_volumetric_fog_energy = 200.0
+shadow_enabled = true
+spot_range = 3.5625
+spot_attenuation = 0.307786
+spot_angle = 30.1203
+
+[node name="Text Box" type="Sprite3D" parent="Workshop Rough Render/Shop Interface/Select Consumable Sub Screen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3125, 1, -3.875)
+pixel_size = 0.0125
+shaded = true
+alpha_cut = 3
+texture = ExtResource("5_j6fl8")
+
+[node name="TitleBar" type="Label3D" parent="Workshop Rough Render/Shop Interface/Select Consumable Sub Screen/Text Box"]
+transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 1.62501, 0.062499)
+pixel_size = 0.0125
+render_priority = 2
+outline_render_priority = 1
+text = "[White Stone Sigil]"
+font = ExtResource("4_o83dl")
+font_size = 24
+outline_size = 8
+
+[node name="Body" type="Label3D" parent="Workshop Rough Render/Shop Interface/Select Consumable Sub Screen/Text Box"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.72529e-08, 0, 3.72529e-08, 1, -1.8125, 1.37501, 0.062499)
+pixel_size = 0.0125
+render_priority = 2
+outline_render_priority = 1
+text = "Can destroy any undead enemy. Chance of destruction depends on enemy strength."
+font = ExtResource("4_o83dl")
+font_size = 24
+outline_size = 8
+horizontal_alignment = 0
+vertical_alignment = 0
+autowrap_mode = 2
+width = 300.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r816u")

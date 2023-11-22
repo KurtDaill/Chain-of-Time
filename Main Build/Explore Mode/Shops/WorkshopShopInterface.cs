@@ -1,10 +1,73 @@
 using System;
+using System.Collections.Generic;
 using Godot;
+using static GameplayUtilities;
+using System.Linq;
 
 public partial class WorkshopShopInterface : ShopInterface{
+    private bool inItemSelect = false;
+    [Export]
+    Node3D itemSelectSubMenu;
+    [Export]
+    Godot.Collections.Array<Sprite3D> itemSelectIcons;
+    [Export]
+    Label3D selectedItemName;
+    [Export]
+    Label3D selectedItemDescription;
+    ConsumableItem[] itemsRolledForSelection;
+    [Export]
+    Godot.Collections.Array<PackedScene> junkItems;
+    [Export]
+    Godot.Collections.Array<PackedScene> commonItems;
+    [Export]
+    Godot.Collections.Array<PackedScene> rareItems;
+    [Export(PropertyHint.Range, "0,1,0.1")]
+    float chaceToGetaRare;
+    [Export]
+    Marker3D itemRackFrontMarker;
+    [Export]
+    Marker3D itemRackBackMarker;
+    [Export]
+    SpotLight3D itemSelectSpotLight;
+    [Export]
+    Camera3D itemSelectCam;
+    int selectedItem = 0;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        itemSelectSubMenu.Visible = false;
+    }
+    
+    //private delegate void PlayerSelectedItemEventHandler(ConsumableItem item);
     protected override GameplayMode ProcessButtonPress(string activateString){
         switch(activateString){
             case "FindItem":
+            if(gm.GetCurrentTU() > 0){
+                gm.SpendTU(1);
+            }else{
+                return null;
+            }
+            inItemSelect = true;
+            List<ConsumableItem> rolledItems = new();
+            Random rando = new();
+            rolledItems.Add(commonItems.OrderBy(a => rando.Next()).Cast<PackedScene>().ToArray()[0].Instantiate<ConsumableItem>());
+            rolledItems.Add(junkItems.OrderBy(a => rando.Next()).Cast<PackedScene>().ToArray()[0].Instantiate<ConsumableItem>());
+            rolledItems.OrderBy(a => rando.Next()).ToList();
+            if(rando.NextDouble() <= chaceToGetaRare){
+                rolledItems.Add(rareItems.OrderBy(a => rando.Next()).Cast<PackedScene>().ToArray()[0].Instantiate<ConsumableItem>());
+            }else{
+                rolledItems.Add(rareItems.OrderBy(a => rando.Next()).Cast<PackedScene>().ToArray()[0].Instantiate<ConsumableItem>());
+                rolledItems.OrderBy(a => rando.Next()).ToList();
+            }
+            itemsRolledForSelection = rolledItems.ToArray();
+            for(int i = 0; i < itemsRolledForSelection.Length; i++){
+                itemSelectIcons[i].Texture = itemsRolledForSelection[i].GetIcon();
+            }
+            itemSelectSubMenu.Visible = true;
+            selectedItem = 0;
+            itemSelectCam.Current = true;
+            /*
             //TODO actually pick a random item instead of just spawning in the Bru
                 Item[] items = new Item[10];
                 for(int i = 0; i < 10; i++){
@@ -22,6 +85,7 @@ public partial class WorkshopShopInterface : ShopInterface{
                 }else{
                     //TODO Add A "There is no Time" Message
                 }
+                */
                 return null;
             case "GetEquipment":
 
@@ -36,6 +100,45 @@ public partial class WorkshopShopInterface : ShopInterface{
                 return null;
             default: throw new ArgumentException("Button Activation String Error. Button Activated String: " + activateString + " not recognized by Shop Interface: " + Name + ".");
         }
-        return null;
+    }
+
+    
+    public override void HandleInput(PlayerInput input)
+    {
+        if(inItemSelect){
+            switch(input){
+                case PlayerInput.Right :
+                    if(selectedItem < 2) selectedItem++;
+                    SetItemSelect(selectedItem);
+                    break;
+                case PlayerInput.Left :
+                    if(selectedItem > 0) selectedItem--;
+                    SetItemSelect(selectedItem);
+                    break;
+                case PlayerInput.Select :
+                    //Actually buy the Item
+                    //Add Selected Item to Player Inventory
+                    gm.GainItem(itemsRolledForSelection[selectedItem]);
+                    descritpionTextBox.Text = "Got " + itemsRolledForSelection[selectedItem].GetDisplayName();
+                    shopCam.Current = true;
+                    inItemSelect = false;
+                    break;
+            }
+        }else{
+            itemSelectSubMenu.Visible = false;
+            base.HandleInput(input);
+        }
+    }
+
+    public void SetItemSelect(int i){
+        selectedItemName.Text = itemsRolledForSelection[i].GetDisplayName();
+        selectedItemDescription.Text = itemsRolledForSelection[i].GetRulesText();
+        for(int j = 0; j < itemSelectIcons.Count; j++){
+            if(j == i){
+                itemSelectIcons[i].GlobalPosition = new Vector3(itemSelectIcons[i].GlobalPosition.X, itemSelectIcons[i].GlobalPosition.Y, itemRackFrontMarker.GlobalPosition.Z); 
+                itemSelectSpotLight.GlobalPosition = new Vector3(itemSelectIcons[i].GlobalPosition.X, itemSelectSpotLight.GlobalPosition.Y, itemSelectSpotLight.GlobalPosition.Z);
+            }
+            else itemSelectIcons[i].GlobalPosition = new Vector3(itemSelectIcons[i].GlobalPosition.X, itemSelectIcons[i].GlobalPosition.Y, itemRackBackMarker.GlobalPosition.Z); 
+        }
     }
 }
