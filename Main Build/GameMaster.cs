@@ -49,7 +49,7 @@ public partial class GameMaster : Node
             };
         inventory = new List<Item>(){
             GD.Load<PackedScene>("res://Battle Mode/Items/IronSoulTablet.tscn").Instantiate() as Item
-        };
+            };
         currentTime = TimeOfDay.Morning;
         ProcessMode = ProcessModeEnum.Always;
     }

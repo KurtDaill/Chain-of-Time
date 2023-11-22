@@ -1,19 +1,20 @@
-[gd_scene load_steps=30 format=3 uid="uid://b4c681u22rx0r"]
+[gd_scene load_steps=33 format=3 uid="uid://b4c681u22rx0r"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_o2ers"]
-[ext_resource type="PackedScene" uid="uid://dr361q8qnxwf2" path="res://Art/3D/Workshop Rough Render.gltf" id="2_78sc7"]
-[ext_resource type="Texture2D" uid="uid://h8n352cmobuq" path="res://GUI/Test Shop GUI Button.png" id="3_6chm1"]
+[ext_resource type="PackedScene" uid="uid://g2typ7uh0q4f" path="res://Art/3D/Workshop Rough Render.gltf" id="2_78sc7"]
+[ext_resource type="Texture2D" uid="uid://oja6q3aetmlc" path="res://GUI/Test Shop GUI Button.png" id="3_6chm1"]
 [ext_resource type="Script" path="res://Explore Mode/Shops/WorkshopShopInterface.cs" id="3_ae0i0"]
 [ext_resource type="PackedScene" uid="uid://w5v17kl23qxm" path="res://Battle Mode/Items/OrcishFireBrew.tscn" id="4_6m1ie"]
 [ext_resource type="FontFile" uid="uid://bda5754wxhw2u" path="res://Fonts/manaspc.ttf" id="4_o83dl"]
 [ext_resource type="Script" path="res://Explore Mode/Shops/ShopButton.cs" id="4_w75qn"]
 [ext_resource type="PackedScene" uid="uid://k0rrrc2mmur2" path="res://Battle Mode/Items/IronSoulTablet.tscn" id="5_46peh"]
-[ext_resource type="Texture2D" uid="uid://bd043pc138ptl" path="res://GUI/Test Shop GUI Big Panel.png" id="5_j6fl8"]
-[ext_resource type="Texture2D" uid="uid://be8sqqq24swl" path="res://GUI/Test Shop GUI Button Highlight.png" id="5_n52f2"]
+[ext_resource type="Texture2D" uid="uid://s3nlga34m0he" path="res://GUI/Test Shop GUI Big Panel.png" id="5_j6fl8"]
+[ext_resource type="Texture2D" uid="uid://dkbk4sck0pr3a" path="res://GUI/Test Shop GUI Button Highlight.png" id="5_n52f2"]
 [ext_resource type="PackedScene" uid="uid://d3ffyymjbnpfu" path="res://Battle Mode/Items/WhiteStoneSigil.tscn" id="6_bqc8m"]
-[ext_resource type="Texture2D" uid="uid://tvqwkhbcukgy" path="res://GUI/Battle Menu Assets/Item Menu/White Stone Sigil-export.png" id="10_xnpog"]
+[ext_resource type="Texture2D" uid="uid://cygnfswwvfkff" path="res://GUI/Battle Menu Assets/Item Menu/White Stone Sigil-export.png" id="10_xnpog"]
 [ext_resource type="Script" path="res://Explore Mode/DialogueInteractZone.cs" id="11_k7hht"]
-[ext_resource type="Texture2D" uid="uid://dpus4m4b7u7dm" path="res://Art/Prod Sprite Sheets/Boss Percy Cinematic Sprite-Sheet.png" id="14_8t2og"]
+[ext_resource type="Texture2D" uid="uid://ckpq7cr5vh3o8" path="res://Art/Prod Sprite Sheets/Boss Percy Cinematic Sprite-Sheet.png" id="14_8t2og"]
+[ext_resource type="Theme" uid="uid://cwdgqxfygfbb7" path="res://GUI/Themes/Battle Menu Themes/ItemMenuTheme.tres" id="14_knr2b"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="15_cbpgh"]
 [ext_resource type="PackedScene" uid="uid://d31imjbtaeidb" path="res://Explore Mode/DialoguePrompt.tscn" id="17_bwqev"]
 [ext_resource type="Script" path="res://Explore Mode/SceneChangeZone.cs" id="18_a32mf"]
@@ -39,6 +40,11 @@ size = Vector3(1, 15.75, 48.875)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dnmrb"]
 size = Vector3(1, 15.75, 9.8125)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ywnme"]
+viewport_path = NodePath("Workshop Rough Render/Shop Interface/Item Text/SubViewport")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7y43o"]
 
 [sub_resource type="Environment" id="Environment_r816u"]
 background_mode = 1
@@ -207,17 +213,15 @@ shape = SubResource("BoxShape3D_dnmrb")
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 7.5625, 4.25, 3.9375)
 shape = SubResource("BoxShape3D_dnmrb")
 
-[node name="Shop Interface" type="Node3D" parent="Workshop Rough Render" node_paths=PackedStringArray("itemSelectSubMenu", "itemSelectIcons", "selectedItemName", "selectedItemDescription", "itemRackFrontMarker", "itemRackBackMarker", "itemSelectSpotLight", "itemSelectCam", "shopCam", "descritpionTextBox", "descriptionTitleBox", "DebugBackOutMode")]
+[node name="Shop Interface" type="Node3D" parent="Workshop Rough Render" node_paths=PackedStringArray("itemSelectSubMenu", "itemSelectIcons", "itemDescriptionBox", "itemRackFrontMarker", "itemRackBackMarker", "itemSelectSpotLight", "itemSelectCam", "shopCam", "descritpionTextBox", "descriptionTitleBox", "DebugBackOutMode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6875, 1, -2.5)
 script = ExtResource("3_ae0i0")
 itemSelectSubMenu = NodePath("Select Consumable Sub Screen")
 itemSelectIcons = [NodePath("Select Consumable Sub Screen/Item Icons/Left"), NodePath("Select Consumable Sub Screen/Item Icons/Center"), NodePath("Select Consumable Sub Screen/Item Icons/Right")]
-selectedItemName = NodePath("Select Consumable Sub Screen/Text Box/TitleBar")
-selectedItemDescription = NodePath("Select Consumable Sub Screen/Text Box/Body")
+itemDescriptionBox = NodePath("Item Text/SubViewport/Panel/RichTextLabel")
 junkItems = Array[PackedScene]([ExtResource("4_6m1ie")])
 commonItems = Array[PackedScene]([ExtResource("5_46peh")])
 rareItems = Array[PackedScene]([ExtResource("6_bqc8m")])
-chaceToGetaRare = 0.4
 itemRackFrontMarker = NodePath("Select Consumable Sub Screen/Item Icons/Front Position")
 itemRackBackMarker = NodePath("Select Consumable Sub Screen/Item Icons/Back Position")
 itemSelectSpotLight = NodePath("Select Consumable Sub Screen/SpotLight3D")
@@ -408,34 +412,42 @@ shaded = true
 alpha_cut = 3
 texture = ExtResource("5_j6fl8")
 
-[node name="TitleBar" type="Label3D" parent="Workshop Rough Render/Shop Interface/Select Consumable Sub Screen/Text Box"]
-transform = Transform3D(1, 0, 0, 0, 1, -5.96046e-08, 0, 5.96046e-08, 1, 0, 1.62501, 0.062499)
-pixel_size = 0.0125
-render_priority = 2
-outline_render_priority = 1
-text = "[White Stone Sigil]"
-font = ExtResource("4_o83dl")
-font_size = 24
-outline_size = 8
+[node name="Sprite3D" type="Sprite3D" parent="Workshop Rough Render/Shop Interface/Select Consumable Sub Screen/Text Box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.651061, 0.0418348)
+texture = SubResource("ViewportTexture_ywnme")
 
-[node name="Body" type="Label3D" parent="Workshop Rough Render/Shop Interface/Select Consumable Sub Screen/Text Box"]
-transform = Transform3D(1, 0, 0, 0, 1, -3.72529e-08, 0, 3.72529e-08, 1, -1.8125, 1.37501, 0.062499)
-pixel_size = 0.0125
-render_priority = 2
-outline_render_priority = 1
-text = "Can destroy any undead enemy. Chance of destruction depends on enemy strength."
-font = ExtResource("4_o83dl")
-font_size = 24
-outline_size = 8
-horizontal_alignment = 0
-vertical_alignment = 0
-autowrap_mode = 2
-width = 300.0
+[node name="Item Text" type="CanvasLayer" parent="Workshop Rough Render/Shop Interface"]
+
+[node name="SubViewport" type="SubViewport" parent="Workshop Rough Render/Shop Interface/Item Text"]
+transparent_bg = true
+size = Vector2i(320, 230)
+
+[node name="Panel" type="Panel" parent="Workshop Rough Render/Shop Interface/Item Text/SubViewport"]
+custom_minimum_size = Vector2(320, 230)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7y43o")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Workshop Rough Render/Shop Interface/Item Text/SubViewport/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("14_knr2b")
+bbcode_enabled = true
+text = "Orcish Fire Brew
+One Ally - Takes 2 Damage, then Gains 3 SP"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r816u")
 
 [node name="ExploreMode" parent="." node_paths=PackedStringArray("explorePlayer") instance=ExtResource("15_cbpgh")]
+visible = false
 explorePlayer = NodePath("../ExplorePlayer")
 
 [node name="Sprite3D" type="Sprite3D" parent="ExploreMode"]

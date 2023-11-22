@@ -11,9 +11,7 @@ public partial class WorkshopShopInterface : ShopInterface{
     [Export]
     Godot.Collections.Array<Sprite3D> itemSelectIcons;
     [Export]
-    Label3D selectedItemName;
-    [Export]
-    Label3D selectedItemDescription;
+    RichTextLabel itemDescriptionBox;
     ConsumableItem[] itemsRolledForSelection;
     [Export]
     Godot.Collections.Array<PackedScene> junkItems;
@@ -121,7 +119,7 @@ public partial class WorkshopShopInterface : ShopInterface{
                     gm.GainItem(itemsRolledForSelection[selectedItem]);
                     descritpionTextBox.Text = "Got " + itemsRolledForSelection[selectedItem].GetDisplayName();
                     shopCam.Current = true;
-                    
+                    inItemSelect = false;
                     break;
             }
         }else{
@@ -131,8 +129,7 @@ public partial class WorkshopShopInterface : ShopInterface{
     }
 
     public void SetItemSelect(int i){
-        selectedItemName.Text = itemsRolledForSelection[i].GetDisplayName();
-        selectedItemDescription.Text = itemsRolledForSelection[i].GetRulesText();
+        itemDescriptionBox.Text = itemsRolledForSelection[i].GetDisplayName() + "\n" + itemsRolledForSelection[i].GetRulesText();
         for(int j = 0; j < itemSelectIcons.Count; j++){
             if(j == i){
                 itemSelectIcons[j].GlobalPosition = new Vector3(itemSelectIcons[j].GlobalPosition.X, itemSelectIcons[j].GlobalPosition.Y, itemRackFrontMarker.GlobalPosition.Z); 
