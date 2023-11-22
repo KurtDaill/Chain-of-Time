@@ -390,7 +390,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3125, 3, -4.1875)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3125, 3, -5.3125)
 
 [node name="Select Consumable Cam" type="Camera3D" parent="Workshop Rough Render/Shop Interface/Select Consumable Sub Screen"]
-transform = Transform3D(1, 0, 0, 0, 0.965925, 0.258819, 0, -0.258819, 0.965925, 0.17, 3.564, 0.2)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -0.33, 3.564, 0.2)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Workshop Rough Render/Shop Interface/Select Consumable Sub Screen"]
 transform = Transform3D(1, 0, 0, 0, 0.764978, 0.644057, 0, -0.644057, 0.764978, -0.3125, 4.6875, -3.3125)

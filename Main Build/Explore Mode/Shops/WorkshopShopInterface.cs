@@ -121,7 +121,7 @@ public partial class WorkshopShopInterface : ShopInterface{
                     gm.GainItem(itemsRolledForSelection[selectedItem]);
                     descritpionTextBox.Text = "Got " + itemsRolledForSelection[selectedItem].GetDisplayName();
                     shopCam.Current = true;
-                    inItemSelect = false;
+                    
                     break;
             }
         }else{
@@ -135,10 +135,10 @@ public partial class WorkshopShopInterface : ShopInterface{
         selectedItemDescription.Text = itemsRolledForSelection[i].GetRulesText();
         for(int j = 0; j < itemSelectIcons.Count; j++){
             if(j == i){
-                itemSelectIcons[i].GlobalPosition = new Vector3(itemSelectIcons[i].GlobalPosition.X, itemSelectIcons[i].GlobalPosition.Y, itemRackFrontMarker.GlobalPosition.Z); 
+                itemSelectIcons[j].GlobalPosition = new Vector3(itemSelectIcons[j].GlobalPosition.X, itemSelectIcons[j].GlobalPosition.Y, itemRackFrontMarker.GlobalPosition.Z); 
                 itemSelectSpotLight.GlobalPosition = new Vector3(itemSelectIcons[i].GlobalPosition.X, itemSelectSpotLight.GlobalPosition.Y, itemSelectSpotLight.GlobalPosition.Z);
             }
-            else itemSelectIcons[i].GlobalPosition = new Vector3(itemSelectIcons[i].GlobalPosition.X, itemSelectIcons[i].GlobalPosition.Y, itemRackBackMarker.GlobalPosition.Z); 
+            else itemSelectIcons[j].GlobalPosition = new Vector3(itemSelectIcons[j].GlobalPosition.X, itemSelectIcons[j].GlobalPosition.Y, itemRackBackMarker.GlobalPosition.Z); 
         }
     }
 }
