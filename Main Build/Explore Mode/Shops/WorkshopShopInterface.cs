@@ -52,10 +52,10 @@ public partial class WorkshopShopInterface : ShopInterface{
             rolledItems.Add(commonItems.OrderBy(a => rando.Next()).Cast<PackedScene>().ToArray()[0].Instantiate<ConsumableItem>());
             rolledItems.Add(junkItems.OrderBy(a => rando.Next()).Cast<PackedScene>().ToArray()[0].Instantiate<ConsumableItem>());
             rolledItems.OrderBy(a => rando.Next()).ToList();
-            if(rando.NextDouble() <= chaceToGetaRare){
+            if(rando.NextDouble() <= (double)chaceToGetaRare){
                 rolledItems.Add(rareItems.OrderBy(a => rando.Next()).Cast<PackedScene>().ToArray()[0].Instantiate<ConsumableItem>());
             }else{
-                rolledItems.Add(rareItems.OrderBy(a => rando.Next()).Cast<PackedScene>().ToArray()[0].Instantiate<ConsumableItem>());
+                rolledItems.Add(commonItems.OrderBy(a => rando.Next()).Cast<PackedScene>().ToArray()[0].Instantiate<ConsumableItem>());
                 rolledItems.OrderBy(a => rando.Next()).ToList();
             }
             itemsRolledForSelection = rolledItems.ToArray();
