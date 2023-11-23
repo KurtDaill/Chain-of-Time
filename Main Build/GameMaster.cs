@@ -25,6 +25,9 @@ public partial class GameMaster : Node
 
     [Export(PropertyHint.Range, "0,3")]
     private int DayTimeUnitsRemaining = 3;
+    private List<StringName> tutorialPopupsThatHaveActivated;
+    [Export]
+    private bool tutorialEnalbed = true;
 
     GameplayMode currentMode;
     TimeOfDay currentTime;
@@ -52,6 +55,8 @@ public partial class GameMaster : Node
             };
         currentTime = TimeOfDay.Morning;
         ProcessMode = ProcessModeEnum.Always;
+        //TODO Save this along with everything else in the files!
+        tutorialPopupsThatHaveActivated = new();
     }
 
 
@@ -74,6 +79,11 @@ public partial class GameMaster : Node
         if(Input.IsActionJustPressed("ui_back")){return PlayerInput.Back;}
         if(Input.IsActionJustPressed("ui_start")){return PlayerInput.Start;}
         return PlayerInput.None;
+    }
+
+    //Wrapping this function incase I want to change how other objects get to Read Input
+    public PlayerInput ReadInputRemotely(){
+        return ReadInput();
     }
 
     public void SavePartyData(Roster roster){
@@ -242,6 +252,21 @@ public partial class GameMaster : Node
     public PackedScene GetMainScenePacked(){
         return mainScene;
     }
+
+    //
+    public bool TutorialTriggerCheckIn(StringName triggerName){
+        if(!tutorialEnalbed){
+            return false;
+        }else{
+            if(tutorialPopupsThatHaveActivated.Contains(triggerName)){
+                return false;
+            }else{
+                tutorialPopupsThatHaveActivated.Add(triggerName);
+                return true;
+            }
+        }
+    } 
+
 }
 
 public class PlayerData{

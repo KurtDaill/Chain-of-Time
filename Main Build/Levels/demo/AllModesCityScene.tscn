@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://johbf16mwra8"]
+[gd_scene load_steps=18 format=3 uid="uid://johbf16mwra8"]
 
 [ext_resource type="Script" path="res://SceneConfig.cs" id="1_0dxlu"]
 [ext_resource type="PackedScene" uid="uid://dwboa5m4bpu0l" path="res://Gameplay Modes/Explore.tscn" id="2_liug8"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cenpkmy5h0ooq" path="res://Explore Mode/explore_player.tscn" id="4_gvjqb"]
 [ext_resource type="Resource" uid="uid://doooy2cygnv6i" path="res://Night Defense/NightAttacks/NightTwo.tres" id="4_j3x6o"]
 [ext_resource type="Resource" uid="uid://c321sur8pr4i" path="res://Night Defense/NightAttacks/NightThree.tres" id="5_lwwdg"]
+[ext_resource type="PackedScene" uid="uid://f1owetw5mn3p" path="res://Tutorial/TutorialTrigger.tscn" id="11_b2hkx"]
 [ext_resource type="Script" path="res://Night Defense/ResultsScreen.cs" id="13_yr3hr"]
 [ext_resource type="Environment" uid="uid://cqpc6quc73qwr" path="res://Night Defense/Result Screen Environment.tres" id="14_c660d"]
 [ext_resource type="Theme" uid="uid://dp5ux27rntx3l" path="res://Night Defense/Results Screen Theme.tres" id="15_q3tlf"]
@@ -208,6 +209,7 @@ _data = {
 }
 
 [node name="SceneConfig" type="Node3D" node_paths=PackedStringArray("startingMode", "citySpawnPoint", "myNightDefenseMode")]
+process_mode = 1
 script = ExtResource("1_0dxlu")
 startingMode = NodePath("ExploreMode")
 citySpawnPoint = NodePath("CityMarker")
@@ -384,11 +386,21 @@ libraries = {
 explorePlayer = NodePath("../ExplorePlayer")
 CityExplore = true
 
+[node name="Start Timer" type="Timer" parent="ExploreMode"]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
 [node name="CityMarker" type="Marker3D" parent="."]
 
 [node name="Night Marker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94695, 0, 55.9744)
 
+[node name="Start Game Tutorial" parent="." instance=ExtResource("11_b2hkx")]
+tutorialMessages = Array[String](["Welcome to The Chain of Time!", "Your Goal is to defend this city from the undead.", "You have some time each day to prepare for the attack each night!"])
+tutorialTriggerName = &"Weclome Message"
+
 [connection signal="animation_finished" from="Results Screen/GUI/AnimationPlayer" to="Results Screen" method="OnGameOverAnimationComplete"]
+[connection signal="timeout" from="ExploreMode/Start Timer" to="Start Game Tutorial" method="Trigger"]
 
 [editable path="ExplorePlayer"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://f1owetw5mn3p"]
+
+[ext_resource type="Script" path="res://Tutorial/TutorialNode.cs" id="1_ftgdm"]
+
+[node name="Tutorial Box" type="Node"]
+script = ExtResource("1_ftgdm")

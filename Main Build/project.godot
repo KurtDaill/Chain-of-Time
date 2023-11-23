@@ -22,6 +22,7 @@ QuestMaster="*res://Explore Mode/Quest System/QuestMaster.tscn"
 CityState="*res://CityState.tscn"
 PauseMenu="*res://Pause Menu/PauseMenu.tscn"
 TimeUI="*res://Pause Menu/TimeUI.tscn"
+TutorialTextBox="*res://Tutorial/Tutorial Text Box.tscn"
 
 [display]
 
