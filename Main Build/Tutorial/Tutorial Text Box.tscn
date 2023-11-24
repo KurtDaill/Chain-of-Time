@@ -12,7 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jbx4w")
-displaySpeed = 5.0
+displaySpeed = 10.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -20,8 +20,8 @@ displaySpeed = 5.0
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 0.225
-offset_bottom = -1.52588e-05
+anchor_bottom = 0.302
+offset_bottom = -0.160004
 grow_horizontal = 2
 texture = ExtResource("1_jdprd")
 patch_margin_left = 48
@@ -30,17 +30,23 @@ patch_margin_right = 48
 patch_margin_bottom = 48
 
 [node name="MainTextBox" type="RichTextLabel" parent="TextBoxGraphics"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.242
 offset_left = 40.0
 offset_top = 15.0
-offset_right = 1880.0
-offset_bottom = 228.0
+offset_right = -40.0
+offset_bottom = -121.892
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_roxiv")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = -2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 3
-theme_override_font_sizes/normal_font_size = 32
+theme_override_constants/shadow_offset_x = -3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
-text = "This my tutorial text box"
+text = "
+ This my tutorial text box"

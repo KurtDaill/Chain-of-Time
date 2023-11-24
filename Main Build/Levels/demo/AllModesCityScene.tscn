@@ -397,7 +397,7 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94695, 0, 55.9744)
 
 [node name="Start Game Tutorial" parent="." instance=ExtResource("11_b2hkx")]
-tutorialMessages = Array[String](["Welcome to The Chain of Time!", "Your Goal is to defend this city from the undead.", "You have some time each day to prepare for the attack each night!"])
+tutorialMessages = Array[String](["[center]Welcome to The Chain of Time Playtest.", "This city is under seige by the undead. Your Goal is to defend it. ", "You have some time each day to prepare for the attack each night.", "Last night's attack destroyed a building and left one of your party members hurt. You can try to spend your time to solve either problem, or try something else to preapre.", "[center]The Dead attack at sundown.\\nGood Luck."])
 tutorialTriggerName = &"Weclome Message"
 
 [connection signal="animation_finished" from="Results Screen/GUI/AnimationPlayer" to="Results Screen" method="OnGameOverAnimationComplete"]

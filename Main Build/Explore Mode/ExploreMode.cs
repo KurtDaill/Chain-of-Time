@@ -49,6 +49,7 @@ public partial class ExploreMode : GameplayMode{
 
     public override void HandleInput(PlayerInput input)
     {
+        if(GetTree().Paused) return;
         explorePlayer.HandleInput(input);
         if(input == PlayerInput.Start){
             GetNode<PauseMenu>("/root/PauseMenu").SetMenuTypeOnTransitionIn("NormalPause");

@@ -55,7 +55,8 @@ public partial class TutorialTextBox : Control
     }
 
     private void ShowNewMessage(int index){
-        mainTextBox.Text = tutorialMessages[index];
+        mainTextBox.Text = "\n " + tutorialMessages[index];
+        mainTextBox.Text = mainTextBox.Text.Replace("\\n", "\n");
         mainTextBox.VisibleCharacters = 0;
         displayCount = 0;
     }

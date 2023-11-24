@@ -5,6 +5,8 @@ using static GameplayUtilities;
 public partial class TutorialNode : Node
 {
     [Export]
+    private bool debugDisabled;
+    [Export]
     public Godot.Collections.Array<string> tutorialMessages;
     [Export]
     public StringName tutorialTriggerName;
@@ -29,6 +31,7 @@ public partial class TutorialNode : Node
     }
 
     public void Trigger(){
+        if(debugDisabled) return;
         //Checks whether we should activate!
         if(gm.TutorialTriggerCheckIn(tutorialTriggerName)){
             GetTree().Paused = true;
